@@ -940,6 +940,20 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* FORZAR FONDO GRIS EN MOBILE */
+    html, body {
+        background: #f6f7fb !important;
+        background-color: #f6f7fb !important;
+    }
+    
+    .page-container,
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stApp"] {
+        background: #f6f7fb !important;
+        background-color: #f6f7fb !important;
+    }
+    
     .header {
         flex-direction: column;
         gap: 15px;
