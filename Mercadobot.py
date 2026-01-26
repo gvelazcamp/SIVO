@@ -819,7 +819,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
                 Uso, mantenimiento y evolución continua
             </div>
 
-            <div class="plan-price">US$ 150<span>/mes</span></div>
+            <div class="plan-price">US$ 120<span>/mes</span></div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             <div class="plan-note" style="font-size:12px; color:#999;">
                 Requiere implementación inicial previa
@@ -882,6 +882,7 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
     components.html(HTML_HOME, height=1650, scrolling=False)
+
 
 
 
