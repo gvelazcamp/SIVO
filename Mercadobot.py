@@ -106,7 +106,7 @@ body {
 }
 
 /* =========================
-   BLOQUE CATEGORÍAS
+   CATEGORÍAS
 ========================= */
 .cats-block {
     text-align: center;
@@ -120,7 +120,6 @@ body {
     padding: 10px 14px;
     border-radius: 999px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    margin-bottom: 20px;
 }
 
 .cat {
@@ -141,13 +140,13 @@ body {
 .section h2 {
     text-align: center;
     font-size: 32px;
-    margin-bottom: 8px;
 }
 
 .subtitle {
     text-align: center;
     font-size: 14px;
     color: #777;
+    margin-bottom: 30px;
 }
 
 /* =========================
@@ -157,7 +156,6 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 22px;
-    margin-top: 36px;
 }
 
 .card {
@@ -182,7 +180,7 @@ body {
 .card p {
     font-size: 13px;
     color: #666;
-    min-height: 60px;
+    min-height: 70px;
 }
 
 .card button {
@@ -196,19 +194,75 @@ body {
 }
 
 /* =========================
+   CTA FINAL
+========================= */
+.cta {
+    margin: 60px 40px 30px;
+    background: linear-gradient(180deg, #eef2f7, #ffffff);
+    border-radius: 40px;
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 32px;
+}
+
+.cta p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 20px;
+}
+
+.cta button {
+    background: #f4b400;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+   FEATURES
+========================= */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* =========================
    FOOTER
 ========================= */
 .footer {
-    padding: 30px 40px;
+    border-top: 1px solid #eee;
+    padding: 20px 40px;
+    font-size: 13px;
     color: #888;
-    font-size: 14px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 </style>
 
 <div class="wrapper">
 
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">MERCADO<span>BOT</span></div>
         <div class="nav">
@@ -220,23 +274,20 @@ body {
         <div class="btn-login">Iniciar sesión</div>
     </div>
 
+    <!-- HERO -->
     <div class="hero">
         <div>
             <h1>El marketplace<br>de asistentes IA</h1>
-            <p>
-                Automatizá tu negocio con asistentes virtuales inteligentes
-                que responden, informan y asisten a tus clientes.
-            </p>
-
+            <p>Automatizá tu negocio con asistentes virtuales inteligentes.</p>
             <div class="hero-actions">
                 <div class="btn-primary">Explorar asistentes</div>
                 <div class="btn-secondary">▶ Ver demo en vivo</div>
             </div>
         </div>
-
         <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistente.png">
     </div>
 
+    <!-- CATEGORÍAS -->
     <div class="cats-block">
         <div class="cats">
             <div class="cat">⚽ Fútbol</div>
@@ -246,57 +297,63 @@ body {
         </div>
     </div>
 
+    <!-- ASISTENTES -->
     <div class="section">
         <h2>Asistentes IA listos para potenciar tu negocio</h2>
-        <div class="subtitle">
-            Explorá, elegí e instalá asistentes inteligentes según tus necesidades.
-        </div>
+        <div class="subtitle">Explorá, elegí e instalá asistentes inteligentes según tus necesidades.</div>
 
         <div class="cards">
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefutbol.png">
                 <h3>Asistente de Fútbol</h3>
-                <p>
-                    Resultados al instante, noticias y estadísticas del mundo del fútbol.
-                </p>
+                <p>Resultados, noticias y estadísticas del mundo del fútbol.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png">
                 <h3>Asistente de Cocina</h3>
-                <p>
-                    Recetas rápidas, consejos de cocina y conversiones de ingredientes.
-                </p>
+                <p>Recetas rápidas, consejos de cocina y conversiones de ingredientes.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png">
                 <h3>Asistente de Ecommerce</h3>
-                <p>
-                    Respuestas automáticas sobre productos, pedidos, envíos y más.
-                </p>
+                <p>Respuestas automáticas sobre productos, pedidos y envíos.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png">
                 <h3>Asistente de Finanzas</h3>
-                <p>
-                    Información financiera, cotizaciones de mercado y análisis de inversiones.
-                </p>
+                <p>Información financiera, cotizaciones y análisis de inversiones.</p>
                 <button>Ver asistente</button>
             </div>
         </div>
     </div>
 
+    <!-- CTA FINAL -->
+    <div class="cta">
+        <h2>Integra en minutos</h2>
+        <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
+        <button>Probar gratis</button>
+
+        <div class="features">
+            <div class="feature">⚡ Fácil y rápido</div>
+            <div class="feature">⚙️ Totalmente configurable</div>
+            <div class="feature">🔒 Seguro y escalable</div>
+            <div class="feature">💬 Soporte incluido</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <div class="footer">
-        <div>Política de privacidad · Términos · Contacto</div>
+        <div>Política de privacidad · Términos y condiciones · Contacto</div>
         <div>Facebook · Twitter · LinkedIn</div>
     </div>
 
 </div>
 """
 
-components.html(html, height=1600, scrolling=True)
+components.html(html, height=1900, scrolling=True)
