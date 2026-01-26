@@ -1137,7 +1137,6 @@ HEADER = """
             <a href="?vista=precios">Precios</a>
             <a href="?vista=home#soporte">Soporte</a>
         </div>
-        <div class="btn-login">Iniciar sesión</div>
     </div>
 """
 
