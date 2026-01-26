@@ -1013,6 +1013,13 @@ body {
         border: none !important;
     }
     
+    /* Link "Explorar asistentes" más visible en mobile */
+    .btn-secondary {
+        background: transparent !important;
+        color: #333 !important;
+        font-weight: 600 !important;
+    }
+    
     /* Elementos con fondos específicos que NO deben cambiar */
     .hero-impact {
         background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%) !important;
