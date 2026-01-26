@@ -127,15 +127,15 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
-    height: 100%;
+    min-height: 2000px;
+    height: 2000px;
 }
 
 .page-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
+    min-height: 2000px;
 }
 
 /* =========================
@@ -1177,12 +1177,10 @@ HTML_PRECIOS = f"""{HTML_BASE}
 # =========================
 # RENDER
 # =========================
-# Usar SIEMPRE la misma altura para evitar que el contenido baje
-ALTURA_FIJA = 2000
-
+# Intentar con scrolling True para que no agregue espacio
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=ALTURA_FIJA, scrolling=False)
+    components.html(HTML_ASISTENTES, scrolling=True)
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=ALTURA_FIJA, scrolling=False)
+    components.html(HTML_PRECIOS, scrolling=True)
 else:
-    components.html(HTML_HOME, height=ALTURA_FIJA, scrolling=False)
+    components.html(HTML_HOME, scrolling=True)
