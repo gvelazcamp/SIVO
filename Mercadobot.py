@@ -940,7 +940,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* FORZAR FONDO GRIS EN MOBILE */
+    /* FORZAR FONDO GRIS EN MOBILE - TODO */
     html, body {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
@@ -949,15 +949,52 @@ body {
     .page-container,
     .stApp,
     [data-testid="stAppViewContainer"],
-    [data-testid="stApp"] {
+    [data-testid="stApp"],
+    .hero,
+    .hero-content,
+    .section,
+    .steps,
+    .step,
+    .cards,
+    .card,
+    .cta,
+    .features,
+    .feature,
+    .testimonios,
+    .testimonios-grid,
+    .testimonio-card,
+    .trust-row,
+    .trust-pill,
+    .cat,
+    .chat-body,
+    main,
+    section,
+    div {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
+    }
+    
+    /* Excepciones para elementos que SÍ deben tener otros colores */
+    .hero-impact,
+    .hero-chat,
+    .chat-topbar,
+    button,
+    .btn-primary,
+    .btn-secondary,
+    .btn-login,
+    .hero-impact-btn-primary,
+    .hero-impact-btn-secondary,
+    .bubble,
+    .demo-bubble {
+        background: revert !important;
+        background-color: revert !important;
     }
     
     .header {
         flex-direction: column;
         gap: 15px;
         padding: 16px 4%;
+        background: #f6f7fb !important;
     }
 
     .nav {
