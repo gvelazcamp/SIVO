@@ -14,16 +14,16 @@ st.markdown(
         padding: 0 !important;
         max-width: 100% !important;
     }
-    
+
     section[data-testid="stAppViewContainer"] {
         padding: 0 !important;
     }
-    
+
     section.main > div {
         padding: 0 !important;
         max-width: 100% !important;
     }
-    
+
     /* Ocultar header, footer y toolbar */
     header[data-testid="stHeader"],
     .stAppHeader,
@@ -36,13 +36,13 @@ st.markdown(
         visibility: hidden !important;
         height: 0 !important;
     }
-    
+
     /* Eliminar scroll horizontal */
     html, body, [data-testid="stAppViewContainer"], section.main {
         overflow-x: hidden !important;
         max-width: 100vw !important;
     }
-    
+
     /* El iframe debe ocupar exactamente el espacio */
     iframe {
         width: 100% !important;
@@ -225,6 +225,191 @@ body {
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
+}
+
+/* =========================
+   NUEVO: HERO CHAT DEMO
+   (solo agrega, no rompe)
+========================= */
+.hero-chat {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.chat-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: linear-gradient(180deg, #ffffff, #f6f7fb);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.chat-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 13px;
+    color: #111;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #f4b400;
+    box-shadow: 0 0 0 4px rgba(244,180,0,0.18);
+}
+
+.chat-pill {
+    font-size: 12px;
+    font-weight: 800;
+    color: #7a5a00;
+    background: rgba(244,180,0,0.18);
+    border: 1px solid rgba(244,180,0,0.45);
+    padding: 6px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.chat-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 260px;
+}
+
+.bubble {
+    max-width: 88%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.35;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+.bubble.user {
+    align-self: flex-end;
+    background: #111;
+    color: #fff;
+    border-bottom-right-radius: 6px;
+}
+
+.bubble.bot {
+    align-self: flex-start;
+    background: #ffffff;
+    color: #222;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-bottom-left-radius: 6px;
+}
+
+.chat-meta {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #888;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+}
+
+.fake-input {
+    flex: 1;
+    background: #f6f7fb;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.send-btn {
+    background: #f4b400;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background: #e5a500;
+}
+
+.trust-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   NUEVO: CÓMO FUNCIONA (3 pasos)
+========================= */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.step {
+    background: #fff;
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+.step-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: rgba(244,180,0,0.20);
+    border: 1px solid rgba(244,180,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: #7a5a00;
+    margin-bottom: 12px;
+}
+
+.step h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.step p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.45;
 }
 
 /* =========================
@@ -511,17 +696,25 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .hero-content {
         max-width: 100%;
     }
-    
-    .hero-image img {
-        max-width: 400px;
-    }
-    
+
     .hero-actions {
         justify-content: center;
+    }
+
+    .trust-row {
+        justify-content: center;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-chat {
+        text-align: left;
     }
 }
 
@@ -531,44 +724,44 @@ body {
         gap: 15px;
         padding: 16px 4%;
     }
-    
+
     .nav {
         gap: 16px;
         font-size: 14px;
     }
-    
+
     .hero {
         padding: 20px 4%;
     }
-    
+
     .hero h1 {
         font-size: 28px;
     }
-    
+
     .section {
         padding: 20px 4%;
     }
-    
+
     .section h2 {
         font-size: 26px;
     }
-    
+
     .cards {
         grid-template-columns: 1fr;
     }
-    
+
     .cta {
         margin: 30px 4% 20px;
         padding: 30px 20px;
     }
-    
+
     .footer {
         flex-direction: column;
         gap: 10px;
         text-align: center;
         padding: 20px 4%;
     }
-    
+
     .pricing {
         grid-template-columns: 1fr;
     }
@@ -603,37 +796,113 @@ FOOTER = """
 """
 
 # =========================
-# HOME
+# HOME (MODIFICADO: chatbot protagonista)
 # =========================
 HTML_HOME = f"""{HTML_BASE}
 {HEADER}
 
     <div class="hero">
         <div class="hero-content">
-            <h1>El marketplace<br>de asistentes IA</h1>
-            <p>Automatizá tu negocio con asistentes virtuales inteligentes.</p>
+            <h1>Tu negocio atendido<br>por un <span style="color:#f4b400;">chatbot IA</span></h1>
+            <p>
+                Instalamos un asistente virtual que responde a tus clientes 24/7, con tus reglas y tus datos.
+                Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.
+            </p>
+
             <div class="hero-actions">
-                <a class="btn-primary" href="?vista=asistentes">Explorar asistentes</a>
-                <a class="btn-secondary" href="#demo">▶ Ver demo en vivo</a>
+                <a class="btn-primary" href="#demo">Ver chatbot en acción</a>
+                <a class="btn-secondary" href="?vista=asistentes">Explorar asistentes</a>
+            </div>
+
+            <div class="trust-row">
+                <div class="trust-pill">⚡ Instalación rápida</div>
+                <div class="trust-pill">🔒 Configurable y seguro</div>
+                <div class="trust-pill">💬 Soporte incluido</div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="{BASE_URL}Asistente.png" alt="Asistente IA">
+
+        <!-- CHAT DEMO (mock visual) -->
+        <div class="hero-chat" id="demo">
+            <div class="chat-topbar">
+                <div class="chat-brand">
+                    <div class="dot"></div>
+                    Demo de chatbot
+                </div>
+                <div class="chat-pill">24/7</div>
+            </div>
+
+            <div class="chat-body">
+                <div class="bubble user">
+                    Hola, ¿me podés decir horarios y cómo reservar?
+                    <div class="chat-meta">Cliente</div>
+                </div>
+
+                <div class="bubble bot">
+                    Claro. Podés reservar en 30 segundos:
+                    <br><strong>1)</strong> Elegís día y hora
+                    <br><strong>2)</strong> Confirmás tus datos
+                    <br><strong>3)</strong> Te llega la confirmación
+                    <div class="chat-meta">Asistente IA</div>
+                </div>
+
+                <div class="bubble user">
+                    ¿Y si tengo stock bajo o quiero saber precios?
+                    <div class="chat-meta">Cliente</div>
+                </div>
+
+                <div class="bubble bot">
+                    También. Puedo:
+                    <br>• avisar <strong>stock mínimo</strong>
+                    <br>• responder <strong>precios</strong> y disponibilidad
+                    <br>• derivar a un humano cuando haga falta
+                    <div class="chat-meta">Asistente IA</div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="fake-input">Escribí una consulta… (demo)</div>
+                <button class="send-btn">Enviar</button>
+            </div>
         </div>
     </div>
 
     <div class="cats-block">
         <div class="cats">
-            <div class="cat">⚽ Fútbol</div>
-            <div class="cat">👨‍🍳 Cocina</div>
+            <div class="cat">📦 Stock</div>
             <div class="cat">🛒 Ecommerce</div>
-            <div class="cat">💰 Finanzas</div>
+            <div class="cat">📅 Turnos</div>
+            <div class="cat">✈️ Viajes</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Cómo funciona</h2>
+        <div class="subtitle">Simple: elegís el asistente y lo dejamos instalado en tu web.</div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Elegís el asistente</h3>
+                <p>Seleccionás el rubro (stock, turnos, ecommerce, etc.) y el estilo de atención.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Lo adaptamos a tu negocio</h3>
+                <p>Lo configuramos con tus datos, respuestas, reglas y preguntas frecuentes reales.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Lo instalamos</h3>
+                <p>Lo dejamos funcionando en tu sitio (iframe o web completa) y con soporte incluido.</p>
+            </div>
         </div>
     </div>
 
     <div class="section">
         <h2>Asistentes IA listos para potenciar tu negocio</h2>
-        <div class="subtitle">Explorá, elegí e instalá asistentes inteligentes según tus necesidades.</div>
+        <div class="subtitle">Estos son ejemplos. El producto principal es el <strong>chatbot instalado</strong>.</div>
 
         <div class="cards">
             <div class="card">
@@ -666,10 +935,10 @@ HTML_HOME = f"""{HTML_BASE}
         </div>
     </div>
 
-    <div class="cta">
+    <div class="cta" id="soporte">
         <h2>Integra en minutos</h2>
-        <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
-        <button>Probar gratis</button>
+        <p>Instalá un chatbot IA en tu web y empezá a automatizar consultas reales desde el día 1.</p>
+        <button>Quiero mi chatbot</button>
 
         <div class="features">
             <div class="feature">⚡ Fácil y rápido</div>
@@ -872,7 +1141,6 @@ HTML_PRECIOS = f"""{HTML_BASE}
 {FOOTER}
 """
 
-
 # =========================
 # RENDER
 # =========================
@@ -881,10 +1149,4 @@ if vista == "asistentes":
 elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
-    components.html(HTML_HOME, height=1650, scrolling=False)
-
-
-
-
-
-
+    components.html(HTML_HOME, height=1750, scrolling=False)
