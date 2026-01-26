@@ -9,19 +9,43 @@ st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 st.markdown(
     """
     <style>
+    /* Forzar todo a posición 0 */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+    }
+    
     /* Eliminar TODO el padding y margin de Streamlit */
     .main .block-container {
         padding: 0 !important;
         max-width: 100% !important;
+        margin: 0 !important;
     }
 
     section[data-testid="stAppViewContainer"] {
         padding: 0 !important;
+        margin: 0 !important;
     }
 
     section.main > div {
         padding: 0 !important;
         max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    section.main {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .stApp > header {
+        background-color: transparent !important;
+    }
+    
+    .stApp {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     /* Ocultar header, footer y toolbar */
@@ -50,6 +74,13 @@ st.markdown(
         display: block !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+    
+    /* Forzar elemento contenedor */
+    [data-testid="stVerticalBlock"] {
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
     }
     </style>
     """,
@@ -96,13 +127,15 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
+    min-height: 2000px;
+    height: 2000px;
 }
 
 .page-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    min-height: 2000px;
 }
 
 /* =========================
@@ -1145,8 +1178,504 @@ HTML_PRECIOS = f"""{HTML_BASE}
 # RENDER
 # =========================
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=1950, scrolling=False)
+    # ASISTENTES sin components - directo con st.markdown
+    st.markdown(f"""
+    <style>
+    .asist-container {{
+        width: 100%;
+        max-width: 100%;
+        background: #f6f7fb;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }}
+    
+    .asist-header {{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+        background: #fff;
+    }}
+    
+    .asist-logo {{
+        font-size: 22px;
+        font-weight: 800;
+        color: #000;
+    }}
+    
+    .asist-logo span {{
+        color: #f4b400;
+    }}
+    
+    .asist-nav {{
+        display: flex;
+        gap: 28px;
+        font-weight: 500;
+        color: #555;
+    }}
+    
+    .asist-nav a {{
+        text-decoration: none;
+        color: #555;
+    }}
+    
+    .asist-nav a:hover {{
+        color: #f4b400;
+    }}
+    
+    .asist-btn-login {{
+        background: #f4b400;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-weight: 600;
+    }}
+    
+    .asist-section {{
+        padding: 20px 5% 40px;
+    }}
+    
+    .asist-section h2 {{
+        text-align: center;
+        font-size: 32px;
+        margin: 0 0 10px 0;
+    }}
+    
+    .asist-subtitle {{
+        text-align: center;
+        font-size: 14px;
+        color: #777;
+        margin: 0 0 30px 0;
+    }}
+    
+    .asist-cards {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 22px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }}
+    
+    .asist-card {{
+        background: #fff;
+        border-radius: 22px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }}
+    
+    .asist-card img {{
+        width: 100%;
+        max-width: 200px;
+        height: 130px;
+        object-fit: contain;
+        margin: 0 auto;
+    }}
+    
+    .asist-card h3 {{
+        margin: 16px 0 10px 0;
+        font-size: 18px;
+    }}
+    
+    .asist-card p {{
+        font-size: 13px;
+        color: #666;
+        min-height: 60px;
+        margin: 0 0 14px 0;
+    }}
+    
+    .asist-card button {{
+        background: #f4b400;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+    }}
+    
+    @media (max-width: 768px) {{
+        .asist-cards {{
+            grid-template-columns: 1fr;
+        }}
+    }}
+    </style>
+    
+    <div class="asist-container">
+        <div class="asist-header">
+            <div class="asist-logo">MERCADO<span>BOT</span></div>
+            <div class="asist-nav">
+                <a href="?vista=home">Inicio</a>
+                <a href="?vista=asistentes">Asistentes</a>
+                <a href="?vista=precios">Precios</a>
+                <a href="?vista=home#soporte">Soporte</a>
+            </div>
+            <div class="asist-btn-login">Iniciar sesión</div>
+        </div>
+        
+        <div class="asist-section">
+            <h2>Todos los asistentes IA</h2>
+            <div class="asist-subtitle">Estos son los asistentes disponibles en MercadoBot.</div>
+            
+            <div class="asist-cards">
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
+                    <h3>Asistente de Fútbol</h3>
+                    <p>Resultados, noticias y estadísticas del fútbol.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
+                    <h3>Asistente de Cocina</h3>
+                    <p>Recetas, consejos y conversiones.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
+                    <h3>Asistente de Ecommerce</h3>
+                    <p>Soporte para productos y pedidos.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
+                    <h3>Asistente de Finanzas</h3>
+                    <p>Cotizaciones y análisis financiero.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentestock.png" alt="Stock">
+                    <h3>Asistente de Stock</h3>
+                    <p>Control de inventario y alertas.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistenteinmobiliaria.png" alt="Inmobiliaria">
+                    <h3>Asistente Inmobiliario</h3>
+                    <p>Consultas de propiedades y agendado.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistenteagendas.png" alt="Agenda">
+                    <h3>Asistente de Turnos</h3>
+                    <p>Reserva de turnos y recordatorios.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentedental.png" alt="Dental">
+                    <h3>Asistente Dental</h3>
+                    <p>Turnos y precios orientativos.</p>
+                    <button>Ver asistente</button>
+                </div>
+                
+                <div class="asist-card">
+                    <img src="{BASE_URL}Asistentedeviaje.png" alt="Viaje">
+                    <h3>Asistente de Viaje</h3>
+                    <p>Itinerarios y recomendaciones.</p>
+                    <button>Ver asistente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=1800, scrolling=False)
+    components.html(HTML_PRECIOS, scrolling=True)
 else:
-    components.html(HTML_HOME, height=1750, scrolling=False)
+    # HOME sin components - directo con st.markdown
+    st.markdown("""
+    <style>
+    .home-container {
+        width: 100%;
+        max-width: 100%;
+        background: #f6f7fb;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .home-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+        background: #fff;
+    }
+    
+    .home-logo {
+        font-size: 22px;
+        font-weight: 800;
+        color: #000;
+    }
+    
+    .home-logo span {
+        color: #f4b400;
+    }
+    
+    .home-nav {
+        display: flex;
+        gap: 28px;
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .home-nav a {
+        text-decoration: none;
+        color: #555;
+    }
+    
+    .home-nav a:hover {
+        color: #f4b400;
+    }
+    
+    .home-btn-login {
+        background: #f4b400;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    
+    .home-hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        padding: 40px 5%;
+        align-items: center;
+    }
+    
+    .home-hero h1 {
+        font-size: 38px;
+        line-height: 1.15;
+        margin: 0 0 18px 0;
+    }
+    
+    .home-hero p {
+        font-size: 16px;
+        color: #555;
+        margin: 0 0 22px 0;
+    }
+    
+    .home-btn-primary {
+        background: #f4b400;
+        color: #000;
+        padding: 12px 22px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 18px;
+    }
+    
+    .home-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #555;
+        text-decoration: none;
+    }
+    
+    .home-chat {
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .home-chat-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: linear-gradient(180deg, #ffffff, #f6f7fb);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .home-chat-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        font-size: 13px;
+    }
+    
+    .home-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #f4b400;
+        box-shadow: 0 0 0 4px rgba(244,180,0,0.18);
+    }
+    
+    .home-chat-pill {
+        font-size: 12px;
+        font-weight: 800;
+        color: #7a5a00;
+        background: rgba(244,180,0,0.18);
+        border: 1px solid rgba(244,180,0,0.45);
+        padding: 6px 10px;
+        border-radius: 999px;
+    }
+    
+    .home-chat-body {
+        padding: 16px;
+        min-height: 260px;
+    }
+    
+    .home-bubble {
+        max-width: 88%;
+        padding: 10px 12px;
+        border-radius: 14px;
+        font-size: 13px;
+        line-height: 1.35;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        margin-bottom: 10px;
+    }
+    
+    .home-bubble-user {
+        background: #111;
+        color: #fff;
+        margin-left: auto;
+        border-bottom-right-radius: 6px;
+    }
+    
+    .home-bubble-bot {
+        background: #ffffff;
+        color: #222;
+        border: 1px solid rgba(0,0,0,0.06);
+        border-bottom-left-radius: 6px;
+    }
+    
+    .home-chat-meta {
+        margin-top: 4px;
+        font-size: 11px;
+        color: #888;
+    }
+    
+    .home-trust {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+    }
+    
+    .home-trust-pill {
+        background: #fff;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+    
+    .home-cats {
+        text-align: center;
+        padding: 20px 5%;
+    }
+    
+    .home-cats-inner {
+        display: inline-flex;
+        gap: 12px;
+        background: #fff;
+        padding: 10px 14px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        flex-wrap: wrap;
+    }
+    
+    .home-cat {
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        background: #f6f7fb;
+    }
+    
+    @media (max-width: 1100px) {
+        .home-hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+    </style>
+    
+    <div class="home-container">
+        <div class="home-header">
+            <div class="home-logo">MERCADO<span>BOT</span></div>
+            <div class="home-nav">
+                <a href="?vista=home">Inicio</a>
+                <a href="?vista=asistentes">Asistentes</a>
+                <a href="?vista=precios">Precios</a>
+                <a href="?vista=home#soporte">Soporte</a>
+            </div>
+            <div class="home-btn-login">Iniciar sesión</div>
+        </div>
+        
+        <div class="home-hero">
+            <div>
+                <h1>Tu negocio atendido<br>por un <span style="color:#f4b400;">chatbot IA</span></h1>
+                <p>Instalamos un asistente virtual que responde a tus clientes 24/7, con tus reglas y tus datos. Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.</p>
+                
+                <div>
+                    <a class="home-btn-primary" href="#demo">Ver chatbot en acción</a>
+                    <a class="home-btn-secondary" href="?vista=asistentes">Explorar asistentes</a>
+                </div>
+                
+                <div class="home-trust">
+                    <div class="home-trust-pill">⚡ Instalación rápida</div>
+                    <div class="home-trust-pill">🔒 Configurable y seguro</div>
+                    <div class="home-trust-pill">💬 Soporte incluido</div>
+                </div>
+            </div>
+            
+            <div class="home-chat" id="demo">
+                <div class="home-chat-topbar">
+                    <div class="home-chat-brand">
+                        <div class="home-dot"></div>
+                        Demo de chatbot
+                    </div>
+                    <div class="home-chat-pill">24/7</div>
+                </div>
+                
+                <div class="home-chat-body">
+                    <div class="home-bubble home-bubble-user">
+                        Hola, ¿me podés decir horarios y cómo reservar?
+                        <div class="home-chat-meta">Cliente</div>
+                    </div>
+                    
+                    <div class="home-bubble home-bubble-bot">
+                        Claro. Podés reservar en 30 segundos:<br>
+                        <strong>1)</strong> Elegís día y hora<br>
+                        <strong>2)</strong> Confirmás tus datos<br>
+                        <strong>3)</strong> Te llega la confirmación
+                        <div class="home-chat-meta">Asistente IA</div>
+                    </div>
+                    
+                    <div class="home-bubble home-bubble-user">
+                        ¿Y si tengo stock bajo o quiero saber precios?
+                        <div class="home-chat-meta">Cliente</div>
+                    </div>
+                    
+                    <div class="home-bubble home-bubble-bot">
+                        También. Puedo:<br>
+                        • avisar <strong>stock mínimo</strong><br>
+                        • responder <strong>precios</strong> y disponibilidad<br>
+                        • derivar a un humano cuando haga falta
+                        <div class="home-chat-meta">Asistente IA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="home-cats">
+            <div class="home-cats-inner">
+                <div class="home-cat">📦 Stock</div>
+                <div class="home-cat">🛒 Ecommerce</div>
+                <div class="home-cat">📅 Turnos</div>
+                <div class="home-cat">✈️ Viajes</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
