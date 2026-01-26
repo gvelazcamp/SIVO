@@ -1145,8 +1145,8 @@ HTML_PRECIOS = f"""{HTML_BASE}
 # RENDER
 # =========================
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=2200, scrolling=False)
+    components.html(HTML_ASISTENTES, height=1200, scrolling=True)
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=2200, scrolling=False)
+    components.html(HTML_PRECIOS, height=1200, scrolling=True)
 else:
-    components.html(HTML_HOME, height=2200, scrolling=False)
+    components.html(HTML_HOME, height=1200, scrolling=True)
