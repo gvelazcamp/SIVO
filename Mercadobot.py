@@ -157,8 +157,8 @@ body {
    HERO IMPACT
 ========================= */
 .hero-impact {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-    padding: 100px 5% 80px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+    padding: 60px 5% 50px;
     text-align: center;
     color: #fff;
     position: relative;
@@ -172,7 +172,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(244, 180, 0, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(244, 180, 0, 0.08) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -184,27 +184,27 @@ body {
 }
 
 .hero-impact-title {
-    font-size: 56px;
+    font-size: 42px;
     font-weight: 800;
     line-height: 1.1;
-    margin: 0 0 20px 0;
+    margin: 0 0 15px 0;
     letter-spacing: -0.02em;
 }
 
 .hero-impact-subtitle {
     display: block;
-    font-size: 48px;
+    font-size: 38px;
     background: linear-gradient(135deg, #f4b400 0%, #ffd700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .hero-impact-text {
-    font-size: 20px;
+    font-size: 17px;
     color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 40px 0;
+    margin: 0 0 30px 0;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -212,7 +212,7 @@ body {
 
 .hero-impact-actions {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -220,29 +220,29 @@ body {
 .hero-impact-btn-primary {
     background: #f4b400;
     color: #000;
-    padding: 16px 32px;
+    padding: 14px 28px;
     border-radius: 12px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(244, 180, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(244, 180, 0, 0.3);
 }
 
 .hero-impact-btn-primary:hover {
     background: #ffd700;
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(244, 180, 0, 0.4);
+    box-shadow: 0 10px 28px rgba(244, 180, 0, 0.4);
 }
 
 .hero-impact-btn-secondary {
     background: transparent;
     color: #fff;
-    padding: 16px 32px;
+    padding: 14px 28px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     display: inline-block;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -257,25 +257,25 @@ body {
 
 @media (max-width: 768px) {
     .hero-impact {
-        padding: 60px 5% 50px;
+        padding: 40px 5% 35px;
     }
     
     .hero-impact-title {
-        font-size: 36px;
+        font-size: 28px;
     }
     
     .hero-impact-subtitle {
-        font-size: 32px;
+        font-size: 26px;
     }
     
     .hero-impact-text {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .hero-impact-btn-primary,
     .hero-impact-btn-secondary {
-        font-size: 16px;
-        padding: 14px 24px;
+        font-size: 15px;
+        padding: 12px 22px;
     }
 }
 
