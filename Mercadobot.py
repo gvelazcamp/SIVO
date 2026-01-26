@@ -336,73 +336,57 @@ body {
 .pricing {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
-    margin-top: 10px;
-    width: 100%;
+    gap: 24px;
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-
-    /* ✅ todas las cards misma altura por fila */
+    margin: 20px auto 0 auto;
     align-items: stretch;
 }
 
 .plan {
-    background: #fff;
+    background: #ffffff;
     border-radius: 22px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    text-align: left;
-    position: relative;
-
-    /* ✅ permite alinear “inicio/fin” y pegar el botón abajo */
+    padding: 24px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
 }
 
 .plan.pro {
-    border: 2px solid rgba(244, 180, 0, 0.9);
-
-    /* ✅ antes estaba levantada; ahora arranca igual que las demás */
-    transform: none;
+    border: 2px solid rgba(244,180,0,0.9);
 }
 
 .badge {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: rgba(244, 180, 0, 0.16);
-    border: 1px solid rgba(244, 180, 0, 0.55);
+    background: rgba(244,180,0,0.15);
+    border: 1px solid rgba(244,180,0,0.6);
     color: #7a5a00;
     font-weight: 800;
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 999px;
 }
 
 .plan-name {
     font-size: 18px;
     font-weight: 800;
-    margin: 0;
 }
 
 .plan-desc {
-    margin-top: 6px;
     font-size: 13px;
     color: #777;
-
-    /* ✅ asegura “misma altura” aunque el texto sea corto */
-    min-height: 18px;
+    margin-top: 6px;
+    min-height: 34px;
 }
 
 .plan-price {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: 34px;
     font-weight: 900;
     letter-spacing: -0.02em;
-
-    /* ✅ misma “caja” de precio en todas */
     min-height: 44px;
 }
 
@@ -414,39 +398,32 @@ body {
 }
 
 .plan-note {
-    margin-top: 6px;
     font-size: 13px;
     color: #777;
-
-    /* ✅ alinea notas */
+    margin-top: 6px;
     min-height: 18px;
 }
 
 .plan-list {
     list-style: none;
     padding: 0;
-    margin: 16px 0 0 0;
-
-    /* ✅ ocupa el espacio y empuja el botón al final */
+    margin: 18px 0 0 0;
     flex: 1;
 }
 
 .plan-list li {
     display: flex;
     gap: 10px;
-    align-items: flex-start;
     padding: 9px 0;
-    border-bottom: 1px solid #f2f2f2;
     font-size: 13px;
     color: #555;
+    border-bottom: 1px solid #f2f2f2;
 }
 
 .plan-btn {
-    /* ✅ siempre abajo, todas terminan igual */
     margin-top: auto;
     width: 100%;
     text-align: center;
-    display: block;
 }
 
 
@@ -890,5 +867,6 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
     components.html(HTML_HOME, height=1650, scrolling=False)
+
 
 
