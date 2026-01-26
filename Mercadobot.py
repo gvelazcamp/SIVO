@@ -4,18 +4,16 @@ import streamlit.components.v1 as components
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 # =========================
-# FULL WIDTH STREAMLIT
+# FULL WIDTH STREAMLIT (ANTI-ACHIQUE / ANTI-SCROLL DERECHA)
 # =========================
 st.markdown(
     """
     <style>
-    /* Forzar todo a posición 0 */
-    html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-        height: 100% !important;
-    }
-    
+    /* Base */
+    * { box-sizing: border-box; }
+    html { width: 100%; overflow-x: hidden !important; scrollbar-gutter: stable both-edges; }
+    body { width: 100%; overflow-x: hidden !important; }
+
     /* Eliminar TODO el padding y margin de Streamlit */
     .main .block-container {
         padding: 0 !important;
@@ -26,6 +24,9 @@ st.markdown(
     section[data-testid="stAppViewContainer"] {
         padding: 0 !important;
         margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
     }
 
     section.main > div {
@@ -33,19 +34,17 @@ st.markdown(
         max-width: 100% !important;
         margin: 0 !important;
     }
-    
-    section.main {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    
+
     .stApp > header {
         background-color: transparent !important;
     }
-    
+
     .stApp {
         margin: 0 !important;
         padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
     }
 
     /* Ocultar header, footer y toolbar */
@@ -61,26 +60,21 @@ st.markdown(
         height: 0 !important;
     }
 
-    /* Eliminar scroll horizontal */
+    /* Eliminar scroll horizontal (IMPORTANTE: NO usar 100vw) */
     html, body, [data-testid="stAppViewContainer"], section.main {
         overflow-x: hidden !important;
-        max-width: 100vw !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     /* El iframe debe ocupar exactamente el espacio */
     iframe {
         width: 100% !important;
+        max-width: 100% !important;
         border: none !important;
         display: block !important;
         margin: 0 !important;
         padding: 0 !important;
-    }
-    
-    /* Forzar elemento contenedor */
-    [data-testid="stVerticalBlock"] {
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: 0 !important;
     }
     </style>
     """,
@@ -118,6 +112,7 @@ html {
     overflow-x: hidden;
     width: 100%;
     height: 100%;
+    scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -644,7 +639,6 @@ body {
     text-align: center;
 }
 
-
 /* =========================
    CTA FINAL
 ========================= */
@@ -1127,7 +1121,6 @@ HTML_PRECIOS = f"""{HTML_BASE}
                 Requiere implementación inicial previa
             </div>
 
-
             <ul class="plan-list">
                 <li>✅ Asistentes entrenados con tus datos</li>
                 <li>✅ Interpretación avanzada (IA + reglas)</li>
@@ -1169,7 +1162,6 @@ HTML_PRECIOS = f"""{HTML_BASE}
     <div class="mini-note">
         Precios orientativos. Ajustamos planes según volumen y complejidad real.
     </div>
-</div>
 
 {FOOTER}
 """
@@ -1177,9 +1169,11 @@ HTML_PRECIOS = f"""{HTML_BASE}
 # =========================
 # RENDER
 # =========================
+ALTURA_FIJA = 2500
+
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=1950, scrolling=False)
+    components.html(HTML_ASISTENTES, height=ALTURA_FIJA, scrolling=False)
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=1800, scrolling=False)
+    components.html(HTML_PRECIOS, height=ALTURA_FIJA, scrolling=False)
 else:
-    components.html(HTML_HOME, height=1850, scrolling=False)
+    components.html(HTML_HOME, height=ALTURA_FIJA, scrolling=False)
