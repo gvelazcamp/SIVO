@@ -780,12 +780,10 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 HTML_PRECIOS = f"""{HTML_BASE}
 {HEADER}
 
-<div class="section">
-    <h2>Precios</h2>
-    <div class="subtitle">
-        Instalamos asistentes de IA entrenados con tus datos reales.
-        Pagás el setup una sola vez y luego solo el uso mensual.
-    </div>
+<div class="subtitle">
+    <strong>Paso 1:</strong> Implementación inicial (pago único).<br>
+    <strong>Paso 2:</strong> Plan mensual para mantener y mejorar tu asistente.
+</div>
 
     <div class="pricing">
 
@@ -822,7 +820,11 @@ HTML_PRECIOS = f"""{HTML_BASE}
             </div>
 
             <div class="plan-price">US$ 150<span>/mes</span></div>
-            <div class="plan-note">Hasta 3 asistentes · 1 sitio</div>
+            <div class="plan-note">1 asistente · 1 sitio</div>
+            <div class="plan-note" style="font-size:12px; color:#999;">
+                Requiere implementación inicial previa
+            </div>
+
 
             <ul class="plan-list">
                 <li>✅ Asistentes entrenados con tus datos</li>
@@ -880,6 +882,7 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
     components.html(HTML_HOME, height=1650, scrolling=False)
+
 
 
 
