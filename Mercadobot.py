@@ -940,7 +940,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* FORZAR FONDO GRIS EN MOBILE - TODO */
+    /* FORZAR FONDO GRIS EN MOBILE - TODO EXCEPTO HERO-IMPACT */
     html, body {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
@@ -957,25 +957,33 @@ body {
     .step,
     .cards,
     .card,
-    .cta,
     .features,
     .feature,
     .testimonios,
     .testimonios-grid,
-    .testimonio-card,
     .trust-row,
     .trust-pill,
     .cat,
     .chat-body,
     main,
-    section,
-    div {
+    section {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
     }
     
-    /* Excepciones para elementos que SÍ deben tener otros colores */
-    .hero-impact,
+    /* Elementos con fondos específicos que NO deben cambiar */
+    .hero-impact {
+        background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%) !important;
+    }
+    
+    .cta {
+        background: linear-gradient(180deg, #eef2f7, #ffffff) !important;
+    }
+    
+    .testimonio-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+    }
+    
     .hero-chat,
     .chat-topbar,
     button,
@@ -987,7 +995,6 @@ body {
     .bubble,
     .demo-bubble {
         background: revert !important;
-        background-color: revert !important;
     }
     
     .header {
