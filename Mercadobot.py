@@ -21,10 +21,19 @@ st.markdown(
         padding-right: 0rem !important;
         padding-top: 3.5rem !important;  /* <-- evita el recorte */
     }
+
+    /* Ocultar UI Streamlit (3 puntos / toolbar / menú / footer) */
+    header { visibility: hidden; height: 0px; }
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; height: 0px; }
+    [data-testid="stToolbar"] { visibility: hidden !important; height: 0px !important; }
+    [data-testid="stDecoration"] { display: none !important; }
+    [data-testid="stStatusWidget"] { display: none !important; }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
 # =========================
@@ -782,4 +791,5 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=2300, scrolling=True)
 else:
     components.html(HTML_HOME, height=1900, scrolling=True)
+
 
