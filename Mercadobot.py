@@ -1060,6 +1060,20 @@ body {
         color: #000 !important;
     }
     
+    /* BURBUJAS DEL CHAT CON COLORES CORRECTOS EN MOBILE */
+    .bubble.user {
+        background: #111 !important;
+        background-color: #111 !important;
+        color: #fff !important;
+    }
+    
+    .bubble.bot {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #222 !important;
+        border: 1px solid rgba(0,0,0,0.06) !important;
+    }
+    
     .header {
         flex-direction: column;
         gap: 15px;
