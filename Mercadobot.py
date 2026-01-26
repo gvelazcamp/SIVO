@@ -4,16 +4,18 @@ import streamlit.components.v1 as components
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 # =========================
-# FULL WIDTH STREAMLIT (ANTI-ACHIQUE / ANTI-SCROLL DERECHA)
+# FULL WIDTH STREAMLIT
 # =========================
 st.markdown(
     """
     <style>
-    /* Base */
-    * { box-sizing: border-box; }
-    html { width: 100%; overflow-x: hidden !important; scrollbar-gutter: stable both-edges; }
-    body { width: 100%; overflow-x: hidden !important; }
-
+    /* Forzar todo a posición 0 */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+    }
+    
     /* Eliminar TODO el padding y margin de Streamlit */
     .main .block-container {
         padding: 0 !important;
@@ -24,9 +26,6 @@ st.markdown(
     section[data-testid="stAppViewContainer"] {
         padding: 0 !important;
         margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
     }
 
     section.main > div {
@@ -34,17 +33,19 @@ st.markdown(
         max-width: 100% !important;
         margin: 0 !important;
     }
-
+    
+    section.main {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
     .stApp > header {
         background-color: transparent !important;
     }
-
+    
     .stApp {
         margin: 0 !important;
         padding: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
     }
 
     /* Ocultar header, footer y toolbar */
@@ -60,21 +61,26 @@ st.markdown(
         height: 0 !important;
     }
 
-    /* Eliminar scroll horizontal (IMPORTANTE: NO usar 100vw) */
+    /* Eliminar scroll horizontal */
     html, body, [data-testid="stAppViewContainer"], section.main {
         overflow-x: hidden !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        max-width: 100vw !important;
     }
 
     /* El iframe debe ocupar exactamente el espacio */
     iframe {
         width: 100% !important;
-        max-width: 100% !important;
         border: none !important;
         display: block !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+    
+    /* Forzar elemento contenedor */
+    [data-testid="stVerticalBlock"] {
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
     }
     </style>
     """,
@@ -112,7 +118,6 @@ html {
     overflow-x: hidden;
     width: 100%;
     height: 100%;
-    scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -639,6 +644,7 @@ body {
     text-align: center;
 }
 
+
 /* =========================
    CTA FINAL
 ========================= */
@@ -1121,6 +1127,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
                 Requiere implementación inicial previa
             </div>
 
+
             <ul class="plan-list">
                 <li>✅ Asistentes entrenados con tus datos</li>
                 <li>✅ Interpretación avanzada (IA + reglas)</li>
@@ -1162,6 +1169,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
     <div class="mini-note">
         Precios orientativos. Ajustamos planes según volumen y complejidad real.
     </div>
+</div>
 
 {FOOTER}
 """
@@ -1169,11 +1177,34 @@ HTML_PRECIOS = f"""{HTML_BASE}
 # =========================
 # RENDER
 # =========================
-ALTURA_FIJA = 2500
+import tempfile
+import os
 
+# Crear archivo temporal con el HTML
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=ALTURA_FIJA, scrolling=False)
+    html_content = HTML_ASISTENTES
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=ALTURA_FIJA, scrolling=False)
+    html_content = HTML_PRECIOS
 else:
-    components.html(HTML_HOME, height=ALTURA_FIJA, scrolling=False)
+    html_content = HTML_HOME
+
+# Escribir HTML a archivo temporal
+temp_file = tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False, encoding='utf-8')
+temp_file.write(html_content)
+temp_file.close()
+
+# Usar iframe directo con archivo local
+st.markdown(
+    f"""
+    <iframe 
+        src="file://{temp_file.name}" 
+        style="width: 100%; height: 100vh; border: none; margin: 0; padding: 0;"
+        scrolling="yes"
+    ></iframe>
+    """,
+    unsafe_allow_html=True
+)
+
+# Limpiar archivo temporal después de un tiempo
+import atexit
+atexit.register(lambda: os.unlink(temp_file.name) if os.path.exists(temp_file.name) else None)
