@@ -1285,10 +1285,10 @@ HTML_HOME = f"""{HTML_BASE}
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
-                <h3>Asistente de Cocina</h3>
-                <p>Recetas rápidas, consejos de cocina y conversiones.</p>
-                <a href="?vista=demo&asistente=cocina" style="text-decoration: none;"><button>Ver asistente</button></a>
+                <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <h3>Asistente de Tienda de Ropa</h3>
+                <p>Consultas sobre productos, talles y envíos.</p>
+                <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
@@ -1299,10 +1299,10 @@ HTML_HOME = f"""{HTML_BASE}
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
-                <h3>Asistente de Finanzas</h3>
-                <p>Información financiera y análisis de inversiones.</p>
-                <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Ver asistente</button></a>
+                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+                <h3>Asistente de Peluquería</h3>
+                <p>Turnos, servicios y precios de salón.</p>
+                <a href="?vista=demo&asistente=peluqueria" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
         </div>
     </div>
@@ -1486,6 +1486,20 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <h3>Asistente de Viaje</h3>
                 <p>Itinerarios y recomendaciones.</p>
                 <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <h3>Asistente de Tienda de Ropa</h3>
+                <p>Consultas sobre productos, talles y envíos.</p>
+                <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Ver asistente</button></a>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+                <h3>Asistente de Peluquería</h3>
+                <p>Turnos, servicios y precios de salón.</p>
+                <a href="?vista=demo&asistente=peluqueria" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
         </div>
     </div>
@@ -3270,6 +3284,502 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 """
 
 # =========================
+# DEMO TIENDA DE ROPA
+# =========================
+HTML_DEMO_ROPA = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}}
+
+.demo-header {{
+    text-align: center;
+    margin-bottom: 40px;
+}}
+
+.demo-header img {{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}}
+
+.demo-header h1 {{
+    font-size: 32px;
+    margin-bottom: 10px;
+}}
+
+.demo-header p {{
+    color: #666;
+    font-size: 16px;
+}}
+
+.demo-chat {{
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}}
+
+.demo-message {{
+    margin-bottom: 20px;
+}}
+
+.demo-bubble {{
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 6px;
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.5;
+}}
+
+.demo-user {{
+    background: #111;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+}}
+
+.demo-bot {{
+    background: #f6f7fb;
+    color: #222;
+    border-bottom-left-radius: 6px;
+}}
+
+.demo-label {{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}}
+
+.demo-back {{
+    text-align: center;
+    margin-top: 40px;
+}}
+
+.demo-back a {{
+    background: #f4b400;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+        <h1>Asistente de Tienda de Ropa</h1>
+        <p>Demo interactivo - Tienda Online</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen el talle M en esta remera?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! La remera básica está disponible en talle M:<br>
+            • <strong>Color:</strong> Blanco, negro, gris, azul marino<br>
+            • <strong>Precio:</strong> $8.999<br>
+            • <strong>Stock:</strong> 15 unidades disponibles<br>
+            ¿Querés que te la reserve o la agregamos al carrito?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto sale este jean?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El jean que estás mirando cuesta:<br>
+            • <strong>Jean clásico:</strong> $24.999<br>
+            • <strong>Jean elastizado:</strong> $28.999<br>
+            • <strong>Jean mom fit:</strong> $26.999<br>
+            Todos disponibles en talles del 36 al 48. Hay promo 3x2 en jeans esta semana!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen envíos a todo el país?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Enviamos a todo Argentina:<br>
+            • <strong>CABA y GBA:</strong> 2-3 días - $1.500<br>
+            • <strong>Provincias:</strong> 5-7 días - $2.800<br>
+            • <strong>Patagonia:</strong> 7-10 días - $3.500<br>
+            <strong>ENVÍO GRATIS</strong> en compras mayores a $50.000<br>
+            Todos los envíos incluyen tracking.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen local físico?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos 2 locales:<br>
+            📍 <strong>Palermo:</strong> Av. Santa Fe 4200 - Lun-Sáb 10-20hs<br>
+            📍 <strong>Belgrano:</strong> Av. Cabildo 1800 - Lun-Sáb 10-20hs<br>
+            Podés comprar online y retirar GRATIS en cualquiera de los 2 locales. Te avisamos por mail cuando esté listo para retirar (24-48hs).</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es la política de cambios?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tenés 30 días para cambiar o devolver:<br>
+            • <strong>Cambio por otro talle/color:</strong> GRATIS<br>
+            • <strong>Devolución:</strong> Reembolso 100%<br>
+            • <strong>Condiciones:</strong> Producto sin uso, con etiquetas<br>
+            <strong>Proceso:</strong><br>
+            1. Iniciás el cambio desde tu cuenta<br>
+            2. Imprimís la etiqueta prepaga<br>
+            3. Lo despachás en correo<br>
+            4. Te enviamos el nuevo o reintegramos el dinero</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Aceptan tarjeta de crédito?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Aceptamos todas las formas de pago:<br>
+            💳 <strong>Crédito:</strong> Hasta 12 cuotas sin interés<br>
+            💳 <strong>Débito:</strong> 10% descuento adicional<br>
+            💰 <strong>Efectivo/Transferencia:</strong> 15% OFF<br>
+            📱 <strong>Mercado Pago:</strong> Hasta 18 cuotas<br>
+            También aceptamos Naranja, Visa, Mastercard, Amex.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen descuentos por cantidad?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Descuentos automáticos:<br>
+            • <strong>3 prendas:</strong> 15% OFF<br>
+            • <strong>5 prendas:</strong> 20% OFF<br>
+            • <strong>10 prendas:</strong> 25% OFF<br>
+            <strong>Promos actuales:</strong><br>
+            • 3x2 en jeans<br>
+            • 2x1 en remeras básicas<br>
+            • 50% OFF en 2da prenda de abrigos<br>
+            Los descuentos se aplican automáticamente en el carrito!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo sé qué talle soy?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tenemos una guía completa de talles:<br>
+            📏 <strong>Para saberlo:</strong><br>
+            1. Medí tu busto, cintura y cadera<br>
+            2. Consultá nuestra tabla de talles<br>
+            3. Compará con tus medidas<br>
+            <strong>Tip:</strong> En cada producto hay una guía específica con medidas exactas en cm. Si estás entre dos talles, te recomendamos el más grande. ¿Necesitás ayuda con alguna prenda específica?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen ropa de invierno?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Nueva colección otoño-invierno:<br>
+            🧥 <strong>Abrigos:</strong> Desde $45.000<br>
+            🧶 <strong>Sweaters:</strong> Desde $18.000<br>
+            👖 <strong>Jeans térmicos:</strong> $32.000<br>
+            🧣 <strong>Accesorios:</strong> Bufandas, gorros, guantes<br>
+            Ingresá al sitio y filtrá por "Temporada Invierno" para ver todo el catálogo. Hay 30% OFF en pre-venta!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo reservar un producto?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Podés reservar productos:<br>
+            • <strong>Online:</strong> Agregalo al carrito y completá la compra<br>
+            • <strong>En local:</strong> Llamá o vení y lo apartamos 48hs<br>
+            • <strong>WhatsApp:</strong> Mandanos el link del producto<br>
+            <strong>Reserva online:</strong> Tu producto queda reservado por 2 horas mientras completás la compra. ¿Qué producto te interesa reservar?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen envíos el mismo día?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Envío express mismo día:<br>
+            • <strong>Horario límite:</strong> Comprá antes de las 14hs<br>
+            • <strong>Zona:</strong> Solo CABA<br>
+            • <strong>Costo:</strong> $3.500<br>
+            • <strong>Entrega:</strong> Entre 18-22hs del mismo día<br>
+            Para otras zonas, el envío express es de 24-48hs. ¿Tu dirección está en CABA?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen promociones vigentes?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Promos de esta semana:<br>
+            🔥 <strong>3x2</strong> en jeans<br>
+            🔥 <strong>2x1</strong> en remeras básicas<br>
+            🔥 <strong>50% OFF</strong> en 2da prenda de abrigos<br>
+            🔥 <strong>15% OFF</strong> suscribiéndote al newsletter<br>
+            🔥 <strong>20% OFF</strong> en tu primera compra con código BIENVENIDO<br>
+            Todas las promos son acumulables excepto con otras ofertas. ¡Aprovechá!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo retirar en el local?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Retiro en tienda GRATIS:<br>
+            1. Comprás online y elegís "Retiro en tienda"<br>
+            2. Seleccionás el local (Palermo o Belgrano)<br>
+            3. Te llega un email cuando está listo (24-48hs)<br>
+            4. Retirás con DNI y número de pedido<br>
+            <strong>Horarios de retiro:</strong> Lun-Sáb 10-20hs<br>
+            <strong>Ventaja:</strong> Podés probarte y cambiar en el momento si no te queda!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto tarda el envío a Córdoba?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Envíos a Córdoba Capital:<br>
+            • <strong>Estándar:</strong> 5-7 días hábiles - $2.800<br>
+            • <strong>Express:</strong> 3-4 días hábiles - $4.200<br>
+            <strong>ENVÍO GRATIS</strong> en compras +$50.000<br>
+            Todos incluyen tracking en tiempo real. Una vez despachado, te llega el código de seguimiento por email y SMS.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen este pantalón en negro?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! El pantalón está disponible en negro:<br>
+            • <strong>Talles:</strong> 36, 38, 40, 42, 44, 46, 48<br>
+            • <strong>Stock:</strong> Disponible inmediato<br>
+            • <strong>Precio:</strong> $26.999<br>
+            • <strong>También en:</strong> Azul marino, beige, gris<br>
+            ¿Qué talle necesitás? Te lo agrego al carrito.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Dan factura?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Emitimos factura A o B:<br>
+            • <strong>Consumidor final:</strong> Factura B automática<br>
+            • <strong>Monotributista/RI:</strong> Factura A (ingresá CUIT al comprar)<br>
+            • <strong>Envío:</strong> Por email junto con el comprobante<br>
+            La factura llega inmediatamente después de confirmar el pago. ¿Necesitás factura A?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen gift cards?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tarjetas regalo perfectas para regalar:<br>
+            💳 <strong>Valores:</strong> $10.000 / $20.000 / $50.000 / Monto libre<br>
+            ⏰ <strong>Validez:</strong> 12 meses<br>
+            📧 <strong>Entrega:</strong> Digital instantánea por email<br>
+            🎁 <strong>Personalización:</strong> Agregá un mensaje<br>
+            💸 <strong>Sin cargo adicional</strong><br>
+            Se puede usar online y en locales. ¿Para quién sería?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es el horario de atención?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Horarios de atención:<br>
+            🏪 <strong>Locales:</strong> Lun-Sáb 10-20hs<br>
+            💬 <strong>WhatsApp:</strong> Lun-Vie 9-18hs<br>
+            📧 <strong>Email:</strong> Respondemos en 24hs<br>
+            🤖 <strong>Chat web:</strong> 24/7 (respuesta automática)<br>
+            📞 <strong>Teléfono:</strong> Lun-Vie 10-18hs - 011 5555-ROPA<br>
+            Los fines de semana respondemos consultas urgentes por WhatsApp.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen devoluciones?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Devoluciones dentro de 30 días:<br>
+            ✅ <strong>Reembolso 100%</strong> del dinero<br>
+            ✅ <strong>Envío de devolución:</strong> GRATIS<br>
+            ✅ <strong>Proceso:</strong><br>
+            1. Iniciás la devolución desde tu cuenta<br>
+            2. Imprimís etiqueta prepaga<br>
+            3. Despachás en Correo Argentino<br>
+            4. Recibimos y validamos (2-3 días)<br>
+            5. Te reintegramos el dinero (5-7 días)<br>
+            El producto debe estar sin uso y con etiquetas.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Club ROPA VIP:<br>
+            ⭐ <strong>Acumulás:</strong> 1 punto cada $100<br>
+            ⭐ <strong>Canjeás:</strong> 100 puntos = $500 descuento<br>
+            <strong>Beneficios por nivel:</strong><br>
+            🥉 <strong>Bronce:</strong> 5% descuento permanente<br>
+            🥈 <strong>Plata:</strong> 10% + envíos gratis<br>
+            🥇 <strong>Oro:</strong> 15% + acceso preventa<br>
+            Registrate gratis y empezá a sumar puntos hoy! ¿Te registro?</div>
+        </div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
+# DEMO PELUQUERÍA
+# =========================
+HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{ max-width: 800px; margin: 0 auto; padding: 40px 20px; }}
+.demo-header {{ text-align: center; margin-bottom: 40px; }}
+.demo-header img {{ width: 120px; height: 120px; object-fit: contain; margin-bottom: 20px; }}
+.demo-header h1 {{ font-size: 32px; margin-bottom: 10px; }}
+.demo-header p {{ color: #666; font-size: 16px; }}
+.demo-chat {{ background: #fff; border-radius: 24px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }}
+.demo-message {{ margin-bottom: 20px; }}
+.demo-bubble {{ padding: 12px 16px; border-radius: 16px; margin-bottom: 6px; max-width: 85%; font-size: 14px; line-height: 1.5; }}
+.demo-user {{ background: #111; color: #fff; margin-left: auto; border-bottom-right-radius: 6px; }}
+.demo-bot {{ background: #f6f7fb; color: #222; border-bottom-left-radius: 6px; }}
+.demo-label {{ font-size: 12px; color: #888; margin-bottom: 4px; font-weight: 600; }}
+.demo-back {{ text-align: center; margin-top: 40px; }}
+.demo-back a {{ background: #f4b400; color: #000; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; }}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+        <h1>Asistente de Peluquería</h1>
+        <p>Demo interactivo - Salón de Belleza</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cuánto sale un corte de pelo?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Nuestros precios de corte:<br>• <strong>Mujer:</strong> $8.500<br>• <strong>Hombre:</strong> $6.000<br>• <strong>Niños (hasta 12 años):</strong> $5.000<br>Incluye lavado, corte y secado. ¿Querés sacar turno?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Tienen turnos disponibles para mañana?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Mañana tenemos disponibilidad:<br>• 10:00 hs<br>• 14:30 hs<br>• 16:00 hs<br>• 18:00 hs<br>¿Cuál horario te viene bien? ¿Qué servicio necesitás?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Hacen coloración?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Servicios de color:<br>• <strong>Color completo:</strong> $18.000<br>• <strong>Retoque de raíz:</strong> $12.000<br>• <strong>Balayage:</strong> $25.000<br>• <strong>Mechas tradicionales:</strong> $20.000<br>Usamos productos de alta gama (Loreal, Wella). Incluye lavado, color y brushing.</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cuánto dura un tratamiento de keratina?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">El tratamiento de keratina:<br>• <strong>Duración:</strong> 3-4 horas<br>• <strong>Precio:</strong> $35.000<br>• <strong>Efecto:</strong> Dura 3-4 meses<br>• <strong>Incluye:</strong> Lavado, aplicación, planchado, brushing<br>Te dejamos el pelo liso y sin frizz. ¿Reservamos turno?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Atienden con turno o sin turno?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Trabajamos principalmente CON TURNO:<br>• <strong>Con turno:</strong> Atención garantizada a horario<br>• <strong>Sin turno:</strong> Según disponibilidad<br>Te recomendamos sacar turno para asegurar tu horario. Podés reservar por:<br>• WhatsApp: +54 11 5555-PELO<br>• Web: www.peluqueria.com<br>• Teléfono: 011 4444-4444</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Hacen peinados para eventos?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Peinados para eventos:<br>• <strong>Recogido simple:</strong> $12.000<br>• <strong>Recogido elaborado:</strong> $18.000<br>• <strong>Semi-recogido:</strong> $15.000<br>• <strong>Peinado con rulos:</strong> $14.000<br>Incluye prueba previa si reservás con 1 semana de anticipación. ¿Es para algún evento especial?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cuánto sale mechas balayage?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Balayage completo: $25.000<br>• <strong>Incluye:</strong> Diagnóstico, decoloración, tonalización, tratamiento, brushing<br>• <strong>Duración:</strong> 3-4 horas<br>• <strong>Productos:</strong> Loreal Professionnel<br>• <strong>Efecto:</strong> Natural, iluminado, sin marcas<br>Dura 3-4 meses. ¿Te interesa agendar una consulta?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Trabajan con novias?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Servicio completo para novias:<br>• <strong>Peinado novia:</strong> $25.000<br>• <strong>Maquillaje novia:</strong> $22.000<br>• <strong>Combo peinado + makeup:</strong> $42.000<br>• <strong>Prueba previa:</strong> Incluida<br>• <strong>Atención a domicilio:</strong> Disponible<br>También peinamos a las madrinas. ¿Para cuándo es el casamiento?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Aceptan tarjetas?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Todas las formas de pago:<br>• <strong>Efectivo:</strong> 10% descuento<br>• <strong>Débito:</strong> Precio de lista<br>• <strong>Crédito:</strong> Hasta 6 cuotas sin interés<br>• <strong>Mercado Pago:</strong> Hasta 12 cuotas<br>• <strong>Transferencia:</strong> 10% OFF<br>Aceptamos Visa, Mastercard, Amex, Naranja.</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Puedo cancelar mi turno?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí, podés cancelar o reprogramar:<br>• <strong>Con 24hs de anticipación:</strong> Sin cargo<br>• <strong>Menos de 24hs:</strong> Se cobra 50% del servicio<br>• <strong>No show:</strong> Se cobra 100%<br>Para cancelar llamá, escribí por WhatsApp o entrá a tu cuenta en la web. ¿Necesitás cancelar o reprogramar?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Hacen barbería también?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Servicios de barbería:<br>• <strong>Corte + barba:</strong> $8.500<br>• <strong>Corte simple:</strong> $6.000<br>• <strong>Barba y perfilado:</strong> $4.500<br>• <strong>Afeitado clásico:</strong> $3.500<br>Usamos navajas profesionales y productos premium. ¿Sacamos turno?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cuánto sale un brushing?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Brushing profesional: $4.500<br>• <strong>Incluye:</strong> Lavado + secado con cepillo<br>• <strong>Duración:</strong> 30-40 minutos<br>• <strong>Con plancha:</strong> +$1.000<br>• <strong>Con rulos:</strong> +$1.500<br>Ideal para eventos o salidas. ¿Para cuándo lo necesitás?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Tienen servicios de manicura?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Servicios de uñas:<br>• <strong>Manicura clásica:</strong> $5.000<br>• <strong>Manicura permanente:</strong> $8.000<br>• <strong>Pedicura clásica:</strong> $6.500<br>• <strong>Pedicura permanente:</strong> $9.500<br>• <strong>Kapping gel:</strong> $12.000<br>Usamos productos de primera calidad. ¿Reservamos turno?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Qué productos usan?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Trabajamos con marcas premium:<br>• <strong>Color:</strong> Loreal Professionnel, Wella<br>• <strong>Tratamientos:</strong> Kerastase, Olaplex<br>• <strong>Styling:</strong> Sebastian, Moroccanoil<br>• <strong>Keratina:</strong> Inoar, Cadiveu<br>Todos nuestros productos son profesionales de alta gama. ¡Cuidamos tu cabello!</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Dónde están ubicados?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Estamos en:<br>📍 Av. Santa Fe 2800, Palermo<br>🚇 <strong>Subte:</strong> Línea D (Bulnes) - 3 cuadras<br>🚌 <strong>Colectivos:</strong> 12, 39, 55, 110<br><strong>Horarios:</strong><br>• Lun-Vie: 9:00 a 20:00<br>• Sábados: 9:00 a 19:00<br>• Domingos: Cerrado<br>📞 Teléfono: 011 4444-4444</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cuánto tiempo dura el servicio de color?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Duración según servicio:<br>• <strong>Color completo:</strong> 2-2.5 horas<br>• <strong>Retoque raíz:</strong> 1.5-2 horas<br>• <strong>Balayage:</strong> 3-4 horas<br>• <strong>Mechas:</strong> 2.5-3 horas<br>Incluye tiempo de pose, lavado y secado. Te recomendamos venir con tiempo! ¿Qué servicio querés hacer?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Hacen alisado permanente?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Alisados disponibles:<br>• <strong>Alisado con keratina:</strong> $35.000 (dura 3-4 meses)<br>• <strong>Alisado japonés:</strong> $45.000 (permanente)<br>• <strong>Nanoplastia:</strong> $40.000 (dura 4-5 meses)<br>• <strong>Botox capilar:</strong> $28.000 (dura 2-3 meses)<br>Cada uno tiene diferentes resultados. ¿Querés una asesoría personalizada?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Tienen descuentos para estudiantes?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Sí! Promociones especiales:<br>• <strong>Estudiantes:</strong> 15% OFF presentando credencial<br>• <strong>Jubilados:</strong> 20% OFF (lunes a miércoles)<br>• <strong>Primera vez:</strong> 10% OFF<br>• <strong>Martes y miércoles:</strong> 2x1 en cortes hasta 14hs<br>Los descuentos no son acumulables. ¿Tenés credencial de estudiante?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Puedo ver fotos de trabajos anteriores?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Claro! Podés ver nuestro trabajo en:<br>📸 <strong>Instagram:</strong> @peluqueria (500+ fotos)<br>📘 <strong>Facebook:</strong> Peluqueria Palermo<br>🌐 <strong>Web:</strong> www.peluqueria.com/galeria<br>Subimos fotos de trabajos todos los días. También tenemos reseñas de clientes en Google (4.8★). ¿Te interesa algún estilo en particular?</div></div>
+
+        <div class="demo-message"><div class="demo-label">Cliente</div><div class="demo-bubble demo-user">¿Cómo reprogramo mi turno?</div></div>
+        <div class="demo-message"><div class="demo-label">Asistente IA</div><div class="demo-bubble demo-bot">Para reprogramar tu turno:<br>1. <strong>WhatsApp:</strong> +54 11 5555-PELO<br>2. <strong>Teléfono:</strong> 011 4444-4444<br>3. <strong>Web:</strong> Entrá a tu cuenta<br>4. <strong>Instagram:</strong> Mensaje directo<br>Recordá hacerlo con 24hs de anticipación para evitar cargos. ¿Necesitás cambiar tu turno ahora?</div></div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
 # RENDER - Usar st.html() sin iframes
 # =========================
 if vista == "demo":
@@ -3287,6 +3797,10 @@ if vista == "demo":
         st.html(HTML_DEMO_ECOMMERCE)
     elif asistente == "finanzas":
         st.html(HTML_DEMO_FINANZAS)
+    elif asistente == "ropa":
+        st.html(HTML_DEMO_ROPA)
+    elif asistente == "peluqueria":
+        st.html(HTML_DEMO_PELUQUERIA)
     else:
         st.html(HTML_HOME)
 elif vista == "asistentes":
