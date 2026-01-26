@@ -993,10 +993,8 @@ body {
     /* BOTONES CON MENOS BORDER-RADIUS Y COLOR AMARILLO EN MOBILE */
     button,
     .btn-primary,
-    .btn-secondary,
     .btn-login,
     .hero-impact-btn-primary,
-    .hero-impact-btn-secondary,
     .cta button,
     a button,
     .card button,
@@ -1005,7 +1003,7 @@ body {
     .stButton button,
     [class*="button"],
     [class*="Button"],
-    [class*="btn"] {
+    [class*="btn"]:not(.btn-secondary) {
         border-radius: 8px !important;
         background: #f4b400 !important;
         background-color: #f4b400 !important;
@@ -1014,10 +1012,15 @@ body {
     }
     
     /* Link "Explorar asistentes" más visible en mobile */
-    .btn-secondary {
+    .btn-secondary,
+    a.btn-secondary,
+    .hero-actions .btn-secondary {
         background: transparent !important;
-        color: #333 !important;
-        font-weight: 600 !important;
+        background-color: transparent !important;
+        color: #000 !important;
+        font-weight: 700 !important;
+        border: none !important;
+        text-decoration: underline !important;
     }
     
     /* Elementos con fondos específicos que NO deben cambiar */
