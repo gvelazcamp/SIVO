@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 # =========================
 # FULL WIDTH STREAMLIT
@@ -9,54 +9,47 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-    .block-container {
-        max-width: 100% !important;
+    /* Eliminar TODO el padding y margin de Streamlit */
+    .main .block-container {
         padding: 0 !important;
-        margin: 0 !important;
+        max-width: 100% !important;
     }
+    
+    section[data-testid="stAppViewContainer"] {
+        padding: 0 !important;
+    }
+    
     section.main > div {
+        padding: 0 !important;
         max-width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    section.main {
-        padding: 0 !important;
-        margin: 0 !important;
     }
     
-    /* Ocultar completamente header y toolbar de Streamlit */
-    header[data-testid="stHeader"] { 
-        display: none !important; 
-        visibility: hidden !important; 
-        height: 0px !important;
-        min-height: 0px !important;
-    }
-    .stAppHeader {
+    /* Ocultar header, footer y toolbar */
+    header[data-testid="stHeader"],
+    .stAppHeader,
+    footer,
+    #MainMenu,
+    [data-testid="stToolbar"],
+    [data-testid="stDecoration"],
+    [data-testid="stStatusWidget"] {
         display: none !important;
-    }
-    #MainMenu { 
         visibility: hidden !important;
-        display: none !important; 
+        height: 0 !important;
     }
-    footer { 
-        visibility: hidden !important; 
-        height: 0px !important; 
-    }
-    [data-testid="stToolbar"] { 
-        visibility: hidden !important; 
-        height: 0px !important;
-        display: none !important; 
-    }
-    .stToolbar {
-        display: none !important;
-    }
-    [data-testid="stDecoration"] { display: none !important; }
-    [data-testid="stStatusWidget"] { display: none !important; }
     
-    /* Eliminar scrollbars de Streamlit */
+    /* Eliminar scroll horizontal */
+    html, body, [data-testid="stAppViewContainer"], section.main {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* El iframe debe ocupar exactamente el espacio */
     iframe {
-        display: block;
-        overflow: hidden !important;
+        width: 100% !important;
+        border: none !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     </style>
     """,
@@ -75,9 +68,9 @@ except Exception:
 BASE_URL = "https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/"
 
 # =========================
-# HTML + CSS (BASE)
+# HTML COMPLETO
 # =========================
-CSS_BASE = """
+HTML_BASE = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,36 +81,28 @@ CSS_BASE = """
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html, body {
+html {
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background: #f6f7fb;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f6f7fb;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* =========================
-   WRAPPER
-========================= */
-.wrapper {
+.page-container {
     width: 100%;
-    max-width: 100vw;
-    margin: 0;
-    padding: 0;
+    max-width: 100%;
     overflow-x: hidden;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 /* =========================
@@ -127,7 +112,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 20px 5%;
     width: 100%;
 }
 
@@ -136,6 +121,7 @@ body {
     font-weight: 800;
     text-decoration: none;
     color: #000;
+    white-space: nowrap;
 }
 .logo span { color: #f4b400; }
 
@@ -151,6 +137,11 @@ body {
     text-decoration: none;
     color: #555;
     cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav a:hover {
+    color: #f4b400;
 }
 
 .btn-login {
@@ -159,6 +150,7 @@ body {
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 /* =========================
@@ -168,11 +160,13 @@ body {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 40px;
-    padding: 40px 40px;
+    padding: 40px 5%;
     align-items: center;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+}
+
+.hero-content {
+    max-width: 600px;
 }
 
 .hero h1 {
@@ -187,11 +181,15 @@ body {
     margin: 0 0 22px 0;
 }
 
-.hero img {
+.hero-image {
+    text-align: center;
+}
+
+.hero-image img {
     max-width: 100%;
-    width: 100%;
+    width: auto;
     height: auto;
-    display: block;
+    max-height: 400px;
 }
 
 .hero-actions {
@@ -211,6 +209,11 @@ body {
     text-decoration: none;
     display: inline-block;
     border: none;
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background: #e5a500;
 }
 
 .btn-secondary {
@@ -221,6 +224,7 @@ body {
     color: #555;
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 /* =========================
@@ -228,7 +232,7 @@ body {
 ========================= */
 .cats-block {
     text-align: center;
-    padding: 20px 40px;
+    padding: 20px 5%;
     width: 100%;
 }
 
@@ -239,6 +243,7 @@ body {
     padding: 10px 14px;
     border-radius: 999px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    flex-wrap: wrap;
 }
 
 .cat {
@@ -247,16 +252,15 @@ body {
     font-size: 14px;
     font-weight: 600;
     background: #f6f7fb;
+    white-space: nowrap;
 }
 
 /* =========================
    SECTION
 ========================= */
 .section {
-    padding: 20px 40px 40px 40px;
+    padding: 20px 5% 40px;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
 .section h2 {
@@ -280,6 +284,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 22px;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .card {
@@ -292,8 +298,11 @@ body {
 
 .card img {
     width: 100%;
-    max-height: 130px;
+    max-width: 200px;
+    height: 130px;
     object-fit: contain;
+    margin: 0 auto;
+    display: block;
 }
 
 .card h3 {
@@ -304,7 +313,7 @@ body {
 .card p {
     font-size: 13px;
     color: #666;
-    min-height: 70px;
+    min-height: 60px;
     margin: 0 0 14px 0;
 }
 
@@ -317,6 +326,10 @@ body {
     cursor: pointer;
 }
 
+.card button:hover {
+    background: #e5a500;
+}
+
 /* =========================
    PRECIOS
 ========================= */
@@ -326,6 +339,9 @@ body {
     gap: 22px;
     margin-top: 10px;
     width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .plan {
@@ -416,6 +432,9 @@ body {
     padding: 22px;
     text-align: left;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .setup h3 {
@@ -440,13 +459,12 @@ body {
    CTA FINAL
 ========================= */
 .cta {
-    margin: 40px 40px 20px;
+    margin: 40px 5% 20px;
     background: linear-gradient(180deg, #eef2f7, #ffffff);
     border-radius: 40px;
     padding: 40px;
     text-align: center;
-    width: calc(100% - 80px);
-    max-width: 1320px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -469,6 +487,10 @@ body {
     font-weight: 800;
     border: none;
     cursor: pointer;
+}
+
+.cta button:hover {
+    background: #e5a500;
 }
 
 /* =========================
@@ -499,14 +521,14 @@ body {
 ========================= */
 .footer {
     border-top: 1px solid #eee;
-    padding: 20px 40px;
+    padding: 20px 5%;
     font-size: 13px;
     color: #888;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: auto;
+    margin-top: 20px;
 }
 
 /* =========================
@@ -517,52 +539,64 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .hero img {
-        margin: 0 auto;
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-image img {
         max-width: 400px;
     }
+    
     .hero-actions {
         justify-content: center;
     }
-    .cards {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
 }
 
-@media (max-width: 640px) {
-    .header { 
-        padding: 16px;
-        flex-wrap: wrap;
-        gap: 10px;
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 16px 4%;
     }
-    .nav { 
-        gap: 14px;
+    
+    .nav {
+        gap: 16px;
         font-size: 14px;
     }
-    .hero { 
-        padding: 20px 16px;
-        gap: 20px;
+    
+    .hero {
+        padding: 20px 4%;
     }
+    
     .hero h1 {
         font-size: 28px;
     }
-    .section { 
-        padding: 20px 16px;
+    
+    .section {
+        padding: 20px 4%;
     }
-    .cta { 
-        margin: 30px 16px 16px;
-        padding: 30px 20px;
-        width: calc(100% - 32px);
+    
+    .section h2 {
+        font-size: 26px;
     }
-    .cards { 
+    
+    .cards {
         grid-template-columns: 1fr;
     }
-    .footer { 
-        padding: 16px;
+    
+    .cta {
+        margin: 30px 4% 20px;
+        padding: 30px 20px;
+    }
+    
+    .footer {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+        padding: 20px 4%;
     }
+    
     .pricing {
         grid-template-columns: 1fr;
     }
@@ -570,14 +604,10 @@ body {
 </style>
 </head>
 <body>
+<div class="page-container">
 """
 
-# =========================
-# HEADER (COMÚN)
-# =========================
 HEADER = """
-<div class="wrapper">
-    <!-- HEADER -->
     <div class="header">
         <a class="logo" href="?vista=home">MERCADO<span>BOT</span></a>
         <div class="nav">
@@ -591,7 +621,6 @@ HEADER = """
 """
 
 FOOTER = """
-    <!-- FOOTER -->
     <div class="footer">
         <div>Política de privacidad · Términos y condiciones · Contacto</div>
         <div>Facebook · Twitter · LinkedIn</div>
@@ -604,12 +633,11 @@ FOOTER = """
 # =========================
 # HOME
 # =========================
-HTML_HOME = f"""{CSS_BASE}
+HTML_HOME = f"""{HTML_BASE}
 {HEADER}
 
-    <!-- HERO -->
     <div class="hero">
-        <div>
+        <div class="hero-content">
             <h1>El marketplace<br>de asistentes IA</h1>
             <p>Automatizá tu negocio con asistentes virtuales inteligentes.</p>
             <div class="hero-actions">
@@ -617,10 +645,11 @@ HTML_HOME = f"""{CSS_BASE}
                 <a class="btn-secondary" href="#demo">▶ Ver demo en vivo</a>
             </div>
         </div>
-        <img src="{BASE_URL}Asistente.png" alt="Asistente IA">
+        <div class="hero-image">
+            <img src="{BASE_URL}Asistente.png" alt="Asistente IA">
+        </div>
     </div>
 
-    <!-- CATEGORÍAS -->
     <div class="cats-block">
         <div class="cats">
             <div class="cat">⚽ Fútbol</div>
@@ -630,43 +659,41 @@ HTML_HOME = f"""{CSS_BASE}
         </div>
     </div>
 
-    <!-- ASISTENTES (HOME) -->
     <div class="section">
         <h2>Asistentes IA listos para potenciar tu negocio</h2>
         <div class="subtitle">Explorá, elegí e instalá asistentes inteligentes según tus necesidades.</div>
 
         <div class="cards">
             <div class="card">
-                <img src="{BASE_URL}Asistentefutbol.png" alt="Asistente de Fútbol">
+                <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
                 <h3>Asistente de Fútbol</h3>
                 <p>Resultados, noticias y estadísticas del mundo del fútbol.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentecocina.png" alt="Asistente de Cocina">
+                <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
-                <p>Recetas rápidas, consejos de cocina y conversiones de ingredientes.</p>
+                <p>Recetas rápidas, consejos de cocina y conversiones.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteecommerce.png" alt="Asistente de Ecommerce">
+                <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
-                <p>Respuestas automáticas sobre productos, pedidos y envíos.</p>
+                <p>Respuestas automáticas sobre productos y pedidos.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentefinanzas.png" alt="Asistente de Finanzas">
+                <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
-                <p>Información financiera, cotizaciones y análisis de inversiones.</p>
+                <p>Información financiera y análisis de inversiones.</p>
                 <button>Ver asistente</button>
             </div>
         </div>
     </div>
 
-    <!-- CTA FINAL -->
     <div class="cta">
         <h2>Integra en minutos</h2>
         <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
@@ -686,7 +713,7 @@ HTML_HOME = f"""{CSS_BASE}
 # =========================
 # ASISTENTES
 # =========================
-HTML_ASISTENTES = f"""{CSS_BASE}
+HTML_ASISTENTES = f"""{HTML_BASE}
 {HEADER}
 
     <div class="section">
@@ -695,81 +722,80 @@ HTML_ASISTENTES = f"""{CSS_BASE}
 
         <div class="cards">
             <div class="card">
-                <img src="{BASE_URL}Asistentefutbol.png" alt="Asistente de Fútbol">
+                <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
                 <h3>Asistente de Fútbol</h3>
-                <p>Resultados, noticias y estadísticas del mundo del fútbol.</p>
+                <p>Resultados, noticias y estadísticas del fútbol.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentecocina.png" alt="Asistente de Cocina">
+                <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
-                <p>Recetas, consejos y conversiones de ingredientes.</p>
+                <p>Recetas, consejos y conversiones.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteecommerce.png" alt="Asistente de Ecommerce">
+                <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
-                <p>Soporte para productos, pedidos, envíos y postventa.</p>
+                <p>Soporte para productos y pedidos.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentefinanzas.png" alt="Asistente de Finanzas">
+                <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
-                <p>Cotizaciones, reportes y análisis financiero básico.</p>
+                <p>Cotizaciones y análisis financiero.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentestock.png" alt="Asistente de Stock">
+                <img src="{BASE_URL}Asistentestock.png" alt="Stock">
                 <h3>Asistente de Stock</h3>
-                <p>Control de inventario, consumos y alertas de reposición.</p>
+                <p>Control de inventario y alertas.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteinmobiliaria.png" alt="Asistente Inmobiliario">
+                <img src="{BASE_URL}Asistenteinmobiliaria.png" alt="Inmobiliaria">
                 <h3>Asistente Inmobiliario</h3>
-                <p>Consultas de propiedades, disponibilidad y agendado.</p>
+                <p>Consultas de propiedades y agendado.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteagendas.png" alt="Asistente de Turnos">
-                <h3>Asistente de Turnos / Agenda</h3>
-                <p>Reserva de turnos, confirmaciones y recordatorios.</p>
+                <img src="{BASE_URL}Asistenteagendas.png" alt="Agenda">
+                <h3>Asistente de Turnos</h3>
+                <p>Reserva de turnos y recordatorios.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedental.png" alt="Asistente Dental">
+                <img src="{BASE_URL}Asistentedental.png" alt="Dental">
                 <h3>Asistente Dental</h3>
-                <p>Turnos, precios orientativos y preparación previa.</p>
+                <p>Turnos y precios orientativos.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedeviaje.png" alt="Asistente de Viaje">
+                <img src="{BASE_URL}Asistentedeviaje.png" alt="Viaje">
                 <h3>Asistente de Viaje</h3>
-                <p>Itinerarios, recomendaciones y ayuda en reservas.</p>
+                <p>Itinerarios y recomendaciones.</p>
                 <button>Ver asistente</button>
             </div>
         </div>
     </div>
 
-    <!-- CTA FINAL -->
     <div class="cta">
         <h2>Integra en minutos</h2>
-        <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
+        <p>Instalá un asistente virtual IA en tu web fácilmente.</p>
         <button>Probar gratis</button>
 
         <div class="features">
             <div class="feature">⚡ Fácil y rápido</div>
-            <div class="feature">⚙️ Totalmente configurable</div>
-            <div class="feature">🔒 Seguro y escalable</div>
-            <div class="feature">💬 Soporte incluido</div>
+            <div class="feature">⚙️ Configurable</div>
+            <div class="feature">🔒 Seguro</div>
+            <div class="feature">💬 Soporte</div>
         </div>
     </div>
 
@@ -779,25 +805,25 @@ HTML_ASISTENTES = f"""{CSS_BASE}
 # =========================
 # PRECIOS
 # =========================
-HTML_PRECIOS = f"""{CSS_BASE}
+HTML_PRECIOS = f"""{HTML_BASE}
 {HEADER}
 
     <div class="section">
         <h2>Precios</h2>
-        <div class="subtitle">Elegí un plan según la cantidad de asistentes y el nivel de soporte que necesites.</div>
+        <div class="subtitle">Elegí un plan según tus necesidades.</div>
 
         <div class="pricing">
             <div class="plan">
                 <div class="plan-name">Starter</div>
-                <div class="plan-desc">Para probar 1 asistente en tu web</div>
+                <div class="plan-desc">Para probar 1 asistente</div>
 
                 <div class="plan-price">US$ 49<span>/mes</span></div>
                 <div class="plan-note">1 asistente · 1 sitio</div>
 
                 <ul class="plan-list">
-                    <li>✅ Widget embebible (iframe)</li>
-                    <li>✅ Personalización básica (colores/logo)</li>
-                    <li>✅ 1 fuente de datos / integración simple</li>
+                    <li>✅ Widget embebible</li>
+                    <li>✅ Personalización básica</li>
+                    <li>✅ 1 integración simple</li>
                     <li>✅ Soporte por email</li>
                 </ul>
 
@@ -807,16 +833,16 @@ HTML_PRECIOS = f"""{CSS_BASE}
             <div class="plan pro">
                 <div class="badge">Más popular</div>
                 <div class="plan-name">Pro</div>
-                <div class="plan-desc">Para negocios que quieren escalar</div>
+                <div class="plan-desc">Para negocios que escalan</div>
 
                 <div class="plan-price">US$ 99<span>/mes</span></div>
                 <div class="plan-note">3 asistentes · 1 sitio</div>
 
                 <ul class="plan-list">
                     <li>✅ Todo lo de Starter</li>
-                    <li>✅ Hasta 3 asistentes (catálogo)</li>
-                    <li>✅ Configuración avanzada de prompts</li>
-                    <li>✅ Reporte mensual básico</li>
+                    <li>✅ Hasta 3 asistentes</li>
+                    <li>✅ Configuración avanzada</li>
+                    <li>✅ Reporte mensual</li>
                     <li>✅ Soporte prioritario</li>
                 </ul>
 
@@ -825,17 +851,17 @@ HTML_PRECIOS = f"""{CSS_BASE}
 
             <div class="plan">
                 <div class="plan-name">Enterprise</div>
-                <div class="plan-desc">Para empresas con necesidades a medida</div>
+                <div class="plan-desc">Para empresas a medida</div>
 
-                <div class="plan-price">A medida<span></span></div>
-                <div class="plan-note">Asistentes ilimitados · Multi-sitio</div>
+                <div class="plan-price">A medida</div>
+                <div class="plan-note">Ilimitado · Multi-sitio</div>
 
                 <ul class="plan-list">
-                    <li>✅ Integraciones (CRM / ERP / APIs)</li>
-                    <li>✅ Roles, permisos y auditoría</li>
+                    <li>✅ Integraciones CRM/ERP</li>
+                    <li>✅ Roles y permisos</li>
                     <li>✅ SLA y soporte dedicado</li>
                     <li>✅ Seguridad/escala</li>
-                    <li>✅ Onboarding y capacitación</li>
+                    <li>✅ Onboarding incluido</li>
                 </ul>
 
                 <a class="btn-primary plan-btn" href="?vista=home#contacto">Hablar con ventas</a>
@@ -844,28 +870,24 @@ HTML_PRECIOS = f"""{CSS_BASE}
 
         <div class="setup">
             <h3>Instalación & Setup (pago único)</h3>
-            <p>
-                Incluye: configuración inicial, carga de tu branding, seteo del asistente, publicación y pruebas en tu web.
-                Ideal para arrancar rápido sin tocar código.
-            </p>
+            <p>Incluye: configuración inicial, branding, seteo del asistente y publicación en tu web.</p>
             <div style="margin-top:14px; font-weight:900; font-size:22px;">US$ 150</div>
-            <div style="margin-top:6px; font-size:13px; color:#777;">Pago único · Puede variar según integraciones.</div>
+            <div style="margin-top:6px; font-size:13px; color:#777;">Pago único · Varía según integraciones.</div>
         </div>
 
-        <div class="mini-note">Los precios son orientativos. Si querés, definimos 3 planes finales con tus límites reales (asistentes, sitios, soporte, integraciones).</div>
+        <div class="mini-note">Precios orientativos. Definimos planes según tus límites reales.</div>
     </div>
 
-    <!-- CTA FINAL -->
     <div class="cta">
         <h2>Integra en minutos</h2>
-        <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
+        <p>Instalá un asistente virtual IA fácilmente.</p>
         <button>Probar gratis</button>
 
         <div class="features">
-            <div class="feature">⚡ Fácil y rápido</div>
-            <div class="feature">⚙️ Totalmente configurable</div>
-            <div class="feature">🔒 Seguro y escalable</div>
-            <div class="feature">💬 Soporte incluido</div>
+            <div class="feature">⚡ Rápido</div>
+            <div class="feature">⚙️ Configurable</div>
+            <div class="feature">🔒 Seguro</div>
+            <div class="feature">💬 Soporte</div>
         </div>
     </div>
 
@@ -873,11 +895,11 @@ HTML_PRECIOS = f"""{CSS_BASE}
 """
 
 # =========================
-# RENDER CON ALTURAS OPTIMIZADAS
+# RENDER
 # =========================
 if vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=2000, scrolling=False)
+    components.html(HTML_ASISTENTES, height=1950, scrolling=False)
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=1850, scrolling=False)
+    components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
-    components.html(HTML_HOME, height=1700, scrolling=False)
+    components.html(HTML_HOME, height=1650, scrolling=False)
