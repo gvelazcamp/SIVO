@@ -1231,6 +1231,34 @@ HTML_HOME = f"""{HTML_BASE}
                 </div>
                 <div class="testimonio-stat">🌙 Ventas 24/7</div>
             </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Redujimos los llamados al gimnasio en un 70%. Ahora los socios consultan horarios, reservan clases y cancelan turnos directamente con el asistente. Increíble eficiencia."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">D</div>
+                    <div class="testimonio-info">
+                        <h4>Diego Martínez</h4>
+                        <p>Gimnasio y centro deportivo</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">📞 -70% llamados</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "El asistente financiero responde consultas sobre inversiones, cotizaciones y productos al instante. Nuestros clientes están más informados y concretan operaciones más rápido."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">A</div>
+                    <div class="testimonio-info">
+                        <h4>Ana Rodríguez</h4>
+                        <p>Asesoría financiera</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">⚡ Respuesta instantánea</div>
+            </div>
         </div>
     </div>
 
