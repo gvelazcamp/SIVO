@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
@@ -1150,3 +1149,4 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
     components.html(HTML_HOME, height=1750, scrolling=False)
+
