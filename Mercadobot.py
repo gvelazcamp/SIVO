@@ -824,17 +824,6 @@ FOOTER = """
         <div>Facebook · Twitter · LinkedIn</div>
     </div>
 </div>
-<script>
-// Forzar que el contenido siempre empiece arriba
-window.addEventListener('load', function() {
-    document.body.style.minHeight = '2500px';
-    document.body.style.margin = '0';
-    document.body.style.padding = '0';
-    document.querySelector('.page-container').style.minHeight = '2500px';
-    document.querySelector('.page-container').style.margin = '0';
-    document.querySelector('.page-container').style.padding = '0';
-});
-</script>
 </body>
 </html>
 """
