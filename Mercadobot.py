@@ -973,7 +973,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
                 <p>Recetas, consejos y conversiones.</p>
-                <button>Ver asistente</button>
+                <a href="?vista=demo&asistente=cocina" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
@@ -1501,6 +1501,395 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 """
 
 # =========================
+# DEMO COCINA
+# =========================
+HTML_DEMO_COCINA = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}}
+
+.demo-header {{
+    text-align: center;
+    margin-bottom: 40px;
+}}
+
+.demo-header img {{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}}
+
+.demo-header h1 {{
+    font-size: 32px;
+    margin-bottom: 10px;
+}}
+
+.demo-header p {{
+    color: #666;
+    font-size: 16px;
+}}
+
+.demo-chat {{
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}}
+
+.demo-message {{
+    margin-bottom: 20px;
+}}
+
+.demo-bubble {{
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 6px;
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.5;
+}}
+
+.demo-user {{
+    background: #111;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+}}
+
+.demo-bot {{
+    background: #f6f7fb;
+    color: #222;
+    border-bottom-left-radius: 6px;
+}}
+
+.demo-label {{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}}
+
+.demo-back {{
+    text-align: center;
+    margin-top: 40px;
+}}
+
+.demo-back a {{
+    background: #f4b400;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
+        <h1>Asistente de Cocina</h1>
+        <p>Demo interactivo - Restaurante</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen menú vegano?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Tenemos opciones veganas en todos nuestros menús:<br>
+            • <strong>Entradas:</strong> Hummus de garbanzos, ensalada mediterránea<br>
+            • <strong>Principales:</strong> Risotto de hongos, wok de vegetales, hamburguesa vegana<br>
+            • <strong>Postres:</strong> Brownie vegano, helado de coco<br>
+            También tenemos opciones vegetarianas y sin TACC. ¿Te gustaría reservar?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es el horario del restaurante?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Nuestros horarios son:<br>
+            <strong>Lunes a viernes:</strong><br>
+            • Almuerzo: 12:00 a 16:00 hs<br>
+            • Cena: 20:00 a 00:00 hs<br>
+            <strong>Sábados y domingos:</strong><br>
+            • Servicio continuo: 12:00 a 01:00 hs<br>
+            La cocina cierra 30 minutos antes del horario de cierre.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo hacer una reserva para esta noche?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Claro! Tenemos disponibilidad para esta noche. Para reservar necesito:<br>
+            • Cantidad de personas<br>
+            • Horario preferido (20:00, 21:00 o 22:00)<br>
+            • Tu nombre y teléfono<br>
+            Podés reservar por WhatsApp (+54 9 11 1234-5678), teléfono o completando el formulario en nuestra web.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto sale el menú del día?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Nuestro menú ejecutivo cuesta $6.500 e incluye:<br>
+            • Entrada (3 opciones a elegir)<br>
+            • Plato principal (4 opciones a elegir)<br>
+            • Postre o café<br>
+            • Agua o gaseosa<br>
+            Disponible de lunes a viernes de 12:00 a 16:00 hs. ¡No requiere reserva!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen delivery?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Hacemos delivery por varios medios:<br>
+            • <strong>Pedidos Ya:</strong> Sin cargo en pedidos +$8.000<br>
+            • <strong>Rappi:</strong> Envío según distancia<br>
+            • <strong>Delivery propio:</strong> Radio de 3km, sin cargo +$7.000<br>
+            También podés pedir para retirar (15% descuento). Aceptamos todas las formas de pago.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen opciones sin gluten?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Somos aptos para celíacos con certificación:<br>
+            • Pan sin TACC incluido<br>
+            • Pastas sin gluten (ñoquis, ravioles, tallarines)<br>
+            • Pizzas con masa sin TACC<br>
+            • Postres aptos celíacos<br>
+            Toda nuestra cocina está preparada para evitar contaminación cruzada. Mencionalo al reservar.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Aceptan tarjetas de crédito?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Aceptamos todas las formas de pago:<br>
+            • <strong>Efectivo</strong><br>
+            • <strong>Débito:</strong> Todas las tarjetas<br>
+            • <strong>Crédito:</strong> Visa, Mastercard, Amex (hasta 6 cuotas sin interés)<br>
+            • <strong>Transferencia</strong> y <strong>Mercado Pago</strong><br>
+            • <strong>Cripto:</strong> Bitcoin, USDT<br>
+            Servicio de mesa 10% sugerido (no obligatorio).</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿El menú incluye bebida?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Depende del menú que elijas:<br>
+            • <strong>Menú ejecutivo:</strong> Incluye agua o gaseosa<br>
+            • <strong>Menú degustación:</strong> Incluye copa de vino de la casa<br>
+            • <strong>Menú infantil:</strong> Incluye jugo o gaseosa<br>
+            • <strong>Carta regular:</strong> Las bebidas se piden por separado<br>
+            También tenemos carta de vinos, cervezas artesanales y tragos.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen mesas afuera/terraza?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Tenemos una hermosa terraza climatizada con:<br>
+            • 12 mesas con vista al jardín<br>
+            • Calefacción en invierno<br>
+            • Ventiladores y toldos en verano<br>
+            • Pet-friendly (podés venir con tu mascota)<br>
+            Las mesas de terraza son muy solicitadas, te recomendamos reservar con anticipación.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es la especialidad de la casa?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Nuestras especialidades más pedidas son:<br>
+            1. <strong>Bife de chorizo a las brasas</strong> (400g) - $12.500<br>
+            2. <strong>Risotto de mariscos</strong> - $9.800<br>
+            3. <strong>Pasta casera con salsa a elección</strong> - $7.500<br>
+            4. <strong>Salmón grillado con vegetales</strong> - $11.200<br>
+            El chef recomienda nuestro menú degustación de 5 pasos ($15.000).</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo pedir para llevar?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Claro! Tenemos servicio take away con 15% de descuento:<br>
+            • Pedí por teléfono o WhatsApp<br>
+            • Tu pedido estará listo en 20-30 minutos<br>
+            • Packaging ecológico biodegradable<br>
+            • Pagás al retirar o por transferencia<br>
+            También podés pedir por las apps de delivery sin descuento.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen menú infantil?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Nuestro menú kids ($4.500) incluye:<br>
+            <strong>A elegir:</strong><br>
+            • Milanesas con papas fritas<br>
+            • Pasta con manteca o tuco<br>
+            • Hamburguesa mini con papas<br>
+            • Nuggets de pollo caseros<br>
+            <strong>Incluye:</strong> Jugo o gaseosa + helado de postre<br>
+            También tenemos sillitas para bebés y zona de juegos.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen eventos privados?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Tenemos salón privado para eventos:<br>
+            • <strong>Capacidad:</strong> 25-50 personas<br>
+            • <strong>Ideal para:</strong> Cumpleaños, aniversarios, reuniones empresariales<br>
+            • <strong>Incluye:</strong> Menú personalizado, decoración básica, wifi<br>
+            • <strong>Precio:</strong> Desde $180.000 (menú + salón)<br>
+            También hacemos catering externo. ¿Te paso el contacto del área de eventos?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Dónde están ubicados?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Estamos en Av. Santa Fe 2450, Palermo.<br>
+            <strong>Cómo llegar:</strong><br>
+            • Subte D (estación Bulnes) - 2 cuadras<br>
+            • Colectivos: 12, 39, 55, 110, 152<br>
+            • Estacionamiento público a 50 metros<br>
+            <strong>Contacto:</strong><br>
+            • WhatsApp: +54 9 11 1234-5678<br>
+            • Instagram: @restaurante<br>
+            • www.restaurante.com</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Necesito reservar o puedo ir directamente?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Depende del día y horario:<br>
+            • <strong>Sin reserva:</strong> Lunes a miércoles al mediodía (baja ocupación)<br>
+            • <strong>Recomendamos reservar:</strong> Jueves y viernes (alta demanda)<br>
+            • <strong>Obligatorio reservar:</strong> Fines de semana y feriados<br>
+            Si venís sin reserva, podés esperar en nuestro bar con entrada y tragos mientras se libera mesa.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen estacionamiento?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tenemos convenio con estacionamiento a 50 metros:<br>
+            • <strong>Precio:</strong> $1.500 por 3 horas<br>
+            • <strong>Beneficio:</strong> 50% descuento validando ticket en el restaurant<br>
+            • <strong>Ubicación:</strong> Av. Santa Fe 2380<br>
+            También hay zona de estacionamiento medido en la cuadra (app Telepase). No contamos con servicio de valet parking.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿El servicio de mesa está incluido?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El servicio de mesa (cubierto) está incluido en todos nuestros platos. La propina es opcional y sugerida al 10%, pero completamente voluntaria.<br>
+            <strong>Incluye:</strong><br>
+            • Pan de la casa<br>
+            • Manteca saborizada<br>
+            • Agua con o sin gas<br>
+            Si tenés alguna preferencia alimentaria, avisanos al sentarte.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen promociones?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Nuestras promos vigentes:<br>
+            • <strong>Happy Hour:</strong> Lun-Vie 18-20hs - 2x1 en tragos seleccionados<br>
+            • <strong>Martes de Pasta:</strong> 30% off en todas las pastas<br>
+            • <strong>Jueves Gourmet:</strong> Menú degustación $12.000 (precio regular $15.000)<br>
+            • <strong>Cumpleañeros:</strong> Postre gratis presentando DNI<br>
+            Seguinos en Instagram para promos exclusivas!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo ver la carta online?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Claro! Podés ver nuestra carta completa en:<br>
+            • <strong>Web:</strong> www.restaurante.com/menu<br>
+            • <strong>Instagram:</strong> @restaurante (destacadas)<br>
+            • <strong>Código QR:</strong> En nuestras mesas<br>
+            La carta incluye fotos de todos los platos, ingredientes, alérgenos y precios actualizados. También tenemos carta de vinos y tragos.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen catering para eventos?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Sí! Ofrecemos servicio de catering completo:<br>
+            • <strong>Menú personalizado:</strong> Adaptado a tu presupuesto<br>
+            • <strong>Incluye:</strong> Comida, bebidas, mozos, vajilla, mantelería<br>
+            • <strong>Desde:</strong> $8.000 por persona (mínimo 30 personas)<br>
+            • <strong>Tipos:</strong> Finger food, platos emplatados, buffet<br>
+            Te pasamos presupuesto sin cargo. ¿Para cuántas personas sería?</div>
+        </div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
 # RENDER - Usar st.html() sin iframes
 # =========================
 if vista == "demo":
@@ -1512,6 +1901,8 @@ if vista == "demo":
     
     if asistente == "futbol":
         st.html(HTML_DEMO_FUTBOL)
+    elif asistente == "cocina":
+        st.html(HTML_DEMO_COCINA)
     else:
         st.html(HTML_HOME)
 elif vista == "asistentes":
