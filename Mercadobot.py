@@ -966,7 +966,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
                 <h3>Asistente de Fútbol</h3>
                 <p>Resultados, noticias y estadísticas del fútbol.</p>
-                <button>Ver asistente</button>
+                <a href="?vista=demo&asistente=futbol" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
@@ -1142,9 +1142,315 @@ HTML_PRECIOS = f"""{HTML_BASE}
 """
 
 # =========================
+# DEMO FÚTBOL
+# =========================
+HTML_DEMO_FUTBOL = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}}
+
+.demo-header {{
+    text-align: center;
+    margin-bottom: 40px;
+}}
+
+.demo-header img {{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}}
+
+.demo-header h1 {{
+    font-size: 32px;
+    margin-bottom: 10px;
+}}
+
+.demo-header p {{
+    color: #666;
+    font-size: 16px;
+}}
+
+.demo-chat {{
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}}
+
+.demo-message {{
+    margin-bottom: 20px;
+}}
+
+.demo-bubble {{
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 6px;
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.5;
+}}
+
+.demo-user {{
+    background: #111;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+}}
+
+.demo-bot {{
+    background: #f6f7fb;
+    color: #222;
+    border-bottom-left-radius: 6px;
+}}
+
+.demo-label {{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}}
+
+.demo-back {{
+    text-align: center;
+    margin-top: 40px;
+}}
+
+.demo-back a {{
+    background: #f4b400;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
+        <h1>Asistente de Fútbol</h1>
+        <p>Demo interactivo con 20 conversaciones de ejemplo</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Quién ganó el último clásico Real Madrid vs Barcelona?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El último clásico lo ganó el Real Madrid 2-1 en el Santiago Bernabéu. Los goles fueron de Bellingham y Vinicius Jr. para el Madrid, mientras que Lewandowski anotó para el Barcelona.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuántos goles lleva Messi en su carrera?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Lionel Messi ha marcado más de 800 goles en su carrera profesional, incluyendo clubes y selección. Es el máximo goleador histórico del FC Barcelona con 672 goles.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué equipos clasificaron a octavos en la Champions?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Los equipos clasificados a octavos de final incluyen: Bayern Munich, Manchester City, Real Madrid, PSG, Inter de Milán, Barcelona, Arsenal, Atlético de Madrid, entre otros. La fase eliminatoria comienza en febrero.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">Dame las estadísticas de Haaland esta temporada</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Erling Haaland lleva esta temporada:<br>• Premier League: 18 goles en 20 partidos<br>• Champions League: 7 goles en 6 partidos<br>• Copas nacionales: 3 goles<br>Total: 28 goles en todas las competiciones</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuándo juega la Selección Argentina?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El próximo partido de Argentina es el 15 de febrero vs. Uruguay por las Eliminatorias Sudamericanas. El partido será en el Estadio Monumental de Buenos Aires a las 21:00 hs.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Quién es el máximo goleador de la Premier League?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El máximo goleador histórico de la Premier League es Alan Shearer con 260 goles. En la temporada actual, lidera Erling Haaland con 18 goles.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué equipo tiene más Champions League?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El Real Madrid es el equipo con más Champions League ganadas: 14 títulos. Le siguen AC Milan con 7, Bayern Munich y Liverpool con 6 cada uno.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es el récord de Cristiano Ronaldo en Champions?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Cristiano Ronaldo es el máximo goleador histórico de la Champions League con 140 goles. También tiene el récord de más partidos jugados (183) y más hat-tricks (8) en la competición.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Quién ganó el último Mundial?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Argentina ganó el Mundial de Qatar 2022, venciendo a Francia en la final por penales (4-2) después de empatar 3-3 en el tiempo regular y extra. Messi fue elegido el mejor jugador del torneo.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto vale Mbappé?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Kylian Mbappé está valorado en aproximadamente 180 millones de euros según Transfermarkt. Es uno de los jugadores más valiosos del mundo junto con Haaland y Vinicius Jr.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Dónde se juega la próxima Copa América?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">La próxima Copa América se jugará en Estados Unidos en junio-julio de 2024. Participarán las 10 selecciones de CONMEBOL más 6 invitadas de CONCACAF.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Quién es el jugador más caro de la historia?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Neymar Jr. es el fichaje más caro de la historia: 222 millones de euros que pagó el PSG al Barcelona en 2017. Le siguen Mbappé al Real Madrid (180M) y Coutinho al Barcelona (160M).</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuántos Balones de Oro tiene Messi?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Lionel Messi ha ganado 8 Balones de Oro (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023), siendo el jugador con más galardones en la historia. Cristiano Ronaldo tiene 5.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué equipo lidera la Liga española?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El Real Madrid lidera La Liga con 58 puntos, seguido del Barcelona con 54 puntos. El Girona está tercero con 52 puntos y está haciendo una temporada histórica.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuándo es el derbi Manchester?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El próximo Manchester City vs Manchester United se jugará el domingo 3 de marzo a las 16:30 hs en el Etihad Stadium por la Premier League. Será transmitido por ESPN.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Quién es el técnico del Bayern Munich?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Thomas Tuchel es el entrenador del Bayern Munich desde marzo de 2023. Anteriormente dirigió al Chelsea, PSG y Borussia Dortmund, ganando la Champions League con el Chelsea en 2021.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">Dame el fixture completo de Champions de esta semana</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Partidos de Champions esta semana:<br>
+            <strong>Martes:</strong><br>
+            • PSG vs Real Sociedad - 17:00<br>
+            • Lazio vs Bayern - 17:00<br>
+            • Inter vs Atlético - 17:00<br>
+            <strong>Miércoles:</strong><br>
+            • Arsenal vs Porto - 17:00<br>
+            • Barcelona vs Napoli - 17:00<br>
+            • PSV vs Dortmund - 17:00</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuántos títulos tiene Guardiola como DT?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Pep Guardiola ha ganado 36 títulos como entrenador:<br>
+            • Barcelona: 14 títulos (2 Champions)<br>
+            • Bayern: 7 títulos<br>
+            • Man City: 15 títulos (1 Champions, 5 Premier League)<br>
+            Es uno de los técnicos más exitosos de la historia.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hay partidos hoy?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí, hoy hay varios partidos importantes:<br>
+            • Premier League: Chelsea vs Liverpool - 14:30<br>
+            • La Liga: Atlético Madrid vs Valencia - 16:00<br>
+            • Serie A: Juventus vs Napoli - 18:45<br>
+            ¿Te interesa algún partido en particular?</div>
+        </div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
 # RENDER - Usar st.html() sin iframes
 # =========================
-if vista == "asistentes":
+if vista == "demo":
+    # Obtener el tipo de asistente del query param
+    try:
+        asistente = st.query_params.get("asistente", "futbol")
+    except:
+        asistente = "futbol"
+    
+    if asistente == "futbol":
+        st.html(HTML_DEMO_FUTBOL)
+    else:
+        st.html(HTML_HOME)
+elif vista == "asistentes":
     st.html(HTML_ASISTENTES)
 elif vista == "precios":
     st.html(HTML_PRECIOS)
