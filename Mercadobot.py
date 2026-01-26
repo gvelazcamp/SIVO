@@ -1242,189 +1242,253 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
     <div class="demo-chat">
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Quién ganó el último clásico Real Madrid vs Barcelona?</div>
+            <div class="demo-bubble demo-user">¿Cuánto sale ser socio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El último clásico lo ganó el Real Madrid 2-1 en el Santiago Bernabéu. Los goles fueron de Bellingham y Vinicius Jr. para el Madrid, mientras que Lewandowski anotó para el Barcelona.</div>
+            <div class="demo-bubble demo-bot">Tenemos 3 planes disponibles:<br>
+            • <strong>Socio Básico:</strong> $15.000/mes<br>
+            • <strong>Socio Pleno:</strong> $25.000/mes<br>
+            • <strong>Socio VIP:</strong> $45.000/mes<br>
+            Cada plan incluye diferentes beneficios. ¿Te gustaría saber qué incluye cada uno?</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuántos goles lleva Messi en su carrera?</div>
+            <div class="demo-bubble demo-user">¿Qué incluye cada plan de socio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Lionel Messi ha marcado más de 800 goles en su carrera profesional, incluyendo clubes y selección. Es el máximo goleador histórico del FC Barcelona con 672 goles.</div>
+            <div class="demo-bubble demo-bot"><strong>Socio Básico:</strong> Acceso a tribunas, descuento 20% en buffet<br>
+            <strong>Socio Pleno:</strong> Todo lo anterior + gimnasio, pileta, canchas de paddle<br>
+            <strong>Socio VIP:</strong> Todo lo anterior + palcos, estacionamiento, invitados gratis</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Qué equipos clasificaron a octavos en la Champions?</div>
+            <div class="demo-bubble demo-user">¿Qué instalaciones puedo usar como socio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Los equipos clasificados a octavos de final incluyen: Bayern Munich, Manchester City, Real Madrid, PSG, Inter de Milán, Barcelona, Arsenal, Atlético de Madrid, entre otros. La fase eliminatoria comienza en febrero.</div>
+            <div class="demo-bubble demo-bot">Como socio tenés acceso a:<br>
+            • Gimnasio equipado (Pleno y VIP)<br>
+            • Pileta climatizada (Pleno y VIP)<br>
+            • 4 canchas de paddle (Pleno y VIP)<br>
+            • 2 canchas de fútbol 5<br>
+            • Buffet con descuentos<br>
+            • Vestuarios y duchas<br>
+            • Estacionamiento (solo VIP)</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Dame las estadísticas de Haaland esta temporada</div>
+            <div class="demo-bubble demo-user">¿Cuándo juega el primer equipo este fin de semana?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Erling Haaland lleva esta temporada:<br>• Premier League: 18 goles en 20 partidos<br>• Champions League: 7 goles en 6 partidos<br>• Copas nacionales: 3 goles<br>Total: 28 goles en todas las competiciones</div>
+            <div class="demo-bubble demo-bot">El primer equipo juega el domingo 28 de enero a las 17:00 hs de local contra San Lorenzo por la fecha 3 del torneo. Las entradas ya están a la venta en boletería y online.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuándo juega la Selección Argentina?</div>
+            <div class="demo-bubble demo-user">¿Cómo saco entrada para el partido del domingo?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El próximo partido de Argentina es el 15 de febrero vs. Uruguay por las Eliminatorias Sudamericanas. El partido será en el Estadio Monumental de Buenos Aires a las 21:00 hs.</div>
+            <div class="demo-bubble demo-bot">Podés sacar tu entrada de 3 formas:<br>
+            1. <strong>Online:</strong> www.clubfutbol.com/entradas<br>
+            2. <strong>Boletería:</strong> Lunes a sábado 10-18hs<br>
+            3. <strong>Día del partido:</strong> Desde las 14:00 hs<br>
+            Los socios tienen 30% de descuento. Precios: Platea $8.000, Popular $5.000</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Quién es el máximo goleador de la Premier League?</div>
+            <div class="demo-bubble demo-user">¿Cuánto sale la cuota de las inferiores?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El máximo goleador histórico de la Premier League es Alan Shearer con 260 goles. En la temporada actual, lidera Erling Haaland con 18 goles.</div>
+            <div class="demo-bubble demo-bot">Las cuotas de fútbol infantil son:<br>
+            • Categorías 2016-2018: $12.000/mes<br>
+            • Categorías 2013-2015: $14.000/mes<br>
+            • Categorías 2010-2012: $16.000/mes<br>
+            Incluye entrenamiento 3 veces por semana, camiseta oficial y seguro.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Qué equipo tiene más Champions League?</div>
+            <div class="demo-bubble demo-user">¿Tienen escuela de fútbol para niños?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El Real Madrid es el equipo con más Champions League ganadas: 14 títulos. Le siguen AC Milan con 7, Bayern Munich y Liverpool con 6 cada uno.</div>
+            <div class="demo-bubble demo-bot">Sí! Nuestra escuelita acepta niños desde 4 años:<br>
+            • <strong>Iniciación (4-6 años):</strong> Sábados 10-11:30hs - $8.000/mes<br>
+            • <strong>Intermedio (7-9 años):</strong> Martes y jueves 17-18:30hs - $10.000/mes<br>
+            • <strong>Avanzado (10-12 años):</strong> Lunes, miércoles y viernes 18-19:30hs - $12.000/mes</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuál es el récord de Cristiano Ronaldo en Champions?</div>
+            <div class="demo-bubble demo-user">¿Qué horarios tiene el gimnasio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Cristiano Ronaldo es el máximo goleador histórico de la Champions League con 140 goles. También tiene el récord de más partidos jugados (183) y más hat-tricks (8) en la competición.</div>
+            <div class="demo-bubble demo-bot">El gimnasio está disponible para socios Pleno y VIP:<br>
+            • <strong>Lunes a viernes:</strong> 7:00 a 22:00 hs<br>
+            • <strong>Sábados:</strong> 9:00 a 20:00 hs<br>
+            • <strong>Domingos:</strong> 10:00 a 18:00 hs<br>
+            Contamos con máquinas de última generación y profesores disponibles.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Quién ganó el último Mundial?</div>
+            <div class="demo-bubble demo-user">¿Puedo alquilar una cancha siendo socio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Argentina ganó el Mundial de Qatar 2022, venciendo a Francia en la final por penales (4-2) después de empatar 3-3 en el tiempo regular y extra. Messi fue elegido el mejor jugador del torneo.</div>
+            <div class="demo-bubble demo-bot">Sí! Los socios tienen prioridad y descuento:<br>
+            • <strong>Fútbol 5:</strong> $12.000/hora (no socios $15.000)<br>
+            • <strong>Paddle:</strong> $8.000/hora (no socios $10.000)<br>
+            Podés reservar por teléfono, WhatsApp o en recepción con 48hs de anticipación.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuánto vale Mbappé?</div>
+            <div class="demo-bubble demo-user">¿Dónde se juega el próximo partido de visitante?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Kylian Mbappé está valorado en aproximadamente 180 millones de euros según Transfermarkt. Es uno de los jugadores más valiosos del mundo junto con Haaland y Vinicius Jr.</div>
+            <div class="demo-bubble demo-bot">El próximo partido de visitante es el sábado 3 de febrero a las 19:15 hs contra Independiente en Avellaneda. Estamos organizando un micro para socios (cupos limitados). ¿Te interesa anotarte?</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Dónde se juega la próxima Copa América?</div>
+            <div class="demo-bubble demo-user">¿Hay descuentos para familiares de socios?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">La próxima Copa América se jugará en Estados Unidos en junio-julio de 2024. Participarán las 10 selecciones de CONMEBOL más 6 invitadas de CONCACAF.</div>
+            <div class="demo-bubble demo-bot">Sí! Los familiares directos de socios tienen beneficios:<br>
+            • <strong>Cónyuge:</strong> 40% descuento en cuota social<br>
+            • <strong>Hijos menores de 18:</strong> 50% descuento<br>
+            • <strong>Hermanos:</strong> 20% descuento<br>
+            Además, los socios VIP pueden traer 2 invitados gratis por mes.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Quién es el jugador más caro de la historia?</div>
+            <div class="demo-bubble demo-user">¿Cómo me hago socio?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Neymar Jr. es el fichaje más caro de la historia: 222 millones de euros que pagó el PSG al Barcelona en 2017. Le siguen Mbappé al Real Madrid (180M) y Coutinho al Barcelona (160M).</div>
+            <div class="demo-bubble demo-bot">El proceso es muy simple:<br>
+            1. Completá el formulario online o vení personalmente<br>
+            2. Presentá DNI, comprobante de domicilio y 2 fotos 4x4<br>
+            3. Pagá la cuota de inscripción ($5.000) + primera cuota<br>
+            4. ¡Listo! Tu credencial estará en 48hs<br>
+            ¿Querés que te envíe el link del formulario?</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuántos Balones de Oro tiene Messi?</div>
+            <div class="demo-bubble demo-user">¿El socio tiene descuento en las entradas?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Lionel Messi ha ganado 8 Balones de Oro (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023), siendo el jugador con más galardones en la historia. Cristiano Ronaldo tiene 5.</div>
+            <div class="demo-bubble demo-bot">Sí! Los socios tienen importantes beneficios en entradas:<br>
+            • <strong>Socio Básico:</strong> 30% descuento<br>
+            • <strong>Socio Pleno:</strong> 50% descuento<br>
+            • <strong>Socio VIP:</strong> Entrada gratis + 1 acompañante<br>
+            Además, tenés acceso prioritario sin hacer fila.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Qué equipo lidera la Liga española?</div>
+            <div class="demo-bubble demo-user">¿Tienen pileta climatizada?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El Real Madrid lidera La Liga con 58 puntos, seguido del Barcelona con 54 puntos. El Girona está tercero con 52 puntos y está haciendo una temporada histórica.</div>
+            <div class="demo-bubble demo-bot">Sí! Contamos con pileta climatizada semiolímpica (25m) disponible todo el año para socios Pleno y VIP. Horarios:<br>
+            • <strong>Lunes a viernes:</strong> 8:00 a 21:00 hs<br>
+            • <strong>Fines de semana:</strong> 10:00 a 19:00 hs<br>
+            También dictamos clases de natación para todas las edades.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuándo es el derbi Manchester?</div>
+            <div class="demo-bubble demo-user">¿Cuál es la dirección del club?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El próximo Manchester City vs Manchester United se jugará el domingo 3 de marzo a las 16:30 hs en el Etihad Stadium por la Premier League. Será transmitido por ESPN.</div>
+            <div class="demo-bubble demo-bot">Estamos en Av. Libertador 4500, a 2 cuadras de la estación de subte. Horarios de atención:<br>
+            • <strong>Secretaría:</strong> Lunes a viernes 9-18hs<br>
+            • <strong>Instalaciones:</strong> Todos los días 7-23hs<br>
+            • <strong>Boletería:</strong> Según calendario de partidos<br>
+            Líneas de colectivo: 15, 29, 60, 130</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Quién es el técnico del Bayern Munich?</div>
+            <div class="demo-bubble demo-user">¿Puedo pausar mi cuota de socio en vacaciones?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Thomas Tuchel es el entrenador del Bayern Munich desde marzo de 2023. Anteriormente dirigió al Chelsea, PSG y Borussia Dortmund, ganando la Champions League con el Chelsea en 2021.</div>
+            <div class="demo-bubble demo-bot">Sí, podés solicitar la suspensión temporaria:<br>
+            • <strong>Mínimo:</strong> 1 mes<br>
+            • <strong>Máximo:</strong> 3 meses por año<br>
+            • <strong>Costo:</strong> $2.000 por mes de suspensión<br>
+            Debés solicitarlo con 15 días de anticipación en secretaría. Al reactivar, mantenés tu antigüedad.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Dame el fixture completo de Champions de esta semana</div>
+            <div class="demo-bubble demo-user">¿Organizan torneos para socios?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Partidos de Champions esta semana:<br>
-            <strong>Martes:</strong><br>
-            • PSG vs Real Sociedad - 17:00<br>
-            • Lazio vs Bayern - 17:00<br>
-            • Inter vs Atlético - 17:00<br>
-            <strong>Miércoles:</strong><br>
-            • Arsenal vs Porto - 17:00<br>
-            • Barcelona vs Napoli - 17:00<br>
-            • PSV vs Dortmund - 17:00</div>
+            <div class="demo-bubble demo-bot">¡Claro! Organizamos varios torneos durante el año:<br>
+            • <strong>Torneo Apertura de Fútbol 5:</strong> Marzo-Junio<br>
+            • <strong>Torneo de Paddle:</strong> Abril y Septiembre<br>
+            • <strong>Copa de Verano:</strong> Enero-Febrero<br>
+            • <strong>Campeonato Interno:</strong> Todo el año<br>
+            La inscripción es gratuita para socios. ¿Te interesa alguno?</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuántos títulos tiene Guardiola como DT?</div>
+            <div class="demo-bubble demo-user">¿Hay buffet en el club?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Pep Guardiola ha ganado 36 títulos como entrenador:<br>
-            • Barcelona: 14 títulos (2 Champions)<br>
-            • Bayern: 7 títulos<br>
-            • Man City: 15 títulos (1 Champions, 5 Premier League)<br>
-            Es uno de los técnicos más exitosos de la historia.</div>
+            <div class="demo-bubble demo-bot">Sí! Nuestro buffet está abierto todos los días:<br>
+            • <strong>Lunes a viernes:</strong> 12:00 a 23:00 hs<br>
+            • <strong>Fines de semana:</strong> 11:00 a 00:00 hs<br>
+            Ofrecemos minutas, parrilla, pizzas y bebidas. Los socios tienen 20% de descuento. En días de partido, menú especial disponible.</div>
         </div>
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hay partidos hoy?</div>
+            <div class="demo-bubble demo-user">¿A qué hora abren las boleterías el día del partido?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí, hoy hay varios partidos importantes:<br>
-            • Premier League: Chelsea vs Liverpool - 14:30<br>
-            • La Liga: Atlético Madrid vs Valencia - 16:00<br>
-            • Serie A: Juventus vs Napoli - 18:45<br>
-            ¿Te interesa algún partido en particular?</div>
+            <div class="demo-bubble demo-bot">Las boleterías abren 3 horas antes del partido. Para el partido del domingo a las 17:00, abrimos a las 14:00 hs. Recomendamos:<br>
+            • Comprá online para evitar filas<br>
+            • Los socios tienen acceso prioritario<br>
+            • Taquillas exclusivas para socios VIP<br>
+            Aceptamos efectivo, débito, crédito y Mercado Pago.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen estacionamiento?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí, contamos con estacionamiento:<br>
+            • <strong>Socios VIP:</strong> Estacionamiento gratuito incluido (150 lugares)<br>
+            • <strong>Otros socios:</strong> $2.000 por día<br>
+            • <strong>No socios:</strong> $3.000 por día<br>
+            También hay estacionamiento público a 2 cuadras ($1.500). En días de partido, te recomendamos venir con anticipación.</div>
         </div>
     </div>
     
