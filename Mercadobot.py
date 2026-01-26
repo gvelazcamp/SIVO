@@ -33,7 +33,7 @@ body {
    WRAPPER
 ========================= */
 .wrapper {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -502,3 +502,4 @@ if vista == "asistentes":
     components.html(HTML_ASISTENTES, height=2300, scrolling=True)
 else:
     components.html(HTML_HOME, height=1900, scrolling=True)
+
