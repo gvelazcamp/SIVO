@@ -980,14 +980,14 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Soporte para productos y pedidos.</p>
-                <button>Ver asistente</button>
+                <a href="?vista=demo&asistente=ecommerce" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
                 <p>Cotizaciones y análisis financiero.</p>
-                <button>Ver asistente</button>
+                <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
@@ -1890,6 +1890,923 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 """
 
 # =========================
+# DEMO ECOMMERCE
+# =========================
+HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}}
+
+.demo-header {{
+    text-align: center;
+    margin-bottom: 40px;
+}}
+
+.demo-header img {{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}}
+
+.demo-header h1 {{
+    font-size: 32px;
+    margin-bottom: 10px;
+}}
+
+.demo-header p {{
+    color: #666;
+    font-size: 16px;
+}}
+
+.demo-chat {{
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}}
+
+.demo-message {{
+    margin-bottom: 20px;
+}}
+
+.demo-bubble {{
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 6px;
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.5;
+}}
+
+.demo-user {{
+    background: #111;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+}}
+
+.demo-bot {{
+    background: #f6f7fb;
+    color: #222;
+    border-bottom-left-radius: 6px;
+}}
+
+.demo-label {{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}}
+
+.demo-back {{
+    text-align: center;
+    margin-top: 40px;
+}}
+
+.demo-back a {{
+    background: #f4b400;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
+        <h1>Asistente de Ecommerce</h1>
+        <p>Demo interactivo - Tienda Online</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen stock de zapatillas Nike Air Max talle 42?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Las Nike Air Max están disponibles en talle 42:<br>
+            • <strong>Air Max 90:</strong> $89.999 - Stock: 5 unidades<br>
+            • <strong>Air Max 270:</strong> $119.999 - Stock: 3 unidades<br>
+            • <strong>Air Max Plus:</strong> $109.999 - Stock: 7 unidades<br>
+            Envío gratis en compras superiores a $80.000. ¿Cuál te interesa?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto tarda el envío a Córdoba Capital?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Los tiempos de envío a Córdoba Capital son:<br>
+            • <strong>Envío estándar:</strong> 5-7 días hábiles - $2.500<br>
+            • <strong>Envío express:</strong> 2-3 días hábiles - $4.800<br>
+            • <strong>Envío prioritario:</strong> 24-48 hs - $8.000<br>
+            <strong>Envío GRATIS</strong> en compras mayores a $80.000 (estándar)<br>
+            Todos los envíos incluyen seguro y tracking.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo pagar en cuotas?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos varias opciones de financiación:<br>
+            • <strong>Tarjetas de crédito:</strong> Hasta 12 cuotas sin interés<br>
+            • <strong>Mercado Pago:</strong> Hasta 18 cuotas (con interés)<br>
+            • <strong>Naranja/Visa/Mastercard:</strong> 3, 6, 9 o 12 cuotas<br>
+            • <strong>Efectivo/Transferencia:</strong> 10% descuento adicional<br>
+            También aceptamos débito y billeteras digitales.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo hago para cambiar un producto?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El proceso de cambio es muy simple:<br>
+            1. <strong>Tenés 30 días</strong> desde la compra<br>
+            2. <strong>El producto debe estar:</strong> Sin uso, con etiquetas, en embalaje original<br>
+            3. <strong>Iniciá el cambio:</strong> Desde tu cuenta o por WhatsApp<br>
+            4. <strong>Te enviamos:</strong> Etiqueta de devolución prepaga<br>
+            5. <strong>Recibimos y validamos:</strong> 2-3 días hábiles<br>
+            6. <strong>Enviamos el nuevo:</strong> Sin cargo adicional<br>
+            Los cambios son GRATIS.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Dónde está mi pedido #12345?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tu pedido #12345 está en camino! 📦<br>
+            • <strong>Estado:</strong> En distribución<br>
+            • <strong>Courier:</strong> Andreani<br>
+            • <strong>Código de seguimiento:</strong> AN123456789AR<br>
+            • <strong>Entrega estimada:</strong> Mañana antes de las 18hs<br>
+            Podés rastrearlo en tiempo real en: www.andreani.com/tracking<br>
+            Recibirás un SMS cuando esté a 2 horas de llegar.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen buzos oversize?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos una colección completa de buzos oversize:<br>
+            • <strong>Buzo básico liso:</strong> $12.999 (S/M/L/XL)<br>
+            • <strong>Buzo con capucha:</strong> $15.999 (S/M/L/XL)<br>
+            • <strong>Buzo estampado:</strong> $17.999 (S/M/L/XL)<br>
+            • <strong>Colores:</strong> Negro, gris, blanco, beige, verde militar<br>
+            <strong>Promo:</strong> Comprá 2 buzos y llevá 25% OFF. ¿Te paso el link de la colección?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo sé mi talle?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tenemos una guía de talles completa:<br>
+            📏 <strong>Para ropa:</strong><br>
+            • Medí tu busto/pecho, cintura y cadera<br>
+            • Compará con nuestra tabla de talles<br>
+            👟 <strong>Para calzado:</strong><br>
+            • Medí tu pie en cm (del talón a la punta)<br>
+            • Usá nuestro conversor de tallas<br>
+            <strong>Tip:</strong> En cada producto hay una guía específica con medidas exactas.<br>
+            ¿Querés que te ayude con un producto en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen tienda física?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos 3 locales:<br>
+            📍 <strong>Palermo:</strong> Av. Santa Fe 3500<br>
+            &nbsp;&nbsp;&nbsp;Lun-Sáb 10-20hs, Dom 12-19hs<br>
+            📍 <strong>Belgrano:</strong> Av. Cabildo 2200<br>
+            &nbsp;&nbsp;&nbsp;Lun-Sáb 10-20hs, Dom 12-19hs<br>
+            📍 <strong>Unicenter:</strong> Local 234, 1er piso<br>
+            &nbsp;&nbsp;&nbsp;Todos los días 10-22hs<br>
+            Podés comprar online y retirar en cualquier local SIN CARGO.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo retirar en local?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Claro! Retiro en tienda es GRATIS:<br>
+            1. <strong>Comprás online</strong> y elegís "Retiro en tienda"<br>
+            2. <strong>Elegís el local</strong> más cercano<br>
+            3. <strong>Te llega un email</strong> cuando está listo (24-48hs)<br>
+            4. <strong>Retirás</strong> presentando DNI y número de orden<br>
+            <strong>Ventajas:</strong><br>
+            ✓ Sin costo de envío<br>
+            ✓ Podés probarte en el local<br>
+            ✓ Cambio inmediato si no te queda<br>
+            Horarios: Lun-Sáb 10-20hs</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen envíos al interior?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Enviamos a todo el país:<br>
+            <strong>CABA y GBA:</strong><br>
+            • Estándar: 3-5 días - $1.800<br>
+            • Express: 24-48hs - $3.500<br>
+            <strong>Interior del país:</strong><br>
+            • Córdoba, Rosario, Mendoza: 5-7 días - $2.500<br>
+            • Resto del país: 7-10 días - $3.200<br>
+            • Patagonia: 10-15 días - $4.500<br>
+            <strong>ENVÍO GRATIS</strong> en compras +$80.000 a todo el país!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuándo hay restock de las Jordan?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Las Air Jordan 1 Retro High están agotadas actualmente.<br>
+            📅 <strong>Próximo restock:</strong> 15 de febrero<br>
+            👟 <strong>Talles disponibles:</strong> Del 38 al 44<br>
+            💰 <strong>Precio:</strong> $149.999<br>
+            <strong>¿Querés que te avisemos?</strong><br>
+            Dejá tu email y te notificamos 24hs antes del lanzamiento. Además, tenés acceso prioritario por 2 horas antes de la venta pública.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen descuentos por cantidad?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos descuentos progresivos:<br>
+            • <strong>2 productos:</strong> 10% OFF<br>
+            • <strong>3 productos:</strong> 15% OFF<br>
+            • <strong>4 o más productos:</strong> 20% OFF<br>
+            <strong>Además:</strong><br>
+            • Comprá $100.000 o más: 25% OFF adicional<br>
+            • Primera compra: 15% OFF con código BIENVENIDO<br>
+            • Suscribite al newsletter: 10% OFF permanente<br>
+            Los descuentos se aplican automáticamente en el carrito.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué pasa si el producto llega defectuoso?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Si recibís un producto con defecto:<br>
+            1. <strong>Contactanos inmediatamente</strong> con fotos del defecto<br>
+            2. <strong>Te enviamos</strong> etiqueta de devolución prepaga<br>
+            3. <strong>Opciones:</strong><br>
+            &nbsp;&nbsp;&nbsp;• Cambio por uno nuevo<br>
+            &nbsp;&nbsp;&nbsp;• Reintegro del 100% del dinero<br>
+            &nbsp;&nbsp;&nbsp;• Crédito en la tienda con 10% extra<br>
+            4. <strong>Tiempo de resolución:</strong> 48-72hs<br>
+            Todos los productos tienen garantía de 90 días contra defectos de fábrica.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Nuestro programa VIP Club:<br>
+            💎 <strong>Cómo funciona:</strong><br>
+            • Por cada $100 gastados = 1 punto<br>
+            • 100 puntos = $500 de descuento<br>
+            <strong>Beneficios por nivel:</strong><br>
+            🥉 <strong>Bronce</strong> (0-500 puntos): 5% descuento permanente<br>
+            🥈 <strong>Plata</strong> (501-1000): 10% + envíos gratis<br>
+            🥇 <strong>Oro</strong> (1001+): 15% + acceso anticipado a lanzamientos<br>
+            Registrate gratis y empezá a acumular puntos hoy!</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Aceptan mercadería usada como parte de pago?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos nuestro programa "Trade-In":<br>
+            👟 <strong>Productos aceptados:</strong><br>
+            • Zapatillas de marca (buen estado)<br>
+            • Ropa deportiva premium<br>
+            • Accesorios originales<br>
+            <strong>Proceso:</strong><br>
+            1. Envianos fotos del producto<br>
+            2. Nuestro equipo lo evalúa (24hs)<br>
+            3. Te damos un valor de canje<br>
+            4. Lo usás como crédito en tu próxima compra<br>
+            <strong>Bonificación:</strong> Hasta 40% del valor original.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo cancelar mi pedido?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí, podés cancelar tu pedido:<br>
+            ✅ <strong>ANTES del envío:</strong><br>
+            • Cancelación 100% gratis<br>
+            • Reembolso inmediato (2-5 días hábiles)<br>
+            • Desde tu cuenta o por WhatsApp<br>
+            ⚠️ <strong>DESPUÉS del envío:</strong><br>
+            • Ya no se puede cancelar<br>
+            • Podés rechazar el paquete al recibirlo<br>
+            • O iniciá una devolución dentro de los 30 días<br>
+            ¿Cuál es el número de tu pedido?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen gift cards?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Nuestras tarjetas regalo son perfectas:<br>
+            🎁 <strong>Valores disponibles:</strong><br>
+            • $10.000 / $20.000 / $50.000 / $100.000<br>
+            • O elegí el monto que quieras (mín. $5.000)<br>
+            <strong>Características:</strong><br>
+            • Válidas por 12 meses<br>
+            • Usables online y en tiendas<br>
+            • Entrega inmediata por email<br>
+            • Podés personalizarla con mensaje<br>
+            • Sin cargo adicional<br>
+            ¿Para quién sería el regalo?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo me registro en la web?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Registrarte es súper fácil:<br>
+            1. <strong>Hacé click</strong> en "Crear cuenta"<br>
+            2. <strong>Completá:</strong> Email y contraseña<br>
+            3. <strong>Verificá</strong> tu email (te llega un link)<br>
+            4. <strong>¡Listo!</strong> Ya podés comprar<br>
+            <strong>Beneficios de tener cuenta:</strong><br>
+            ✓ 15% OFF en tu primera compra<br>
+            ✓ Guardás tus datos para comprar más rápido<br>
+            ✓ Seguimiento de pedidos<br>
+            ✓ Acceso a ventas exclusivas<br>
+            ✓ Acumulás puntos VIP</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen app móvil?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Descargá nuestra app:<br>
+            📱 <strong>iOS:</strong> App Store - "Tienda Online"<br>
+            🤖 <strong>Android:</strong> Google Play - "Tienda Online"<br>
+            <strong>Beneficios exclusivos de la app:</strong><br>
+            • 10% OFF adicional en tu primera compra<br>
+            • Notificaciones de ofertas y lanzamientos<br>
+            • Escaneo de productos en tienda<br>
+            • Acceso a descuentos exclusivos<br>
+            • Compra más rápida con 1 click<br>
+            ¡Descargala gratis ahora!</div>
+        </div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
+# DEMO FINANZAS
+# =========================
+HTML_DEMO_FINANZAS = f"""{HTML_BASE}
+{HEADER}
+
+<style>
+.demo-container {{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}}
+
+.demo-header {{
+    text-align: center;
+    margin-bottom: 40px;
+}}
+
+.demo-header img {{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}}
+
+.demo-header h1 {{
+    font-size: 32px;
+    margin-bottom: 10px;
+}}
+
+.demo-header p {{
+    color: #666;
+    font-size: 16px;
+}}
+
+.demo-chat {{
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}}
+
+.demo-message {{
+    margin-bottom: 20px;
+}}
+
+.demo-bubble {{
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 6px;
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.5;
+}}
+
+.demo-user {{
+    background: #111;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 6px;
+}}
+
+.demo-bot {{
+    background: #f6f7fb;
+    color: #222;
+    border-bottom-left-radius: 6px;
+}}
+
+.demo-label {{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}}
+
+.demo-back {{
+    text-align: center;
+    margin-top: 40px;
+}}
+
+.demo-back a {{
+    background: #f4b400;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}}
+</style>
+
+<div class="demo-container">
+    <div class="demo-header">
+        <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
+        <h1>Asistente de Finanzas</h1>
+        <p>Demo interactivo - Asesoramiento Financiero</p>
+    </div>
+    
+    <div class="demo-chat">
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿A cuánto está el dólar hoy?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Cotizaciones del dólar al 26/01/2026:<br>
+            💵 <strong>Oficial:</strong> $1.050 compra / $1.090 venta<br>
+            💵 <strong>Blue:</strong> $1.280 compra / $1.300 venta<br>
+            💵 <strong>MEP:</strong> $1.210<br>
+            💵 <strong>CCL:</strong> $1.225<br>
+            💵 <strong>Cripto (USDT):</strong> $1.285<br>
+            <strong>Variación:</strong> +0.3% vs ayer<br>
+            ¿Te interesa alguna operación en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Conviene invertir en plazo fijo o fondos comunes?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Depende de tu perfil y horizonte temporal:<br>
+            📊 <strong>Plazo Fijo tradicional:</strong><br>
+            • Tasa: 110% anual (9.2% mensual)<br>
+            • Riesgo: Muy bajo<br>
+            • Liquidez: 30-60 días<br>
+            📈 <strong>Fondos Comunes de Inversión:</strong><br>
+            • Money Market: 120% anual - Riesgo bajo<br>
+            • Renta fija: 130-150% - Riesgo medio<br>
+            • Renta mixta: Potencial 160%+ - Riesgo medio-alto<br>
+            <strong>Mi recomendación:</strong> Diversificá: 50% PF + 50% FCI. ¿Cuánto querés invertir?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo abro una cuenta para invertir?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Abrir tu cuenta es simple y 100% online:<br>
+            1. <strong>Completá el formulario</strong> (5 minutos)<br>
+            2. <strong>Validá tu identidad:</strong> DNI + selfie<br>
+            3. <strong>Firmá digitalmente</strong><br>
+            4. <strong>Transferí fondos</strong> desde tu banco<br>
+            5. <strong>¡Empezá a invertir!</strong><br>
+            <strong>Requisitos:</strong><br>
+            • Ser mayor de 18 años<br>
+            • DNI argentino<br>
+            • CBU/CVU propio<br>
+            ¿Te ayudo a empezar el proceso?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué son los bonos y cómo funcionan?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Los bonos son títulos de deuda:<br>
+            📝 <strong>Cómo funcionan:</strong><br>
+            • Le prestás plata al gobierno o empresa<br>
+            • Te pagan intereses periódicos (renta)<br>
+            • Al vencimiento te devuelven el capital<br>
+            <strong>Tipos principales:</strong><br>
+            💰 <strong>Bonos en pesos:</strong> CER, BADLAR, tasa fija<br>
+            💵 <strong>Bonos dollar-linked:</strong> Ajustados por dólar<br>
+            🌎 <strong>Bonos en USD:</strong> Renta en dólares<br>
+            <strong>Rendimiento actual:</strong> Entre 8% y 15% anual en USD<br>
+            ¿Te interesa algún bono en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuál es la diferencia entre CEDEARs y acciones?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Excelente pregunta:<br>
+            🇺🇸 <strong>CEDEARs:</strong><br>
+            • Certificados que representan acciones extranjeras<br>
+            • Cotizan en pesos en Argentina<br>
+            • Accedés a Apple, Tesla, Google, etc.<br>
+            • Podés comprar fracciones<br>
+            🇦🇷 <strong>Acciones locales:</strong><br>
+            • Empresas argentinas (YPF, Galicia, Pampa)<br>
+            • Cotizan en pesos<br>
+            • Mercado más pequeño<br>
+            <strong>Ventaja CEDEARs:</strong> Diversificación internacional en pesos.<br>
+            Top CEDEARs: AAPL, GOOGL, MSFT, TSLA</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tengo que pagar impuestos por invertir?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí, hay impuestos a considerar:<br>
+            💰 <strong>Ganancias de capital:</strong><br>
+            • Acciones/CEDEARs: 15% sobre la ganancia<br>
+            • Bonos en pesos: Exento<br>
+            • Bonos en USD: 15% sobre la ganancia<br>
+            💵 <strong>Impuesto a los Bienes Personales:</strong><br>
+            • Si tu portafolio supera cierto mínimo<br>
+            • Tasa progresiva según monto<br>
+            🏦 <strong>Retención automática:</strong><br>
+            • El broker retiene y deposita por vos<br>
+            <strong>Consejo:</strong> Llevá registro de todas tus operaciones. ¿Querés asesoramiento impositivo?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cuánto necesito para empezar a invertir?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Podés empezar con muy poco:<br>
+            💵 <strong>Monto mínimo:</strong><br>
+            • Fondos Comunes: Desde $1.000<br>
+            • Plazo Fijo: Desde $1.000<br>
+            • CEDEARs: Desde $5.000 (fraccionados)<br>
+            • Acciones locales: Desde $3.000<br>
+            • Bonos: Desde $10.000<br>
+            <strong>Recomendación inicial:</strong><br>
+            Con $50.000 podés armar un portafolio diversificado:<br>
+            • 40% FCI Money Market<br>
+            • 30% CEDEARs<br>
+            • 30% Bonos CER<br>
+            ¿Con cuánto te gustaría empezar?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué es un portafolio diversificado?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Diversificar es no poner todos los huevos en la misma canasta:<br>
+            🎯 <strong>Portafolio conservador:</strong><br>
+            • 60% Fondos de renta fija<br>
+            • 30% Plazo fijo / Money Market<br>
+            • 10% CEDEARs blue chips<br>
+            ⚖️ <strong>Portafolio moderado:</strong><br>
+            • 40% Bonos (CER + USD)<br>
+            • 30% CEDEARs<br>
+            • 20% FCI renta mixta<br>
+            • 10% Cripto<br>
+            🚀 <strong>Portafolio agresivo:</strong><br>
+            • 50% Acciones/CEDEARs<br>
+            • 30% Cripto<br>
+            • 20% Bonos<br>
+            ¿Cuál es tu perfil de riesgo?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Conviene invertir en criptomonedas?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Las cripto tienen alto potencial pero también alto riesgo:<br>
+            ⚠️ <strong>Pros:</strong><br>
+            • Potencial de alta rentabilidad<br>
+            • Descentralizadas<br>
+            • Liquidez 24/7<br>
+            • Cobertura contra inflación<br>
+            ⚠️ <strong>Contras:</strong><br>
+            • Muy volátiles<br>
+            • Sin respaldo ni garantías<br>
+            • Riesgo de hackeos<br>
+            <strong>Mi recomendación:</strong><br>
+            • Máximo 10-15% de tu portafolio<br>
+            • Empezá con BTC y ETH (las más consolidadas)<br>
+            • Usá exchanges regulados<br>
+            ¿Tenés experiencia en cripto?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo saco mi dinero si lo necesito?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">La liquidez varía según el instrumento:<br>
+            ⚡ <strong>Liquidez inmediata:</strong><br>
+            • Fondos Money Market: 24-48hs<br>
+            • Acciones/CEDEARs: T+2 (vendés hoy, cobras en 2 días)<br>
+            • Cripto: Instantáneo<br>
+            📅 <strong>Liquidez con plazo:</strong><br>
+            • Plazo Fijo: Al vencimiento (30-60 días)<br>
+            • Bonos: Vendés en mercado secundario (T+2)<br>
+            💸 <strong>Extracción:</strong><br>
+            • Transferís a tu cuenta bancaria<br>
+            • Sin comisiones<br>
+            • Demora: 24-48hs hábiles<br>
+            ¿Necesitás liquidez inmediata?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué comisiones cobran?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Nuestras comisiones son competitivas:<br>
+            📊 <strong>Acciones/CEDEARs:</strong><br>
+            • Compra/venta: 0.6% por operación<br>
+            • Derechos de mercado: 0.05%<br>
+            📈 <strong>Bonos:</strong><br>
+            • Compra/venta: 0.3% por operación<br>
+            💰 <strong>Fondos Comunes:</strong><br>
+            • Sin comisión de compra/venta<br>
+            • Fee del fondo: 1-3% anual<br>
+            🏦 <strong>Otros:</strong><br>
+            • Custodia: GRATIS<br>
+            • Transferencias: GRATIS<br>
+            • Mantenimiento de cuenta: GRATIS<br>
+            ¿Tenés dudas sobre alguna comisión?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Ofrecen asesoramiento personalizado?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos varios niveles de asesoramiento:<br>
+            🤖 <strong>Básico (GRATIS):</strong><br>
+            • Robo-advisor automático<br>
+            • Sugerencias de portafolio<br>
+            • Alertas y recomendaciones<br>
+            👤 <strong>Premium ($15.000/mes):</strong><br>
+            • Asesor financiero personal<br>
+            • Reuniones mensuales<br>
+            • Análisis detallado de cartera<br>
+            💎 <strong>VIP ($50.000/mes):</strong><br>
+            • Gestor de patrimonio dedicado<br>
+            • Estrategias personalizadas<br>
+            • Acceso a productos exclusivos<br>
+            • Atención prioritaria 24/7<br>
+            ¿Te interesa agendar una consulta inicial gratuita?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo está el Merval hoy?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Situación del mercado argentino hoy:<br>
+            📊 <strong>Merval:</strong> 1.456.789 puntos (+2.3%)<br>
+            <strong>Acciones destacadas:</strong><br>
+            📈 <strong>Suben:</strong><br>
+            • YPF: $35.800 (+5.2%)<br>
+            • Galicia: $245 (+3.8%)<br>
+            • Pampa: $89 (+2.1%)<br>
+            📉 <strong>Bajan:</strong><br>
+            • GGAL: $198 (-1.5%)<br>
+            • ALUA: $12.50 (-0.8%)<br>
+            💰 <strong>Volumen operado:</strong> $28.500 millones<br>
+            ¿Te interesa alguna acción en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué es el riesgo país y cómo me afecta?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El riesgo país mide la confianza en Argentina:<br>
+            📉 <strong>Riesgo país actual:</strong> 580 puntos básicos<br>
+            🔍 <strong>Qué significa:</strong><br>
+            • Sobretasa que Argentina debe pagar vs. bonos seguros (USA)<br>
+            • Cuanto más alto = más riesgo perciben los inversores<br>
+            💼 <strong>Cómo te afecta:</strong><br>
+            • Baja ⬇️: Bonos suben, acciones suben, dólar estable<br>
+            • Sube ⬆️: Bonos bajan, incertidumbre, dólar presionado<br>
+            <strong>Contexto:</strong> 580 puntos es moderado-alto.<br>
+            Ideal: Por debajo de 400 puntos.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo invertir en el exterior desde Argentina?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí, hay varias formas:<br>
+            🌎 <strong>1. CEDEARs (la más fácil):</strong><br>
+            • Invertís en empresas USA en pesos<br>
+            • Sin límites ni trabas<br>
+            • Desde Argentina<br>
+            💵 <strong>2. Broker internacional:</strong><br>
+            • Abrís cuenta en Interactive Brokers, TD Ameritrade, etc.<br>
+            • Necesitás dólares afuera<br>
+            • Acceso total a mercados globales<br>
+            🏦 <strong>3. ETFs internacionales:</strong><br>
+            • A través de ciertos brokers locales<br>
+            • Diversificación global<br>
+            <strong>Más popular:</strong> CEDEARs por simplicidad.<br>
+            ¿Te interesa alguna empresa en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué es el carry trade?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">El carry trade es una estrategia financiera:<br>
+            💰 <strong>Cómo funciona:</strong><br>
+            1. Invertís en pesos a tasa alta (ej: 110% anual)<br>
+            2. Esperás que el dólar suba menos que esa tasa<br>
+            3. Al vencimiento, vendés a dólares con ganancia<br>
+            ⚠️ <strong>Ejemplo:</strong><br>
+            • Invertís $1.000.000 al 110% anual = $1.100.000<br>
+            • Si el dólar sube 80%, igual ganaste 30%<br>
+            ⚠️ <strong>Riesgos:</strong><br>
+            • Si el dólar sube más que la tasa, perdés<br>
+            • Devaluaciones bruscas<br>
+            • Cambios de reglas<br>
+            <strong>¿Conviene ahora?</strong> Depende de expectativas de dólar.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen cursos o material educativo?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí! Tenemos una academia completa:<br>
+            📚 <strong>Cursos gratuitos:</strong><br>
+            • Introducción a las inversiones (3 módulos)<br>
+            • Cómo leer un balance<br>
+            • Análisis técnico básico<br>
+            🎓 <strong>Cursos premium:</strong><br>
+            • Trading avanzado ($25.000)<br>
+            • Value investing ($30.000)<br>
+            • Análisis fundamental ($28.000)<br>
+            📊 <strong>Recursos adicionales:</strong><br>
+            • Webinars semanales gratis<br>
+            • Blog con análisis diarios<br>
+            • Newsletter con las mejores oportunidades<br>
+            • Simulador de trading<br>
+            ¿Te interesa algún curso en particular?</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Qué pasa con mis inversiones si quiebra el broker?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tus inversiones están protegidas:<br>
+            🛡️ <strong>Custodia segregada:</strong><br>
+            • Tus activos están a TU nombre<br>
+            • Depositados en Caja de Valores<br>
+            • NO son activos del broker<br>
+            📋 <strong>Si el broker quiebra:</strong><br>
+            • Tus acciones/bonos siguen siendo tuyas<br>
+            • Podés transferirlos a otro broker<br>
+            • El efectivo en la cuenta tiene garantía CNV<br>
+            ✅ <strong>Regulaciones:</strong><br>
+            • Supervisión de la CNV<br>
+            • Auditorías periódicas<br>
+            • Fondo de garantía<br>
+            Estamos regulados y tus inversiones están protegidas.</div>
+        </div>
+
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Cómo me contacto con un asesor?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Tenés varias formas de contactarnos:<br>
+            📞 <strong>Teléfono:</strong> 0800-555-INVER (gratuito)<br>
+            &nbsp;&nbsp;&nbsp;Lun-Vie 9-18hs<br>
+            💬 <strong>WhatsApp:</strong> +54 9 11 5555-INVER<br>
+            &nbsp;&nbsp;&nbsp;Respuesta en minutos<br>
+            📧 <strong>Email:</strong> asesores@broker.com.ar<br>
+            &nbsp;&nbsp;&nbsp;Respuesta en 24hs<br>
+            💻 <strong>Chat web:</strong> En nuestra página<br>
+            &nbsp;&nbsp;&nbsp;Lun-Vie 9-20hs<br>
+            📅 <strong>Agenda videollamada:</strong> Gratuita 30 min<br>
+            ¿Preferís que te llame un asesor o agendamos una videollamada?</div>
+        </div>
+    </div>
+    
+    <div class="demo-back">
+        <a href="?vista=asistentes">← Volver a Asistentes</a>
+    </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
 # RENDER - Usar st.html() sin iframes
 # =========================
 if vista == "demo":
@@ -1903,6 +2820,10 @@ if vista == "demo":
         st.html(HTML_DEMO_FUTBOL)
     elif asistente == "cocina":
         st.html(HTML_DEMO_COCINA)
+    elif asistente == "ecommerce":
+        st.html(HTML_DEMO_ECOMMERCE)
+    elif asistente == "finanzas":
+        st.html(HTML_DEMO_FINANZAS)
     else:
         st.html(HTML_HOME)
 elif vista == "asistentes":
