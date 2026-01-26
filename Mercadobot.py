@@ -780,83 +780,96 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 HTML_PRECIOS = f"""{HTML_BASE}
 {HEADER}
 
-    <div class="section">
-        <h2>Precios</h2>
-        <div class="subtitle">Elegí un plan según tus necesidades.</div>
-
-        <div class="pricing">
-            <div class="plan">
-                <div class="plan-name">Instalacion</div>
-                <div class="plan-desc">Para empezar con 1 asistente</div>
-
-                <div class="plan-price">A medida<span>/mes</span></div>
-                <div class="plan-note">1 asistente · 1 sitio</div>
-
-                <ul class="plan-list">
-                    <li>✅ Instalacion</li>
-                    <li>✅ Personalización básica</li>
-                    <li>✅ Interpretador</li>
-                    <li>✅ Soporte por email</li>
-                </ul>
-
-                <a class="btn-primary plan-btn" href="?vista=asistentes">Elegir plan</a>
-            </div>
-
-            <div class="plan pro">
-                <div class="badge">Más popular</div>
-                <div class="plan-name">Pro</div>
-                <div class="plan-desc">Para negocios que escalan</div>
-
-                <div class="plan-price">US$ 150<span>/mes</span></div>
-                <div class="plan-note">3 asistentes · 1 sitio</div>
-
-                <ul class="plan-list">
-                    <li>✅ Todo lo de Starter</li>
-                    <li>✅ Configuración avanzada</li>
-                    <li>✅ Reporte mensual</li>
-                    <li>✅ Soporte prioritario</li>
-                </ul>
-
-                <a class="btn-primary plan-btn" href="?vista=asistentes">Elegir plan</a>
-            </div>
-
-            <div class="plan">
-                <div class="plan-name">Enterprise</div>
-                <div class="plan-desc">Para empresas a medida</div>
-
-                <div class="plan-price">A medida<span>/mes</span></div>
-                <div class="plan-note">Ilimitado · Multi-sitio</div>
-
-                <ul class="plan-list">
-                    <li>✅ Integraciones CRM/ERP</li>
-                    <li>✅ Roles y permisos</li>
-                    <li>✅ SLA y soporte dedicado</li>
-                    <li>✅ Seguridad/escala</li>
-                    <li>✅ Onboarding incluido</li>
-                </ul>
-
-                <a class="btn-primary plan-btn" href="?vista=home#contacto">Hablar con ventas</a>
-            </div>
-        </div>
-
-        <div class="mini-note">Precios orientativos. Definimos planes según tus límites reales.</div>
+<div class="section">
+    <h2>Precios</h2>
+    <div class="subtitle">
+        Instalamos asistentes de IA entrenados con tus datos reales.
+        Pagás el setup una sola vez y luego solo el uso mensual.
     </div>
 
-    <div class="cta">
-        <h2>Integra en minutos</h2>
-        <p>Instalá un asistente virtual IA fácilmente.</p>
-        <button>Probar gratis</button>
+    <div class="pricing">
 
-        <div class="features">
-            <div class="feature">⚡ Rápido</div>
-            <div class="feature">⚙️ Configurable</div>
-            <div class="feature">🔒 Seguro</div>
-            <div class="feature">💬 Soporte</div>
+        <!-- SETUP -->
+        <div class="plan">
+            <div class="plan-name">Implementación inicial</div>
+            <div class="plan-desc">
+                Dejamos tu asistente funcionando sobre tus datos reales
+            </div>
+
+            <div class="plan-price">Desde US$ 300<span>pago único</span></div>
+            <div class="plan-note">1 asistente · 1 sitio</div>
+
+            <ul class="plan-list">
+                <li>✅ Creación del asistente IA</li>
+                <li>✅ Conexión a base de datos / archivos</li>
+                <li>✅ Configuración de preguntas</li>
+                <li>✅ Instalación en web (iframe o sitio)</li>
+                <li>✅ Ajustes iniciales</li>
+                <li>✅ Soporte de arranque</li>
+            </ul>
+
+            <a class="btn-primary plan-btn" href="?vista=home#contacto">
+                Iniciar implementación
+            </a>
         </div>
+
+        <!-- PRO -->
+        <div class="plan pro">
+            <div class="badge">Más elegido</div>
+            <div class="plan-name">Pro mensual</div>
+            <div class="plan-desc">
+                Uso, mantenimiento y evolución continua
+            </div>
+
+            <div class="plan-price">US$ 150<span>/mes</span></div>
+            <div class="plan-note">Hasta 3 asistentes · 1 sitio</div>
+
+            <ul class="plan-list">
+                <li>✅ Asistentes entrenados con tus datos</li>
+                <li>✅ Interpretación avanzada (IA + reglas)</li>
+                <li>✅ Ajustes y mejoras mensuales</li>
+                <li>✅ Reportes de uso</li>
+                <li>✅ Soporte prioritario</li>
+            </ul>
+
+            <a class="btn-primary plan-btn" href="?vista=asistentes">
+                Contratar plan Pro
+            </a>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan">
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-desc">
+                IA integrada a la operación de tu empresa
+            </div>
+
+            <div class="plan-price">A medida<span>/mes</span></div>
+            <div class="plan-note">Asistentes ilimitados · Multi-sitio</div>
+
+            <ul class="plan-list">
+                <li>✅ Integraciones ERP / CRM</li>
+                <li>✅ Roles y permisos</li>
+                <li>✅ SLA y soporte dedicado</li>
+                <li>✅ Seguridad y escalabilidad</li>
+                <li>✅ Onboarding completo</li>
+            </ul>
+
+            <a class="btn-primary plan-btn" href="?vista=home#contacto">
+                Hablar con ventas
+            </a>
+        </div>
+
     </div>
+
+    <div class="mini-note">
+        Precios orientativos. Ajustamos planes según volumen y complejidad real.
+    </div>
+</div>
 
 {FOOTER}
 """
+
 
 # =========================
 # RENDER
@@ -867,6 +880,7 @@ elif vista == "precios":
     components.html(HTML_PRECIOS, height=1800, scrolling=False)
 else:
     components.html(HTML_HOME, height=1650, scrolling=False)
+
 
 
 
