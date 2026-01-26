@@ -971,9 +971,34 @@ body {
         background-color: #f6f7fb !important;
     }
     
+    /* FORZAR COLORES DE TEXTO OSCUROS PARA QUE SE LEAN */
+    h1, h2, h3, h4, h5, h6, p, span, div, a {
+        color: #333 !important;
+    }
+    
+    .cta h2 {
+        color: #000 !important;
+        font-weight: 800 !important;
+    }
+    
+    .cta p {
+        color: #666 !important;
+    }
+    
+    .footer,
+    .footer a {
+        color: #666 !important;
+    }
+    
     /* Elementos con fondos específicos que NO deben cambiar */
     .hero-impact {
         background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%) !important;
+    }
+    
+    .hero-impact h1,
+    .hero-impact p,
+    .hero-impact span {
+        color: #fff !important;
     }
     
     .cta {
@@ -995,6 +1020,11 @@ body {
     .bubble,
     .demo-bubble {
         background: revert !important;
+        color: revert !important;
+    }
+    
+    button, .btn-primary {
+        color: #000 !important;
     }
     
     .header {
