@@ -3,7 +3,21 @@ import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide")
 
-html = """
+# =========================
+# VISTA (HOME / ASISTENTES) POR QUERY PARAM
+# =========================
+try:
+    vista = st.query_params.get("vista", "home")
+except Exception:
+    qp = st.experimental_get_query_params()
+    vista = qp.get("vista", ["home"])[0]
+
+BASE_URL = "https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/"
+
+# =========================
+# HTML + CSS (BASE)
+# =========================
+CSS_BASE = """
 <style>
 * {
     box-sizing: border-box;
@@ -36,6 +50,8 @@ body {
 .logo {
     font-size: 22px;
     font-weight: 800;
+    text-decoration: none;
+    color: #000;
 }
 .logo span { color: #f4b400; }
 
@@ -44,6 +60,13 @@ body {
     gap: 28px;
     font-weight: 500;
     color: #555;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555;
+    cursor: pointer;
 }
 
 .btn-login {
@@ -94,15 +117,18 @@ body {
     border-radius: 14px;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-secondary {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
     color: #555;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* =========================
@@ -259,20 +285,33 @@ body {
     align-items: center;
 }
 </style>
+"""
 
+# =========================
+# HEADER (COMÚN)
+# =========================
+HEADER = """
 <div class="wrapper">
 
     <!-- HEADER -->
     <div class="header">
-        <div class="logo">MERCADO<span>BOT</span></div>
+        <a class="logo" href="?vista=home">MERCADO<span>BOT</span></a>
         <div class="nav">
-            <div>Inicio</div>
-            <div>Asistentes</div>
-            <div>Precios</div>
-            <div>Soporte</div>
+            <a href="?vista=home">Inicio</a>
+            <a href="?vista=asistentes">Asistentes</a>
+            <a href="?vista=home#precios">Precios</a>
+            <a href="?vista=home#soporte">Soporte</a>
         </div>
         <div class="btn-login">Iniciar sesión</div>
     </div>
+"""
+
+# =========================
+# HOME
+# =========================
+HTML_HOME = f"""
+{CSS_BASE}
+{HEADER}
 
     <!-- HERO -->
     <div class="hero">
@@ -280,11 +319,11 @@ body {
             <h1>El marketplace<br>de asistentes IA</h1>
             <p>Automatizá tu negocio con asistentes virtuales inteligentes.</p>
             <div class="hero-actions">
-                <div class="btn-primary">Explorar asistentes</div>
-                <div class="btn-secondary">▶ Ver demo en vivo</div>
+                <a class="btn-primary" href="?vista=asistentes">Explorar asistentes</a>
+                <a class="btn-secondary" href="#demo">▶ Ver demo en vivo</a>
             </div>
         </div>
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistente.png">
+        <img src="{BASE_URL}Asistente.png">
     </div>
 
     <!-- CATEGORÍAS -->
@@ -297,35 +336,35 @@ body {
         </div>
     </div>
 
-    <!-- ASISTENTES -->
+    <!-- ASISTENTES (HOME) -->
     <div class="section">
         <h2>Asistentes IA listos para potenciar tu negocio</h2>
         <div class="subtitle">Explorá, elegí e instalá asistentes inteligentes según tus necesidades.</div>
 
         <div class="cards">
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefutbol.png">
+                <img src="{BASE_URL}Asistentefutbol.png">
                 <h3>Asistente de Fútbol</h3>
                 <p>Resultados, noticias y estadísticas del mundo del fútbol.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png">
+                <img src="{BASE_URL}Asistentecocina.png">
                 <h3>Asistente de Cocina</h3>
                 <p>Recetas rápidas, consejos de cocina y conversiones de ingredientes.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png">
+                <img src="{BASE_URL}Asistenteecommerce.png">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Respuestas automáticas sobre productos, pedidos y envíos.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png">
+                <img src="{BASE_URL}Asistentefinanzas.png">
                 <h3>Asistente de Finanzas</h3>
                 <p>Información financiera, cotizaciones y análisis de inversiones.</p>
                 <button>Ver asistente</button>
@@ -356,4 +395,110 @@ body {
 </div>
 """
 
-components.html(html, height=1900, scrolling=True)
+# =========================
+# ASISTENTES (LISTADO TOTAL)
+# =========================
+HTML_ASISTENTES = f"""
+{CSS_BASE}
+{HEADER}
+
+    <div class="section">
+        <h2>Todos los asistentes IA</h2>
+        <div class="subtitle">Estos son los asistentes disponibles en MercadoBot.</div>
+
+        <div class="cards">
+            <div class="card">
+                <img src="{BASE_URL}Asistentefutbol.png">
+                <h3>Asistente de Fútbol</h3>
+                <p>Resultados, noticias y estadísticas del mundo del fútbol.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentecocina.png">
+                <h3>Asistente de Cocina</h3>
+                <p>Recetas, consejos y conversiones de ingredientes.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistenteecommerce.png">
+                <h3>Asistente de Ecommerce</h3>
+                <p>Soporte para productos, pedidos, envíos y postventa.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentefinanzas.png">
+                <h3>Asistente de Finanzas</h3>
+                <p>Cotizaciones, reportes y análisis financiero básico.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentestock.png">
+                <h3>Asistente de Stock</h3>
+                <p>Control de inventario, consumos y alertas de reposición.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistenteinmobiliaria.png">
+                <h3>Asistente Inmobiliario</h3>
+                <p>Consultas de propiedades, disponibilidad y agendado.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistenteagendas.png">
+                <h3>Asistente de Turnos / Agenda</h3>
+                <p>Reserva de turnos, confirmaciones y recordatorios.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentedental.png">
+                <h3>Asistente Dental</h3>
+                <p>Turnos, precios orientativos y preparación previa.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentedeviaje.png">
+                <h3>Asistente de Viaje</h3>
+                <p>Itinerarios, recomendaciones y ayuda en reservas.</p>
+                <button>Ver asistente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="cta">
+        <h2>Integra en minutos</h2>
+        <p>Instalá un asistente virtual IA en tu web fácilmente con un simple código.</p>
+        <button>Probar gratis</button>
+
+        <div class="features">
+            <div class="feature">⚡ Fácil y rápido</div>
+            <div class="feature">⚙️ Totalmente configurable</div>
+            <div class="feature">🔒 Seguro y escalable</div>
+            <div class="feature">💬 Soporte incluido</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>Política de privacidad · Términos y condiciones · Contacto</div>
+        <div>Facebook · Twitter · LinkedIn</div>
+    </div>
+
+</div>
+"""
+
+# =========================
+# RENDER
+# =========================
+if vista == "asistentes":
+    components.html(HTML_ASISTENTES, height=2300, scrolling=True)
+else:
+    components.html(HTML_HOME, height=1900, scrolling=True)
