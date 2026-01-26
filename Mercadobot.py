@@ -1468,7 +1468,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteagendas.png" alt="Agenda">
+                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Agenda">
                 <h3>Asistente de Turnos</h3>
                 <p>Reserva de turnos y recordatorios.</p>
                 <button>Ver asistente</button>
