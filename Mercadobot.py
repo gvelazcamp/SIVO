@@ -96,13 +96,17 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
+    min-height: 100%;
+    height: 100%;
 }
 
 .page-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* =========================
