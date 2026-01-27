@@ -1385,8 +1385,8 @@ CHATBOT_WIDGET = """
 #chatbot-widget {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    z-index: 9999;
+    left: 20px;
+    z-index: 999999 !important;
 }
 
 #chatbot-button {
@@ -1402,6 +1402,7 @@ CHATBOT_WIDGET = """
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    z-index: 999999 !important;
 }
 
 #chatbot-button:hover {
@@ -1412,7 +1413,7 @@ CHATBOT_WIDGET = """
 #chatbot-window {
     position: fixed;
     bottom: 90px;
-    right: 20px;
+    left: 20px;
     width: 380px;
     height: 550px;
     background: white;
@@ -1421,6 +1422,7 @@ CHATBOT_WIDGET = """
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 999999 !important;
 }
 
 .chatbot-header {
@@ -1549,7 +1551,7 @@ CHATBOT_WIDGET = """
         width: calc(100vw - 40px);
         height: calc(100vh - 150px);
         bottom: 80px;
-        right: 20px;
+        left: 20px;
         left: 20px;
     }
 }
