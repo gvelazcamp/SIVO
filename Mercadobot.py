@@ -22,10 +22,9 @@ def _qp_get(key: str, default: str = "") -> str:
 if _qp_get("api") == "chat":
     msg = _qp_get("msg", "")
     if msg:
-        from chatbot_responses import get_chatbot_response
         respuesta = get_chatbot_response(msg)
-        # IMPORTANTE: Sin etiquetas HTML, solo texto plano
-        st.text(respuesta)
+        # Marcar con un delimitador único
+        st.markdown(f'<!--CHATBOT_START-->{respuesta}<!--CHATBOT_END-->', unsafe_allow_html=True)
     st.stop()
 
 # =========================
@@ -2211,9 +2210,23 @@ function sendMessage() {
                 })
                 .then(html => {
                     try {
-                        const doc = new DOMParser().parseFromString(html, 'text/html');
-                        const response = doc.body.innerText.trim() || 'Error: respuesta vacía';
-                        addMessage(response, 'bot');
+                        // Buscar la respuesta entre los delimitadores
+                        const startMarker = '<!--CHATBOT_START-->';
+                        const endMarker = '<!--CHATBOT_END-->';
+                        const startIndex = html.indexOf(startMarker);
+                        const endIndex = html.indexOf(endMarker);
+                        
+                        if (startIndex !== -1 && endIndex !== -1) {
+                            const response = html.substring(startIndex + startMarker.length, endIndex).trim();
+                            if (response && response.length > 0) {
+                                addMessage(response, 'bot');
+                            } else {
+                                addMessage('⚠️ Error: respuesta vacía del servidor.', 'bot');
+                            }
+                        } else {
+                            console.error('No se encontraron los delimitadores de respuesta');
+                            addMessage('⚠️ Error: no pude leer la respuesta del servidor.', 'bot');
+                        }
                     } catch (e) {
                         console.error("Parse error:", e);
                         addMessage('⚠️ Error: no pude procesar la respuesta del servidor.', 'bot');
