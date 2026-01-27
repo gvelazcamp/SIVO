@@ -1769,15 +1769,16 @@ body {
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     border: none;
-    cursor: grab;
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
     display: flex !important;
     align-items: center;
     justify-content: center;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #chatbot-button:hover {
+    transform: scale(1.1);
     box-shadow: 0 6px 25px rgba(244, 180, 0, 0.6);
 }
 
@@ -2094,20 +2095,23 @@ body {
 <script>
 let isOpen = false;
 let isDragging = false;
+let hasMoved = false;
 let startX, startY, startLeft, startBottom;
 
 const wrapper = document.getElementById('chatbot-wrapper');
+const button = document.getElementById('chatbot-button');
 
-// DRAG & DROP
-wrapper.addEventListener('mousedown', function(e) {
-    if (e.target.closest('.chat-messages') || e.target.closest('.chat-input') || e.target.closest('.close-button')) return;
+// DRAG & DROP - solo desde el header cuando está abierto
+document.getElementById('drag-handle').addEventListener('mousedown', function(e) {
+    if (e.target.closest('.close-button')) return;
     
     isDragging = true;
+    hasMoved = false;
     startX = e.clientX;
     startY = e.clientY;
     
     const rect = wrapper.getBoundingClientRect();
-    const parentRect = wrapper.parentElement.getBoundingClientRect();
+    const parentRect = wrapper.offsetParent.getBoundingClientRect();
     
     startLeft = rect.left - parentRect.left;
     startBottom = parentRect.bottom - rect.bottom;
@@ -2122,6 +2126,7 @@ wrapper.addEventListener('mousedown', function(e) {
 document.addEventListener('mousemove', function(e) {
     if (!isDragging) return;
     
+    hasMoved = true;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     
@@ -2133,7 +2138,7 @@ document.addEventListener('mouseup', function() {
     isDragging = false;
 });
 
-// TOGGLE CHAT
+// TOGGLE CHAT - click en botón
 function toggleChat(e) {
     if (e) e.stopPropagation();
     isOpen = !isOpen;
