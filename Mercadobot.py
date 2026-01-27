@@ -1343,6 +1343,313 @@ FOOTER = """
 """
 
 # =========================
+# CHATBOT WIDGET FLOTANTE
+# =========================
+CHATBOT_WIDGET = """
+<!-- CHATBOT FLOTANTE -->
+<div id="chatbot-widget">
+    <button id="chatbot-button" onclick="toggleChat()">
+        <span id="chatbot-icon">💬</span>
+        <span id="chatbot-close" style="display:none;">✕</span>
+    </button>
+    
+    <div id="chatbot-window" style="display:none;">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <div class="chatbot-title">Asistente MercadoBot</div>
+                    <div class="chatbot-status">● En línea</div>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="chatbot-close-btn">✕</button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="chatbot-message bot">
+                <div class="chatbot-bubble bot">
+                    ¡Hola! 👋 Soy el asistente de MercadoBot.<br>
+                    Preguntame sobre precios, integraciones, o cómo funciona el chatbot.
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()" class="chatbot-send-btn">Enviar</button>
+        </div>
+    </div>
+</div>
+
+<style>
+#chatbot-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#chatbot-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4b400 0%, #ffd700 100%);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(244,180,0,0.4);
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#chatbot-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(244,180,0,0.6);
+}
+
+#chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 380px;
+    height: 550px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #f4b400 0%, #ffd700 100%);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chatbot-avatar {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.chatbot-title {
+    font-weight: 700;
+    color: #000;
+    font-size: 16px;
+}
+
+.chatbot-status {
+    font-size: 12px;
+    color: rgba(0,0,0,0.7);
+}
+
+.chatbot-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f6f7fb;
+}
+
+.chatbot-message {
+    margin-bottom: 16px;
+}
+
+.chatbot-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 85%;
+    display: inline-block;
+}
+
+.chatbot-bubble.user {
+    background: #111;
+    color: white;
+    float: right;
+    clear: both;
+    border-bottom-right-radius: 4px;
+}
+
+.chatbot-bubble.bot {
+    background: white;
+    color: #222;
+    float: left;
+    clear: both;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chatbot-input-area {
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 10px;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+#chatbot-input:focus {
+    outline: none;
+    border-color: #f4b400;
+}
+
+.chatbot-send-btn {
+    background: #f4b400;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #000;
+    font-size: 14px;
+}
+
+.chatbot-send-btn:hover {
+    background: #e5a500;
+}
+
+@media (max-width: 768px) {
+    #chatbot-window {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 150px);
+        bottom: 80px;
+        right: 20px;
+        left: 20px;
+    }
+}
+</style>
+
+<script>
+let chatHistory = [];
+
+function toggleChat() {
+    const window = document.getElementById('chatbot-window');
+    const icon = document.getElementById('chatbot-icon');
+    const close = document.getElementById('chatbot-close');
+    
+    if (window.style.display === 'none') {
+        window.style.display = 'flex';
+        icon.style.display = 'none';
+        close.style.display = 'block';
+    } else {
+        window.style.display = 'none';
+        icon.style.display = 'block';
+        close.style.display = 'none';
+    }
+}
+
+async function sendMessage() {
+    const input = document.getElementById('chatbot-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    addMessage(message, 'user');
+    input.value = '';
+    
+    const messagesDiv = document.getElementById('chatbot-messages');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chatbot-message bot';
+    typingDiv.id = 'typing-indicator';
+    typingDiv.innerHTML = '<div class="chatbot-bubble bot">Escribiendo...</div>';
+    messagesDiv.appendChild(typingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    
+    try {
+        chatHistory.push({role: "user", content: message});
+        
+        const response = await fetch("https://api.anthropic.com/v1/messages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                model: "claude-sonnet-4-20250514",
+                max_tokens: 1000,
+                system: `Sos el asistente virtual de MercadoBot, una empresa que crea chatbots con IA para negocios.
+
+INFORMACIÓN CLAVE:
+- Instalamos chatbots IA personalizados que responden 24/7
+- Integraciones: WhatsApp, Instagram, Web, Shopify, Mercado Pago, Email
+- Prueba gratuita de 7 días, sin tarjeta de crédito
+- Implementación: casos simples 2-3 días, complejos 1-2 semanas
+- No necesitás saber programar, lo configuramos todo nosotros
+- Capturamos leads y derivamos a humanos cuando es necesario
+- Los datos están encriptados y seguros
+
+PRECIOS (si preguntan):
+- Plan Básico: Desde $25.000/mes
+- Plan Pro: Desde $50.000/mes  
+- Plan Enterprise: Personalizado
+
+Respondé de forma amigable, concisa y directa. Si piden una demo, pediles su email.
+Si preguntás algo que no sabés, derivá a contacto: hola@mercadobot.com`,
+                messages: chatHistory
+            })
+        });
+        
+        const data = await response.json();
+        document.getElementById('typing-indicator').remove();
+        
+        const botResponse = data.content[0].text;
+        addMessage(botResponse, 'bot');
+        chatHistory.push({role: "assistant", content: botResponse});
+        
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('typing-indicator').remove();
+        addMessage('Disculpá, hubo un error. Escribinos a hola@mercadobot.com', 'bot');
+    }
+}
+
+function addMessage(text, sender) {
+    const messagesDiv = document.getElementById('chatbot-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${sender}`;
+    messageDiv.innerHTML = `<div class="chatbot-bubble ${sender}">${text}</div>`;
+    messagesDiv.appendChild(messageDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+</script>
+"""
+
+# =========================
 # HOME (MODIFICADO: chatbot protagonista)
 # =========================
 HTML_HOME = f"""{HTML_BASE}
@@ -1677,6 +1984,8 @@ HTML_HOME = f"""{HTML_BASE}
             </div>
         </div>
     </div>
+
+""" + CHATBOT_WIDGET + """
 
 {FOOTER}
 """
