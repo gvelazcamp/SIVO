@@ -2165,7 +2165,11 @@ function sendMessage() {
         showTyping();
         setTimeout(() => {
             hideTyping();
-            addMessage(getResponse(message), 'bot');
+            fetch(`/?api=chat&msg=${encodeURIComponent(message)}`)
+                .then(res => res.text())
+                .then(response => {
+                    addMessage(response, 'bot');
+                });
         }, 800);
     }, 200);
 }
