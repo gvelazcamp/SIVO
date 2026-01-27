@@ -24,7 +24,8 @@ if _qp_get("api") == "chat":
     if msg:
         respuesta = get_chatbot_response(msg)
         # Marcadores para que el JS extraiga SOLO la respuesta (sin inyectar todo el HTML de Streamlit)
-        st.markdown(f"<!--MBOT_START-->{respuesta}<!--MBOT_END-->", unsafe_allow_html=True)
+        import html as _html
+        st.markdown(f'<div id="mbot-response">{_html.escape(str(respuesta))}</div>', unsafe_allow_html=True)
     st.stop()
 
 # =========================
@@ -2189,25 +2190,33 @@ function sendMessage() {
     const input = document.getElementById('message-input');
     const message = input.value.trim();
     if (!message) return;
-    
+
     addMessage(message, 'user');
     input.value = '';
-    
+
     setTimeout(() => {
         showTyping();
         setTimeout(() => {
             hideTyping();
+
             fetch(`/?api=chat&msg=${encodeURIComponent(message)}&t=${Date.now()}`, { cache: "no-store" })
                 .then(res => res.text())
                 .then(html => {
-                    const m = html.match(/<!--MBOT_START-->([\s\S]*?)<!--MBOT_END-->/);
-                    const response = m ? m[1].trim() : '⚠️ Error: no pude leer la respuesta del servidor.';
-                    addMessage(response, 'bot');
+                    try {
+                        const doc = new DOMParser().parseFromString(html, 'text/html');
+                        const el = doc.querySelector('#mbot-response');
+                        const response = el ? (el.textContent || '').trim() : '⚠️ Error: no pude leer la respuesta del servidor.';
+                        addMessage(response || '⚠️ Error: respuesta vacía.', 'bot');
+                    } catch (e) {
+                        console.error("Parse error:", e);
+                        addMessage('⚠️ Error: no pude procesar la respuesta del servidor.', 'bot');
+                    }
                 })
                 .catch(err => {
                     console.error("Chatbot fetch error:", err);
                     addMessage('⚠️ Error de conexión con el servidor.', 'bot');
                 });
+
         }, 800);
     }, 200);
 }
