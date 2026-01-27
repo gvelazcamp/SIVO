@@ -1646,6 +1646,7 @@ FOOTER_CHATBOT = """
 body { 
     background: #1a1a2e !important; 
     font-family: Inter, system-ui, -apple-system, sans-serif;
+    overflow: visible !important;
 }
 
 .footer-section {
@@ -1674,19 +1675,6 @@ body {
     color: rgba(255,255,255,0.8);
     line-height: 1.6;
     margin-bottom: 12px;
-}
-
-.footer-col a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
-    margin-bottom: 10px;
-    transition: color 0.2s;
-}
-
-.footer-col a:hover {
-    color: #f4b400;
 }
 
 .contact-item {
@@ -1734,6 +1722,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 18px;
+    text-decoration: none;
     transition: background 0.2s;
 }
 
@@ -1761,48 +1750,69 @@ body {
     color: #f4b400;
 }
 
+/* CHATBOT DRAGGABLE */
+#chatbot-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+    cursor: grab;
+}
+
+#chatbot-wrapper:active {
+    cursor: grabbing;
+}
+
 #chatbot-button {
-    position: absolute !important;
-    bottom: 20px !important;
-    right: 20px !important;
     width: 64px;
     height: 64px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     border: none;
-    cursor: pointer;
+    cursor: grab;
     box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
     display: flex !important;
     align-items: center;
     justify-content: center;
-    z-index: 999999 !important;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 #chatbot-button:hover {
-    transform: scale(1.1);
     box-shadow: 0 6px 25px rgba(244, 180, 0, 0.6);
 }
 
 #chatbot-button svg {
-    width: 30px !important;
-    height: 30px !important;
-    fill: white !important;
+    width: 30px;
+    height: 30px;
+    fill: white;
+    pointer-events: none;
 }
 
 #chatbot-container {
-    position: absolute !important;
-    bottom: 90px !important;
-    right: 20px !important;
-    width: 380px;
-    height: 450px;
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 350px;
+    height: 420px;
     background: white;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     display: none;
     flex-direction: column;
-    z-index: 999998 !important;
     overflow: hidden;
+    transform-origin: bottom right;
+    animation: expandUp 0.3s ease;
+}
+
+@keyframes expandUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 #chatbot-container.open {
@@ -1812,37 +1822,42 @@ body {
 .chat-header {
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     color: white;
-    padding: 16px;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: grab;
+}
+
+.chat-header:active {
+    cursor: grabbing;
 }
 
 .chat-header-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .chat-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .chat-header-text h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     margin: 0 0 2px 0;
 }
 
 .chat-header-text p {
-    font-size: 12px;
+    font-size: 11px;
     opacity: 0.9;
     margin: 0;
 }
@@ -1851,10 +1866,10 @@ body {
     background: none;
     border: none;
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1868,12 +1883,12 @@ body {
 .chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: 14px;
     background: #f8f9fa;
 }
 
 .message {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: flex;
     gap: 8px;
 }
@@ -1883,22 +1898,22 @@ body {
 }
 
 .message-avatar {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: #e9ecef;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     flex-shrink: 0;
 }
 
 .message-content {
-    max-width: 70%;
-    padding: 10px 14px;
-    border-radius: 16px;
-    font-size: 14px;
+    max-width: 75%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 13px;
     line-height: 1.4;
 }
 
@@ -1913,7 +1928,7 @@ body {
 }
 
 .chat-input {
-    padding: 12px;
+    padding: 10px;
     background: white;
     border-top: 1px solid #e9ecef;
     display: flex;
@@ -1922,10 +1937,10 @@ body {
 
 .chat-input input {
     flex: 1;
-    padding: 12px 16px;
+    padding: 10px 14px;
     border: 1px solid #e0e0e0;
-    border-radius: 24px;
-    font-size: 14px;
+    border-radius: 20px;
+    font-size: 13px;
     outline: none;
 }
 
@@ -1934,8 +1949,8 @@ body {
 }
 
 .send-button {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400, #ff6b00);
     border: none;
@@ -1946,23 +1961,23 @@ body {
 }
 
 .send-button svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     fill: white;
 }
 
 .typing-indicator {
     display: flex;
     gap: 4px;
-    padding: 12px 16px;
+    padding: 10px 14px;
     background: white;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid #e9ecef;
 }
 
 .typing-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: #ccc;
     border-radius: 50%;
     animation: typing 1.4s infinite;
@@ -1973,7 +1988,23 @@ body {
 
 @keyframes typing {
     0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-6px); }
+    30% { transform: translateY(-5px); }
+}
+
+.drag-hint {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#chatbot-wrapper:hover .drag-hint {
+    opacity: 1;
 }
 </style>
 </head>
@@ -2016,64 +2047,107 @@ body {
         <div>© 2025 MercadoBot. Todos los derechos reservados.</div>
         <div>
             <a href="#">Política de privacidad</a>
-            <a href="#">Términos y condiciones</a>
+            <a href="#">Términos</a>
         </div>
     </div>
 </div>
 
-<button id="chatbot-button" onclick="toggleChat()" title="Abrir chat">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="white"/>
-    </svg>
-</button>
-
-<div id="chatbot-container">
-    <div class="chat-header">
-        <div class="chat-header-info">
-            <div class="chat-avatar">🤖</div>
-            <div class="chat-header-text">
-                <h3>MercadoBot</h3>
-                <p>Estamos aquí para ayudarte</p>
+<!-- CHATBOT DRAGGABLE -->
+<div id="chatbot-wrapper">
+    <div id="chatbot-container">
+        <div class="chat-header" id="drag-handle">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-header-text">
+                    <h3>MercadoBot</h3>
+                    <p>Arrastrá para mover</p>
+                </div>
+            </div>
+            <button class="close-button" onclick="toggleChat(event)">×</button>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    ¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?
+                </div>
             </div>
         </div>
-        <button class="close-button" onclick="toggleChat()">×</button>
-    </div>
-    
-    <div class="chat-messages" id="chat-messages">
-        <div class="message bot">
-            <div class="message-avatar">🤖</div>
-            <div class="message-content">
-                ¡Hola! 👋 Soy tu asistente virtual de MercadoBot. ¿En qué puedo ayudarte hoy?
-            </div>
+        
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')sendMessage()"/>
+            <button class="send-button" onclick="sendMessage()">
+                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg>
+            </button>
         </div>
     </div>
     
-    <div class="chat-input">
-        <input type="text" id="message-input" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')sendMessage()"/>
-        <button class="send-button" onclick="sendMessage()">
-            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg>
-        </button>
-    </div>
+    <button id="chatbot-button" onclick="toggleChat(event)">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="white"/>
+        </svg>
+    </button>
+    <div class="drag-hint">☰ Arrastrá para mover</div>
 </div>
 
 <script>
 let isOpen = false;
+let isDragging = false;
+let startX, startY, startLeft, startBottom;
 
-function toggleChat() {
+const wrapper = document.getElementById('chatbot-wrapper');
+
+// DRAG & DROP
+wrapper.addEventListener('mousedown', function(e) {
+    if (e.target.closest('.chat-messages') || e.target.closest('.chat-input') || e.target.closest('.close-button')) return;
+    
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    
+    const rect = wrapper.getBoundingClientRect();
+    const parentRect = wrapper.parentElement.getBoundingClientRect();
+    
+    startLeft = rect.left - parentRect.left;
+    startBottom = parentRect.bottom - rect.bottom;
+    
+    wrapper.style.right = 'auto';
+    wrapper.style.left = startLeft + 'px';
+    wrapper.style.bottom = startBottom + 'px';
+    
+    e.preventDefault();
+});
+
+document.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    
+    wrapper.style.left = (startLeft + dx) + 'px';
+    wrapper.style.bottom = (startBottom - dy) + 'px';
+});
+
+document.addEventListener('mouseup', function() {
+    isDragging = false;
+});
+
+// TOGGLE CHAT
+function toggleChat(e) {
+    if (e) e.stopPropagation();
     isOpen = !isOpen;
     const container = document.getElementById('chatbot-container');
-    const button = document.getElementById('chatbot-button');
     
     if (isOpen) {
         container.classList.add('open');
-        button.style.transform = 'rotate(90deg)';
         setTimeout(() => document.getElementById('message-input').focus(), 100);
     } else {
         container.classList.remove('open');
-        button.style.transform = 'rotate(0deg)';
     }
 }
 
+// CHAT FUNCTIONS
 function sendMessage() {
     const input = document.getElementById('message-input');
     const message = input.value.trim();
@@ -2087,7 +2161,7 @@ function sendMessage() {
         setTimeout(() => {
             hideTyping();
             addMessage(getResponse(message), 'bot');
-        }, 1000);
+        }, 800);
     }, 200);
 }
 
@@ -2118,17 +2192,13 @@ function hideTyping() {
 function getResponse(msg) {
     const m = msg.toLowerCase();
     if (m.includes('hola') || m.includes('buenos')) return '¡Hola! 😊 ¿En qué puedo ayudarte?';
-    if (m.includes('precio') || m.includes('costo') || m.includes('cuánto')) return 'Nuestros precios son muy competitivos. ¿Qué servicio te interesa?';
-    if (m.includes('horario')) return 'Lunes a Viernes 9:00-18:00, Sábados 9:00-13:00';
-    if (m.includes('asistente') || m.includes('demo')) return 'Tenemos asistentes para: fútbol ⚽, cocina 🍳, e-commerce 🛒, finanzas 💰, ropa 👔 y peluquería 💇';
-    if (m.includes('contacto') || m.includes('email')) return '📞 +598 99 123 456 | 📧 contacto@mercadobot.com';
-    if (m.includes('gracias')) return '¡De nada! 😊 ¿Algo más?';
-    if (m.includes('chau') || m.includes('adiós')) return '¡Hasta pronto! 👋';
-    return '¿Podrías darme más detalles? También puedes contactarnos directamente.';
+    if (m.includes('precio') || m.includes('costo')) return 'Tenemos planes desde $29/mes. ¿Querés más info?';
+    if (m.includes('horario')) return 'Atendemos 24/7 con el chatbot 🤖';
+    if (m.includes('demo')) return 'Podés ver demos en la sección Asistentes';
+    if (m.includes('contacto')) return '📧 contacto@mercadobot.com';
+    if (m.includes('gracias')) return '¡De nada! 😊';
+    return '¿Podrías darme más detalles?';
 }
-
-// Auto-abrir en 2 segundos
-setTimeout(() => { if (!isOpen) toggleChat(); }, 2000);
 </script>
 </body>
 </html>
@@ -5054,17 +5124,17 @@ elif vista == "precios":
 else:
     st.html(HTML_HOME)
 
-# CSS para que el chatbot pueda salirse del iframe
+# CSS para overflow visible
 st.markdown("""
 <style>
-div[data-testid="element-container"]:has(iframe[height="600"]) {
+div[data-testid="element-container"]:has(iframe[height="550"]) {
     overflow: visible !important;
 }
-div[data-testid="element-container"]:has(iframe[height="600"]) iframe {
+div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
-components.html(FOOTER_CHATBOT, height=600)
+components.html(FOOTER_CHATBOT, height=550)
