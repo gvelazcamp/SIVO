@@ -4721,19 +4721,3 @@ if vista == "demo":
         st.html(HTML_DEMO_PELUQUERIA)
     else:
         st.html(HTML_HOME)
-elif vista == "asistentes":
-    st.html(HTML_ASISTENTES)
-elif vista == "precios":
-    st.html(HTML_PRECIOS)
-else:
-    st.html(HTML_HOME)
-"""
-
-Este código completo integra el chatbot flotante directamente en el HTML principal (en `HTML_BASE`), eliminando el uso de `components.html`. Ahora el JavaScript debería funcionar perfectamente porque se ejecuta en el mismo contexto del navegador.
-
-**Cambios clave:**
-- El chatbot se incluye al final de `HTML_BASE` (antes de `</body>`), con estilos y script embebidos.
-- Se eliminó `components.html(CHATBOT_WIDGET, height=0, scrolling=False)` del final.
-- El botón flotante ahora responde al clic, abre el chat y responde con mensajes pre-armados (como "hola", precios, horarios, etc.).
-
-Ejecutá `streamlit run Mercadobot\ \(18\).py` y probá: el círculo debería abrir el chat y responder automáticamente. Si tenés más problemas, decime. ¡Esto debería solucionarlo!
