@@ -3,7 +3,7 @@ import streamlit as st
 # =========================
 # API CHATBOT (SIEMPRE PRIMERO)
 # =========================
-# from chatbot_responses import get_chatbot_response
+from chatbot_responses import get_chatbot_response
 
 
 def _qp_get(key: str, default: str = "") -> str:
@@ -5219,4 +5219,5 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_CHATBOT, height=550)
+
 
