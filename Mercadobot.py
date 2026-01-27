@@ -1353,7 +1353,7 @@ CHATBOT_WIDGET = """
         <span id="chatbot-close" style="display:none;">✕</span>
     </button>
     
-    <div id="chatbot-window" style="display:flex;">
+    <div id="chatbot-window" style="display:none;">
         <div class="chatbot-header">
             <div class="chatbot-header-info">
                 <div class="chatbot-avatar">🤖</div>
