@@ -1629,6 +1629,64 @@ HEADER = """
 
 # FOOTER SIN CHATBOT (para st.html)
 FOOTER = """
+    <!-- SECCIÓN CHATBOT EN VIVO -->
+    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 80px 5%; display: grid; grid-template-columns: 1fr 450px; gap: 60px; align-items: center;">
+        <div style="color: white;">
+            <h2 style="font-size: 36px; font-weight: 800; margin: 0 0 20px 0; line-height: 1.2;">
+                Probá el chatbot<br>
+                <span style="background: linear-gradient(135deg, #f4b400, #ff6b00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">en vivo ahora mismo</span>
+            </h2>
+            <p style="font-size: 18px; color: rgba(255,255,255,0.8); margin: 0 0 30px 0; line-height: 1.6;">
+                Este es el mismo chatbot que podés tener en tu negocio. Escribile cualquier pregunta y mirá cómo responde al instante.
+            </p>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; align-items: flex-start; gap: 16px;">
+                    <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(244,180,0,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <span style="font-size: 24px;">💬</span>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 700; color: white; margin: 0 0 4px 0;">Respuestas instantáneas</h4>
+                        <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin: 0;">Sin esperas. Tu cliente pregunta y obtiene respuesta en segundos.</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start; gap: 16px;">
+                    <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(244,180,0,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <span style="font-size: 24px;">🎯</span>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 700; color: white; margin: 0 0 4px 0;">Personalizado para tu negocio</h4>
+                        <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin: 0;">Entrenamos el bot con tus productos, precios y políticas.</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start; gap: 16px;">
+                    <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(244,180,0,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <span style="font-size: 24px;">🚀</span>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 16px; font-weight: 700; color: white; margin: 0 0 4px 0;">Funcionando en 48 horas</h4>
+                        <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin: 0;">Lo configuramos y lo dejamos andando en tu sitio o WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="?vista=precios" style="background: linear-gradient(135deg, #f4b400, #ff6b00); color: #000; padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block;">Ver planes y precios</a>
+                <a href="?vista=asistentes" style="background: transparent; color: white; padding: 14px 28px; border-radius: 12px; font-weight: 600; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); display: inline-block;">Explorar asistentes</a>
+            </div>
+        </div>
+        
+        <!-- Espacio para el chatbot flotante -->
+        <div style="height: 500px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: rgba(255,255,255,0.5);">
+                <span style="font-size: 48px;">→</span>
+                <p style="margin: 10px 0 0 0; font-size: 14px;">Probalo acá</p>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
         <div>Política de privacidad · Términos y condiciones · Contacto</div>
         <div>Facebook · Twitter · LinkedIn</div>
@@ -4878,21 +4936,28 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 # RENDER
 # =========================
 
-# 1. Primero el chatbot flotante (components.html para JS)
-# Usamos un div contenedor con position fixed para sacarlo del flujo
+# 1. CSS para hacer el iframe del chatbot flotante
 st.markdown("""
 <style>
-/* Hacer que el iframe del chatbot no ocupe espacio y flote */
-[data-testid="stHtml"] + div[data-testid="element-container"] iframe,
-div[data-testid="element-container"]:last-of-type iframe {
+/* Hacer que el iframe del chatbot flote arriba a la derecha */
+div[data-testid="element-container"]:has(iframe[height="580"]) {
     position: fixed !important;
-    bottom: 60px !important;
+    top: 100px !important;
     right: 20px !important;
     width: 400px !important;
     height: 560px !important;
     z-index: 999999 !important;
+}
+div[data-testid="element-container"]:has(iframe[height="580"]) iframe {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
     border: none !important;
     background: transparent !important;
+}
+/* Ocultar el espacio vacío que deja */
+div[data-testid="element-container"]:last-of-type:not(:has(iframe[height="580"])) {
+    display: none;
 }
 </style>
 """, unsafe_allow_html=True)
