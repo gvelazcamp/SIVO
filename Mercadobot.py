@@ -1491,7 +1491,7 @@ HTML_HOME = f"""{HTML_BASE}
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+                <img src="<?= BASE_URL ?>Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>Asistente de Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
                 <a href="?vista=demo&asistente=peluqueria" style="text-decoration: none;"><button>Ver asistente</button></a>
@@ -8153,4 +8153,5 @@ elif vista == "precios":
     st.html(HTML_PRECIOS)
 else:
     st.html(HTML_HOME)
+
 
