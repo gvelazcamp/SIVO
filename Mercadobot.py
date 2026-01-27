@@ -1627,16 +1627,257 @@ HEADER = """
     </div>
 """
 
+# FOOTER SIN CHATBOT (para st.html)
 FOOTER = """
     <div class="footer">
         <div>Política de privacidad · Términos y condiciones · Contacto</div>
         <div>Facebook · Twitter · LinkedIn</div>
     </div>
 </div>
+</body>
+</html>
+"""
 
-<!-- CHATBOT FLOTANTE -->
+# CHATBOT FLOTANTE SEPARADO (para components.html)
+CHATBOT_WIDGET = """
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: transparent !important; }
+
+#chatbot-button {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999 !important;
+    transition: all 0.3s ease;
+}
+
+#chatbot-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(244, 180, 0, 0.6);
+}
+
+#chatbot-button svg {
+    width: 30px !important;
+    height: 30px !important;
+    fill: white !important;
+}
+
+#chatbot-container {
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 20px !important;
+    width: 380px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    z-index: 999998 !important;
+    overflow: hidden;
+}
+
+#chatbot-container.open {
+    display: flex !important;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.chat-header-text h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 2px 0;
+}
+
+.chat-header-text p {
+    font-size: 12px;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.message.bot .message-content {
+    background: white;
+    border: 1px solid #e9ecef;
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    color: white;
+}
+
+.chat-input {
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chat-input input:focus {
+    border-color: #f4b400;
+}
+
+.send-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e9ecef;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+}
+
+@media (max-width: 500px) {
+    #chatbot-container {
+        width: calc(100vw - 40px);
+        height: 450px;
+        right: 20px !important;
+        bottom: 90px !important;
+    }
+}
+</style>
+</head>
+<body>
+
 <button id="chatbot-button" onclick="toggleChat()" title="Abrir chat">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="white"/>
     </svg>
 </button>
@@ -1663,156 +1904,87 @@ FOOTER = """
     </div>
     
     <div class="chat-input">
-        <input 
-            type="text" 
-            id="message-input" 
-            placeholder="Escribe tu mensaje..."
-            onkeypress="handleKeyPress(event)"
-        />
-        <button class="send-button" onclick="sendMessage()" id="send-button">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
+        <input type="text" id="message-input" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')sendMessage()"/>
+        <button class="send-button" onclick="sendMessage()">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg>
         </button>
     </div>
 </div>
 
 <script>
-    let isOpen = false;
-    
-    function toggleChat() {
-        isOpen = !isOpen;
-        const container = document.getElementById('chatbot-container');
-        const button = document.getElementById('chatbot-button');
-        
-        if (isOpen) {
-            container.classList.add('open');
-            button.style.transform = 'rotate(90deg)';
-            setTimeout(() => {
-                document.getElementById('message-input').focus();
-            }, 100);
-        } else {
-            container.classList.remove('open');
-            button.style.transform = 'rotate(0deg)';
-        }
-    }
-    
-    function handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
-    }
-    
-    function sendMessage() {
-        const input = document.getElementById('message-input');
-        const message = input.value.trim();
-        
-        if (message === '') return;
-        
-        addMessage(message, 'user');
-        input.value = '';
-        
-        setTimeout(() => {
-            showTypingIndicator();
-            
-            setTimeout(() => {
-                removeTypingIndicator();
-                const botResponse = getBotResponse(message);
-                addMessage(botResponse, 'bot');
-            }, 1200);
-        }, 300);
-    }
-    
-    function addMessage(text, sender) {
-        const messagesContainer = document.getElementById('chat-messages');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message ' + sender;
-        
-        const avatar = document.createElement('div');
-        avatar.className = 'message-avatar';
-        avatar.textContent = sender === 'bot' ? '🤖' : '👤';
-        
-        const content = document.createElement('div');
-        content.className = 'message-content';
-        content.textContent = text;
-        
-        messageDiv.appendChild(avatar);
-        messageDiv.appendChild(content);
-        messagesContainer.appendChild(messageDiv);
-        
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-    
-    function showTypingIndicator() {
-        const messagesContainer = document.getElementById('chat-messages');
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'message bot';
-        typingDiv.id = 'typing-indicator';
-        
-        const avatar = document.createElement('div');
-        avatar.className = 'message-avatar';
-        avatar.textContent = '🤖';
-        
-        const indicator = document.createElement('div');
-        indicator.className = 'typing-indicator';
-        indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-        
-        typingDiv.appendChild(avatar);
-        typingDiv.appendChild(indicator);
-        messagesContainer.appendChild(typingDiv);
-        
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-    
-    function removeTypingIndicator() {
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) {
-            indicator.remove();
-        }
-    }
-    
-    function getBotResponse(userMessage) {
-        const lowerMessage = userMessage.toLowerCase();
-        
-        if (lowerMessage.includes('hola') || lowerMessage.includes('buenos') || lowerMessage.includes('buen día')) {
-            return '¡Hola! 😊 ¿En qué puedo ayudarte hoy?';
-        }
-        
-        if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('cuánto')) {
-            return 'Nuestros precios son muy competitivos. ¿Qué servicio o producto te interesa específicamente?';
-        }
-        
-        if (lowerMessage.includes('horario') || lowerMessage.includes('hora')) {
-            return 'Nuestro horario es de Lunes a Viernes de 9:00 a 18:00 hs. Sábados de 9:00 a 13:00 hs.';
-        }
-        
-        if (lowerMessage.includes('asistente') || lowerMessage.includes('bot') || lowerMessage.includes('demo')) {
-            return '¡Perfecto! Tenemos asistentes para: fútbol ⚽, cocina 🍳, e-commerce 🛒, finanzas 💰, ropa 👔 y peluquería 💇. ¿Cuál te interesa?';
-        }
-        
-        if (lowerMessage.includes('contacto') || lowerMessage.includes('teléfono') || lowerMessage.includes('email')) {
-            return '📞 +598 99 123 456\\n📧 contacto@mercadobot.com\\n💬 También puedes escribirnos por WhatsApp';
-        }
-        
-        if (lowerMessage.includes('gracias')) {
-            return '¡De nada! 😊 ¿Hay algo más en lo que pueda ayudarte?';
-        }
-        
-        if (lowerMessage.includes('adiós') || lowerMessage.includes('chau')) {
-            return '¡Hasta pronto! 👋 Estamos aquí cuando nos necesites.';
-        }
-        
-        return 'Interesante pregunta. ¿Podrías darme más detalles para ayudarte mejor? También puedes contactarnos directamente.';
-    }
-    
-    // Auto-abrir después de 2 segundos
-    setTimeout(() => {
-        if (!isOpen) {
-            toggleChat();
-        }
-    }, 2000);
-</script>
+let isOpen = false;
 
+function toggleChat() {
+    isOpen = !isOpen;
+    const container = document.getElementById('chatbot-container');
+    const button = document.getElementById('chatbot-button');
+    
+    if (isOpen) {
+        container.classList.add('open');
+        button.style.transform = 'rotate(90deg)';
+        setTimeout(() => document.getElementById('message-input').focus(), 100);
+    } else {
+        container.classList.remove('open');
+        button.style.transform = 'rotate(0deg)';
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('message-input');
+    const message = input.value.trim();
+    if (!message) return;
+    
+    addMessage(message, 'user');
+    input.value = '';
+    
+    setTimeout(() => {
+        showTyping();
+        setTimeout(() => {
+            hideTyping();
+            addMessage(getResponse(message), 'bot');
+        }, 1000);
+    }, 200);
+}
+
+function addMessage(text, sender) {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'message ' + sender;
+    div.innerHTML = '<div class="message-avatar">' + (sender === 'bot' ? '🤖' : '👤') + '</div><div class="message-content">' + text + '</div>';
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'message bot';
+    div.id = 'typing';
+    div.innerHTML = '<div class="message-avatar">🤖</div><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+}
+
+function hideTyping() {
+    const t = document.getElementById('typing');
+    if (t) t.remove();
+}
+
+function getResponse(msg) {
+    const m = msg.toLowerCase();
+    if (m.includes('hola') || m.includes('buenos')) return '¡Hola! 😊 ¿En qué puedo ayudarte?';
+    if (m.includes('precio') || m.includes('costo') || m.includes('cuánto')) return 'Nuestros precios son muy competitivos. ¿Qué servicio te interesa?';
+    if (m.includes('horario')) return 'Lunes a Viernes 9:00-18:00, Sábados 9:00-13:00';
+    if (m.includes('asistente') || m.includes('demo')) return 'Tenemos asistentes para: fútbol ⚽, cocina 🍳, e-commerce 🛒, finanzas 💰, ropa 👔 y peluquería 💇';
+    if (m.includes('contacto') || m.includes('email')) return '📞 +598 99 123 456 | 📧 contacto@mercadobot.com';
+    if (m.includes('gracias')) return '¡De nada! 😊 ¿Algo más?';
+    if (m.includes('chau') || m.includes('adiós')) return '¡Hasta pronto! 👋';
+    return '¿Podrías darme más detalles? También puedes contactarnos directamente.';
+}
+
+// Auto-abrir en 2 segundos
+setTimeout(() => { if (!isOpen) toggleChat(); }, 2000);
+</script>
 </body>
 </html>
 """
@@ -4703,7 +4875,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 """
 
 # =========================
-# RENDER - Usar components.html() para que funcione JavaScript
+# RENDER - st.html() para página + iframe flotante para chatbot
 # =========================
 if vista == "demo":
     # Obtener el tipo de asistente del query param
@@ -4713,26 +4885,53 @@ if vista == "demo":
         asistente = "futbol"
     
     if asistente == "futbol":
-        components.html(HTML_DEMO_FUTBOL, height=2500, scrolling=True)
+        st.html(HTML_DEMO_FUTBOL)
     elif asistente == "cocina":
-        components.html(HTML_DEMO_COCINA, height=2500, scrolling=True)
+        st.html(HTML_DEMO_COCINA)
     elif asistente == "ecommerce":
-        components.html(HTML_DEMO_ECOMMERCE, height=2500, scrolling=True)
+        st.html(HTML_DEMO_ECOMMERCE)
     elif asistente == "finanzas":
-        components.html(HTML_DEMO_FINANZAS, height=2500, scrolling=True)
+        st.html(HTML_DEMO_FINANZAS)
     elif asistente == "ropa":
-        components.html(HTML_DEMO_ROPA, height=2500, scrolling=True)
+        st.html(HTML_DEMO_ROPA)
     elif asistente == "peluqueria":
-        components.html(HTML_DEMO_PELUQUERIA, height=2500, scrolling=True)
+        st.html(HTML_DEMO_PELUQUERIA)
     else:
-        components.html(HTML_DEMO_FUTBOL, height=2500, scrolling=True)
+        st.html(HTML_DEMO_FUTBOL)
 
 elif vista == "asistentes":
-    components.html(HTML_ASISTENTES, height=2000, scrolling=True)
+    st.html(HTML_ASISTENTES)
 
 elif vista == "precios":
-    components.html(HTML_PRECIOS, height=2000, scrolling=True)
+    st.html(HTML_PRECIOS)
 
 else:
     # Vista por defecto: home
-    components.html(HTML_HOME, height=3000, scrolling=True)
+    st.html(HTML_HOME)
+
+# CHATBOT FLOTANTE - Inyectado como iframe con position fixed
+import html
+chatbot_escaped = html.escape(CHATBOT_WIDGET)
+st.markdown(f'''
+<style>
+.chatbot-iframe-container {{
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 450px !important;
+    height: 620px !important;
+    z-index: 999999 !important;
+    pointer-events: none;
+}}
+.chatbot-iframe-container iframe {{
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    background: transparent !important;
+    pointer-events: auto;
+}}
+</style>
+<div class="chatbot-iframe-container">
+    <iframe srcdoc="{chatbot_escaped}" scrolling="no"></iframe>
+</div>
+''', unsafe_allow_html=True)
