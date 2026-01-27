@@ -4,23 +4,6 @@ import streamlit.components.v1 as components
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 # =========================
-# CONFIG CHAT (proxy seguro)
-# =========================
-try:
-    MB_CHAT_API_URL = st.secrets.get("MB_CHAT_API_URL", "")
-except Exception:
-    MB_CHAT_API_URL = ""
-# =========================
-# CONFIG SUPABASE (para Edge Function con JWT por defecto)
-# =========================
-try:
-    MB_SUPABASE_ANON_KEY = st.secrets.get("MB_SUPABASE_ANON_KEY", "")
-except Exception:
-    MB_SUPABASE_ANON_KEY = ""
-
-
-
-# =========================
 # FULL WIDTH STREAMLIT
 # =========================
 st.markdown(
@@ -1576,8 +1559,6 @@ CHATBOT_WIDGET = """
 
 <script>
 let chatHistory = [];
-    const MB_CHAT_API_URL = "{{MB_CHAT_API_URL}}";
-    const MB_SUPABASE_ANON_KEY = "{{MB_SUPABASE_ANON_KEY}}";
 console.log("CHATBOT SCRIPT CARGADO");
 
 window.toggleChat = function() {
@@ -1618,17 +1599,11 @@ window.sendMessage = async function() {
     try {
         chatHistory.push({role: "user", content: message});
         
-            if (!MB_CHAT_API_URL || MB_CHAT_API_URL.includes("{{MB_CHAT_API_URL}}")) {
-                throw new Error("MB_CHAT_API_URL no configurada (configurá st.secrets['MB_CHAT_API_URL'])");
-            }
-            const headers = { "Content-Type": "application/json" };
-            if (MB_SUPABASE_ANON_KEY && !MB_SUPABASE_ANON_KEY.includes("{{MB_SUPABASE_ANON_KEY}}")) {
-                headers["Authorization"] = "Bearer " + MB_SUPABASE_ANON_KEY;
-                headers["apikey"] = MB_SUPABASE_ANON_KEY;
-            }
-        const response = await fetch(MB_CHAT_API_URL, {
+        const response = await fetch("https://api.anthropic.com/v1/messages", {
             method: "POST",
-                headers: headers,
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
                 model: "claude-sonnet-4-20250514",
                 max_tokens: 1000,
@@ -1678,10 +1653,6 @@ window.addMessage = function(text, sender) {
 }
 </script>
 """
-
-# Inyectar URL del proxy de chat (no exponer API keys en el navegador)
-CHATBOT_WIDGET = CHATBOT_WIDGET.replace("{{MB_CHAT_API_URL}}", MB_CHAT_API_URL or "")
-CHATBOT_WIDGET = CHATBOT_WIDGET.replace("{{MB_SUPABASE_ANON_KEY}}", MB_SUPABASE_ANON_KEY or "")
 
 # =========================
 # HOME (MODIFICADO: chatbot protagonista)
