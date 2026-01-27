@@ -2212,23 +2212,8 @@ function sendMessage() {
                 .then(html => {
                     try {
                         const doc = new DOMParser().parseFromString(html, 'text/html');
-                        const el = doc.querySelector('#mbot-response');
-                        
-                        if (!el) {
-                            console.error('No se encontró el elemento #mbot-response');
-                            addMessage('⚠️ Error: no pude leer la respuesta del servidor.', 'bot');
-                            return;
-                        }
-                        
-                        // Usar tanto textContent como innerText para mayor compatibilidad
-                        const response = (el.textContent || el.innerText || '').trim();
-                        
-                        if (response && response.length > 0) {
-                            addMessage(response, 'bot');
-                        } else {
-                            console.error('Respuesta vacía del servidor');
-                            addMessage('⚠️ Error: el servidor devolvió una respuesta vacía.', 'bot');
-                        }
+                        const response = doc.body.innerText.trim() || 'Error: respuesta vacía';
+                        addMessage(response, 'bot');
                     } catch (e) {
                         console.error("Parse error:", e);
                         addMessage('⚠️ Error: no pude procesar la respuesta del servidor.', 'bot');
@@ -5217,5 +5202,3 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_CHATBOT, height=550)
-
-
