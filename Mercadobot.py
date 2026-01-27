@@ -4886,10 +4886,10 @@ st.markdown("""
 [data-testid="stHtml"] + div[data-testid="element-container"] iframe,
 div[data-testid="element-container"]:last-of-type iframe {
     position: fixed !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    width: 420px !important;
-    height: 600px !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 400px !important;
+    height: 580px !important;
     z-index: 999999 !important;
     border: none !important;
     background: transparent !important;
@@ -4929,4 +4929,4 @@ else:
     st.html(HTML_HOME)
 
 # 3. Chatbot con components.html (para que funcione JS)
-components.html(CHATBOT_WIDGET, height=600)
+components.html(CHATBOT_WIDGET, height=580)
