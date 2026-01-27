@@ -22,11 +22,17 @@ def _qp_get(key: str, default: str = "") -> str:
 if _qp_get("api") == "chat":
     msg = _qp_get("msg", "")
     if msg:
-        respuesta = get_chatbot_response(msg)
-        # CAMBIO CRÍTICO: No usar html.escape, devolver HTML directamente
-        # El frontend lo parseará correctamente
-        st.markdown(f'<div id="mbot-response">{respuesta}</div>', unsafe_allow_html=True)
+        try:
+            respuesta = get_chatbot_response(msg)
+            respuesta_str = str(respuesta) if respuesta else "Error: No se pudo generar respuesta"
+            # NO usar html.escape para evitar problemas de codificación
+            st.markdown(f'<div id="mbot-response" style="display:none;">{respuesta_str}</div>', unsafe_allow_html=True)
+        except Exception as e:
+            st.markdown(f'<div id="mbot-response" style="display:none;">Error interno: {str(e)}</div>', unsafe_allow_html=True)
+    else:
+        st.markdown('<div id="mbot-response" style="display:none;">Error: mensaje vacío</div>', unsafe_allow_html=True)
     st.stop()
+
 # =========================
 # CONFIGURACIÓN NORMAL APP
 # =========================
@@ -2198,15 +2204,36 @@ function sendMessage() {
         setTimeout(() => {
             hideTyping();
 
-            fetch(`/?api=chat&msg=${encodeURIComponent(message)}&t=${Date.now()}`, { cache: "no-store" })
-                .then(res => res.text())
+            fetch(`/?api=chat&msg=${encodeURIComponent(message)}&t=${Date.now()}`, { 
+                cache: "no-store",
+                method: 'GET'
+            })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! status: ${res.status}`);
+                    }
+                    return res.text();
+                })
                 .then(html => {
                     try {
                         const doc = new DOMParser().parseFromString(html, 'text/html');
                         const el = doc.querySelector('#mbot-response');
-                        // CAMBIO: usar innerHTML en lugar de textContent para mantener el formato HTML
-                        const response = el ? (el.innerHTML || '').trim() : '⚠️ Error: no pude leer la respuesta del servidor.';
-                        addMessage(response || '⚠️ Error: respuesta vacía.', 'bot');
+                        
+                        if (!el) {
+                            console.error('No se encontró el elemento #mbot-response');
+                            addMessage('⚠️ Error: no pude leer la respuesta del servidor.', 'bot');
+                            return;
+                        }
+                        
+                        // Usar tanto textContent como innerText para mayor compatibilidad
+                        const response = (el.textContent || el.innerText || '').trim();
+                        
+                        if (response && response.length > 0) {
+                            addMessage(response, 'bot');
+                        } else {
+                            console.error('Respuesta vacía del servidor');
+                            addMessage('⚠️ Error: el servidor devolvió una respuesta vacía.', 'bot');
+                        }
                     } catch (e) {
                         console.error("Parse error:", e);
                         addMessage('⚠️ Error: no pude procesar la respuesta del servidor.', 'bot');
@@ -2214,7 +2241,7 @@ function sendMessage() {
                 })
                 .catch(err => {
                     console.error("Chatbot fetch error:", err);
-                    addMessage('⚠️ Error de conexión con el servidor.', 'bot');
+                    addMessage('⚠️ Error de conexión: ' + err.message, 'bot');
                 });
 
         }, 800);
