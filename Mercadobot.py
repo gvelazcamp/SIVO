@@ -1642,270 +1642,16 @@ FOOTER = """
 """
 
 # FOOTER + CHATBOT JUNTOS (para components.html)
-FOOTER_CON_CHATBOT = """
+FOOTER_SIMPLE = """
 <!DOCTYPE html>
 <html>
 <head>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    background: #1a1a2e; 
-    font-family: Inter, system-ui, sans-serif;
-}
-
-/* FOOTER */
-.footer-section {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    padding: 40px 20px;
-    color: white;
-    text-align: center;
-}
-
-.footer-section p {
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-/* CHATBOT */
-#chatbot-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
-    font-size: 28px;
-    z-index: 9999;
-    transition: transform 0.3s;
-}
-
-#chatbot-button:hover {
-    transform: scale(1.1);
-}
-
-#chatbot-container {
-    display: none;
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 350px;
-    height: 450px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    flex-direction: column;
-    z-index: 9998;
-}
-
-#chatbot-container.open {
-    display: flex;
-}
-
-.chat-header {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
-    color: white;
-    padding: 16px;
-    border-radius: 20px 20px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-header h3 {
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.close-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-#chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-    background: #f8f9fa;
-}
-
-.message {
-    margin-bottom: 12px;
-    display: flex;
-    gap: 8px;
-}
-
-.message.user {
-    flex-direction: row-reverse;
-}
-
-.message-avatar {
-    font-size: 24px;
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-}
-
-.message-bubble {
-    max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 16px;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.message.bot .message-bubble {
-    background: white;
-    border: 1px solid #e9ecef;
-    color: #333;
-}
-
-.message.user .message-bubble {
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    color: white;
-}
-
-.chat-input {
-    padding: 12px;
-    background: white;
-    border-top: 1px solid #e9ecef;
-    display: flex;
-    gap: 8px;
-}
-
-.chat-input input {
-    flex: 1;
-    padding: 10px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 14px;
-    outline: none;
-}
-
-.chat-input input:focus {
-    border-color: #f4b400;
-}
-
-.send-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.send-btn:hover {
-    transform: scale(1.05);
-}
+body { background: #1a1a2e; font-family: Inter, sans-serif; margin: 0; padding: 40px 20px; color: white; text-align: center; }
 </style>
 </head>
 <body>
-
-<!-- FOOTER -->
-<div class="footer-section">
-    <p>© 2025 MercadoBot. Todos los derechos reservados.</p>
-</div>
-
-<!-- CHATBOT BUTTON -->
-<button id="chatbot-button" onclick="toggleChat()">💬</button>
-
-<!-- CHATBOT CONTAINER -->
-<div id="chatbot-container">
-    <div class="chat-header">
-        <h3>🤖 MercadoBot</h3>
-        <button class="close-btn" onclick="toggleChat()">×</button>
-    </div>
-    
-    <div id="chat-messages">
-        <div class="message bot">
-            <div class="message-avatar">🤖</div>
-            <div class="message-bubble">
-                ¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?
-            </div>
-        </div>
-    </div>
-    
-    <div class="chat-input">
-        <input type="text" id="message-input" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')sendMessage()">
-        <button class="send-btn" onclick="sendMessage()">📤</button>
-    </div>
-</div>
-
-<script>
-function toggleChat() {
-    const container = document.getElementById('chatbot-container');
-    container.classList.toggle('open');
-}
-
-function addMessage(text, isUser) {
-    const messages = document.getElementById('chat-messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message ' + (isUser ? 'user' : 'bot');
-    
-    messageDiv.innerHTML = `
-        <div class="message-avatar">${isUser ? '👤' : '🤖'}</div>
-        <div class="message-bubble">${text}</div>
-    `;
-    
-    messages.appendChild(messageDiv);
-    messages.scrollTop = messages.scrollHeight;
-}
-
-function sendMessage() {
-    const input = document.getElementById('message-input');
-    const message = input.value.trim();
-    
-    if (!message) return;
-    
-    // Agregar mensaje del usuario
-    addMessage(message, true);
-    input.value = '';
-    
-    // Simular "escribiendo..."
-    setTimeout(() => {
-        // Respuesta simple
-        const msgLower = message.toLowerCase();
-        let response;
-        
-        if (msgLower.includes('hola') || msgLower.includes('buenos') || msgLower.includes('buenas')) {
-            response = '¡Hola! 👋 ¿En qué puedo ayudarte hoy?';
-        } else if (msgLower.includes('precio') || msgLower.includes('costo') || msgLower.includes('cuanto')) {
-            response = 'Nuestros planes arrancan desde $25.000/mes. ¿Te gustaría conocer más detalles?';
-        } else if (msgLower.includes('gracias')) {
-            response = '¡De nada! 😊 Estoy acá para ayudarte.';
-        } else if (msgLower.includes('chau') || msgLower.includes('adios')) {
-            response = '¡Hasta pronto! 👋 Cualquier cosa, acá estoy.';
-        } else {
-            response = 'Interesante pregunta. Por ahora estoy en modo de prueba, pero pronto podré ayudarte con eso. ¿Algo más en lo que pueda asistirte?';
-        }
-        
-        addMessage(response, false);
-    }, 500);
-}
-</script>
-
+<p style="font-size: 14px; opacity: 0.7;">© 2025 MercadoBot. Todos los derechos reservados.</p>
 </body>
 </html>
 """
@@ -4842,235 +4588,60 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 </style>
 """, unsafe_allow_html=True)
 
-# Footer simple
-FOOTER_SOLO = """
-<div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 40px 20px; color: white; text-align: center;">
-    <p style="font-size: 14px; opacity: 0.7;">© 2025 MercadoBot. Todos los derechos reservados.</p>
-</div>
-"""
+# Footer + Chatbot juntos con components.html (para que funcione JS)
+components.html(FOOTER_SIMPLE, height=150)
 
-components.html(FOOTER_SOLO, height=150)
 
-# Chatbot flotante SEPARADO (fuera del iframe del footer)
-CHATBOT_FLOTANTE = """
-<div id="chatbot-wrapper">
+# Chatbot flotante COMPLETO
+CHATBOT = """
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;overflow:visible;">
+
 <style>
-#chatbot-wrapper {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999999;
-}
-
-#chatbot-button {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
-    font-size: 28px;
-    transition: transform 0.3s;
-}
-
-#chatbot-button:hover {
-    transform: scale(1.1);
-}
-
-#chatbot-container {
-    display: none;
-    position: fixed;
-    bottom: 90px;
-    right: 0;
-    width: 350px;
-    height: 450px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    flex-direction: column;
-}
-
-#chatbot-container.open {
-    display: flex !important;
-}
-
-.chat-header {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
-    color: white;
-    padding: 16px;
-    border-radius: 20px 20px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-header h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-}
-
-.close-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-#chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-    background: #f8f9fa;
-}
-
-.message {
-    margin-bottom: 12px;
-    display: flex;
-    gap: 8px;
-}
-
-.message.user {
-    flex-direction: row-reverse;
-}
-
-.message-avatar {
-    font-size: 24px;
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-}
-
-.message-bubble {
-    max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 16px;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.message.bot .message-bubble {
-    background: white;
-    border: 1px solid #e9ecef;
-    color: #333;
-}
-
-.message.user .message-bubble {
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    color: white;
-}
-
-.chat-input {
-    padding: 12px;
-    background: white;
-    border-top: 1px solid #e9ecef;
-    display: flex;
-    gap: 8px;
-}
-
-.chat-input input {
-    flex: 1;
-    padding: 10px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 14px;
-    outline: none;
-}
-
-.chat-input input:focus {
-    border-color: #f4b400;
-}
-
-.send-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-}
-
-.send-btn:hover {
-    transform: scale(1.05);
-}
+#bot-btn{position:fixed;bottom:20px;right:20px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f4b400,#ff6b00);border:none;cursor:pointer;box-shadow:0 4px 15px rgba(244,180,0,0.5);font-size:28px;z-index:999999;transition:transform 0.3s;}
+#bot-btn:hover{transform:scale(1.1);}
+#bot-box{display:none;position:fixed;bottom:90px;right:20px;width:350px;height:450px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.3);flex-direction:column;z-index:999998;}
+#bot-box.open{display:flex;}
+.h{background:linear-gradient(135deg,#f4b400,#ff6b00);color:#fff;padding:16px;border-radius:20px 20px 0 0;display:flex;justify-content:space-between;align-items:center;}
+.h h3{font-size:16px;font-weight:600;margin:0;}
+.h button{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;width:32px;height:32px;border-radius:50%;}
+.h button:hover{background:rgba(255,255,255,0.2);}
+#msgs{flex:1;overflow-y:auto;padding:16px;background:#f8f9fa;}
+.m{margin-bottom:12px;display:flex;gap:8px;}
+.m.u{flex-direction:row-reverse;}
+.m .a{font-size:24px;width:32px;height:32px;flex-shrink:0;}
+.m .b{max-width:75%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.4;}
+.m:not(.u) .b{background:#fff;border:1px solid #e9ecef;color:#333;}
+.m.u .b{background:linear-gradient(135deg,#f4b400,#ff6b00);color:#fff;}
+.inp{padding:12px;background:#fff;border-top:1px solid #e9ecef;display:flex;gap:8px;}
+.inp input{flex:1;padding:10px 16px;border:1px solid #e0e0e0;border-radius:20px;font-size:14px;outline:none;}
+.inp input:focus{border-color:#f4b400;}
+.inp button{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f4b400,#ff6b00);border:none;cursor:pointer;font-size:18px;color:#fff;}
 </style>
 
-<button id="chatbot-button" onclick="toggleChat()">💬</button>
+<button id="bot-btn" onclick="toggle()">💬</button>
 
-<div id="chatbot-container">
-    <div class="chat-header">
-        <h3>🤖 MercadoBot</h3>
-        <button class="close-btn" onclick="toggleChat()">×</button>
-    </div>
-    
-    <div id="chat-messages">
-        <div class="message bot">
-            <div class="message-avatar">🤖</div>
-            <div class="message-bubble">¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</div>
-        </div>
-    </div>
-    
-    <div class="chat-input">
-        <input type="text" id="message-input" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')sendMessage()">
-        <button class="send-btn" onclick="sendMessage()">📤</button>
-    </div>
+<div id="bot-box">
+<div class="h"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
+<div id="msgs">
+<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</div></div>
+</div>
+<div class="inp">
+<input id="in" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')send()">
+<button onclick="send()">📤</button>
+</div>
 </div>
 
 <script>
-function toggleChat() {
-    const container = document.getElementById('chatbot-container');
-    container.classList.toggle('open');
-}
-
-function addMessage(text, isUser) {
-    const messages = document.getElementById('chat-messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message ' + (isUser ? 'user' : 'bot');
-    messageDiv.innerHTML = '<div class="message-avatar">' + (isUser ? '👤' : '🤖') + '</div><div class="message-bubble">' + text + '</div>';
-    messages.appendChild(messageDiv);
-    messages.scrollTop = messages.scrollHeight;
-}
-
-function sendMessage() {
-    const input = document.getElementById('message-input');
-    const message = input.value.trim();
-    if (!message) return;
-    
-    addMessage(message, true);
-    input.value = '';
-    
-    setTimeout(() => {
-        const msgLower = message.toLowerCase();
-        let response;
-        
-        if (msgLower.includes('hola') || msgLower.includes('buenos') || msgLower.includes('buenas')) {
-            response = '¡Hola! 👋 ¿En qué puedo ayudarte hoy?';
-        } else if (msgLower.includes('precio') || msgLower.includes('costo') || msgLower.includes('cuanto')) {
-            response = 'Nuestros planes arrancan desde $25.000/mes. ¿Te gustaría conocer más detalles?';
-        } else if (msgLower.includes('gracias')) {
-            response = '¡De nada! 😊 Estoy acá para ayudarte.';
-        } else if (msgLower.includes('chau') || msgLower.includes('adios')) {
-            response = '¡Hasta pronto! 👋 Cualquier cosa, acá estoy.';
-        } else {
-            response = 'Interesante pregunta. Por ahora estoy en modo de prueba, pero pronto podré ayudarte con eso. ¿Algo más en lo que pueda asistirte?';
-        }
-        
-        addMessage(response, false);
-    }, 500);
-}
+function toggle(){document.getElementById('bot-box').classList.toggle('open');}
+function add(t,u){var m=document.getElementById('msgs'),d=document.createElement('div');d.className='m'+(u?' u':'');d.innerHTML='<div class="a">'+(u?'👤':'🤖')+'</div><div class="b">'+t+'</div>';m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function send(){var i=document.getElementById('in'),msg=i.value.trim();if(!msg)return;add(msg,true);i.value='';setTimeout(function(){var l=msg.toLowerCase(),r;if(l.includes('hola')||l.includes('buenos')||l.includes('buenas'))r='¡Hola! 👋 ¿En qué puedo ayudarte hoy?';else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto'))r='Nuestros planes arrancan desde $25.000/mes. ¿Te gustaría conocer más detalles?';else if(l.includes('gracias'))r='¡De nada! 😊 Estoy acá para ayudarte.';else if(l.includes('chau')||l.includes('adios'))r='¡Hasta pronto! 👋 Cualquier cosa, acá estoy.';else r='Interesante pregunta. Por ahora estoy en modo de prueba, pero pronto podré ayudarte con eso. ¿Algo más?';add(r,false);},500);}
 </script>
-</div>
+
+</body>
+</html>
 """
 
-st.markdown(CHATBOT_FLOTANTE, unsafe_allow_html=True)
+components.html(CHATBOT, height=0)
