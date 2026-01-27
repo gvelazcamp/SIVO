@@ -4390,3 +4390,13 @@ elif vista == "precios":
 else:
     st.html(HTML_HOME)
 
+# =========================
+# CHATBOT WIDGET FLOTANTE (AISLADO)
+# =========================
+components.html(
+    CHATBOT_WIDGET,
+    height=900,
+    scrolling=False
+)
+
+
