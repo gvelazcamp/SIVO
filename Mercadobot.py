@@ -1561,16 +1561,17 @@ CHATBOT_WIDGET = """
 let chatHistory = [];
 
 function toggleChat() {
-    const window = document.getElementById('chatbot-window');
+    console.log("toggleChat ejecutado");
+    const chatWindow = document.getElementById('chatbot-window');
     const icon = document.getElementById('chatbot-icon');
     const close = document.getElementById('chatbot-close');
     
-    if (window.style.display === 'none') {
-        window.style.display = 'flex';
+    if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+        chatWindow.style.display = 'flex';
         icon.style.display = 'none';
         close.style.display = 'block';
     } else {
-        window.style.display = 'none';
+        chatWindow.style.display = 'none';
         icon.style.display = 'block';
         close.style.display = 'none';
     }
@@ -1581,6 +1582,7 @@ async function sendMessage() {
     const message = input.value.trim();
     
     if (!message) return;
+    console.log("sendMessage ejecutado con:", message);
     
     addMessage(message, 'user');
     input.value = '';
