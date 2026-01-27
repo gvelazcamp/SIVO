@@ -4886,10 +4886,10 @@ st.markdown("""
 [data-testid="stHtml"] + div[data-testid="element-container"] iframe,
 div[data-testid="element-container"]:last-of-type iframe {
     position: fixed !important;
-    bottom: 20px !important;
+    bottom: 60px !important;
     right: 20px !important;
     width: 400px !important;
-    height: 580px !important;
+    height: 560px !important;
     z-index: 999999 !important;
     border: none !important;
     background: transparent !important;
