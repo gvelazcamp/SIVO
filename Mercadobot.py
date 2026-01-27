@@ -2183,11 +2183,14 @@ function sendMessage() {
         showTyping();
         setTimeout(() => {
             hideTyping();
-            addMessage(getResponse(message), 'bot');
+            fetch(`${window.location.pathname}?api=chat&msg=${encodeURIComponent(message)}`)
+                .then(res => res.text())
+                .then(response => {
+                    addMessage(response, 'bot');
+                });
         }, 800);
     }, 200);
-
-
+}
 
 
 function addMessage(text, sender) {
@@ -2214,6 +2217,16 @@ function hideTyping() {
     if (t) t.remove();
 }
 
+function getResponse(msg) {
+    const m = msg.toLowerCase();
+    if (m.includes('hola') || m.includes('buenos')) return '¡Hola! 😊 ¿En qué puedo ayudarte?';
+    if (m.includes('precio') || m.includes('costo')) return 'Tenemos planes desde $29/mes. ¿Querés más info?';
+    if (m.includes('horario')) return 'Atendemos 24/7 con el chatbot 🤖';
+    if (m.includes('demo')) return 'Podés ver demos en la sección Asistentes';
+    if (m.includes('contacto')) return '📧 contacto@mercadobot.com';
+    if (m.includes('gracias')) return '¡De nada! 😊';
+    return '¿Podrías darme más detalles?';
+}
 </script>
 </body>
 </html>
@@ -5153,9 +5166,6 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_CHATBOT, height=550)
-
-
-
 
 
 
