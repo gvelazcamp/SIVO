@@ -5,12 +5,26 @@ import streamlit as st
 # =========================
 from chatbot_responses import get_chatbot_response
 
+
+def _qp_get(key: str, default: str = "") -> str:
+    """Lee query params soportando API nueva (st.query_params) y vieja (experimental_get_query_params)."""
+    try:
+        v = st.query_params.get(key, default)
+    except Exception:
+        v = st.experimental_get_query_params().get(key, [default])
+
+    if isinstance(v, list):
+        return v[0] if v else default
+    return v if v is not None else default
+
+
 # Interceptar llamada del frontend ANTES de renderizar UI
-if st.query_params.get("api") == "chat":
-    msg = st.query_params.get("msg", "")
+if _qp_get("api") == "chat":
+    msg = _qp_get("msg", "")
     if msg:
         respuesta = get_chatbot_response(msg)
-        st.markdown(respuesta, unsafe_allow_html=True)
+        # Marcadores para que el JS extraiga SOLO la respuesta (sin inyectar todo el HTML de Streamlit)
+        st.markdown(f"<!--MBOT_START-->{respuesta}<!--MBOT_END-->", unsafe_allow_html=True)
     st.stop()
 
 # =========================
@@ -2183,10 +2197,16 @@ function sendMessage() {
         showTyping();
         setTimeout(() => {
             hideTyping();
-            fetch(`${window.location.pathname}?api=chat&msg=${encodeURIComponent(message)}`)
+            fetch(`/?api=chat&msg=${encodeURIComponent(message)}&t=${Date.now()}`, { cache: "no-store" })
                 .then(res => res.text())
-                .then(response => {
+                .then(html => {
+                    const m = html.match(/<!--MBOT_START-->([\s\S]*?)<!--MBOT_END-->/);
+                    const response = m ? m[1].trim() : '⚠️ Error: no pude leer la respuesta del servidor.';
                     addMessage(response, 'bot');
+                })
+                .catch(err => {
+                    console.error("Chatbot fetch error:", err);
+                    addMessage('⚠️ Error de conexión con el servidor.', 'bot');
                 });
         }, 800);
     }, 200);
