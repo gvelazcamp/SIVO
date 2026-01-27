@@ -4367,22 +4367,25 @@ if vista == "demo":
         asistente = "futbol"
     
     if asistente == "futbol":
-        st.html(HTML_DEMO_FUTBOL)
+        components.html(HTML_DEMO_FUTBOL, height=3500, scrolling=True)
     elif asistente == "cocina":
-        st.html(HTML_DEMO_COCINA)
+        components.html(HTML_DEMO_COCINA, height=3500, scrolling=True)
     elif asistente == "ecommerce":
-        st.html(HTML_DEMO_ECOMMERCE)
+        components.html(HTML_DEMO_ECOMMERCE, height=3500, scrolling=True)
     elif asistente == "finanzas":
-        st.html(HTML_DEMO_FINANZAS)
+        components.html(HTML_DEMO_FINANZAS, height=3500, scrolling=True)
     elif asistente == "ropa":
-        st.html(HTML_DEMO_ROPA)
+        components.html(HTML_DEMO_ROPA, height=3500, scrolling=True)
     elif asistente == "peluqueria":
-        st.html(HTML_DEMO_PELUQUERIA)
+        components.html(HTML_DEMO_PELUQUERIA, height=3500, scrolling=True)
     else:
-        st.html(HTML_HOME)
+        components.html(HTML_HOME, height=3500, scrolling=True)
+
 elif vista == "asistentes":
-    st.html(HTML_ASISTENTES)
+    components.html(HTML_ASISTENTES, height=3000, scrolling=True)
+
 elif vista == "precios":
-    st.html(HTML_PRECIOS)
+    components.html(HTML_PRECIOS, height=2500, scrolling=True)
+
 else:
-    st.html(HTML_HOME)
+    components.html(HTML_HOME, height=3500, scrolling=True)
