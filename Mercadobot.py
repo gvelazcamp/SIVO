@@ -1,23 +1,25 @@
 import streamlit as st
+
+# =========================
+# API CHATBOT (SIEMPRE PRIMERO)
+# =========================
+from chatbot_responses import get_chatbot_response
+
+# Interceptar llamada del frontend ANTES de renderizar UI
+if st.query_params.get("api") == "chat":
+    msg = st.query_params.get("msg", "")
+    if msg:
+        respuesta = get_chatbot_response(msg)
+        st.markdown(respuesta, unsafe_allow_html=True)
+    st.stop()
+
+# =========================
+# CONFIGURACIÓN NORMAL APP
+# =========================
 import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
-# =========================
-# API CHATBOT (NO TOCAR UI)
-# =========================
-from chatbot_responses import get_chatbot_response
-
-def api_chatbot():
-    msg = st.query_params.get("msg", "")
-    if msg:
-        respuesta = get_chatbot_response(msg)
-        st.write(respuesta)
-
-# Interceptar llamada del frontend
-if st.query_params.get("api") == "chat":
-    api_chatbot()
-    st.stop()
 
 # =========================
 # FULL WIDTH STREAMLIT
@@ -5163,4 +5165,5 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_CHATBOT, height=550)
+
 
