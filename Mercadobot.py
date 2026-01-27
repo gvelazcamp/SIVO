@@ -1644,30 +1644,121 @@ FOOTER_CHATBOT = """
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    background: #f6f7fb !important; 
+    background: #1a1a2e !important; 
     font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
-.footer-container {
+.footer-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 60px 5% 30px;
+    color: white;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f4b400;
+}
+
+.footer-col p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover {
+    color: #f4b400;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-item span {
+    font-size: 18px;
+}
+
+.footer-cta {
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    transition: transform 0.2s;
+}
+
+.footer-cta:hover {
+    transform: translateY(-2px);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.2s;
+}
+
+.social-links a:hover {
+    background: #f4b400;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 5%;
-    background: #f6f7fb;
-    min-height: 60px;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 14px;
-    color: #666;
+.footer-bottom a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    margin-left: 20px;
 }
 
-.footer-links div {
-    display: flex;
-    gap: 20px;
+.footer-bottom a:hover {
+    color: #f4b400;
 }
 
 #chatbot-button {
@@ -1888,10 +1979,45 @@ body {
 </head>
 <body>
 
-<div class="footer-container">
-    <div class="footer-links">
-        <div>Política de privacidad · Términos y condiciones · Contacto</div>
-        <div>Facebook · Twitter · LinkedIn</div>
+<div class="footer-section">
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>¿Listo para empezar?</h3>
+            <p>Automatizá la atención de tu negocio con un chatbot inteligente que trabaja 24/7.</p>
+            <a href="?vista=precios" class="footer-cta">Ver planes →</a>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Contacto</h3>
+            <div class="contact-item">
+                <span>📧</span> contacto@mercadobot.com
+            </div>
+            <div class="contact-item">
+                <span>📱</span> +598 99 123 456
+            </div>
+            <div class="contact-item">
+                <span>💬</span> WhatsApp disponible
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Seguinos</h3>
+            <p>Novedades, tips y casos de éxito.</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="YouTube">▶️</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div>© 2025 MercadoBot. Todos los derechos reservados.</div>
+        <div>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+        </div>
     </div>
 </div>
 
@@ -4897,22 +5023,6 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 # RENDER
 # =========================
 
-# CSS para que el iframe del footer+chatbot no ocupe espacio extra
-st.markdown("""
-<style>
-/* El iframe del footer ocupa solo lo necesario visualmente */
-div[data-testid="element-container"]:has(iframe[height="600"]) {
-    height: 80px !important;
-    overflow: visible !important;
-}
-div[data-testid="element-container"]:has(iframe[height="600"]) iframe {
-    height: 600px !important;
-    margin-top: -520px !important;
-    border: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
 # Página principal con st.html
 if vista == "demo":
     try:
@@ -4945,4 +5055,4 @@ else:
     st.html(HTML_HOME)
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
-components.html(FOOTER_CHATBOT, height=600)
+components.html(FOOTER_CHATBOT, height=280)
