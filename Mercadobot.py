@@ -54,7 +54,19 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-    
+)
+
+# =========================
+# VISTA
+# =========================
+try:
+    vista = st.query_params.get("vista", "home")
+except Exception:
+    qp = st.experimental_get_query_params()
+    vista = qp.get("vista", ["home"])[0]
+
+BASE_URL = "https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/"
+
 # =========================
 # HTML COMPLETO
 # =========================
@@ -4368,24 +4380,9 @@ if vista == "demo":
         st.html(HTML_DEMO_PELUQUERIA)
     else:
         st.html(HTML_HOME)
-
 elif vista == "asistentes":
     st.html(HTML_ASISTENTES)
-
 elif vista == "precios":
     st.html(HTML_PRECIOS)
-
 else:
     st.html(HTML_HOME)
-
-# =========================
-# CHATBOT WIDGET FLOTANTE (AISLADO)
-# =========================
-components.html(
-    CHATBOT_WIDGET,
-    height=900,
-    scrolling=False
-)
-
-
-
