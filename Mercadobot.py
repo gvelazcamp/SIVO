@@ -2183,7 +2183,7 @@ function sendMessage() {
         showTyping();
         setTimeout(() => {
             hideTyping();
-            fetch(`/?api=chat&msg=${encodeURIComponent(message)}`)
+            fetch(`${window.location.pathname}?api=chat&msg=${encodeURIComponent(message)}`)
                 .then(res => res.text())
                 .then(response => {
                     addMessage(response, 'bot');
@@ -2191,6 +2191,7 @@ function sendMessage() {
         }, 800);
     }, 200);
 }
+
 
 function addMessage(text, sender) {
     const container = document.getElementById('chat-messages');
@@ -5165,5 +5166,6 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_CHATBOT, height=550)
+
 
 
