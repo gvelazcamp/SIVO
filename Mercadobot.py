@@ -4710,16 +4710,17 @@ function send(){var i=document.getElementById('in'),msg=i.value.trim();if(!msg)r
 st.markdown("""
 <style>
 /* Ocultar el contenedor del iframe */
-div[data-testid="stVerticalBlock"]:has(iframe[height="600"]),
-div[data-testid="element-container"]:has(iframe[height="600"]) {
+div[data-testid="stVerticalBlock"]:has(iframe[height="0"]),
+div[data-testid="element-container"]:has(iframe[height="0"]) {
     height: 0 !important;
     overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
+    display: block !important;
 }
 
 /* El iframe en sí */
-iframe[height="600"] {
+iframe[height="0"] {
     position: fixed !important;
     bottom: 0 !important;
     right: 0 !important;
@@ -4730,10 +4731,10 @@ iframe[height="600"] {
     z-index: 999999 !important;
 }
 
-iframe[height="600"] * {
+iframe[height="0"] * {
     pointer-events: auto !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-components.html(CHATBOT, height=600)
+components.html(CHATBOT, height=0)
