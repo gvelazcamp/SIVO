@@ -1667,7 +1667,7 @@ HTML_HOME = f"""{HTML_BASE}
         <div class="hero-impact-content">
             <h1 class="hero-impact-title">
                 Preguntale a tus datos.<br>
-                <span class="hero-impact-subtitle">No busques más entre miles de archivos.</span>
+                <span class="hero-impact-subtitle">No esperes por la informacion, El asistente la encuentra por vos.</span>
             </h1>
             <p class="hero-impact-text">
                 Conectá tus datos y hablá con ellos. Tu asistente IA responde al instante.
@@ -4852,4 +4852,5 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
 
