@@ -2585,7 +2585,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=futbol" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-futbol.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -2970,7 +2970,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=cocina" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-cocina.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -3956,7 +3956,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=finanzas" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-finanzas.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -4305,7 +4305,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=ropa" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-ropa.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -4640,7 +4640,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=peluqueria" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-peluqueria.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -5108,7 +5108,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=viajes" style="text-decoration: none;">
+        <a href="https://DEPLOYAR-demo-viajes.streamlit.app" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
