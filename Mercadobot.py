@@ -2146,7 +2146,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
             <div class="plan-name">Pro mensual</div>
             <div class="plan-desc">Uso, mantenimiento y evolución continua</div>
             
-            <div class="plan-price">US$ 120<span>/mes</span></div>
+            <div class="plan-price">US$ 150<span>/mes</span></div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             <div class="plan-note" style="font-size: 12px; color: #999; margin-top: 4px;">
                 Requiere implementación inicial previa
@@ -4852,3 +4852,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
