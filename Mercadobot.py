@@ -4651,8 +4651,9 @@ var btn = document.getElementById('bot-btn');
 btn.addEventListener('mousedown', function(e) {
     btnDrag = true;
     btnMoved = false;
-    btnX = e.clientX - btn.offsetLeft;
-    btnY = e.clientY - btn.offsetTop;
+    var rect = btn.getBoundingClientRect();
+    btnX = e.clientX - rect.left;
+    btnY = e.clientY - rect.top;
 });
 
 document.addEventListener('mousemove', function(e) {
@@ -4661,6 +4662,11 @@ document.addEventListener('mousemove', function(e) {
         e.preventDefault();
         var newX = e.clientX - btnX;
         var newY = e.clientY - btnY;
+        
+        // Mantener dentro de la ventana
+        newX = Math.max(0, Math.min(newX, window.innerWidth - btn.offsetWidth));
+        newY = Math.max(0, Math.min(newY, window.innerHeight - btn.offsetHeight));
+        
         btn.style.left = newX + 'px';
         btn.style.top = newY + 'px';
         btn.style.right = 'auto';
@@ -4687,8 +4693,9 @@ var header = document.getElementById('drag-header');
 header.addEventListener('mousedown', function(e) {
     if (e.target.tagName === 'BUTTON') return;
     boxDrag = true;
-    boxX = e.clientX - box.offsetLeft;
-    boxY = e.clientY - box.offsetTop;
+    var rect = box.getBoundingClientRect();
+    boxX = e.clientX - rect.left;
+    boxY = e.clientY - rect.top;
     header.style.cursor = 'grabbing';
 });
 
@@ -4697,6 +4704,11 @@ document.addEventListener('mousemove', function(e) {
         e.preventDefault();
         var newX = e.clientX - boxX;
         var newY = e.clientY - boxY;
+        
+        // Mantener dentro de la ventana
+        newX = Math.max(0, Math.min(newX, window.innerWidth - box.offsetWidth));
+        newY = Math.max(0, Math.min(newY, window.innerHeight - box.offsetHeight));
+        
         box.style.left = newX + 'px';
         box.style.top = newY + 'px';
         box.style.right = 'auto';
@@ -4719,16 +4731,32 @@ document.addEventListener('mouseup', function() {
 # CSS para que el iframe del chatbot no ocupe espacio visual
 st.markdown("""
 <style>
+/* Contenedor del iframe */
+div[data-testid="element-container"]:has(iframe[height="600"]) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    pointer-events: none !important;
+    z-index: 99999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* El iframe en sí */
 iframe[height="600"] {
     position: fixed !important;
-    bottom: 0 !important;
-    right: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
     height: 100vh !important;
     border: none !important;
     pointer-events: none !important;
-    z-index: 999999 !important;
+    z-index: 99999999 !important;
 }
+
+/* Los elementos dentro del iframe sí pueden recibir clics */
 iframe[height="600"] * {
     pointer-events: auto !important;
 }
