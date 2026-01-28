@@ -162,7 +162,7 @@ def get_bot_response(prompt):
             "buttons": "acciones_punta_cana"
         }
     
-    elif "florianopolis" in p or "florianópolis" in p or "opción 3" in p:
+    elif "florianopolis" in p or "florianópolis" in p or "opción 3" in p or "floripa" in p:
         return {
             "content": """¡Excelente! 🇧🇷
 
@@ -179,16 +179,350 @@ def get_bot_response(prompt):
             "buttons": "acciones_floripa"
         }
     
-    elif "montaña" in p or "nieve" in p or "esqui" in p:
+    elif "montaña" in p or "nieve" in p or "esqui" in p or "bariloche" in p:
         return {
-            "content": """¡Genial! ❄️ Te muestro las mejores opciones de montaña:""",
-            "buttons": "destinos_montana"
+            "content": """¡Genial! ❄️ Las mejores opciones de montaña:
+
+**OPCIÓN 1 — Bariloche, Argentina 🇦🇷**
+• Hotel 4★ con vista al lago (5 días): USD 950/persona
+• Pase de ski Cerro Catedral incluido
+• Desayuno buffet + cena
+• Excursión Circuito Chico
+⛷️ Temporada alta: Julio-Agosto
+
+**OPCIÓN 2 — Valle Nevado, Chile 🇨🇱**
+• Resort ski in/ski out (6 días): USD 1.800/persona
+• All inclusive (comidas + pases)
+• Clases de ski/snowboard incluidas
+• La mejor nieve de Sudamérica
+❄️ Ideal para esquiadores avanzados
+
+**OPCIÓN 3 — Ushuaia, Argentina 🇦🇷**
+• Hotel boutique (4 días): USD 1.100/persona
+• Cerro Castor ski resort
+• Excursión Canal Beagle
+• Cena con centolla fresca
+🏔️ El fin del mundo + montaña
+
+¿Cuál te copa más?""",
+            "buttons": "montana_opciones"
         }
     
     elif "aventura" in p:
         return {
-            "content": """¡Perfecto para aventureros! 🎒 Mirá estas opciones:""",
-            "buttons": "destinos_aventura"
+            "content": """¡Perfecto para aventureros! 🎒 Mirá estas opciones:
+
+**OPCIÓN 1 — Iguazú Extremo 🇦🇷🇧🇷**
+• 4 días lado argentino + brasilero: USD 650/persona
+• Rapel en las cataratas
+• Kayak en el río Iguazú
+• Trekking Macuco Trail
+• Vuelo en helicóptero sobre las cataratas
+🌊 Adrenalina pura en la selva
+
+**OPCIÓN 2 — Salta Adventure 🇦🇷**
+• Ruta 7 días (Salta-Jujuy-Cafayate): USD 980/persona
+• Trekking Quebrada de Humahuaca
+• Sandboard en dunas de Cafayate
+• Cabalgata en los Valles Calchaquíes
+• Visita bodegas de altura
+🏜️ Paisajes de otro planeta
+
+**OPCIÓN 3 — Mendoza Extremo 🇦🇷**
+• 5 días outdoor: USD 1.100/persona
+• Rafting clase III-IV en río Mendoza
+• Trekking base del Aconcagua
+• Canopy en el Valle de Uco
+• Tour bodegas + degustación
+🏔️ Montaña + vino
+
+¿Qué nivel de adrenalina buscás?""",
+            "buttons": "aventura_opciones"
+        }
+    
+    # NUEVAS RESPUESTAS CONTEXTUALES
+    elif any(word in p for word in ["niños", "niño", "hijos", "familia", "chicos"]):
+        return {
+            "content": """¡Perfecto viaje familiar! 👨‍👩‍👧‍👦
+
+Encontré opciones ideales para viajar con niños:
+
+**OPCIÓN 1 — Disney Orlando 🇺🇸**
+• 7 días parques + hotel: USD 3.200/adulto, USD 2.400/niño
+• Entradas 4 parques (Magic Kingdom, Epcot, Hollywood, Animal Kingdom)
+• Shuttle gratis a los parques
+• Character dining (desayuno con personajes)
+• Fast Pass incluido
+🎢 **Edad ideal:** 4-12 años
+
+**OPCIÓN 2 — Cancún Familiar 🇲🇽**
+• Resort all inclusive con Kids Club: USD 1.400/adulto, USD 700/niño
+• Niños menores de 6 años GRATIS
+• Parque acuático incluido
+• Actividades para niños TODO el día
+• Menú infantil especial
+🏖️ **Edad ideal:** 2-14 años
+
+**OPCIÓN 3 — Bariloche con Niños 🇦🇷**
+• 5 días naturaleza + chocolate: USD 850/adulto, USD 450/niño
+• Museo del Chocolate interactivo
+• Cerro Campanario (telesilla)
+• Paseo en catamarán Victoria
+• Mini trekking familiar
+🍫 **Edad ideal:** 5-12 años
+
+¿Qué edades tienen tus hijos? Así te personalizo mejor la recomendación.""",
+            "buttons": "familia_opciones"
+        }
+    
+    elif any(word in p for word in ["luna de miel", "romántico", "pareja", "casamiento", "boda"]):
+        return {
+            "content": """¡¡¡FELICITACIONES!!! 💍✨
+
+Opciones ROMÁNTICAS para luna de miel:
+
+**OPCIÓN 1 — Maldivas 🇲🇻**
+• 7 noches en villa sobre el agua: USD 4.500/pareja
+• Bungalow privado con acceso directo al mar
+• Desayuno flotante en la piscina privada
+• Cena bajo las estrellas en la playa
+• Masaje de pareja al atardecer
+• Snorkel en arrecifes de coral
+🌴 **El destino más romántico del mundo**
+
+**OPCIÓN 2 — Santorini, Grecia 🇬🇷**
+• 6 noches en cave hotel: USD 3.200/pareja
+• Cueva tradicional con jacuzzi y vista al volcán
+• Tour privado en catamarán al atardecer
+• Cena en Oia con la mejor puesta de sol
+• Sesión de fotos profesional incluida
+• Wine tasting en bodega local
+🌅 **Instagram de ensueño**
+
+**OPCIÓN 3 — Punta Cana Luxury 🇩🇴**
+• 7 noches en resort adults-only: USD 2.800/pareja
+• Suite con jacuzzi privado
+• Butler service 24/7
+• Cena romántica en la playa (privada)
+• Spa couples massage incluido
+• Champagne y fresas todos los días
+🥂 **Lujo caribeño accesible**
+
+**REGALO ESPECIAL:** 
+🎁 Álbum digital profesional de la luna de miel
+📸 1 sesión de fotos incluida en el destino
+
+¿Para cuándo es la boda? Te armo un plan perfecto.""",
+            "buttons": "luna_miel_opciones"
+        }
+    
+    elif any(word in p for word in ["solo", "sola", "mochilero", "backpacker", "viajo solo"]):
+        return {
+            "content": """¡Genial! 🎒 Viajes para aventureros solitarios:
+
+**OPCIÓN 1 — Ruta Machu Picchu 🇵🇪**
+• 10 días Lima-Cusco-Machu Picchu: USD 1.650
+• Grupos pequeños (máx 12 personas)
+• Hostels + 1 hotel en Cusco
+• Trekking Camino Inca (4 días)
+• Valle Sagrado + Maras y Moray
+• Guías locales expertos
+• Conocés viajeros de todo el mundo
+👥 **Edad promedio grupo:** 25-35 años
+
+**OPCIÓN 2 — Colombia Adventure 🇨🇴**
+• 12 días ruta completa: USD 1.400
+• Cartagena (3 días) + Medellín (3) + Bogotá (2) + Salento (2) + Tayrona (2)
+• Alojamiento en hostels top
+• Algunas comidas incluidas
+• Actividades opcionales (parapente, coffee tour, buceo)
+• Transporte entre ciudades
+🌴 **Destino económico y seguro**
+
+**OPCIÓN 3 — Europa Interrail 🇪🇺**
+• 15 días, 5 países: USD 2.200
+• Pase de tren ilimitado
+• Barcelona → París → Amsterdam → Berlín → Praga
+• Hostels en zona céntrica
+• Free walking tours incluidos
+• Flexibilidad total de fechas
+🚂 **La clásica aventura europea**
+
+Todos los grupos tienen WhatsApp para conocerse antes del viaje.
+
+¿Qué tipo de vibe buscás? ¿Fiesta, cultura, naturaleza?""",
+            "buttons": "solo_opciones"
+        }
+    
+    elif any(word in p for word in ["800", "económico", "barato", "poco presupuesto"]) and "usd" in p:
+        return {
+            "content": """¡Perfecto! Con USD 800 tenés MUY buenas opciones 💰
+
+**OPCIÓN 1 — Florianópolis 🇧🇷**
+• 5 días todo incluido: USD 800
+• Hotel 3★ cerca de playa
+• Desayuno incluido
+• Tour por las mejores playas
+• Transfer aeropuerto
+🏖️ 42 playas + vida nocturna
+
+**OPCIÓN 2 — Mendoza 🇦🇷**
+• 4 días vino + montaña: USD 750
+• Hotel boutique en Luján de Cuyo
+• Tour 2 bodegas premium
+• Alta montaña (Aconcagua)
+• Rafting día completo
+🍷 El mejor vino de Argentina
+
+**OPCIÓN 3 — Iguazú 🇦🇷**
+• 3 días cataratas: USD 780
+• Hotel 4★ frente a la selva
+• Entradas ambos lados (ARG + BRA)
+• Paseo en lancha bajo las cataratas
+• Traslados incluidos
+💦 Una de las 7 maravillas naturales
+
+**OPCIÓN 4 — Salta 🇦🇷**
+• 5 días cultura + paisajes: USD 800
+• Hotel céntrico
+• Tour Cafayate + Quebrada de Humahuaca
+• Tren a las Nubes
+• Comidas típicas incluidas
+🏜️ Paisajes impresionantes
+
+Todas incluyen vuelos desde Buenos Aires. ¿Cuál te cierra más?""",
+            "buttons": "economicos_opciones"
+        }
+    
+    elif any(word in p for word in ["spa", "relax", "tranquilo", "descanso", "wellness"]):
+        return {
+            "content": """Perfecto para desconectar 🧘‍♀️💆‍♂️
+
+**OPCIÓN 1 — Termas de Cacheuta, Mendoza 🇦🇷**
+• 3 noches spa resort: USD 950/persona
+• Acceso ilimitado a 18 piscinas termales
+• 3 masajes incluidos (piedras calientes, aromaterapia, descontracturante)
+• Yoga al amanecer con vista a la montaña
+• All inclusive (comida orgánica)
+• Temazcal andino (ritual ancestral)
+🏔️ Relax + montaña
+
+**OPCIÓN 2 — Spa Resort Punta del Este 🇺🇾**
+• 4 noches wellness: USD 1.200/persona
+• Spa 5 estrellas frente al mar
+• Circuito spa diario (sauna, jacuzzi, piscinas)
+• 4 tratamientos incluidos
+• Clases yoga + meditación
+• Alimentación detox
+• Masaje shiatsu con vista al océano
+🌊 Frente al mar
+
+**OPCIÓN 3 — Entre Ríos Termal 🇦🇷**
+• 5 noches en complejo termal: USD 780/persona
+• Aguas termales todo el día
+• 2 masajes relajantes
+• Fangoterapia incluida
+• Pileta climatizada
+• Comida casera regional
+💚 Económico y cerca
+
+**OPCIÓN 4 — Tulum Wellness 🇲🇽**
+• 6 noches yoga + playa: USD 1.800/persona
+• Hotel boutique eco-friendly
+• 2 clases yoga diarias
+• 1 temazcal maya
+• Meditación guiada
+• Alimentación consciente
+• Masaje maya ancestral
+🌴 Experiencia holística
+
+¿Buscás algo más activo (yoga) o 100% relax (spa)?""",
+            "buttons": "relax_opciones"
+        }
+    
+    elif any(word in p for word in ["1500", "1.500"]) and "usd" in p:
+        return {
+            "content": """¡Excelente presupuesto! Con USD 1.500 accedés a destinos TOP 🌟
+
+**OPCIÓN 1 — Cancún Premium 🇲🇽**
+• 7 días all inclusive: USD 1.200
+• Hotel 5★ zona hotelera
+• TODO incluido (comidas, bebidas, excursiones)
+• Te sobran USD 300 para extras
+🏖️ Clásico que nunca falla
+
+**OPCIÓN 2 — Río de Janeiro 🇧🇷**
+• 6 días completos: USD 1.450
+• Hotel en Copacabana
+• City tour + Cristo + Pan de Azúcar
+• Favela tour con guía local
+• Samba show con cena
+• 2 días de playa
+🎭 Ciudad más vibrante de Brasil
+
+**OPCIÓN 3 — Miami + Crucero Bahamas 🇺🇸🇧🇸**
+• 2 días Miami + 3 días crucero: USD 1.500
+• Hotel en Miami Beach
+• Crucero all inclusive
+• Escalas en Nassau + Coco Cay
+• Piscinas, casino, shows
+🚢 2 destinos en 1
+
+**OPCIÓN 4 — Machu Picchu Comfort 🇵🇪**
+• 7 días Cusco + MP: USD 1.480
+• Hoteles 4★
+• Tren panorámico a Machu Picchu
+• Valle Sagrado completo
+• Guías en español
+• Montaña Arcoíris
+🏔️ Experiencia premium
+
+¿Playa, ciudad, aventura o cultura?""",
+            "buttons": "rango_medio_opciones"
+        }
+    
+    elif any(word in p for word in ["25", "joven", "20", "30 años"]):
+        return {
+            "content": """¡Dale! Para tu edad tengo opciones copadas 🎉
+
+**OPCIÓN 1 — Miami Beach 🇺🇸**
+• 5 días fiesta + playa: USD 1.350
+• Hotel en South Beach
+• Pool parties
+• Discotecas (Liv, Story)
+• Wynwood Walls (arte urbano)
+• Everglades tour
+🌴 Fiesta + playa USA
+
+**OPCIÓN 2 — Cartagena + San Andrés 🇨🇴**
+• 7 días: USD 1.200
+• 3 días Cartagena (ciudad amurallada, Getsemaní)
+• 4 días San Andrés (mar de 7 colores)
+• Hostels con bar en la playa
+• Rumba caribeña
+• Snorkel + Johnny Cay
+🏝️ Caribe económico
+
+**OPCIÓN 3 — Barcelona 🇪🇸**
+• 6 días: USD 1.600
+• Hostel top en Barrio Gótico
+• Sagrada Familia + Park Güell
+• Pub crawls (fiesta con otros viajeros)
+• Playa Barceloneta
+• Montserrat day trip
+🎨 Ciudad + playa + cultura
+
+**OPCIÓN 4 — Iguazú + Río 🇦🇷🇧🇷**
+• 8 días: USD 1.400
+• 3 días Iguazú (cataratas + aventura)
+• 5 días Río (playa + samba + Cristo)
+• Hostels party
+• Vida nocturna en Lapa
+• Conocés otros viajeros
+💃 Naturaleza + fiesta
+
+¿Solo o con amigos? ¿Más fiesta o más chill?""",
+            "buttons": "jovenes_opciones"
         }
     
     elif any(word in p for word in ["personas", "2", "dos", "3", "tres"]):
@@ -228,6 +562,42 @@ def get_bot_response(prompt):
 
 **Opciones para continuar:**""",
             "buttons": "contacto"
+        }
+    
+    elif any(word in p for word in ["visa", "pasaporte", "documento", "requisito"]):
+        return {
+            "content": """Te cuento los requisitos según destino 📋
+
+**Para MÉXICO (Cancún, Playa del Carmen):**
+✅ Pasaporte válido mínimo 6 meses
+❌ NO necesita visa
+✅ Seguro de viaje (incluido en nuestro paquete)
+📝 Formulario migratorio (te lo damos)
+
+**Para BRASIL (Río, Florianópolis):**
+✅ DNI argentino actualizado (alcanza)
+❌ NO necesita pasaporte ni visa
+✅ Seguro de viaje recomendado
+
+**Para USA (Miami, Orlando):**
+✅ Pasaporte válido
+✅ Visa de turista B1/B2 (tramitada y vigente)
+💰 Costo visa: USD 185 (no incluido)
+⏰ Turno en embajada: 2-3 semanas
+
+**Para EUROPA (España, Italia, Francia):**
+✅ Pasaporte válido mínimo 6 meses
+❌ NO necesita visa (hasta 90 días)
+✅ Seguro médico obligatorio EUR 30.000
+💰 Incluido en nuestros paquetes
+
+**Para COLOMBIA / PERÚ / CHILE:**
+✅ DNI o pasaporte
+❌ NO necesita visa
+✅ Seguro de viaje recomendado
+
+¿A qué destino pensabas ir?""",
+            "buttons": None
         }
     
     else:
