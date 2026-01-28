@@ -903,11 +903,12 @@ Elegí una opción""",
                 with col2:
                     if st.button("🛒 Mi carrito", key="btn_mi_carrito_{}".format(i), use_container_width=True):
                         if st.session_state.carrito:
+                            mensaje_carrito = """{}
+
+¿Querés finalizar la compra?""".format(get_carrito_text())
                             add_message_and_hide_buttons(
                                 "Ver carrito",
-                                "{}
-
-¿Querés finalizar la compra?".format(get_carrito_text()),
+                                mensaje_carrito,
                                 "carrito_acciones"
                             )
                         else:
