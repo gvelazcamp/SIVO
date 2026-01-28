@@ -679,7 +679,7 @@ Por favor, confirmame:
 2. Teléfono de contacto
 3. Forma de pago
 
-O escribí todo junto, ej: "Av. Italia 1234, Tel: 099123456, pago con tarjeta"""",
+O escribí todo junto, ej: "Av. Italia 1234, Tel: 099123456, pago con tarjeta" """,
                             "confirmar_delivery"
                         )
                         st.rerun()
@@ -701,7 +701,7 @@ Por favor confirmame:
 2. Teléfono de contacto
 3. Forma de pago
 
-O escribí todo junto, ej: "Juan Pérez, 099123456, pago en efectivo"""",
+O escribí todo junto, ej: "Juan Pérez, 099123456, pago en efectivo" """,
                             "confirmar_takeaway"
                         )
                         st.rerun()
@@ -722,7 +722,7 @@ O escribí todo junto, ej: "Juan Pérez, 099123456, pago en efectivo"""",
 
 ¿Para cuántas personas y qué horario preferís?
 
-Ej: "4 personas a las 13:00"""",
+Ej: "4 personas a las 13:00" """,
                             None
                         )
                         st.rerun()
@@ -741,7 +741,7 @@ Ej: "4 personas a las 13:00"""",
 
 ¿Para cuántas personas y qué horario preferís?
 
-Ej: "2 personas a las 20:30"""",
+Ej: "2 personas a las 20:30" """,
                             None
                         )
                         st.rerun()
@@ -758,7 +758,7 @@ Decime:
 • ¿Qué horario? (almuerzo 12-15hs / cena 20-23hs)
 • ¿Cuántas personas?
 
-Ej: "Viernes 2 de febrero, 21:00hs, 6 personas"""",
+Ej: "Viernes 2 de febrero, 21:00hs, 6 personas" """,
                             None
                         )
                         st.rerun()
