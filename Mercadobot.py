@@ -3952,297 +3952,199 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
     </div>
     
     <div class="demo-chat">
+        <!-- ESCENA 1: El cliente entra y duda (inicio real) -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen el talle M en esta remera?</div>
+            <div class="demo-bubble demo-user">Hola, estoy viendo la remera básica blanca</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! La remera básica está disponible en talle M:<br>
-            • <strong>Color:</strong> Blanco, negro, gris, azul marino<br>
+            <div class="demo-bubble demo-bot">¡Hola! 👋 Veo que estás mirando la remera básica. ¿Querés ayuda con el talle, colores o precio?</div>
+        </div>
+
+        <!-- ESCENA 2: Talle con recomendación -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Tienen talle M?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí 😊 Está disponible en talle M.<br>
+            • <strong>Colores:</strong> blanco, negro, gris, azul marino<br>
             • <strong>Precio:</strong> $8.999<br>
-            • <strong>Stock:</strong> 15 unidades disponibles<br>
-            ¿Querés que te la reserve o la agregamos al carrito?</div>
+            • <strong>Stock:</strong> 15 unidades<br><br>
+            Por tu elección, el M es el más vendido. ¿La agregamos al carrito?</div>
         </div>
 
+        <!-- ESCENA 3: Acción concreta -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuánto sale este jean?</div>
+            <div class="demo-bubble demo-user">Sí, agregala</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El jean que estás mirando cuesta:<br>
-            • <strong>Jean clásico:</strong> $24.999<br>
-            • <strong>Jean elastizado:</strong> $28.999<br>
-            • <strong>Jean mom fit:</strong> $26.999<br>
-            Todos disponibles en talles del 36 al 48. Hay promo 3x2 en jeans esta semana!</div>
+            <div class="demo-bubble demo-bot">✅ Listo, ya la agregué al carrito.<br><br>
+            💡 <strong>Tip:</strong> Sumando otra prenda tenés 15% OFF automático. ¿Querés que te recomiende un jean que combine?</div>
         </div>
 
+        <!-- ESCENA 4: Venta cruzada -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hacen envíos a todo el país?</div>
+            <div class="demo-bubble demo-user">Dale, mostrame jeans</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Enviamos a todo Argentina:<br>
-            • <strong>CABA y GBA:</strong> 2-3 días - $1.500<br>
-            • <strong>Provincias:</strong> 5-7 días - $2.800<br>
-            • <strong>Patagonia:</strong> 7-10 días - $3.500<br>
-            <strong>ENVÍO GRATIS</strong> en compras mayores a $50.000<br>
-            Todos los envíos incluyen tracking.</div>
+            <div class="demo-bubble demo-bot">Perfecto 👖 Te recomiendo estos:<br>
+            • <strong>Jean clásico</strong> – $24.999<br>
+            • <strong>Jean elastizado</strong> – $28.999<br>
+            • <strong>Jean mom fit</strong> – $26.999<br><br>
+            🔥 <strong>Promo activa:</strong> 3x2 en jeans esta semana<br>
+            ¿Buscás algo más clásico o más ajustado?</div>
         </div>
 
+        <!-- ESCENA 5: Selección específica -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">El clásico en negro</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Excelente elección 🙌<br>
+            • <strong>Color:</strong> Negro<br>
+            • <strong>Talles disponibles:</strong> 36 al 48<br>
+            • <strong>Precio:</strong> $24.999<br><br>
+            ¿Qué talle necesitás para agregarlo al carrito?</div>
+        </div>
+
+        <!-- ESCENA 6: Carrito y beneficio visible -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">Talle 40</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">✅ Jean talle 40 agregado al carrito.<br><br>
+            📦 Con esta compra te faltan $4.000 para envío gratis. ¿Querés sumar una remera más y aprovecharlo?</div>
+        </div>
+
+        <!-- ESCENA 7: Envío contextual -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Hacen envíos a Córdoba?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí 🚚 Envíos a Córdoba Capital:<br>
+            • <strong>Estándar:</strong> 5–7 días – $2.800<br>
+            • <strong>Express:</strong> 3–4 días – $4.200<br><br>
+            🎁 En compras mayores a $50.000 el envío es GRATIS. ¿Querés que lo calcule exacto con tu compra actual?</div>
+        </div>
+
+        <!-- ESCENA 8: Pago sin fricción -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">¿Puedo pagar con tarjeta?</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">Sí 💳<br>
+            • Hasta 12 cuotas sin interés<br>
+            • Mercado Pago: hasta 18 cuotas<br>
+            • Transferencia: 15% OFF adicional<br><br>
+            ¿Preferís cuotas o aprovechar el descuento por transferencia?</div>
+        </div>
+
+        <!-- ESCENA 9: Confianza (local físico) -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
             <div class="demo-bubble demo-user">¿Tienen local físico?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tenemos 2 locales:<br>
-            📍 <strong>Palermo:</strong> Av. Santa Fe 4200 - Lun-Sáb 10-20hs<br>
-            📍 <strong>Belgrano:</strong> Av. Cabildo 1800 - Lun-Sáb 10-20hs<br>
-            Podés comprar online y retirar GRATIS en cualquiera de los 2 locales. Te avisamos por mail cuando esté listo para retirar (24-48hs).</div>
+            <div class="demo-bubble demo-bot">Sí 🏪<br>
+            📍 <strong>Palermo</strong> – Av. Santa Fe 4200<br>
+            📍 <strong>Belgrano</strong> – Av. Cabildo 1800<br><br>
+            Podés comprar online y retirar GRATIS en tienda. ¿Querés envío o retiro en local?</div>
         </div>
 
+        <!-- ESCENA 10: Cambio y tranquilidad -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuál es la política de cambios?</div>
+            <div class="demo-bubble demo-user">¿Y si no me queda?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Tenés 30 días para cambiar o devolver:<br>
-            • <strong>Cambio por otro talle/color:</strong> GRATIS<br>
-            • <strong>Devolución:</strong> Reembolso 100%<br>
-            • <strong>Condiciones:</strong> Producto sin uso, con etiquetas<br>
-            <strong>Proceso:</strong><br>
-            1. Iniciás el cambio desde tu cuenta<br>
-            2. Imprimís etiqueta prepaga<br>
-            3. Lo despachás en correo<br>
-            4. Te enviamos el nuevo o reintegramos el dinero</div>
+            <div class="demo-bubble demo-bot">No hay problema 👍 Tenés 30 días para cambios o devoluciones.<br>
+            • <strong>Cambio de talle/color:</strong> GRATIS<br>
+            • <strong>Devolución:</strong> reembolso 100%<br><br>
+            Comprás tranquilo/a, nosotros nos ocupamos.</div>
         </div>
 
+        <!-- ESCENA 11: Guía de talles asistida -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Aceptan tarjeta de crédito?</div>
+            <div class="demo-bubble demo-user">Nunca sé bien qué talle soy</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Aceptamos todas las formas de pago:<br>
-            💳 <strong>Crédito:</strong> Hasta 12 cuotas sin interés<br>
-            💳 <strong>Débito:</strong> 10% descuento adicional<br>
-            💰 <strong>Efectivo/Transferencia:</strong> 15% OFF<br>
-            📱 <strong>Mercado Pago:</strong> Hasta 18 cuotas<br>
-            También aceptamos Naranja, Visa, Mastercard, Amex.</div>
+            <div class="demo-bubble demo-bot">Te ayudo 😊 Si querés, decime tu altura y peso y te recomiendo el talle ideal. Además, cada producto tiene una guía exacta en cm.<br><br>
+            ¿Querés que lo veamos ahora?</div>
         </div>
 
+        <!-- ESCENA 12: Promos activas -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen descuentos por cantidad?</div>
+            <div class="demo-bubble demo-user">¿Hay promociones hoy?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Descuentos automáticos:<br>
-            • <strong>3 prendas:</strong> 15% OFF<br>
-            • <strong>5 prendas:</strong> 20% OFF<br>
-            • <strong>10 prendas:</strong> 25% OFF<br>
-            <strong>Promos actuales:</strong><br>
+            <div class="demo-bubble demo-bot">Sí 🔥<br>
             • 3x2 en jeans<br>
             • 2x1 en remeras básicas<br>
-            • 50% OFF en 2da prenda de abrigos<br>
-            Los descuentos se aplican automáticamente en el carrito!</div>
+            • 20% OFF primera compra<br>
+            • Envío gratis desde $50.000<br><br>
+            Los descuentos se aplican automáticamente en el carrito.</div>
         </div>
 
+        <!-- ESCENA 13: Reserva inteligente -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cómo sé qué talle soy?</div>
+            <div class="demo-bubble demo-user">¿Puedo reservar?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Tenemos una guía completa de talles:<br>
-            📏 <strong>Para saberlo:</strong><br>
-            1. Medí tu busto, cintura y cadera<br>
-            2. Consultá nuestra tabla de talles<br>
-            3. Compará con tus medidas<br>
-            <strong>Tip:</strong> En cada producto hay una guía específica con medidas exactas en cm. Si estás entre dos talles, te recomendamos el más grande. ¿Necesitás ayuda con alguna prenda específica?</div>
+            <div class="demo-bubble demo-bot">Sí 😊<br>
+            • <strong>Online:</strong> el carrito te reserva el producto por 2 horas<br>
+            • <strong>En local:</strong> lo apartamos 48 hs<br><br>
+            ¿Querés seguir con la compra o reservar para más tarde?</div>
         </div>
 
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen ropa de invierno?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Nueva colección otoño-invierno:<br>
-            🧥 <strong>Abrigos:</strong> Desde $45.000<br>
-            🧶 <strong>Sweaters:</strong> Desde $18.000<br>
-            👖 <strong>Jeans térmicos:</strong> $32.000<br>
-            🧣 <strong>Accesorios:</strong> Bufandas, gorros, guantes<br>
-            Ingresá al sitio y filtrá por "Temporada Invierno" para ver todo el catálogo. Hay 30% OFF en pre-venta!</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo reservar un producto?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Podés reservar productos:<br>
-            • <strong>Online:</strong> Agregalo al carrito y completá la compra<br>
-            • <strong>En local:</strong> Llamá o vení y lo apartamos 48hs<br>
-            • <strong>WhatsApp:</strong> Mandanos el link del producto<br>
-            <strong>Reserva online:</strong> Tu producto queda reservado por 2 horas mientras completás la compra. ¿Qué producto te interesa reservar?</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hacen envíos el mismo día?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Envío express mismo día:<br>
-            • <strong>Horario límite:</strong> Comprá antes de las 14hs<br>
-            • <strong>Zona:</strong> Solo CABA<br>
-            • <strong>Costo:</strong> $3.500<br>
-            • <strong>Entrega:</strong> Entre 18-22hs del mismo día<br>
-            Para otras zonas, el envío express es de 24-48hs. ¿Tu dirección está en CABA?</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen promociones vigentes?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Promos de esta semana:<br>
-            🔥 <strong>3x2</strong> en jeans<br>
-            🔥 <strong>2x1</strong> en remeras básicas<br>
-            🔥 <strong>50% OFF</strong> en 2da prenda de abrigos<br>
-            🔥 <strong>15% OFF</strong> suscribiéndote al newsletter<br>
-            🔥 <strong>20% OFF</strong> en tu primera compra con código BIENVENIDO<br>
-            Todas las promos son acumulables excepto con otras ofertas. ¡Aprovechá!</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo retirar en el local?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Retiro en tienda GRATIS:<br>
-            1. <strong>Comprás online</strong> y elegís "Retiro en tienda"<br>
-            2. <strong>Elegís el local</strong> más cercano<br>
-            3. <strong>Te llega un email</strong> cuando está listo (24-48hs)<br>
-            4. <strong>Retirás</strong> presentando DNI y número de pedido<br>
-            <strong>Ventajas:</strong><br>
-            ✓ Sin costo de envío<br>
-            ✓ Podés probarte en el local<br>
-            ✓ Cambio inmediato si no te queda<br>
-            Horarios: Lun-Sáb 10-20hs</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuánto tarda el envío a Córdoba?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Envíos a Córdoba Capital:<br>
-            • <strong>Estándar:</strong> 5-7 días hábiles - $2.800<br>
-            • <strong>Express:</strong> 3-4 días hábiles - $4.200<br>
-            <strong>ENVÍO GRATIS</strong> en compras +$50.000<br>
-            Todos incluyen tracking en tiempo real. Una vez despachado, te llega el código de seguimiento por email y SMS.</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen este pantalón en negro?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! El pantalón está disponible en negro:<br>
-            • <strong>Talles:</strong> 36, 38, 40, 42, 44, 46, 48<br>
-            • <strong>Stock:</strong> Disponible inmediato<br>
-            • <strong>Precio:</strong> $26.999<br>
-            • <strong>También en:</strong> Azul marino, beige, gris<br>
-            ¿Qué talle necesitás? Te lo agrego al carrito.</div>
-        </div>
-
+        <!-- ESCENA 14: Facturación -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
             <div class="demo-bubble demo-user">¿Dan factura?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Emitimos factura A o B:<br>
-            • <strong>Consumidor final:</strong> Factura B automática<br>
-            • <strong>Monotributista/RI:</strong> Factura A (ingresá CUIT al comprar)<br>
-            • <strong>Envío:</strong> Por email junto con el comprobante<br>
-            La factura llega inmediatamente después de confirmar el pago. ¿Necesitás factura A?</div>
+            <div class="demo-bubble demo-bot">Sí 🧾<br>
+            • Factura B automática<br>
+            • Factura A ingresando CUIT<br><br>
+            La recibís por email apenas se confirma el pago.</div>
         </div>
 
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen gift cards?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tarjetas regalo perfectas para regalar:<br>
-            💳 <strong>Valores:</strong> $10.000 / $20.000 / $50.000 / Monto libre<br>
-            ⏰ <strong>Validez:</strong> 12 meses<br>
-            📧 <strong>Entrega:</strong> Digital instantánea por email<br>
-            🎁 <strong>Personalización:</strong> Agregá un mensaje<br>
-            💸 <strong>Sin cargo adicional</strong><br>
-            Se puede usar online y en locales. ¿Para quién sería?</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuál es el horario de atención?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Horarios de atención:<br>
-            🏪 <strong>Locales:</strong> Lun-Sáb 10-20hs<br>
-            💬 <strong>WhatsApp:</strong> Lun-Vie 9-18hs<br>
-            📧 <strong>Email:</strong> Respondemos en 24hs<br>
-            🤖 <strong>Chat web:</strong> 24/7 (respuesta automática)<br>
-            📞 <strong>Teléfono:</strong> Lun-Vie 10-18hs - 011 5555-ROPA<br>
-            Los fines de semana respondemos consultas urgentes por WhatsApp.</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hacen devoluciones?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Devoluciones dentro de 30 días:<br>
-            ✅ <strong>Reembolso 100%</strong> del dinero<br>
-            ✅ <strong>Envío de devolución:</strong> GRATIS<br>
-            ✅ <strong>Proceso:</strong><br>
-            1. Iniciás la devolución desde tu cuenta<br>
-            2. Imprimís etiqueta prepaga<br>
-            3. Despachás en Correo Argentino<br>
-            4. Recibimos y validamos (2-3 días)<br>
-            5. Te reintegramos el dinero (5-7 días)<br>
-            El producto debe estar sin uso y con etiquetas.</div>
-        </div>
-
+        <!-- ESCENA 15: Fidelización -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
             <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Club ROPA VIP:<br>
-            ⭐ <strong>Acumulás:</strong> 1 punto cada $100<br>
-            ⭐ <strong>Canjeás:</strong> 100 puntos = $500 descuento<br>
-            <strong>Beneficios por nivel:</strong><br>
-            🥉 <strong>Bronce:</strong> 5% descuento permanente<br>
-            🥈 <strong>Plata:</strong> 10% + envíos gratis<br>
-            🥇 <strong>Oro:</strong> 15% + acceso preventa<br>
-            Registrate gratis y empezá a sumar puntos hoy! ¿Te registro?</div>
+            <div class="demo-bubble demo-bot">Sí ⭐ <strong>Club ROPA VIP</strong><br>
+            • 1 punto cada $100<br>
+            • 100 puntos = $500 de descuento<br><br>
+            Además, los clientes VIP acceden a preventas exclusivas. ¿Querés registrarte gratis?</div>
         </div>
+    </div>
     </div>
     
     <div class="demo-back">
@@ -4852,7 +4754,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
-
-
-
