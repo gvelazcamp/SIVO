@@ -27,48 +27,58 @@ st.markdown("""
         margin: 0 auto;
     }
     
-    /* Header personalizado */
+    /* Header personalizado - más profesional */
     .custom-header {
         text-align: center;
-        padding: 20px;
-        background: linear-gradient(135deg, #f4b400, #ff6b00);
-        border-radius: 15px;
+        padding: 25px;
+        background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        border-radius: 12px;
         margin-bottom: 30px;
         color: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     .custom-header h1 {
         margin: 0;
-        font-size: 32px;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
     }
     
     .custom-header p {
         margin: 10px 0 0 0;
-        opacity: 0.95;
+        opacity: 0.9;
+        font-size: 15px;
+        font-weight: 400;
     }
     
-    /* Ocultar botones después de hacer click */
-    .element-container:has(> .stButton > button[kind="secondary"]) {
-        display: block;
-    }
-    
-    /* Botones de opciones más atractivos */
+    /* Botones más profesionales */
     div[data-testid="column"] > div > div > button {
         width: 100%;
-        border-radius: 12px;
-        padding: 12px 16px;
-        font-weight: 600;
-        transition: all 0.2s;
-        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 14px 20px;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.2s ease;
+        border: 1.5px solid #e5e7eb;
         background: white;
+        color: #374151;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     
     div[data-testid="column"] > div > div > button:hover {
-        background: #f4b400;
-        border-color: #f4b400;
+        background: #0f3460;
+        border-color: #0f3460;
         color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(244, 180, 0, 0.3);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(15, 52, 96, 0.2);
+    }
+    
+    /* Mejorar los caption de ejemplos */
+    .stCaption {
+        color: #6b7280 !important;
+        font-size: 14px !important;
+        line-height: 1.8 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -76,8 +86,8 @@ st.markdown("""
 # Header personalizado
 st.markdown("""
 <div class="custom-header">
-    <h1>🌎 Demo Live - Asistente de Viajes</h1>
-    <p>Probá el chatbot en vivo. Hacé click en las opciones o escribí tu pregunta.</p>
+    <h1>🌍 Asistente de Viajes Inteligente</h1>
+    <p>Encontrá tu próximo destino ideal. Preguntame lo que necesites.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -86,9 +96,9 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant", 
-            "content": """¡Hola! 👋 Te ayudo a encontrar tu viaje perfecto.
+            "content": """¡Hola! 👋 Soy tu asistente de viajes.
 
-**Decime qué te interesa:**""",
+**¿Qué tipo de viaje te interesa?**""",
             "show_buttons": "inicial"
         }
     ]
@@ -258,23 +268,6 @@ for i, msg in enumerate(st.session_state.messages):
                     if st.button("🎒 Aventura", key=f"btn_aventura_{i}", use_container_width=True):
                         response = get_bot_response("aventura")
                         add_message_and_hide_buttons("🎒 Aventura", response["content"], response["buttons"])
-                        st.rerun()
-                
-                st.markdown("---")
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    if st.button("💰 Económico", key=f"btn_economico_{i}", use_container_width=True):
-                        add_message_and_hide_buttons("💰 Presupuesto económico", "Perfecto! Te muestro opciones económicas (USD 500-900):", "destinos_economicos")
-                        st.rerun()
-                
-                with col2:
-                    if st.button("💳 Medio", key=f"btn_medio_{i}", use_container_width=True):
-                        add_message_and_hide_buttons("💳 Presupuesto medio", "Genial! Opciones de rango medio (USD 1.000-1.500):", "destinos_medios")
-                        st.rerun()
-                
-                with col3:
-                    if st.button("💎 Premium", key=f"btn_premium_{i}", use_container_width=True):
-                        add_message_and_hide_buttons("💎 Presupuesto premium", "¡Excelente! Lo mejor de lo mejor (USD 1.500+):", "destinos_premium")
                         st.rerun()
             
             # Botones de destinos playa
@@ -447,20 +440,22 @@ for i, msg in enumerate(st.session_state.messages):
                         add_message_and_hide_buttons("Info sobre seguros", "**Seguro Básico (incluido):**\n✅ Gastos médicos USD 50.000\n✅ Equipaje perdido USD 1.000\n\n**Seguro Premium (+USD 80):**\n✅ Gastos médicos USD 150.000\n✅ COVID cubierto 100%\n✅ Deportes extremos\n\n¿Querés el Premium?", "seguro_opciones")
                         st.rerun()
 
-# Mostrar sugerencias de preguntas al final (solo si no hay botones activos)
-last_msg = st.session_state.messages[-1] if st.session_state.messages else None
-if last_msg and (not "show_buttons" in last_msg or not last_msg["show_buttons"]):
-    st.markdown("---")
-    st.markdown("**💡 Ejemplos de preguntas que podés hacer:**")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.caption("• ¿Cuánto sale un viaje a Cancún?")
-        st.caption("• Busco playa económica en marzo")
-        st.caption("• ¿Puedo pagar en cuotas?")
-    with col2:
-        st.caption("• Necesito visa para México?")
-        st.caption("• Opciones para familia con niños")
-        st.caption("• ¿Qué incluye el seguro de viaje?")
+# Mostrar sugerencias de preguntas al final (SIEMPRE visible)
+st.markdown("---")
+st.markdown("**💬 Ejemplos de consultas que podés hacer:**")
+col1, col2 = st.columns(2)
+with col1:
+    st.caption("• Quiero ir a la playa en marzo con $1500 USD")
+    st.caption("• ¿Qué opciones hay para viajar con 2 niños?")
+    st.caption("• Buscamos algo romántico para luna de miel")
+    st.caption("• ¿Cuánto sale Punta Cana todo incluido?")
+    st.caption("• Viajo solo, 25 años, busco aventura")
+with col2:
+    st.caption("• ¿Puedo pagar en 6 cuotas sin interés?")
+    st.caption("• ¿Necesito tramitar visa para Brasil?")
+    st.caption("• ¿Qué está incluido en el paquete a Cancún?")
+    st.caption("• Tengo $800 USD, ¿a dónde puedo ir?")
+    st.caption("• Quiero algo tranquilo, tipo spa y relax")
 
 # Procesar input del usuario o botón de sugerencia
 if "temp_input" in st.session_state:
@@ -515,9 +510,9 @@ with col2:
         st.session_state.messages = [
             {
                 "role": "assistant", 
-                "content": """¡Hola! 👋 Te ayudo a encontrar tu viaje perfecto.
+                "content": """¡Hola! 👋 Soy tu asistente de viajes.
 
-**Decime qué te interesa:**""",
+**¿Qué tipo de viaje te interesa?**""",
                 "show_buttons": "inicial"
             }
         ]
