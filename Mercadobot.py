@@ -5108,7 +5108,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="https:demo-viajes.streamlit.app/" target="_blank" style="text-decoration: none;">
+        <a href="https://demo-viajes.streamlit.app//" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
@@ -5454,4 +5454,5 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
 
