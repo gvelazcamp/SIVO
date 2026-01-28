@@ -4706,9 +4706,19 @@ function send(){var i=document.getElementById('in'),msg=i.value.trim();if(!msg)r
 </html>
 """
 
-# CSS para que el iframe del chatbot no ocupe espacio visual
+# CSS para que el iframe del chatbot NO ocupe espacio visual
 st.markdown("""
 <style>
+/* Ocultar el contenedor del iframe */
+div[data-testid="stVerticalBlock"]:has(iframe[height="600"]),
+div[data-testid="element-container"]:has(iframe[height="600"]) {
+    height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* El iframe en sí */
 iframe[height="600"] {
     position: fixed !important;
     bottom: 0 !important;
@@ -4719,6 +4729,7 @@ iframe[height="600"] {
     pointer-events: none !important;
     z-index: 999999 !important;
 }
+
 iframe[height="600"] * {
     pointer-events: auto !important;
 }
