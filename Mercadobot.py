@@ -1670,7 +1670,8 @@ HTML_HOME = f"""{HTML_BASE}
                 <span class="hero-impact-subtitle">No esperes por la informacion, el asistente la encuentra por vos.</span>
             </h1>
             <p class="hero-impact-text">
-                Conectá tus datos y hablá con ellos. Tu asistente IA responde al instante.
+                    Asistentes IA que responden al instante con la información de tu negocio,
+                    tanto para uso interno como para atención a clientes.
             </p>
             <div class="hero-impact-actions">
                 <a class="hero-impact-btn-primary" href="?vista=asistentes">Ver asistentes →</a>
@@ -4754,3 +4755,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
