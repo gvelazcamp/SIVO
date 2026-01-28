@@ -129,16 +129,52 @@ def add_message_and_hide_buttons(user_msg, bot_response, next_buttons=None, imag
 def get_bot_response(prompt):
     p = prompt.lower()
 
+    # Playa con 1500 USD (caso específico) + FLYER Playa.png
+    if any(word in p for word in ["1500", "1.500"]) and (
+        "usd" in p or "dolares" in p or "dólares" in p
+    ) and any(word in p for word in ["playa", "marzo", "verano"]):
+
+        img_candidates = ["assets/Playa.png", "Playa.png", "assets/playa.png", "playa.png"]
+        img_path = None
+        for c in img_candidates:
+            if os.path.exists(c):
+                img_path = c
+                break
+        if img_path is None:
+            img_path = "assets/Playa.png"
+
+        return {
+            "content": """¡Excelente presupuesto! Con USD 1.500 en marzo tenés destinos de playa TOP 🌟""",
+            "buttons": "playa_1500",
+            "image": img_path
+        }
+
+    if any(word in p for word in ["playa", "relax", "marzo", "verano"]) and any(
+        word in p for word in ["1500", "1.500"]
+    ):
+        img_candidates = ["assets/Playa.png", "Playa.png", "assets/playa.png", "playa.png"]
+        img_path = None
+        for c in img_candidates:
+            if os.path.exists(c):
+                img_path = c
+                break
+        if img_path is None:
+            img_path = "assets/Playa.png"
+
+        return {
+            "content": """¡Perfecto! 🏖️ Con USD 1.500 para playa en marzo te recomiendo:""",
+            "buttons": "playa_1500",
+            "image": img_path
+        }
+
     # Cancún (incluye la pregunta "¿Qué está incluido en el paquete a Cancún?")
     if "cancun" in p or "cancún" in p or "opción 1" in p:
-        # Intento de rutas típicas (ajustá según dónde lo guardaste)
         img_candidates = ["assets/Cancun.png", "Cancun.png", "assets/cancun.png", "cancun.png"]
         img_path = None
         for c in img_candidates:
             if os.path.exists(c):
                 img_path = c
                 break
-        # Si no existe local, igual devolvemos la ruta por si en Streamlit Cloud está
         if img_path is None:
             img_path = "assets/Cancun.png"
 
@@ -194,19 +230,6 @@ def get_bot_response(prompt):
 
 🎁 **Ventaja:** Más económico y cerca, español muy parecido""",
             "buttons": "acciones_floripa"
-        }
-
-    # Playa con 1500 USD (caso específico)
-    if any(word in p for word in ["1500", "1.500"]) and ("usd" in p or "dolares" in p or "dólares" in p) and any(word in p for word in ["playa", "marzo", "verano"]):
-        return {
-            "content": """¡Excelente presupuesto! Con USD 1.500 en marzo tenés destinos de playa TOP 🌟""",
-            "buttons": "playa_1500"
-        }
-
-    if any(word in p for word in ["playa", "relax", "marzo", "verano"]) and any(word in p for word in ["1500", "1.500"]):
-        return {
-            "content": """¡Perfecto! 🏖️ Con USD 1.500 para playa en marzo te recomiendo:""",
-            "buttons": "playa_1500"
         }
 
     # Playa general
@@ -369,7 +392,6 @@ for i, msg in enumerate(st.session_state.messages):
             try:
                 st.image(msg["image"], use_container_width=True)
             except Exception:
-                # Si la ruta no existe/da error, no rompemos el chat
                 pass
 
         # Mostrar botones solo si es el último mensaje del asistente
@@ -483,7 +505,7 @@ for i, msg in enumerate(st.session_state.messages):
                         add_message_and_hide_buttons("✅ Quiero reservar", response["content"], response["buttons"], response.get("image"))
                         st.rerun()
 
-            # Montaña opciones (ANTES no existía handler: por eso a veces no aparecían botones)
+            # Montaña opciones
             elif button_type == "montana_opciones":
                 col1, col2, col3 = st.columns(3)
                 with col1:
@@ -513,7 +535,7 @@ for i, msg in enumerate(st.session_state.messages):
                         )
                         st.rerun()
 
-            # Aventura opciones (ANTES no existía handler)
+            # Aventura opciones
             elif button_type == "aventura_opciones":
                 col1, col2, col3 = st.columns(3)
                 with col1:
@@ -854,7 +876,7 @@ for i, msg in enumerate(st.session_state.messages):
                         )
                         st.rerun()
 
-            # Después de agregar una experiencia, permitir ir a pago (ANTES no existía handler)
+            # Después de agregar una experiencia, permitir ir a pago
             elif button_type == "experiencias_mas":
                 col1, col2 = st.columns(2)
                 with col1:
@@ -985,7 +1007,7 @@ for i, msg in enumerate(st.session_state.messages):
                         )
                         st.rerun()
 
-            # Requisitos opciones (ANTES no existía handler)
+            # Requisitos opciones
             elif button_type == "requisitos_opciones":
                 col1, col2 = st.columns(2)
                 with col1:
@@ -1006,7 +1028,7 @@ for i, msg in enumerate(st.session_state.messages):
                         )
                         st.rerun()
 
-            # Seguro opciones (ANTES no existía handler)
+            # Seguro opciones
             elif button_type == "seguro_opciones":
                 col1, col2 = st.columns(2)
                 with col1:
@@ -1049,13 +1071,10 @@ if "temp_input" in st.session_state:
     prompt = st.session_state.temp_input
     del st.session_state.temp_input
 
-    # Agregar mensaje del usuario
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Obtener respuesta
     response = get_bot_response(prompt)
 
-    # Agregar respuesta del bot
     st.session_state.messages.append({
         "role": "assistant",
         "content": response["content"],
