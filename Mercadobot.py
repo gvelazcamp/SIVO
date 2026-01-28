@@ -4767,4 +4767,21 @@ iframe[height="600"] * {
 </style>
 """, unsafe_allow_html=True)
 
-components.html(CHATBOT, height=600)
+# Chatbot inyectado directamente en el body (no en iframe)
+st.markdown("""
+<div id="chatbot-inject"></div>
+<script>
+(function() {
+    // Solo inyectar una vez
+    if (document.getElementById('mercadobot-injected')) return;
+    
+    // Crear contenedor
+    const container = document.createElement('div');
+    container.id = 'mercadobot-injected';
+    container.innerHTML = `""" + CHATBOT.replace('<!DOCTYPE html>', '').replace('<html>', '').replace('</html>', '').replace('<head><meta charset="utf-8"></head>', '').replace('<body style="margin:0;padding:0;overflow:visible;">', '').replace('</body>', '') + """`;
+    
+    // Inyectar en el body principal
+    document.body.appendChild(container);
+})();
+</script>
+""", unsafe_allow_html=True)
