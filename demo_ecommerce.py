@@ -569,16 +569,16 @@ for i, message in enumerate(st.session_state.messages):
                     agregar_al_carrito("MacBook Air M3 15\" (16GB/512GB)", 1899000)
                     add_message_and_hide_buttons(
                         "Agregar MacBook Air M3",
-                        f"""✅ **¡Agregado al carrito!**
+                        """✅ **¡Agregado al carrito!**
 
-{get_carrito_text()}
+{}
 
 **💡 Clientes que compraron esto también llevaron:**
 • Magic Mouse ($99.000) - 30% OFF
 • USB-C Hub 7 en 1 ($45.000)
 • Funda premium ($35.000)
 
-¿Querés agregar algo más o finalizar la compra?""",
+¿Querés agregar algo más o finalizar la compra?""".format(get_carrito_text()),
                         "carrito_acciones"
                     )
                     st.rerun()
@@ -605,16 +605,16 @@ for i, message in enumerate(st.session_state.messages):
                     agregar_al_carrito("HP 15-dy (Intel i5/8GB/256GB)", 549000)
                     add_message_and_hide_buttons(
                         "Agregar HP 15-dy",
-                        f"""✅ **¡Agregado al carrito!**
+                        """✅ **¡Agregado al carrito!**
 
-{get_carrito_text()}
+{}
 
 **💡 Te recomendamos agregar:**
 • Memoria RAM 8GB extra ($35.000) - Mejorá el rendimiento
 • Mouse óptico USB ($8.000)
 • Mochila básica ($12.000)
 
-¿Querés agregar algo o finalizar?""",
+¿Querés agregar algo o finalizar?""".format(get_carrito_text()),
                         "carrito_acciones"
                     )
                     st.rerun()
@@ -646,9 +646,9 @@ for i, message in enumerate(st.session_state.messages):
                     agregar_al_carrito("iPhone 15 Pro Max 256GB Titanio", 1599000)
                     add_message_and_hide_buttons(
                         "Agregar iPhone 15 Pro Max",
-                        f"""✅ **¡Agregado al carrito!**
+                        """✅ **¡Agregado al carrito!**
 
-{get_carrito_text()}
+{}
 
 **🔥 COMBO PACK SUGERIDO:**
 • AirPods Pro 2da Gen ($289.000) - ~~$349.000~~
@@ -656,7 +656,7 @@ for i, message in enumerate(st.session_state.messages):
 • Protector de pantalla ($15.000)
 **Total combo:** $353.000 (ahorrás $60.000)
 
-¿Agregamos el combo?""",
+¿Agregamos el combo?""".format(get_carrito_text()),
                         "carrito_combo"
                     )
                     st.rerun()
@@ -665,9 +665,9 @@ for i, message in enumerate(st.session_state.messages):
                     agregar_al_carrito("Samsung Galaxy S24 Ultra 256GB", 1399000)
                     add_message_and_hide_buttons(
                         "Agregar Samsung S24 Ultra",
-                        f"""✅ **¡Agregado al carrito!**
+                        """✅ **¡Agregado al carrito!**
 
-{get_carrito_text()}
+{}
 
 **🎁 REGALO incluido:** Funda S Pen ($35.000)
 
@@ -675,7 +675,7 @@ for i, message in enumerate(st.session_state.messages):
 • Galaxy Buds2 Pro ($179.000)
 • Cargador super rápido 45W ($45.000)
 
-¿Querés agregar algo más?""",
+¿Querés agregar algo más?""".format(get_carrito_text()),
                         "carrito_acciones"
                     )
                     st.rerun()
@@ -684,9 +684,9 @@ for i, message in enumerate(st.session_state.messages):
                     agregar_al_carrito("Motorola Edge 40 256GB", 449000)
                     add_message_and_hide_buttons(
                         "Agregar Motorola Edge 40",
-                        f"""✅ **¡Agregado al carrito!**
+                        """✅ **¡Agregado al carrito!**
 
-{get_carrito_text()}
+{}
 
 **🎯 Best seller del mes** - Excelente elección
 
@@ -694,7 +694,7 @@ for i, message in enumerate(st.session_state.messages):
 • Auriculares Moto Buds ($89.000)
 • Funda transparente ($15.000)
 
-¿Agregamos algo más?""",
+¿Agregamos algo más?""".format(get_carrito_text()),
                         "carrito_acciones"
                     )
                     st.rerun()
@@ -732,23 +732,32 @@ O escribí lo que buscás!""",
                         envio_gratis = "GRATIS" if st.session_state.total_carrito >= 200000 else "$5.000"
                         total_final = st.session_state.total_carrito if st.session_state.total_carrito >= 200000 else st.session_state.total_carrito + 5000
                         
-                        add_message_and_hide_buttons(
-                            "Ir al checkout",
-                            f"""🛒 **Resumen de tu compra**
+                        mensaje_envio = '✅ Envío gratis por compra mayor a $200.000' if st.session_state.total_carrito >= 200000 else '💡 Agregá $' + str(200000 - st.session_state.total_carrito) + ' para envío gratis'
+                        
+                        mensaje = """🛒 **Resumen de tu compra**
 
-{get_carrito_text()}
+{}
 
-**📦 Envío:** {envio_gratis}
-{'✅ Envío gratis por compra mayor a $200.000' if st.session_state.total_carrito >= 200000 else '💡 Agregá $' + str(200000 - st.session_state.total_carrito) + ' para envío gratis'}
+**📦 Envío:** {}
+{}
 
-**💰 TOTAL: ${total_final:,}**
+**💰 TOTAL: ${:,}**
 
 **¿Cómo querés pagar?**
 • 💳 Tarjeta (hasta 12 cuotas)
 • 💵 Transferencia (5% OFF extra)
 • 🪙 MercadoPago
 
-Elegí tu forma de pago:""",
+Elegí tu forma de pago:""".format(
+                            get_carrito_text(),
+                            envio_gratis,
+                            mensaje_envio,
+                            total_final
+                        )
+                        
+                        add_message_and_hide_buttons(
+                            "Ir al checkout",
+                            mensaje,
                             "checkout_pago"
                         )
                         st.rerun()
@@ -763,13 +772,13 @@ Elegí tu forma de pago:""",
                         agregar_al_carrito("Protector pantalla", 15000)
                         add_message_and_hide_buttons(
                             "Agregar combo completo",
-                            f"""✅ **¡Combo agregado!**
+                            """✅ **¡Combo agregado!**
 
-{get_carrito_text()}
+{}
 
 🎉 **Ahorraste $60.000** con este combo
 
-¿Listo para finalizar la compra?""",
+¿Listo para finalizar la compra?""".format(get_carrito_text()),
                             "carrito_acciones"
                         )
                         st.rerun()
@@ -778,11 +787,11 @@ Elegí tu forma de pago:""",
                     if st.button("❌ No, solo el celular", key=f"btn_combo_no_{i}", use_container_width=True):
                         add_message_and_hide_buttons(
                             "Solo el celular",
-                            f"""👍 Perfecto
+                            """👍 Perfecto
 
-{get_carrito_text()}
+{}
 
-¿Querés seguir comprando o finalizamos?""",
+¿Querés seguir comprando o finalizamos?""".format(get_carrito_text()),
                             "carrito_acciones"
                         )
                         st.rerun()
@@ -793,24 +802,32 @@ Elegí tu forma de pago:""",
                     descuento = 0
                     total_con_descuento = st.session_state.total_carrito + (0 if st.session_state.total_carrito >= 200000 else 5000)
                     
-                    add_message_and_hide_buttons(
-                        "Pagar con tarjeta",
-                        f"""💳 **Pago con tarjeta de crédito**
+                    mensaje = """💳 **Pago con tarjeta de crédito**
 
-**Total:** ${total_con_descuento:,}
+**Total:** ${:,}
 
 **Cuotas disponibles:**
-• 1 pago: ${total_con_descuento:,}
-• 3 cuotas sin interés: ${total_con_descuento // 3:,}/mes
-• 6 cuotas sin interés: ${total_con_descuento // 6:,}/mes
-• 12 cuotas: ${int(total_con_descuento * 1.23 / 12):,}/mes
+• 1 pago: ${:,}
+• 3 cuotas sin interés: ${:,}/mes
+• 6 cuotas sin interés: ${:,}/mes
+• 12 cuotas: ${:,}/mes
 
 Para finalizar necesito:
 1. Email de contacto
 2. Dirección de envío
 3. Teléfono
 
-Escribí todo junto, ej: 'juan@mail.com, Av. Italia 1234, 099123456'"",
+Escribí todo junto, ej: 'juan@mail.com, Av. Italia 1234, 099123456' """.format(
+                        total_con_descuento,
+                        total_con_descuento,
+                        total_con_descuento // 3,
+                        total_con_descuento // 6,
+                        int(total_con_descuento * 1.23 / 12)
+                    )
+                    
+                    add_message_and_hide_buttons(
+                        "Pagar con tarjeta",
+                        mensaje,
                         "confirmar_compra"
                     )
                     st.rerun()
@@ -820,15 +837,13 @@ Escribí todo junto, ej: 'juan@mail.com, Av. Italia 1234, 099123456'"",
                     descuento = int(total_base * 0.05)
                     total_con_descuento = total_base - descuento
                     
-                    add_message_and_hide_buttons(
-                        "Pagar con transferencia",
-                        f"""💵 **Pago por transferencia bancaria**
+                    mensaje = """💵 **Pago por transferencia bancaria**
 
-**Subtotal:** ${st.session_state.total_carrito:,}
-**Envío:** ${0 if st.session_state.total_carrito >= 200000 else 5000}
-**Descuento 5%:** -${descuento:,} 🎉
+**Subtotal:** ${:,}
+**Envío:** ${}
+**Descuento 5%:** -${:,} 🎉
 
-**TOTAL FINAL:** ${total_con_descuento:,}
+**TOTAL FINAL:** ${:,}
 
 **Datos bancarios:**
 🏦 Banco: Santander
@@ -842,18 +857,25 @@ Para confirmar necesito:
 3. Teléfono
 4. Comprobante de pago
 
-Escribilo todo junto!""",
+Escribilo todo junto!""".format(
+                        st.session_state.total_carrito,
+                        0 if st.session_state.total_carrito >= 200000 else 5000,
+                        descuento,
+                        total_con_descuento
+                    )
+                    
+                    add_message_and_hide_buttons(
+                        "Pagar con transferencia",
+                        mensaje,
                         "confirmar_compra"
                     )
                     st.rerun()
 
                 if st.button("🪙 MercadoPago", key=f"btn_mp_{i}", use_container_width=True):
                     total = st.session_state.total_carrito + (0 if st.session_state.total_carrito >= 200000 else 5000)
-                    add_message_and_hide_buttons(
-                        "Pagar con MercadoPago",
-                        f"""🪙 **Pago con MercadoPago**
+                    mensaje = """🪙 **Pago con MercadoPago**
 
-**Total:** ${total:,}
+**Total:** ${:,}
 
 **Cuotas disponibles:**
 • 1 pago
@@ -866,7 +888,11 @@ Para finalizar necesito:
 2. Dirección  
 3. Teléfono
 
-Y te genero el link de pago!""",
+Y te genero el link de pago!""".format(total)
+                    
+                    add_message_and_hide_buttons(
+                        "Pagar con MercadoPago",
+                        mensaje,
                         "confirmar_compra"
                     )
                     st.rerun()
@@ -879,11 +905,11 @@ Y te genero el link de pago!""",
                         agregar_al_carrito("iPhone 15 Pro Max 256GB", 1599000)
                         add_message_and_hide_buttons(
                             "Agregar iPhone 15 Pro Max",
-                            f"""✅ **iPhone agregado al carrito**
+                            """✅ **iPhone agregado al carrito**
 
-{get_carrito_text()}
+{}
 
-¿Seguimos comprando?""",
+¿Seguimos comprando?""".format(get_carrito_text()),
                             "carrito_acciones"
                         )
                         st.rerun()
@@ -893,13 +919,13 @@ Y te genero el link de pago!""",
                         agregar_al_carrito("Samsung S24 Ultra 256GB", 1399000)
                         add_message_and_hide_buttons(
                             "Agregar Samsung S24 Ultra",
-                            f"""✅ **Samsung agregado al carrito**
+                            """✅ **Samsung agregado al carrito**
 
-{get_carrito_text()}
+{}
 
 🎁 Regalo: Funda S Pen incluida
 
-¿Seguimos comprando?""",
+¿Seguimos comprando?""".format(get_carrito_text()),
                             "carrito_acciones"
                         )
                         st.rerun()
@@ -1013,9 +1039,9 @@ Escribí la categoría o elegí una opción""",
                         if st.session_state.carrito:
                             add_message_and_hide_buttons(
                                 "Ver mi carrito",
-                                f"""{get_carrito_text()}
+                                """{}
 
-¿Querés finalizar la compra?""",
+¿Querés finalizar la compra?""".format(get_carrito_text()),
                                 "carrito_acciones"
                             )
                         else:
