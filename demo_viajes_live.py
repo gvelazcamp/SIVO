@@ -955,23 +955,21 @@ if "temp_input" in st.session_state:
 
     st.rerun()
 
-# Input del chat
+# =========================
+# INPUT DEL CHAT
+# =========================
 if prompt := st.chat_input("Escribí tu pregunta o hacé click en las opciones..."):
-    # Agregar mensaje del usuario
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    with st.chat_message("user"):
-        st.markdown(prompt)
-
-    # Obtener respuesta del bot
     response = get_bot_response(prompt)
 
-    # Agregar respuesta del bot
     st.session_state.messages.append({
         "role": "assistant",
         "content": response["content"],
         "show_buttons": response.get("buttons")
     })
+
+    st.rerun()
 
     with st.chat_message("assistant"):
         st.markdown(response["content"])
