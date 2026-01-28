@@ -2293,6 +2293,45 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
     font-weight: 700;
     display: inline-block;
 }}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}}
 </style>
 
 <div class="demo-container">
@@ -2555,6 +2594,14 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=futbol" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -2651,6 +2698,45 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -2893,6 +2979,14 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=cocina" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -2989,6 +3083,45 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -3309,6 +3442,14 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=ecommerce" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -3405,6 +3546,45 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -3803,6 +3983,14 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=finanzas" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -3899,6 +4087,45 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -4105,6 +4332,14 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
     </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=ropa" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -4201,6 +4436,45 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -4393,6 +4667,14 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=peluqueria" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -4494,6 +4776,45 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
+}}
+
+.cta-demo {{
+    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: #fff;
+}}
+
+.cta-demo h2 {{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #fff;
+}}
+
+.cta-demo p {{
+    font-size: 16px;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}}
+
+.btn-live {{
+    background: #fff;
+    color: #f4b400;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}}
+
+.btn-live:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }}
 </style>
 
@@ -4814,6 +5135,14 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
         </div>
     </div>
     
+    <div class="cta-demo">
+        <h2>💬 ¿Querés probarlo en vivo?</h2>
+        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
+        <a href="?vista=demo-live&asistente=viajes" style="text-decoration: none;">
+            <button class="btn-live">🚀 Probar ahora</button>
+        </a>
+    </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
