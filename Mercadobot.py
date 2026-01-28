@@ -4600,11 +4600,11 @@ CHATBOT = """
 <body style="margin:0;padding:0;overflow:visible;">
 
 <style>
-#bot-btn{position:fixed;bottom:20px;right:20px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f4b400,#ff6b00);border:none;cursor:move;box-shadow:0 4px 15px rgba(244,180,0,0.5);font-size:28px;z-index:9999999;transition:transform 0.3s;}
+#bot-btn{position:fixed;bottom:20px;right:20px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f4b400,#ff6b00);border:none;cursor:pointer;box-shadow:0 4px 15px rgba(244,180,0,0.5);font-size:28px;z-index:999999;transition:transform 0.3s;}
 #bot-btn:hover{transform:scale(1.1);}
-#bot-box{display:none;position:fixed;bottom:90px;right:20px;width:350px;height:450px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.3);flex-direction:column;z-index:9999998;}
+#bot-box{display:none;position:fixed;bottom:90px;right:20px;width:350px;height:450px;background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.3);flex-direction:column;z-index:999998;}
 #bot-box.open{display:flex;}
-.h{background:linear-gradient(135deg,#f4b400,#ff6b00);color:#fff;padding:16px;border-radius:20px 20px 0 0;display:flex;justify-content:space-between;align-items:center;cursor:move;}
+.h{background:linear-gradient(135deg,#f4b400,#ff6b00);color:#fff;padding:16px;border-radius:20px 20px 0 0;display:flex;justify-content:space-between;align-items:center;}
 .h h3{font-size:16px;font-weight:600;margin:0;}
 .h button{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;width:32px;height:32px;border-radius:50%;}
 .h button:hover{background:rgba(255,255,255,0.2);}
@@ -4624,7 +4624,7 @@ CHATBOT = """
 <button id="bot-btn" onclick="toggle()">💬</button>
 
 <div id="bot-box">
-<div class="h" id="drag-header"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
+<div class="h"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
 <div id="msgs">
 <div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</div></div>
 </div>
@@ -4635,153 +4635,94 @@ CHATBOT = """
 </div>
 
 <script>
-// Toggle chatbot
 function toggle(){document.getElementById('bot-box').classList.toggle('open');}
-
-// Agregar mensajes
 function add(t,u){var m=document.getElementById('msgs'),d=document.createElement('div');d.className='m'+(u?' u':'');d.innerHTML='<div class="a">'+(u?'👤':'🤖')+'</div><div class="b">'+t+'</div>';m.appendChild(d);m.scrollTop=m.scrollHeight;}
-
-// Enviar mensaje
 function send(){var i=document.getElementById('in'),msg=i.value.trim();if(!msg)return;add(msg,true);i.value='';setTimeout(function(){var l=msg.toLowerCase(),r;if(l.includes('hola')||l.includes('buenos')||l.includes('buenas'))r='¡Hola! 👋 ¿En qué puedo ayudarte hoy?';else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto'))r='Nuestros planes arrancan desde $25.000/mes. ¿Te gustaría conocer más detalles?';else if(l.includes('gracias'))r='¡De nada! 😊 Estoy acá para ayudarte.';else if(l.includes('chau')||l.includes('adios'))r='¡Hasta pronto! 👋 Cualquier cosa, acá estoy.';else r='Interesante pregunta. Por ahora estoy en modo de prueba, pero pronto podré ayudarte con eso. ¿Algo más?';add(r,false);},500);}
 
-// DRAG & DROP - Botón
-var btnDrag = false, btnX, btnY, btnMoved = false;
-var btn = document.getElementById('bot-btn');
-
-btn.addEventListener('mousedown', function(e) {
-    btnDrag = true;
-    btnMoved = false;
-    var rect = btn.getBoundingClientRect();
-    btnX = e.clientX - rect.left;
-    btnY = e.clientY - rect.top;
-});
-
-document.addEventListener('mousemove', function(e) {
-    if (btnDrag) {
-        btnMoved = true;
-        e.preventDefault();
-        var newX = e.clientX - btnX;
-        var newY = e.clientY - btnY;
+// TELEPORT: Mover el chatbot al body principal de la página
+(function teleport() {
+    try {
+        const parentDoc = window.parent.document;
+        const btn = document.getElementById('bot-btn');
+        const box = document.getElementById('bot-box');
         
-        // Mantener dentro de la ventana
-        newX = Math.max(0, Math.min(newX, window.innerWidth - btn.offsetWidth));
-        newY = Math.max(0, Math.min(newY, window.innerHeight - btn.offsetHeight));
-        
-        btn.style.left = newX + 'px';
-        btn.style.top = newY + 'px';
-        btn.style.right = 'auto';
-        btn.style.bottom = 'auto';
+        if (btn && box && parentDoc && parentDoc.body) {
+            // Clonar y agregar al body principal
+            const btnClone = btn.cloneNode(true);
+            const boxClone = box.cloneNode(true);
+            
+            // Agregar al body principal (fuera del iframe)
+            parentDoc.body.appendChild(btnClone);
+            parentDoc.body.appendChild(boxClone);
+            
+            // Ocultar originales
+            btn.style.display = 'none';
+            box.style.display = 'none';
+            
+            // Re-conectar eventos en los clones
+            btnClone.onclick = () => boxClone.classList.toggle('open');
+            boxClone.querySelector('.h button').onclick = () => boxClone.classList.toggle('open');
+            
+            const inputClone = boxClone.querySelector('#in');
+            const sendFunc = () => {
+                const msg = inputClone.value.trim();
+                if (!msg) return;
+                const msgsDiv = boxClone.querySelector('#msgs');
+                const addMsg = (t,u) => {
+                    const d = parentDoc.createElement('div');
+                    d.className = 'm' + (u?' u':'');
+                    d.innerHTML = '<div class="a">' + (u?'👤':'🤖') + '</div><div class="b">' + t + '</div>';
+                    msgsDiv.appendChild(d);
+                    msgsDiv.scrollTop = msgsDiv.scrollHeight;
+                };
+                addMsg(msg, true);
+                inputClone.value = '';
+                setTimeout(() => {
+                    const l = msg.toLowerCase();
+                    let r;
+                    if (l.includes('hola')||l.includes('buenos')||l.includes('buenas')) r='¡Hola! 👋 ¿En qué puedo ayudarte hoy?';
+                    else if (l.includes('precio')||l.includes('costo')||l.includes('cuanto')) r='Nuestros planes arrancan desde $25.000/mes. ¿Te gustaría conocer más detalles?';
+                    else if (l.includes('gracias')) r='¡De nada! 😊 Estoy acá para ayudarte.';
+                    else if (l.includes('chau')||l.includes('adios')) r='¡Hasta pronto! 👋 Cualquier cosa, acá estoy.';
+                    else r='Interesante pregunta. Por ahora estoy en modo de prueba, pero pronto podré ayudarte con eso. ¿Algo más?';
+                    addMsg(r, false);
+                }, 500);
+            };
+            inputClone.onkeypress = (e) => { if (e.key === 'Enter') sendFunc(); };
+            boxClone.querySelector('.inp button').onclick = sendFunc;
+            
+            // Copiar estilos al documento principal
+            const style = parentDoc.createElement('style');
+            style.textContent = document.querySelector('style').textContent;
+            parentDoc.head.appendChild(style);
+        }
+    } catch (e) {
+        console.log('Teleport failed:', e);
     }
-});
-
-document.addEventListener('mouseup', function() {
-    btnDrag = false;
-});
-
-// Click en el botón (solo si no se movió)
-btn.addEventListener('click', function(e) {
-    if (!btnMoved) {
-        toggle();
-    }
-});
-
-// DRAG & DROP - Chatbot
-var boxDrag = false, boxX, boxY;
-var box = document.getElementById('bot-box');
-var header = document.getElementById('drag-header');
-
-header.addEventListener('mousedown', function(e) {
-    if (e.target.tagName === 'BUTTON') return;
-    boxDrag = true;
-    var rect = box.getBoundingClientRect();
-    boxX = e.clientX - rect.left;
-    boxY = e.clientY - rect.top;
-    header.style.cursor = 'grabbing';
-});
-
-document.addEventListener('mousemove', function(e) {
-    if (boxDrag) {
-        e.preventDefault();
-        var newX = e.clientX - boxX;
-        var newY = e.clientY - boxY;
-        
-        // Mantener dentro de la ventana
-        newX = Math.max(0, Math.min(newX, window.innerWidth - box.offsetWidth));
-        newY = Math.max(0, Math.min(newY, window.innerHeight - box.offsetHeight));
-        
-        box.style.left = newX + 'px';
-        box.style.top = newY + 'px';
-        box.style.right = 'auto';
-        box.style.bottom = 'auto';
-    }
-});
-
-document.addEventListener('mouseup', function() {
-    if (boxDrag) {
-        boxDrag = false;
-        header.style.cursor = 'move';
-    }
-});
+})();
 </script>
 
 </body>
 </html>
 """
 
-# CSS para que el iframe del chatbot cubra TODA la pantalla
+# CSS para que el iframe del chatbot no ocupe espacio visual
 st.markdown("""
 <style>
-/* TODOS los contenedores padre del iframe */
-div[data-testid="stVerticalBlock"]:has(iframe[height="600"]),
-div[data-testid="element-container"]:has(iframe[height="600"]),
-div[data-testid="column"]:has(iframe[height="600"]) {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    pointer-events: none !important;
-    z-index: 99999999 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-}
-
-/* El iframe en sí */
 iframe[height="600"] {
     position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     height: 100vh !important;
     border: none !important;
     pointer-events: none !important;
-    z-index: 99999999 !important;
-    overflow: visible !important;
+    z-index: 999999 !important;
 }
-
-/* Los elementos dentro del iframe sí pueden recibir clics */
 iframe[height="600"] * {
     pointer-events: auto !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# Chatbot inyectado directamente en el body (no en iframe)
-st.markdown("""
-<div id="chatbot-inject"></div>
-<script>
-(function() {
-    // Solo inyectar una vez
-    if (document.getElementById('mercadobot-injected')) return;
-    
-    // Crear contenedor
-    const container = document.createElement('div');
-    container.id = 'mercadobot-injected';
-    container.innerHTML = `""" + CHATBOT.replace('<!DOCTYPE html>', '').replace('<html>', '').replace('</html>', '').replace('<head><meta charset="utf-8"></head>', '').replace('<body style="margin:0;padding:0;overflow:visible;">', '').replace('</body>', '') + """`;
-    
-    // Inyectar en el body principal
-    document.body.appendChild(container);
-})();
-</script>
-""", unsafe_allow_html=True)
+components.html(CHATBOT, height=600)
