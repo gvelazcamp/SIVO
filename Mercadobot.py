@@ -4471,14 +4471,17 @@ CHATBOT = """
 .inp input{flex:1;padding:10px 16px;border:1px solid #e0e0e0;border-radius:20px;font-size:14px;outline:none;}
 .inp input:focus{border-color:#f4b400;}
 .inp button{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f4b400,#ff6b00);border:none;cursor:pointer;font-size:18px;color:#fff;}
+.clickable-option{cursor:pointer;color:#f4b400;text-decoration:none;display:inline-block;padding:4px 0;transition:all 0.2s;}
+.clickable-option:hover{color:#ff6b00;transform:translateX(4px);}
 </style>
 
 <button id="bot-btn" onclick="toggle()">💬</button>
 
 <div id="bot-box">
 <div class="h"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
+<div class="h"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
 <div id="msgs">
-<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?</div></div>
+<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy MercadoBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es MercadoBot')">• Qué es MercadoBot</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
 </div>
 <div class="inp">
 <input id="in" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')send()">
@@ -4489,6 +4492,13 @@ CHATBOT = """
 <script>
 function toggle(){document.getElementById('bot-box').classList.toggle('open');}
 function add(t,u){var m=document.getElementById('msgs'),d=document.createElement('div');d.className='m'+(u?' u':'');d.innerHTML='<div class="a">'+(u?'👤':'🤖')+'</div><div class="b">'+t+'</div>';m.appendChild(d);m.scrollTop=m.scrollHeight;}
+
+// Función para enviar opciones clickeables
+function sendOption(text){
+    document.getElementById('in').value = text;
+    send();
+}
+
 function send(){
     var i=document.getElementById('in'),msg=i.value.trim();
     if(!msg)return;
@@ -4655,7 +4665,20 @@ function send(){
                 }, 500);
             };
             inputClone.onkeypress = (e) => { if (e.key === 'Enter') sendFunc(); };
+            inputClone.onkeypress = (e) => { if (e.key === 'Enter') sendFunc(); };
             boxClone.querySelector('.inp button').onclick = sendFunc;
+            
+            // Función sendOption para opciones clickeables en el clon
+            const sendOptionFunc = (text) => {
+                inputClone.value = text;
+                sendFunc();
+            };
+            
+            // Reconectar eventos de opciones clickeables
+            boxClone.querySelectorAll('.clickable-option').forEach(option => {
+                const optionText = option.textContent.trim();
+                option.onclick = () => sendOptionFunc(optionText);
+            });
             
             // Copiar estilos al documento principal
             const style = parentDoc.createElement('style');
@@ -4666,6 +4689,8 @@ function send(){
         console.log('Teleport failed:', e);
     }
 })();
+</script>
+
 </script>
 
 </body>
