@@ -3121,323 +3121,305 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
     </div>
     
     <div class="demo-chat">
+        <!-- ESCENA 1: Bienvenida con recomendación inmediata -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen stock de zapatillas Nike Air Max talle 42?</div>
+            <div class="demo-bubble demo-user">Hola</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Las Nike Air Max están disponibles en talle 42:<br>
-            • <strong>Air Max 90:</strong> $89.999 - Stock: 5 unidades<br>
-            • <strong>Air Max 270:</strong> $119.999 - Stock: 3 unidades<br>
-            • <strong>Air Max Plus:</strong> $109.999 - Stock: 7 unidades<br>
-            Envío gratis en compras superiores a $80.000. ¿Cuál te interesa?</div>
+            <div class="demo-bubble demo-bot">¡Hola! 👋 Bienvenido a TechStore.<br>
+            ¿Qué estás buscando hoy?<br><br>
+            📱 Celulares | 💻 Notebooks | 🎧 Accesorios | 🎮 Gaming<br><br>
+            💡 <strong>Lo más vendido hoy:</strong> iPhone 15 Pro con 20% OFF<br>
+            ⏰ <strong>Oferta termina en:</strong> 4 horas</div>
         </div>
 
+        <!-- ESCENA 2: Consulta de producto con stock en tiempo real -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuánto tarda el envío a Córdoba Capital?</div>
+            <div class="demo-bubble demo-user">Busco un iPhone 15</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Los tiempos de envío a Córdoba Capital son:<br>
-            • <strong>Envío estándar:</strong> 5-7 días hábiles - $2.500<br>
-            • <strong>Envío express:</strong> 2-3 días hábiles - $4.800<br>
-            • <strong>Envío prioritario:</strong> 24-48 hs - $8.000<br>
-            <strong>Envío GRATIS</strong> en compras mayores a $80.000 (estándar)<br>
-            Todos los envíos incluyen seguro y tracking.</div>
+            <div class="demo-bubble demo-bot">📱 <strong>iPhone 15 disponible:</strong><br><br>
+            <strong>iPhone 15 Pro 256GB</strong> - $1.299.990<br>
+            ✅ <strong>Stock:</strong> 3 unidades (Azul titanio)<br>
+            🚚 Envío gratis<br>
+            💳 12 cuotas sin interés<br>
+            ⭐ 4.8/5 (2.341 reviews)<br><br>
+            <strong>iPhone 15 128GB</strong> - $999.990<br>
+            ✅ <strong>Stock:</strong> 8 unidades<br>
+            🚚 Llega mañana<br>
+            💳 6 cuotas sin interés<br><br>
+            ⚠️ <strong>Alerta:</strong> El Pro en azul tiene bajo stock, ¡aprovechá!<br>
+            ¿Cuál te interesa?</div>
         </div>
 
+        <!-- ESCENA 3: Comparación de productos -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo pagar en cuotas?</div>
+            <div class="demo-bubble demo-user">¿Cuál me conviene más?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tenemos varias opciones de financiación:<br>
-            • <strong>Tarjetas de crédito:</strong> Hasta 12 cuotas sin interés<br>
-            • <strong>Mercado Pago:</strong> Hasta 18 cuotas (con interés)<br>
-            • <strong>Naranja/Visa/Mastercard:</strong> 3, 6, 9 o 12 cuotas<br>
-            • <strong>Efectivo/Transferencia:</strong> 10% descuento adicional<br>
-            También aceptamos débito y billeteras digitales.</div>
+            <div class="demo-bubble demo-bot">📊 <strong>iPhone 15 vs iPhone 15 Pro:</strong><br><br>
+            <strong>Precio:</strong><br>
+            • iPhone 15: $999.990<br>
+            • iPhone 15 Pro: $1.299.990<br><br>
+            <strong>Cámara:</strong><br>
+            • iPhone 15: 48MP dual<br>
+            • iPhone 15 Pro: 48MP triple + Tele<br><br>
+            <strong>Pantalla:</strong><br>
+            • iPhone 15: 60Hz<br>
+            • iPhone 15 Pro: 120Hz ProMotion<br><br>
+            <strong>Batería:</strong><br>
+            • iPhone 15: 20hs<br>
+            • iPhone 15 Pro: 23hs<br><br>
+            💡 <strong>Mi recomendación:</strong><br>
+            Si sacás muchas fotos y usás apps pesadas → <strong>Pro</strong><br>
+            Si es para uso normal → <strong>Estándar</strong> (ahorrás $300k)<br><br>
+            🔥 <strong>Bonus:</strong> Con el Pro te regalo funda + vidrio ($15.000)<br><br>
+            ¿Agregamos uno al carrito?</div>
         </div>
 
+        <!-- ESCENA 4: Agregar al carrito con upsell -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cómo hago para cambiar un producto?</div>
+            <div class="demo-bubble demo-user">Dale, el Pro</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">El proceso de cambio es muy simple:<br>
-            1. <strong>Tenés 30 días</strong> desde la compra<br>
-            2. <strong>El producto debe estar:</strong> Sin uso, con etiquetas, en embalaje original<br>
-            3. <strong>Iniciá el cambio:</strong> Desde tu cuenta o por WhatsApp<br>
-            4. <strong>Te enviamos</strong> etiqueta de devolución prepaga<br>
-            5. <strong>Recibimos y validamos:</strong> 2-3 días hábiles<br>
-            6. <strong>Enviamos el nuevo:</strong> Sin cargo adicional<br>
-            Los cambios son GRATIS.</div>
+            <div class="demo-bubble demo-bot">✅ <strong>iPhone 15 Pro 256GB</strong> agregado al carrito<br><br>
+            🛒 <strong>Tu carrito:</strong> $1.299.990<br><br>
+            💡 <strong>Clientes que compraron esto también llevaron:</strong><br>
+            📦 AirPods Pro 2 - $349.990 (Combo -15%)<br>
+            🔋 Cargador MagSafe - $49.990<br>
+            📱 Funda Apple original - $29.990<br><br>
+            🔥 <strong>OFERTA ESPECIAL:</strong> Si agregás AirPods → <strong>Envío express GRATIS</strong> (24hs)<br><br>
+            ¿Agregamos algo más o cerramos la compra?</div>
         </div>
 
+        <!-- ESCENA 5: Consulta de envío y tiempos -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Dónde está mi pedido #12345?</div>
+            <div class="demo-bubble demo-user">¿Cuándo llega a Córdoba?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Tu pedido #12345 está en camino! 📦<br>
-            • <strong>Estado:</strong> En distribución<br>
-            • <strong>Courier:</strong> Andreani<br>
-            • <strong>Código de seguimiento:</strong> AN123456789AR<br>
-            • <strong>Entrega estimada:</strong> Mañana antes de las 18hs<br>
-            Podés rastrearlo en tiempo real en: www.andreani.com/tracking<br>
-            Recibirás un SMS cuando esté a 2 horas de llegar.</div>
+            <div class="demo-bubble demo-bot">📦 <strong>Envío a Córdoba Capital:</strong><br><br>
+            <strong>Opciones disponibles:</strong><br>
+            🚚 <strong>Estándar:</strong> 3-5 días hábiles - GRATIS<br>
+            ⚡ <strong>Express:</strong> 24-48hs - $8.990<br>
+            🏪 <strong>Retiro en sucursal:</strong> Gratis, listo mañana<br><br>
+            📍 <strong>Sucursales en Córdoba:</strong><br>
+            • Shopping Patio Olmos (Centro)<br>
+            • Av. Rafael Núñez 4501 (Cerro)<br><br>
+            💡 <strong>Tip:</strong> Con envío express llega antes del finde 😊<br><br>
+            ¿Cómo preferís recibirlo?</div>
         </div>
 
+        <!-- ESCENA 6: Medios de pago y financiación -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen buzos oversize?</div>
+            <div class="demo-bubble demo-user">¿Puedo pagarlo en cuotas?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tenemos una colección completa de buzos oversize:<br>
-            • <strong>Buzo básico liso:</strong> $12.999 (S/M/L/XL)<br>
-            • <strong>Buzo con capucha:</strong> $15.999 (S/M/L/XL)<br>
-            • <strong>Buzo estampado:</strong> $17.999 (S/M/L/XL)<br>
-            • <strong>Colores:</strong> Negro, gris, blanco, beige, verde militar<br>
-            <strong>Promo:</strong> Comprá 2 buzos y llevá 25% OFF. ¿Te paso el link de la colección?</div>
+            <div class="demo-bubble demo-bot">💳 <strong>Formas de pago:</strong><br><br>
+            <strong>TARJETA DE CRÉDITO:</strong><br>
+            ✅ 3 cuotas sin interés - $433.330/mes<br>
+            ✅ 6 cuotas sin interés - $216.665/mes<br>
+            ✅ 12 cuotas - $118.000/mes (TNA 65%)<br><br>
+            <strong>DÉBITO/TRANSFERENCIA:</strong><br>
+            💰 5% OFF - Precio final: $1.234.990<br><br>
+            <strong>MERCADO PAGO:</strong><br>
+            ✅ Hasta 18 cuotas - $82.500/mes<br><br>
+            <strong>AHORA 12/18:</strong><br>
+            ✅ 12 cuotas - $108.332/mes<br><br>
+            🎁 <strong>Bonus:</strong> Pagando con transferencia te damos $65k de descuento.<br><br>
+            ¿Cómo querés pagar?</div>
         </div>
 
+        <!-- ESCENA 7: Validación de stock antes de pagar -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cómo sé mi talle?</div>
+            <div class="demo-bubble demo-user">6 cuotas sin interés</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Tenemos una guía de talles completa:<br>
-            📏 <strong>Para ropa:</strong><br>
-            • Medí tu busto/pecho, cintura y cadera<br>
-            • Compará con nuestra tabla de talles<br>
-            👟 <strong>Para calzado:</strong><br>
-            • Medí tu pie en cm (del talón a la punta)<br>
-            • Usá nuestro conversor de tallas<br>
-            <strong>Tip:</strong> En cada producto hay una guía específica con medidas exactas.<br>
-            ¿Querés que te ayude con un producto en particular?</div>
+            <div class="demo-bubble demo-bot">Perfecto! 💳<br><br>
+            ⚠️ <strong>IMPORTANTE:</strong> Hay mucha demanda del iPhone 15 Pro azul.<br><br>
+            📊 <strong>Stock actual:</strong><br>
+            🔵 Azul titanio - <strong>2 unidades</strong> (bajó de 3)<br>
+            ⚫ Negro espacial - 5 unidades<br>
+            ⚪ Blanco - 4 unidades<br><br>
+            ⏰ <strong>8 personas</strong> están mirando este producto AHORA.<br><br>
+            💡 ¿Cerramos la compra para que no te quedes sin stock?<br>
+            Te lo reservo <strong>10 minutos</strong> sin compromiso.</div>
         </div>
 
+        <!-- ESCENA 8: Proceso de checkout guiado -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen tienda física?</div>
+            <div class="demo-bubble demo-user">Sí, compralo</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tenemos 3 locales:<br>
-            📍 <strong>Palermo:</strong> Av. Santa Fe 3500<br>
-            &nbsp;&nbsp;&nbsp;Lun-Sáb 10-20hs, Dom 12-19hs<br>
-            📍 <strong>Belgrano:</strong> Av. Cabildo 2200<br>
-            &nbsp;&nbsp;&nbsp;Lun-Sáb 10-20hs, Dom 12-19hs<br>
-            📍 <strong>Unicenter:</strong> Local 234, 1er piso<br>
-            &nbsp;&nbsp;&nbsp;Todos los días 10-22hs<br>
-            Podés comprar online y retirar en cualquier local SIN CARGO.</div>
+            <div class="demo-bubble demo-bot">¡Genial! 🎉 Vamos paso a paso:<br><br>
+            <strong>PASO 1/3 - Datos de envío:</strong><br>
+            📧 Email: [Ingresá tu email]<br>
+            📱 Teléfono: [Tu WhatsApp]<br>
+            📍 Dirección: [Calle, número, depto]<br>
+            🏙️ CP: [Código postal Córdoba]<br><br>
+            💡 Te voy a mandar actualizaciones por WhatsApp.<br>
+            ¿Seguimos?</div>
         </div>
 
+        <!-- ESCENA 9: Confirmación de compra con expectativas claras -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo retirar en local?</div>
+            <div class="demo-bubble demo-user">Listo, completo los datos</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">¡Claro! Retiro en tienda es GRATIS:<br>
-            1. <strong>Comprás online</strong> y elegís "Retiro en tienda"<br>
-            2. <strong>Elegís el local</strong> más cercano<br>
-            3. <strong>Te llega un email</strong> cuando está listo (24-48hs)<br>
-            4. <strong>Retirás</strong> presentando DNI y número de orden<br>
-            <strong>Ventajas:</strong><br>
-            ✓ Sin costo de envío<br>
-            ✓ Podés probarte en el local<br>
-            ✓ Cambio inmediato si no te queda<br>
-            Horarios: Lun-Sáb 10-20hs</div>
+            <div class="demo-bubble demo-bot">✅ <strong>¡Compra confirmada!</strong><br><br>
+            📦 <strong>Pedido #45821</strong><br>
+            iPhone 15 Pro 256GB Azul - $1.299.990<br>
+            Pago: 6 cuotas sin interés<br><br>
+            🚚 <strong>Envío:</strong><br>
+            Llega a Córdoba en 3-5 días hábiles<br>
+            📍 Dirección: [tu dirección]<br><br>
+            📧 <strong>Te enviamos:</strong><br>
+            ✅ Email con factura<br>
+            ✅ WhatsApp con tracking<br>
+            ✅ Link para seguir el pedido<br><br>
+            🎁 <strong>BONUS:</strong> Te agregamos funda + vidrio ($15k) GRATIS<br><br>
+            <strong>Número de seguimiento:</strong> AR1234567890<br>
+            [🔍 Rastrear pedido]</div>
         </div>
 
+        <!-- ESCENA 10: Consulta de pedido / tracking -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hacen envíos al interior?</div>
+            <div class="demo-bubble demo-user">¿Dónde está mi pedido?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Enviamos a todo el país:<br>
-            <strong>CABA y GBA:</strong><br>
-            • Estándar: 3-5 días - $1.800<br>
-            • Express: 24-48hs - $3.500<br>
-            <strong>Interior del país:</strong><br>
-            • Córdoba, Rosario, Mendoza: 5-7 días - $2.500<br>
-            • Resto del país: 7-10 días - $3.200<br>
-            • Patagonia: 10-15 días - $4.500<br>
-            <strong>ENVÍO GRATIS</strong> en compras +$80.000 a todo el país!</div>
+            <div class="demo-bubble demo-bot">📦 <strong>Estado de tu pedido #45821:</strong><br><br>
+            ✅ Pago confirmado (Hoy 14:30)<br>
+            ✅ Preparando pedido (Hoy 15:45)<br>
+            🚚 En camino a Córdoba (Hoy 18:20)<br>
+            ⏳ En distribución (Mañana estimado)<br>
+            📍 Entregado (2-3 días)<br><br>
+            📍 <strong>Última ubicación:</strong> Centro de distribución Rosario<br>
+            🚛 <strong>Transportista:</strong> Andreani<br>
+            📞 <strong>Contacto:</strong> 0810-122-1100<br><br>
+            💡 Te avisamos por WhatsApp cuando esté cerca de tu casa.<br>
+            ¿Necesitás algo más?</div>
         </div>
 
+        <!-- ESCENA 11: Cambios y devoluciones -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cuándo hay restock de las Jordan?</div>
+            <div class="demo-bubble demo-user">¿Puedo cambiar el color?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Las Air Jordan 1 Retro High están agotadas actualmente.<br>
-            📅 <strong>Próximo restock:</strong> 15 de febrero<br>
-            👟 <strong>Talles disponibles:</strong> Del 38 al 44<br>
-            💰 <strong>Precio:</strong> $149.999<br>
-            <strong>¿Querés que te avisemos?</strong><br>
-            Dejá tu email y te notificamos 24hs antes del lanzamiento. Además, tenés acceso prioritario por 2 horas antes de la venta pública.</div>
+            <div class="demo-bubble demo-bot">🔄 <strong>Cambios y devoluciones:</strong><br><br>
+            <strong>Tu pedido aún NO salió</strong> del depósito, podemos cambiarlo:<br><br>
+            🔵 Azul titanio (actual)<br>
+            ⚫ Negro espacial ✅ Disponible<br>
+            ⚪ Blanco ✅ Disponible<br>
+            🩶 Titanio natural ✅ Disponible<br><br>
+            ¿A qué color lo cambiamos? Lo modifico ahora mismo.<br><br>
+            💡 Si ya te llegó, tenés <strong>30 días</strong> para cambiarlo gratis.</div>
         </div>
 
+        <!-- ESCENA 12: Consulta técnica de producto -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen descuentos por cantidad?</div>
+            <div class="demo-bubble demo-user">¿El iPhone es liberado?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Descuentos progresivos:<br>
-            • <strong>2 productos:</strong> 10% OFF<br>
-            • <strong>3 productos:</strong> 15% OFF<br>
-            • <strong>4 o más productos:</strong> 20% OFF<br>
-            <strong>Además:</strong><br>
-            • Comprá $100.000 o más: 25% OFF adicional<br>
-            • Primera compra: 15% OFF con código BIENVENIDO<br>
-            • Suscribite al newsletter: 10% OFF permanente<br>
-            Los descuentos se aplican automáticamente en el carrito.</div>
+            <div class="demo-bubble demo-bot">📱 <strong>Especificaciones iPhone 15 Pro:</strong><br><br>
+            ✅ <strong>Liberado de fábrica</strong> (funciona con cualquier chip)<br>
+            ✅ <strong>Garantía oficial Apple</strong> - 1 año<br>
+            ✅ <strong>Nuevo sellado</strong> (no refurbished)<br>
+            ✅ <strong>Compatible:</strong> Todas las redes 4G/5G Argentina<br><br>
+            📋 <strong>Incluye:</strong><br>
+            • iPhone 15 Pro<br>
+            • Cable USB-C a USB-C<br>
+            • Documentación<br>
+            • <strong>NO incluye</strong> cargador (se vende aparte)<br><br>
+            🎁 <strong>BONUS de TechStore:</strong><br>
+            • Funda protectora<br>
+            • Vidrio templado<br><br>
+            ¿Alguna otra duda técnica?</div>
         </div>
 
+        <!-- ESCENA 13: Problemas con el pedido -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Qué pasa si el producto llega defectuoso?</div>
+            <div class="demo-bubble demo-user">No me llegó el mail de confirmación</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Si recibís un producto con defecto:<br>
-            1. <strong>Contactanos inmediatamente</strong> con fotos del defecto<br>
-            2. <strong>Te enviamos</strong> etiqueta de devolución prepaga<br>
-            3. <strong>Opciones:</strong><br>
-            &nbsp;&nbsp;&nbsp;• Cambio por uno nuevo<br>
-            &nbsp;&nbsp;&nbsp;• Reintegro del 100% del dinero<br>
-            &nbsp;&nbsp;&nbsp;• Crédito en la tienda con 10% extra<br>
-            4. <strong>Tiempo de resolución:</strong> 48-72hs<br>
-            Todos los productos tienen garantía de 90 días contra defectos de fábrica.</div>
+            <div class="demo-bubble demo-bot">😟 Disculpá las molestias. Te ayudo:<br><br>
+            🔍 <strong>Verificando pedido #45821...</strong><br><br>
+            ✅ El pedido ESTÁ confirmado en el sistema<br>
+            📧 Email registrado: cliente@mail.com<br><br>
+            💡 <strong>Posibles causas:</strong><br>
+            • Revisá spam/correo no deseado<br>
+            • El mail puede demorar hasta 15 min<br><br>
+            🆘 <strong>Solución inmediata:</strong><br>
+            Te reenvío ahora mismo el mail ✅<br>
+            También te mando por WhatsApp 📱<br><br>
+            📞 ¿Querés que un asesor te llame? (estamos disponibles 9-20hs)</div>
         </div>
 
+        <!-- ESCENA 14: Cross-selling inteligente post-venta -->
+        <div class="demo-message">
+            <div class="demo-label">Cliente</div>
+            <div class="demo-bubble demo-user">Ya me llegó el iPhone, gracias</div>
+        </div>
+        <div class="demo-message">
+            <div class="demo-label">Asistente IA</div>
+            <div class="demo-bubble demo-bot">¡Genial! 🎉 Esperamos que lo disfrutes.<br><br>
+            💡 <strong>Para aprovechar al máximo tu iPhone 15 Pro:</strong><br><br>
+            <strong>Accesorios recomendados:</strong><br>
+            🎧 AirPods Pro 2 - $349.990 (25% OFF para clientes)<br>
+            ⌚ Apple Watch Series 9 - $649.990<br>
+            💾 iCloud 200GB - $299/mes (primer mes gratis)<br>
+            🔋 Power Bank MagSafe - $39.990<br><br>
+            📱 <strong>Protección extra:</strong><br>
+            🛡️ Seguro contra robo/rotura - $4.990/mes<br><br>
+            🎁 <strong>TU DESCUENTO:</strong> IPHONE15 para 30% OFF en accesorios<br>
+            ⏰ Válido por <strong>48hs</strong><br><br>
+            ¿Te interesa algo?</div>
+        </div>
+
+        <!-- ESCENA 15: Programa de fidelización -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
             <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Nuestro programa VIP Club:<br>
-            💎 <strong>Cómo funciona:</strong><br>
-            • Por cada $100 gastados = 1 punto<br>
-            • 100 puntos = $500 de descuento<br>
-            <strong>Beneficios por nivel:</strong><br>
-            🥉 <strong>Bronce</strong> (0-500 puntos): 5% descuento permanente<br>
-            🥈 <strong>Plata</strong> (501-1000): 10% + envíos gratis<br>
-            🥇 <strong>Oro</strong> (1001+): 15% + acceso a lanzamientos anticipados<br>
-            Registrate gratis y empezá a acumular puntos hoy!</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Aceptan mercadería usada como parte de pago?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Nuestro programa "Trade-In":<br>
-            👟 <strong>Productos aceptados:</strong><br>
-            • Zapatillas de marca (buen estado)<br>
-            • Ropa deportiva premium<br>
-            • Accesorios originales<br>
-            <strong>Proceso:</strong><br>
-            1. Envianos fotos del producto<br>
-            2. Nuestro equipo lo evalúa (24hs)<br>
-            3. Te damos un valor de canje<br>
-            4. Lo usás como crédito en tu próxima compra<br>
-            <strong>Bonificación:</strong> Hasta 40% del valor original.</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo cancelar mi pedido?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí, podés cancelar tu pedido:<br>
-            ✅ <strong>ANTES del envío:</strong><br>
-            • Cancelación 100% gratis<br>
-            • Reembolso inmediato (2-5 días hábiles)<br>
-            • Desde tu cuenta o por WhatsApp<br>
-            ⚠️ <strong>DESPUÉS del envío:</strong><br>
-            • Ya no se puede cancelar<br>
-            • Podés rechazar el paquete al recibirlo<br>
-            • O iniciá una devolución dentro de los 30 días<br>
-            ¿Cuál es el número de tu pedido?</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen gift cards?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Tarjetas regalo perfectas para regalar:<br>
-            🎁 <strong>Valores:</strong> $10.000 / $20.000 / $50.000 / Monto libre<br>
-            ⏰ <strong>Validez:</strong> 12 meses<br>
-            📧 <strong>Entrega:</strong> Digital instantánea por email<br>
-            🎁 <strong>Personalización:</strong> Agregá un mensaje<br>
-            💸 <strong>Sin cargo adicional</strong><br>
-            Se puede usar online y en locales. ¿Para quién sería?</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Cómo me registro en la web?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Registrarte es súper fácil:<br>
-            1. <strong>Hacé click</strong> en "Crear cuenta"<br>
-            2. <strong>Completá:</strong> Email y contraseña<br>
-            3. <strong>Verificá</strong> tu email (te llega un link)<br>
-            4. <strong>¡Listo!</strong> Ya podés comprar<br>
-            <strong>Beneficios de tener cuenta:</strong><br>
-            ✓ 15% OFF en tu primera compra<br>
-            ✓ Guardás tus datos para comprar más rápido<br>
-            ✓ Seguimiento de pedidos<br>
-            ✓ Acceso a ventas exclusivas<br>
-            ✓ Acumulás puntos VIP</div>
-        </div>
-
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen app móvil?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí! Descargá nuestra app:<br>
-            📱 <strong>iOS:</strong> App Store - "Tienda Online"<br>
-            🤖 <strong>Android:</strong> Google Play - "Tienda Online"<br>
-            <strong>Beneficios exclusivos de la app:</strong><br>
-            • 10% OFF adicional en tu primera compra<br>
-            • Notificaciones de ofertas y lanzamientos<br>
-            • Escaneo de productos en tienda<br>
-            • Acceso a descuentos exclusivos<br>
-            • Compra más rápida con 1 click<br>
-            ¡Descargala gratis ahora!</div>
+            <div class="demo-bubble demo-bot">⭐ <strong>TechClub - Programa VIP:</strong><br><br>
+            Con tu compra sumaste <strong>12.999 puntos</strong> 🎉<br><br>
+            💰 <strong>Tus puntos:</strong> 12.999<br>
+            🎁 <strong>Canjeables por:</strong> $1.299 en próxima compra<br><br>
+            <strong>BENEFICIOS TECHCLUB:</strong><br>
+            🥉 <strong>Bronce</strong> (0-20k pts): 5% OFF permanente<br>
+            🥈 <strong>Plata</strong> (20k-50k pts): 10% OFF + envíos gratis ← <strong>PRÓXIMO NIVEL</strong><br>
+            🥇 <strong>Oro</strong> (50k+ pts): 15% OFF + preventa exclusiva<br><br>
+            📊 <strong>Te faltan 7.001 pts para nivel Plata</strong><br><br>
+            💡 <strong>Próxima compra:</strong> Ganás puntos dobles (esta semana)<br><br>
+            ¿Querés ver el catálogo de canjes?</div>
         </div>
     </div>
-    
-    <div class="cta-demo">
-        <h2>💬 ¿Querés probarlo en vivo?</h2>
-        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="?vista=demo-live&asistente=ecommerce" style="text-decoration: none;">
-            <button class="btn-live">🚀 Probar ahora</button>
-        </a>
-    </div>
-
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
