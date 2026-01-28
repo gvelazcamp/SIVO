@@ -205,17 +205,7 @@ def get_bot_response(prompt):
 
     elif "montaña" in p or "nieve" in p or "esqui" in p or "bariloche" in p:
         return {
-            "content": """¡Genial! ❄️ Las mejores opciones de montaña:""",
-            "buttons": "montana_opciones"
-        }
-
-    else:
-        return {
-            "content": """Puedo ayudarte con muchas cosas! 😊
-
-**¿Qué te gustaría saber?**""",
-            "buttons": "ayuda"
-        }
+            "content": """¡Genial! ❄️ Las mejores opciones de montaña:
 
 **OPCIÓN 1 — Bariloche, Argentina 🇦🇷**
 • Hotel 4★ con vista al lago (5 días): USD 950/persona
@@ -297,7 +287,9 @@ Opciones ROMÁNTICAS para luna de miel:""",
             "buttons": "solo_destinos"
         }
 
-    elif any(word in p for word in ["800", "económico", "barato", "poco presupuesto"]) and ("usd" in p or "dolares" in p or "dólares" in p):
+    elif any(word in p for word in ["800", "económico", "barato", "poco presupuesto"]) and (
+        "usd" in p or "dolares" in p or "dólares" in p
+    ):
         return {
             "content": """¡Perfecto! Con USD 800 tenés MUY buenas opciones 💰""",
             "buttons": "economicos_destinos"
