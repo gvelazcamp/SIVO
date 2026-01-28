@@ -4313,7 +4313,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
     <div class="cta-demo">
         <h2>💬 ¿Querés probarlo en vivo?</h2>
         <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="https://DEPLOYAR-demo-ropa.streamlit.app" target="_blank" style="text-decoration: none;">
+        <a href="https://demoropa.streamlit.app/" target="_blank" style="text-decoration: none;">
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
