@@ -139,9 +139,9 @@ def get_bot_response(prompt):
             "buttons": "destinos_playa"
         }
 
-    elif "cancun" in p or "cancún" in p or "opción 1" in p:
-        return {
-            "content": """¡Excelente elección! 🇲🇽
+elif "cancun" in p or "cancún" in p or "opción 1" in p:
+    return {
+        "content": """¡Excelente elección! 🇲🇽
 
 **Paquete Cancún Premium incluye:**
 ✅ Vuelos directos Buenos Aires → Cancún
@@ -154,8 +154,9 @@ def get_bot_response(prompt):
 **Precio:** USD 1.200/persona
 
 🎁 **Reservando HOY:** $50 USD descuento + upgrade de habitación""",
-            "buttons": "acciones_cancun"
-        }
+        "buttons": "acciones_cancun",
+        "image": "assets/Cancun.png"
+    }
 
     elif "punta cana" in p or "opción 2" in p:
         return {
