@@ -1688,12 +1688,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
                 Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.
             </p>
 
-            <div class="hero-actions">
-                <a class="btn-primary" href="?vista=asistentes">Ver asistentes →</a>
-                <a class="btn-secondary" href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer">Demo en vivo</a>
-            </div>
-
-            <div class="trust-row">
+            <div class="trust-row" style="margin-top: 30px;">
                 <div class="trust-pill">⚡ Instalación rápida</div>
                 <div class="trust-pill">🔒 Configurable y seguro</div>
                 <div class="trust-pill">💬 Soporte incluido</div>
