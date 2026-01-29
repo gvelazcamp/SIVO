@@ -1689,8 +1689,8 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
             </p>
 
             <div class="hero-actions">
-                <a class="btn-primary" href="https://demorestaurante.streamlit.app/" target="_blank">Ver chatbot en acción</a>
-                <a class="btn-secondary" href="?vista=asistentes">Explorar asistentes</a>
+                <a class="btn-primary" href="?vista=asistentes">Ver asistentes →</a>
+                <a class="btn-secondary" href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer">Demo en vivo</a>
             </div>
 
             <div class="trust-row">
