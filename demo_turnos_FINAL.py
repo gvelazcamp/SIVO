@@ -1,5 +1,6 @@
 import streamlit as st
 from datetime import datetime, timedelta
+import calendar
 
 st.set_page_config(
     page_title="Demo Turnos - AppointmentBot",
@@ -8,82 +9,126 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# CSS MEJORADO
 st.markdown("""
 <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     
-    .stChatMessage {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .stChatFloatingInputContainer {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+    .stChatMessage { max-width: 800px; margin: 0 auto; }
+    .stChatFloatingInputContainer { max-width: 800px; margin: 0 auto; }
     
     .custom-header {
-        text-align: center;
-        padding: 25px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        margin-bottom: 30px;
-        color: white;
+        text-align: center; padding: 25px;
+        background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+        border-radius: 12px; margin-bottom: 30px; color: white;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+    .custom-header h1 { margin: 0; font-size: 28px; font-weight: 600; }
+    .custom-header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 15px; }
     
-    .custom-header h1 {
-        margin: 0;
-        font-size: 28px;
-        font-weight: 600;
-        letter-spacing: -0.5px;
+    /* Calendario visual */
+    .calendar-container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 20px 0;
     }
     
-    .custom-header p {
-        margin: 10px 0 0 0;
-        opacity: 0.9;
-        font-size: 15px;
-        font-weight: 400;
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .calendar-day {
+        padding: 12px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 2px solid #e5e7eb;
+        background: white;
+    }
+    
+    .calendar-day:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+    }
+    
+    .day-available {
+        background: #e8f4f8;
+        border-color: #4a90e2;
+    }
+    
+    .day-few {
+        background: #fff4e6;
+        border-color: #f59e0b;
+    }
+    
+    .day-full {
+        background: #fee;
+        border-color: #ef4444;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    
+    .day-closed {
+        background: #f3f4f6;
+        border-color: #d1d5db;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .time-slot {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        border: 2px solid #4a90e2;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+    
+    .time-slot:hover {
+        background: #4a90e2;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+    .time-slot-taken {
+        background: #f3f4f6;
+        border-color: #d1d5db;
+        color: #9ca3af;
+        cursor: not-allowed;
     }
     
     div[data-testid="column"] > div > div > button {
-        width: 100%;
-        border-radius: 8px;
-        padding: 14px 20px;
-        font-weight: 500;
-        font-size: 15px;
-        transition: all 0.2s ease;
-        border: 1.5px solid #e5e7eb;
-        background: white;
-        color: #374151;
+        width: 100%; border-radius: 8px; padding: 14px 20px;
+        font-weight: 500; font-size: 15px; transition: all 0.2s ease;
+        border: 1.5px solid #e5e7eb; background: white; color: #374151;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     
     div[data-testid="column"] > div > div > button:hover {
-        background: #667eea;
-        border-color: #667eea;
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
-    }
-    
-    .stCaption {
-        color: #6b7280 !important;
-        font-size: 14px !important;
-        line-height: 1.8 !important;
+        background: #4a90e2; border-color: #4a90e2; color: white;
+        transform: translateY(-1px); box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Badge impactante
+# Badge
 st.markdown("""
-<div style="text-align: center; margin-bottom: 20px;">
-    <span style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 15px;
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); animation: pulse 2s infinite;">
-        🎯 Sistema completo: Agenda + Recordatorios + Estadisticas + Integraciones
+<div style="text-align: center; margin-bottom: 15px;">
+    <span style="display: inline-block; background: linear-gradient(135deg, #4a90e2 0%, #5ba3f5 100%);
+        color: white; padding: 10px 24px; border-radius: 25px; font-weight: 600; font-size: 14px;
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);">
+        🎯 Imaginate este demo con tus datos - Tu agenda, tus servicios, tus reglas
     </span>
 </div>
 """, unsafe_allow_html=True)
@@ -91,42 +136,37 @@ st.markdown("""
 # Header
 st.markdown("""
 <div class="custom-header">
-    <h1>📅 AppointmentBot Pro - Gestion Inteligente de Turnos</h1>
-    <p>Automatiza tu agenda, reduce inasistencias 60% y ahorra 15 horas/semana</p>
+    <h1>📅 AppointmentBot - Sistema de Turnos Inteligente</h1>
+    <p>Reservá tu turno en segundos con nuestro calendario interactivo</p>
 </div>
 """, unsafe_allow_html=True)
 
-BONUS_TEXTO = (
-    "Sistema profesional que se integra con Google Calendar, WhatsApp API y tu CRM. "
-    "Reduce inasistencias hasta 60% con recordatorios automaticos."
-)
+BONUS = "Este asistente gestiona tu agenda automáticamente, envía recordatorios y reduce inasistencias hasta un 60%."
 
-def maybe_append_bonus_once():
+def maybe_bonus():
     if not st.session_state.get("bonus_shown", False):
         st.session_state.messages.append({
             "role": "assistant",
-            "content": "💡 **{}**".format(BONUS_TEXTO),
+            "content": f"💡 **{BONUS}**",
             "show_buttons": None
         })
         st.session_state.bonus_shown = True
 
-# Inicializar estado
+# Inicializar
 if "messages" not in st.session_state:
-    # Mensaje inicial CON CALENDARIO
-    st.session_state.messages = [
-        {
-            "role": "assistant",
-            "content": """Hola! Soy tu asistente de turnos 24/7 📅
+    st.session_state.messages = [{
+        "role": "assistant",
+        "content": """¡Hola! Soy tu asistente de turnos 📅
 
-**📊 ESTADO DE TU AGENDA HOY:**
-- Turnos confirmados: 12
-- Espacios libres: 8
-- Lista de espera: 3 clientes
+Seleccioná una opción para comenzar:""",
+        "show_buttons": "inicial"
+    }]
 
-**Que necesitas?**""",
-            "show_buttons": "inicial_con_calendario"
-        }
-    ]
+if "selected_date" not in st.session_state:
+    st.session_state.selected_date = None
+
+if "selected_time" not in st.session_state:
+    st.session_state.selected_time = None
 
 if "button_clicked" not in st.session_state:
     st.session_state.button_clicked = False
@@ -134,597 +174,510 @@ if "button_clicked" not in st.session_state:
 if "bonus_shown" not in st.session_state:
     st.session_state.bonus_shown = False
 
-def add_message_and_hide_buttons(user_msg, bot_response, next_buttons=None, show_bonus_once=False):
-    st.session_state.messages.append({"role": "user", "content": user_msg})
-    bot_msg = {
-        "role": "assistant",
-        "content": bot_response,
-        "show_buttons": next_buttons
-    }
-    st.session_state.messages.append(bot_msg)
-    if show_bonus_once:
-        maybe_append_bonus_once()
-    st.session_state.button_clicked = True
+def add_msg(user, bot, btns=None, bonus=False):
+    st.session_state.messages.append({"role": "user", "content": user})
+    st.session_state.messages.append({"role": "assistant", "content": bot, "show_buttons": btns})
+    if bonus:
+        maybe_bonus()
 
-def get_bot_response(prompt):
-    p = (prompt or "").lower()
+def get_calendar_html():
+    """Genera un calendario visual para los próximos 14 días"""
+    today = datetime.now()
     
-    # 1) Mostrar calendario
-    if "calendario" in p or "dias" in p or "disponible" in p or "cuando" in p:
+    # Disponibilidad simulada (más realista)
+    availability = {
+        0: 8,  # Lunes: 8 turnos
+        1: 9,  # Martes: 9 turnos
+        2: 7,  # Miércoles: 7 turnos
+        3: 8,  # Jueves: 8 turnos
+        4: 6,  # Viernes: 6 turnos
+        5: 3,  # Sábado: 3 turnos
+        6: 0,  # Domingo: cerrado
+    }
+    
+    html = """
+    <div class="calendar-container">
+        <h3 style="margin: 0 0 10px 0; color: #1f2937;">📅 Seleccioná un día</h3>
+        <p style="margin: 0 0 15px 0; color: #6b7280; font-size: 14px;">
+            Próximos 14 días disponibles
+        </p>
+        <div class="calendar-grid">
+    """
+    
+    for i in range(14):
+        date = today + timedelta(days=i)
+        day_num = date.day
+        day_name = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"][date.weekday()]
+        month_name = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"][date.month - 1]
+        
+        # Determinar disponibilidad
+        slots = availability[date.weekday()]
+        
+        if slots == 0:
+            css_class = "day-closed"
+            status = "❌ Cerrado"
+        elif slots <= 2:
+            css_class = "day-few"
+            status = f"⚠️ {slots} turnos"
+        elif slots <= 5:
+            css_class = "day-few"
+            status = f"⚡ {slots} turnos"
+        else:
+            css_class = "day-available"
+            status = f"✅ {slots} turnos"
+        
+        html += f"""
+            <div class="calendar-day {css_class}">
+                <div style="font-size: 11px; color: #6b7280; font-weight: 600;">{day_name}</div>
+                <div style="font-size: 20px; font-weight: 700; margin: 5px 0; color: #1f2937;">{day_num}</div>
+                <div style="font-size: 10px; color: #6b7280;">{month_name}</div>
+                <div style="font-size: 11px; margin-top: 5px; font-weight: 600;">{status}</div>
+            </div>
+        """
+    
+    html += """
+        </div>
+        <p style="margin: 15px 0 0 0; color: #6b7280; font-size: 13px; text-align: center;">
+            💡 Tip: Los miércoles y jueves tienen más disponibilidad
+        </p>
+    </div>
+    """
+    
+    return html
+
+def get_time_slots_for_date(date_str):
+    """Genera horarios disponibles para una fecha"""
+    # Horarios base
+    morning_slots = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"]
+    afternoon_slots = ["14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]
+    
+    # Simular algunos ocupados aleatoriamente
+    occupied = ["10:00", "15:00", "17:00"]
+    
+    html = f"""
+    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h3 style="margin: 0 0 5px 0; color: #1f2937;">⏰ Horarios Disponibles</h3>
+        <p style="margin: 0 0 20px 0; color: #6b7280; font-size: 14px;">
+            Seleccioná el horario que prefieras
+        </p>
+        
+        <div style="margin-bottom: 20px;">
+            <h4 style="color: #4a90e2; margin: 0 0 10px 0;">🌅 Mañana</h4>
+    """
+    
+    for slot in morning_slots:
+        if slot in occupied:
+            html += f'<span class="time-slot time-slot-taken">{slot} ❌</span>'
+        else:
+            html += f'<span class="time-slot">{slot}</span>'
+    
+    html += """
+        </div>
+        
+        <div>
+            <h4 style="color: #4a90e2; margin: 0 0 10px 0;">🌇 Tarde</h4>
+    """
+    
+    for slot in afternoon_slots:
+        if slot in occupied:
+            html += f'<span class="time-slot time-slot-taken">{slot} ❌</span>'
+        else:
+            html += f'<span class="time-slot">{slot}</span>'
+    
+    html += """
+        </div>
+        
+        <p style="margin: 20px 0 0 0; padding: 12px; background: #f0f9ff; border-radius: 8px; color: #0369a1; font-size: 13px;">
+            💡 <strong>Tip:</strong> Los turnos de mañana (9-11am) suelen tener menos espera
+        </p>
+    </div>
+    """
+    
+    return html
+
+def get_response(prompt):
+    p = (prompt or "").lower().strip()
+    
+    # VER CALENDARIO
+    if any(k in p for k in ["turno", "reserva", "disponible", "agenda", "cuando", "cuándo", "calendario"]):
+        calendar_html = get_calendar_html()
         return {
-            "content": """📅 **Calendario Interactivo - Proximos 14 Dias**
+            "content": f"""{calendar_html}
 
-**ESTA SEMANA:**
+**Para reservar:**
+Decime el día que te interesa, por ejemplo:
+- "Quiero el martes 30"
+- "El viernes que viene"
+- "Mañana"
+- "El jueves"
 
-| Dia | Fecha | Turnos Libres | Estado |
-|-----|-------|---------------|--------|
-| LUN | 29/01 | 3 turnos | ⚠️ Pocos |
-| MAR | 30/01 | 12 turnos | ✅ Disponible |
-| MIE | 31/01 | 15 turnos | ✅ Disponible |
-| JUE | 01/02 | 8 turnos | ✅ Disponible |
-| VIE | 02/02 | 4 turnos | ⚠️ Llenandose |
-| SAB | 03/02 | 2 turnos | 🔴 Casi lleno |
-
-**PROXIMA SEMANA:**
-
-| Dia | Fecha | Turnos Libres | Estado |
-|-----|-------|---------------|--------|
-| LUN | 05/02 | 18 turnos | ✅✅ Mucho espacio |
-| MAR | 06/02 | 16 turnos | ✅ Disponible |
-| MIE | 07/02 | 14 turnos | ✅ Disponible |
-
-**💡 TIPS INTELIGENTES:**
-- Miercoles: Mas opciones y flexibilidad
-- Sabados: Se llenan rapido, reserva con anticipacion
-- Lunes proxima semana: Mejor disponibilidad
-
-Que dia te interesa?""",
-            "buttons": "seleccionar_dia",
+O presioná uno de los botones 👇""",
+            "buttons": "fecha_rapida",
             "bonus_once": True
         }
     
-    # 2) Servicios disponibles
-    if "servicio" in p or "corte" in p or "tintura" in p or "tratamiento" in p or "que hacen" in p:
+    # SELECCIÓN DE DÍA ESPECÍFICO
+    if any(k in p for k in ["lunes", "martes", "miercoles", "miércoles", "jueves", "viernes", "sabado", "sábado"]) or any(k in p for k in ["mañana", "hoy", "pasado"]):
+        
+        # Determinar qué día eligió
+        if "martes" in p or "30" in p:
+            fecha = "Martes 30 de Enero"
+        elif "miercoles" in p or "miércoles" in p or "31" in p:
+            fecha = "Miércoles 31 de Enero"
+        elif "jueves" in p:
+            fecha = "Jueves 1 de Febrero"
+        elif "viernes" in p:
+            fecha = "Viernes 2 de Febrero"
+        elif "mañana" in p:
+            fecha = "Mañana"
+        else:
+            fecha = "Día seleccionado"
+        
+        st.session_state.selected_date = fecha
+        
+        time_slots = get_time_slots_for_date(fecha)
+        
         return {
-            "content": """💇 **Servicios Disponibles**
+            "content": f"""✅ **Perfecto! {fecha}**
 
-**CORTES**
-✂️ Corte Clasico
-- Duracion: 30 min
-- Precio: $800
-- Profesionales: 3 disponibles
+{time_slots}
 
-✂️ Corte + Barba
-- Duracion: 45 min
-- Precio: $1.200
-- Profesionales: 2 disponibles
+**Para confirmar tu turno:**
+Decime el horario que elegís, por ejemplo:
+- "Quiero a las 9:30"
+- "El de las 14:00"
+- "15:30 está bien"
 
-**COLOR**
-🎨 Tintura Completa
-- Duracion: 90 min
-- Precio: $2.500
-- Profesional: Ana (especialista)
-
-🎨 Mechas/Balayage
-- Duracion: 120 min
-- Precio: $3.500
-- Profesional: Lucia (experta)
-
-**TRATAMIENTOS**
-💆 Tratamiento Capilar
-- Duracion: 60 min
-- Precio: $1.800
-- Profesionales: 2 disponibles
-
-💆 Alisado/Botox
-- Duracion: 180 min
-- Precio: $5.000
-- Consultar disponibilidad especial
-
-Que servicio te interesa?""",
-            "buttons": "seleccionar_servicio"
+O seleccioná con los botones 👇""",
+            "buttons": "horario_rapido"
         }
     
-    # 3) Profesionales
-    if "profesional" in p or "quien" in p or "con quien" in p or "peluquer" in p:
+    # SELECCIÓN DE HORARIO
+    if any(k in p for k in ["9", "10", "11", "12", "14", "15", "16", "17", "18"]) and any(k in p for k in [":", "hs", "am", "pm"]):
+        # Extraer hora
+        if "9:30" in p or "930" in p:
+            hora = "09:30"
+        elif "14:00" in p or "1400" in p or "14" in p:
+            hora = "14:00"
+        elif "15:30" in p or "1530" in p:
+            hora = "15:30"
+        else:
+            hora = "14:00"
+        
+        st.session_state.selected_time = hora
+        fecha = st.session_state.selected_date or "Martes 30 de Enero"
+        
         return {
-            "content": """👥 **Nuestro Equipo**
+            "content": f"""🎉 **¡Excelente! Turno seleccionado**
 
-**ANA MARTINEZ** ⭐⭐⭐⭐⭐
-- Especialidad: Color y mechas
-- Experiencia: 12 años
-- Valoracion: 4.9/5 (156 reseñas)
-- Disponibilidad: Mar, Mie, Jue, Vie
+📅 **Fecha:** {fecha}
+🕐 **Hora:** {hora}
+⏱️ **Duración:** 30-45 minutos
+📍 **Lugar:** Av. 18 de Julio 1850
 
-**LUCIA RODRIGUEZ** ⭐⭐⭐⭐⭐
-- Especialidad: Cortes y estilo
-- Experiencia: 8 años
-- Valoracion: 4.8/5 (234 reseñas)
-- Disponibilidad: Lun, Mie, Vie, Sab
+---
 
-**CARLOS GOMEZ** ⭐⭐⭐⭐½
-- Especialidad: Corte masculino y barba
-- Experiencia: 10 años
-- Valoracion: 4.7/5 (189 reseñas)
-- Disponibilidad: Lun, Mar, Jue, Sab
+**Para CONFIRMAR necesito:**
 
-**SOFIA PEREZ** ⭐⭐⭐⭐⭐
-- Especialidad: Tratamientos capilares
-- Experiencia: 6 años
-- Valoracion: 4.9/5 (98 reseñas)
-- Disponibilidad: Mar, Jue, Vie
+1. Tu nombre completo
+2. Teléfono / WhatsApp
+3. Email
 
-**💡 TIP:** Si no tenes preferencia, el sistema elige automaticamente segun disponibilidad.
+**Ejemplo:**
+"Juan Pérez, 099 123 456, juan@email.com"
 
-Con quien te gustaria tu turno?""",
-            "buttons": "seleccionar_profesional"
+---
+
+**Recordatorios automáticos:**
+✅ Email 24hs antes
+✅ WhatsApp 2hs antes  
+✅ SMS 30min antes
+
+**Políticas:**
+• Cancelación gratis +24hs antes
+• Llegá 10min antes
+• Consultorio accesible
+
+¿Confirmamos con tus datos?""",
+            "buttons": "confirmar_datos"
         }
     
-    # 4) Recordatorios
-    if "recordatorio" in p or "aviso" in p or "notificacion" in p or "whatsapp" in p:
+    # CONFIRMACIÓN FINAL
+    if any(k in p for k in ["confirmo", "confirmar", "si", "sí", "ok", "dale"]) and ("@" in p or "099" in p or "098" in p):
         return {
-            "content": """📱 **Sistema de Recordatorios Automaticos**
+            "content": """✅ **¡TURNO CONFIRMADO!**
 
-**COMO FUNCIONA:**
+**Resumen de tu reserva:**
 
-**48 HORAS ANTES**
-📧 Email con detalles completos:
-- Fecha y hora
-- Profesional asignado
-- Servicio contratado
-- Boton de confirmacion
-- Opcion de cancelar/reprogramar
+📅 Martes 30 de Enero 2024
+🕐 14:00 hs
+👤 Juan Pérez
+📱 099 123 456
+📧 juan@email.com
 
-**24 HORAS ANTES**
-💬 WhatsApp personalizado:
-- Mensaje con tu nombre
-- Recordatorio amigable
-- Link para confirmar
-- Ubicacion del local
+---
 
-**2 HORAS ANTES**
-📲 SMS de recordatorio:
-- Breve y directo
-- Hora exacta
-- Numero de contacto
+**📨 Te enviamos:**
+✅ Confirmación por email ✅ Enviado
+✅ Recordatorio WhatsApp ⏳ Pendiente
+✅ Link Google Calendar 📆 Enviado
 
-**ESTADISTICAS REALES:**
-- ✅ 60% menos inasistencias
-- ✅ 85% tasa de confirmacion
-- ✅ 92% satisfaccion del cliente
-- ✅ 40% menos llamadas de consulta
+**📍 Cómo llegar:**
+Av. 18 de Julio 1850, Montevideo
+🚇 Metro Tres Cruces (3 cuadras)
+🚌 Ómnibus 64, 180, 187
 
-**INTEGRACIONES:**
-🔗 Google Calendar (sincroniza automatico)
-🔗 WhatsApp Business API
-🔗 Twilio SMS
-🔗 Mailchimp/SendGrid
+**Código de confirmación:** #TURNO-30012024-1400
 
-Los recordatorios se activan automaticamente al confirmar tu turno!
+---
 
-Queres reservar ahora?""",
-            "buttons": "recordatorios_acciones"
+**💡 Tips para tu visita:**
+• Llegá 10 minutos antes
+• Traé documento de identidad
+• Si tenés estudios previos, llevalos
+• Avisá si vas a llegar tarde
+
+**¿Necesitás cambiar o cancelar?**
+Avisá con 24hs de anticipación:
+📱 WhatsApp: 099 123 456
+📞 Teléfono: 2908 5555
+
+---
+
+**¡Nos vemos el martes! 😊**
+
+¿Necesitás algo más?""",
+            "buttons": "turno_confirmado"
         }
     
-    # 5) Cancelar/Modificar
-    if "cancelar" in p or "cambiar" in p or "modificar" in p or "reprogramar" in p:
+    # CANCELAR
+    if any(k in p for k in ["cancelar", "cambiar", "modificar", "no puedo"]):
         return {
-            "content": """🔄 **Gestion de Turnos - Cancelar/Modificar**
+            "content": """🔄 **Gestión de Turnos**
 
-**POLITICAS CLARAS:**
+**Para cancelar o cambiar, necesito:**
 
-✅ **+48 HORAS**
-- Cancelacion SIN cargo
-- Cambio inmediato sin penalizacion
-- Turno vuelve a disponibilidad
-- Confirmacion por WhatsApp
+1. Tu nombre completo
+2. Fecha del turno actual
+3. Hora del turno actual
 
-✅ **24-48 HORAS**
-- Cambio permitido
-- Penalizacion: 20% del servicio
-- Se ofrece a lista de espera
-- Notificacion por email
+**Si es cambio:**
+4. Nueva fecha preferida
 
-⚠️ **-24 HORAS**
-- Penalizacion: 50% del servicio
-- Cambio segun disponibilidad
-- Turno ofrecido urgente a otros
-- Llamada de confirmacion
+---
 
-🔴 **INASISTENCIA SIN AVISO**
-- Cargo: 100% del servicio
-- Afecta futuras reservas
-- Requiere pago anticipado proxima vez
-- Sistema de credito reducido
+**📋 Políticas:**
 
-**COMO HACERLO:**
+✅ **+48hs antes:** Sin cargo, cambio libre
+✅ **24-48hs antes:** Sin cargo
+⚠️ **-24hs:** Te pedimos que avises
+🔴 **Sin aviso:** Afecta próximos turnos
 
-**Opcion 1:** Por este chat
-- "Quiero cancelar mi turno del jueves 15:00"
+---
 
-**Opcion 2:** Por WhatsApp
-- +598 99 123 456
+**📱 Formas de gestionar:**
 
-**Opcion 3:** Por email
-- turnos@salon.com
+1. **Este chat** - Dame los datos
+2. **WhatsApp:** 099 123 456
+3. **Teléfono:** 2908 5555
+4. **Email:** turnos@clinica.uy
 
-**Opcion 4:** Portal web
-- salon.com/misturnos
+**Ejemplo:**
+"Juan Pérez, turno martes 30/1 a las 14:00, quiero cambiar al jueves 1/2 a las 10:00"
 
-Que turno necesitas modificar?""",
-            "buttons": "cancelar_opciones"
+¿Qué turno querés gestionar?""",
+            "buttons": "gestion_turno"
         }
     
-    # 6) Estadisticas
-    if "estadistica" in p or "reporte" in p or "cuantos" in p or "numeros" in p:
+    # INFORMACIÓN
+    if any(k in p for k in ["horario", "atencion", "atención", "donde", "dónde", "ubicacion", "ubicación"]):
         return {
-            "content": """📊 **Dashboard en Tiempo Real**
+            "content": """📍 **Información del Consultorio**
 
-**HOY - Lunes 29/01**
-- Turnos agendados: 20
-- Completados: 12
-- Pendientes: 8
-- Cancelaciones: 2
-- Inasistencias: 0 ✅
-- Facturacion: $24.500
+**⏰ HORARIOS:**
+• Lun-Vie: 9:00-13:00 y 14:30-19:00
+• Sábados: 9:00-13:00
+• Domingos: Cerrado
 
-**ESTA SEMANA**
-- Total turnos: 142
-- Tasa ocupacion: 85%
-- Tasa confirmacion: 92%
-- Clientes nuevos: 18
-- Clientes recurrentes: 65
-- Facturacion proyectada: $178.000
+**📍 UBICACIÓN:**
+Av. 18 de Julio 1850, Montevideo
 
-**ESTE MES**
-- Turnos totales: 580
-- Profesional top: Ana (156 turnos)
-- Servicio mas vendido: Corte clasico
-- Dia mas ocupado: Sabados
-- Horario pico: 15:00-17:00
-- Ingresos: $680.000
+**🚇 CÓMO LLEGAR:**
+• Metro: Tres Cruces (3 cuadras)
+• Ómnibus: 64, 180, 187, 121
+• Auto: Estacionamiento en la puerta
 
-**METRICAS CLAVE**
-✅ Tasa de ocupacion: 85% (objetivo: 80%)
-✅ Tiempo promedio espera: 5 min
-✅ Satisfaccion cliente: 4.8/5
-⚠️ Tasa cancelacion: 8% (objetivo: 5%)
+**📞 CONTACTO:**
+• Teléfono: 2908 5555
+• WhatsApp: 099 123 456
+• Email: info@clinica.uy
 
-**PREDICCIONES IA:**
-- Sabado proximo: Se llenara 100%
-- Lunes 05/02: Solo 60% ocupado
-- Recomendacion: Ofrecer promo lunes
+**🔔 SERVICIOS:**
+• Consultas generales
+• Estudios básicos
+• Certificados médicos
+• Atención familiar
 
-El sistema aprende y optimiza tu agenda automaticamente!
-
-Queres ver algo especifico?""",
-            "buttons": "estadisticas_acciones"
+¿Querés reservar un turno?""",
+            "buttons": "info_acciones"
         }
     
-    # 7) Lista de espera
-    if "lista" in p or "espera" in p or "completo" in p or "lleno" in p:
-        return {
-            "content": """⏰ **Sistema de Lista de Espera Inteligente**
-
-**COMO FUNCIONA:**
-
-**1. TURNO COMPLETO**
-- Sistema te ofrece automaticamente lista de espera
-- Te registras con un click
-- Sin costo ni compromiso
-
-**2. SE LIBERA UN TURNO**
-- Notificacion INSTANTANEA por WhatsApp
-- Tienes 30 minutos para confirmar
-- Si no respondes, pasa al siguiente
-
-**3. CONFIRMACION AUTOMATICA**
-- Click en el link
-- Turno reservado
-- Confirmacion por email
-
-**VENTAJAS:**
-✅ No perdes tiempo buscando
-✅ Notificacion inmediata
-✅ Prioridad sobre nuevas reservas
-✅ Sistema justo (orden de llegada)
-
-**ACTUALMENTE EN LISTA:**
-
-**Sabado 03/02 - 10:00am**
-- 3 personas esperando
-- Tu posicion: Proxima
-- Probabilidad liberacion: 60%
-
-**Viernes 02/02 - 17:00pm**
-- 2 personas esperando
-- Tu posicion: Primera
-- Probabilidad: 80%
-
-**💡 DATO:** El 45% de los turnos en lista de espera se confirman!
-
-Queres anotarte en alguna lista?""",
-            "buttons": "lista_espera_acciones"
-        }
-    
-    # Respuesta por defecto
+    # DEFAULT
     return {
-        "content": """No estoy seguro de entender 🤔
+        "content": """❓ No entendí bien, pero puedo ayudarte con:
 
-**PUEDO AYUDARTE CON:**
+**📅 RESERVAR TURNO**
+• Ver calendario interactivo
+• Elegir fecha y horario
+• Confirmar tu turno
 
-📅 **RESERVAS**
-- Ver calendario disponible
-- Seleccionar profesional
-- Elegir servicio
-- Confirmar turno
+**🔄 GESTIONAR**
+• Cambiar turno existente
+• Cancelar turno
+• Consultar mi turno
 
-📱 **GESTION**
-- Cancelar/modificar turnos
-- Lista de espera
-- Recordatorios automaticos
-- Historial de turnos
+**ℹ️ INFORMACIÓN**
+• Horarios de atención
+• Ubicación y contacto
+• Servicios disponibles
 
-📊 **INFORMACION**
-- Servicios y precios
-- Equipo de profesionales
-- Horarios de atencion
-- Estadisticas y reportes
-
-**EJEMPLOS:**
-- "Quiero turno para esta semana"
-- "Mostrame el calendario"
-- "Que servicios ofrecen"
-- "Como funcionan los recordatorios"
-- "Ver estadisticas"
-
-Que necesitas?""",
+**¿Qué necesitás?**""",
         "buttons": "ayuda"
     }
 
-# Mostrar mensajes del chat
-for i, message in enumerate(st.session_state.messages):
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+# Mostrar mensajes
+for i, msg in enumerate(st.session_state.messages):
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"], unsafe_allow_html=True)
         
-        if message.get("show_buttons"):
-            button_type = message["show_buttons"]
+        if msg.get("show_buttons"):
+            bt = msg["show_buttons"]
             
-            # Botones iniciales con calendario
-            if button_type == "inicial_con_calendario":
-                # CALENDARIO VISUAL
-                st.markdown("### 📅 Selecciona una fecha:")
+            if bt == "inicial":
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("📅 Ver calendario", key=f"cal_{i}", use_container_width=True):
+                        r = get_response("calendario")
+                        add_msg("Ver calendario disponible", r["content"], r.get("buttons"), r.get("bonus_once"))
+                        st.rerun()
+                with col2:
+                    if st.button("ℹ️ Información", key=f"info_{i}", use_container_width=True):
+                        r = get_response("informacion")
+                        add_msg("Ver información", r["content"], r.get("buttons"))
+                        st.rerun()
                 
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("🔄 Gestionar turno", key=f"gest_{i}", use_container_width=True):
+                        r = get_response("cancelar")
+                        add_msg("Gestionar mi turno", r["content"], r.get("buttons"))
+                        st.rerun()
+                with col2:
+                    if st.button("⚡ Turno urgente", key=f"urg_{i}", use_container_width=True):
+                        r = get_response("hoy")
+                        add_msg("Necesito turno urgente", r["content"], r.get("buttons"))
+                        st.rerun()
+            
+            elif bt == "fecha_rapida":
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("Martes 30", key=f"mar_{i}", use_container_width=True):
+                        r = get_response("martes 30")
+                        add_msg("Martes 30 de Enero", r["content"], r.get("buttons"))
+                        st.rerun()
+                with col2:
+                    if st.button("Miércoles 31", key=f"mie_{i}", use_container_width=True):
+                        r = get_response("miércoles 31")
+                        add_msg("Miércoles 31 de Enero", r["content"], r.get("buttons"))
+                        st.rerun()
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button("Jueves 1/2", key=f"jue_{i}", use_container_width=True):
+                        r = get_response("jueves")
+                        add_msg("Jueves 1 de Febrero", r["content"], r.get("buttons"))
+                        st.rerun()
+                with col2:
+                    if st.button("Viernes 2/2", key=f"vie_{i}", use_container_width=True):
+                        r = get_response("viernes")
+                        add_msg("Viernes 2 de Febrero", r["content"], r.get("buttons"))
+                        st.rerun()
+            
+            elif bt == "horario_rapido":
                 col1, col2, col3 = st.columns(3)
                 with col1:
-                    if st.button("📅 HOY Lun 29/01\n⚠️ 3 turnos", key="cal_hoy_{}".format(i), use_container_width=True):
-                        response = get_bot_response("calendario")
-                        add_message_and_hide_buttons("Ver calendario completo", response["content"], response.get("buttons"))
+                    if st.button("09:30", key=f"h1_{i}", use_container_width=True):
+                        r = get_response("9:30")
+                        add_msg("Quiero a las 9:30", r["content"], r.get("buttons"))
                         st.rerun()
-                
                 with col2:
-                    if st.button("📅 MAR 30/01\n✅ 12 turnos", key="cal_mar_{}".format(i), use_container_width=True):
-                        response = get_bot_response("calendario")
-                        add_message_and_hide_buttons("Ver calendario completo", response["content"], response.get("buttons"))
+                    if st.button("14:00", key=f"h2_{i}", use_container_width=True):
+                        r = get_response("14:00")
+                        add_msg("Quiero a las 14:00", r["content"], r.get("buttons"))
                         st.rerun()
-                
                 with col3:
-                    if st.button("📅 MIE 31/01\n✅ 15 turnos", key="cal_mie_{}".format(i), use_container_width=True):
-                        response = get_bot_response("calendario")
-                        add_message_and_hide_buttons("Ver calendario completo", response["content"], response.get("buttons"))
-                        st.rerun()
-                
-                st.markdown("---")
-                
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("💇 Ver servicios", key="btn_serv_{}".format(i), use_container_width=True):
-                        response = get_bot_response("servicios")
-                        add_message_and_hide_buttons("Que servicios tienen", response["content"], response.get("buttons"))
-                        st.rerun()
-                
-                with col2:
-                    if st.button("👥 Ver profesionales", key="btn_prof_{}".format(i), use_container_width=True):
-                        response = get_bot_response("profesionales")
-                        add_message_and_hide_buttons("Quienes son los profesionales", response["content"], response.get("buttons"))
-                        st.rerun()
-                
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📱 Recordatorios", key="btn_rec_{}".format(i), use_container_width=True):
-                        response = get_bot_response("recordatorios")
-                        add_message_and_hide_buttons("Como funcionan los recordatorios", response["content"], response.get("buttons"))
-                        st.rerun()
-                
-                with col2:
-                    if st.button("📊 Estadisticas", key="btn_est_{}".format(i), use_container_width=True):
-                        response = get_bot_response("estadisticas")
-                        add_message_and_hide_buttons("Ver estadisticas", response["content"], response.get("buttons"))
+                    if st.button("15:30", key=f"h3_{i}", use_container_width=True):
+                        r = get_response("15:30")
+                        add_msg("Quiero a las 15:30", r["content"], r.get("buttons"))
                         st.rerun()
             
-            # Despues de ver calendario
-            elif button_type == "seleccionar_dia":
-                st.markdown("**Selecciona un dia:**")
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    if st.button("MAR 30/01", key="dia_mar_{}".format(i), use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Martes 30/01",
-                            """⏰ **Horarios Disponibles - Martes 30/01**
-
-**MANANA**
-- 09:00 ✅ Ana / Lucia
-- 10:00 ✅ Carlos / Sofia
-- 11:00 ✅ Ana / Lucia / Carlos
-- 12:00 ✅ Sofia
-
-**TARDE**
-- 14:30 ✅ Ana / Carlos
-- 15:30 ✅ Lucia / Sofia
-- 16:30 ✅ Ana / Carlos / Sofia
-- 17:30 ✅ Todos disponibles
-- 18:00 ✅ Lucia / Carlos
-
-Que horario te viene bien?""",
-                            "seleccionar_horario"
-                        )
-                        st.rerun()
-                
-                with col2:
-                    if st.button("MIE 31/01", key="dia_mie_{}".format(i), use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Miercoles 31/01",
-                            """⏰ **Horarios Disponibles - Miercoles 31/01**
-
-**MANANA**
-- 09:30 ✅ Ana / Lucia / Carlos
-- 11:00 ✅ Todos disponibles
-- 12:00 ✅ Sofia / Ana
-
-**TARDE**
-- 15:00 ✅ Lucia / Carlos
-- 16:00 ✅ Ana / Sofia
-- 17:00 ✅ Todos disponibles
-
-💡 Miercoles: Mejor dia para mas opciones
-
-Que horario prefieres?""",
-                            "seleccionar_horario"
-                        )
-                        st.rerun()
-                
-                with col3:
-                    if st.button("JUE 01/02", key="dia_jue_{}".format(i), use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Jueves 01/02",
-                            """⏰ **Horarios Disponibles - Jueves 01/02**
-
-**MANANA**
-- 09:00 ✅ Carlos / Sofia
-- 10:30 ✅ Ana / Lucia
-- 11:30 ✅ Carlos
-
-**TARDE**
-- 14:00 ✅ Sofia / Ana
-- 15:00 ✅ Lucia / Carlos
-- 16:00 ✅ Ana / Sofia
-- 17:30 ✅ Carlos
-
-Que hora te sirve?""",
-                            "seleccionar_horario"
-                        )
-                        st.rerun()
-            
-            # Seleccionar servicio
-            elif button_type == "seleccionar_servicio":
-                if st.button("✂️ Corte Clasico ($800)", key="serv_corte_{}".format(i), use_container_width=True):
-                    add_message_and_hide_buttons(
-                        "Corte Clasico",
-                        """✅ **Servicio seleccionado: Corte Clasico**
-
-- Duracion: 30 minutos
-- Precio: $800
-- Profesionales disponibles: Ana, Lucia, Carlos
-
-Ahora necesito:
-1. Que dia prefieres? (ej: "Martes 30/01")
-2. Que horario? (ej: "15:00")
-3. Con quien? (o digo "el que este disponible")
-
-O escribi todo junto: "Martes 15:00 con Lucia" """,
-                        None
-                    )
-                    st.rerun()
-                
-                if st.button("🎨 Tintura Completa ($2.500)", key="serv_tin_{}".format(i), use_container_width=True):
-                    add_message_and_hide_buttons(
-                        "Tintura Completa",
-                        """✅ **Servicio seleccionado: Tintura Completa**
-
-- Duracion: 90 minutos
-- Precio: $2.500
-- Profesional especialista: Ana Martinez
-
-Necesito tu disponibilidad:
-1. Que dia te viene bien?
-2. Horario preferido?
-
-💡 Requiere 90min, te sugiero horarios de mañana para mejor resultado.
-
-Escribi: "Miercoles 10:00" """,
-                        None
-                    )
-                    st.rerun()
-            
-            # Ayuda general
-            elif button_type == "ayuda":
+            elif bt == "ayuda":
                 col1, col2 = st.columns(2)
                 with col1:
-                    if st.button("📅 Ver calendario", key="btn_cal_ayuda_{}".format(i), use_container_width=True):
-                        response = get_bot_response("calendario")
-                        add_message_and_hide_buttons("Mostrar calendario", response["content"], response.get("buttons"))
+                    if st.button("📅 Ver calendario", key=f"cal_h_{i}", use_container_width=True):
+                        r = get_response("calendario")
+                        add_msg("Ver calendario", r["content"], r.get("buttons"))
                         st.rerun()
-                
                 with col2:
-                    if st.button("💇 Ver servicios", key="btn_serv_ayuda_{}".format(i), use_container_width=True):
-                        response = get_bot_response("servicios")
-                        add_message_and_hide_buttons("Ver servicios", response["content"], response.get("buttons"))
+                    if st.button("ℹ️ Info", key=f"info_h_{i}", use_container_width=True):
+                        r = get_response("informacion")
+                        add_msg("Ver info", r["content"], r.get("buttons"))
                         st.rerun()
 
-# Ejemplos de consultas
+# Ejemplos
 st.markdown("---")
-st.markdown("**💬 Ejemplos de lo que puedo hacer:**")
+st.markdown("**💬 Ejemplos de consultas:**")
 col1, col2 = st.columns(2)
 with col1:
-    st.caption("• Mostrame el calendario disponible")
-    st.caption("• Quiero turno para corte el martes")
-    st.caption("• Necesito cancelar mi turno del jueves")
-    st.caption("• Que servicios tienen y precios")
-    st.caption("• Como funcionan los recordatorios")
+    st.caption("• Ver calendario")
+    st.caption("• Quiero el martes 30")
+    st.caption("• A las 14:00")
 with col2:
-    st.caption("• Ver estadisticas de la semana")
-    st.caption("• Quienes son los profesionales")
-    st.caption("• Anotarme en lista de espera")
-    st.caption("• Ver mi historial de turnos")
-    st.caption("• Que horarios atienden")
+    st.caption("• Cambiar mi turno")
+    st.caption("• Dónde queda")
+    st.caption("• Confirmo")
 
-# Input del chat
-if prompt := st.chat_input("Escribi tu consulta..."):
+# Input
+if prompt := st.chat_input("Escribí tu consulta..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    response = get_bot_response(prompt)
+    r = get_response(prompt)
     st.session_state.messages.append({
         "role": "assistant",
-        "content": response["content"],
-        "show_buttons": response.get("buttons")
+        "content": r["content"],
+        "show_buttons": r.get("buttons")
     })
-    if response.get("bonus_once"):
-        maybe_append_bonus_once()
+    if r.get("bonus_once"):
+        maybe_bonus()
     st.rerun()
 
-# Footer impactante
+# Footer
 st.divider()
-st.caption("💡 **Sistema profesional de gestion de turnos** - Nivel empresarial")
-st.caption("🔌 **Integraciones:** Google Calendar, WhatsApp Business API, Twilio SMS, Mailchimp")
-st.caption("📊 **ROI comprobado:** -60% inasistencias, +40% eficiencia, 15hs/semana ahorradas")
+st.caption("💡 Demo interactivo - Sistema de turnos profesional con calendario visual")
+st.caption("🔌 En producción sincroniza con Google Calendar, WhatsApp API y tu sistema")
 
-# Boton reset
+# Reset
 col1, col2 = st.columns([3, 1])
 with col2:
     if st.button("🔄 Reiniciar"):
-        st.session_state.messages = [
-            {
-                "role": "assistant",
-                "content": """Hola! Soy tu asistente de turnos 24/7 📅
+        st.session_state.messages = [{
+            "role": "assistant",
+            "content": """¡Hola! Soy tu asistente de turnos 📅
 
-**📊 ESTADO DE TU AGENDA HOY:**
-- Turnos confirmados: 12
-- Espacios libres: 8
-- Lista de espera: 3 clientes
-
-**Que necesitas?**""",
-                "show_buttons": "inicial_con_calendario"
-            }
-        ]
+Seleccioná una opción para comenzar:""",
+            "show_buttons": "inicial"
+        }]
+        st.session_state.selected_date = None
+        st.session_state.selected_time = None
         st.session_state.button_clicked = False
         st.session_state.bonus_shown = False
         st.rerun()
