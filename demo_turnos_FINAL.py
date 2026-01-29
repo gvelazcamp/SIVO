@@ -531,67 +531,111 @@ for i, msg in enumerate(st.session_state.messages):
                         add_msg("Info", r["content"], r.get("buttons"))
                         st.rerun()
 
-# EJEMPLOS MEJORADOS Y LLAMATIVOS
+# EJEMPLOS SÚPER ATRACTIVOS
 st.markdown("---")
-st.markdown("### 💬 **Probá el Asistente - Ejemplos en Vivo:**")
-st.markdown("")
+
+# Header llamativo
+st.markdown("""
+<div style="text-align: center; margin-bottom: 20px;">
+    <h3 style="margin: 0; color: #1f2937; font-size: 22px; font-weight: 700;">
+        💬 Probá el Asistente - Ejemplos en Vivo
+    </h3>
+    <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 14px;">
+        Escribí cualquiera de estas frases y el asistente responde al instante
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("##### 📅 **Reservar Turno**")
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); 
-                padding: 15px; border-radius: 10px; border-left: 4px solid #0ea5e9;">
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Ver calendario completo"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Quiero turno para el martes"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Dame el jueves a las 14:00"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Reservar para mañana"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Confirmo mi turno"</i></p>
-        <p style="margin: 0; font-size: 13px; color: #0369a1; margin-top: 10px;">
-            <strong>→ Reserva en 30 segundos</strong>
-        </p>
+    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                padding: 20px; border-radius: 12px; height: 280px;
+                border: 2px solid #3b82f6; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+        <div style="text-align: center; margin-bottom: 15px;">
+            <span style="font-size: 32px;">📅</span>
+            <h4 style="margin: 8px 0 0 0; color: #1e40af; font-weight: 700;">Reservar Turno</h4>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Ver calendario completo"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Quiero el martes a las 14:00"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Reservar para mañana"</p>
+        </div>
+        <div style="text-align: center; margin-top: 12px;">
+            <span style="background: #1e40af; color: white; padding: 6px 16px; 
+                         border-radius: 20px; font-size: 12px; font-weight: 600;">
+                ⚡ Reserva en 30 segundos
+            </span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
-    st.markdown("##### 🔄 **Gestionar Turnos**")
     st.markdown("""
     <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
-                padding: 15px; border-radius: 10px; border-left: 4px solid #f59e0b;">
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Cambiar mi turno del viernes"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Cancelar turno del martes"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"No puedo ir, reprogramar"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Mover para el jueves"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Consultar mi turno"</i></p>
-        <p style="margin: 0; font-size: 13px; color: #92400e; margin-top: 10px;">
-            <strong>→ Flexibilidad total</strong>
-        </p>
+                padding: 20px; border-radius: 12px; height: 280px;
+                border: 2px solid #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
+        <div style="text-align: center; margin-bottom: 15px;">
+            <span style="font-size: 32px;">🔄</span>
+            <h4 style="margin: 8px 0 0 0; color: #92400e; font-weight: 700;">Gestionar Turnos</h4>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Cambiar mi turno del viernes"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "No puedo ir, cancelar"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Reprogramar para el jueves"</p>
+        </div>
+        <div style="text-align: center; margin-top: 12px;">
+            <span style="background: #92400e; color: white; padding: 6px 16px; 
+                         border-radius: 20px; font-size: 12px; font-weight: 600;">
+                ✨ Flexibilidad total
+            </span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
-    st.markdown("##### ℹ️ **Info & Soporte**")
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); 
-                padding: 15px; border-radius: 10px; border-left: 4px solid #a855f7;">
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Dónde queda el consultorio"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Horarios de atención"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Cómo llego en ómnibus"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Teléfono de contacto"</i></p>
-        <p style="margin: 5px 0; font-size: 14px;">💬 <i>"Activar recordatorios"</i></p>
-        <p style="margin: 0; font-size: 13px; color: #6b21a8; margin-top: 10px;">
-            <strong>→ Respuestas instantáneas</strong>
-        </p>
+    <div style="background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%); 
+                padding: 20px; border-radius: 12px; height: 280px;
+                border: 2px solid #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);">
+        <div style="text-align: center; margin-bottom: 15px;">
+            <span style="font-size: 32px;">ℹ️</span>
+            <h4 style="margin: 8px 0 0 0; color: #6b21a8; font-weight: 700;">Info & Soporte</h4>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Dónde queda el consultorio"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Horarios de atención"</p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Activar recordatorios"</p>
+        </div>
+        <div style="text-align: center; margin-top: 12px;">
+            <span style="background: #6b21a8; color: white; padding: 6px 16px; 
+                         border-radius: 20px; font-size: 12px; font-weight: 600;">
+                💡 Respuestas instantáneas
+            </span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 st.markdown("")
 st.markdown("""
 <div style="text-align: center; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); 
-            padding: 15px; border-radius: 12px; margin-top: 15px;">
+            padding: 16px 24px; border-radius: 12px; margin-top: 20px;
+            border: 2px solid #22c55e; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);">
     <p style="margin: 0; font-size: 15px; color: #166534; font-weight: 600;">
-        ✨ <strong>Probá cualquiera de estos ejemplos</strong> - El asistente responde al instante con info completa
+        ✨ <strong>¡Escribí cualquier pregunta arriba!</strong> El asistente entiende lenguaje natural y responde con información completa
     </p>
 </div>
 """, unsafe_allow_html=True)
