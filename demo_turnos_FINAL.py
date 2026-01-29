@@ -69,12 +69,45 @@ if "messages" not in st.session_state:
         "role": "assistant",
         "content": """¡Hola! 👋 Soy tu asistente de turnos
 
-**Reservá en 3 pasos:**
-1️⃣ Elegí el día
-2️⃣ Seleccioná el horario  
-3️⃣ Confirmá tus datos
+**Reservá en 3 pasos simples:**
 
-¿Empezamos?""",
+1️⃣ **Elegí el día** en el calendario
+2️⃣ **Seleccioná el horario** que prefieras  
+3️⃣ **Confirmá tus datos** y listo!
+
+---
+
+**✨ Lo que puedo hacer por vos:**
+
+📅 **Gestión de Turnos:**
+• Ver calendario con disponibilidad
+• Reservar turnos en segundos
+• Cambiar o cancelar turnos
+• Consultar turnos existentes
+
+🔔 **Recordatorios Automáticos:**
+• Email 24hs antes
+• WhatsApp 2hs antes
+• SMS 30min antes
+• Sin que tengas que hacer nada
+
+ℹ️ **Información Completa:**
+• Horarios de atención
+• Ubicación y cómo llegar
+• Servicios disponibles
+• Contacto y soporte
+
+---
+
+**💡 Ventajas de usar este sistema:**
+
+⚡ **Rápido:** Reservás en menos de 1 minuto
+🌙 **24/7:** Disponible cualquier día, cualquier hora
+📱 **Práctico:** No necesitás llamar ni esperar
+✅ **Confiable:** Confirmación inmediata por email
+🔔 **Sin olvidos:** Recordatorios automáticos
+
+**¿Empezamos?** Presioná "Ver Calendario" para elegir tu día 👇""",
         "show_buttons": "inicial"
     }]
 
@@ -531,114 +564,35 @@ for i, msg in enumerate(st.session_state.messages):
                         add_msg("Info", r["content"], r.get("buttons"))
                         st.rerun()
 
-# EJEMPLOS SÚPER ATRACTIVOS
+# EJEMPLOS SIMPLES Y CHIQUITOS
 st.markdown("---")
-
-# Header llamativo
-st.markdown("""
-<div style="text-align: center; margin-bottom: 20px;">
-    <h3 style="margin: 0; color: #1f2937; font-size: 22px; font-weight: 700;">
-        💬 Probá el Asistente - Ejemplos en Vivo
-    </h3>
-    <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 14px;">
-        Escribí cualquiera de estas frases y el asistente responde al instante
-    </p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown("**💬 Ejemplos de consultas:**")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
-                padding: 20px; border-radius: 12px; height: 280px;
-                border: 2px solid #3b82f6; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
-        <div style="text-align: center; margin-bottom: 15px;">
-            <span style="font-size: 32px;">📅</span>
-            <h4 style="margin: 8px 0 0 0; color: #1e40af; font-weight: 700;">Reservar Turno</h4>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Ver calendario completo"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Quiero el martes a las 14:00"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Reservar para mañana"</p>
-        </div>
-        <div style="text-align: center; margin-top: 12px;">
-            <span style="background: #1e40af; color: white; padding: 6px 16px; 
-                         border-radius: 20px; font-size: 12px; font-weight: 600;">
-                ⚡ Reserva en 30 segundos
-            </span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.caption("**📅 Reservar turno:**")
+    st.caption("• Ver calendario completo")
+    st.caption("• Quiero el martes a las 14:00")
+    st.caption("• Dame turno para mañana")
+    st.caption("• Reservar jueves 11:00")
+    st.caption("• Confirmo mi turno")
 
 with col2:
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
-                padding: 20px; border-radius: 12px; height: 280px;
-                border: 2px solid #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
-        <div style="text-align: center; margin-bottom: 15px;">
-            <span style="font-size: 32px;">🔄</span>
-            <h4 style="margin: 8px 0 0 0; color: #92400e; font-weight: 700;">Gestionar Turnos</h4>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Cambiar mi turno del viernes"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "No puedo ir, cancelar"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Reprogramar para el jueves"</p>
-        </div>
-        <div style="text-align: center; margin-top: 12px;">
-            <span style="background: #92400e; color: white; padding: 6px 16px; 
-                         border-radius: 20px; font-size: 12px; font-weight: 600;">
-                ✨ Flexibilidad total
-            </span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.caption("**🔄 Gestionar turnos:**")
+    st.caption("• Cambiar mi turno del viernes")
+    st.caption("• Cancelar turno del martes")
+    st.caption("• No puedo ir, reprogramar")
+    st.caption("• Mover para el jueves")
+    st.caption("• Consultar mi próximo turno")
 
 with col3:
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%); 
-                padding: 20px; border-radius: 12px; height: 280px;
-                border: 2px solid #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);">
-        <div style="text-align: center; margin-bottom: 15px;">
-            <span style="font-size: 32px;">ℹ️</span>
-            <h4 style="margin: 8px 0 0 0; color: #6b21a8; font-weight: 700;">Info & Soporte</h4>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Dónde queda el consultorio"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Horarios de atención"</p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
-            <p style="margin: 0; font-size: 13px; color: #374151;">💬 "Activar recordatorios"</p>
-        </div>
-        <div style="text-align: center; margin-top: 12px;">
-            <span style="background: #6b21a8; color: white; padding: 6px 16px; 
-                         border-radius: 20px; font-size: 12px; font-weight: 600;">
-                💡 Respuestas instantáneas
-            </span>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("")
-st.markdown("""
-<div style="text-align: center; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); 
-            padding: 16px 24px; border-radius: 12px; margin-top: 20px;
-            border: 2px solid #22c55e; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);">
-    <p style="margin: 0; font-size: 15px; color: #166534; font-weight: 600;">
-        ✨ <strong>¡Escribí cualquier pregunta arriba!</strong> El asistente entiende lenguaje natural y responde con información completa
-    </p>
-</div>
-""", unsafe_allow_html=True)
+    st.caption("**ℹ️ Información:**")
+    st.caption("• Dónde queda el consultorio")
+    st.caption("• Horarios de atención")
+    st.caption("• Cómo llego en ómnibus")
+    st.caption("• Teléfono de contacto")
+    st.caption("• Activar recordatorios")
 
 # Input
 if prompt := st.chat_input("Escribí tu consulta..."):
