@@ -1839,7 +1839,7 @@ HTML_HOME = f"""{HTML_BASE}
     <!-- =====================
          DEMO ANIMADA MERCADOBOT
     ===================== -->
-    <div style="padding: 60px 5%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);" class="demo-section">
+    <div style="padding: 60px 5%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
             <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a;">
                 ¿Cómo responden nuestros asistentes?
@@ -1847,21 +1847,546 @@ HTML_HOME = f"""{HTML_BASE}
             <p style="font-size: 18px; color: #666; margin-bottom: 40px;">
                 Mirá conversaciones reales con clientes en diferentes industrias
             </p>
+            
+            <!-- Demo embebida directamente (sin iframe) -->
+            <div style="background: transparent; max-width: 1200px; margin: 0 auto;">
+                <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MercadoBot - Demo Animado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);" class="demo-iframe-container">
-                <iframe 
-                    src="https://gvelazcamp.github.io/Mercadobot/mercadobot-demo.html" 
-                    style="width: 100%; height: 750px; border: none; border-radius: 15px;"
-                    frameborder="0"
-                    allowfullscreen
-                    class="demo-iframe">
-                </iframe>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .demo-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .industry-selector {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            min-width: 280px;
+        }
+
+        .industry-selector h2 {
+            color: #128C7E;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .industry-button {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .industry-button:hover {
+            border-color: #25D366;
+            background: #f0fdf4;
+            transform: translateX(5px);
+        }
+
+        .industry-button.active {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        .industry-button .emoji {
+            font-size: 24px;
+        }
+
+        .chat-container {
+            flex: 1;
+            background: #e5ddd5;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 700px;
+        }
+
+        .chat-header {
+            background: #075E54;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bot-avatar {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .bot-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .bot-status {
+            font-size: 13px;
+            opacity: 0.9;
+            color: #25D366;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="2" fill="%23d9d9d9" opacity="0.3"/></svg>');
+            background-size: 30px 30px;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            display: flex;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .message.user .message-bubble {
+            background: #DCF8C6;
+            color: #303030;
+            border-radius: 8px;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.bot .message-bubble {
+            background: white;
+            color: #303030;
+            border-radius: 8px;
+            border-bottom-left-radius: 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 16px;
+            background: white;
+            border-radius: 8px;
+            border-bottom-left-radius: 0;
+            width: fit-content;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #90949c;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-8px);
+                opacity: 1;
+            }
+        }
+
+        .timestamp {
+            font-size: 11px;
+            color: #667781;
+            margin-top: 3px;
+            text-align: right;
+            display: block;
+        }
+
+        .restart-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #128C7E;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .restart-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: #25D366;
+            color: white;
+        }
+
+        .logo {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 968px) {
+            .demo-container {
+                flex-direction: column;
+            }
+            
+            .industry-selector {
+                min-width: 100%;
+            }
+
+            .chat-container {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="restart-button" onclick="restartAnimation()">🔄 Reiniciar Demo</button>
+    
+    <div class="demo-container">
+        <div class="industry-selector">
+            <h2>Selecciona una Industria</h2>
+            <button class="industry-button active" onclick="changeIndustry('salon')">
+                <span class="emoji">💇</span>
+                <span>Salón de Belleza</span>
+            </button>
+            <button class="industry-button" onclick="changeIndustry('restaurant')">
+                <span class="emoji">🍕</span>
+                <span>Restaurante</span>
+            </button>
+            <button class="industry-button" onclick="changeIndustry('retail')">
+                <span class="emoji">👕</span>
+                <span>Tienda de Ropa</span>
+            </button>
+            <button class="industry-button" onclick="changeIndustry('gym')">
+                <span class="emoji">💪</span>
+                <span>Gimnasio</span>
+            </button>
+            <button class="industry-button" onclick="changeIndustry('autoparts')">
+                <span class="emoji">🔧</span>
+                <span>Repuestos Auto</span>
+            </button>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="bot-avatar" id="botAvatar">💇</div>
+                <div class="bot-info">
+                    <h3 id="botName">Bella Salon - Asistente</h3>
+                    <div class="bot-status">● en línea</div>
+                </div>
             </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+        </div>
+    </div>
 
+    <script>
+        const scenarios = {
+            salon: {
+                name: "Bella Salon - Asistente",
+                avatar: "💇",
+                conversations: [
+                    {
+                        user: "Hola! Necesito un turno para corte y color",
+                        bot: "¡Hola! 😊 Claro, te ayudo con tu turno.\n\n¿Qué día preferís?\nTenemos disponibilidad:\n• Jueves 30/1 - 14:00hs y 16:30hs\n• Viernes 31/1 - 11:00hs y 15:00hs\n• Sábado 1/2 - 10:00hs",
+                        delay: 2000
+                    },
+                    {
+                        user: "El viernes a las 15hs me viene bien",
+                        bot: "Perfecto! Te agendo para el viernes 31/1 a las 15:00hs ✅\n\nServicio: Corte + Color\nEstilista: María (especialista en coloración)\nDuración: 2.5 horas aprox.\nPrecio: $28.000\n\n¿Confirmo el turno?",
+                        delay: 1800
+                    },
+                    {
+                        user: "Sí, confirmalo",
+                        bot: "¡Listo! 🎉 Tu turno está confirmado.\n\nTe mandé un recordatorio por WhatsApp.\n\n💡 PROMO: Si traés una amiga nueva, ambas tienen 20% OFF en tratamientos capilares.\n\n¿Necesitás algo más?",
+                        delay: 1500
+                    }
+                ]
+            },
+            restaurant: {
+                name: "Pizzería Don Carlo",
+                avatar: "🍕",
+                conversations: [
+                    {
+                        user: "Hola, quiero hacer un pedido",
+                        bot: "¡Hola! 😊 Bienvenido a Don Carlo.\n\n¿Qué te gustaría pedir?\n\n🍕 Pizzas (8 variedades)\n🥗 Ensaladas\n🍝 Pastas\n🍷 Bebidas\n\nEscribí el número o nombre de lo que querés 👇",
+                        delay: 1800
+                    },
+                    {
+                        user: "Una pizza napolitana grande y una coca de 1.5L",
+                        bot: "Perfecto! 👌\n\n📋 Tu pedido:\n• Pizza Napolitana Grande - $8.500\n• Coca Cola 1.5L - $1.800\n\nTotal: $10.300\n\n🎁 PROMO: Si agregás otra pizza, la 2da tiene 30% OFF\n\n¿Confirmo así o querés agregar algo?",
+                        delay: 2000
+                    },
+                    {
+                        user: "Así está bien, para llevar",
+                        bot: "Excelente! 🛵\n\nTu pedido estará listo en 25-30 minutos.\n\n📍 ¿A qué dirección lo llevamos?\n(Envíos sin cargo en radio de 2km)",
+                        delay: 1500
+                    }
+                ]
+            },
+            retail: {
+                name: "Moda Express",
+                avatar: "👕",
+                conversations: [
+                    {
+                        user: "Hola, tienen buzos oversize?",
+                        bot: "¡Hola! 😊 Sí, tenemos buzos oversize!\n\n👕 Modelos disponibles:\n1. Buzo Canguro Classic - $18.900\n2. Buzo Cuello Redondo Premium - $21.500\n3. Buzo Zip Hoodie - $24.900\n\nColores: Negro, Gris, Beige, Verde\nTalles: S a XXL\n\n¿Cuál te interesa?",
+                        delay: 2000
+                    },
+                    {
+                        user: "El canguro en negro talle L",
+                        bot: "Perfecto! Tenemos stock ✅\n\nBuzo Canguro Negro - Talle L\nPrecio: $18.900\n\n💳 Formas de pago:\n• Efectivo: 10% OFF → $17.010\n• 3 cuotas sin interés\n• 6 cuotas con tarjeta\n\n¿Pasás a retirarlo o te lo enviamos?",
+                        delay: 1800
+                    },
+                    {
+                        user: "Lo retiro yo, dónde están?",
+                        bot: "Estamos en Av. Corrientes 1234 (Flores) 📍\n\nHorario:\nLun a Vie: 10 a 20hs\nSábados: 10 a 18hs\n\nTe reservo el buzo por 48hs ✅\n\n🎁 PROMO STORE: Comprando 2 prendas, llevá la 2da a mitad de precio!",
+                        delay: 1700
+                    }
+                ]
+            },
+            gym: {
+                name: "FitLife Gym",
+                avatar: "💪",
+                conversations: [
+                    {
+                        user: "Hola, quiero info sobre los planes",
+                        bot: "¡Hola! 💪 Bienvenido a FitLife.\n\nNuestros planes:\n\n🏋️ BÁSICO - $15.000/mes\n• Musculación libre\n• Horario: 6 a 23hs\n\n⭐ PREMIUM - $22.000/mes\n• Todo lo anterior +\n• Clases grupales ilimitadas\n• Nutricionista online\n\n🔥 VIP - $32.000/mes\n• Todo Premium +\n• Entrenador personal 2x semana\n• Spa y sauna\n\n¿Cuál te interesa?",
+                        delay: 2200
+                    },
+                    {
+                        user: "El premium, puedo probar una clase?",
+                        bot: "¡Claro que sí! 🎉\n\nTe regalo una CLASE DE PRUEBA GRATIS\n\nClases disponibles mañana:\n• Funcional - 7:00hs y 19:00hs\n• Spinning - 8:00hs y 20:00hs\n• CrossFit - 18:00hs\n• Yoga - 19:30hs\n\n¿Cuál probás?",
+                        delay: 1900
+                    },
+                    {
+                        user: "Funcional a las 19hs",
+                        bot: "Perfecto! ✅ Te agendobaño para:\n\n📅 Funcional - Mañana 19:00hs\n👟 Traé ropa cómoda y botella de agua\n📍 Estamos en Av. Libertador 5678\n\n🎁 PROMO: Si te asociás después de la clase, tenés 20% OFF el primer mes!\n\nTe esperamos! 💪",
+                        delay: 2000
+                    }
+                ]
+            },
+            autoparts: {
+                name: "Repuestos Rápido",
+                avatar: "🔧",
+                conversations: [
+                    {
+                        user: "Necesito pastillas de freno para un Corsa 2010",
+                        bot: "Hola! 👋 Te ayudo a encontrar las pastillas.\n\nPara Chevrolet Corsa 2010:\n\n🔧 Pastillas Delanteras:\n• Fras-le - $12.800 (original)\n• Bosch - $14.200 (premium)\n• Bendix - $11.500 (económica)\n\n🔧 Traseras:\n• Fras-le - $9.800\n\nTodas con garantía. ¿Cuál preferís?",
+                        delay: 2100
+                    },
+                    {
+                        user: "Las Bosch delanteras, tienen stock?",
+                        bot: "Sí, tenemos stock! ✅\n\nPastillas Bosch Delanteras - $14.200\n\n💡 RECOMENDACIÓN:\nTambién te conviene revisar:\n• Discos de freno (80% desgaste promedio)\n• Líquido de frenos\n\n¿Querés que te cotice el kit completo?",
+                        delay: 1800
+                    },
+                    {
+                        user: "Dale, cotizame todo",
+                        bot: "Perfecto! 🔧\n\n📋 KIT FRENOS COMPLETO:\n• Pastillas Bosch delantera - $14.200\n• Discos ventilados x2 - $28.500\n• Líquido DOT4 - $3.800\n\nTotal: $46.500\n🎁 DESCUENTO KIT: $42.000\n\n¿Pasás a retirarlo o te hacemos la instalación? (Mano obra: $8.000)",
+                        delay: 2200
+                    }
+                ]
+            }
+        };
+
+        let currentIndustry = 'salon';
+        let messageIndex = 0;
+        let isAnimating = false;
+
+        function changeIndustry(industry) {
+            if (isAnimating) return;
+            
+            currentIndustry = industry;
+            messageIndex = 0;
+            
+            // Update active button
+            document.querySelectorAll('.industry-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.industry-button').classList.add('active');
+            
+            // Update header
+            const scenario = scenarios[industry];
+            document.getElementById('botName').textContent = scenario.name;
+            document.getElementById('botAvatar').textContent = scenario.avatar;
+            
+            // Clear and restart
+            document.getElementById('chatMessages').innerHTML = '';
+            startAnimation();
+        }
+
+        function addMessage(text, type) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = text.replace(/\n/g, '<br>');
+            
+            const timestamp = document.createElement('span');
+            timestamp.className = 'timestamp';
+            timestamp.textContent = new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+            bubble.appendChild(timestamp);
+            
+            messageDiv.appendChild(bubble);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typing-indicator';
+            
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            
+            typingDiv.appendChild(indicator);
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        async function startAnimation() {
+            isAnimating = true;
+            const scenario = scenarios[currentIndustry];
+            const conversations = scenario.conversations;
+            
+            for (let i = 0; i < conversations.length; i++) {
+                const conv = conversations[i];
+                
+                // Add user message
+                await new Promise(resolve => setTimeout(resolve, 800));
+                addMessage(conv.user, 'user');
+                
+                // Show typing indicator
+                await new Promise(resolve => setTimeout(resolve, 600));
+                showTypingIndicator();
+                
+                // Wait for bot "typing"
+                await new Promise(resolve => setTimeout(resolve, conv.delay));
+                removeTypingIndicator();
+                
+                // Add bot response
+                addMessage(conv.bot, 'bot');
+            }
+            
+            isAnimating = false;
+        }
+
+        function restartAnimation() {
+            if (isAnimating) return;
+            document.getElementById('chatMessages').innerHTML = '';
+            messageIndex = 0;
+            startAnimation();
+        }
+
+        // Start animation on load
+        window.addEventListener('load', () => {
+            setTimeout(startAnimation, 1000);
+        });
+    </script>
+</body>
+</html>
+            </div>
+            
             <p style="margin-top: 25px; font-size: 15px; color: #666;">
                 ⚡ Demo interactiva - Seleccioná una industria y mirá cómo responde el asistente
             </p>
         </div>
+    </div>
+
     </div>
 
 
