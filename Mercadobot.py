@@ -5480,6 +5480,43 @@ function send(){
 </html>
 """
 
+
+# =========================
+# DEMO COMPONENT (solo en home)
+# =========================
+if vista == "home":
+    # Renderizo iframe de demo usando components
+    components.html("""
+    <div style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 60px 5%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a;">
+                    ¿Cómo responden nuestros asistentes?
+                </h2>
+                <p style="font-size: 18px; color: #666;">
+                    Mirá conversaciones reales con clientes en diferentes industrias
+                </p>
+            </div>
+            
+            <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://gvelazcamp.github.io/Mercadobot/mercadobot-demo.html" 
+                    style="width: 100%; height: 800px; border: none; border-radius: 15px; display: block;"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <p style="font-size: 15px; color: #666;">
+                    ⚡ Demo interactiva - Seleccioná una industria y mirá cómo responde el asistente
+                </p>
+            </div>
+        </div>
+    </div>
+    """, height=1000, scrolling=False)
+
+
 # CSS para que el iframe del chatbot NO ocupe espacio visual
 st.markdown("""
 <style>
