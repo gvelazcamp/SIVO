@@ -79,6 +79,24 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Badge de demo
+st.markdown("""
+<div style="text-align: center; margin-bottom: 15px;">
+    <span style="
+        display: inline-block;
+        background: linear-gradient(135deg, #f4b400 0%, #f39c12 100%);
+        color: #2c3e50;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 2px 8px rgba(244, 180, 0, 0.3);
+    ">
+        🎯 Imaginate este demo con tus datos - Tu inventario, tus reglas
+    </span>
+</div>
+""", unsafe_allow_html=True)
+
 # Header personalizado
 st.markdown("""
 <div class="custom-header">
@@ -469,42 +487,34 @@ Necesitas ver algun movimiento en detalle?""",
                 "content": """🏢 **Deposito Central - Info Completa**
 
 **DATOS GENERALES:**
-
-| Campo | Detalle |
-|-------|---------|
-| 📍 Ubicacion | Av. Italia 2500, Montevideo |
-| 👤 Responsable | Juan Martinez |
-| 📞 Contacto | +598 2408 1234 |
-| ⏰ Horario | Lun-Vie 8:00-18:00 |
-| 📦 Capacidad | 1.200 m² (85% ocupado) |
+- Ubicacion: Av. Italia 2500, Montevideo
+- Responsable: Juan Martinez
+- Contacto: +598 2408 1234
+- Horario: Lun-Vie 8:00-18:00
+- Capacidad: 1.200 m² (85% ocupado)
 
 **STOCK POR CATEGORIA:**
 
-| Categoria | Producto | Stock | Valor Unit | Total |
-|-----------|----------|-------|------------|-------|
-| 💻 **Notebooks** | Dell Latitude | 45u | $210.000 | $9.450.000 |
-| | HP ProBook | 32u | | |
-| | Lenovo ThinkPad | 28u | | |
-| | **Subtotal** | **105u** | | **$9.450.000** |
-| 🖥️ **Monitores** | LG 24" | 45u | $47.500 | $4.230.000 |
-| | Samsung 27" | 32u | | |
-| | Dell 32" | 12u | | |
-| | **Subtotal** | **89u** | | **$4.230.000** |
-| 🖱️ **Accesorios** | Mouse | 145u | - | $892.000 |
-| | Teclados | 89u | | |
-| | Webcams | 15u | | |
-| | Otros | 207u | | |
-| | **Subtotal** | **456u** | | **$892.000** |
+💻 **Notebooks** (105 unidades - $9.450.000)
+- Dell Latitude: 45u
+- HP ProBook: 32u
+- Lenovo ThinkPad: 28u
 
-**RESUMEN:**
-- 💰 Valor Total: **$23.517.000**
-- 📦 Total Unidades: **650**
-- 🚨 Alertas: 1
+🖥️ **Monitores** (89 unidades - $4.230.000)
+- LG 24": 45u
+- Samsung 27": 32u
+- Dell 32": 12u
 
-**ALERTAS ACTIVAS:**
-| Producto | Stock | Minimo | Estado |
-|----------|-------|--------|--------|
-| Webcam C920 | 15u | 25u | ⚠️ Bajo |
+🖱️ **Accesorios** (456 unidades - $892.000)
+- Mouse: 145u
+- Teclados: 89u
+- Webcams: 15u
+- Otros: 207u
+
+**VALOR TOTAL:** $23.517.000
+
+**ALERTAS:**
+⚠️ Webcams nivel bajo (15 unid - min: 25)
 
 Necesitas ver otro deposito?""",
                 "buttons": "depositos_otros"
@@ -514,40 +524,29 @@ Necesitas ver otro deposito?""",
                 "content": """🏢 **Deposito Norte - Info Completa**
 
 **DATOS GENERALES:**
-
-| Campo | Detalle |
-|-------|---------|
-| 📍 Ubicacion | Ruta 8 Km 23, Zonamerica |
-| 👤 Responsable | Maria Rodriguez |
-| 📞 Contacto | +598 2518 5678 |
-| 📦 Capacidad | 800 m² (62% ocupado) |
+- Ubicacion: Ruta 8 Km 23, Zonamerica
+- Responsable: Maria Rodriguez
+- Contacto: +598 2518 5678
+- Capacidad: 800 m² (62% ocupado)
 
 **STOCK POR CATEGORIA:**
 
-| Categoria | Producto | Stock | Estado | Valor |
-|-----------|----------|-------|--------|-------|
-| 💻 **Notebooks** | Dell Latitude | 12u | ✅ OK | $3.150.000 |
-| | HP ProBook | 8u | 🔴 **CRITICO** | |
-| | Lenovo ThinkPad | 15u | ✅ OK | |
-| | **Subtotal** | **35u** | | **$3.150.000** |
-| 🖥️ **Monitores** | LG/Samsung/Dell | 34u | ✅ OK | **$1.615.000** |
-| 🖱️ **Accesorios** | Varios | 234u | ⚠️ Algunos bajos | **$456.000** |
+💻 **Notebooks** (35 unidades - $3.150.000)
+- Dell Latitude: 12u
+- HP ProBook: 8u 🔴 CRITICO
+- Lenovo ThinkPad: 15u
 
-**RESUMEN:**
-- 💰 Valor Total: **$11.455.000**
-- 📦 Total Unidades: **303**
-- 🚨 Alertas: 2 críticas
+🖥️ **Monitores** (34 unidades - $1.615.000)
+🖱️ **Accesorios** (234 unidades - $456.000)
 
-**EN TRANSITO:**
-| Producto | Cantidad | Origen | Llegada |
-|----------|----------|--------|---------|
-| 🚚 Mouse MX Master | 20u | Central | Hoy 18:00 |
+**VALOR TOTAL:** $11.455.000
 
-**ALERTAS CRITICAS:**
-| Producto | Stock Actual | Minimo | Estado |
-|----------|--------------|--------|--------|
-| HP ProBook | 8u | 15u | 🔴 Crítico |
-| Webcams | 8u | 15u | ⚠️ Bajo |
+**EN TRANSITO (llegada hoy 18:00):**
+🚚 Mouse MX Master: 20u desde Central
+
+**ALERTAS:**
+🔴 HP ProBook: Solo 8 unidades (min: 15)
+⚠️ Webcams: 8 unidades (min: 15)
 
 Queres ver otro deposito?""",
                 "buttons": "depositos_otros"
