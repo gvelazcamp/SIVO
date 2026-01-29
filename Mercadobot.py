@@ -1659,7 +1659,7 @@ body { background: #1a1a2e; font-family: Inter, sans-serif; margin: 0; padding: 
 # =========================
 # HOME (MODIFICADO: chatbot protagonista)
 # =========================
-HTML_HOME = f"""{HTML_BASE}
+HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 {HEADER}
 
     <!-- HERO IMPACT -->
@@ -1814,6 +1814,13 @@ HTML_HOME = f"""{HTML_BASE}
             </div>
         </div>
     </div>
+
+
+{FOOTER}
+"""
+
+HTML_HOME_PARTE_2 = f"""{HTML_BASE}
+{HEADER}
 
     <!-- TESTIMONIOS -->
     <div class="testimonios">
@@ -5160,26 +5167,13 @@ elif vista == "precios":
     st.html(HTML_PRECIOS)
 
 else:
-    st.html(HTML_HOME)
+    st.html(HTML_HOME_PARTE_1)
     
-    # =========================
-    # DEMO COMPONENT (se muestra después de HTML_HOME completo)
-    # =========================
     components.html("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; }
     </style>
     
     <div style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
@@ -5210,6 +5204,8 @@ else:
         </div>
     </div>
     """, height=1100, scrolling=False)
+    
+    st.html(HTML_HOME_PARTE_2)
 
 # CSS para overflow visible
 st.markdown("""
