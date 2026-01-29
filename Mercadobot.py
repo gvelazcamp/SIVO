@@ -1815,6 +1815,97 @@ HTML_HOME = f"""{HTML_BASE}
         </div>
     </div>
 
+    <!-- TESTIMONIOS -->
+    <div class="testimonios">
+        <h2>Lo que dicen nuestros clientes</h2>
+        
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Desde que instalé el chatbot, las consultas se responden automáticamente. Las ventas subieron un 40% y ya no pierdo clientes por demoras en responder."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">M</div>
+                    <div class="testimonio-info">
+                        <h4>Martín González</h4>
+                        <p>Tienda de deportes online</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">📈 +40% ventas</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Antes pasaba 3 horas al día respondiendo las mismas preguntas. Ahora el bot responde al instante y yo me enfoco en atender consultas complejas. Un antes y después."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">L</div>
+                    <div class="testimonio-info">
+                        <h4>Laura Fernández</h4>
+                        <p>Restaurante</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">⏰ -3hs diarias</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Implementamos el asistente de turnos y las reservas se duplicaron. Los clientes reservan a cualquier hora y el sistema confirma automáticamente. Impresionante."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">C</div>
+                    <div class="testimonio-info">
+                        <h4>Carlos Ruiz</h4>
+                        <p>Clínica odontológica</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">📅 2x reservas</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Las consultas por propiedades llegan las 24hs. El bot responde características, precios y agenda visitas automáticamente. Ahora atendemos 3 veces más clientes con el mismo equipo."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">A</div>
+                    <div class="testimonio-info">
+                        <h4>Ana Rodríguez</h4>
+                        <p>Inmobiliaria</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">🏠 3x más consultas</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "Redujimos los llamados al gimnasio en un 70%. Ahora los socios consultan horarios, reservan clases y cancelan turnos directamente con el asistente. Increíble eficiencia."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">D</div>
+                    <div class="testimonio-info">
+                        <h4>Diego Martínez</h4>
+                        <p>Gimnasio y centro deportivo</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">📞 -70% llamados</div>
+            </div>
+
+            <div class="testimonio-card">
+                <div class="testimonio-quote">
+                    "El chatbot responde consultas de stock, precios y envíos las 24 horas. Los clientes están más satisfechos y nosotros cerramos ventas incluso de madrugada."
+                </div>
+                <div class="testimonio-author">
+                    <div class="testimonio-avatar">S</div>
+                    <div class="testimonio-info">
+                        <h4>Sofía Méndez</h4>
+                        <p>Ecommerce de tecnología</p>
+                    </div>
+                </div>
+                <div class="testimonio-stat">🌙 Ventas 24/7</div>
+            </div>
+        </div>
+    </div>
+
     <div class="cta" id="soporte">
         <h2>Agenda una demo gratuita</h2>
         <p>Probá 7 días gratis. Sin tarjeta de crédito. Cancelá cuando quieras.</p>
@@ -5072,16 +5163,32 @@ else:
     st.html(HTML_HOME)
     
     # =========================
-    # DEMO COMPONENT (después de asistentes)
+    # DEMO COMPONENT (se muestra después de HTML_HOME completo)
     # =========================
     components.html("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+    
     <div style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a; font-family: Inter, sans-serif;">
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a; font-family: 'Inter', sans-serif;">
                     ¿Cómo responden nuestros asistentes?
                 </h2>
-                <p style="font-size: 18px; color: #666; font-family: Inter, sans-serif;">
+                <p style="font-size: 18px; color: #666; font-family: 'Inter', sans-serif;">
                     Mirá conversaciones reales con clientes en diferentes industrias
                 </p>
             </div>
@@ -5096,110 +5203,13 @@ else:
             </div>
             
             <div style="text-align: center; margin-top: 30px;">
-                <p style="font-size: 16px; color: #666; font-family: Inter, sans-serif;">
+                <p style="font-size: 16px; color: #666; font-family: 'Inter', sans-serif;">
                     ⚡ Demo interactiva - Seleccioná una industria y mirá cómo responde el asistente
                 </p>
             </div>
         </div>
     </div>
     """, height=1100, scrolling=False)
-    
-    # =========================
-    # TESTIMONIOS COMPONENT (después de demo)
-    # =========================
-    components.html("""    <!-- TESTIMONIOS -->
-    <div class="testimonios">
-        <h2>Lo que dicen nuestros clientes</h2>
-        
-        <div class="testimonios-grid">
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "Desde que instalé el chatbot, las consultas se responden automáticamente. Las ventas subieron un 40% y ya no pierdo clientes por demoras en responder."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">M</div>
-                    <div class="testimonio-info">
-                        <h4>Martín González</h4>
-                        <p>Tienda de deportes online</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📈 +40% ventas</div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "Antes pasaba 3 horas al día respondiendo las mismas preguntas. Ahora el bot responde al instante y yo me enfoco en atender consultas complejas. Un antes y después."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">L</div>
-                    <div class="testimonio-info">
-                        <h4>Laura Fernández</h4>
-                        <p>Restaurante</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">⏰ -3hs diarias</div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "Implementamos el asistente de turnos y las reservas se duplicaron. Los clientes reservan a cualquier hora y el sistema confirma automáticamente. Impresionante."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">C</div>
-                    <div class="testimonio-info">
-                        <h4>Carlos Ruiz</h4>
-                        <p>Clínica odontológica</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📅 2x reservas</div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "Las consultas por propiedades llegan las 24hs. El bot responde características, precios y agenda visitas automáticamente. Ahora atendemos 3 veces más clientes con el mismo equipo."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">A</div>
-                    <div class="testimonio-info">
-                        <h4>Ana Rodríguez</h4>
-                        <p>Inmobiliaria</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">🏠 3x más consultas</div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "Redujimos los llamados al gimnasio en un 70%. Ahora los socios consultan horarios, reservan clases y cancelan turnos directamente con el asistente. Increíble eficiencia."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">D</div>
-                    <div class="testimonio-info">
-                        <h4>Diego Martínez</h4>
-                        <p>Gimnasio y centro deportivo</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📞 -70% llamados</div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    "El chatbot responde consultas de stock, precios y envíos las 24 horas. Los clientes están más satisfechos y nosotros cerramos ventas incluso de madrugada."
-                </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">S</div>
-                    <div class="testimonio-info">
-                        <h4>Sofía Méndez</h4>
-                        <p>Ecommerce de tecnología</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">🌙 Ventas 24/7</div>
-            </div>
-        </div>
-    </div>
-
-
-    """, height=900, scrolling=False)
 
 # CSS para overflow visible
 st.markdown("""
