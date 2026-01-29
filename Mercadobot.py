@@ -1849,7 +1849,7 @@ HTML_HOME = f"""{HTML_BASE}
             </p>
             
             <!-- Demo embebida directamente -->
-            <div>
+            <div style="min-height: 800px; width: 100%; overflow: visible;">
                 <!DOCTYPE html>
 <html lang="es">
 <head>
