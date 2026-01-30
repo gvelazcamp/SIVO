@@ -332,88 +332,147 @@ st.markdown("""
 # =========================
 # EJEMPLO DE CONVERSACIÓN
 # =========================
+
 st.markdown("""
+<style>
+.conversation-example {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #f9fafb;
+    border-radius: 14px;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.conv-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.message {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #6b7280;
+}
+
+.message-bubble {
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 85%;
+}
+
+.message-bot .message-bubble {
+    background: #e5efff;
+    color: #0b3b60;
+    align-self: flex-start;
+}
+
+.message-user {
+    align-items: flex-end;
+}
+
+.message-user .message-bubble {
+    background: #d1fae5;
+    color: #065f46;
+    align-self: flex-end;
+}
+</style>
+
 <div class="conversation-example">
     <div class="conv-title">💬 Ejemplo de Conversación Real</div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
             ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?
         </div>
     </div>
-    
+
     <div class="message message-user">
         <div class="message-label">Cliente</div>
         <div class="message-bubble">
             Busco un auto usado
         </div>
     </div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
-            Dale, perfecto. ¿Qué presupuesto tenés más o menos?
+            Perfecto. ¿Qué presupuesto tenés aproximadamente?
         </div>
     </div>
-    
+
     <div class="message message-user">
         <div class="message-label">Cliente</div>
         <div class="message-bubble">
             Unos 10 millones
         </div>
     </div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
-            Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, 
-            único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. 
-            ¿Cuál te copa más?
+            Genial. Tengo dos opciones muy buenas: un Gol Trend 2020 a 9.8 millones con 55.000 km,
+            único dueño; o un Focus 2019 a 12.9 millones con 65.000 km y service al día.
+            ¿Cuál te interesa más?
         </div>
     </div>
-    
+
     <div class="message message-user">
         <div class="message-label">Cliente</div>
         <div class="message-bubble">
             El Gol. ¿Puedo hacer un test drive?
         </div>
     </div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
-            ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?
+            Claro que sí. ¿Me decís tu nombre completo?
         </div>
     </div>
-    
+
     <div class="message message-user">
         <div class="message-label">Cliente</div>
         <div class="message-bubble">
             Juan Pérez
         </div>
     </div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
-            Perfecto Juan. ¿Tu teléfono?
+            Gracias, Juan. ¿Un teléfono de contacto?
         </div>
     </div>
-    
+
     <div class="message message-user">
         <div class="message-label">Cliente</div>
         <div class="message-bubble">
             099 123 456
         </div>
     </div>
-    
+
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
         <div class="message-bubble">
-            Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive 
-            del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. 
-            ¡Gracias por llamar!
+            Perfecto. Ya dejé agendado tu test drive del Gol Trend.
+            Un vendedor te va a contactar en los próximos minutos para coordinar día y horario.
+            Gracias por comunicarte con AutoCenter.
         </div>
     </div>
 </div>
