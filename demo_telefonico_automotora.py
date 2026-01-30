@@ -334,63 +334,8 @@ st.markdown("""
 # =========================
 
 st.markdown("""
-<style>
-.chat-demo {
-    max-width: 720px;
-    margin: 30px auto;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 12px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.chat-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #1f2937;
-}
-
-.message {
-    margin-bottom: 14px;
-    display: flex;
-    flex-direction: column;
-}
-
-.message-label {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: #6b7280;
-}
-
-.message-bubble {
-    padding: 12px 16px;
-    border-radius: 14px;
-    font-size: 14px;
-    line-height: 1.4;
-    max-width: 85%;
-}
-
-.message-bot .message-bubble {
-    background: #e5efff;
-    color: #0b3b60;
-    align-self: flex-start;
-}
-
-.message-user {
-    align-items: flex-end;
-}
-
-.message-user .message-bubble {
-    background: #dcfce7;
-    color: #065f46;
-    align-self: flex-end;
-}
-</style>
-
-<div class="chat-demo">
-    <div class="chat-title">💬 Ejemplo de Conversación Real</div>
+<div class="conversation-example">
+    <div class="conv-title">💬 Ejemplo de Conversación Real</div>
 
     <div class="message message-bot">
         <div class="message-label">Asistente</div>
