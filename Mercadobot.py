@@ -131,7 +131,7 @@ body {
 }
 
 .logo-img {
-    height: 55px;
+    height: 80px;
     width: auto;
 }
 
