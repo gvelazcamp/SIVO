@@ -10,52 +10,73 @@ st.set_page_config(
 )
 
 # =========================
-# CSS GLOBAL
+# CSS GLOBAL - VERSIÓN AGRESIVA
 # =========================
 st.markdown("""
 <style>
+/* Ocultar elementos de Streamlit */
 #MainMenu, footer, header {display: none;}
 
 .stApp {
-    background: #ffffff;
-    font-family: Inter, sans-serif;
+    background: #f9fafb;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* =========================
-   BURBUJAS DE CHAT
+   BURBUJAS DE CHAT - MÉTODO AGRESIVO
    ========================= */
 
-/* Espacio entre mensajes */
-section[data-testid="stChatMessage"] {
-    margin-bottom: 16px;
+/* Resetear todos los estilos de chat */
+.stChatMessage {
+    background: transparent !important;
+    border: none !important;
+    padding: 0.75rem 0 !important;
 }
 
-/* CLIENTE (burbuja negra) */
-section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-user"])
-div[data-testid="stMarkdownContainer"] {
-    background: #0f172a;
-    color: #ffffff;
-    padding: 14px 18px;
-    border-radius: 18px;
-    max-width: 75%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+/* Forzar contenedor de contenido */
+.stChatMessage > div {
+    background: transparent !important;
 }
 
-/* ASISTENTE (burbuja blanca) */
-section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-assistant"])
-div[data-testid="stMarkdownContainer"] {
-    background: #ffffff;
-    color: #111827;
-    padding: 14px 18px;
-    border-radius: 18px;
-    max-width: 75%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
+/* USUARIO - Burbuja NEGRA */
+.stChatMessage:has(img[alt="user"]) div[data-testid="stMarkdownContainer"],
+.stChatMessage:has(img[alt="user"]) .stMarkdown,
+.stChatMessage:has(img[alt="user"]) div[data-testid="stMarkdownContainer"] > div,
+.stChatMessage:has(img[alt="user"]) p {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
 }
 
-/* Avatares más pequeños */
-div[data-testid^="chat-avatar"] {
-    transform: scale(0.85);
+.stChatMessage:has(img[alt="user"]) div[data-testid="stMarkdownContainer"] {
+    padding: 14px 20px !important;
+    border-radius: 18px 18px 4px 18px !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.4) !important;
+    max-width: 75% !important;
+    margin-left: auto !important;
+}
+
+/* ASISTENTE - Burbuja BLANCA */
+.stChatMessage:has(img[alt="assistant"]) div[data-testid="stMarkdownContainer"],
+.stChatMessage:has(img[alt="assistant"]) .stMarkdown,
+.stChatMessage:has(img[alt="assistant"]) div[data-testid="stMarkdownContainer"] > div,
+.stChatMessage:has(img[alt="assistant"]) p {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+.stChatMessage:has(img[alt="assistant"]) div[data-testid="stMarkdownContainer"] {
+    padding: 14px 20px !important;
+    border-radius: 18px 18px 18px 4px !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    max-width: 75% !important;
+    margin-right: auto !important;
+}
+
+/* Asegurar que el texto sea visible */
+.stChatMessage p {
+    margin: 0 !important;
+    line-height: 1.5 !important;
 }
 
 /* =========================
@@ -63,26 +84,32 @@ div[data-testid^="chat-avatar"] {
    ========================= */
 .hero {
     text-align: center;
-    padding: 70px 30px 40px;
+    padding: 60px 30px 30px;
+    background: white;
+    border-radius: 24px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .hero h1 {
-    font-size: 44px;
+    font-size: 42px;
     font-weight: 800;
     color: #111;
     margin-bottom: 16px;
+    line-height: 1.2;
 }
 
 .hero .sivo-name {
     color: #ff7a18;
-    font-size: 52px;
+    font-size: 48px;
 }
 
 .hero p {
-    font-size: 20px;
+    font-size: 19px;
     color: #555;
-    max-width: 760px;
+    max-width: 700px;
     margin: auto;
+    line-height: 1.6;
 }
 
 /* =========================
@@ -91,42 +118,49 @@ div[data-testid^="chat-avatar"] {
 .phone-card {
     background: linear-gradient(135deg, #ff7a18, #ff9f43);
     color: white;
-    border-radius: 30px;
-    padding: 50px 40px;
+    border-radius: 24px;
+    padding: 45px 35px;
     text-align: center;
-    margin: 45px 0;
-    box-shadow: 0 25px 55px rgba(255,122,24,0.35);
+    margin: 40px 0;
+    box-shadow: 0 20px 50px rgba(255,122,24,0.3);
 }
 
 .phone-card h2 {
-    font-size: 32px;
-    margin-bottom: 14px;
+    font-size: 30px;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .phone-card p {
-    font-size: 18px;
+    font-size: 17px;
     opacity: 0.95;
 }
 
 .phone-number {
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin: 24px 0;
+    letter-spacing: 1px;
+    margin: 20px 0;
 }
 
 .phone-number a {
     color: white;
     text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.phone-number a:hover {
+    opacity: 0.9;
 }
 
 .badge {
     display: inline-block;
     background: rgba(255,255,255,0.25);
-    padding: 12px 22px;
+    padding: 10px 20px;
     border-radius: 999px;
     font-weight: 600;
     margin-top: 10px;
+    font-size: 14px;
 }
 
 /* =========================
@@ -134,24 +168,24 @@ div[data-testid^="chat-avatar"] {
    ========================= */
 .features-header {
     text-align: center;
-    margin: 70px 0 45px;
+    margin: 60px 0 40px;
 }
 
 .phone-icon {
-    font-size: 54px;
-    margin-bottom: 12px;
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
 .divider-line {
-    width: 90px;
+    width: 80px;
     height: 4px;
     background: linear-gradient(90deg, #ff7a18, #ffb347);
-    margin: 0 auto 18px;
+    margin: 0 auto 16px;
     border-radius: 10px;
 }
 
 .features-header h2 {
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 800;
     color: #111;
 }
@@ -160,7 +194,7 @@ div[data-testid^="chat-avatar"] {
    FEATURES GRID
    ========================= */
 .section {
-    padding: 0 20px 60px;
+    padding: 0 20px 50px;
     max-width: 1100px;
     margin: auto;
 }
@@ -168,35 +202,41 @@ div[data-testid^="chat-avatar"] {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 28px;
+    gap: 24px;
 }
 
 .card {
     background: #ffffff;
-    border-radius: 24px;
-    padding: 34px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-    transition: all .25s ease;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
 }
 
 .card span {
-    font-size: 38px;
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
 }
 
 .card h3 {
-    margin: 16px 0 10px;
-    font-size: 20px;
+    margin: 12px 0 8px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #111;
 }
 
 .card p {
-    color: #555;
+    color: #666;
     line-height: 1.6;
     font-size: 15px;
+    margin: 0;
 }
 
 /* =========================
@@ -205,18 +245,21 @@ div[data-testid^="chat-avatar"] {
 .conversation-header {
     text-align: center;
     margin: 50px 0 30px;
+    padding: 0 20px;
 }
 
 .conversation-header h2 {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 800;
     color: #111;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    line-height: 1.3;
 }
 
 .conversation-subtitle {
-    font-size: 18px;
+    font-size: 16px;
     color: #666;
+    margin-top: 8px;
 }
 
 .sivo-highlight {
@@ -228,39 +271,56 @@ div[data-testid^="chat-avatar"] {
    CTA
    ========================= */
 .cta {
-    background: #111;
+    background: linear-gradient(135deg, #1f2937, #111827);
     color: white;
-    border-radius: 30px;
-    padding: 65px 35px;
+    border-radius: 24px;
+    padding: 55px 35px;
     text-align: center;
-    margin: 80px 0 60px;
+    margin: 70px 0 50px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
 .cta h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .cta p {
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0.9;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: auto;
 }
 
 /* =========================
    BUTTON
    ========================= */
 .stButton > button {
-    background: #ff7a18;
-    color: white;
-    border-radius: 999px;
-    padding: 18px 28px;
-    font-size: 18px;
-    font-weight: 700;
-    border: none;
+    background: #ff7a18 !important;
+    color: white !important;
+    border-radius: 999px !important;
+    padding: 16px 32px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 12px rgba(255,122,24,0.3) !important;
 }
 
 .stButton > button:hover {
-    background: #ff8f3d;
+    background: #ff8f3d !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(255,122,24,0.4) !important;
+}
+
+/* Caption */
+.stCaption {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    margin-top: 40px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -408,11 +468,13 @@ st.markdown("""
 # =========================
 # BOTÓN LLAMAR
 # =========================
-if st.button("📞 Llamar a SIVO ahora"):
-    st.markdown("""
-    <script>
-    window.location.href = "tel:+5981234567";
-    </script>
-    """, unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1,2,1])
+with col2:
+    if st.button("📞 Llamar a SIVO ahora", use_container_width=True):
+        st.markdown("""
+        <script>
+        window.location.href = "tel:+5981234567";
+        </script>
+        """, unsafe_allow_html=True)
 
 st.caption("Demo visual de SIVO - Asistente Telefónico Inteligente")
