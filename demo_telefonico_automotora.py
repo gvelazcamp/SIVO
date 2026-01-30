@@ -23,24 +23,11 @@ st.markdown("""
 }
 
 /* =========================
-   LOGO
-   ========================= */
-.logo-container {
-    text-align: center;
-    padding: 30px 0 20px;
-}
-
-.logo-img {
-    width: 100px;
-    height: auto;
-}
-
-/* =========================
    HERO
    ========================= */
 .hero {
     text-align: center;
-    padding: 40px 30px 30px;
+    padding: 60px 30px 30px;
     background: white;
     border-radius: 24px;
     margin: 20px 0;
@@ -69,16 +56,16 @@ st.markdown("""
 }
 
 /* =========================
-   PHONE CARD (WHATSAPP)
+   PHONE CARD
    ========================= */
 .phone-card {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    background: linear-gradient(135deg, #ff7a18, #ff9f43);
     color: white;
     border-radius: 24px;
     padding: 45px 35px;
     text-align: center;
     margin: 40px 0;
-    box-shadow: 0 20px 50px rgba(37,211,102,0.3);
+    box-shadow: 0 20px 50px rgba(255,122,24,0.3);
 }
 
 .phone-card h2 {
@@ -90,26 +77,23 @@ st.markdown("""
 .phone-card p {
     font-size: 17px;
     opacity: 0.95;
-    margin-bottom: 10px;
 }
 
-.whatsapp-btn {
-    display: inline-block;
-    background: white;
-    color: #25D366;
-    padding: 18px 40px;
-    border-radius: 999px;
-    text-decoration: none;
+.phone-number {
+    font-size: 44px;
     font-weight: 800;
-    font-size: 20px;
+    letter-spacing: 1px;
     margin: 20px 0;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
 }
 
-.whatsapp-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+.phone-number a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.phone-number a:hover {
+    opacity: 0.9;
 }
 
 .badge {
@@ -120,12 +104,6 @@ st.markdown("""
     font-weight: 600;
     margin-top: 10px;
     font-size: 14px;
-}
-
-.phone-small {
-    font-size: 15px;
-    opacity: 0.85;
-    margin-top: 15px;
 }
 
 /* =========================
@@ -205,57 +183,6 @@ st.markdown("""
 }
 
 /* =========================
-   CONVERSATION
-   ========================= */
-.conversation-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.conversation-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.conversation-header h3 {
-    font-size: 28px;
-    font-weight: 800;
-    color: #111;
-    margin-bottom: 8px;
-}
-
-.conversation-header p {
-    color: #666;
-    font-size: 16px;
-}
-
-.message {
-    margin-bottom: 12px;
-    padding: 16px 20px;
-    border-radius: 16px;
-    max-width: 75%;
-    line-height: 1.5;
-}
-
-.message-user {
-    background: #000;
-    color: white;
-    margin-right: auto;
-}
-
-.message-bot {
-    background: white;
-    color: black;
-    margin-left: auto;
-    border: 1px solid #e0e0e0;
-}
-
-.message strong {
-    margin-right: 8px;
-}
-
-/* =========================
    CTA
    ========================= */
 .cta {
@@ -282,6 +209,27 @@ st.markdown("""
     margin: auto;
 }
 
+/* =========================
+   BUTTON
+   ========================= */
+.stButton > button {
+    background: #ff7a18 !important;
+    color: white !important;
+    border-radius: 999px !important;
+    padding: 16px 32px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 12px rgba(255,122,24,0.3) !important;
+}
+
+.stButton > button:hover {
+    background: #ff8f3d !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(255,122,24,0.4) !important;
+}
+
 /* Caption */
 .stCaption {
     text-align: center;
@@ -300,29 +248,11 @@ st.markdown("""
         font-size: 38px;
     }
     
-    .whatsapp-btn {
-        font-size: 18px;
-        padding: 16px 32px;
-    }
-    
-    .message {
-        max-width: 85%;
-        padding: 14px 16px;
-        font-size: 14px;
+    .phone-number {
+        font-size: 36px;
     }
 }
 </style>
-""", unsafe_allow_html=True)
-
-# =========================
-# LOGO
-# =========================
-st.markdown("""
-<div class="logo-container">
-    <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/LogoMercadobot.png" 
-         alt="MercadoBot" 
-         class="logo-img">
-</div>
 """, unsafe_allow_html=True)
 
 # =========================
@@ -339,19 +269,24 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# WHATSAPP CTA
+# PHONE DEMO (WHATSAPP)
 # =========================
 st.markdown("""
 <div class="phone-card">
     <h2>Probá SIVO ahora</h2>
     <p>Escribime por WhatsApp y coordinamos una demo en vivo</p>
-    <a href="https://wa.me/59892748175?text=Hola!%20Quiero%20probar%20SIVO%20🤖" 
-       target="_blank" 
-       class="whatsapp-btn">
-        💬 Escribir por WhatsApp
-    </a>
+    <div style="margin: 20px 0;">
+        <a href="https://wa.me/59892748175?text=Hola!%20Quiero%20probar%20SIVO%20🤖" 
+           target="_blank" 
+           style="display: inline-block; background: white; color: #ff7a18; 
+                  padding: 18px 40px; border-radius: 999px; text-decoration: none;
+                  font-weight: 800; font-size: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+                  transition: all 0.3s ease;">
+            💬 Escribir por WhatsApp
+        </a>
+    </div>
     <div class="badge">🇺🇾 Respuesta en minutos</div>
-    <p class="phone-small">
+    <p style="font-size: 15px; opacity: 0.85; margin-top: 15px;">
         Te contacto para coordinar una demo personalizada
     </p>
 </div>
@@ -404,67 +339,37 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CONVERSACIÓN
+# CONVERSACIÓN - SIMPLE Y LINDA (PREGUNTAS IZQUIERDA, RESPUESTAS DERECHA)
 # =========================
 st.markdown("""
-<div class="conversation-container">
-    <div class="conversation-header">
-        <h3>💬 Ejemplo de conversación real</h3>
-        <p>Así atiende a tus clientes potenciales</p>
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> Busco un auto usado
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> Unos 10 millones
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> El Gol. ¿Puedo hacer un test drive?
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> El Gol. ¿Puedo hacer un test drive?
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> Juan Pérez
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?
-    </div>
-    
-    <div class="message message-user">
-        <strong>👤</strong> 099 123 456
-    </div>
-    
-    <div class="message message-bot">
-        <strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!
-    </div>
-</div>
+<h3 style="text-align: center;">💬 Ejemplo de conversación real</h3>
+<p style="text-align: center; color: #666;">Así atiende a tus clientes potenciales</p>
+
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Busco un auto usado</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</div>
+
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Unos 10 millones</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</div>
+
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>����</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</div>
+
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Juan Pérez</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</div>
+
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> 099 123 456</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</div>
+
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</div>
 """, unsafe_allow_html=True)
 
 # =========================
-# CTA FINAL
+# CTA
 # =========================
 st.markdown("""
 <div class="cta">
@@ -477,20 +382,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# BOTÓN WHATSAPP FINAL
+# BOTÓN LLAMAR
 # =========================
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
-    st.markdown("""
-    <a href="https://wa.me/59892748175?text=Hola!%20Quiero%20probar%20SIVO%20🤖" 
-       target="_blank" 
-       style="display: block; background: #25D366; color: white; 
-              padding: 16px 32px; border-radius: 999px; text-align: center;
-              text-decoration: none; font-weight: 700; font-size: 17px;
-              box-shadow: 0 4px 15px rgba(37,211,102,0.3);
-              transition: all 0.3s ease;">
-        💬 Contactar por WhatsApp
-    </a>
-    """, unsafe_allow_html=True)
+    if st.button("📞 Llamar ahora", use_container_width=True):
+        st.markdown("""
+        <script>
+        window.location.href = "tel:+5981234567";
+        </script>
+        """, unsafe_allow_html=True)
 
-st.caption("Demo visual de SIVO - Asistente Telefónico Inteligente | Powered by MercadoBot")
+st.caption("Demo visual de SIVO - Asistente Telefónico Inteligente")
