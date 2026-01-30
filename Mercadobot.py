@@ -130,7 +130,7 @@ body {
     color: #000;
     white-space: nowrap;
 }
-.logo span { color: #f4b400; }
+.logo span { color: #60a5fa; }
 
 .nav {
     display: flex;
@@ -148,11 +148,11 @@ body {
 }
 
 .nav a:hover {
-    color: #f4b400;
+    color: #60a5fa;
 }
 
 .btn-login {
-    background: #f4b400;
+    background: #60a5fa;
     padding: 8px 16px;
     border-radius: 10px;
     font-weight: 600;
@@ -210,7 +210,7 @@ body {
 
 .hero-impact-text {
     font-size: 17px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #475569;
     margin: 0 0 30px 0;
     max-width: 700px;
     margin-left: auto;
@@ -5839,4 +5839,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
