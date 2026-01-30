@@ -9,41 +9,47 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# =========================
+# ESTILOS CHAT (CLIENTE / ASISTENTE)
+# =========================
 st.markdown("""
 <style>
 
-/* Fondo suave para la zona de chat */
+/* Espacio entre mensajes */
 section[data-testid="stChatMessage"] {
-    background: transparent;
+    margin-bottom: 16px;
 }
 
-/* Mensajes del asistente (derecha) */
-section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-assistant"]) 
+/* ===== CLIENTE (burbuja oscura) ===== */
+section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-user"])
 div[data-testid="stMarkdownContainer"] {
-    background: #e5efff;
-    color: #0b3b60;
+    background: #0f172a;              /* negro azulado */
+    color: #ffffff;
     padding: 14px 18px;
     border-radius: 18px;
     max-width: 75%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-/* Mensajes del usuario (izquierda) */
-section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-user"]) 
+/* ===== ASISTENTE (burbuja clara) ===== */
+section[data-testid="stChatMessage"]:has(div[data-testid="chat-avatar-assistant"])
 div[data-testid="stMarkdownContainer"] {
-    background: #f1f5f9;
+    background: #ffffff;
     color: #111827;
     padding: 14px 18px;
     border-radius: 18px;
     max-width: 75%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-/* Separación entre mensajes */
-section[data-testid="stChatMessage"] {
-    margin-bottom: 14px;
+/* Opcional: achicar un poco los avatares */
+div[data-testid^="chat-avatar"] {
+    transform: scale(0.85);
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # =========================
 # CSS GLOBAL
