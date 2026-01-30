@@ -183,90 +183,6 @@ st.markdown("""
 }
 
 /* =========================
-   CONVERSACIÓN SIMPLE Y LINDA
-   ========================= */
-.convo-header {
-    text-align: center;
-    margin: 60px auto 30px;
-    max-width: 700px;
-}
-
-.convo-header h2 {
-    font-size: 32px;
-    font-weight: 800;
-    color: #111;
-    margin-bottom: 8px;
-}
-
-.convo-header p {
-    font-size: 17px;
-    color: #666;
-}
-
-.chat-box {
-    max-width: 700px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
-}
-
-.msg {
-    margin-bottom: 18px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-}
-
-.msg-left {
-    flex-direction: row;
-}
-
-.msg-right {
-    flex-direction: row-reverse;
-}
-
-.avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.avatar-bot {
-    background: linear-gradient(135deg, #ff7a18, #ff9f43);
-    box-shadow: 0 3px 10px rgba(255,122,24,0.3);
-}
-
-.avatar-user {
-    background: #0f172a;
-    box-shadow: 0 3px 10px rgba(15,23,42,0.3);
-}
-
-.bubble {
-    padding: 14px 18px;
-    border-radius: 18px;
-    line-height: 1.5;
-    font-size: 15px;
-    max-width: 75%;
-}
-
-.bubble-bot {
-    background: white;
-    color: #1f2937;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.bubble-user {
-    background: #0f172a;
-    color: white;
-    box-shadow: 0 2px 8px rgba(15,23,42,0.25);
-}
-
-/* =========================
    CTA
    ========================= */
 .cta {
@@ -334,15 +250,6 @@ st.markdown("""
     
     .phone-number {
         font-size: 36px;
-    }
-    
-    .bubble {
-        max-width: 85%;
-        font-size: 14px;
-    }
-    
-    .convo-header h2 {
-        font-size: 26px;
     }
 }
 </style>
@@ -422,91 +329,43 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CONVERSACIÓN - SIMPLE Y LINDA
+# CONVERSACIÓN - SIMPLE Y LINDA (usando st.chat_message para simplicidad)
 # =========================
+st.markdown("### 💬 Ejemplo de conversación real")
+st.caption("Así atiende a tus clientes potenciales")
 
-st.markdown("""
-<div class="convo-header">
-    <h2>💬 Ejemplo de conversación real</h2>
-    <p>Así atiende a tus clientes potenciales</p>
-</div>
-""", unsafe_allow_html=True)
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?")
 
-st.markdown("""
-<div class="chat-box">
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">
-            ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?
-        </div>
-    </div>
-    
-    <div class="msg msg-right">
-        <div class="bubble bubble-user">Busco un auto usado</div>
-        <div class="avatar avatar-user">👤</div>
-    </div>
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">
-            Dale, perfecto. ¿Qué presupuesto tenés más o menos?
-        </div>
-    </div>
-    
-    <div class="msg msg-right">
-        <div class="bubble bubble-user">Unos 10 millones</div>
-        <div class="avatar avatar-user">👤</div>
-    </div>
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">
-            Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, 
-            único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. 
-            ¿Cuál te copa más?
-        </div>
-    </div>
-    
-    <div class="msg msg-right">
-        <div class="bubble bubble-user">El Gol. ¿Puedo hacer un test drive?</div>
-        <div class="avatar avatar-user">👤</div>
-    </div>
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">
-            ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?
-        </div>
-    </div>
-    
-    <div class="msg msg-right">
-        <div class="bubble bubble-user">Juan Pérez</div>
-        <div class="avatar avatar-user">👤</div>
-    </div>
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">Perfecto Juan. ¿Tu teléfono?</div>
-    </div>
-    
-    <div class="msg msg-right">
-        <div class="bubble bubble-user">099 123 456</div>
-        <div class="avatar avatar-user">👤</div>
-    </div>
-    
-    <div class="msg msg-left">
-        <div class="avatar avatar-bot">🤖</div>
-        <div class="bubble bubble-bot">
-            Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. 
-            Agendé tu test drive del Gol Trend. 
-            Un vendedor te contacta en 10 minutos para confirmar día y horario. 
-            ¡Gracias por llamar!
-        </div>
-    </div>
+with st.chat_message("user", avatar="👤"):
+    st.write("Busco un auto usado")
 
-</div>
-""", unsafe_allow_html=True)
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("Dale, perfecto. ¿Qué presupuesto tenés más o menos?")
+
+with st.chat_message("user", avatar="👤"):
+    st.write("Unos 10 millones")
+
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?")
+
+with st.chat_message("user", avatar="👤"):
+    st.write("El Gol. ¿Puedo hacer un test drive?")
+
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?")
+
+with st.chat_message("user", avatar="👤"):
+    st.write("Juan Pérez")
+
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("Perfecto Juan. ¿Tu teléfono?")
+
+with st.chat_message("user", avatar="👤"):
+    st.write("099 123 456")
+
+with st.chat_message("assistant", avatar="🤖"):
+    st.write("Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!")
 
 # =========================
 # CTA
