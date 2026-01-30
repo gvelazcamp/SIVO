@@ -1807,6 +1807,13 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentetelefonico.png" alt="Telefónico">
+                <h3>Asistente Telefónico</h3>
+                <p>Atiende llamadas reales con IA conversacional.</p>
+                <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
+            </div>
         </div>
     </div>
 
@@ -2077,6 +2084,13 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Ver asistente</button></a>
+            </div>
+
+            <div class="card">
+                <img src="{BASE_URL}Asistentetelefonico.png" alt="Telefónico">
+                <h3>Asistente Telefónico</h3>
+                <p>Atiende llamadas reales con IA conversacional.</p>
+                <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
             </div>
         </div>
     </div>
