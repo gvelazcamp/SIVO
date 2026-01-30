@@ -158,42 +158,61 @@ st.markdown("""
 }
 
 /* =========================
-   CHAT DEMO
+   CONVERSACIÓN
    ========================= */
-.chat-section {
-    padding: 70px 20px;
-}
-
-.chat-title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 35px;
-}
-
-.chat-box {
-    background: #fafafa;
-    border-radius: 26px;
+.conversation-example {
+    background: #ffffff;
     padding: 40px;
-    max-width: 860px;
-    margin: auto;
+    border-radius: 28px;
+    margin: 60px auto;
+    max-width: 900px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
 }
 
-.msg {
-    margin-bottom: 18px;
-    max-width: 78%;
+.conv-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.message {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-user {
+    align-items: flex-end;
+}
+
+.message-bot {
+    align-items: flex-start;
+}
+
+.message-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.message-bubble {
     padding: 16px 22px;
-    border-radius: 20px;
+    border-radius: 18px;
+    max-width: 75%;
     font-size: 15px;
+    line-height: 1.6;
 }
 
-.bot {
-    background: #ffe8d6;
-}
-
-.user {
+.message-user .message-bubble {
     background: #eaeaea;
-    margin-left: auto;
+}
+
+.message-bot .message-bubble {
+    background: #ffe8d6;
 }
 
 /* =========================
@@ -311,19 +330,90 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CHAT DEMO
+# EJEMPLO DE CONVERSACIÓN
 # =========================
 st.markdown("""
-<div class="chat-section">
-    <div class="chat-title">Ejemplo de conversación</div>
-
-    <div class="chat-box">
-        <div class="msg bot">Hola, bienvenido. ¿En qué puedo ayudarte?</div>
-        <div class="msg user">Estoy buscando un auto usado</div>
-        <div class="msg bot">Perfecto. ¿Tenés un presupuesto aproximado?</div>
-        <div class="msg user">Hasta 10 millones</div>
-        <div class="msg bot">
-            Genial. Tengo opciones disponibles y puedo coordinar un test drive.
+<div class="conversation-example">
+    <div class="conv-title">💬 Ejemplo de Conversación Real</div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?
+        </div>
+    </div>
+    
+    <div class="message message-user">
+        <div class="message-label">Cliente</div>
+        <div class="message-bubble">
+            Busco un auto usado
+        </div>
+    </div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            Dale, perfecto. ¿Qué presupuesto tenés más o menos?
+        </div>
+    </div>
+    
+    <div class="message message-user">
+        <div class="message-label">Cliente</div>
+        <div class="message-bubble">
+            Unos 10 millones
+        </div>
+    </div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, 
+            único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. 
+            ¿Cuál te copa más?
+        </div>
+    </div>
+    
+    <div class="message message-user">
+        <div class="message-label">Cliente</div>
+        <div class="message-bubble">
+            El Gol. ¿Puedo hacer un test drive?
+        </div>
+    </div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?
+        </div>
+    </div>
+    
+    <div class="message message-user">
+        <div class="message-label">Cliente</div>
+        <div class="message-bubble">
+            Juan Pérez
+        </div>
+    </div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            Perfecto Juan. ¿Tu teléfono?
+        </div>
+    </div>
+    
+    <div class="message message-user">
+        <div class="message-label">Cliente</div>
+        <div class="message-bubble">
+            099 123 456
+        </div>
+    </div>
+    
+    <div class="message message-bot">
+        <div class="message-label">Asistente</div>
+        <div class="message-bubble">
+            Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive 
+            del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. 
+            ¡Gracias por llamar!
         </div>
     </div>
 </div>
