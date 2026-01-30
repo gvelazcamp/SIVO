@@ -23,75 +23,6 @@ st.markdown("""
 }
 
 /* =========================
-   BURBUJAS DE CHAT PERSONALIZADAS
-   ========================= */
-
-.chat-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-.message {
-    display: flex;
-    margin-bottom: 20px;
-    align-items: flex-start;
-}
-
-.message-assistant {
-    justify-content: flex-start;
-}
-
-.message-user {
-    justify-content: flex-end;
-}
-
-.avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-.avatar-assistant {
-    background: linear-gradient(135deg, #ff7a18, #ff9f43);
-    margin-right: 12px;
-}
-
-.avatar-user {
-    background: #0f172a;
-    margin-left: 12px;
-    order: 2;
-}
-
-.bubble {
-    padding: 14px 18px;
-    border-radius: 18px;
-    max-width: 75%;
-    line-height: 1.5;
-    font-size: 15px;
-}
-
-.bubble-assistant {
-    background: #ffffff;
-    color: #1f2937;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border-radius: 18px 18px 18px 4px;
-}
-
-.bubble-user {
-    background: #0f172a;
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.3);
-    border-radius: 18px 18px 4px 18px;
-}
-
-/* =========================
    HERO
    ========================= */
 .hero {
@@ -256,20 +187,20 @@ st.markdown("""
    ========================= */
 .conversation-header {
     text-align: center;
-    margin: 50px 0 30px;
+    margin: 60px 0 40px;
     padding: 0 20px;
 }
 
 .conversation-header h2 {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 800;
     color: #111;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1.3;
 }
 
 .conversation-subtitle {
-    font-size: 16px;
+    font-size: 17px;
     color: #666;
     margin-top: 8px;
 }
@@ -277,6 +208,103 @@ st.markdown("""
 .sivo-highlight {
     color: #ff7a18;
     font-weight: 700;
+}
+
+.chat-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.message {
+    display: flex;
+    margin-bottom: 24px;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.message-assistant {
+    justify-content: flex-start;
+}
+
+.message-user {
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.avatar-assistant {
+    background: linear-gradient(135deg, #ff7a18, #ff9f43);
+    box-shadow: 0 4px 12px rgba(255, 122, 24, 0.3);
+}
+
+.avatar-user {
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    order: 2;
+}
+
+.bubble {
+    padding: 16px 20px;
+    border-radius: 20px;
+    max-width: 70%;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.bubble-assistant {
+    background: #f8f9fa;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-radius: 20px 20px 20px 4px;
+}
+
+.bubble-user {
+    background: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.3);
+    border-radius: 20px 20px 4px 20px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 30px 20px;
+    }
+    
+    .bubble {
+        max-width: 80%;
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+    
+    .avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .message {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .conversation-header h2 {
+        font-size: 26px;
+    }
 }
 
 /* =========================
@@ -411,7 +439,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# EJEMPLO DE CONVERSACIÓN CON HTML CUSTOM
+# EJEMPLO DE CONVERSACIÓN
 # =========================
 
 st.markdown("""
@@ -421,7 +449,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Conversación con burbujas HTML personalizadas
+# Contenedor de conversación con diseño limpio
 st.markdown("""
 <div class="chat-container">
     
