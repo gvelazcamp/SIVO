@@ -164,10 +164,10 @@ body {
    HERO IMPACT
 ========================= */
 .hero-impact {
-    background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     padding: 60px 5% 50px;
     text-align: center;
-    color: #fff;
+    color: #1e3a8a;
     position: relative;
     overflow: hidden;
 }
@@ -179,7 +179,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(244, 180, 0, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -201,7 +201,7 @@ body {
 .hero-impact-subtitle {
     display: block;
     font-size: 38px;
-    background: linear-gradient(135deg, #f4b400 0%, #ffd700 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -225,8 +225,8 @@ body {
 }
 
 .hero-impact-btn-primary {
-    background: #f4b400;
-    color: #000;
+    background: #60a5fa;
+    color: #ffffff;
     padding: 14px 28px;
     border-radius: 12px;
     font-weight: 700;
@@ -234,31 +234,31 @@ body {
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(244, 180, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
 }
 
 .hero-impact-btn-primary:hover {
-    background: #ffd700;
+    background: #3b82f6;
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(244, 180, 0, 0.4);
+    box-shadow: 0 10px 28px rgba(96, 165, 250, 0.4);
 }
 
 .hero-impact-btn-secondary {
     background: transparent;
-    color: #fff;
+    color: #1e3a8a;
     padding: 14px 28px;
     border-radius: 12px;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
     display: inline-block;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid #60a5fa;
     transition: all 0.3s ease;
 }
 
 .hero-impact-btn-secondary:hover {
-    border-color: #f4b400;
-    color: #f4b400;
+    border-color: #60a5fa;
+    color: #60a5fa;
     transform: translateY(-2px);
 }
 
@@ -860,7 +860,7 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400 0%, #ffd700 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     display: flex;
     align-items: center;
     justify-content: center;
