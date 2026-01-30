@@ -1,212 +1,299 @@
 import streamlit as st
 
+# =========================
+# CONFIGURACIÓN
+# =========================
 st.set_page_config(
-    page_title="Demo Asistente Telefónico",
-    page_icon="📞",
-    layout="centered"
+    page_title="Demo Asistente Telefónico IA - MercadoBot",
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# CSS con naranjas y diseño profesional
+# =========================
+# CSS GLOBAL
+# =========================
 st.markdown("""
 <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
+#MainMenu, footer, header {display: none;}
 
 .stApp {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%) !important;
+    background: #ffffff;
+    font-family: Inter, sans-serif;
 }
 
-.main .block-container {
-    padding: 2rem 1rem;
+/* -------- HERO -------- */
+.hero {
+    text-align: center;
+    padding: 60px 30px 40px;
 }
 
-/* Títulos blancos */
-h1, h2, h3 {
-    color: white !important;
+.hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 15px;
 }
 
-/* Métricas naranjas */
-div[data-testid="stMetricValue"] {
-    color: #ff6b00 !important;
-    font-size: 2.5rem !important;
-    font-weight: bold !important;
+.hero p {
+    font-size: 20px;
+    color: #555;
+    max-width: 720px;
+    margin: auto;
 }
 
-/* Botón naranja grande */
-.stButton > button, .stLinkButton > a {
-    background: white !important;
-    color: #ff6b00 !important;
-    font-size: 1.5rem !important;
-    font-weight: 700 !important;
-    padding: 1.2rem 3rem !important;
-    border-radius: 12px !important;
-    border: none !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+/* -------- PHONE CARD -------- */
+.phone-card {
+    background: linear-gradient(135deg, #ff7a18, #ff9f43);
+    color: white;
+    border-radius: 28px;
+    padding: 45px 35px;
+    text-align: center;
+    margin: 40px 0;
+    box-shadow: 0 20px 50px rgba(255,122,24,0.35);
 }
 
-.stButton > button:hover, .stLinkButton > a:hover {
-    background: #fff5e6 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+.phone-card h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.phone-number {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
+.phone-number a {
+    color: white;
+    text-decoration: none;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* -------- FEATURES -------- */
+.section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    transition: all .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.card span {
+    font-size: 36px;
+}
+
+.card h3 {
+    margin: 15px 0 10px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* -------- CHAT DEMO -------- */
+.chat-box {
+    background: #fafafa;
+    border-radius: 22px;
+    padding: 35px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.msg {
+    margin-bottom: 18px;
+    max-width: 80%;
+    padding: 15px 20px;
+    border-radius: 18px;
+}
+
+.bot {
+    background: #ffe8d6;
+}
+
+.user {
+    background: #eaeaea;
+    margin-left: auto;
+}
+
+/* -------- CTA -------- */
+.cta {
+    background: #111;
+    color: white;
+    border-radius: 28px;
+    padding: 60px 30px;
+    text-align: center;
+    margin: 70px 0;
+}
+
+.cta h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    font-size: 20px;
+    opacity: .9;
+}
+
+/* -------- BUTTON -------- */
+.stButton > button {
+    background: #ff7a18;
+    color: white;
+    border-radius: 999px;
+    padding: 16px 26px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+}
+
+.stButton > button:hover {
+    background: #ff8f3d;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# HEADER
-st.title("📞 Asistente Telefónico con IA")
-st.subheader("Conversá con nuestro vendedor virtual. Atiende 24/7 como una persona real.")
+# =========================
+# HERO
+# =========================
+st.markdown("""
+<div class="hero">
+    <h1>Asistente Telefónico con IA</h1>
+    <p>
+        Un asistente que atiende llamadas reales, conversa como una persona
+        y vende usando la información de tu negocio.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
-st.write("")
-st.write("")
+# =========================
+# PHONE DEMO
+# =========================
+st.markdown("""
+<div class="phone-card">
+    <h2>Probá el Asistente en Vivo</h2>
+    <p>Llamá ahora y hablá con el asistente como si fuera un vendedor real.</p>
+    <div class="phone-number">
+        <a href="tel:+5981234567">+598 1234 5678</a>
+    </div>
+    <div class="badge">Disponible 24/7 · Demo gratuita</div>
+</div>
+""", unsafe_allow_html=True)
 
-# NÚMERO DESTACADO
-st.header("🎙️ Probalo Ahora")
-st.write("Llamá desde tu celular y conversá con el asistente. Te va a sorprender lo natural que suena.")
+# =========================
+# FEATURES
+# =========================
+st.markdown("""
+<div class="section">
+<h2>Qué hace este asistente</h2>
 
-st.write("")
-st.markdown("## 📞")
-st.markdown("# **+598 1234 5678**")
-st.caption("👆 Tap para llamar desde móvil")
+<div class="grid">
+    <div class="card">
+        <span>🗣️</span>
+        <h3>Habla natural</h3>
+        <p>Conversación fluida, humana y clara en español.</p>
+    </div>
+    <div class="card">
+        <span>📦</span>
+        <h3>Conoce tu negocio</h3>
+        <p>Responde con precios, stock y condiciones reales.</p>
+    </div>
+    <div class="card">
+        <span>📞</span>
+        <h3>No pierde llamadas</h3>
+        <p>Atiende clientes incluso fuera de horario.</p>
+    </div>
+    <div class="card">
+        <span>🎯</span>
+        <h3>Califica leads</h3>
+        <p>Detecta clientes reales y toma datos.</p>
+    </div>
+    <div class="card">
+        <span>📅</span>
+        <h3>Agenda acciones</h3>
+        <p>Coordina visitas, pruebas o seguimientos.</p>
+    </div>
+    <div class="card">
+        <span>⚙️</span>
+        <h3>Personalizable</h3>
+        <p>Se adapta 100% a tu rubro y tus datos.</p>
+    </div>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
-st.success("✅ **Disponible 24/7** · Llamá cuando quieras")
-st.info("💡 Es un demo gratuito. Probá todas las funciones sin costo.")
+# =========================
+# CHAT DEMO
+# =========================
+st.markdown("""
+<div class="section">
+<h2>Ejemplo de conversación</h2>
 
-st.write("")
-st.write("")
+<div class="chat-box">
+    <div class="msg bot">Hola, bienvenido. ¿En qué puedo ayudarte?</div>
+    <div class="msg user">Estoy buscando un auto usado</div>
+    <div class="msg bot">Perfecto. ¿Tenés un presupuesto aproximado?</div>
+    <div class="msg user">Hasta 10 millones</div>
+    <div class="msg bot">
+        Genial. Tengo dos opciones disponibles y puedo coordinar un test drive.
+    </div>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
-# CARACTERÍSTICAS
-st.header("✨ Qué Puede Hacer")
-st.write("")
+# =========================
+# CTA
+# =========================
+st.markdown("""
+<div class="cta">
+    <h2>Esto no es un chatbot genérico</h2>
+    <p>
+        Es un asistente entrenado con datos reales,
+        listo para atender, vender y escalar tu negocio.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
-col1, col2 = st.columns(2)
+# =========================
+# BOTÓN LLAMAR
+# =========================
+if st.button("📞 Llamar y probar ahora"):
+    st.markdown("""
+    <script>
+    window.location.href = "tel:+5981234567";
+    </script>
+    """, unsafe_allow_html=True)
 
-with col1:
-    with st.container():
-        st.markdown("### 🗣️ Conversación Natural")
-        st.write("Habla como una persona real. Entiende español argentino perfectamente con todas sus expresiones.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### 💳 Explica Financiación")
-        st.write("Detalla cuotas, tasas, anticipo y todas las formas de pago disponibles. Calcula las cuotas en el momento.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### 🔄 Tasa Usado")
-        st.write("Pregunta por tu auto usado y coordina la tasación sin cargo. Toma marca, modelo, año y kilómetros.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### 📝 Califica Leads")
-        st.write("Identifica clientes reales preguntando presupuesto, urgencia y necesidades. Filtra curiosos automáticamente.")
-
-with col2:
-    with st.container():
-        st.markdown("### 🚗 Conoce el Stock")
-        st.write("Sabe todos los autos disponibles, precios y características al detalle. Nunca se confunde con el inventario.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### 📅 Agenda Test Drives")
-        st.write("Toma tus datos y coordina visitas o pruebas de manejo automáticamente. Confirma fechas disponibles.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### ⏰ 24/7 Disponible")
-        st.write("Nunca pierde una llamada. Atiende de madrugada, fines de semana y feriados. Siempre profesional.")
-    
-    st.write("")
-    
-    with st.container():
-        st.markdown("### 🎯 Sin Errores")
-        st.write("Siempre profesional, nunca se olvida información, nunca tiene un mal día. Consistencia garantizada.")
-
-st.write("")
-st.write("")
-
-# CONVERSACIÓN
-st.header("💬 Conversación Real")
-st.caption("Así suena una llamada típica con el asistente")
-st.write("")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?")
-
-with st.chat_message("user", avatar="👤"):
-    st.write("Busco un auto usado")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("Dale, perfecto. ¿Qué presupuesto tenés más o menos?")
-
-with st.chat_message("user", avatar="👤"):
-    st.write("Unos 10 millones")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("Genial. Tengo 2 opciones excelentes: un **Gol Trend 2020** a **$9.8 millones** con 55 mil km, único dueño, service al día. O un **Focus 2019** a **$12.9 millones** con 65 mil km. ¿Cuál te copa más?")
-
-with st.chat_message("user", avatar="👤"):
-    st.write("El Gol. ¿Puedo hacer un test drive?")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("¡Claro que sí! Te agendo el test drive del Gol Trend. ¿Cuál es tu nombre completo?")
-
-with st.chat_message("user", avatar="👤"):
-    st.write("Juan Pérez")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("Perfecto Juan. ¿Y tu número de teléfono?")
-
-with st.chat_message("user", avatar="👤"):
-    st.write("099 123 456")
-
-with st.chat_message("assistant", avatar="🤖"):
-    st.write("Listo Juan, confirmo: **cero nueve nueve, uno dos tres, cuatro cinco seis**. Agendé tu test drive del Gol Trend 2020. Un vendedor te va a contactar en los próximos 10 minutos para confirmar el día y horario que mejor te venga. ¡Muchas gracias por comunicarte con AutoCenter!")
-
-st.write("")
-st.write("")
-
-# ESTADÍSTICAS
-st.header("📊 Resultados Comprobados")
-st.write("")
-
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    st.metric(label="Disponibilidad", value="24/7")
-
-with col2:
-    st.metric(label="Llamadas Atendidas", value="100%", delta="vs. humanos 70%")
-
-with col3:
-    st.metric(label="Tiempo Promedio", value="3 min", delta="-5 min vs. humanos")
-
-with col4:
-    st.metric(label="Leads Calificados", value="85%", delta="+40% vs. humanos")
-
-st.write("")
-st.write("")
-
-# CTA FINAL
-st.header("¿Listo para Probarlo?")
-st.write("Llamá ahora y conversá con el asistente. Es completamente **gratis** y podés probar todas las funciones.")
-
-st.write("")
-
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.link_button("📞 Llamar +598 1234 5678", "tel:+5981234567", use_container_width=True)
-
-st.write("")
-st.write("")
-
-# FOOTER
-st.divider()
-st.caption("💡 **Nota:** Este es un demo funcional. El asistente está configurado para una automotora de ejemplo. En producción se personaliza 100% con tu negocio, stock real y precios actualizados.")
-st.caption("🔒 Todas las llamadas son procesadas con IA de última generación (GPT-4 + ElevenLabs). Funcionamiento garantizado 24/7. Integración con CRM disponible.")
-st.caption("⚡ **ROI Promedio:** El sistema se paga solo en 30 días. Clientes reportan aumento del 40% en conversión de llamadas.")
+st.caption("Demo visual · El asistente se adapta a cualquier rubro.")
