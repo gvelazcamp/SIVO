@@ -1055,10 +1055,10 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
-    padding: 12px 28px;
-    border-radius: 25px;
+    padding: 16px 40px;
+    border-radius: 30px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 35px;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
 }
