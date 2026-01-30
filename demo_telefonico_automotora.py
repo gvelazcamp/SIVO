@@ -329,33 +329,33 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CONVERSACIÓN - SIMPLE Y LINDA (RESPUESTAS CON FONDO NEGRO)
+# CONVERSACIÓN - SIMPLE Y LINDA (MÁS ALTOS Y TEXTO MÁS CORTO)
 # =========================
 st.markdown("""
 <h3 style="text-align: center;">💬 Ejemplo de conversación real</h3>
 <p style="text-align: center; color: #666;">Así atiende a tus clientes potenciales</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</p>
 
-<p style="text-align: right;"><strong>👤</strong> Busco un auto usado</p>
+<p style="text-align: right; padding: 16px 8px;"><strong>👤</strong> Busco un auto usado</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</p>
 
-<p style="text-align: right;"><strong>👤</strong> Unos 10 millones</p>
+<p style="text-align: right; padding: 16px 8px;"><strong>👤</strong> Unos 10 millones</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</p>
 
-<p style="text-align: right;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</p>
+<p style="text-align: right; padding: 16px 8px;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</p>
 
-<p style="text-align: right;"><strong>👤</strong> Juan Pérez</p>
+<p style="text-align: right; padding: 16px 8px;"><strong>👤</strong> Juan Pérez</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</p>
 
-<p style="text-align: right;"><strong>👤</strong> 099 123 456</p>
+<p style="text-align: right; padding: 16px 8px;"><strong>👤</strong> 099 123 456</p>
 
-<p style="background: #000; color: white; padding: 8px; border-radius: 8px;"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</p>
+<p style="background: #000; color: white; padding: 16px 8px; border-radius: 8px; max-width: 50%; word-wrap: break-word;"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</p>
 """, unsafe_allow_html=True)
 
 # =========================
