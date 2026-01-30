@@ -67,42 +67,29 @@ st.markdown("<p style='text-align: center; color: white; font-size: 1.2rem; marg
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# NÚMERO DESTACADO
-st.markdown("""
-<div style='background: white; padding: 3rem 2rem; border-radius: 25px; text-align: center; box-shadow: 0 15px 50px rgba(0,0,0,0.2); margin: 2rem 0;'>
-    <h2 style='color: #333; font-size: 2rem; margin-bottom: 1rem;'>🎙️ Probalo Ahora</h2>
-    <p style='color: #666; font-size: 1.1rem; margin-bottom: 2rem;'>
-        Llamá desde tu celular y conversá con el asistente.<br>
-        Te va a sorprender lo natural que suena.
-    </p>
-    
-    <div style='background: linear-gradient(135deg, #667eea, #764ba2); padding: 3rem 2rem; border-radius: 20px; margin: 2rem 0;'>
-        <div style='font-size: 5rem; margin-bottom: 1rem;'>📞</div>
-        <div style='font-size: 3rem; font-weight: bold; color: white; letter-spacing: 3px; margin: 1rem 0;'>
-            <a href='tel:+5981234567' style='color: white; text-decoration: none;'>+598 1234 5678</a>
-        </div>
-        <p style='color: white; opacity: 0.9; font-size: 1rem; margin-top: 1rem;'>
-            👆 Tap para llamar desde móvil
-        </p>
-    </div>
-    
-    <div style='background: #e8f5e9; padding: 1rem 2rem; border-radius: 50px; display: inline-block; margin: 1.5rem 0; font-weight: 600; color: #2e7d32;'>
-        <span style='display: inline-block; width: 10px; height: 10px; background: #4caf50; border-radius: 50%; margin-right: 10px; animation: pulse 2s infinite;'></span>
-        Disponible 24/7 · Llamá cuando quieras
-    </div>
-    
-    <p style='margin-top: 2rem; font-size: 0.9rem; color: #888;'>
-        💡 Es un demo gratuito. Probá todas las funciones sin costo.
-    </p>
-</div>
+# NÚMERO DESTACADO - TODO CON COMPONENTES NATIVOS
+st.markdown("<br>", unsafe_allow_html=True)
 
-<style>
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-</style>
-""", unsafe_allow_html=True)
+# Container visual
+st.container()
+st.subheader("🎙️ Probalo Ahora")
+st.write("Llamá desde tu celular y conversá con el asistente. Te va a sorprender lo natural que suena.")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Número GRANDE
+st.markdown("## 📞")
+st.markdown("# **+598 1234 5678**")
+st.caption("👆 Tap para llamar desde móvil")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Disponibilidad
+st.success("✅ **Disponible 24/7** · Llamá cuando quieras")
+
+st.info("💡 Es un demo gratuito. Probá todas las funciones sin costo.")
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 # CARACTERÍSTICAS
 st.markdown("<br>", unsafe_allow_html=True)
