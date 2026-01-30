@@ -1960,110 +1960,70 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
-    <!-- NOVEDADES / RECIÉN LANZADO -->
-    <div class="launch-section">
-        <div class="launch-container">
-            <div class="launch-badge">🔥 RECIÉN LANZADO - Enero 2026</div>
-            
-            <div class="launch-content">
-                <div class="launch-text">
-                    <h2 class="launch-title">
-                        <span class="launch-icon">📞</span>
-                        SIVO - Tu Asistente Telefónico IA
-                    </h2>
-                    <p class="launch-subtitle">
-                        Atiende llamadas automáticamente, agenda citas y responde consultas 
-                        mientras vos te enfocás en hacer crecer tu negocio
-                    </p>
-                    
-                    <div class="launch-features">
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Atiende 24/7:</strong> Nunca más pierdas un cliente por no atender</span>
+    <!-- NOVEDAD SIVO -->
+    <div class="novedad-section">
+        <div class="novedad-badge">🔥 Novedad - Enero 2026</div>
+        
+        <div class="novedad-container">
+            <div class="novedad-image">
+                <div class="novedad-phone-mockup">
+                    <div class="novedad-screen">
+                        <div class="novedad-avatar">📞</div>
+                        <div class="novedad-name">SIVO</div>
+                        <div class="novedad-status">
+                            <span class="novedad-dot"></span>
+                            Atendiendo llamada
                         </div>
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Agenda automática:</strong> Reserva turnos directo en tu calendario</span>
-                        </div>
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Voz natural:</strong> Conversaciones fluidas y profesionales</span>
-                        </div>
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Derivación inteligente:</strong> Transfiere a humano cuando es necesario</span>
-                        </div>
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Respuestas instantáneas:</strong> Info de productos, precios y disponibilidad</span>
-                        </div>
-                        <div class="launch-feature">
-                            <span class="launch-check">✅</span>
-                            <span><strong>Integración total:</strong> Se conecta con tu sistema de gestión</span>
-                        </div>
-                    </div>
-                    
-                    <div class="launch-cta">
-                        <a href="#" class="launch-btn-primary">
-                            Probá SIVO Gratis
-                            <span style="margin-left: 8px;">→</span>
-                        </a>
-                        <a href="#" class="launch-btn-secondary">
-                            Ver demo en vivo
-                        </a>
-                    </div>
-                    
-                    <div class="launch-stats">
-                        <div class="launch-stat">
-                            <div class="launch-stat-number">95%</div>
-                            <div class="launch-stat-label">Llamadas atendidas automáticamente</div>
-                        </div>
-                        <div class="launch-stat">
-                            <div class="launch-stat-number">24/7</div>
-                            <div class="launch-stat-label">Disponibilidad sin descanso</div>
-                        </div>
-                        <div class="launch-stat">
-                            <div class="launch-stat-number">3seg</div>
-                            <div class="launch-stat-label">Tiempo promedio de respuesta</div>
+                        <div class="novedad-wave">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="novedad-content">
+                <h2 class="novedad-title">
+                    <span style="color: #1e3a8a;">📞</span> SIVO - Tu Asistente Telefónico IA
+                </h2>
+                <p class="novedad-description">
+                    Atiende llamadas automáticamente, agenda citas y responde consultas 
+                    mientras vos te enfocás en hacer crecer tu negocio
+                </p>
                 
-                <div class="launch-visual">
-                    <div class="launch-phone">
-                        <div class="launch-phone-screen">
-                            <div class="launch-phone-header">
-                                <div class="launch-phone-dot"></div>
-                                <div class="launch-phone-dot"></div>
-                                <div class="launch-phone-dot"></div>
-                            </div>
-                            <div class="launch-phone-content">
-                                <div class="launch-avatar">🤖</div>
-                                <div class="launch-name">SIVO</div>
-                                <div class="launch-status">
-                                    <div class="launch-pulse"></div>
-                                    En llamada
-                                </div>
-                                <div class="launch-waveform">
-                                    <div class="launch-bar" style="animation-delay: 0s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.1s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.2s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.3s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.4s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.2s;"></div>
-                                    <div class="launch-bar" style="animation-delay: 0.1s;"></div>
-                                </div>
-                                <div class="launch-transcript">
-                                    <div class="launch-message-user">
-                                        "¿Tenés disponibilidad para mañana a las 3?"
-                                    </div>
-                                    <div class="launch-message-bot">
-                                        "¡Sí! Te confirmé turno para mañana a las 15:00. Te envié los detalles por WhatsApp."
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="novedad-features">
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Atiende 24/7:</strong> Nunca más pierdas un cliente por no atender</span>
                     </div>
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Agenda automática:</strong> Reserva turnos directo en tu calendario</span>
+                    </div>
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Voz natural:</strong> Conversaciones fluidas y profesionales</span>
+                    </div>
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Derivación inteligente:</strong> Transfiere a humano cuando es necesario</span>
+                    </div>
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Respuestas instantáneas:</strong> Info de productos, precios y disponibilidad</span>
+                    </div>
+                    <div class="novedad-feature">
+                        <span class="check-icon">✅</span>
+                        <span><strong>Integración total:</strong> Se conecta con tu sistema de gestión</span>
+                    </div>
+                </div>
+                
+                <div class="novedad-buttons">
+                    <a href="#" class="novedad-btn-primary">Probá SIVO Gratis</a>
+                    <a href="#" class="novedad-btn-secondary">→ Ver demo en vivo</a>
                 </div>
             </div>
         </div>
