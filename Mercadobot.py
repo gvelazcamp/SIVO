@@ -1961,54 +1961,31 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- NOVEDAD SIVO -->
-    <div class="launch-section">
-        <div class="launch-badge">🔥 Recién Lanzado - Enero 2026</div>
-        <h2>SIVO - Tu Asistente Telefónico IA</h2>
-        <p class="launch-subtitle">Atiende llamadas automáticamente, agenda citas y responde consultas mientras vos te enfocás en hacer crecer tu negocio</p>
-        
-        <div class="launch-card">
-            <div class="launch-features">
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Atiende 24/7:</strong> Nunca más pierdas un cliente por no atender
-                    </div>
-                </div>
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Agenda automática:</strong> Reserva turnos directo en tu calendario
-                    </div>
-                </div>
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Voz natural:</strong> Conversaciones fluidas y profesionales
-                    </div>
-                </div>
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Derivación inteligente:</strong> Transfiere a humano cuando es necesario
-                    </div>
-                </div>
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Respuestas instantáneas:</strong> Info de productos, precios y disponibilidad
-                    </div>
-                </div>
-                <div class="launch-feature">
-                    <span class="launch-check">✅</span>
-                    <div>
-                        <strong>Integración total:</strong> Se conecta con tu sistema de gestión
-                    </div>
-                </div>
+    <div class="sivo-launch">
+        <div class="sivo-card-big">
+            <div class="sivo-badge">🔥 Recién Lanzado - Enero 2026</div>
+            
+            <div class="sivo-icon">📞</div>
+            
+            <h3>SIVO - Tu Asistente Telefónico IA</h3>
+            
+            <p class="sivo-desc">
+                Atiende llamadas automáticamente, agenda citas y responde consultas 
+                mientras vos te enfocás en hacer crecer tu negocio
+            </p>
+            
+            <div class="sivo-list">
+                <div class="sivo-item">✅ <strong>Atiende 24/7:</strong> Nunca más pierdas un cliente</div>
+                <div class="sivo-item">✅ <strong>Agenda automática:</strong> Turnos en tu calendario</div>
+                <div class="sivo-item">✅ <strong>Voz natural:</strong> Conversaciones profesionales</div>
+                <div class="sivo-item">✅ <strong>Derivación inteligente:</strong> Transfiere cuando es necesario</div>
+                <div class="sivo-item">✅ <strong>Respuestas instantáneas:</strong> Precios y disponibilidad</div>
+                <div class="sivo-item">✅ <strong>Integración total:</strong> Conecta con tu sistema</div>
             </div>
             
-            <div class="launch-actions">
-                <a href="#" class="launch-btn-primary">Probá SIVO Gratis</a>
-                <a href="#" class="launch-btn-link">→ Ver demo en vivo</a>
+            <div class="sivo-buttons">
+                <a href="#" class="sivo-btn-main">Probá SIVO Gratis</a>
+                <a href="#" class="sivo-btn-demo">Ver demo en vivo →</a>
             </div>
         </div>
     </div>
