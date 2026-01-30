@@ -329,33 +329,33 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CONVERSACIÓN - SIMPLE Y LINDA
+# CONVERSACIÓN - SIMPLE Y LINDA (PREGUNTAS IZQUIERDA, RESPUESTAS DERECHA)
 # =========================
 st.markdown("""
 <h3 style="text-align: center;">💬 Ejemplo de conversación real</h3>
 <p style="text-align: center; color: #666;">Así atiende a tus clientes potenciales</p>
 
-<div style="text-align: left; background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Busco un auto usado</div>
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Busco un auto usado</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</div>
 
-<div style="text-align: left; background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Unos 10 millones</div>
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Unos 10 millones</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</div>
 
-<div style="text-align: left; background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</div>
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>����</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</div>
 
-<div style="text-align: left; background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Juan Pérez</div>
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Juan Pérez</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</div>
 
-<div style="text-align: left; background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> 099 123 456</div>
+<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> 099 123 456</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</div>
 
-<div style="text-align: right; background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</div>
+<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</div>
 """, unsafe_allow_html=True)
 
 # =========================
