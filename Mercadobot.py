@@ -5318,18 +5318,6 @@ CHATBOT = """
     margin-bottom: 12px;
     display: flex;
     gap: 8px;
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .m.u {
@@ -5417,16 +5405,14 @@ CHATBOT = """
    RESPONSIVE PARA MÓVILES (CRÍTICO)
 ============================================ */
 @media (max-width: 768px) {
-    /* Botón más pequeño en móvil */
     #bot-btn {
-        width: 56px;
-        height: 56px;
-        bottom: 16px;
-        right: 16px;
-        font-size: 26px;
+        width: 56px !important;
+        height: 56px !important;
+        bottom: 16px !important;
+        right: 16px !important;
+        font-size: 26px !important;
     }
     
-    /* Chatbot FULLSCREEN en móviles */
     #bot-box {
         bottom: 0 !important;
         right: 0 !important;
@@ -5440,67 +5426,60 @@ CHATBOT = """
         margin: 0 !important;
     }
     
-    /* Header en móvil */
     .h {
-        padding: 14px 16px;
+        padding: 14px 16px !important;
         border-radius: 0 !important;
     }
     
     .h h3 {
-        font-size: 16px;
+        font-size: 16px !important;
     }
     
-    /* Mensajes con menos padding */
     #msgs {
-        padding: 16px 12px;
+        padding: 16px 12px !important;
     }
     
-    /* Avatares más pequeños */
     .m .a {
-        width: 28px;
-        height: 28px;
-        font-size: 20px;
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 20px !important;
     }
     
-    /* Mensajes con ancho ajustado */
     .m .b {
-        padding: 10px 14px;
-        font-size: 14px;
-        max-width: calc(100% - 48px);
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        max-width: calc(100% - 48px) !important;
     }
     
-    /* Input más compacto */
     .inp {
-        padding: 12px;
-        gap: 8px;
+        padding: 12px !important;
+        gap: 8px !important;
     }
     
     .inp input {
-        padding: 10px 14px;
-        font-size: 15px;
+        padding: 10px 14px !important;
+        font-size: 15px !important;
     }
     
     .inp button {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
     }
 }
 
-/* Para pantallas MUY pequeñas */
 @media (max-width: 400px) {
     .m .b {
-        font-size: 13px;
-        padding: 9px 12px;
+        font-size: 13px !important;
+        padding: 9px 12px !important;
     }
     
     .inp input {
-        font-size: 14px;
-        padding: 9px 12px;
+        font-size: 14px !important;
+        padding: 9px 12px !important;
     }
 }
 </style>
-
 
 <button id="bot-btn" onclick="toggle()">💬</button>
 
@@ -5722,6 +5701,104 @@ function send(){
 </body>
 </html>
 """
+
+# CSS RESPONSIVE ADICIONAL PARA MÓVILES
+st.markdown("""
+<style>
+
+/* ============================================
+   CSS RESPONSIVE PARA CHATBOT EN MÓVILES
+   (Aplicado al documento principal de Streamlit)
+============================================ */
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    /* Botón del chatbot más pequeño */
+    #bot-btn {
+        width: 56px !important;
+        height: 56px !important;
+        bottom: 16px !important;
+        right: 16px !important;
+        font-size: 26px !important;
+    }
+    
+    /* Chatbot FULLSCREEN en móviles */
+    #bot-box {
+        position: fixed !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Header sin border-radius en móvil */
+    #bot-box .h {
+        padding: 14px 16px !important;
+        border-radius: 0 !important;
+    }
+    
+    #bot-box .h h3 {
+        font-size: 16px !important;
+    }
+    
+    /* Mensajes con menos padding */
+    #bot-box #msgs {
+        padding: 16px 12px !important;
+    }
+    
+    /* Avatares más pequeños */
+    #bot-box .m .a {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 20px !important;
+    }
+    
+    /* Mensajes con ancho ajustado */
+    #bot-box .m .b {
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        max-width: calc(100% - 48px) !important;
+    }
+    
+    /* Input más compacto */
+    #bot-box .inp {
+        padding: 12px !important;
+        gap: 8px !important;
+    }
+    
+    #bot-box .inp input {
+        padding: 10px 14px !important;
+        font-size: 15px !important;
+    }
+    
+    #bot-box .inp button {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+    }
+}
+
+/* Para pantallas MUY pequeñas */
+@media (max-width: 400px) {
+    #bot-box .m .b {
+        font-size: 13px !important;
+        padding: 9px 12px !important;
+    }
+    
+    #bot-box .inp input {
+        font-size: 14px !important;
+        padding: 9px 12px !important;
+    }
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # CSS para que el iframe del chatbot NO ocupe espacio visual
 st.markdown("""
