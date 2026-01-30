@@ -1043,155 +1043,184 @@ body {
 }
 
 /* =========================
-   SIVO LAUNCH CARD
+   SIVO SECTION (LIMPIA)
 ========================= */
-.sivo-launch {
+.sivo-section {
     padding: 80px 5%;
     background: white;
-    display: flex;
-    justify-content: center;
-}
-
-.sivo-card-big {
-    max-width: 700px;
-    width: 100%;
-    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-    border-radius: 24px;
-    padding: 50px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
-    color: white;
 }
 
-.sivo-badge {
+.sivo-badge-top {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     padding: 8px 20px;
     border-radius: 20px;
     font-weight: 700;
     font-size: 13px;
-    margin-bottom: 25px;
-    backdrop-filter: blur(10px);
-}
-
-.sivo-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.sivo-card-big h3 {
-    font-size: 32px;
-    font-weight: 800;
-    margin: 0 0 20px 0;
-    color: white;
-}
-
-.sivo-desc {
-    font-size: 17px;
-    line-height: 1.6;
-    margin: 0 0 35px 0;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.sivo-list {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: 30px;
     margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
+}
+
+.sivo-card-clean {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fafbfc;
+    border-radius: 24px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sivo-image-side {
+    display: flex;
+    justify-content: center;
+}
+
+.sivo-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 16px;
+}
+
+.sivo-content-side {
     text-align: left;
-    backdrop-filter: blur(10px);
 }
 
-.sivo-item {
-    font-size: 15px;
+.sivo-content-side h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin: 0 0 16px 0;
+}
+
+.sivo-subtitle {
+    font-size: 16px;
+    color: #64748b;
     line-height: 1.6;
-    margin-bottom: 14px;
-    color: white;
+    margin: 0 0 28px 0;
 }
 
-.sivo-item:last-child {
-    margin-bottom: 0;
+.sivo-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
 }
 
-.sivo-buttons {
+.sivo-feat {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.sivo-actions {
     display: flex;
     gap: 14px;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
-.sivo-btn-main {
-    background: white;
-    color: #ff6b35;
-    padding: 15px 32px;
+.sivo-btn-primary {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    padding: 14px 28px;
     border-radius: 12px;
     font-weight: 700;
     font-size: 16px;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
-.sivo-btn-main:hover {
+.sivo-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
 }
 
-.sivo-btn-demo {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 15px 32px;
+.sivo-btn-secondary {
+    background: white;
+    color: #3b82f6;
+    padding: 14px 28px;
     border-radius: 12px;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
+    border: 2px solid #e0f2fe;
 }
 
-.sivo-btn-demo:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
+.sivo-btn-secondary:hover {
+    border-color: #60a5fa;
+    background: #f0f9ff;
 }
 
-@media (max-width: 768px) {
-    .sivo-launch {
-        padding: 60px 5%;
-    }
-    
-    .sivo-card-big {
+@media (max-width: 968px) {
+    .sivo-card-clean {
+        grid-template-columns: 1fr;
         padding: 40px 30px;
+        gap: 35px;
     }
     
-    .sivo-card-big h3 {
+    .sivo-content-side {
+        text-align: center;
+    }
+    
+    .sivo-content-side h3 {
         font-size: 26px;
     }
     
-    .sivo-desc {
+    .sivo-features-list {
+        text-align: left;
+    }
+    
+    .sivo-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .sivo-section {
+        padding: 60px 5%;
+    }
+    
+    .sivo-card-clean {
+        padding: 30px 20px;
+    }
+    
+    .sivo-content-side h3 {
+        font-size: 22px;
+    }
+    
+    .sivo-subtitle {
         font-size: 15px;
     }
     
-    .sivo-list {
-        padding: 25px 20px;
-    }
-    
-    .sivo-item {
+    .sivo-feat {
         font-size: 14px;
     }
     
-    .sivo-buttons {
+    .sivo-actions {
         flex-direction: column;
-    }
-    
-    .sivo-btn-main,
-    .sivo-btn-demo {
         width: 100%;
     }
+    
+    .sivo-btn-primary,
+    .sivo-btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
 }
+
+/* =========================
+   INTEGRACIONES
+========================= */
 
 /* =========================
    INTEGRACIONES
@@ -2112,31 +2141,34 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- NOVEDAD SIVO -->
-    <div class="sivo-launch">
-        <div class="sivo-card-big">
-            <div class="sivo-badge">🔥 Recién Lanzado - Enero 2026</div>
-            
-            <div class="sivo-icon">📞</div>
-            
-            <h3>SIVO - Tu Asistente Telefónico IA</h3>
-            
-            <p class="sivo-desc">
-                Atiende llamadas automáticamente, agenda citas y responde consultas 
-                mientras vos te enfocás en hacer crecer tu negocio
-            </p>
-            
-            <div class="sivo-list">
-                <div class="sivo-item">✅ <strong>Atiende 24/7:</strong> Nunca más pierdas un cliente</div>
-                <div class="sivo-item">✅ <strong>Agenda automática:</strong> Turnos en tu calendario</div>
-                <div class="sivo-item">✅ <strong>Voz natural:</strong> Conversaciones profesionales</div>
-                <div class="sivo-item">✅ <strong>Derivación inteligente:</strong> Transfiere cuando es necesario</div>
-                <div class="sivo-item">✅ <strong>Respuestas instantáneas:</strong> Precios y disponibilidad</div>
-                <div class="sivo-item">✅ <strong>Integración total:</strong> Conecta con tu sistema</div>
+    <div class="sivo-section">
+        <div class="sivo-badge-top">🔥 Recién Lanzado - Enero 2026</div>
+        
+        <div class="sivo-card-clean">
+            <div class="sivo-image-side">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="SIVO Asistente Telefónico" class="sivo-img">
             </div>
             
-            <div class="sivo-buttons">
-                <a href="#" class="sivo-btn-main">Probá SIVO Gratis</a>
-                <a href="#" class="sivo-btn-demo">Ver demo en vivo →</a>
+            <div class="sivo-content-side">
+                <h3>SIVO - Tu Asistente Telefónico IA</h3>
+                <p class="sivo-subtitle">
+                    Atiende llamadas automáticamente, agenda citas y responde consultas 
+                    mientras vos te enfocás en hacer crecer tu negocio
+                </p>
+                
+                <div class="sivo-features-list">
+                    <div class="sivo-feat">✅ <strong>Atiende 24/7:</strong> Nunca más pierdas un cliente</div>
+                    <div class="sivo-feat">✅ <strong>Agenda automática:</strong> Turnos en tu calendario</div>
+                    <div class="sivo-feat">✅ <strong>Voz natural:</strong> Conversaciones profesionales</div>
+                    <div class="sivo-feat">✅ <strong>Derivación inteligente:</strong> Transfiere cuando es necesario</div>
+                    <div class="sivo-feat">✅ <strong>Respuestas instantáneas:</strong> Precios y disponibilidad</div>
+                    <div class="sivo-feat">✅ <strong>Integración total:</strong> Conecta con tu sistema</div>
+                </div>
+                
+                <div class="sivo-actions">
+                    <a href="#" class="sivo-btn-primary">Probá SIVO Gratis</a>
+                    <a href="#" class="sivo-btn-secondary">Ver demo en vivo →</a>
+                </div>
             </div>
         </div>
     </div>
