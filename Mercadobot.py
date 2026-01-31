@@ -344,7 +344,7 @@ body {
 }
 
 .btn-primary {
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 22px;
     border-radius: 14px;
@@ -357,7 +357,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: #e5a500;
+    background: #4A92BF;
 }
 
 .btn-secondary {
@@ -405,7 +405,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 999px;
-    background: #f4b400;
+    background: #5BA3D0;
     box-shadow: 0 0 0 4px rgba(244,180,0,0.18);
 }
 
@@ -481,7 +481,7 @@ body {
 }
 
 .send-btn {
-    background: #f4b400;
+    background: #5BA3D0;
     border: none;
     padding: 10px 14px;
     border-radius: 14px;
@@ -490,7 +490,7 @@ body {
 }
 
 .send-btn:hover {
-    background: #e5a500;
+    background: #4A92BF;
 }
 
 .trust-row {
@@ -598,7 +598,7 @@ body {
 
 .step-arrow {
     font-size: 32px;
-    color: #f4b400;
+    color: #5BA3D0;
     font-weight: 800;
 }
 
@@ -708,7 +708,7 @@ body {
 }
 
 .card button {
-    background: #f4b400;
+    background: #5BA3D0;
     border: none;
     padding: 10px 18px;
     border-radius: 12px;
@@ -718,7 +718,7 @@ body {
 }
 
 .card button:hover {
-    background: #e5a500;
+    background: #4A92BF;
 }
 
 /* =========================
@@ -957,11 +957,11 @@ body {
 
 .cta-form input:focus {
     outline: none;
-    border-color: #f4b400;
+    border-color: #5BA3D0;
 }
 
 .cta-form button {
-    background: #f4b400;
+    background: #5BA3D0;
     padding: 14px 28px;
     border-radius: 12px;
     font-weight: 800;
@@ -972,11 +972,11 @@ body {
 }
 
 .cta-form button:hover {
-    background: #e5a500;
+    background: #4A92BF;
 }
 
 .cta button {
-    background: #f4b400;
+    background: #5BA3D0;
     padding: 14px 28px;
     border-radius: 16px;
     font-weight: 800;
@@ -985,7 +985,7 @@ body {
 }
 
 .cta button:hover {
-    background: #e5a500;
+    background: #4A92BF;
 }
 
 /* =========================
@@ -1037,7 +1037,7 @@ body {
     background: #f6f7fb;
     padding: 25px;
     border-radius: 16px;
-    border-left: 4px solid #f4b400;
+    border-left: 4px solid #5BA3D0;
 }
 
 .faq-question {
@@ -1597,8 +1597,8 @@ body {
     [class*="Button"],
     [class*="btn"]:not(.btn-secondary) {
         border-radius: 8px !important;
-        background: #f4b400 !important;
-        background-color: #f4b400 !important;
+        background: #5BA3D0 !important;
+        background-color: #5BA3D0 !important;
         color: #000 !important;
         border: none !important;
     }
@@ -1725,7 +1725,7 @@ body {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    background: linear-gradient(135deg, #5BA3D0 0%, #ff6b00 100%);
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
@@ -1784,7 +1784,7 @@ body {
 }
 
 .chat-header {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    background: linear-gradient(135deg, #5BA3D0 0%, #ff6b00 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -1873,7 +1873,7 @@ body {
 }
 
 .message.bot .message-avatar {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    background: linear-gradient(135deg, #5BA3D0 0%, #ff6b00 100%);
     color: white;
 }
 
@@ -1896,7 +1896,7 @@ body {
 }
 
 .message.user .message-content {
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    background: linear-gradient(135deg, #5BA3D0 0%, #ff6b00 100%);
     color: white;
     border-bottom-right-radius: 4px;
 }
@@ -1915,7 +1915,7 @@ body {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #f4b400;
+    background: #5BA3D0;
     animation: typing 1.4s infinite;
 }
 
@@ -1955,14 +1955,14 @@ body {
 }
 
 .chat-input input:focus {
-    border-color: #f4b400;
+    border-color: #5BA3D0;
 }
 
 .send-button {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
+    background: linear-gradient(135deg, #5BA3D0 0%, #ff6b00 100%);
     border: none;
     color: white;
     cursor: pointer;
@@ -2004,7 +2004,7 @@ body {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: #f4b400;
+    background: #5BA3D0;
     border-radius: 3px;
 }
 
@@ -2082,7 +2082,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Tu negocio atendido<br>por un <span style="color:#f4b400;">chatbot IA</span></h1>
+            <h1>Tu negocio atendido<br>por un <span style="color:#5BA3D0;">chatbot IA</span></h1>
             <p>
                 Instalamos un asistente virtual que responde a tus clientes 24/7, con tus reglas y tus datos.
                 Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.
@@ -2948,7 +2948,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -2958,7 +2958,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -2980,7 +2980,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -3354,7 +3354,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -3364,7 +3364,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -3386,7 +3386,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -3739,7 +3739,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -3749,7 +3749,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -3771,7 +3771,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -4192,7 +4192,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -4202,7 +4202,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -4224,7 +4224,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -4733,7 +4733,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -4743,7 +4743,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -4765,7 +4765,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -5082,7 +5082,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -5092,7 +5092,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -5114,7 +5114,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -5422,7 +5422,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 }}
 
 .demo-back a {{
-    background: #f4b400;
+    background: #5BA3D0;
     color: #000;
     padding: 12px 24px;
     border-radius: 12px;
@@ -5432,7 +5432,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 }}
 
 .cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
@@ -5454,7 +5454,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 
 .btn-live {{
     background: #fff;
-    color: #f4b400;
+    color: #5BA3D0;
     padding: 16px 40px;
     border-radius: 12px;
     border: none;
@@ -5909,7 +5909,7 @@ CHATBOT = """
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(244, 180, 0, 0.5);
@@ -5942,7 +5942,7 @@ CHATBOT = """
 }
 
 .h {
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     color: #fff;
     padding: 16px;
     border-radius: 20px 20px 0 0;
@@ -6024,7 +6024,7 @@ CHATBOT = """
 }
 
 .m.u .b {
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     color: #fff;
 }
 
@@ -6048,14 +6048,14 @@ CHATBOT = """
 }
 
 .inp input:focus {
-    border-color: #f4b400;
+    border-color: #5BA3D0;
 }
 
 .inp button {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
+    background: linear-gradient(135deg, #5BA3D0, #ff6b00);
     border: none;
     cursor: pointer;
     font-size: 18px;
@@ -6065,7 +6065,7 @@ CHATBOT = """
 
 .clickable-option {
     cursor: pointer;
-    color: #f4b400;
+    color: #5BA3D0;
     text-decoration: none;
     display: inline-block;
     padding: 4px 0;
