@@ -6004,6 +6004,68 @@ CHATBOT = """
 </div>
 
 <script>
+// =========================
+// CARRUSEL FUNCIONAL
+// =========================
+(function() {
+    let currentSlide = 0;
+    let autoplayInterval;
+    
+    function initCarousel() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        
+        if (totalSlides === 0) return;
+        
+        function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === currentSlide) slide.classList.add('active');
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === currentSlide) dot.classList.add('active');
+            });
+        }
+        
+        function nextSlide() { showSlide(currentSlide + 1); }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                clearInterval(autoplayInterval);
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        });
+        
+        const container = document.querySelector('.carousel-container');
+        if (container) {
+            container.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            container.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        }
+        
+        autoplayInterval = setInterval(nextSlide, 5000);
+        showSlide(0);
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    } else {
+        initCarousel();
+    }
+})();
+
+// =========================
+// CHATBOT
+// =========================
 function toggle(){document.getElementById('bot-box').classList.toggle('open');}
 function add(t,u){var m=document.getElementById('msgs'),d=document.createElement('div');d.className='m'+(u?' u':'');d.innerHTML='<div class="a">'+(u?'👤':'🤖')+'</div><div class="b">'+t+'</div>';m.appendChild(d);m.scrollTop=m.scrollHeight;}
 
