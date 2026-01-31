@@ -5837,25 +5837,23 @@ elif vista == "precios":
 else:
     st.html(HTML_HOME_PARTE_1)
     
+    # JavaScript para detectar si es móvil y ajustar altura
     components.html("""
+    <script>
+    // Detectar si es móvil INMEDIATAMENTE
+    var isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // En móvil: colapsar todo a altura 0
+        document.documentElement.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;';
+        document.body.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;display:none!important;';
+    }
+    </script>
+    
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; }
-    
-    /* Ocultar demo en móviles */
-    @media (max-width: 768px) {
-        .demo-container {
-            display: none !important;
-            height: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        html, body {
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-    }
     </style>
     
     <div class="demo-container" style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
@@ -5885,16 +5883,6 @@ else:
             </div>
         </div>
     </div>
-    
-    <script>
-    // Ajustar altura del iframe en móviles
-    if (window.innerWidth <= 768) {
-        document.documentElement.style.height = '0';
-        document.body.style.height = '0';
-        document.body.style.margin = '0';
-        document.body.style.padding = '0';
-    }
-    </script>
     """, height=1100, scrolling=False)
     
     st.html(HTML_HOME_PARTE_2)
@@ -5909,11 +5897,14 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
 
-/* Eliminar COMPLETAMENTE el espacio del demo en móviles */
+/* ELIMINAR TODO EL ESPACIO del demo en móviles */
 @media (max-width: 768px) {
-    /* Ocultar el contenedor del iframe */
+    /* Todos los contenedores posibles del iframe */
     div[data-testid="stVerticalBlock"]:has(iframe[height="1100"]),
-    div[data-testid="element-container"]:has(iframe[height="1100"]) {
+    div[data-testid="stVerticalBlockBorderWrapper"]:has(iframe[height="1100"]),
+    div[data-testid="element-container"]:has(iframe[height="1100"]),
+    div[data-testid="column"]:has(iframe[height="1100"]),
+    section[data-testid="stAppViewContainer"] div:has(> iframe[height="1100"]) {
         display: none !important;
         height: 0 !important;
         min-height: 0 !important;
@@ -5922,13 +5913,16 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
         padding: 0 !important;
         overflow: hidden !important;
         visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
     }
     
-    /* El iframe mismo */
+    /* El iframe directamente */
     iframe[height="1100"] {
         display: none !important;
         height: 0 !important;
         min-height: 0 !important;
+        visibility: hidden !important;
     }
 }
 </style>
