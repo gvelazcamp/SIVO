@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import streamlit as st
 
 # =========================
@@ -2042,9 +2043,9 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
             </p>
 
             <div class="trust-row" style="margin-top: 30px;">
-                <div class="trust-pill"> Instalación rápida</div>
-                <div class="trust-pill"> Configurable y seguro</div>
-                <div class="trust-pill"> Soporte incluido</div>
+                <div class="trust-pill">⚡ Instalación rápida</div>
+                <div class="trust-pill">🔒 Configurable y seguro</div>
+                <div class="trust-pill">💬 Soporte incluido</div>
             </div>
         </div>
 
@@ -2164,6 +2165,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
     </div>
 
 
+
     <!-- CARRUSEL DE ASISTENTES -->
     <div class="assistants-carousel-section">
         <h2>Nuestros Asistentes Virtuales</h2>
@@ -2279,54 +2281,54 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
         </div>
     </div>
 
-<script>
-// CARRUSEL DE ASISTENTES
-(function() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    let currentSlide = 0;
-    let carouselInterval;
+    <script>
+    // CARRUSEL DE ASISTENTES
+    (function() {{
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        let currentSlide = 0;
+        let carouselInterval;
 
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (slides[index]) slides[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
-        currentSlide = index;
-    }
+        function showSlide(index) {{
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (slides[index]) slides[index].classList.add('active');
+            if (dots[index]) dots[index].classList.add('active');
+            currentSlide = index;
+        }}
 
-    function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        showSlide(next);
-    }
+        function nextSlide() {{
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }}
 
-    function startCarousel() {
-        carouselInterval = setInterval(nextSlide, 4000);
-    }
+        function startCarousel() {{
+            carouselInterval = setInterval(nextSlide, 4000);
+        }}
 
-    function stopCarousel() {
-        clearInterval(carouselInterval);
-    }
+        function stopCarousel() {{
+            clearInterval(carouselInterval);
+        }}
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            stopCarousel();
-            showSlide(index);
+        dots.forEach((dot, index) => {{
+            dot.addEventListener('click', () => {{
+                stopCarousel();
+                showSlide(index);
+                startCarousel();
+            }});
+        }});
+
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {{
+            carouselContainer.addEventListener('mouseenter', stopCarousel);
+            carouselContainer.addEventListener('mouseleave', startCarousel);
+        }}
+
+        if (slides.length > 0) {{
             startCarousel();
-        });
-    });
-
-    const carouselContainer = document.querySelector('.carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', stopCarousel);
-        carouselContainer.addEventListener('mouseleave', startCarousel);
-    }
-
-    if (slides.length > 0) {
-        startCarousel();
-    }
-})();
-</script>
+        }}
+    }})();
+    </script>
 {FOOTER}
 """
 
@@ -2542,6 +2544,10 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
+{FOOTER}
+"""
+
+# =========================
 # ASISTENTES
 # =========================
 HTML_ASISTENTES = f"""{HTML_BASE}
@@ -6246,57 +6252,6 @@ function send(){
         console.log('Teleport failed:', e);
     }
 })();
-
-
-// =========================
-// CARRUSEL DE ASISTENTES
-// =========================
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    let currentSlide = 0;
-    let carouselInterval;
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (slides[index]) slides[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
-        currentSlide = index;
-    }
-
-    function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        showSlide(next);
-    }
-
-    function startCarousel() {
-        carouselInterval = setInterval(nextSlide, 4000);
-    }
-
-    function stopCarousel() {
-        clearInterval(carouselInterval);
-    }
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            stopCarousel();
-            showSlide(index);
-            startCarousel();
-        });
-    });
-
-    const carouselContainer = document.querySelector('.carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', stopCarousel);
-        carouselContainer.addEventListener('mouseleave', startCarousel);
-    }
-
-    if (slides.length > 0) {
-        startCarousel();
-    }
-});
-
 </script>
 
 </script>
@@ -6435,4 +6390,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
