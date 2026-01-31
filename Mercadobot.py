@@ -1541,7 +1541,7 @@ body {
     .page-container,
     .stApp,
     [data-testid="stAppViewContainer"],
-    [data-testid="stApp"],
+    section.main,
     .hero,
     .hero-content,
     .section,
@@ -3174,7 +3174,8 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
             <div class="demo-label">Asistente IA</div>
             <div class="demo-bubble demo-bot">Sí! Contamos con pileta climatizada semiolímpica (25m) disponible todo el año para socios Pleno y VIP. Horarios:<br>
             • <strong>Lunes a viernes:</strong> 8:00 a 21:00 hs<br>
-            • <strong>Fines de semana:</strong> 10:00 a 19:00 hs<br>
+            • <strong>Sábados:</strong> 10:00 a 19:00 hs<br>
+            • <strong>Domingos:</strong> 10:00 a 18:00 hs<br>
             También dictamos clases de natación para todas las edades.</div>
         </div>
 
@@ -3206,7 +3207,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Organizan torneos para socios?</div>
+            <div class="demo-bubble demo-user">��Organizan torneos para socios?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
@@ -3226,7 +3227,8 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
             <div class="demo-label">Asistente IA</div>
             <div class="demo-bubble demo-bot">Sí! Nuestro buffet está abierto todos los días:<br>
             • <strong>Lunes a viernes:</strong> 12:00 a 23:00 hs<br>
-            • <strong>Fines de semana:</strong> 11:00 a 00:00 hs<br>
+            • <strong>Sábados:</strong> 11:00 a 00:00 hs<br>
+            • <strong>Domingos:</strong> 11:00 a 23:00 hs<br>
             Ofrecemos minutas, parrilla, pizzas y bebidas. Los socios tienen 20% de descuento. En días de partido, menú especial disponible.</div>
         </div>
 
@@ -3489,7 +3491,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">🍷 <strong>Carta de vinos (60+ etiquetas):</strong><br>
+            <div class="demo-bubble demo-bot">🍷 <strong>Carta de vinos (60+ etiquetas):</strong><br><br>
             <strong>Tintos recomendados:</strong><br>
             • Malbec reserva - $12.000<br>
             • Cabernet blend - $15.500<br>
@@ -3511,8 +3513,8 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
             • Puré de calabaza<br>
             • Verduras grilladas<br>
             • Reducción de cítricos<br><br>
-            ⚠️ <strong>Aviso:</strong> Quedan solo <strong>3 porciones</strong> de salmón para esta noche (ingrediente del día).<br>
-            ¿Lo reservamos para vos?</div>
+            ⚠️ <strong>Aviso:</strong> Quedan solo <strong>3 porciones</strong> de salmón para esta noche (ingrediente del día).<br><br>
+            💡 ¿Lo reservamos para vos?</div>
         </div>
 
         <!-- ESCENA 8: Agregar valor con experiencia -->
@@ -3543,7 +3545,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
             • Cheesecake frutos rojos - $5.800<br>
             • Tiramisú del chef - $6.000<br>
             • Flan mixto - $4.500<br><br>
-            🔥 <strong>Combo dulce:</strong> Principal + Postre + Café = $8.000 descuento<br>
+            🔥 <strong>Combo dulce:</strong> Principal + Postre + Café = $8.000 descuento<br><br>
             ¿Ya sabés qué vas a pedir de principal?</div>
         </div>
 
@@ -3627,14 +3629,14 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
         <!-- ESCENA 15: Fidelización con programa de beneficios -->
         <div class="demo-message">
             <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen descuentos para clientes frecuentes?</div>
+            <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
         </div>
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
             <div class="demo-bubble demo-bot">Sí ⭐ <strong>Club Gourmet:</strong><br>
             • 1 punto cada $100<br>
-            • 100 puntos = $1.000 descuento<br><br>
-            <strong>Beneficios VIP:</strong><br>
+            • 100 puntos = $500 de descuento<br><br>
+            <strong>BENEFICIOS VIP:</strong><br>
             🥉 Bronce: 5% descuento permanente<br>
             🥈 Plata: 10% + reserva prioritaria<br>
             🥇 Oro: 15% + acceso a cenas privadas con el chef<br><br>
@@ -4087,9 +4089,9 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
             💰 <strong>Tus puntos:</strong> 12.999<br>
             🎁 <strong>Canjeables por:</strong> $1.299 en próxima compra<br><br>
             <strong>BENEFICIOS TECHCLUB:</strong><br>
-            🥉 <strong>Bronce</strong> (0-20k pts): 5% OFF permanente<br>
-            🥈 <strong>Plata</strong> (20k-50k pts): 10% OFF + envíos gratis ← <strong>PRÓXIMO NIVEL</strong><br>
-            🥇 <strong>Oro</strong> (50k+ pts): 15% OFF + preventa exclusiva<br><br>
+            🥉 Bronce: 5% descuento permanente<br>
+            🥈 Plata: 10% OFF + envíos gratis ← <strong>PRÓXIMO NIVEL</strong><br>
+            🥇 Oro: 15% OFF + preventa exclusiva<br><br>
             📊 <strong>Te faltan 7.001 pts para nivel Plata</strong><br><br>
             💡 <strong>Próxima compra:</strong> Ganás puntos dobles (esta semana)<br><br>
             ¿Querés ver el catálogo de canjes?</div>
@@ -4103,6 +4105,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
             <button class="btn-live">🚀 Probar ahora</button>
         </a>
     </div>
+
     <div class="demo-back">
         <a href="?vista=asistentes">← Volver a Asistentes</a>
     </div>
@@ -4279,7 +4282,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
             📈 <strong>Fondos Comunes de Inversión:</strong><br>
             • Money Market: 120% anual - Riesgo bajo<br>
             • Renta fija: 130-150% - Riesgo medio<br>
-            • Renta mixta: Potencial 160%+ - Riesgo medio-alto<br>
+            • Renta mixta: 160%+ - Riesgo medio-alto<br>
             <strong>Mi recomendación:</strong> Diversificá: 50% PF + 50% FCI. ¿Cuánto querés invertir?</div>
         </div>
 
@@ -4653,355 +4656,6 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 """
 
 # =========================
-# DEMO TIENDA DE ROPA
-# =========================
-HTML_DEMO_ROPA = f"""{HTML_BASE}
-{HEADER}
-
-<style>
-.demo-container {{
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}}
-
-.demo-header {{
-    text-align: center;
-    margin-bottom: 40px;
-}}
-
-.demo-header img {{
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 20px;
-}}
-
-.demo-header h1 {{
-    font-size: 32px;
-    margin-bottom: 10px;
-}}
-
-.demo-header p {{
-    color: #666;
-    font-size: 16px;
-}}
-
-.demo-chat {{
-    background: #fff;
-    border-radius: 24px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}}
-
-.demo-message {{
-    margin-bottom: 20px;
-}}
-
-.demo-bubble {{
-    padding: 12px 16px;
-    border-radius: 16px;
-    margin-bottom: 6px;
-    max-width: 85%;
-    font-size: 14px;
-    line-height: 1.5;
-}}
-
-.demo-user {{
-    background: #111;
-    color: #fff;
-    margin-left: auto;
-    border-bottom-right-radius: 6px;
-}}
-
-.demo-bot {{
-    background: #f6f7fb;
-    color: #222;
-    border-bottom-left-radius: 6px;
-}}
-
-.demo-label {{
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 4px;
-    font-weight: 600;
-}}
-
-.demo-back {{
-    text-align: center;
-    margin-top: 40px;
-}}
-
-.demo-back a {{
-    background: #f4b400;
-    color: #000;
-    padding: 12px 24px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-block;
-}}
-
-.cta-demo {{
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    border-radius: 20px;
-    padding: 40px 30px;
-    text-align: center;
-    margin: 40px 0;
-    color: #fff;
-}}
-
-.cta-demo h2 {{
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #fff;
-}}
-
-.cta-demo p {{
-    font-size: 16px;
-    margin-bottom: 25px;
-    opacity: 0.95;
-}}
-
-.btn-live {{
-    background: #fff;
-    color: #f4b400;
-    padding: 16px 40px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 700;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}}
-
-.btn-live:hover {{
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}}
-</style>
-
-<div class="demo-container">
-    <div class="demo-header">
-        <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
-        <h1>Asistente de Tienda de Ropa</h1>
-        <p>Demo interactivo - Tienda Online</p>
-    </div>
-    
-    <div class="demo-chat">
-        <!-- ESCENA 1: El cliente entra y duda (inicio real) -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Hola, estoy viendo la remera básica blanca</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">¡Hola! 👋 Veo que estás mirando la remera básica. ¿Querés ayuda con el talle, colores o precio?</div>
-        </div>
-
-        <!-- ESCENA 2: Talle con recomendación -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen talle M?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 😊 Está disponible en talle M.<br>
-            • <strong>Colores:</strong> blanco, negro, gris, azul marino<br>
-            • <strong>Precio:</strong> $8.999<br>
-            • <strong>Stock:</strong> 15 unidades<br><br>
-            Por tu elección, el M es el más vendido. ¿La agregamos al carrito?</div>
-        </div>
-
-        <!-- ESCENA 3: Acción concreta -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Sí, agregala</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">✅ Listo, ya la agregué al carrito.<br><br>
-            💡 <strong>Tip:</strong> Sumando otra prenda tenés 15% OFF automático. ¿Querés que te recomiende un jean que combine?</div>
-        </div>
-
-        <!-- ESCENA 4: Venta cruzada -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Dale, mostrame jeans</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Perfecto 👖 Te recomiendo estos:<br>
-            • <strong>Jean clásico</strong> – $24.999<br>
-            • <strong>Jean elastizado</strong> – $28.999<br>
-            • <strong>Jean mom fit</strong> – $26.999<br><br>
-            🔥 <strong>Promo activa:</strong> 3x2 en jeans esta semana<br>
-            ¿Buscás algo más clásico o más ajustado?</div>
-        </div>
-
-        <!-- ESCENA 5: Selección específica -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">El clásico en negro</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Excelente elección 🙌<br>
-            • <strong>Color:</strong> Negro<br>
-            • <strong>Talles disponibles:</strong> 36 al 48<br>
-            • <strong>Precio:</strong> $24.999<br><br>
-            ¿Qué talle necesitás para agregarlo al carrito?</div>
-        </div>
-
-        <!-- ESCENA 6: Carrito y beneficio visible -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Talle 40</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">✅ Jean talle 40 agregado al carrito.<br><br>
-            📦 Con esta compra te faltan $4.000 para envío gratis. ¿Querés sumar una remera más y aprovecharlo?</div>
-        </div>
-
-        <!-- ESCENA 7: Envío contextual -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hacen envíos a Córdoba?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 🚚 Envíos a Córdoba Capital:<br>
-            • <strong>Estándar:</strong> 5–7 días – $2.800<br>
-            • <strong>Express:</strong> 3–4 días – $4.200<br><br>
-            🎁 En compras mayores a $50.000 el envío es GRATIS. ¿Querés que lo calcule exacto con tu compra actual?</div>
-        </div>
-
-        <!-- ESCENA 8: Pago sin fricción -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo pagar con tarjeta?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 💳<br>
-            • Hasta 12 cuotas sin interés<br>
-            • Mercado Pago: hasta 18 cuotas<br>
-            • Transferencia: 15% OFF adicional<br><br>
-            ¿Preferís cuotas o aprovechar el descuento por transferencia?</div>
-        </div>
-
-        <!-- ESCENA 9: Confianza (local físico) -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen local físico?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 🏪<br>
-            📍 <strong>Palermo</strong> – Av. Santa Fe 4200<br>
-            📍 <strong>Belgrano</strong> – Av. Cabildo 1800<br><br>
-            Podés comprar online y retirar GRATIS en tienda. ¿Querés envío o retiro en local?</div>
-        </div>
-
-        <!-- ESCENA 10: Cambio y tranquilidad -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Y si no me queda?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">No hay problema 👍 Tenés 30 días para cambios o devoluciones.<br>
-            • <strong>Cambio de talle/color:</strong> GRATIS<br>
-            • <strong>Devolución:</strong> reembolso 100%<br><br>
-            Comprás tranquilo/a, nosotros nos ocupamos.</div>
-        </div>
-
-        <!-- ESCENA 11: Guía de talles asistida -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">Nunca sé bien qué talle soy</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Te ayudo 😊 Si querés, decime tu altura y peso y te recomiendo el talle ideal. Además, cada producto tiene una guía exacta en cm.<br><br>
-            ¿Querés que lo veamos ahora?</div>
-        </div>
-
-        <!-- ESCENA 12: Promos activas -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Hay promociones hoy?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 🔥<br>
-            • 3x2 en jeans<br>
-            • 2x1 en remeras básicas<br>
-            • 20% OFF primera compra<br>
-            • Envío gratis desde $50.000<br><br>
-            Los descuentos se aplican automáticamente en el carrito.</div>
-        </div>
-
-        <!-- ESCENA 13: Reserva inteligente -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Puedo reservar?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 😊<br>
-            • <strong>Online:</strong> el carrito te reserva el producto por 2 horas<br>
-            • <strong>En local:</strong> lo apartamos 48 hs<br><br>
-            ¿Querés seguir con la compra o reservar para más tarde?</div>
-        </div>
-
-        <!-- ESCENA 14: Facturación -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Dan factura?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí 🧾<br>
-            • Factura B automática<br>
-            • Factura A ingresando CUIT<br><br>
-            La recibís por email apenas se confirma el pago.</div>
-        </div>
-
-        <!-- ESCENA 15: Fidelización -->
-        <div class="demo-message">
-            <div class="demo-label">Cliente</div>
-            <div class="demo-bubble demo-user">¿Tienen programa de puntos?</div>
-        </div>
-        <div class="demo-message">
-            <div class="demo-label">Asistente IA</div>
-            <div class="demo-bubble demo-bot">Sí ⭐ <strong>Club ROPA VIP</strong><br>
-            • 1 punto cada $100<br>
-            • 100 puntos = $500 de descuento<br><br>
-            Además, los clientes VIP acceden a preventas exclusivas. ¿Querés registrarte gratis?</div>
-        </div>
-    </div>
-    </div>
-    
-    <div class="cta-demo">
-        <h2>💬 ¿Querés probarlo en vivo?</h2>
-        <p>Chateá con el asistente y hacele las preguntas que quieras</p>
-        <a href="https://demoropa.streamlit.app/" target="_blank" style="text-decoration: none;">
-            <button class="btn-live">🚀 Probar ahora</button>
-        </a>
-    </div>
-
-    <div class="demo-back">
-        <a href="?vista=asistentes">← Volver a Asistentes</a>
-    </div>
-</div>
-
-{FOOTER}
-"""
-
-# =========================
 # DEMO PELUQUERÍA
 # =========================
 HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
@@ -5337,11 +4991,6 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 """
 
 # =========================
-# RENDER
-# =========================
-
-
-# =========================
 # DEMO VIAJES
 # =========================
 HTML_DEMO_VIAJES = f"""{HTML_BASE}
@@ -5556,7 +5205,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
             🍽️ Cena romántica en la playa — USD 80 para 2<br>
             🎉 Fiesta en catamarán — USD 90/persona<br><br>
             🔥 <strong>Promo:</strong> Contratando 2 experiencias → 3ra al 50% OFF<br><br>
-            ¿Te sumo alguna? 😊</div>
+            ¿Le sumamos alguna? 😊</div>
         </div>
 
         <!-- ESCENA 5: Resolver objeciones (fechas/flexibilidad) -->
@@ -5909,7 +5558,7 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
 
-/* Eliminar COMPLETAMENTE el espacio del demo en móviles */
+/* Ocultar COMPLETAMENTE el espacio del demo en móviles */
 @media (max-width: 768px) {
     /* Ocultar el contenedor del iframe */
     div[data-testid="stVerticalBlock"]:has(iframe[height="1100"]),
@@ -6075,41 +5724,6 @@ CHATBOT = """
     color: #fff;
 }
 
-.inp {
-    padding: 12px;
-    background: #fff;
-    border-top: 1px solid #e9ecef;
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-}
-
-.inp input {
-    flex: 1;
-    padding: 10px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 14px;
-    outline: none;
-    min-width: 0;
-}
-
-.inp input:focus {
-    border-color: #f4b400;
-}
-
-.inp button {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f4b400, #ff6b00);
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #fff;
-    flex-shrink: 0;
-}
-
 .clickable-option {
     cursor: pointer;
     color: #f4b400;
@@ -6223,122 +5837,114 @@ CHATBOT = """
 // =========================
 let carouselCurrentSlide = 0;
 let carouselAutoplayInterval = null;
-let carouselSlides = [];
-let carouselDots = [];
 
-function initCarousel() {
-    carouselSlides = document.querySelectorAll('.carousel-slide');
-    carouselDots = document.querySelectorAll('.dot');
+function initCarousel() {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
     
-    console.log('Carrusel iniciado - Slides encontrados:', carouselSlides.length);
+    console.log('Carrusel iniciado - Slides encontrados:', slides.length);
     
-    if (carouselSlides.length === 0) {
-        console.log('No se encontraron slides del carrusel');
+    if (slides.length === 0) {{
+        console.log('No se encontraron slides');
         return;
-    }
+    }}
     
     // Event listeners para los dots
-    carouselDots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
+    dots.forEach(function(dot, index) {{
+        dot.addEventListener('click', function() {{
             console.log('Click en dot:', index);
             showCarouselSlide(index);
             resetCarouselAutoplay();
-        });
-    });
+        }});
+    }});
     
-    // Pausar autoplay al pasar el mouse
-    const container = document.querySelector('.carousel-container');
-    if (container) {
-        container.addEventListener('mouseenter', function() {
-            console.log('Mouse sobre carrusel - pausando');
+    // Pausar al pasar el mouse
+    var container = document.querySelector('.carousel-container');
+    if (container) {{
+        container.addEventListener('mouseenter', function() {{
+            console.log('Pausado');
             stopCarouselAutoplay();
-        });
+        }});
         
-        container.addEventListener('mouseleave', function() {
-            console.log('Mouse fuera del carrusel - reanudando');
+        container.addEventListener('mouseleave', function() {{
+            console.log('Reanudado');
             startCarouselAutoplay();
-        });
-    }
+        }});
+    }}
     
-    // Iniciar autoplay
+    // Iniciar
     startCarouselAutoplay();
-    
-    // Mostrar primer slide
     showCarouselSlide(0);
     
-    console.log('Carrusel configurado exitosamente');
-}
+    console.log('Carrusel configurado');
+}}
 
-function showCarouselSlide(index) {
-    const totalSlides = carouselSlides.length;
+function showCarouselSlide(index) {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var totalSlides = slides.length;
     
-    // Ajustar índice
-    if (index >= totalSlides) {
+    if (index >= totalSlides) {{
         carouselCurrentSlide = 0;
-    } else if (index < 0) {
+    }} else if (index < 0) {{
         carouselCurrentSlide = totalSlides - 1;
-    } else {
+    }} else {{
         carouselCurrentSlide = index;
-    }
+    }}
     
-    console.log('Mostrando slide:', carouselCurrentSlide);
+    console.log('Mostrando slide:', carouselCurrentSlide + 1, 'de', totalSlides);
     
-    // Actualizar slides
-    carouselSlides.forEach(function(slide, i) {
-        if (i === carouselCurrentSlide) {
+    slides.forEach(function(slide, i) {{
+        if (i === carouselCurrentSlide) {{
             slide.classList.add('active');
-        } else {
+        }} else {{
             slide.classList.remove('active');
-        }
-    });
+        }}
+    }});
     
-    // Actualizar dots
-    carouselDots.forEach(function(dot, i) {
-        if (i === carouselCurrentSlide) {
+    dots.forEach(function(dot, i) {{
+        if (i === carouselCurrentSlide) {{
             dot.classList.add('active');
-        } else {
+        }} else {{
             dot.classList.remove('active');
-        }
-    });
-}
+        }}
+    }});
+}}
 
-function nextCarouselSlide() {
-    console.log('Siguiente slide');
+function nextCarouselSlide() {{
+    console.log('Siguiente');
     showCarouselSlide(carouselCurrentSlide + 1);
-}
+}}
 
-function prevCarouselSlide() {
-    console.log('Slide anterior');
+function prevCarouselSlide() {{
+    console.log('Anterior');
     showCarouselSlide(carouselCurrentSlide - 1);
-}
+}}
 
-function startCarouselAutoplay() {
+function startCarouselAutoplay() {{
     stopCarouselAutoplay();
     carouselAutoplayInterval = setInterval(nextCarouselSlide, 4000);
     console.log('Autoplay iniciado');
-}
+}}
 
-function stopCarouselAutoplay() {
-    if (carouselAutoplayInterval) {
+function stopCarouselAutoplay() {{
+    if (carouselAutoplayInterval) {{
         clearInterval(carouselAutoplayInterval);
         carouselAutoplayInterval = null;
-        console.log('Autoplay detenido');
-    }
-}
+    }}
+}}
 
-function resetCarouselAutoplay() {
+function resetCarouselAutoplay() {{
     stopCarouselAutoplay();
     startCarouselAutoplay();
-}
+}}
 
-// Iniciar carrusel cuando el DOM esté listo
-if (document.readyState === 'loading') {
+// Iniciar cuando el DOM este listo
+if (document.readyState === 'loading') {{
     document.addEventListener('DOMContentLoaded', initCarousel);
-} else {
-    // DOM ya está listo
+}} else {{
     initCarousel();
-}
-
+}}
 // =========================
 // CHATBOT
 // =========================
@@ -6644,37 +6250,6 @@ st.markdown("""
     }
 }
 
-</style>
-""", unsafe_allow_html=True)
-
-# CSS para que el iframe del chatbot NO ocupe espacio visual
-st.markdown("""
-<style>
-/* Ocultar el contenedor del iframe */
-div[data-testid="stVerticalBlock"]:has(iframe[height="0"]),
-div[data-testid="element-container"]:has(iframe[height="0"]) {
-    height: 0 !important;
-    overflow: visible !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: block !important;
-}
-
-/* El iframe en sí */
-iframe[height="0"] {
-    position: fixed !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    border: none !important;
-    pointer-events: none !important;
-    z-index: 999999 !important;
-}
-
-iframe[height="0"] * {
-    pointer-events: auto !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
