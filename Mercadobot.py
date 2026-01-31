@@ -2042,9 +2042,9 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
             </p>
 
             <div class="trust-row" style="margin-top: 30px;">
-                <div class="trust-pill">⚡ Instalación rápida</div>
-                <div class="trust-pill">🔒 Configurable y seguro</div>
-                <div class="trust-pill">💬 Soporte incluido</div>
+                <div class="trust-pill"> Instalación rápida</div>
+                <div class="trust-pill"> Configurable y seguro</div>
+                <div class="trust-pill"> Soporte incluido</div>
             </div>
         </div>
 
@@ -6435,3 +6435,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
