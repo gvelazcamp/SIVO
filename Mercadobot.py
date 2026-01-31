@@ -2550,119 +2550,116 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     <!-- FIN CARRUSEL -->
 
 <script>
-// =========================
-// CARRUSEL FUNCIONAL
-// =========================
-let carouselCurrentSlide = 0;
-let carouselAutoplayInterval = null;
+var carouselCurrentSlide = 0;
+var carouselAutoplayInterval = null;
 
-function initCarousel() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
+function initCarousel() {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
     
-    console.log('🎠 Carrusel iniciado - Slides encontrados:', slides.length);
+    console.log('Carrusel iniciado - Slides encontrados:', slides.length);
     
-    if (slides.length === 0) {
-        console.log('❌ No se encontraron slides');
+    if (slides.length === 0) {{
+        console.log('No se encontraron slides');
         return;
-    }
+    }}
     
     // Event listeners para los dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            console.log('👆 Click en dot:', index);
+    dots.forEach(function(dot, index) {{
+        dot.addEventListener('click', function() {{
+            console.log('Click en dot:', index);
             showCarouselSlide(index);
             resetCarouselAutoplay();
-        });
-    });
+        }});
+    }});
     
     // Pausar al pasar el mouse
-    const container = document.querySelector('.carousel-container');
-    if (container) {
-        container.addEventListener('mouseenter', function() {
-            console.log('⏸️ Pausado');
+    var container = document.querySelector('.carousel-container');
+    if (container) {{
+        container.addEventListener('mouseenter', function() {{
+            console.log('Pausado');
             stopCarouselAutoplay();
-        });
+        }});
         
-        container.addEventListener('mouseleave', function() {
-            console.log('▶️ Reanudado');
+        container.addEventListener('mouseleave', function() {{
+            console.log('Reanudado');
             startCarouselAutoplay();
-        });
-    }
+        }});
+    }}
     
     // Iniciar
     startCarouselAutoplay();
     showCarouselSlide(0);
     
-    console.log('✅ Carrusel configurado');
-}
+    console.log('Carrusel configurado');
+}}
 
-function showCarouselSlide(index) {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = slides.length;
+function showCarouselSlide(index) {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var totalSlides = slides.length;
     
-    if (index >= totalSlides) {
+    if (index >= totalSlides) {{
         carouselCurrentSlide = 0;
-    } else if (index < 0) {
+    }} else if (index < 0) {{
         carouselCurrentSlide = totalSlides - 1;
-    } else {
+    }} else {{
         carouselCurrentSlide = index;
-    }
+    }}
     
-    console.log('📍 Mostrando slide:', carouselCurrentSlide + 1, 'de', totalSlides);
+    console.log('Mostrando slide:', carouselCurrentSlide + 1, 'de', totalSlides);
     
-    slides.forEach(function(slide, i) {
-        if (i === carouselCurrentSlide) {
+    slides.forEach(function(slide, i) {{
+        if (i === carouselCurrentSlide) {{
             slide.classList.add('active');
-        } else {
+        }} else {{
             slide.classList.remove('active');
-        }
-    });
+        }}
+    }});
     
-    dots.forEach(function(dot, i) {
-        if (i === carouselCurrentSlide) {
+    dots.forEach(function(dot, i) {{
+        if (i === carouselCurrentSlide) {{
             dot.classList.add('active');
-        } else {
+        }} else {{
             dot.classList.remove('active');
-        }
-    });
-}
+        }}
+    }});
+}}
 
-function nextCarouselSlide() {
-    console.log('➡️ Siguiente');
+function nextCarouselSlide() {{
+    console.log('Siguiente');
     showCarouselSlide(carouselCurrentSlide + 1);
-}
+}}
 
-function prevCarouselSlide() {
-    console.log('⬅️ Anterior');
+function prevCarouselSlide() {{
+    console.log('Anterior');
     showCarouselSlide(carouselCurrentSlide - 1);
-}
+}}
 
-function startCarouselAutoplay() {
+function startCarouselAutoplay() {{
     stopCarouselAutoplay();
     carouselAutoplayInterval = setInterval(nextCarouselSlide, 4000);
-    console.log('🔄 Autoplay iniciado (4 segundos)');
-}
+    console.log('Autoplay iniciado');
+}}
 
-function stopCarouselAutoplay() {
-    if (carouselAutoplayInterval) {
+function stopCarouselAutoplay() {{
+    if (carouselAutoplayInterval) {{
         clearInterval(carouselAutoplayInterval);
         carouselAutoplayInterval = null;
-    }
-}
+    }}
+}}
 
-function resetCarouselAutoplay() {
+function resetCarouselAutoplay() {{
     stopCarouselAutoplay();
     startCarouselAutoplay();
-}
+}}
 
-// Iniciar cuando el DOM esté listo
-if (document.readyState === 'loading') {
+// Iniciar cuando el DOM este listo
+if (document.readyState === 'loading') {{
     document.addEventListener('DOMContentLoaded', initCarousel);
-} else {
+}} else {{
     initCarousel();
-}
+}}
 </script>
 
 {FOOTER}
