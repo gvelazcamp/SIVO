@@ -1289,7 +1289,7 @@ body {
 ========================= */
 .assistants-carousel-section {
     padding: 70px 5%;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: #f6f7fb;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1299,12 +1299,12 @@ body {
     font-size: 38px;
     margin-bottom: 12px;
     font-weight: 800;
-    color: #1e3a8a;
+    color: #1a1a1a;
 }
 
 .carousel-subtitle {
     font-size: 17px;
-    color: #64748b;
+    color: #666;
     margin-bottom: 50px;
 }
 
@@ -1369,13 +1369,13 @@ body {
 .carousel-text h3 {
     font-size: 32px;
     font-weight: 800;
-    color: #1e3a8a;
+    color: #1a1a1a;
     margin-bottom: 16px;
 }
 
 .carousel-text p {
     font-size: 18px;
-    color: #475569;
+    color: #555;
     line-height: 1.7;
 }
 
@@ -1391,7 +1391,7 @@ body {
     border: none;
     cursor: pointer;
     font-size: 24px;
-    color: #1e3a8a;
+    color: #333;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
     z-index: 10;
@@ -1401,7 +1401,7 @@ body {
 }
 
 .carousel-nav:hover {
-    background: #1e3a8a;
+    background: #333;
     color: white;
     transform: translateY(-50%) scale(1.1);
 }
@@ -1425,7 +1425,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(30, 58, 138, 0.2);
+    background: #ccc;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -1433,12 +1433,12 @@ body {
 }
 
 .dot:hover {
-    background: rgba(30, 58, 138, 0.4);
+    background: #999;
     transform: scale(1.2);
 }
 
 .dot.active {
-    background: #60a5fa;
+    background: #333;
     width: 32px;
     border-radius: 6px;
 }
