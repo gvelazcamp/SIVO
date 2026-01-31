@@ -2427,241 +2427,6 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
     <!-- FIN INTEGRACIONES -->
 
-    <!-- CARRUSEL DE ASISTENTES -->
-    <div class="assistants-carousel-section">
-        <h2>Nuestros Asistentes Virtuales</h2>
-        <p class="carousel-subtitle">Especializados en diferentes industrias</p>
-        
-        <div class="carousel-container">
-            <!-- Botón anterior -->
-            <button class="carousel-nav prev" onclick="prevCarouselSlide()">‹</button>
-            
-            <div class="carousel-slide active">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="Asistente Telefónico">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente Telefónico</h3>
-                        <p>Atiende llamadas 24/7, agenda citas y califica leads automáticamente</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Asistente E-commerce">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente E-commerce</h3>
-                        <p>Responde consultas de productos, gestiona pedidos y aumenta conversiones</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteagendas.png" alt="Asistente de Agendas">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente de Turnos</h3>
-                        <p>Gestiona reservas, recordatorios y cancelaciones automáticamente</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedental.png" alt="Asistente Dental">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente Dental</h3>
-                        <p>Agenda turnos, envía recordatorios y responde consultas odontológicas</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteinmobiliaria.png" alt="Asistente Inmobiliaria">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente Inmobiliario</h3>
-                        <p>Información de propiedades, coordina visitas y califica compradores</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Asistente Finanzas">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente Financiero</h3>
-                        <p>Cotizaciones, análisis de inversión y asesoramiento personalizado</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Asistente Stock">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente de Stock</h3>
-                        <p>Control de inventario, alertas de stock bajo y gestión de pedidos</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="carousel-image">
-                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Asistente Cocina">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Asistente de Cocina</h3>
-                        <p>Recetas personalizadas, conversiones y consejos culinarios</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Botón siguiente -->
-            <button class="carousel-nav next" onclick="nextCarouselSlide()">›</button>
-        </div>
-        
-        <div class="carousel-dots">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-            <span class="dot" data-index="3"></span>
-            <span class="dot" data-index="4"></span>
-            <span class="dot" data-index="5"></span>
-            <span class="dot" data-index="6"></span>
-            <span class="dot" data-index="7"></span>
-        </div>
-    </div>
-    <!-- FIN CARRUSEL -->
-
-<script>
-var carouselCurrentSlide = 0;
-var carouselAutoplayInterval = null;
-
-function initCarousel() {{
-    var slides = document.querySelectorAll('.carousel-slide');
-    var dots = document.querySelectorAll('.dot');
-    
-    console.log('Carrusel iniciado - Slides encontrados:', slides.length);
-    
-    if (slides.length === 0) {{
-        console.log('No se encontraron slides');
-        return;
-    }}
-    
-    // Event listeners para los dots
-    dots.forEach(function(dot, index) {{
-        dot.addEventListener('click', function() {{
-            console.log('Click en dot:', index);
-            showCarouselSlide(index);
-            resetCarouselAutoplay();
-        }});
-    }});
-    
-    // Pausar al pasar el mouse
-    var container = document.querySelector('.carousel-container');
-    if (container) {{
-        container.addEventListener('mouseenter', function() {{
-            console.log('Pausado');
-            stopCarouselAutoplay();
-        }});
-        
-        container.addEventListener('mouseleave', function() {{
-            console.log('Reanudado');
-            startCarouselAutoplay();
-        }});
-    }}
-    
-    // Iniciar
-    startCarouselAutoplay();
-    showCarouselSlide(0);
-    
-    console.log('Carrusel configurado');
-}}
-
-function showCarouselSlide(index) {{
-    var slides = document.querySelectorAll('.carousel-slide');
-    var dots = document.querySelectorAll('.dot');
-    var totalSlides = slides.length;
-    
-    if (index >= totalSlides) {{
-        carouselCurrentSlide = 0;
-    }} else if (index < 0) {{
-        carouselCurrentSlide = totalSlides - 1;
-    }} else {{
-        carouselCurrentSlide = index;
-    }}
-    
-    console.log('Mostrando slide:', carouselCurrentSlide + 1, 'de', totalSlides);
-    
-    slides.forEach(function(slide, i) {{
-        if (i === carouselCurrentSlide) {{
-            slide.classList.add('active');
-        }} else {{
-            slide.classList.remove('active');
-        }}
-    }});
-    
-    dots.forEach(function(dot, i) {{
-        if (i === carouselCurrentSlide) {{
-            dot.classList.add('active');
-        }} else {{
-            dot.classList.remove('active');
-        }}
-    }});
-}}
-
-function nextCarouselSlide() {{
-    console.log('Siguiente');
-    showCarouselSlide(carouselCurrentSlide + 1);
-}}
-
-function prevCarouselSlide() {{
-    console.log('Anterior');
-    showCarouselSlide(carouselCurrentSlide - 1);
-}}
-
-function startCarouselAutoplay() {{
-    stopCarouselAutoplay();
-    carouselAutoplayInterval = setInterval(nextCarouselSlide, 4000);
-    console.log('Autoplay iniciado');
-}}
-
-function stopCarouselAutoplay() {{
-    if (carouselAutoplayInterval) {{
-        clearInterval(carouselAutoplayInterval);
-        carouselAutoplayInterval = null;
-    }}
-}}
-
-function resetCarouselAutoplay() {{
-    stopCarouselAutoplay();
-    startCarouselAutoplay();
-}}
-
-// Iniciar cuando el DOM este listo
-if (document.readyState === 'loading') {{
-    document.addEventListener('DOMContentLoaded', initCarousel);
-}} else {{
-    initCarousel();
-}}
-</script>
-
 {FOOTER}
 """
 
@@ -5837,17 +5602,423 @@ elif vista == "precios":
 else:
     st.html(HTML_HOME_PARTE_1)
     
-    # JavaScript para detectar si es móvil y ajustar altura
+    # =========================
+    # CARRUSEL FUNCIONAL
+    # =========================
+    components.html("""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+        body {{ font-family: 'Inter', sans-serif; background: #f6f7fb; }}
+        
+        .assistants-carousel-section {{
+            padding: 70px 5%;
+            background: #f6f7fb;
+            text-align: center;
+            width: 100%;
+        }}
+        
+        .assistants-carousel-section h2 {{
+            font-size: 38px;
+            margin-bottom: 12px;
+            font-weight: 800;
+            color: #1a1a1a;
+        }}
+        
+        .carousel-subtitle {{
+            font-size: 17px;
+            color: #666;
+            margin-bottom: 50px;
+        }}
+        
+        .carousel-container {{
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 420px;
+            overflow: hidden;
+        }}
+        
+        .carousel-slide {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+            pointer-events: none;
+        }}
+        
+        .carousel-slide.active {{
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }}
+        
+        .carousel-content {{
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            height: 100%;
+            max-height: 380px;
+        }}
+        
+        .carousel-image {{
+            flex: 0 0 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        
+        .carousel-image img {{
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: contain;
+            border-radius: 16px;
+        }}
+        
+        .carousel-text {{
+            flex: 1;
+            text-align: left;
+        }}
+        
+        .carousel-text h3 {{
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }}
+        
+        .carousel-text p {{
+            font-size: 18px;
+            color: #555;
+            line-height: 1.7;
+        }}
+        
+        .carousel-nav {{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        
+        .carousel-nav:hover {{
+            background: #333;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }}
+        
+        .carousel-nav.prev {{
+            left: -60px;
+        }}
+        
+        .carousel-nav.next {{
+            right: -60px;
+        }}
+        
+        .carousel-dots {{
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 35px;
+        }}
+        
+        .dot {{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }}
+        
+        .dot:hover {{
+            background: #999;
+            transform: scale(1.2);
+        }}
+        
+        .dot.active {{
+            background: #333;
+            width: 32px;
+            border-radius: 6px;
+        }}
+        
+        @media (max-width: 768px) {{
+            .assistants-carousel-section {{
+                padding: 50px 5%;
+            }}
+            
+            .assistants-carousel-section h2 {{
+                font-size: 28px;
+            }}
+            
+            .carousel-container {{
+                height: auto;
+                min-height: 500px;
+            }}
+            
+            .carousel-content {{
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 25px;
+            }}
+            
+            .carousel-image {{
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 220px;
+            }}
+            
+            .carousel-text {{
+                text-align: center;
+            }}
+            
+            .carousel-text h3 {{
+                font-size: 24px;
+            }}
+            
+            .carousel-text p {{
+                font-size: 16px;
+            }}
+            
+            .carousel-nav {{
+                display: none;
+            }}
+        }}
+        </style>
+    </head>
+    <body>
+        <div class="assistants-carousel-section">
+            <h2>Nuestros Asistentes Virtuales</h2>
+            <p class="carousel-subtitle">Especializados en diferentes industrias</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
+                
+                <div class="carousel-slide active">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="Asistente Telefónico">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente Telefónico</h3>
+                            <p>Atiende llamadas 24/7, agenda citas y califica leads automáticamente</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Asistente E-commerce">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente E-commerce</h3>
+                            <p>Responde consultas de productos, gestiona pedidos y aumenta conversiones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteagendas.png" alt="Asistente de Agendas">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente de Turnos</h3>
+                            <p>Gestiona reservas, recordatorios y cancelaciones automáticamente</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedental.png" alt="Asistente Dental">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente Dental</h3>
+                            <p>Agenda turnos, envía recordatorios y responde consultas odontológicas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteinmobiliaria.png" alt="Asistente Inmobiliaria">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente Inmobiliario</h3>
+                            <p>Información de propiedades, coordina visitas y califica compradores</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Asistente Finanzas">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente Financiero</h3>
+                            <p>Cotizaciones, análisis de inversión y asesoramiento personalizado</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Asistente Stock">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente de Stock</h3>
+                            <p>Control de inventario, alertas de stock bajo y gestión de pedidos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="carousel-content">
+                        <div class="carousel-image">
+                            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Asistente Cocina">
+                        </div>
+                        <div class="carousel-text">
+                            <h3>Asistente de Cocina</h3>
+                            <p>Recetas personalizadas, conversiones y consejos culinarios</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav next" onclick="nextSlide()">›</button>
+            </div>
+            
+            <div class="carousel-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+                <span class="dot" onclick="goToSlide(3)"></span>
+                <span class="dot" onclick="goToSlide(4)"></span>
+                <span class="dot" onclick="goToSlide(5)"></span>
+                <span class="dot" onclick="goToSlide(6)"></span>
+                <span class="dot" onclick="goToSlide(7)"></span>
+            </div>
+        </div>
+
+    <script>
+    var currentSlide = 0;
+    var autoplayInterval = null;
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var totalSlides = slides.length;
+
+    console.log('Carrusel iniciado - Slides:', totalSlides);
+
+    function showSlide(index) {{
+        if (index >= totalSlides) {{
+            currentSlide = 0;
+        }} else if (index < 0) {{
+            currentSlide = totalSlides - 1;
+        }} else {{
+            currentSlide = index;
+        }}
+        
+        console.log('Mostrando slide:', currentSlide + 1);
+        
+        for (var i = 0; i < slides.length; i++) {{
+            slides[i].classList.remove('active');
+            dots[i].classList.remove('active');
+        }}
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }}
+
+    function nextSlide() {{
+        showSlide(currentSlide + 1);
+    }}
+
+    function prevSlide() {{
+        showSlide(currentSlide - 1);
+    }}
+
+    function goToSlide(index) {{
+        showSlide(index);
+        resetAutoplay();
+    }}
+
+    function startAutoplay() {{
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, 4000);
+        console.log('Autoplay iniciado');
+    }}
+
+    function stopAutoplay() {{
+        if (autoplayInterval) {{
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }}
+    }}
+
+    function resetAutoplay() {{
+        stopAutoplay();
+        startAutoplay();
+    }}
+
+    var container = document.querySelector('.carousel-container');
+    if (container) {{
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+    }}
+
+    startAutoplay();
+    showSlide(0);
+
+    console.log('Carrusel listo!');
+    </script>
+
+    </body>
+    </html>
+    """, height=600, scrolling=False)
+    
+    # JavaScript para detectar si es móvil y ajustar altura del DEMO
     components.html("""
     <script>
     // Detectar si es móvil INMEDIATAMENTE
     var isMobile = window.innerWidth <= 768;
     
-    if (isMobile) {
+    if (isMobile) {{
         // En móvil: colapsar todo a altura 0
         document.documentElement.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;';
         document.body.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;display:none!important;';
-    }
+    }}
     </script>
     
     <style>
