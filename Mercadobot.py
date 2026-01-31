@@ -1286,7 +1286,7 @@ body {
 ========================= */
 .assistants-carousel-section {
     padding: 70px 5%;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1296,7 +1296,7 @@ body {
     font-size: 38px;
     margin-bottom: 12px;
     font-weight: 800;
-    color: #1e3a8a;
+    color: #1a1a1a;
 }
 
 .carousel-subtitle {
@@ -1364,7 +1364,7 @@ body {
 .carousel-text h3 {
     font-size: 32px;
     font-weight: 800;
-    color: #1e3a8a;
+    color: #1a1a1a;
     margin-bottom: 16px;
 }
 
@@ -2168,7 +2168,261 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 {FOOTER}
 """
 
-HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
+HTML_HOME_PARTE_2 = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* {{ margin: 0; padding: 0; box-sizing: border-box; }}
+body {{ font-family: 'Inter', sans-serif; background: #f6f7fb; }}
+
+/* TESTIMONIOS */
+.testimonios {{
+    padding: 80px 5%;
+    background: #fff;
+    text-align: center;
+}}
+.testimonios h2 {{
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: #1a1a1a;
+}}
+.testimonios-grid {{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}}
+.testimonio-card {{
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+    position: relative;
+}}
+.testimonio-quote {{
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-style: italic;
+}}
+.testimonio-author {{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}}
+.testimonio-avatar {{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}}
+.testimonio-info h4 {{
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}}
+.testimonio-info p {{
+    font-size: 14px;
+    color: #64748b;
+}}
+.testimonio-stat {{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #166534;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}}
+
+/* INTEGRACIONES */
+.integrations {{
+    padding: 80px 5%;
+    background: #fff;
+    text-align: center;
+}}
+.integrations h2 {{
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}}
+.integrations .subtitle {{
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 50px;
+}}
+.integration-logos {{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}}
+.integration-logo {{
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 30px 40px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+}}
+.integration-logo:hover {{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}}
+.integration-logo p {{
+    margin-top: 12px;
+    font-weight: 600;
+    color: #475569;
+}}
+
+/* CARRUSEL */
+.assistants-carousel-section {{
+    padding: 70px 5%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    text-align: center;
+}}
+.assistants-carousel-section h2 {{
+    font-size: 38px;
+    margin-bottom: 12px;
+    font-weight: 800;
+    color: #1a1a1a;
+}}
+.carousel-subtitle {{
+    font-size: 17px;
+    color: #64748b;
+    margin-bottom: 50px;
+}}
+.carousel-container {{
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 420px;
+    overflow: hidden;
+}}
+.carousel-slide {{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+}}
+.carousel-slide.active {{
+    opacity: 1;
+    pointer-events: auto;
+}}
+.carousel-content {{
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    height: 100%;
+    max-height: 380px;
+}}
+.carousel-image {{
+    flex: 0 0 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}}
+.carousel-image img {{
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 16px;
+}}
+.carousel-text {{
+    flex: 1;
+    text-align: left;
+}}
+.carousel-text h3 {{
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}}
+.carousel-text p {{
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.7;
+}}
+.carousel-dots {{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 35px;
+}}
+.dot {{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(30, 58, 138, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}}
+.dot:hover {{
+    background: rgba(30, 58, 138, 0.4);
+    transform: scale(1.2);
+}}
+.dot.active {{
+    background: #60a5fa;
+    width: 32px;
+    border-radius: 6px;
+}}
+
+@media (max-width: 768px) {{
+    .testimonios-grid {{
+        grid-template-columns: 1fr;
+    }}
+    .carousel-container {{
+        height: auto;
+        min-height: 500px;
+    }}
+    .carousel-content {{
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 25px;
+    }}
+    .carousel-image {{
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 220px;
+    }}
+    .carousel-text {{
+        text-align: center;
+    }}
+    .carousel-text h3 {{
+        font-size: 24px;
+    }}
+    .assistants-carousel-section h2 {{
+        font-size: 28px;
+    }}
+}}
+</style>
+</head>
+<body>
+    <!-- TESTIMONIOS -->
     <div class="testimonios">
         <h2>Lo que dicen nuestros clientes</h2>
         
@@ -2497,16 +2751,22 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
 
 <!-- SCRIPT DEL CARRUSEL -->
 <script>
-(function() {{
+document.addEventListener('DOMContentLoaded', function() {{
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (slides.length === 0 || dots.length === 0) {{
+        console.log('Carrusel: elementos no encontrados');
+        return;
+    }}
+    
     let currentSlide = 0;
     let autoplayInterval;
     const totalSlides = slides.length;
     
     function goToSlide(index) {{
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
+        slides.forEach(function(s) {{ s.classList.remove('active'); }});
+        dots.forEach(function(d) {{ d.classList.remove('active'); }});
         
         currentSlide = index;
         if (currentSlide >= totalSlides) currentSlide = 0;
@@ -2530,26 +2790,28 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     }}
     
     // Click en dots
-    dots.forEach((dot, index) => {{
-        dot.addEventListener('click', () => {{
-            goToSlide(index);
-            resetAutoplay();
-        }});
-    }});
+    for (var i = 0; i < dots.length; i++) {{
+        (function(index) {{
+            dots[index].addEventListener('click', function() {{
+                goToSlide(index);
+                resetAutoplay();
+            }});
+        }})(i);
+    }}
     
     // Touch/swipe para móviles
-    const container = document.querySelector('.carousel-container');
-    let touchStartX = 0;
-    let touchEndX = 0;
+    var container = document.querySelector('.carousel-container');
+    var touchStartX = 0;
+    var touchEndX = 0;
     
     if (container) {{
-        container.addEventListener('touchstart', (e) => {{
+        container.addEventListener('touchstart', function(e) {{
             touchStartX = e.changedTouches[0].screenX;
         }}, {{passive: true}});
         
-        container.addEventListener('touchend', (e) => {{
+        container.addEventListener('touchend', function(e) {{
             touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
+            var diff = touchStartX - touchEndX;
             if (Math.abs(diff) > 50) {{
                 if (diff > 0) {{
                     goToSlide(currentSlide + 1);
@@ -2563,10 +2825,12 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     
     // Iniciar autoplay
     startAutoplay();
-}})();
+    console.log('Carrusel iniciado con ' + totalSlides + ' slides');
+}});
 </script>
 
-{FOOTER}
+</body>
+</html>
 """
 
 # =========================
@@ -5777,7 +6041,7 @@ else:
     </div>
     """, height=1100, scrolling=False)
     
-    st.html(HTML_HOME_PARTE_2)
+    components.html(HTML_HOME_PARTE_2, height=2200, scrolling=False)
 
 # CSS para overflow visible
 st.markdown("""
