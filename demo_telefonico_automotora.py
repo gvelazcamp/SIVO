@@ -325,10 +325,11 @@ else:
     """, unsafe_allow_html=True)
 
 st.markdown("""
-    <div class="badge">🇺🇾 Conversación real en español uruguayo</div>
-    <p style="font-size: 15px; opacity: 0.85; margin-top: 15px;">
-        Así atiende SIVO a tus clientes potenciales
-    </p>
+    <div style="background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 12px; margin: 20px auto; max-width: 400px;">
+        <p style="margin: 0; font-size: 14px; opacity: 0.9;">
+            Así atiende SIVO a tus clientes potenciales
+        </p>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
