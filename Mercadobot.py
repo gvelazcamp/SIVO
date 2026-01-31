@@ -5909,14 +5909,26 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
 
-/* Ocultar contenedor del demo en móviles */
+/* Eliminar COMPLETAMENTE el espacio del demo en móviles */
 @media (max-width: 768px) {
+    /* Ocultar el contenedor del iframe */
+    div[data-testid="stVerticalBlock"]:has(iframe[height="1100"]),
     div[data-testid="element-container"]:has(iframe[height="1100"]) {
         display: none !important;
         height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
         margin: 0 !important;
         padding: 0 !important;
         overflow: hidden !important;
+        visibility: hidden !important;
+    }
+    
+    /* El iframe mismo */
+    iframe[height="1100"] {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
     }
 }
 </style>
