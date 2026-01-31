@@ -5847,6 +5847,13 @@ else:
     @media (max-width: 768px) {
         .demo-container {
             display: none !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        html, body {
+            height: 0 !important;
+            overflow: hidden !important;
         }
     }
     </style>
@@ -5878,11 +5885,21 @@ else:
             </div>
         </div>
     </div>
+    
+    <script>
+    // Ajustar altura del iframe en móviles
+    if (window.innerWidth <= 768) {
+        document.documentElement.style.height = '0';
+        document.body.style.height = '0';
+        document.body.style.margin = '0';
+        document.body.style.padding = '0';
+    }
+    </script>
     """, height=1100, scrolling=False)
     
     st.html(HTML_HOME_PARTE_2)
 
-# CSS para overflow visible
+# CSS para overflow visible y ocultar demo en móviles
 st.markdown("""
 <style>
 div[data-testid="element-container"]:has(iframe[height="550"]) {
@@ -5890,6 +5907,17 @@ div[data-testid="element-container"]:has(iframe[height="550"]) {
 }
 div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
+}
+
+/* Ocultar contenedor del demo en móviles */
+@media (max-width: 768px) {
+    div[data-testid="element-container"]:has(iframe[height="1100"]) {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
