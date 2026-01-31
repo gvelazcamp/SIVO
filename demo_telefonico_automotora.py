@@ -24,109 +24,71 @@ st.markdown("""
 }
 
 /* =========================
-   HERO
+   HERO COMPACTO
    ========================= */
-.hero {
+.hero-compact {
     text-align: center;
-    padding: 60px 30px 30px;
+    padding: 40px 30px 20px;
     background: white;
     border-radius: 24px;
     margin: 20px 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.hero h1 {
-    font-size: 42px;
+.hero-compact h1 {
+    font-size: 48px;
     font-weight: 800;
     color: #111;
-    margin-bottom: 16px;
-    line-height: 1.2;
+    margin-bottom: 10px;
+    line-height: 1.1;
 }
 
-.hero .sivo-name {
+.hero-compact .sivo-name {
     color: #ff7a18;
-    font-size: 48px;
 }
 
-.hero p {
-    font-size: 19px;
-    color: #555;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.6;
+.hero-compact p {
+    font-size: 17px;
+    color: #666;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.5;
 }
 
 /* =========================
-   PHONE CARD
+   AUDIO SECTION - MÁS INTEGRADO
    ========================= */
-.phone-card {
+.audio-section {
     background: linear-gradient(135deg, #ff7a18, #ff9f43);
     color: white;
     border-radius: 24px;
-    padding: 45px 35px;
-    text-align: center;
-    margin: 40px 0;
-    box-shadow: 0 20px 50px rgba(255,122,24,0.3);
+    padding: 35px 30px;
+    margin: 30px 0 40px;
+    box-shadow: 0 20px 50px rgba(255,122,24,0.25);
 }
 
-.phone-card h2 {
-    font-size: 30px;
-    margin-bottom: 12px;
+.audio-section h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
     font-weight: 700;
+    text-align: center;
 }
 
-.phone-card p {
-    font-size: 17px;
-    opacity: 0.95;
-}
-
-.phone-number {
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin: 20px 0;
-}
-
-.phone-number a {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.2s;
-}
-
-.phone-number a:hover {
-    opacity: 0.9;
-}
-
-.badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.25);
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-weight: 600;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-/* Estilo personalizado para el botón de audio */
-.audio-btn {
-    display: inline-block;
+.audio-caption {
     background: white;
-    color: #ff7a18;
-    padding: 18px 40px;
+    padding: 12px 24px;
     border-radius: 999px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 20px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin: 20px 0;
+    margin: 15px auto 0;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.audio-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+.audio-caption p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
 }
 
 /* =========================
@@ -134,20 +96,7 @@ st.markdown("""
    ========================= */
 .features-header {
     text-align: center;
-    margin: 60px 0 40px;
-}
-
-.phone-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.divider-line {
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #ff7a18, #ffb347);
-    margin: 0 auto 16px;
-    border-radius: 10px;
+    margin: 50px 0 35px;
 }
 
 .features-header h2 {
@@ -160,7 +109,7 @@ st.markdown("""
    FEATURES GRID
    ========================= */
 .section {
-    padding: 0 20px 50px;
+    padding: 0 20px 40px;
     max-width: 1100px;
     margin: auto;
 }
@@ -206,26 +155,46 @@ st.markdown("""
 }
 
 /* =========================
-   CTA
+   CONVERSACIÓN
    ========================= */
-.cta {
+.conversation-title {
+    text-align: center;
+    margin: 50px 0 30px;
+}
+
+.conversation-title h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.conversation-title p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* =========================
+   CTA SIMPLE
+   ========================= */
+.cta-simple {
     background: linear-gradient(135deg, #1f2937, #111827);
     color: white;
     border-radius: 24px;
-    padding: 55px 35px;
+    padding: 45px 35px;
     text-align: center;
-    margin: 70px 0 50px;
+    margin: 60px 0 40px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
-.cta h2 {
-    font-size: 32px;
-    margin-bottom: 12px;
+.cta-simple h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
     font-weight: 700;
 }
 
-.cta p {
-    font-size: 18px;
+.cta-simple p {
+    font-size: 17px;
     opacity: 0.9;
     line-height: 1.6;
     max-width: 600px;
@@ -264,79 +233,56 @@ st.markdown("""
 /* Audio player personalizado */
 audio {
     width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
-    display: block;
     outline: none;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 34px;
-    }
-    
-    .hero .sivo-name {
+    .hero-compact h1 {
         font-size: 38px;
-    }
-    
-    .phone-number {
-        font-size: 36px;
     }
 }
 </style>
 """, unsafe_allow_html=True)
 
 # =========================
-# HERO
+# HERO COMPACTO
 # =========================
 st.markdown("""
-<div class="hero">
+<div class="hero-compact">
     <h1>Conocé a <span class="sivo-name">SIVO</span></h1>
     <p>
-        Tu asistente telefónico con IA que atiende llamadas reales,
-        conversa como una persona y responde usando los datos de tu negocio.
+        Tu asistente telefónico con IA que conversa como una persona<br>
+        y responde usando los datos reales de tu negocio
     </p>
 </div>
 """, unsafe_allow_html=True)
 
 # =========================
-# PHONE DEMO CON AUDIO
+# AUDIO SECTION
 # =========================
 st.markdown("""
-<div class="phone-card">
-    <h2>Probá SIVO ahora</h2>
-    <p>Escuchá una conversación real de SIVO atendiendo a un cliente</p>
+<div class="audio-section">
+    <h2>🎧 Escuchá cómo atiende</h2>
 """, unsafe_allow_html=True)
 
 # Verificar si existe el archivo de audio
 audio_file = "Sivo.mp4"
-
-# Contenedor centrado para el audio
-st.markdown('<div style="display: flex; justify-content: center; margin: 30px 0;">', unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    if os.path.exists(audio_file):
-        # Mostrar el reproductor de audio
-        audio_bytes = open(audio_file, 'rb').read()
-        st.audio(audio_bytes, format='audio/mp4')
-    else:
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 12px; margin: 20px 0;">
-            <p style="margin: 0; font-size: 15px;">
-                🎧 Archivo de audio no encontrado. Por favor, asegúrate de que el archivo "Sivo.mp4" esté en el mismo directorio.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
+if os.path.exists(audio_file):
+    audio_bytes = open(audio_file, 'rb').read()
+    st.audio(audio_bytes, format='audio/mp4')
+else:
+    st.markdown("""
+    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 12px;">
+        <p style="margin: 0; font-size: 15px;">
+            🎧 Archivo de audio no encontrado
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("""
-    <div style="background: white; padding: 16px 30px; border-radius: 999px; margin: 20px auto; max-width: 400px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        <p style="margin: 0; font-size: 15px; color: #333; font-weight: 600;">
-            Así atiende SIVO a tus clientes potenciales
-        </p>
+    <div class="audio-caption">
+        <p>Conversación real con un cliente</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -386,58 +332,61 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# CONVERSACIÓN - SIMPLE Y LINDA (PREGUNTAS IZQUIERDA, RESPUESTAS DERECHA)
+# CONVERSACIÓN
 # =========================
 st.markdown("""
-<h3 style="text-align: center;">💬 Ejemplo de conversación real</h3>
-<p style="text-align: center; color: #666;">Así atiende a tus clientes potenciales</p>
+<div class="conversation-title">
+    <h3>Ejemplo de conversación</h3>
+    <p>Así atiende a tus clientes potenciales</p>
+</div>
 
-<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Busco un auto usado</div>
+<div style="max-width: 650px; margin: auto; padding: 0 20px;">
+<div style="background: #000; color: white; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px;"><strong>👤</strong> Busco un auto usado</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> ¡Hola! Bienvenido a AutoCenter. ¿En qué puedo ayudarte hoy?</div>
 
-<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Unos 10 millones</div>
+<div style="background: #000; color: white; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px;"><strong>👤</strong> Unos 10 millones</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> Dale, perfecto. ¿Qué presupuesto tenés más o menos?</div>
 
-<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</div>
+<div style="background: #000; color: white; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px;"><strong>👤</strong> El Gol. ¿Puedo hacer un test drive?</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> Genial. Tengo 2 opciones excelentes: un Gol Trend 2020 a 9.8 millones con 55 mil km, único dueño. O un Focus 2019 a 12.9 millones con 65 mil km y service al día. ¿Cuál te copa más?</div>
 
-<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> Juan Pérez</div>
+<div style="background: #000; color: white; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px;"><strong>👤</strong> Juan Pérez</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> ¡Claro! Te agendo el test drive del Gol. ¿Tu nombre completo?</div>
 
-<div style="background: #000; color: white; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; display: block;"><strong>👤</strong> 099 123 456</div>
+<div style="background: #000; color: white; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px;"><strong>👤</strong> 099 123 456</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 70%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> Perfecto Juan. ¿Tu teléfono?</div>
 
-<div style="background: white; color: black; padding: 20px 8px; border-radius: 8px; max-width: 50%; margin-bottom: 10px; margin-left: auto; margin-right: 0; border: 1px solid #e0e0e0; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</div>
+<div style="background: white; color: black; padding: 16px 20px; border-radius: 18px; max-width: 75%; margin-bottom: 12px; margin-left: auto; border: 1px solid #e0e0e0;"><strong>🤖</strong> Listo Juan, cero nueve nueve, uno dos tres, cuatro cinco seis. Agendé tu test drive del Gol Trend. Un vendedor te contacta en 10 minutos para confirmar día y horario. ¡Gracias por llamar!</div>
+</div>
 """, unsafe_allow_html=True)
 
 # =========================
-# CTA
+# CTA SIMPLE
 # =========================
 st.markdown("""
-<div class="cta">
-    <h2>No es un chatbot genérico</h2>
+<div class="cta-simple">
+    <h2>¿Listo para probar?</h2>
     <p>
-        Es un asistente entrenado con tus datos reales,
-        diseñado para atender, vender y escalar tu negocio.
+        Hablemos de cómo puede ayudar a tu negocio
     </p>
 </div>
 """, unsafe_allow_html=True)
 
 # =========================
-# BOTÓN LLAMAR
+# BOTÓN CONTACTAR
 # =========================
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
-    if st.button("📞 Llamar ahora", use_container_width=True):
+    if st.button("💬 Hablar con Gonzalo", use_container_width=True):
         st.markdown("""
         <script>
-        window.location.href = "tel:+5981234567";
+        window.open("https://wa.me/59892748175?text=Hola!%20Quiero%20probar%20SIVO%20🤖", "_blank");
         </script>
         """, unsafe_allow_html=True)
 
-st.caption("Demo visual de SIVO - Asistente Telefónico Inteligente")
+st.caption("Demo de SIVO - Asistente Telefónico Inteligente")
