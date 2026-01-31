@@ -5708,6 +5708,80 @@ else:
     
     st.html(HTML_HOME_PARTE_2)
 
+    # JavaScript del carrusel
+    components.html("""
+    <script>
+    (function() {
+        // Esperar a que el DOM esté listo
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            
+            if (!slides.length || !dots.length) {
+                console.log('Elementos del carrusel no encontrados aún');
+                return false;
+            }
+
+            let currentSlide = 0;
+            let carouselInterval;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (slides[index]) slides[index].classList.add('active');
+                if (dots[index]) dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function startCarousel() {
+                carouselInterval = setInterval(nextSlide, 4000);
+            }
+
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopCarousel();
+                    showSlide(index);
+                    startCarousel();
+                });
+            });
+
+            const carouselContainer = document.querySelector('.carousel-container');
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', stopCarousel);
+                carouselContainer.addEventListener('mouseleave', startCarousel);
+            }
+
+            startCarousel();
+            console.log('Carrusel inicializado correctamente');
+            return true;
+        }
+
+        // Intentar inicializar varias veces por si el DOM no está listo
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        function tryInit() {
+            if (initCarousel() || attempts >= maxAttempts) {
+                return;
+            }
+            attempts++;
+            setTimeout(tryInit, 500);
+        }
+
+        tryInit();
+    })();
+    </script>
+    """, height=0)
+
 # CSS para overflow visible
 st.markdown("""
 <style>
