@@ -2497,14 +2497,14 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
 
 <!-- SCRIPT DEL CARRUSEL -->
 <script>
-(function() {
+(function() {{
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     let currentSlide = 0;
     let autoplayInterval;
     const totalSlides = slides.length;
     
-    function goToSlide(index) {
+    function goToSlide(index) {{
         slides.forEach(s => s.classList.remove('active'));
         dots.forEach(d => d.classList.remove('active'));
         
@@ -2514,56 +2514,56 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
-    }
+    }}
     
-    function nextSlide() {
+    function nextSlide() {{
         goToSlide(currentSlide + 1);
-    }
+    }}
     
-    function startAutoplay() {
+    function startAutoplay() {{
         autoplayInterval = setInterval(nextSlide, 4000);
-    }
+    }}
     
-    function resetAutoplay() {
+    function resetAutoplay() {{
         clearInterval(autoplayInterval);
         startAutoplay();
-    }
+    }}
     
     // Click en dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
+    dots.forEach((dot, index) => {{
+        dot.addEventListener('click', () => {{
             goToSlide(index);
             resetAutoplay();
-        });
-    });
+        }});
+    }});
     
     // Touch/swipe para móviles
     const container = document.querySelector('.carousel-container');
     let touchStartX = 0;
     let touchEndX = 0;
     
-    if (container) {
-        container.addEventListener('touchstart', (e) => {
+    if (container) {{
+        container.addEventListener('touchstart', (e) => {{
             touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
+        }}, {{passive: true}});
         
-        container.addEventListener('touchend', (e) => {
+        container.addEventListener('touchend', (e) => {{
             touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
+            if (Math.abs(diff) > 50) {{
+                if (diff > 0) {{
                     goToSlide(currentSlide + 1);
-                } else {
+                }} else {{
                     goToSlide(currentSlide - 1);
-                }
+                }}
                 resetAutoplay();
-            }
-        }, {passive: true});
-    }
+            }}
+        }}, {{passive: true}});
+    }}
     
     // Iniciar autoplay
     startAutoplay();
-})();
+}})();
 </script>
 
 {FOOTER}
