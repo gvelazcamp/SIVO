@@ -5766,7 +5766,7 @@ else:
     </div>
     """, height=1100, scrolling=False)
     
-    st.html(HTML_HOME_PARTE_2)
+    components.html(HTML_HOME_PARTE_2, height=1200, scrolling=False)
 
 # CSS para overflow visible
 st.markdown("""
