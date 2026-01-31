@@ -2378,6 +2378,8 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
                 <p>Email</p>
             </div>
         </div>
+    </div>
+    <!-- FIN INTEGRACIONES -->
 
     <!-- CARRUSEL DE ASISTENTES -->
     <div class="assistants-carousel-section">
@@ -2493,7 +2495,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
             <span class="dot" data-index="7"></span>
         </div>
     </div>
-    </div>
+    <!-- FIN CARRUSEL -->
 
 {FOOTER}
 """
