@@ -180,7 +180,7 @@ body {
     
     .logo span {
         margin-left: 0 !important;
-        margin-top: 10px;
+        margin-top: 5px;
     }
     
     .nav {
