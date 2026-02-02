@@ -164,6 +164,33 @@ body {
     white-space: nowrap;
 }
 
+/* Responsive para móviles - Logo centrado */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .logo span {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+
 /* =========================
    HERO IMPACT
 ========================= */
