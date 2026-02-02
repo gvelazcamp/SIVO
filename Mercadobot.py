@@ -2241,7 +2241,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
                 <p>Cotizaciones y análisis financiero.</p>
-                <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
@@ -6054,3 +6054,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
