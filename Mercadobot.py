@@ -5473,8 +5473,8 @@ else:
                         preload="auto"
                         style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
                     >
-                        <source src="https://gvelazcamp.github.io/Mercadobot/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
-                        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+                        <source src="https://gvelazcamp.github.io/Mercadobot/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
                     </video>
                 </div>
             </div>
