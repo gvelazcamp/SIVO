@@ -1807,7 +1807,7 @@ body {
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="{BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img">
+            <img src="${BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img">
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
@@ -1868,7 +1868,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Tu negocio atendido<br>por un <span style="color:#f4b400;">chatbot IA</span></h1>
+            <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">chatbot IA</span></h1>
             <p>
                 Instalamos un asistente virtual que responde a tus clientes 24/7, con tus reglas y tus datos.
                 Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.
