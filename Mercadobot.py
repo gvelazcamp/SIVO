@@ -131,7 +131,7 @@ body {
 }
 
 .logo-img {
-    height: 40px;
+    height: 80px;
     width: auto;
 }
 .logo span { color: #60a5fa; }
@@ -1807,7 +1807,7 @@ body {
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="${BASE_URL}logomercadobot.png" alt="MercadoBot" class="logo-img">
+            <img src="{BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img">
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
