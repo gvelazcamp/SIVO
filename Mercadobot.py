@@ -75,27 +75,27 @@ BASE_URL = "https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/"
 # =========================
 # HTML COMPLETO
 # =========================
-HTML_BASE = f"""
+HTML_BASE = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-* {{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}}
+}
 
-html {{
+html {
     overflow-x: hidden;
     width: 100%;
     height: 100%;
     background: #f6f7fb !important;
-}}
+}
 
-body {{
+body {
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background: #f6f7fb !important;
     margin: 0;
@@ -103,80 +103,80 @@ body {{
     width: 100%;
     overflow-x: hidden;
     min-height: 100vh;
-}}
+}
 
-.page-container {{
+.page-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
     background: #f6f7fb !important;
-}}
+}
 
 /* =========================
    HEADER
 ========================= */
-.header {{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
     width: 100%;
-}}
+}
 
-.logo {{
+.logo {
     display: flex;
     align-items: center;
     text-decoration: none;
     white-space: nowrap;
-}}
+}
 
-.logo-img {{
+.logo-img {
     height: 40px;
     width: auto;
-}}
-.logo span {{ color: #60a5fa; }}
+}
+.logo span { color: #60a5fa; }
 
-.nav {{
+.nav {
     display: flex;
     gap: 28px;
     font-weight: 500;
     color: #555;
     align-items: center;
-}}
+}
 
-.nav a {{
+.nav a {
     text-decoration: none;
     color: #555;
     cursor: pointer;
     white-space: nowrap;
-}}
+}
 
-.nav a:hover {{
+.nav a:hover {
     color: #60a5fa;
-}}
+}
 
-.btn-login {{
+.btn-login {
     background: #60a5fa;
     padding: 8px 16px;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-}}
+}
 
 /* =========================
    HERO IMPACT
 ========================= */
-.hero-impact {{
+.hero-impact {
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     padding: 60px 5% 50px;
     text-align: center;
     color: #1e3a8a;
     position: relative;
     overflow: hidden;
-}}
+}
 
-.hero-impact::before {{
+.hero-impact::before {
     content: '';
     position: absolute;
     top: 0;
@@ -185,24 +185,24 @@ body {{
     bottom: 0;
     background: radial-gradient(circle at 30% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
     pointer-events: none;
-}}
+}
 
-.hero-impact-content {{
+.hero-impact-content {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
-}}
+}
 
-.hero-impact-title {{
+.hero-impact-title {
     font-size: 42px;
     font-weight: 800;
     line-height: 1.1;
     margin: 0 0 15px 0;
     letter-spacing: -0.02em;
-}}
+}
 
-.hero-impact-subtitle {{
+.hero-impact-subtitle {
     display: block;
     font-size: 38px;
     background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
@@ -210,25 +210,25 @@ body {{
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-top: 8px;
-}}
+}
 
-.hero-impact-text {{
+.hero-impact-text {
     font-size: 17px;
     color: #475569;
     margin: 0 0 30px 0;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-}}
+}
 
-.hero-impact-actions {{
+.hero-impact-actions {
     display: flex;
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
-}}
+}
 
-.hero-impact-btn-primary {{
+.hero-impact-btn-primary {
     background: #60a5fa;
     color: #ffffff;
     padding: 14px 28px;
@@ -239,15 +239,15 @@ body {{
     display: inline-block;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
-}}
+}
 
-.hero-impact-btn-primary:hover {{
+.hero-impact-btn-primary:hover {
     background: #3b82f6;
     transform: translateY(-2px);
     box-shadow: 0 10px 28px rgba(96, 165, 250, 0.4);
-}}
+}
 
-.hero-impact-btn-secondary {{
+.hero-impact-btn-secondary {
     background: transparent;
     color: #1e3a8a;
     padding: 14px 28px;
@@ -258,85 +258,85 @@ body {{
     display: inline-block;
     border: 2px solid #60a5fa;
     transition: all 0.3s ease;
-}}
+}
 
-.hero-impact-btn-secondary:hover {{
+.hero-impact-btn-secondary:hover {
     border-color: #60a5fa;
     color: #60a5fa;
     transform: translateY(-2px);
-}}
+}
 
-@media (max-width: 768px) {{
-    .hero-impact {{
+@media (max-width: 768px) {
+    .hero-impact {
         padding: 40px 5% 35px;
-    }}
+    }
     
-    .hero-impact-title {{
+    .hero-impact-title {
         font-size: 28px;
-    }}
+    }
     
-    .hero-impact-subtitle {{
+    .hero-impact-subtitle {
         font-size: 26px;
-    }}
+    }
     
-    .hero-impact-text {{
+    .hero-impact-text {
         font-size: 15px;
-    }}
+    }
     
     .hero-impact-btn-primary,
-    .hero-impact-btn-secondary {{
+    .hero-impact-btn-secondary {
         font-size: 15px;
         padding: 12px 22px;
-    }}
-}}
+    }
+}
 
 /* =========================
    HERO
 ========================= */
-.hero {{
+.hero {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 40px;
     padding: 40px 5%;
     align-items: center;
     width: 100%;
-}}
+}
 
-.hero-content {{
+.hero-content {
     max-width: 600px;
-}}
+}
 
-.hero h1 {{
+.hero h1 {
     font-size: 38px;
     line-height: 1.15;
     margin: 0 0 18px 0;
-}}
+}
 
-.hero p {{
+.hero p {
     font-size: 16px;
     color: #555;
     margin: 0 0 22px 0;
-}}
+}
 
-.hero-image {{
+.hero-image {
     text-align: center;
-}}
+}
 
-.hero-image img {{
+.hero-image img {
     max-width: 100%;
     width: auto;
     height: auto;
     max-height: 400px;
-}}
+}
 
-.hero-actions {{
+.hero-actions {
     display: flex;
     align-items: center;
     gap: 18px;
     flex-wrap: wrap;
-}}
+}
 
-.btn-primary {{
+.btn-primary {
     background: #f4b400;
     color: #000;
     padding: 12px 22px;
@@ -347,13 +347,13 @@ body {{
     display: inline-block;
     border: none;
     white-space: nowrap;
-}}
+}
 
-.btn-primary:hover {{
+.btn-primary:hover {
     background: #e5a500;
-}}
+}
 
-.btn-secondary {{
+.btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -362,47 +362,47 @@ body {{
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
-}}
+}
 
 /* =========================
    NUEVO: HERO CHAT DEMO
    (solo agrega, no rompe)
 ========================= */
-.hero-chat {{
+.hero-chat {
     background: #ffffff;
     border-radius: 24px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.06);
-}}
+}
 
-.chat-topbar {{
+.chat-topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
     background: linear-gradient(180deg, #ffffff, #f6f7fb);
     border-bottom: 1px solid rgba(0,0,0,0.06);
-}}
+}
 
-.chat-brand {{
+.chat-brand {
     display: flex;
     align-items: center;
     gap: 10px;
     font-weight: 900;
     font-size: 13px;
     color: #111;
-}}
+}
 
-.dot {{
+.dot {
     width: 10px;
     height: 10px;
     border-radius: 999px;
     background: #f4b400;
     box-shadow: 0 0 0 4px rgba(244,180,0,0.18);
-}}
+}
 
-.chat-pill {{
+.chat-pill {
     font-size: 12px;
     font-weight: 800;
     color: #7a5a00;
@@ -411,56 +411,56 @@ body {{
     padding: 6px 10px;
     border-radius: 999px;
     white-space: nowrap;
-}}
+}
 
-.chat-body {{
+.chat-body {
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     min-height: 260px;
-}}
+}
 
-.bubble {{
+.bubble {
     max-width: 88%;
     padding: 10px 12px;
     border-radius: 14px;
     font-size: 13px;
     line-height: 1.35;
     box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-}}
+}
 
-.bubble.user {{
+.bubble.user {
     align-self: flex-end;
     background: #111;
     color: #fff;
     border-bottom-right-radius: 6px;
-}}
+}
 
-.bubble.bot {{
+.bubble.bot {
     align-self: flex-start;
     background: #ffffff;
     color: #222;
     border: 1px solid rgba(0,0,0,0.06);
     border-bottom-left-radius: 6px;
-}}
+}
 
-.chat-meta {{
+.chat-meta {
     margin-top: 4px;
     font-size: 11px;
     color: #888;
-}}
+}
 
-.chat-input {{
+.chat-input {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 14px 16px;
     border-top: 1px solid rgba(0,0,0,0.06);
     background: #fff;
-}}
+}
 
-.fake-input {{
+.fake-input {
     flex: 1;
     background: #f6f7fb;
     border: 1px solid rgba(0,0,0,0.06);
@@ -471,29 +471,29 @@ body {{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}}
+}
 
-.send-btn {{
+.send-btn {
     background: #f4b400;
     border: none;
     padding: 10px 14px;
     border-radius: 14px;
     font-weight: 900;
     cursor: pointer;
-}}
+}
 
-.send-btn:hover {{
+.send-btn:hover {
     background: #e5a500;
-}}
+}
 
-.trust-row {{
+.trust-row {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 14px;
-}}
+}
 
-.trust-pill {{
+.trust-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -503,28 +503,28 @@ body {{
     font-size: 13px;
     font-weight: 700;
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}}
+}
 
 /* =========================
    NUEVO: CÓMO FUNCIONA (3 pasos)
 ========================= */
-.steps {{
+.steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
-}}
+}
 
-.step {{
+.step {
     background: #fff;
     border-radius: 22px;
     padding: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     text-align: left;
-}}
+}
 
-.step-num {{
+.step-num {
     width: 34px;
     height: 34px;
     border-radius: 12px;
@@ -536,21 +536,21 @@ body {{
     font-weight: 900;
     color: #7a5a00;
     margin-bottom: 12px;
-}}
+}
 
-.step h3 {{
+.step h3 {
     font-size: 16px;
     margin-bottom: 8px;
-}}
+}
 
-.step p {{
+.step p {
     font-size: 13px;
     color: #666;
     line-height: 1.45;
-}}
+}
 
 /* NUEVOS STEPS SIMPLES */
-.steps-simple {{
+.steps-simple {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -558,9 +558,9 @@ body {{
     max-width: 1200px;
     margin: 40px auto;
     flex-wrap: wrap;
-}}
+}
 
-.step-simple {{
+.step-simple {
     background: #fff;
     border-radius: 24px;
     padding: 40px 30px;
@@ -569,53 +569,53 @@ body {{
     flex: 1;
     min-width: 250px;
     max-width: 300px;
-}}
+}
 
-.step-icon {{
+.step-icon {
     font-size: 64px;
     margin-bottom: 20px;
-}}
+}
 
-.step-simple h3 {{
+.step-simple h3 {
     font-size: 24px;
     font-weight: 800;
     margin-bottom: 12px;
     color: #000;
-}}
+}
 
-.step-simple p {{
+.step-simple p {
     font-size: 14px;
     color: #666;
     line-height: 1.6;
-}}
+}
 
-.step-arrow {{
+.step-arrow {
     font-size: 32px;
     color: #f4b400;
     font-weight: 800;
-}}
+}
 
-@media (max-width: 768px) {{
-    .step-arrow {{
+@media (max-width: 768px) {
+    .step-arrow {
         display: none;
-    }}
+    }
     
-    .steps-simple {{
+    .steps-simple {
         flex-direction: column;
         gap: 20px;
-    }}
-}}
+    }
+}
 
 /* =========================
    CATEGORÍAS
 ========================= */
-.cats-block {{
+.cats-block {
     text-align: center;
     padding: 20px 5%;
     width: 100%;
-}}
+}
 
-.cats {{
+.cats {
     display: inline-flex;
     gap: 12px;
     background: #fff;
@@ -623,51 +623,51 @@ body {{
     border-radius: 999px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     flex-wrap: wrap;
-}}
+}
 
-.cat {{
+.cat {
     padding: 6px 12px;
     border-radius: 999px;
     font-size: 14px;
     font-weight: 600;
     background: #f6f7fb;
     white-space: nowrap;
-}}
+}
 
 /* =========================
    SECTION
 ========================= */
-.section {{
+.section {
     padding: 20px 5% 40px;
     width: 100%;
-}}
+}
 
-.section h2 {{
+.section h2 {
     text-align: center;
     font-size: 32px;
     margin: 0 0 10px 0;
-}}
+}
 
-.subtitle {{
+.subtitle {
     text-align: center;
     font-size: 14px;
     color: #777;
     margin: 0 0 30px 0;
-}}
+}
 
 /* =========================
    CARDS
 ========================= */
-.cards {{
+.cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 22px;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-}}
+}
 
-.card {{
+.card {
     background: #fff;
     border-radius: 22px;
     padding: 20px;
@@ -677,30 +677,30 @@ body {{
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-}}
+}
 
-.card img {{
+.card img {
     width: 100%;
     max-width: 200px;
     height: 130px;
     object-fit: contain;
     margin: 0 auto;
     display: block;
-}}
+}
 
-.card h3 {{
+.card h3 {
     margin: 16px 0 10px 0;
     font-size: 18px;
-}}
+}
 
-.card p {{
+.card p {
     font-size: 13px;
     color: #666;
     margin: 0 0 14px 0;
     flex-grow: 1;
-}}
+}
 
-.card button {{
+.card button {
     background: #f4b400;
     border: none;
     padding: 10px 18px;
@@ -708,25 +708,25 @@ body {{
     font-weight: 700;
     cursor: pointer;
     margin-top: auto;
-}}
+}
 
-.card button:hover {{
+.card button:hover {
     background: #e5a500;
-}}
+}
 
 /* =========================
    PRECIOS
 ========================= */
-.pricing {{
+.pricing {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
     max-width: 1200px;
     margin: 20px auto 0 auto;
     align-items: stretch;
-}}
+}
 
-.plan {{
+.plan {
     background: #ffffff;
     border-radius: 22px;
     padding: 24px;
@@ -735,13 +735,13 @@ body {{
     flex-direction: column;
     height: 100%;
     position: relative;
-}}
+}
 
-.plan.pro {{
+.plan.pro {
     border: 2px solid rgba(244,180,0,0.9);
-}}
+}
 
-.badge {{
+.badge {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -752,115 +752,115 @@ body {{
     font-size: 12px;
     padding: 6px 12px;
     border-radius: 999px;
-}}
+}
 
-.plan-name {{
+.plan-name {
     font-size: 18px;
     font-weight: 800;
-}}
+}
 
-.plan-desc {{
+.plan-desc {
     font-size: 13px;
     color: #777;
     margin-top: 6px;
     min-height: 34px;
-}}
+}
 
-.plan-price {{
+.plan-price {
     margin-top: 16px;
     font-size: 34px;
     font-weight: 900;
     letter-spacing: -0.02em;
     min-height: 44px;
-}}
+}
 
-.plan-price span {{
+.plan-price span {
     font-size: 13px;
     font-weight: 700;
     color: #777;
     margin-left: 6px;
-}}
+}
 
-.plan-note {{
+.plan-note {
     font-size: 13px;
     color: #777;
     margin-top: 6px;
     min-height: 18px;
-}}
+}
 
-.plan-list {{
+.plan-list {
     list-style: none;
     padding: 0;
     margin: 18px 0 0 0;
     flex: 1;
-}}
+}
 
-.plan-list li {{
+.plan-list li {
     display: flex;
     gap: 10px;
     padding: 9px 0;
     font-size: 13px;
     color: #555;
     border-bottom: 1px solid #f2f2f2;
-}}
+}
 
-.plan-btn {{
+.plan-btn {
     margin-top: auto;
     width: 100%;
     text-align: center;
-}}
+}
 
 /* =========================
    TESTIMONIOS
 ========================= */
-.testimonios {{
+.testimonios {
     padding: 60px 5% 40px;
     background: #fff;
-}}
+}
 
-.testimonios h2 {{
+.testimonios h2 {
     font-size: 36px;
     text-align: center;
     margin: 0 0 50px 0;
-}}
+}
 
-.testimonios-grid {{
+.testimonios-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-}}
+}
 
-.testimonio-card {{
+.testimonio-card {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}}
+}
 
-.testimonio-card:hover {{
+.testimonio-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-}}
+}
 
-.testimonio-quote {{
+.testimonio-quote {
     font-size: 16px;
     line-height: 1.6;
     color: #333;
     margin: 0 0 20px 0;
     font-style: italic;
-}}
+}
 
-.testimonio-author {{
+.testimonio-author {
     display: flex;
     align-items: center;
     gap: 12px;
-}}
+}
 
-.testimonio-avatar {{
+.testimonio-avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -871,22 +871,22 @@ body {{
     font-weight: 800;
     color: #000;
     font-size: 18px;
-}}
+}
 
-.testimonio-info h4 {{
+.testimonio-info h4 {
     margin: 0 0 4px 0;
     font-size: 15px;
     font-weight: 700;
     color: #000;
-}}
+}
 
-.testimonio-info p {{
+.testimonio-info p {
     margin: 0;
     font-size: 13px;
     color: #666;
-}}
+}
 
-.testimonio-stat {{
+.testimonio-stat {
     display: inline-block;
     background: rgba(244, 180, 0, 0.1);
     color: #c29400;
@@ -895,18 +895,18 @@ body {{
     font-size: 13px;
     font-weight: 700;
     margin-top: 15px;
-}}
+}
 
-@media (max-width: 768px) {{
-    .testimonios-grid {{
+@media (max-width: 768px) {
+    .testimonios-grid {
         grid-template-columns: 1fr;
-    }}
-}}
+    }
+}
 
 /* =========================
    CTA FINAL
 ========================= */
-.cta {{
+.cta {
     margin: 40px 5% 20px;
     background: linear-gradient(180deg, #eef2f7, #ffffff);
     border-radius: 40px;
@@ -915,20 +915,20 @@ body {{
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-}}
+}
 
-.cta h2 {{
+.cta h2 {
     font-size: 32px;
     margin: 0 0 10px 0;
-}}
+}
 
-.cta p {{
+.cta p {
     font-size: 14px;
     color: #666;
     margin: 0 0 20px 0;
-}}
+}
 
-.cta-form {{
+.cta-form {
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -936,9 +936,9 @@ body {{
     max-width: 600px;
     margin: 0 auto 30px;
     flex-wrap: wrap;
-}}
+}
 
-.cta-form input {{
+.cta-form input {
     flex: 1;
     min-width: 200px;
     padding: 14px 18px;
@@ -946,14 +946,14 @@ body {{
     border: 2px solid #e0e0e0;
     font-size: 15px;
     font-family: inherit;
-}}
+}
 
-.cta-form input:focus {{
+.cta-form input:focus {
     outline: none;
     border-color: #f4b400;
-}}
+}
 
-.cta-form button {{
+.cta-form button {
     background: #f4b400;
     padding: 14px 28px;
     border-radius: 12px;
@@ -962,37 +962,37 @@ body {{
     cursor: pointer;
     font-size: 15px;
     white-space: nowrap;
-}}
+}
 
-.cta-form button:hover {{
+.cta-form button:hover {
     background: #e5a500;
-}}
+}
 
-.cta button {{
+.cta button {
     background: #f4b400;
     padding: 14px 28px;
     border-radius: 16px;
     font-weight: 800;
     border: none;
     cursor: pointer;
-}}
+}
 
-.cta button:hover {{
+.cta button:hover {
     background: #e5a500;
-}}
+}
 
 /* =========================
    FEATURES
 ========================= */
-.features {{
+.features {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 24px;
     flex-wrap: wrap;
-}}
+}
 
-.feature {{
+.feature {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1002,60 +1002,60 @@ body {{
     font-size: 13px;
     font-weight: 600;
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}}
+}
 
 /* =========================
    FAQ
 ========================= */
-.faq-section {{
+.faq-section {
     padding: 60px 5%;
     background: #fff;
     max-width: 1200px;
     margin: 0 auto;
-}}
+}
 
-.faq-section h2 {{
+.faq-section h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 50px;
-}}
+}
 
-.faq-grid {{
+.faq-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
-}}
+}
 
-.faq-item {{
+.faq-item {
     background: #f6f7fb;
     padding: 25px;
     border-radius: 16px;
     border-left: 4px solid #f4b400;
-}}
+}
 
-.faq-question {{
+.faq-question {
     font-size: 16px;
     font-weight: 700;
     color: #000;
     margin-bottom: 10px;
-}}
+}
 
-.faq-answer {{
+.faq-answer {
     font-size: 14px;
     color: #666;
     line-height: 1.6;
-}}
+}
 
 /* =========================
    SIVO SECTION (LIMPIA)
 ========================= */
-.sivo-section {{
+.sivo-section {
     padding: 80px 5%;
     background: white;
     text-align: center;
-}}
+}
 
-.sivo-badge-top {{
+.sivo-badge-top {
     display: inline-block;
     background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
@@ -1065,9 +1065,9 @@ body {{
     font-size: 18px;
     margin-bottom: 35px;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
-}}
+}
 
-.sivo-card-clean {{
+.sivo-card-clean {
     max-width: 1000px;
     margin: 0 auto;
     background: #fafbfc;
@@ -1078,58 +1078,58 @@ body {{
     gap: 50px;
     align-items: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}}
+}
 
-.sivo-image-side {{
+.sivo-image-side {
     display: flex;
     justify-content: center;
-}}
+}
 
-.sivo-img {{
+.sivo-img {
     width: 100%;
     max-width: 280px;
     height: auto;
     border-radius: 16px;
-}}
+}
 
-.sivo-content-side {{
+.sivo-content-side {
     text-align: left;
-}}
+}
 
-.sivo-content-side h3 {{
+.sivo-content-side h3 {
     font-size: 30px;
     font-weight: 800;
     color: #1e3a8a;
     margin: 0 0 16px 0;
-}}
+}
 
-.sivo-subtitle {{
+.sivo-subtitle {
     font-size: 16px;
     color: #64748b;
     line-height: 1.6;
     margin: 0 0 28px 0;
-}}
+}
 
-.sivo-features-list {{
+.sivo-features-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 30px;
-}}
+}
 
-.sivo-feat {{
+.sivo-feat {
     font-size: 15px;
     color: #475569;
     line-height: 1.5;
-}}
+}
 
-.sivo-actions {{
+.sivo-actions {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-}}
+}
 
-.sivo-btn-primary {{
+.sivo-btn-primary {
     background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     color: white;
     padding: 14px 28px;
@@ -1140,14 +1140,14 @@ body {{
     display: inline-block;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-}}
+}
 
-.sivo-btn-primary:hover {{
+.sivo-btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
-}}
+}
 
-.sivo-btn-secondary {{
+.sivo-btn-secondary {
     background: white;
     color: #3b82f6;
     padding: 14px 28px;
@@ -1158,69 +1158,69 @@ body {{
     display: inline-block;
     transition: all 0.3s ease;
     border: 2px solid #e0f2fe;
-}}
+}
 
-.sivo-btn-secondary:hover {{
+.sivo-btn-secondary:hover {
     border-color: #60a5fa;
     background: #f0f9ff;
-}}
+}
 
-@media (max-width: 968px) {{
-    .sivo-card-clean {{
+@media (max-width: 968px) {
+    .sivo-card-clean {
         grid-template-columns: 1fr;
         padding: 40px 30px;
         gap: 35px;
-    }}
+    }
     
-    .sivo-content-side {{
+    .sivo-content-side {
         text-align: center;
-    }}
+    }
     
-    .sivo-content-side h3 {{
+    .sivo-content-side h3 {
         font-size: 26px;
-    }}
+    }
     
-    .sivo-features-list {{
+    .sivo-features-list {
         text-align: left;
-    }}
+    }
     
-    .sivo-actions {{
+    .sivo-actions {
         justify-content: center;
-    }}
-}}
+    }
+}
 
-@media (max-width: 600px) {{
-    .sivo-section {{
+@media (max-width: 600px) {
+    .sivo-section {
         padding: 60px 5%;
-    }}
+    }
     
-    .sivo-card-clean {{
+    .sivo-card-clean {
         padding: 30px 20px;
-    }}
+    }
     
-    .sivo-content-side h3 {{
+    .sivo-content-side h3 {
         font-size: 22px;
-    }}
+    }
     
-    .sivo-subtitle {{
+    .sivo-subtitle {
         font-size: 15px;
-    }}
+    }
     
-    .sivo-feat {{
+    .sivo-feat {
         font-size: 14px;
-    }}
+    }
     
-    .sivo-actions {{
+    .sivo-actions {
         flex-direction: column;
         width: 100%;
-    }}
+    }
     
     .sivo-btn-primary,
-    .sivo-btn-secondary {{
+    .sivo-btn-secondary {
         width: 100%;
         text-align: center;
-    }}
-}}
+    }
+}
 
 /* =========================
    INTEGRACIONES
@@ -1229,54 +1229,54 @@ body {{
 /* =========================
    INTEGRACIONES
 ========================= */
-.integrations-section {{
+.integrations-section {
     padding: 60px 5%;
     background: linear-gradient(180deg, #f6f7fb, #fff);
     text-align: center;
-}}
+}
 
-.integrations-section h2 {{
+.integrations-section h2 {
     font-size: 36px;
     margin-bottom: 15px;
-}}
+}
 
-.integrations-subtitle {{
+.integrations-subtitle {
     font-size: 16px;
     color: #666;
     margin-bottom: 40px;
-}}
+}
 
-.integrations-grid {{
+.integrations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 30px;
     max-width: 900px;
     margin: 0 auto;
-}}
+}
 
-.integration-logo {{
+.integration-logo {
     background: #fff;
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     transition: transform 0.3s ease;
-}}
+}
 
-.integration-logo:hover {{
+.integration-logo:hover {
     transform: translateY(-5px);
-}}
+}
 
-.integration-logo p {{
+.integration-logo p {
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
     color: #333;
-}}
+}
 
 /* =========================
    FOOTER
 ========================= */
-.footer {{
+.footer {
     border-top: 1px solid #eee;
     padding: 20px 5%;
     font-size: 13px;
@@ -1286,44 +1286,44 @@ body {{
     align-items: center;
     width: 100%;
     margin-top: 20px;
-}}
+}
 
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 1100px) {{
-    .hero {{
+@media (max-width: 1100px) {
+    .hero {
         grid-template-columns: 1fr;
         text-align: center;
-    }}
+    }
 
-    .hero-content {{
+    .hero-content {
         max-width: 100%;
-    }}
+    }
 
-    .hero-actions {{
+    .hero-actions {
         justify-content: center;
-    }}
+    }
 
-    .trust-row {{
+    .trust-row {
         justify-content: center;
-    }}
+    }
 
-    .steps {{
+    .steps {
         grid-template-columns: 1fr;
-    }}
+    }
 
-    .hero-chat {{
+    .hero-chat {
         text-align: left;
-    }}
-}}
+    }
+}
 
-@media (max-width: 768px) {{
+@media (max-width: 768px) {
     /* FORZAR FONDO GRIS EN MOBILE - TODO EXCEPTO HERO-IMPACT */
-    html, body {{
+    html, body {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
-    }}
+    }
     
     .page-container,
     .stApp,
@@ -1345,29 +1345,29 @@ body {{
     .cat,
     .chat-body,
     main,
-    section {{
+    section {
         background: #f6f7fb !important;
         background-color: #f6f7fb !important;
-    }}
+    }
     
     /* FORZAR COLORES DE TEXTO OSCUROS PARA QUE SE LEAN */
-    h1, h2, h3, h4, h5, h6, p, span, div, a {{
+    h1, h2, h3, h4, h5, h6, p, span, div, a {
         color: #333 !important;
-    }}
+    }
     
-    .cta h2 {{
+    .cta h2 {
         color: #000 !important;
         font-weight: 800 !important;
-    }}
+    }
     
-    .cta p {{
+    .cta p {
         color: #666 !important;
-    }}
+    }
     
     .footer,
-    .footer a {{
+    .footer a {
         color: #666 !important;
-    }}
+    }
     
     /* BOTONES CON MENOS BORDER-RADIUS Y COLOR AMARILLO EN MOBILE */
     button,
@@ -1382,44 +1382,44 @@ body {{
     .stButton button,
     [class*="button"],
     [class*="Button"],
-    [class*="btn"]:not(.btn-secondary) {{
+    [class*="btn"]:not(.btn-secondary) {
         border-radius: 8px !important;
         background: #f4b400 !important;
         background-color: #f4b400 !important;
         color: #000 !important;
         border: none !important;
-    }}
+    }
     
     /* Link "Explorar asistentes" más visible en mobile */
     .btn-secondary,
     a.btn-secondary,
-    .hero-actions .btn-secondary {{
+    .hero-actions .btn-secondary {
         background: transparent !important;
         background-color: transparent !important;
         color: #000 !important;
         font-weight: 700 !important;
         border: none !important;
         text-decoration: underline !important;
-    }}
+    }
     
     /* Elementos con fondos específicos que NO deben cambiar */
-    .hero-impact {{
+    .hero-impact {
         background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%) !important;
-    }}
+    }
     
     .hero-impact h1,
     .hero-impact p,
-    .hero-impact span {{
+    .hero-impact span {
         color: #fff !important;
-    }}
+    }
     
-    .cta {{
+    .cta {
         background: linear-gradient(180deg, #eef2f7, #ffffff) !important;
-    }}
+    }
     
-    .testimonio-card {{
+    .testimonio-card {
         background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
-    }}
+    }
     
     .hero-chat,
     .chat-topbar,
@@ -1430,82 +1430,82 @@ body {{
     .hero-impact-btn-primary,
     .hero-impact-btn-secondary,
     .bubble,
-    .demo-bubble {{
+    .demo-bubble {
         background: revert !important;
         color: revert !important;
-    }}
+    }
     
-    button, .btn-primary {{
+    button, .btn-primary {
         color: #000 !important;
-    }}
+    }
     
     /* BURBUJAS DEL CHAT CON COLORES CORRECTOS EN MOBILE */
-    .bubble.user {{
+    .bubble.user {
         background: #111 !important;
         background-color: #111 !important;
         color: #fff !important;
-    }}
+    }
     
-    .bubble.bot {{
+    .bubble.bot {
         background: #ffffff !important;
         background-color: #ffffff !important;
         color: #222 !important;
         border: 1px solid rgba(0,0,0,0.06) !important;
-    }}
+    }
     
-    .header {{
+    .header {
         flex-direction: column;
         gap: 15px;
         padding: 16px 4%;
         background: #f6f7fb !important;
-    }}
+    }
 
-    .nav {{
+    .nav {
         gap: 16px;
         font-size: 14px;
-    }}
+    }
 
-    .hero {{
+    .hero {
         padding: 20px 4%;
-    }}
+    }
 
-    .hero h1 {{
+    .hero h1 {
         font-size: 28px;
-    }}
+    }
 
-    .section {{
+    .section {
         padding: 20px 4%;
-    }}
+    }
 
-    .section h2 {{
+    .section h2 {
         font-size: 26px;
-    }}
+    }
 
-    .cards {{
+    .cards {
         grid-template-columns: 1fr;
-    }}
+    }
 
-    .cta {{
+    .cta {
         margin: 30px 4% 20px;
         padding: 30px 20px;
-    }}
+    }
 
-    .footer {{
+    .footer {
         flex-direction: column;
         gap: 10px;
         text-align: center;
         padding: 20px 4%;
-    }}
+    }
 
-    .pricing {{
+    .pricing {
         grid-template-columns: 1fr;
-    }}
-}}
+    }
+}
 
 /* =========================
    CHATBOT FLOTANTE
 ========================= */
-#chatbot-button {{
+#chatbot-button {
     position: fixed !important;
     bottom: 20px !important;
     right: 20px !important;
@@ -1521,25 +1521,25 @@ body {{
     justify-content: center;
     z-index: 999999 !important;
     transition: all 0.3s ease;
-}}
+}
 
-#chatbot-button:hover {{
+#chatbot-button:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 25px rgba(244, 180, 0, 0.6);
-}}
+}
 
-#chatbot-button svg {{
+#chatbot-button svg {
     width: 30px !important;
     height: 30px !important;
     fill: white !important;
     display: block !important;
-}}
+}
 
-#chatbot-button svg path {{
+#chatbot-button svg path {
     fill: white !important;
-}}
+}
 
-#chatbot-container {{
+#chatbot-container {
     position: fixed !important;
     bottom: 100px !important;
     right: 20px !important;
@@ -1553,39 +1553,39 @@ body {{
     z-index: 999998 !important;
     overflow: hidden;
     animation: slideIn 0.3s ease;
-}}
+}
 
-#chatbot-container.open {{
+#chatbot-container.open {
     display: flex !important;
-}}
+}
 
-@keyframes slideIn {{
-    from {{
+@keyframes slideIn {
+    from {
         opacity: 0;
         transform: translateY(20px);
-    }}
-    to {{
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
-    }}
-}}
+    }
+}
 
-.chat-header {{
+.chat-header {
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     color: white;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}}
+}
 
-.chat-header-info {{
+.chat-header-info {
     display: flex;
     align-items: center;
     gap: 12px;
-}}
+}
 
-.chat-avatar {{
+.chat-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -1594,20 +1594,20 @@ body {{
     align-items: center;
     justify-content: center;
     font-size: 20px;
-}}
+}
 
-.chat-header-text h3 {{
+.chat-header-text h3 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 2px;
-}}
+}
 
-.chat-header-text p {{
+.chat-header-text p {
     font-size: 12px;
     opacity: 0.9;
-}}
+}
 
-.close-button {{
+.close-button {
     background: none;
     border: none;
     color: white;
@@ -1621,34 +1621,34 @@ body {{
     justify-content: center;
     border-radius: 50%;
     transition: background 0.2s;
-}}
+}
 
-.close-button:hover {{
+.close-button:hover {
     background: rgba(255,255,255,0.2);
-}}
+}
 
-.chat-messages {{
+.chat-messages {
     flex: 1;
     overflow-y: auto;
     padding: 20px;
     background: #f8f9fa;
-}}
+}
 
-.message {{
+.message {
     margin-bottom: 16px;
     display: flex;
     gap: 10px;
-}}
+}
 
-.message.bot {{
+.message.bot {
     flex-direction: row;
-}}
+}
 
-.message.user {{
+.message.user {
     flex-direction: row-reverse;
-}}
+}
 
-.message-avatar {{
+.message-avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -1657,38 +1657,38 @@ body {{
     align-items: center;
     justify-content: center;
     font-size: 16px;
-}}
+}
 
-.message.bot .message-avatar {{
+.message.bot .message-avatar {
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     color: white;
-}}
+}
 
-.message.user .message-avatar {{
+.message.user .message-avatar {
     background: #e9ecef;
-}}
+}
 
-.message-content {{
+.message-content {
     max-width: 70%;
     padding: 12px 16px;
     border-radius: 18px;
     font-size: 14px;
     line-height: 1.5;
-}}
+}
 
-.message.bot .message-content {{
+.message.bot .message-content {
     background: white;
     color: #333;
     border-bottom-left-radius: 4px;
-}}
+}
 
-.message.user .message-content {{
+.message.user .message-content {
     background: linear-gradient(135deg, #f4b400 0%, #ff6b00 100%);
     color: white;
     border-bottom-right-radius: 4px;
-}}
+}
 
-.typing-indicator {{
+.typing-indicator {
     display: flex;
     gap: 4px;
     padding: 12px 16px;
@@ -1696,42 +1696,42 @@ body {{
     border-radius: 18px;
     border-bottom-left-radius: 4px;
     width: fit-content;
-}}
+}
 
-.typing-dot {{
+.typing-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #f4b400;
     animation: typing 1.4s infinite;
-}}
+}
 
-.typing-dot:nth-child(2) {{
+.typing-dot:nth-child(2) {
     animation-delay: 0.2s;
-}}
+}
 
-.typing-dot:nth-child(3) {{
+.typing-dot:nth-child(3) {
     animation-delay: 0.4s;
-}}
+}
 
-@keyframes typing {{
-    0%, 60%, 100% {{
+@keyframes typing {
+    0%, 60%, 100% {
         transform: translateY(0);
-    }}
-    30% {{
+    }
+    30% {
         transform: translateY(-10px);
-    }}
-}}
+    }
+}
 
-.chat-input {{
+.chat-input {
     padding: 20px;
     background: white;
     border-top: 1px solid #e9ecef;
     display: flex;
     gap: 10px;
-}}
+}
 
-.chat-input input {{
+.chat-input input {
     flex: 1;
     padding: 12px 16px;
     border: 1px solid #e9ecef;
@@ -1739,13 +1739,13 @@ body {{
     font-size: 14px;
     outline: none;
     transition: border-color 0.2s;
-}}
+}
 
-.chat-input input:focus {{
+.chat-input input:focus {
     border-color: #f4b400;
-}}
+}
 
-.send-button {{
+.send-button {
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -1757,47 +1757,47 @@ body {{
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-}}
+}
 
-.send-button:hover {{
+.send-button:hover {
     transform: scale(1.05);
-}}
+}
 
-.send-button:disabled {{
+.send-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-}}
+}
 
-.send-button svg {{
+.send-button svg {
     width: 20px;
     height: 20px;
     fill: white;
-}}
+}
 
-@media (max-width: 768px) {{
-    #chatbot-container {{
+@media (max-width: 768px) {
+    #chatbot-container {
         width: calc(100vw - 40px);
         height: calc(100vh - 140px);
         bottom: 90px;
-    }}
-}}
+    }
+}
 
-.chat-messages::-webkit-scrollbar {{
+.chat-messages::-webkit-scrollbar {
     width: 6px;
-}}
+}
 
-.chat-messages::-webkit-scrollbar-track {{
+.chat-messages::-webkit-scrollbar-track {
     background: #f1f1f1;
-}}
+}
 
-.chat-messages::-webkit-scrollbar-thumb {{
+.chat-messages::-webkit-scrollbar-thumb {
     background: #f4b400;
     border-radius: 3px;
-}}
+}
 
-.chat-messages::-webkit-scrollbar-thumb:hover {{
+.chat-messages::-webkit-scrollbar-thumb:hover {
     background: #ff6b00;
-}}
+}
 </style>
 </head>
 <body>
@@ -1807,7 +1807,7 @@ body {{
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="{BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img">
+            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/LogoMercadobot.png" alt="MercadoBot" class="logo-img">
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
@@ -1967,28 +1967,28 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
         <div class="cards">
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
                 <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Respuestas automáticas sobre productos y pedidos.</p>
                 <a href="?vista=demo&asistente=ecommerce" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>Asistente de Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
                 <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedeviaje.png" alt="Viajes">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Ver asistente</button></a>
@@ -2228,49 +2228,49 @@ HTML_ASISTENTES = f"""{HTML_BASE}
         <div class="cards">
 
             <div class="card">
-                <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
                 <p>Recetas, consejos y conversiones.</p>
                 <a href="?vista=demo&asistente=cocina" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Soporte para productos y pedidos.</p>
                 <a href="?vista=demo&asistente=ecommerce" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
                 <p>Cotizaciones y análisis financiero.</p>
                 <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentestock.png" alt="Stock">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Stock">
                 <h3>Asistente de Stock</h3>
                 <p>Control de inventario y alertas.</p>
                 <a href="https://demostockuy.streamlit.app/" target="_blank" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteinmobiliaria.png" alt="Inmobiliaria">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteinmobiliaria.png" alt="Inmobiliaria">
                 <h3>Asistente Inmobiliario</h3>
                 <p>Consultas de propiedades y agendado.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistenteagendas.png" alt="Agenda">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteagendas.png" alt="Agenda">
                 <h3>Asistente de Turnos</h3>
                 <p>Reserva de turnos y recordatorios.</p>
                 <a href="https://demoturnos.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedental.png" alt="Dental">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedental.png" alt="Dental">
                 <h3>Asistente Dental</h3>
                 <p>Turnos y precios orientativos.</p>
                 <button>Ver asistente</button>
@@ -2278,28 +2278,28 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
                 <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>Asistente de Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
                 <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentedeviaje.png" alt="Viajes">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Ver asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="{BASE_URL}Asistentetelefonico.png" alt="Telefónico">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="Telefónico">
                 <h3>Asistente Telefónico</h3>
                 <p>Atiende llamadas reales con IA conversacional.</p>
                 <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
@@ -2549,7 +2549,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentefutbol.png" alt="Fútbol">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefutbol.png" alt="Fútbol">
         <h1>Asistente de Fútbol</h1>
         <p>Demo interactivo con 20 conversaciones de ejemplo</p>
     </div>
@@ -2955,7 +2955,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentecocina.png" alt="Cocina">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Cocina">
         <h1>Asistente de Cocina</h1>
         <p>Demo interactivo - Restaurante</p>
     </div>
@@ -3340,7 +3340,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistenteecommerce.png" alt="Ecommerce">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
         <h1>Asistente de Ecommerce</h1>
         <p>Demo interactivo - Tienda Online</p>
     </div>
@@ -3793,7 +3793,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentefinanzas.png" alt="Finanzas">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Finanzas">
         <h1>Asistente de Finanzas</h1>
         <p>Demo interactivo - Asesoramiento Financiero</p>
     </div>
@@ -4334,7 +4334,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
         <h1>Asistente de Tienda de Ropa</h1>
         <p>Demo interactivo - Tienda Online</p>
     </div>
@@ -4683,7 +4683,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentedepeluqueria.png" alt="Peluquería">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
         <h1>Asistente de Peluquería</h1>
         <p>Demo interactivo - Salón de Belleza</p>
     </div>
@@ -5023,7 +5023,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="{BASE_URL}Asistentedeviaje.png" alt="Viajes">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
         <h1>Asistente de Viajes</h1>
         <p>Demo interactivo - Agencia de Turismo</p>
     </div>
