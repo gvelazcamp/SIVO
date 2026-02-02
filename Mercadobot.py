@@ -131,7 +131,7 @@ body {
 }
 
 .logo-img {
-    height: 80px;
+    height: 40px;
     width: auto;
 }
 .logo span { color: #60a5fa; }
