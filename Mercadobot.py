@@ -1966,14 +1966,14 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
-                <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Respuestas automáticas sobre productos y pedidos.</p>
-                <a href="?vista=demo&asistente=ecommerce" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
@@ -1987,7 +1987,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
-                <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
         </div>
     </div>
@@ -2227,14 +2227,14 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
                 <p>Recetas, consejos y conversiones.</p>
-                <a href="?vista=demo&asistente=cocina" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demorestaurante.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Soporte para productos y pedidos.</p>
-                <a href="?vista=demo&asistente=ecommerce" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
@@ -2277,7 +2277,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
-                <a href="?vista=demo&asistente=ropa" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
@@ -2291,7 +2291,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
-                <a href="?vista=demo&asistente=viajes" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
