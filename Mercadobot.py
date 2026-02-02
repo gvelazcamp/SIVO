@@ -166,7 +166,6 @@ body {
 
 /* Responsive para móviles - Logo centrado */
 @media (max-width: 768px) {
-
     .header {
         flex-direction: column;
         text-align: center;
@@ -1320,82 +1319,6 @@ body {
         text-align: left;
     }
 }
-}
-
-/* ========================================
-   🔥 AJUSTE AUTOMÁTICO DE ALTURA PARA MÓVILES 🔥
-   Reduce el espacio vacío superior para que
-   el contenido (videos, testimonios) suba MUCHO MÁS
-   ⚠️ SOLO SE APLICA EN CELULAR, PC QUEDA IGUAL ⚠️
-======================================== */
-@media (max-width: 768px) {
-    /* ELIMINAR CASI TODO el padding superior en móvil */
-    .section {
-        padding: 0px 5% 20px !important;
-    }
-    
-    /* Hero PEGADO arriba */
-    .hero {
-        padding: 5px 5% 20px !important;
-    }
-    
-    /* Hero Impact PEGADO arriba */
-    .hero-impact {
-        padding: 10px 5% 20px !important;
-    }
-    
-    /* Testimonios PEGADO arriba */
-    .testimonios {
-        padding: 5px 5% 20px !important;
-    }
-    
-    /* FAQ PEGADO arriba */
-    .faq-section {
-        padding: 5px 5% 20px !important;
-    }
-    
-    /* SIVO section PEGADO arriba */
-    .sivo-section {
-        padding: 10px 5% 20px !important;
-    }
-    
-    /* CTA PEGADO arriba */
-    .cta {
-        margin: 10px 5% 10px !important;
-        padding: 20px !important;
-    }
-    
-    /* ELIMINAR todos los márgenes superiores de títulos */
-    .section h2,
-    .testimonios h2,
-    .faq-section h2,
-    .sivo-section h2,
-    h1, h2, h3 {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* ELIMINAR márgenes inferiores del header para que pegue con el contenido */
-    .header {
-        margin-bottom: 0 !important;
-        padding-bottom: 10px !important;
-    }
-    
-    /* Logo más pequeño en móvil para ahorrar espacio */
-    .logo-img {
-        height: 80px !important;
-        max-height: 80px !important;
-    }
-    
-    /* ELIMINAR espacios entre elementos */
-    .hero-impact-content,
-    .hero-content,
-    .sivo-card-clean {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-}
-
 
 @media (max-width: 768px) {
     /* FORZAR FONDO GRIS EN MOBILE - TODO EXCEPTO HERO-IMPACT */
@@ -5464,75 +5387,11 @@ else:
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; }    /* Swap: desktop vs mobile */
-    #demo-conversaciones-mobile { display: none; }
-    #demo-conversaciones-desktop { display: block; }
-
-    .mobile-demo-video {
-        width: 100%;
-        max-width: 520px;
-        height: auto;
-        border-radius: 0;
-        background: transparent;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto;
-    }
-
-
-    .mobile-demo-title {
-        font-family: 'Inter', sans-serif;
-        text-align: center;
-        padding: 16px 16px 10px;
-        margin: 0;
-        background: transparent;
-    }
-
-    .mobile-demo-title h2 {
-        font-weight: 900;
-        font-size: 26px;
-        line-height: 1.12;
-        color: #111827;
-        margin: 0;
-    }
-
-    .mobile-demo-title p {
-        margin: 8px 0 0;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 1.35;
-        color: #6b7280;
-    }
-@media (max-width: 768px) {
-        html, body { background: #ffffff !important; }
-
-        /* En celular: ocultar demo desktop y mostrar SOLO el video (sin fondo ni padding) */
-        #demo-conversaciones-desktop { display: none !important; }
-        #demo-conversaciones-mobile { display: block !important; }
-
-        #demo-conversaciones-section {
-            padding: 0 !important;
-            margin: 0 !important;
-            background: #ffffff !important;
-            background-image: none !important;
-        }
-        #demo-conversaciones-section > div {
-            max-width: 100% !important;
-            padding: 0 !important;
-            margin: 0 auto !important;
-        }
-
-        .mobile-demo-video {
-            height: auto !important;
-            border-radius: 0 !important;
-            background: transparent !important;
-        }
-    }
-</style>
+    body { font-family: 'Inter', sans-serif; }
+    </style>
     
-    <div id="demo-conversaciones-section" style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
+    <div style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <div id="demo-conversaciones-desktop">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a; font-family: 'Inter', sans-serif;">
                     ¿Cómo responden nuestros asistentes?
@@ -5556,56 +5415,103 @@ else:
                     ⚡ Demo interactiva - Seleccioná una industria y mirá cómo responde el asistente
                 </p>
             </div>
+    
 
-            </div>
-
-            <div id="demo-conversaciones-mobile" style="text-align:center;">
-    <div class="mobile-demo-title">
-        <h2>Demo WhatsApp</h2>
-        <p>Mirá cómo responden nuestros asistentes</p>
+    <script>
+    (function(){
+      function apply(){
+        try{
+          var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
+          var isMobile = w <= 768;
+          var iframe = window.frameElement;
+          if(!iframe) return;
+          var host = iframe.closest('div[data-testid="stElementContainer"]') || iframe.parentElement;
+          if(!host) host = iframe;
+          if(isMobile){
+            host.style.display = 'none';
+            host.style.height = '0px';
+            host.style.margin = '0';
+            host.style.padding = '0';
+          } else {
+            host.style.display = '';
+            host.style.height = '';
+            host.style.margin = '';
+            host.style.padding = '';
+          }
+        }catch(e){}
+      }
+      apply();
+      try { window.parent.addEventListener('resize', apply); } catch(e) {}
+    })();
+    </script>
     </div>
-    <video class="mobile-demo-video" autoplay loop muted playsinline preload="auto">
-        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
-    </video>
-
-    <script>
-        // Intento de autoplay (algunos navegadores lo bloquean; muted + playsinline suele permitirlo)
-        (function() {
-            const v = document.querySelector('#demo-conversaciones-mobile video');
-            if (!v) return;
-            const tryPlay = () => v.play().catch(() => {});
-            window.addEventListener('load', tryPlay);
-            document.addEventListener('visibilitychange', () => {
-                if (!document.hidden) tryPlay();
-            });
-        })();
-    </script>
-
-    <script>
-        // Ajustar alto del iframe automáticamente para que no quede espacio vacío
-        (function() {
-            const resize = () => {
-                const h = Math.max(
-                    document.documentElement.scrollHeight || 0,
-                    document.body ? document.body.scrollHeight : 0
-                );
-                if (window.frameElement && h) {
-                    window.frameElement.style.height = h + "px";
-                }
-            };
-            window.addEventListener('load', resize);
-            window.addEventListener('resize', resize);
-            setTimeout(resize, 50);
-            setTimeout(resize, 250);
-        })();
-    </script>
-</div>
-            </div>
-
-        </div>
     </div>
     """, height=1100, scrolling=False)
+
+    components.html("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; }
+        </style>
+
+        <div style="width: 100%; background: #ffffff; padding: 30px 16px; margin: 0;">
+            <div style="max-width: 480px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 26px; font-weight: 900; color: #111827; margin: 0;">
+                    Demo WhatsApp
+                </h2>
+                <p style="font-size: 15px; color: #4b5563; margin: 10px 0 18px;">
+                    Mirá cómo contestan nuestros asistentes
+                </p>
+
+                <div style="max-width: 440px; margin: 0 auto;">
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
+                    >
+                        <source src="https://gvelazcamp.github.io/Mercadobot/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+          function apply(){
+            try{
+              var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
+              var isMobile = w <= 768;
+              var iframe = window.frameElement;
+              if(!iframe) return;
+              var host = iframe.closest('div[data-testid="stElementContainer"]') || iframe.parentElement;
+              if(!host) host = iframe;
+
+              // Fondo blanco en el contenedor del componente
+              try { host.style.background = '#ffffff'; } catch(e) {}
+
+              if(!isMobile){
+                host.style.display = 'none';
+                host.style.height = '0px';
+                host.style.margin = '0';
+                host.style.padding = '0';
+              } else {
+                host.style.display = '';
+                host.style.height = '';
+                host.style.margin = '';
+                host.style.padding = '';
+              }
+            }catch(e){}
+          }
+          apply();
+          try { window.parent.addEventListener('resize', apply); } catch(e) {}
+        })();
+        </script>
+        """, height=920, scrolling=False)
     
     st.html(HTML_HOME_PARTE_2)
 
@@ -5618,11 +5524,6 @@ div[data-testid="element-container"]:has(iframe[height="550"]) {
 div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
-    @media (max-width: 768px) {
-        /* Ajuste de alto del components.html de la sección demo en celular */
-        iframe[height="1100"] { height: 680px !important; }
-        div[data-testid="element-container"]:has(iframe[height="1100"]) iframe { height: 680px !important; }
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -6247,3 +6148,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
