@@ -702,11 +702,14 @@ body {
 .card button {
     background: #f4b400;
     border: none;
-    padding: 10px 18px;
+    padding: 12px 24px;
     border-radius: 12px;
     font-weight: 700;
     cursor: pointer;
     margin-top: auto;
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
 }
 
 .card button:hover {
@@ -2245,7 +2248,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Stock">
                 <h3>Asistente de Stock</h3>
                 <p>Control de inventario y alertas.</p>
-                <a href="https://demostockuy.streamlit.app/" target="_blank" style="text-decoration: none;"><button>Ver asistente</button></a>
+                <a href="https://demostockuy.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
