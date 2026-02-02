@@ -1325,45 +1325,74 @@ body {
 /* ========================================
    🔥 AJUSTE AUTOMÁTICO DE ALTURA PARA MÓVILES 🔥
    Reduce el espacio vacío superior para que
-   el contenido (videos, testimonios) suba más
+   el contenido (videos, testimonios) suba MUCHO MÁS
    ⚠️ SOLO SE APLICA EN CELULAR, PC QUEDA IGUAL ⚠️
 ======================================== */
 @media (max-width: 768px) {
-    /* Reducir padding superior de TODAS las secciones en móvil */
+    /* ELIMINAR CASI TODO el padding superior en móvil */
     .section {
-        padding: 10px 5% 30px !important;
+        padding: 0px 5% 20px !important;
     }
     
-    /* Hero con menos espacio superior */
+    /* Hero PEGADO arriba */
     .hero {
-        padding: 20px 5% 30px !important;
+        padding: 5px 5% 20px !important;
     }
     
-    /* Hero Impact más compacto arriba */
+    /* Hero Impact PEGADO arriba */
     .hero-impact {
-        padding: 25px 5% 30px !important;
+        padding: 10px 5% 20px !important;
     }
     
-    /* Testimonios con menos espacio superior */
+    /* Testimonios PEGADO arriba */
     .testimonios {
-        padding: 30px 5% 30px !important;
+        padding: 5px 5% 20px !important;
     }
     
-    /* FAQ más compacto arriba */
+    /* FAQ PEGADO arriba */
     .faq-section {
-        padding: 30px 5% 30px !important;
+        padding: 5px 5% 20px !important;
     }
     
-    /* SIVO section más compacto */
+    /* SIVO section PEGADO arriba */
     .sivo-section {
-        padding: 40px 5% 30px !important;
+        padding: 10px 5% 20px !important;
     }
     
-    /* Reducir márgenes superiores de títulos */
+    /* CTA PEGADO arriba */
+    .cta {
+        margin: 10px 5% 10px !important;
+        padding: 20px !important;
+    }
+    
+    /* ELIMINAR todos los márgenes superiores de títulos */
     .section h2,
     .testimonios h2,
-    .faq-section h2 {
+    .faq-section h2,
+    .sivo-section h2,
+    h1, h2, h3 {
         margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* ELIMINAR márgenes inferiores del header para que pegue con el contenido */
+    .header {
+        margin-bottom: 0 !important;
+        padding-bottom: 10px !important;
+    }
+    
+    /* Logo más pequeño en móvil para ahorrar espacio */
+    .logo-img {
+        height: 80px !important;
+        max-height: 80px !important;
+    }
+    
+    /* ELIMINAR espacios entre elementos */
+    .hero-impact-content,
+    .hero-content,
+    .sivo-card-clean {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 }
 
@@ -6218,4 +6247,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
