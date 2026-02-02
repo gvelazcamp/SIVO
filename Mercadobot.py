@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import streamlit as st
 
 # =========================
@@ -131,8 +132,14 @@ body {
 }
 
 .logo-img {
-    height: 40px;
+    height: 80px;
     width: auto;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: #000;
 }
 .logo span { color: #60a5fa; }
 
@@ -1273,6 +1280,212 @@ body {
     color: #333;
 }
 
+
+/* =========================
+   CARRUSEL DE ASISTENTES
+========================= */
+/* =========================
+   CARRUSEL (SECCIÓN SEPARADA)
+========================= */
+.assistants-carousel-section {
+    padding: 70px 5%;
+    background: #f6f7fb;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.assistants-carousel-section h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.carousel-subtitle {
+    font-size: 17px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 420px;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.carousel-content {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    height: 100%;
+    max-height: 380px;
+}
+
+.carousel-image {
+    flex: 0 0 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.carousel-text {
+    flex: 1;
+    text-align: left;
+}
+
+.carousel-text h3 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.carousel-text p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* BOTONES DE NAVEGACIÓN */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-nav:hover {
+    background: #333;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav.prev {
+    left: -60px;
+}
+
+.carousel-nav.next {
+    right: -60px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.dot:hover {
+    background: #999;
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: #333;
+    width: 32px;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .assistants-carousel-section {
+        padding: 50px 5%;
+    }
+    
+    .assistants-carousel-section h2 {
+        font-size: 28px;
+    }
+    
+    .carousel-container {
+        height: auto;
+        min-height: 500px;
+    }
+    
+    .carousel-content {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 25px;
+    }
+    
+    .carousel-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 220px;
+    }
+    
+    .carousel-text {
+        text-align: center;
+    }
+    
+    .carousel-text h3 {
+        font-size: 24px;
+    }
+    
+    .carousel-text p {
+        font-size: 16px;
+    }
+    
+    .carousel-nav {
+        display: none;
+    }
+}
+
 /* =========================
    FOOTER
 ========================= */
@@ -1804,10 +2017,11 @@ body {
 <div class="page-container">
 """
 
-HEADER = """
+HEADER = f"""
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="{BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img">
+            <img src="{BASE_URL}LogoMercadobot.png" alt="MercadoBot" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span class="logo-text" style="display:none;">MERCADO<span style="color:#60a5fa;">BOT</span></span>
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
@@ -1868,7 +2082,7 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Tu negocio atendido<br>por un <span style="color:#f4b400;">chatbot IA</span></h1>
+            <h1>Tu negocio atendido<br>por un <span style="color:#5BA3D0;">chatbot IA</span></h1>
             <p>
                 Instalamos un asistente virtual que responde a tus clientes 24/7, con tus reglas y tus datos.
                 Elegí un rubro (stock, ecommerce, turnos, viajes) y lo dejamos funcionando.
@@ -2211,6 +2425,242 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
             </div>
         </div>
     </div>
+    <!-- FIN INTEGRACIONES -->
+
+    <!-- CARRUSEL DE ASISTENTES -->
+    <div class="assistants-carousel-section">
+        <h2>Nuestros Asistentes Virtuales</h2>
+        <p class="carousel-subtitle">Especializados en diferentes industrias</p>
+        
+        <div class="carousel-container">
+            <!-- Botón anterior -->
+            <button class="carousel-nav prev" onclick="prevCarouselSlide()">‹</button>
+            
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="Asistente Telefónico">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente Telefónico</h3>
+                        <p>Atiende llamadas 24/7, agenda citas y califica leads automáticamente</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Asistente E-commerce">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente E-commerce</h3>
+                        <p>Responde consultas de productos, gestiona pedidos y aumenta conversiones</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteagendas.png" alt="Asistente de Agendas">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente de Turnos</h3>
+                        <p>Gestiona reservas, recordatorios y cancelaciones automáticamente</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedental.png" alt="Asistente Dental">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente Dental</h3>
+                        <p>Agenda turnos, envía recordatorios y responde consultas odontológicas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteinmobiliaria.png" alt="Asistente Inmobiliaria">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente Inmobiliario</h3>
+                        <p>Información de propiedades, coordina visitas y califica compradores</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Asistente Finanzas">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente Financiero</h3>
+                        <p>Cotizaciones, análisis de inversión y asesoramiento personalizado</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Asistente Stock">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente de Stock</h3>
+                        <p>Control de inventario, alertas de stock bajo y gestión de pedidos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="carousel-image">
+                        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Asistente Cocina">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Asistente de Cocina</h3>
+                        <p>Recetas personalizadas, conversiones y consejos culinarios</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botón siguiente -->
+            <button class="carousel-nav next" onclick="nextCarouselSlide()">›</button>
+        </div>
+        
+        <div class="carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+            <span class="dot" data-index="6"></span>
+            <span class="dot" data-index="7"></span>
+        </div>
+    </div>
+    <!-- FIN CARRUSEL -->
+
+<script>
+var carouselCurrentSlide = 0;
+var carouselAutoplayInterval = null;
+
+function initCarousel() {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    
+    console.log('Carrusel iniciado - Slides encontrados:', slides.length);
+    
+    if (slides.length === 0) {{
+        console.log('No se encontraron slides');
+        return;
+    }}
+    
+    // Event listeners para los dots
+    dots.forEach(function(dot, index) {{
+        dot.addEventListener('click', function() {{
+            console.log('Click en dot:', index);
+            showCarouselSlide(index);
+            resetCarouselAutoplay();
+        }});
+    }});
+    
+    // Pausar al pasar el mouse
+    var container = document.querySelector('.carousel-container');
+    if (container) {{
+        container.addEventListener('mouseenter', function() {{
+            console.log('Pausado');
+            stopCarouselAutoplay();
+        }});
+        
+        container.addEventListener('mouseleave', function() {{
+            console.log('Reanudado');
+            startCarouselAutoplay();
+        }});
+    }}
+    
+    // Iniciar
+    startCarouselAutoplay();
+    showCarouselSlide(0);
+    
+    console.log('Carrusel configurado');
+}}
+
+function showCarouselSlide(index) {{
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var totalSlides = slides.length;
+    
+    if (index >= totalSlides) {{
+        carouselCurrentSlide = 0;
+    }} else if (index < 0) {{
+        carouselCurrentSlide = totalSlides - 1;
+    }} else {{
+        carouselCurrentSlide = index;
+    }}
+    
+    console.log('Mostrando slide:', carouselCurrentSlide + 1, 'de', totalSlides);
+    
+    slides.forEach(function(slide, i) {{
+        if (i === carouselCurrentSlide) {{
+            slide.classList.add('active');
+        }} else {{
+            slide.classList.remove('active');
+        }}
+    }});
+    
+    dots.forEach(function(dot, i) {{
+        if (i === carouselCurrentSlide) {{
+            dot.classList.add('active');
+        }} else {{
+            dot.classList.remove('active');
+        }}
+    }});
+}}
+
+function nextCarouselSlide() {{
+    console.log('Siguiente');
+    showCarouselSlide(carouselCurrentSlide + 1);
+}}
+
+function prevCarouselSlide() {{
+    console.log('Anterior');
+    showCarouselSlide(carouselCurrentSlide - 1);
+}}
+
+function startCarouselAutoplay() {{
+    stopCarouselAutoplay();
+    carouselAutoplayInterval = setInterval(nextCarouselSlide, 4000);
+    console.log('Autoplay iniciado');
+}}
+
+function stopCarouselAutoplay() {{
+    if (carouselAutoplayInterval) {{
+        clearInterval(carouselAutoplayInterval);
+        carouselAutoplayInterval = null;
+    }}
+}}
+
+function resetCarouselAutoplay() {{
+    stopCarouselAutoplay();
+    startCarouselAutoplay();
+}}
+
+// Iniciar cuando el DOM este listo
+if (document.readyState === 'loading') {{
+    document.addEventListener('DOMContentLoaded', initCarousel);
+}} else {{
+    initCarousel();
+}}
+</script>
 
 {FOOTER}
 """
@@ -4151,7 +4601,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
         <div class="demo-message">
             <div class="demo-label">Asistente IA</div>
             <div class="demo-bubble demo-bot">Tus inversiones están protegidas:<br>
-            ����️ <strong>Custodia segregada:</strong><br>
+                ️ <strong>Custodia segregada:</strong><br>
             • Tus activos están a TU nombre<br>
             • Depositados en Caja de Valores<br>
             • NO son activos del broker<br>
@@ -5387,14 +5837,26 @@ elif vista == "precios":
 else:
     st.html(HTML_HOME_PARTE_1)
     
+    # JavaScript para detectar si es móvil y ajustar altura
     components.html("""
+    <script>
+    // Detectar si es móvil INMEDIATAMENTE
+    var isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // En móvil: colapsar todo a altura 0
+        document.documentElement.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;';
+        document.body.style.cssText = 'height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;display:none!important;';
+    }
+    </script>
+    
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; }
     </style>
     
-    <div style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
+    <div class="demo-container" style="width: 100%; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); padding: 80px 5%; margin: 0;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a; font-family: 'Inter', sans-serif;">
@@ -5425,7 +5887,7 @@ else:
     
     st.html(HTML_HOME_PARTE_2)
 
-# CSS para overflow visible
+# CSS para overflow visible y ocultar demo en móviles
 st.markdown("""
 <style>
 div[data-testid="element-container"]:has(iframe[height="550"]) {
@@ -5434,11 +5896,136 @@ div[data-testid="element-container"]:has(iframe[height="550"]) {
 div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
+
+/* ELIMINAR TODO EL ESPACIO del demo en móviles */
+@media (max-width: 768px) {
+    /* Todos los contenedores posibles del iframe */
+    div[data-testid="stVerticalBlock"]:has(iframe[height="1100"]),
+    div[data-testid="stVerticalBlockBorderWrapper"]:has(iframe[height="1100"]),
+    div[data-testid="element-container"]:has(iframe[height="1100"]),
+    div[data-testid="column"]:has(iframe[height="1100"]),
+    section[data-testid="stAppViewContainer"] div:has(> iframe[height="1100"]) {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+    }
+    
+    /* El iframe directamente */
+    iframe[height="1100"] {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        visibility: hidden !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
 components.html(FOOTER_SIMPLE, height=150)
+
+# ==============================================================
+# VIDEO PARA MÓVILES (reemplaza el chatbot negro en celulares)
+# ==============================================================
+VIDEO_MOBILE_REPLACEMENT = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;overflow:visible;">
+<style>
+/* Video que reemplaza el chatbot - SOLO VISIBLE EN MÓVIL */
+#mobile-video-chatbot {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-width: calc(100vw - 40px);
+    height: auto;
+    max-height: 70vh;
+    background: #000;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 999999;
+    overflow: hidden;
+}
+
+#mobile-video-chatbot video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+/* SOLO MÓVILES: Mostrar video */
+@media (max-width: 768px) {
+    #mobile-video-chatbot {
+        display: block !important;
+        width: calc(100vw - 40px);
+        height: auto;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+    }
+}
+
+/* SOLO DESKTOP: Ocultar video */
+@media (min-width: 769px) {
+    #mobile-video-chatbot {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+</style>
+
+<!-- Video que reemplaza el chatbot en móviles -->
+<div id="mobile-video-chatbot">
+    <video controls playsinline autoplay muted loop>
+        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+
+<script>
+// Mover video al body principal si estamos en iframe
+try {
+    if (window.parent && window.parent.document && window.parent !== window) {
+        const parentDoc = window.parent.document;
+        const videoDiv = document.getElementById('mobile-video-chatbot');
+        
+        if (videoDiv && parentDoc.body) {
+            const videoClone = videoDiv.cloneNode(true);
+            parentDoc.body.appendChild(videoClone);
+            
+            // Copiar estilos
+            const style = document.createElement('style');
+            style.textContent = document.querySelector('style').textContent;
+            parentDoc.head.appendChild(style);
+            
+            // Ocultar original
+            videoDiv.style.display = 'none';
+        }
+    }
+} catch(e) {
+    console.log('Teleport failed:', e);
+}
+</script>
+
+</body>
+</html>
+"""
+
+components.html(VIDEO_MOBILE_REPLACEMENT, height=0)
 
 
 # Chatbot flotante COMPLETO
@@ -5721,6 +6308,130 @@ CHATBOT = """
 </div>
 
 <script>
+// =========================
+// CARRUSEL FUNCIONAL
+// =========================
+let carouselCurrentSlide = 0;
+let carouselAutoplayInterval = null;
+let carouselSlides = [];
+let carouselDots = [];
+
+function initCarousel() {
+    carouselSlides = document.querySelectorAll('.carousel-slide');
+    carouselDots = document.querySelectorAll('.dot');
+    
+    console.log('Carrusel iniciado - Slides encontrados:', carouselSlides.length);
+    
+    if (carouselSlides.length === 0) {
+        console.log('No se encontraron slides del carrusel');
+        return;
+    }
+    
+    // Event listeners para los dots
+    carouselDots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            console.log('Click en dot:', index);
+            showCarouselSlide(index);
+            resetCarouselAutoplay();
+        });
+    });
+    
+    // Pausar autoplay al pasar el mouse
+    const container = document.querySelector('.carousel-container');
+    if (container) {
+        container.addEventListener('mouseenter', function() {
+            console.log('Mouse sobre carrusel - pausando');
+            stopCarouselAutoplay();
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            console.log('Mouse fuera del carrusel - reanudando');
+            startCarouselAutoplay();
+        });
+    }
+    
+    // Iniciar autoplay
+    startCarouselAutoplay();
+    
+    // Mostrar primer slide
+    showCarouselSlide(0);
+    
+    console.log('Carrusel configurado exitosamente');
+}
+
+function showCarouselSlide(index) {
+    const totalSlides = carouselSlides.length;
+    
+    // Ajustar índice
+    if (index >= totalSlides) {
+        carouselCurrentSlide = 0;
+    } else if (index < 0) {
+        carouselCurrentSlide = totalSlides - 1;
+    } else {
+        carouselCurrentSlide = index;
+    }
+    
+    console.log('Mostrando slide:', carouselCurrentSlide);
+    
+    // Actualizar slides
+    carouselSlides.forEach(function(slide, i) {
+        if (i === carouselCurrentSlide) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
+    
+    // Actualizar dots
+    carouselDots.forEach(function(dot, i) {
+        if (i === carouselCurrentSlide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+function nextCarouselSlide() {
+    console.log('Siguiente slide');
+    showCarouselSlide(carouselCurrentSlide + 1);
+}
+
+function prevCarouselSlide() {
+    console.log('Slide anterior');
+    showCarouselSlide(carouselCurrentSlide - 1);
+}
+
+function startCarouselAutoplay() {
+    stopCarouselAutoplay();
+    carouselAutoplayInterval = setInterval(nextCarouselSlide, 4000);
+    console.log('Autoplay iniciado');
+}
+
+function stopCarouselAutoplay() {
+    if (carouselAutoplayInterval) {
+        clearInterval(carouselAutoplayInterval);
+        carouselAutoplayInterval = null;
+        console.log('Autoplay detenido');
+    }
+}
+
+function resetCarouselAutoplay() {
+    stopCarouselAutoplay();
+    startCarouselAutoplay();
+}
+
+// Iniciar carrusel cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+} else {
+    // DOM ya está listo
+    initCarousel();
+}
+
+// =========================
+// CHATBOT
+// =========================
 function toggle(){document.getElementById('bot-box').classList.toggle('open');}
 function add(t,u){var m=document.getElementById('msgs'),d=document.createElement('div');d.className='m'+(u?' u':'');d.innerHTML='<div class="a">'+(u?'👤':'🤖')+'</div><div class="b">'+t+'</div>';m.appendChild(d);m.scrollTop=m.scrollHeight;}
 
@@ -5933,93 +6644,47 @@ st.markdown("""
 <style>
 
 /* ============================================
-   CSS RESPONSIVE PARA CHATBOT EN MÓVILES
-   (Aplicado al documento principal de Streamlit)
+   SOLO MÓVILES: Ocultar chatbot negro + iframe verde
+   PC: Todo normal
 ============================================ */
 
-/* Responsive para móviles */
+/* SOLO EN MÓVILES (≤768px) */
 @media (max-width: 768px) {
-    /* Botón del chatbot más pequeño */
-    #bot-btn {
-        width: 56px !important;
-        height: 56px !important;
-        bottom: 16px !important;
-        right: 16px !important;
-        font-size: 26px !important;
-    }
-    
-    /* Chatbot FULLSCREEN en móviles */
+    /* ===== OCULTAR CHATBOT NEGRO ===== */
+    #bot-btn,
     #bot-box {
-        position: fixed !important;
-        bottom: 0 !important;
-        right: 0 !important;
-        left: 0 !important;
-        top: 0 !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        height: 100vh !important;
-        max-height: 100vh !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: -9999px !important;
     }
     
-    /* Header sin border-radius en móvil */
-    #bot-box .h {
-        padding: 14px 16px !important;
-        border-radius: 0 !important;
-    }
-    
-    #bot-box .h h3 {
-        font-size: 16px !important;
-    }
-    
-    /* Mensajes con menos padding */
-    #bot-box #msgs {
-        padding: 16px 12px !important;
-    }
-    
-    /* Avatares más pequeños */
-    #bot-box .m .a {
-        width: 28px !important;
-        height: 28px !important;
-        font-size: 20px !important;
-    }
-    
-    /* Mensajes con ancho ajustado */
-    #bot-box .m .b {
-        padding: 10px 14px !important;
-        font-size: 14px !important;
-        max-width: calc(100% - 48px) !important;
-    }
-    
-    /* Input más compacto */
-    #bot-box .inp {
-        padding: 12px !important;
-        gap: 8px !important;
-    }
-    
-    #bot-box .inp input {
-        padding: 10px 14px !important;
-        font-size: 15px !important;
-    }
-    
-    #bot-box .inp button {
-        width: 40px !important;
-        height: 40px !important;
-        font-size: 18px !important;
+    /* ===== OCULTAR IFRAME VERDE (selector industrias) ===== */
+    div[data-testid="stVerticalBlock"]:has(iframe[height="1100"]),
+    div[data-testid="stVerticalBlockBorderWrapper"]:has(iframe[height="1100"]),
+    div[data-testid="element-container"]:has(iframe[height="1100"]),
+    div[data-testid="column"]:has(iframe[height="1100"]),
+    section[data-testid="stAppViewContainer"] div:has(> iframe[height="1100"]),
+    iframe[height="1100"] {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: -9999px !important;
     }
 }
 
-/* Para pantallas MUY pequeñas */
-@media (max-width: 400px) {
-    #bot-box .m .b {
-        font-size: 13px !important;
-        padding: 9px 12px !important;
-    }
-    
-    #bot-box .inp input {
-        font-size: 14px !important;
-        padding: 9px 12px !important;
+/* SOLO EN DESKTOP (>768px): Todo normal, video oculto */
+@media (min-width: 769px) {
+    #mobile-video-chatbot {
+        display: none !important;
+        visibility: hidden !important;
     }
 }
 
