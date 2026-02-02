@@ -166,6 +166,7 @@ body {
 
 /* Responsive para móviles - Logo centrado */
 @media (max-width: 768px) {
+
     .header {
         flex-direction: column;
         text-align: center;
@@ -5405,16 +5406,30 @@ else:
 
     .mobile-demo-title {
         font-family: 'Inter', sans-serif;
-        font-weight: 800;
-        font-size: 18px;
-        line-height: 1.2;
-        color: #111;
-        background: #ffffff;
-        padding: 18px 16px 12px;
         text-align: center;
+        padding: 16px 16px 10px;
+        margin: 0;
+        background: transparent;
     }
 
-    @media (max-width: 768px) {
+    .mobile-demo-title h2 {
+        font-weight: 900;
+        font-size: 26px;
+        line-height: 1.12;
+        color: #111827;
+        margin: 0;
+    }
+
+    .mobile-demo-title p {
+        margin: 8px 0 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.35;
+        color: #6b7280;
+    }
+@media (max-width: 768px) {
+        html, body { background: #ffffff !important; }
+
         /* En celular: ocultar demo desktop y mostrar SOLO el video (sin fondo ni padding) */
         #demo-conversaciones-desktop { display: none !important; }
         #demo-conversaciones-mobile { display: block !important; }
@@ -5423,6 +5438,7 @@ else:
             padding: 0 !important;
             margin: 0 !important;
             background: #ffffff !important;
+            background-image: none !important;
         }
         #demo-conversaciones-section > div {
             max-width: 100% !important;
@@ -5468,7 +5484,10 @@ else:
             </div>
 
             <div id="demo-conversaciones-mobile" style="text-align:center;">
-    <div class="mobile-demo-title">Demo WhatsApp — Mirá cómo contestan nuestros asistentes</div>
+    <div class="mobile-demo-title">
+        <h2>Demo WhatsApp</h2>
+        <p>Mirá cómo responden nuestros asistentes</p>
+    </div>
     <video class="mobile-demo-video" autoplay loop muted playsinline preload="auto">
         <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
         Tu navegador no soporta video HTML5.
@@ -5484,6 +5503,25 @@ else:
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden) tryPlay();
             });
+        })();
+    </script>
+
+    <script>
+        // Ajustar alto del iframe automáticamente para que no quede espacio vacío
+        (function() {
+            const resize = () => {
+                const h = Math.max(
+                    document.documentElement.scrollHeight || 0,
+                    document.body ? document.body.scrollHeight : 0
+                );
+                if (window.frameElement && h) {
+                    window.frameElement.style.height = h + "px";
+                }
+            };
+            window.addEventListener('load', resize);
+            window.addEventListener('resize', resize);
+            setTimeout(resize, 50);
+            setTimeout(resize, 250);
         })();
     </script>
 </div>
@@ -5506,8 +5544,8 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 }
     @media (max-width: 768px) {
         /* Ajuste de alto del components.html de la sección demo en celular */
-        iframe[height="1100"] { height: 760px !important; }
-        div[data-testid="element-container"]:has(iframe[height="1100"]) iframe { height: 760px !important; }
+        iframe[height="1100"] { height: 680px !important; }
+        div[data-testid="element-container"]:has(iframe[height="1100"]) iframe { height: 680px !important; }
     }
 </style>
 """, unsafe_allow_html=True)
