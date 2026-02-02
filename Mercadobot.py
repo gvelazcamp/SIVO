@@ -5455,13 +5455,13 @@ else:
         body { font-family: 'Inter', sans-serif; background: #ffffff; }
         </style>
 
-        <div style="width: 100%; background: #ffffff; padding: 30px 16px; margin: 0;">
+        <div style="width: 100%; background: #ffffff; padding: 18px 14px; margin: 0;">
             <div style="max-width: 480px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 26px; font-weight: 900; color: #111827; margin: 0;">
+                <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.3px; color: #111827; margin: 0;">
                     Demo WhatsApp
                 </h2>
-                <p style="font-size: 15px; color: #4b5563; margin: 10px 0 18px;">
-                    Mirá cómo contestan nuestros asistentes
+                <p style="font-size: 15px; color: #4b5563; margin: 8px 0 12px;">
+                    Mirá cómo responden nuestros asistentes en tiempo real
                 </p>
 
                 <div style="max-width: 440px; margin: 0 auto;">
@@ -5482,6 +5482,21 @@ else:
 
         <script>
         (function(){
+          function setFrameHeight(){
+            try{
+              var h = Math.max(
+                document.documentElement.scrollHeight || 0,
+                document.body ? document.body.scrollHeight : 0
+              );
+              if(window.parent && window.parent.postMessage){
+                window.parent.postMessage(
+                  { isStreamlitMessage: true, type: "streamlit:setFrameHeight", height: h },
+                  "*"
+                );
+              }
+            }catch(e){}
+          }
+
           function apply(){
             try{
               var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
@@ -5504,14 +5519,34 @@ else:
                 host.style.height = '';
                 host.style.margin = '';
                 host.style.padding = '';
+                // Ajustar altura del iframe al contenido (evita hueco)
+                setFrameHeight();
+                setTimeout(setFrameHeight, 200);
+                setTimeout(setFrameHeight, 800);
+                setTimeout(setFrameHeight, 1500);
               }
             }catch(e){}
           }
+
+          // Eventos
+          try { window.addEventListener('load', function(){ apply(); setFrameHeight(); }); } catch(e) {}
+          try { window.addEventListener('resize', function(){ apply(); setFrameHeight(); }); } catch(e) {}
+
+          // Recalcular cuando el video esté listo
+          try {
+            var v = document.querySelector('video');
+            if(v){
+              v.addEventListener('loadedmetadata', setFrameHeight);
+              v.addEventListener('canplay', setFrameHeight);
+              v.addEventListener('play', setFrameHeight);
+            }
+          } catch(e) {}
+
           apply();
           try { window.parent.addEventListener('resize', apply); } catch(e) {}
         })();
         </script>
-        """, height=920, scrolling=False)
+        """, height=640, scrolling=False)
     
     st.html(HTML_HOME_PARTE_2)
 
