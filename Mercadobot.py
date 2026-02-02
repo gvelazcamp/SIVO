@@ -5387,26 +5387,42 @@ else:
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; }
-    
-    /* Swap: desktop vs mobile */
+    body { font-family: 'Inter', sans-serif; }    /* Swap: desktop vs mobile */
     #demo-conversaciones-mobile { display: none; }
     #demo-conversaciones-desktop { display: block; }
 
     .mobile-demo-video {
         width: 100%;
-        height: 900px;
-        border-radius: 16px;
-        background: #000;
-        object-fit: cover;
+        max-width: 520px;
+        height: auto;
+        border-radius: 0;
+        background: transparent;
+        object-fit: contain;
         display: block;
+        margin: 0 auto;
     }
 
     @media (max-width: 768px) {
-        #demo-conversaciones-section { padding: 35px 4% !important; }
+        /* En celular: ocultar demo desktop y mostrar SOLO el video (sin fondo ni padding) */
         #demo-conversaciones-desktop { display: none !important; }
         #demo-conversaciones-mobile { display: block !important; }
-        .mobile-demo-video { height: 860px; }
+
+        #demo-conversaciones-section {
+            padding: 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
+        }
+        #demo-conversaciones-section > div {
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 auto !important;
+        }
+
+        .mobile-demo-video {
+            height: auto !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+        }
     }
 </style>
     
@@ -5439,28 +5455,25 @@ else:
 
             </div>
 
-            <div id="demo-conversaciones-mobile">
-                <div style="text-align: center; margin-bottom: 22px;">
-                    <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 10px; color: #1a1a1a; font-family: 'Inter', sans-serif;">
-                        Demo WhatsApp
-                    </h2>
-                    <p style="font-size: 15px; color: #666; font-family: 'Inter', sans-serif;">
-                        Mirá cómo responde el asistente en una conversación real.
-                    </p>
-                </div>
+            <div id="demo-conversaciones-mobile" style="text-align:center;">
+    <video class="mobile-demo-video" autoplay loop muted playsinline preload="auto">
+        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+    </video>
 
-                <div style="background: white; border-radius: 20px; padding: 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); max-width: 420px; margin: 0 auto;">
-                    <video class="mobile-demo-video" controls muted playsinline preload="metadata">
-                        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
-                        Tu navegador no soporta video HTML5.
-                    </video>
-                </div>
-
-                <div style="text-align: center; margin-top: 22px;">
-                    <p style="font-size: 14px; color: #666; font-family: 'Inter', sans-serif;">
-                        ⚡ Video demo - WhatsApp
-                    </p>
-                </div>
+    <script>
+        // Intento de autoplay (algunos navegadores lo bloquean; muted + playsinline suele permitirlo)
+        (function() {
+            const v = document.querySelector('#demo-conversaciones-mobile video');
+            if (!v) return;
+            const tryPlay = () => v.play().catch(() => {});
+            window.addEventListener('load', tryPlay);
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) tryPlay();
+            });
+        })();
+    </script>
+</div>
             </div>
 
         </div>
@@ -5478,6 +5491,11 @@ div[data-testid="element-container"]:has(iframe[height="550"]) {
 div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
 }
+    @media (max-width: 768px) {
+        /* Ajuste de alto del components.html de la sección demo en celular */
+        iframe[height="1100"] { height: 760px !important; }
+        div[data-testid="element-container"]:has(iframe[height="1100"]) iframe { height: 760px !important; }
+    }
 </style>
 """, unsafe_allow_html=True)
 
