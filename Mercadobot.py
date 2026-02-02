@@ -92,12 +92,12 @@ html {
     overflow-x: hidden;
     width: 100%;
     height: 100%;
-    background: #f6f7fb !important;
+    background: #ffffff !important;
 }
 
 body {
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f6f7fb !important;
+    background: #ffffff !important;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -109,7 +109,7 @@ body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    background: #f6f7fb !important;
+    background: #ffffff !important;
 }
 
 /* =========================
@@ -408,7 +408,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    background: linear-gradient(180deg, #ffffff, #f6f7fb);
+    background: linear-gradient(180deg, #ffffff, #ffffff);
     border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -489,7 +489,7 @@ body {
 
 .fake-input {
     flex: 1;
-    background: #f6f7fb;
+    background: #ffffff;
     border: 1px solid rgba(0,0,0,0.06);
     padding: 10px 12px;
     border-radius: 14px;
@@ -1029,7 +1029,7 @@ body {
 }
 
 .faq-item {
-    background: #f6f7fb;
+    background: #ffffff;
     padding: 25px;
     border-radius: 16px;
     border-left: 4px solid #f4b400;
@@ -1233,7 +1233,7 @@ body {
 ========================= */
 .integrations-section {
     padding: 60px 5%;
-    background: linear-gradient(180deg, #f6f7fb, #fff);
+    background: linear-gradient(180deg, #ffffff, #fff);
     text-align: center;
 }
 
@@ -1323,8 +1323,8 @@ body {
 @media (max-width: 768px) {
     /* FORZAR FONDO GRIS EN MOBILE - TODO EXCEPTO HERO-IMPACT */
     html, body {
-        background: #f6f7fb !important;
-        background-color: #f6f7fb !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
     }
     
     .page-container,
@@ -1348,8 +1348,8 @@ body {
     .chat-body,
     main,
     section {
-        background: #f6f7fb !important;
-        background-color: #f6f7fb !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
     }
     
     /* FORZAR COLORES DE TEXTO OSCUROS PARA QUE SE LEAN */
@@ -1459,7 +1459,7 @@ body {
         flex-direction: column;
         gap: 15px;
         padding: 16px 4%;
-        background: #f6f7fb !important;
+        background: #ffffff !important;
     }
 
     .nav {
@@ -2476,7 +2476,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -2882,7 +2882,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -3267,7 +3267,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -3720,7 +3720,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -4261,7 +4261,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -4610,7 +4610,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -4950,7 +4950,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 }}
 
 .demo-bot {{
-    background: #f6f7fb;
+    background: #ffffff;
     color: #222;
     border-bottom-left-radius: 6px;
 }}
@@ -6183,4 +6183,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
