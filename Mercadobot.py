@@ -1903,9 +1903,9 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
             </p>
 
             <div class="trust-row" style="margin-top: 30px;">
-                <div class="trust-pill">⚡ Instalación rápida</div>
-                <div class="trust-pill">🔒 Configurable y seguro</div>
-                <div class="trust-pill">💬 Soporte incluido</div>
+                
+                
+                
             </div>
         </div>
 
@@ -1956,10 +1956,10 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
 
     <div class="cats-block">
         <div class="cats">
-            <div class="cat">📦 Stock</div>
-            <div class="cat">🛒 Ecommerce</div>
-            <div class="cat">📅 Turnos</div>
-            <div class="cat">✈️ Viajes</div>
+            
+            
+            
+            
         </div>
     </div>
 
