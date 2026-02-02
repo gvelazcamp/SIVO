@@ -6058,4 +6058,4 @@ iframe[height="0"] * {
 </style>
 """, unsafe_allow_html=True)
 
-components.html(CHATBOT, height=0)v
+components.html(CHATBOT, height=0)
