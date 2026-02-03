@@ -1809,7 +1809,7 @@ body {
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/LogoMercadobot.png" alt="MercadoBot" class="logo-img">
+            <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/LogoMercadobot.png" alt="MercadoBot" class="logo-img">
             <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">MercadoBot</span>
         </a>
         <div class="nav">
@@ -1840,7 +1840,7 @@ body { background: #1a1a2e; font-family: Inter, sans-serif; margin: 0; padding: 
 </style>
 </head>
 <body>
-<p style="font-size: 14px; opacity: 0.7;">© 2025 MercadoBot. Todos los derechos reservados.</p>
+<p style="font-size: 14px; opacity: 0.7;">© 2025 . Todos los derechos reservados.</p>
 </body>
 </html>
 """
@@ -6183,3 +6183,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
