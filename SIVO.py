@@ -2193,22 +2193,22 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
 
         <script>
-            (function () {
+            (function () {{
                 var iframe = document.getElementById('sivo-slider-frame');
                 if (!iframe) return;
 
                 // Carga el HTML desde GitHub RAW y lo inyecta como srcdoc (evita bloqueos por iframe)
-                var url = 'https://raw.githubusercontent.com/gvelazcamp/SIVO/main/slider_sivos_imagenes_reales.html';
+                var url = 'https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales.html';
 
-                fetch(url, { cache: 'no-store' })
-                    .then(function (r) { return r.text(); })
-                    .then(function (html) {
+                fetch(url, {{ cache: 'no-store' }})
+                    .then(function (r) {{ return r.text(); }})
+                    .then(function (html) {{
                         iframe.srcdoc = html;
-                    })
-                    .catch(function () {
+                    }})
+                    .catch(function () {{
                         iframe.srcdoc = '<div style="font-family:Inter,system-ui,sans-serif; padding:24px; color:#475569;">No se pudo cargar el slider de SIVOs. Verificá que el archivo exista y sea público en GitHub.</div>';
-                    });
-            })();
+                    }});
+            }})();
         </script>
     </div>
 
