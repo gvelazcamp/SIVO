@@ -1809,8 +1809,8 @@ body {
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/LogoMercadobot.png" alt="Sivo" class="logo-img">
-            <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">Sivo</span>
+            <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/LogoSIVO.png" alt="SIVO" class="logo-img">
+            <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">SIVO</span>
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
@@ -1840,7 +1840,7 @@ body { background: #1a1a2e; font-family: Inter, sans-serif; margin: 0; padding: 
 </style>
 </head>
 <body>
-<p style="font-size: 14px; opacity: 0.7;">© 2025 Sivo. Todos los derechos reservados.</p>
+<p style="font-size: 14px; opacity: 0.7;">© 2025 SIVO. Todos los derechos reservados.</p>
 </body>
 </html>
 """
@@ -2219,7 +2219,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 
     <div class="section">
         <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en Sivo.</div>
+        <div class="subtitle">Estos son los asistentes disponibles en SIVO.</div>
 
         <div class="cards">
 
@@ -5403,7 +5403,7 @@ else:
             
             <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
                 <iframe 
-                    src="https://gvelazcamp.github.io/SIVO/mercadobot-demo.html" 
+                    src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/sivo-demo.html" 
                     style="width: 100%; height: 850px; border: none; border-radius: 15px; display: block;"
                     frameborder="0"
                     allowfullscreen>
@@ -5473,8 +5473,8 @@ else:
                         preload="auto"
                         style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
                     >
-                        <source src="https://gvelazcamp.github.io/SIVO/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
-                        <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/sivo_whatsapp_demo.mp4" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/sivo_whatsapp_demo.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -5835,9 +5835,9 @@ CHATBOT = """
 <button id="bot-btn" onclick="toggle()">💬</button>
 
 <div id="bot-box">
-<div class="h"><h3>🤖 Sivo</h3><button onclick="toggle()">×</button></div>
+<div class="h"><h3>🤖 SIVO</h3><button onclick="toggle()">×</button></div>
 <div id="msgs">
-<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy Sivo, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es Sivo')">• Qué es Sivo</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
+<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es SIVO')">• Qué es SIVO</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
 </div>
 <div class="inp">
 <input id="in" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')send()">
@@ -5866,11 +5866,11 @@ function send(){
         
         // 1. Saludos
         if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey'))
-            r='¡Hola! 👋 Soy Sivo, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es Sivo<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
+            r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
         
-        // 2. ¿Qué es Sivo?
+        // 2. ¿Qué es SIVO?
         else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo'))
-            r='<strong>Sivo</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
+            r='<strong>SIVO</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
         
         // 3. Precios
         else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan'))
@@ -5886,7 +5886,7 @@ function send(){
         
         // 6. Demo
         else if(l.includes('demo')||l.includes('prueba')||l.includes('probar'))
-            r='🎯 <strong>¡Probá Sivo GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@sivo.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
+            r='🎯 <strong>¡Probá SIVO GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@sivo.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
         
         // 7. Contacto
         else if(l.includes('contacto')||l.includes('email')||l.includes('hablar')||l.includes('asesor'))
@@ -5922,7 +5922,7 @@ function send(){
         
         // 15. Ventajas vs competencia
         else if(l.includes('ventaja')||l.includes('mejor')||l.includes('diferencia')||l.includes('competencia'))
-            r='⭐ <strong>Por qué elegir Sivo:</strong><br><br>✅ Setup en días, no meses<br>✅ IA más natural y conversacional<br>✅ Soporte en español 24/7<br>✅ Integraciones nativas<br>✅ Precio accesible<br>✅ Sin letra chica<br><br>Probalo gratis y compará! 🚀';
+            r='⭐ <strong>Por qué elegir SIVO:</strong><br><br>✅ Setup en días, no meses<br>✅ IA más natural y conversacional<br>✅ Soporte en español 24/7<br>✅ Integraciones nativas<br>✅ Precio accesible<br>✅ Sin letra chica<br><br>Probalo gratis y compará! 🚀';
         
         // 16. Analíticas
         else if(l.includes('analitica')||l.includes('reporte')||l.includes('estadistica')||l.includes('métrica'))
@@ -5942,13 +5942,13 @@ function send(){
         
         // 20. Despedida
         else if(l.includes('gracias'))
-            r='¡De nada! 😊 Estoy acá para ayudarte.<br><br>¿Algo más que quieras saber sobre Sivo?';
+            r='¡De nada! 😊 Estoy acá para ayudarte.<br><br>¿Algo más que quieras saber sobre SIVO?';
         else if(l.includes('chau')||l.includes('adios')||l.includes('bye'))
             r='¡Hasta pronto! 👋<br><br>Si tenés más dudas, acá estoy 24/7. También podés escribirnos a <strong>hola@sivo.com</strong>';
         
         // Default
         else
-            r='🤔 Interesante pregunta. Podés consultarme sobre:<br><br>• Qué es Sivo<br>• Precios y planes<br>• Integraciones disponibles<br>• Cómo funciona<br>• Demo gratuita<br><br>O escribinos a <strong>hola@sivo.com</strong> para consultas específicas.';
+            r='🤔 Interesante pregunta. Podés consultarme sobre:<br><br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones disponibles<br>• Cómo funciona<br>• Demo gratuita<br><br>O escribinos a <strong>hola@sivo.com</strong> para consultas específicas.';
         
         add(r,false);
     },500);
@@ -5995,8 +5995,8 @@ function send(){
                 setTimeout(() => {
                     const l = msg.toLowerCase();
                     let r;
-                    if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy Sivo, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es Sivo<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
-                    else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo')) r='<strong>SIVO</strong> es un asistente polifuncional con IA que se adapta a distintos rubros y automatiza tu atención al cliente 24/7. 🤖<br><br>Mirá nuestros SIVO asistentes especializados:<br>✅ Se personaliza a tu industria<br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
+                    if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
+                    else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo')) r='<strong>SIVO</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
                     else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>BÁSICO - $25.000/mes</strong><br>• 1.000 consultas/mes<br>• 1 asistente<br>• Soporte por email<br><br><strong>PRO - $50.000/mes</strong><br>• 5.000 consultas/mes<br>• 3 asistentes<br>• Soporte prioritario<br><br><strong>ENTERPRISE - Personalizado</strong><br>• Ilimitado<br>• Soporte dedicado<br><br>🎁 <strong>7 días gratis</strong> para probar!';
                     else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma')) r='🔌 <strong>Integraciones disponibles:</strong><br><br>✅ WhatsApp<br>✅ Instagram<br>✅ Web (widget)<br>✅ Shopify<br>✅ Mercado Pago<br>✅ Email<br>✅ API personalizada<br><br>¿Cuál te interesa más?';
                     else if(l.includes('funciona')||l.includes('como')||l.includes('cómo')) r='⚙️ <strong>Es súper simple:</strong><br><br>1️⃣ <strong>Conectás</strong> tus datos y productos<br>2️⃣ <strong>Entrenamos</strong> el asistente con tu info<br>3️⃣ <strong>Instalamos</strong> en tus canales<br>4️⃣ <strong>Listo!</strong> Empieza a atender clientes<br><br>Todo el proceso lleva entre 2-7 días. ⚡';
