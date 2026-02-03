@@ -1809,8 +1809,8 @@ body {
 HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
-            <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/LogoMercadobot.png" alt="MercadoBot" class="logo-img">
-            <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">MercadoBot</span>
+            <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/LogoSIVO.png" alt="SIVO" class="logo-img">
+            <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">SIVO</span>
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
@@ -1963,28 +1963,28 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
         <div class="cards">
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
                 <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Respuestas automáticas sobre productos y pedidos.</p>
                 <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>Asistente de Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
                 <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
@@ -2148,7 +2148,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         
         <div class="sivo-card-clean">
             <div class="sivo-image-side">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="SIVO Asistente Telefónico" class="sivo-img">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentetelefonico.png" alt="SIVO Asistente Telefónico" class="sivo-img">
             </div>
             
             <div class="sivo-content-side">
@@ -2219,54 +2219,54 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 
     <div class="section">
         <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en MercadoBot.</div>
+        <div class="subtitle">Estos son los asistentes disponibles en SIVO.</div>
 
         <div class="cards">
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Cocina">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentecocina.png" alt="Cocina">
                 <h3>Asistente de Cocina</h3>
                 <p>Recetas, consejos y conversiones.</p>
                 <a href="https://demorestaurante.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>Asistente de Ecommerce</h3>
                 <p>Soporte para productos y pedidos.</p>
                 <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Finanzas">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentefinanzas.png" alt="Finanzas">
                 <h3>Asistente de Finanzas</h3>
                 <p>Cotizaciones y análisis financiero.</p>
                 <a href="?vista=demo&asistente=finanzas" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentestock.png" alt="Stock">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentestock.png" alt="Stock">
                 <h3>Asistente de Stock</h3>
                 <p>Control de inventario y alertas.</p>
                 <a href="https://demostockuy.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteinmobiliaria.png" alt="Inmobiliaria">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistenteinmobiliaria.png" alt="Inmobiliaria">
                 <h3>Asistente Inmobiliario</h3>
                 <p>Consultas de propiedades y agendado.</p>
                 <button>Ver asistente</button>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteagendas.png" alt="Agenda">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistenteagendas.png" alt="Agenda">
                 <h3>Asistente de Turnos</h3>
                 <p>Reserva de turnos y recordatorios.</p>
                 <a href="https://demoturnos.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedental.png" alt="Dental">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedental.png" alt="Dental">
                 <h3>Asistente Dental</h3>
                 <p>Turnos y precios orientativos.</p>
                 <button>Ver asistente</button>
@@ -2274,28 +2274,28 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>Asistente de Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
                 <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>Asistente de Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
                 <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedeviaje.png" alt="Viajes">
                 <h3>Asistente de Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
                 <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
-                <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentetelefonico.png" alt="Telefónico">
+                <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentetelefonico.png" alt="Telefónico">
                 <h3>Asistente Telefónico</h3>
                 <p>Atiende llamadas reales con IA conversacional.</p>
                 <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
@@ -2545,7 +2545,7 @@ HTML_DEMO_FUTBOL = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefutbol.png" alt="Fútbol">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentefutbol.png" alt="Fútbol">
         <h1>Asistente de Fútbol</h1>
         <p>Demo interactivo con 20 conversaciones de ejemplo</p>
     </div>
@@ -2951,7 +2951,7 @@ HTML_DEMO_COCINA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentecocina.png" alt="Cocina">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentecocina.png" alt="Cocina">
         <h1>Asistente de Cocina</h1>
         <p>Demo interactivo - Restaurante</p>
     </div>
@@ -3336,7 +3336,7 @@ HTML_DEMO_ECOMMERCE = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistenteecommerce.png" alt="Ecommerce">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistenteecommerce.png" alt="Ecommerce">
         <h1>Asistente de Ecommerce</h1>
         <p>Demo interactivo - Tienda Online</p>
     </div>
@@ -3789,7 +3789,7 @@ HTML_DEMO_FINANZAS = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentefinanzas.png" alt="Finanzas">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentefinanzas.png" alt="Finanzas">
         <h1>Asistente de Finanzas</h1>
         <p>Demo interactivo - Asesoramiento Financiero</p>
     </div>
@@ -4330,7 +4330,7 @@ HTML_DEMO_ROPA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
         <h1>Asistente de Tienda de Ropa</h1>
         <p>Demo interactivo - Tienda Online</p>
     </div>
@@ -4679,7 +4679,7 @@ HTML_DEMO_PELUQUERIA = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedepeluqueria.png" alt="Peluquería">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedepeluqueria.png" alt="Peluquería">
         <h1>Asistente de Peluquería</h1>
         <p>Demo interactivo - Salón de Belleza</p>
     </div>
@@ -5019,7 +5019,7 @@ HTML_DEMO_VIAJES = f"""{HTML_BASE}
 
 <div class="demo-container">
     <div class="demo-header">
-        <img src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/Asistentedeviaje.png" alt="Viajes">
+        <img src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/Asistentedeviaje.png" alt="Viajes">
         <h1>Asistente de Viajes</h1>
         <p>Demo interactivo - Agencia de Turismo</p>
     </div>
@@ -5403,7 +5403,7 @@ else:
             
             <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
                 <iframe 
-                    src="https://gvelazcamp.github.io/Mercadobot/mercadobot-demo.html" 
+                    src="https://gvelazcamp.github.io/SIVO/sivo-demo.html" 
                     style="width: 100%; height: 850px; border: none; border-radius: 15px; display: block;"
                     frameborder="0"
                     allowfullscreen>
@@ -5473,8 +5473,8 @@ else:
                         preload="auto"
                         style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
                     >
-                        <source src="https://gvelazcamp.github.io/Mercadobot/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
-                        <source src="https://raw.githubusercontent.com/gvelazcamp/Mercadobot/main/mercadobot_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
+                        <source src="https://gvelazcamp.github.io/SIVO/sivo_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/sivo_whatsapp_demo-19.mp4?v=1770062658" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -5835,9 +5835,9 @@ CHATBOT = """
 <button id="bot-btn" onclick="toggle()">💬</button>
 
 <div id="bot-box">
-<div class="h"><h3>🤖 MercadoBot</h3><button onclick="toggle()">×</button></div>
+<div class="h"><h3>🤖 SIVO</h3><button onclick="toggle()">×</button></div>
 <div id="msgs">
-<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy MercadoBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es MercadoBot')">• Qué es MercadoBot</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
+<div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es SIVO')">• Qué es SIVO</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
 </div>
 <div class="inp">
 <input id="in" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter')send()">
@@ -5866,11 +5866,11 @@ function send(){
         
         // 1. Saludos
         if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey'))
-            r='¡Hola! 👋 Soy MercadoBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es MercadoBot<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
+            r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
         
-        // 2. ¿Qué es MercadoBot?
-        else if(l.includes('que es')||l.includes('qué es')||l.includes('mercadobot'))
-            r='<strong>MercadoBot</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
+        // 2. ¿Qué es SIVO?
+        else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo'))
+            r='<strong>SIVO</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
         
         // 3. Precios
         else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan'))
@@ -5886,11 +5886,11 @@ function send(){
         
         // 6. Demo
         else if(l.includes('demo')||l.includes('prueba')||l.includes('probar'))
-            r='🎯 <strong>¡Probá MercadoBot GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@mercadobot.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
+            r='🎯 <strong>¡Probá SIVO GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@sivo.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
         
         // 7. Contacto
         else if(l.includes('contacto')||l.includes('email')||l.includes('hablar')||l.includes('asesor'))
-            r='📞 <strong>Contactanos por:</strong><br><br>📧 Email: <strong>hola@mercadobot.com</strong><br>💬 Chat: ¡Estás hablando conmigo! 😊<br>📱 WhatsApp: +54 9 11 1234-5678<br><br>⏰ Respondemos en menos de 24hs';
+            r='📞 <strong>Contactanos por:</strong><br><br>📧 Email: <strong>hola@sivo.com</strong><br>💬 Chat: ¡Estás hablando conmigo! 😊<br>📱 WhatsApp: +54 9 11 1234-5678<br><br>⏰ Respondemos en menos de 24hs';
         
         // 8. Cancelación
         else if(l.includes('cancelar')||l.includes('permanencia')||l.includes('contrato'))
@@ -5922,7 +5922,7 @@ function send(){
         
         // 15. Ventajas vs competencia
         else if(l.includes('ventaja')||l.includes('mejor')||l.includes('diferencia')||l.includes('competencia'))
-            r='⭐ <strong>Por qué elegir MercadoBot:</strong><br><br>✅ Setup en días, no meses<br>✅ IA más natural y conversacional<br>✅ Soporte en español 24/7<br>✅ Integraciones nativas<br>✅ Precio accesible<br>✅ Sin letra chica<br><br>Probalo gratis y compará! 🚀';
+            r='⭐ <strong>Por qué elegir SIVO:</strong><br><br>✅ Setup en días, no meses<br>✅ IA más natural y conversacional<br>✅ Soporte en español 24/7<br>✅ Integraciones nativas<br>✅ Precio accesible<br>✅ Sin letra chica<br><br>Probalo gratis y compará! 🚀';
         
         // 16. Analíticas
         else if(l.includes('analitica')||l.includes('reporte')||l.includes('estadistica')||l.includes('métrica'))
@@ -5942,13 +5942,13 @@ function send(){
         
         // 20. Despedida
         else if(l.includes('gracias'))
-            r='¡De nada! 😊 Estoy acá para ayudarte.<br><br>¿Algo más que quieras saber sobre MercadoBot?';
+            r='¡De nada! 😊 Estoy acá para ayudarte.<br><br>¿Algo más que quieras saber sobre SIVO?';
         else if(l.includes('chau')||l.includes('adios')||l.includes('bye'))
-            r='¡Hasta pronto! 👋<br><br>Si tenés más dudas, acá estoy 24/7. También podés escribirnos a <strong>hola@mercadobot.com</strong>';
+            r='¡Hasta pronto! 👋<br><br>Si tenés más dudas, acá estoy 24/7. También podés escribirnos a <strong>hola@sivo.com</strong>';
         
         // Default
         else
-            r='🤔 Interesante pregunta. Podés consultarme sobre:<br><br>• Qué es MercadoBot<br>• Precios y planes<br>• Integraciones disponibles<br>• Cómo funciona<br>• Demo gratuita<br><br>O escribinos a <strong>hola@mercadobot.com</strong> para consultas específicas.';
+            r='🤔 Interesante pregunta. Podés consultarme sobre:<br><br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones disponibles<br>• Cómo funciona<br>• Demo gratuita<br><br>O escribinos a <strong>hola@sivo.com</strong> para consultas específicas.';
         
         add(r,false);
     },500);
@@ -5995,7 +5995,7 @@ function send(){
                 setTimeout(() => {
                     const l = msg.toLowerCase();
                     let r;
-                    if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy MercadoBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es MercadoBot<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
+                    if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
                     else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo')) r='<strong>SIVO</strong> es un asistente polifuncional con IA que se adapta a distintos rubros y automatiza tu atención al cliente 24/7. 🤖<br><br>Mirá nuestros SIVO asistentes especializados:<br>✅ Se personaliza a tu industria<br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
                     else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>BÁSICO - $25.000/mes</strong><br>• 1.000 consultas/mes<br>• 1 asistente<br>• Soporte por email<br><br><strong>PRO - $50.000/mes</strong><br>• 5.000 consultas/mes<br>• 3 asistentes<br>• Soporte prioritario<br><br><strong>ENTERPRISE - Personalizado</strong><br>• Ilimitado<br>• Soporte dedicado<br><br>🎁 <strong>7 días gratis</strong> para probar!';
                     else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma')) r='🔌 <strong>Integraciones disponibles:</strong><br><br>✅ WhatsApp<br>✅ Instagram<br>✅ Web (widget)<br>✅ Shopify<br>✅ Mercado Pago<br>✅ Email<br>✅ API personalizada<br><br>¿Cuál te interesa más?';
@@ -6183,4 +6183,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
