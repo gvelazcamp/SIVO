@@ -2226,7 +2226,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 12px 24px 12px;
+        padding: 8px 18px 8px;
       }
       .sivo-slider-title{
         text-align: center;
@@ -2243,7 +2243,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
       }
       .sivo-slider-frame{
         width: 100%;
-        height: 640px; /* PC: reduce espacio */
+        height: 560px; /* PC: reduce espacio */
         border: 0;
         border-radius: 18px;
         overflow: hidden;
@@ -2255,7 +2255,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
       @media (max-width: 900px){
         .sivo-slider-wrap{ padding: 26px 14px 10px; }
         .sivo-slider-title{ font-size: 34px; }
-        .sivo-slider-frame{ height: 640px; } /* mobile: un poco más alto */
+        .sivo-slider-frame{ height: 560px; } /* mobile: un poco más alto */
       }
     </style>
   </head>
@@ -5613,7 +5613,7 @@ else:
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
         # Slider de SIVOs (debajo de testimonios, antes de Integraciones)
-        components.html(SIVO_SLIDER_COMPONENT_HTML, height=700, scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_HTML, height=620, scrolling=False)
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
