@@ -5733,7 +5733,7 @@ CHATBOT = """
     bottom: 20px;
     right: 20px;
     width: 64px;
-    height: 560px;
+    height: 64px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400, #ff6b00);
     border: none;
