@@ -2358,7 +2358,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
     /* IFRAME PC - visible por defecto */
     .slider-pc {
       width: 100%; 
-      height: 980px; 
+      height: 900px; 
       border: 0; 
       display: block; 
       background: #ffffff;
@@ -2367,7 +2367,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
     /* IFRAME MOBILE - oculto por defecto */
     .slider-mobile {
       width: 100%; 
-      height: 560px; 
+      height: 520px; 
       border: 0; 
       display: none; 
       background: #ffffff;
@@ -2418,16 +2418,16 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
       const body = document.body;
       
       if (isMobile) {
-        body.style.height = '576px';
+        body.style.height = '540px';
       } else {
-        body.style.height = '1000px';
+        body.style.height = '920px';
       }
       
       // Notificar a Streamlit del cambio de altura
       try {
         window.parent.postMessage({
           type: 'streamlit:setFrameHeight',
-          height: isMobile ? 576 : 1000
+          height: isMobile ? 540 : 920
         }, '*');
       } catch(e) {}
     }
@@ -5816,7 +5816,7 @@ else:
         _is_mobile = (str(_m) == "1")
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=1020, scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(560 if _is_mobile else 940), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
