@@ -2175,6 +2175,21 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
+
+
+    <!-- SIVOS (SLIDER) -->
+    <div class="section" id="sivos-reales">
+        <h2>Ejemplos reales de SIVOs</h2>
+        <div class="subtitle">Deslizá para ver cómo se ven en producción.</div>
+
+        <iframe
+            src="{BASE_URL}slider_sivos_imagenes_reales.html"
+            style="width:100%; height:1250px; border:0; border-radius:18px; overflow:hidden; background:#ffffff;"
+            loading="lazy"
+            title="SIVOs reales"
+            scrolling="no"
+        ></iframe>
+    </div>
     <!-- INTEGRACIONES -->
     <div class="integrations-section">
         <h2>Integraciones</h2>
