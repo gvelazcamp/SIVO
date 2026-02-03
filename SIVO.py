@@ -2243,7 +2243,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
       }
       .sivo-slider-frame{
         width: 100%;
-        height: 1120px; /* PC: reduce espacio */
+        height: 900px; /* PC: reduce espacio */
         border: 0;
         border-radius: 18px;
         overflow: hidden;
@@ -2255,7 +2255,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
       @media (max-width: 900px){
         .sivo-slider-wrap{ padding: 26px 14px 10px; }
         .sivo-slider-title{ font-size: 34px; }
-        .sivo-slider-frame{ height: 1120px; } /* mobile: un poco más alto */
+        .sivo-slider-frame{ height: 900px; } /* mobile: un poco más alto */
       }
     </style>
   </head>
@@ -5535,8 +5535,8 @@ else:
                         preload="auto"
                         style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
                     >
-                        <source src="https://gvelazcamp.github.io/SIVO/sivo_whatsapp_demo.mp4" type="video/mp4">
-                        <source src="https://gvelazcamp.github.io/SIVO/sivo_whatsapp_demo.mp4" type="video/mp4">
+                        <source src="https://gvelazcamp.github.io/SIVO/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
+                        <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -5613,7 +5613,7 @@ else:
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
         # Slider de SIVOs (debajo de testimonios, antes de Integraciones)
-        components.html(SIVO_SLIDER_COMPONENT_HTML, height=1160, scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_HTML, height=980, scrolling=False)
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
