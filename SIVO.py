@@ -5612,27 +5612,8 @@ else:
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
-        
-        # Slider de SIVOs (debajo de “Lo que dicen nuestros clientes”, antes de Integraciones)
-        st.markdown("""
-        <style>
-          .sivo-slider-desktop { display: block; }
-          .sivo-slider-mobile  { display: none; }
-          @media (max-width: 900px) {
-            .sivo-slider-desktop { display: none; }
-            .sivo-slider-mobile  { display: block; }
-          }
-        </style>
-        """, unsafe_allow_html=True)
-
-        st.markdown('<div class="sivo-slider-desktop">', unsafe_allow_html=True)
-        components.html(SIVO_SLIDER_COMPONENT_HTML, height=1020, scrolling=False)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="sivo-slider-mobile">', unsafe_allow_html=True)
+        # Slider de SIVOs (debajo de testimonios, antes de Integraciones)
         components.html(SIVO_SLIDER_COMPONENT_HTML, height=620, scrolling=False)
-        st.markdown('</div>', unsafe_allow_html=True)
-
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
@@ -5668,7 +5649,7 @@ CHATBOT = """
     bottom: 20px;
     right: 20px;
     width: 64px;
-    height: 560px;
+    height: 64px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400, #ff6b00);
     border: none;
