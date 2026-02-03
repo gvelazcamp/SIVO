@@ -2198,7 +2198,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
                 if (!iframe) return;
 
                 // Carga el HTML desde GitHub RAW y lo inyecta como srcdoc (evita bloqueos por iframe)
-                var url = 'https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales.html';
+                var url = 'https://raw.githubusercontent.com/gvelazcamp/SIVO/main/slider_sivos_imagenes_reales.html';
 
                 fetch(url, {{ cache: 'no-store' }})
                     .then(function (r) {{ return r.text(); }})
