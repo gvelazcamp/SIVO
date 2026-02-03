@@ -1957,140 +1957,6 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
     </div>
 
     <div class="section">
-
-    <!-- CARRUSEL DE SIVOS -->
-    <div class="section" style="background: linear-gradient(135deg, #667eea 0%%, #764ba2 100%%); padding: 60px 5%%; margin: 60px 0; border-radius: 20px;">
-        <h2 style="color: white; text-align: center; margin-bottom: 15px;">Mirá nuestros SIVOs IA</h2>
-        <p style="color: rgba(255,255,255,0.9); text-align: center; font-size: 18px; margin-bottom: 40px;">Asistentes especializados para cada industria</p>
-        
-        <div class="carousel-container" style="overflow: hidden; position: relative; height: 120px;">
-            <div class="carousel-track" style="display: flex; animation: scroll 20s linear infinite;">
-                <div class="carousel-item">
-                    <span class="carousel-emoji">💰</span>
-                    <span class="carousel-text">SIVO Finanzas</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🛒</span>
-                    <span class="carousel-text">SIVO Ecommerce</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🍳</span>
-                    <span class="carousel-text">SIVO Cocina</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">📦</span>
-                    <span class="carousel-text">SIVO Stock</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🏠</span>
-                    <span class="carousel-text">SIVO Inmobiliaria</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">✂️</span>
-                    <span class="carousel-text">SIVO Peluquería</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">✈️</span>
-                    <span class="carousel-text">SIVO Viajes</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🦷</span>
-                    <span class="carousel-text">SIVO Dental</span>
-                </div>
-                <!-- Duplicamos para loop infinito -->
-                <div class="carousel-item">
-                    <span class="carousel-emoji">💰</span>
-                    <span class="carousel-text">SIVO Finanzas</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🛒</span>
-                    <span class="carousel-text">SIVO Ecommerce</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">🍳</span>
-                    <span class="carousel-text">SIVO Cocina</span>
-                </div>
-                <div class="carousel-item">
-                    <span class="carousel-emoji">📦</span>
-                    <span class="carousel-text">SIVO Stock</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <style>
-    .carousel-container {
-        max-width: 100%%;
-        margin: 0 auto;
-    }
-    
-    .carousel-track {
-        gap: 30px;
-        padding: 20px 0;
-    }
-    
-    .carousel-item {
-        flex: 0 0 auto;
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(10px);
-        padding: 25px 40px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.2);
-        transition: transform 0.3s ease;
-        min-width: 280px;
-    }
-    
-    .carousel-item:hover {
-        transform: scale(1.05);
-        background: rgba(255,255,255,0.25);
-    }
-    
-    .carousel-emoji {
-        font-size: 36px;
-    }
-    
-    .carousel-text {
-        font-size: 22px;
-        font-weight: 600;
-        color: white;
-        white-space: nowrap;
-    }
-    
-    @keyframes scroll {
-        0%% {
-            transform: translateX(0);
-        }
-        100%% {
-            transform: translateX(-50%%);
-        }
-    }
-    
-    /* Pausar animación al hover */
-    .carousel-container:hover .carousel-track {
-        animation-play-state: paused;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .carousel-item {
-            padding: 20px 30px;
-            min-width: 240px;
-        }
-        
-        .carousel-emoji {
-            font-size: 28px;
-        }
-        
-        .carousel-text {
-            font-size: 18px;
-        }
-    }
-    </style>
-
         <h2>SIVOs IA listos para potenciar tu negocio</h2>
         <div class="subtitle">Estos son ejemplos. El producto principal es el <strong>chatbot instalado</strong>.</div>
 
@@ -2498,7 +2364,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
             <div class="plan-name">Pro mensual</div>
             <div class="plan-desc">Uso, mantenimiento y evolución continua</div>
             
-            <div class="plan-price">US$ 150<span>/mes</span></div>
+            <div class="plan-price">US$ 100<span>/mes</span></div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             <div class="plan-note" style="font-size: 12px; color: #999; margin-top: 4px;">
                 Requiere implementación inicial previa
@@ -6317,3 +6183,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
