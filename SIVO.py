@@ -2273,6 +2273,57 @@ SIVO_SLIDER_COMPONENT_HTML = """
 </html>
 """
 
+
+# =========================
+# SIVOS (SLIDER) - PC / MOBILE (2 HTMLs distintos)
+# =========================
+SIVO_SLIDER_COMPONENT_HTML_PC = """<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, sans-serif; background:#ffffff; }
+    .wrap { padding: 10px 0; background:#ffffff; }
+    iframe { width:100%; height: 980px; border:0; display:block; background:#ffffff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <iframe
+      src="https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales_pc.html"
+      title="SIVOs - PC"
+      loading="lazy"
+    ></iframe>
+  </div>
+</body>
+</html>
+"""
+
+SIVO_SLIDER_COMPONENT_HTML_MOBILE = """<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, sans-serif; background:#ffffff; }
+    .wrap { padding: 6px 0; background:#ffffff; }
+    iframe { width:100%; height: 560px; border:0; display:block; background:#ffffff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <iframe
+      src="https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales_mobile.html"
+      title="SIVOs - Mobile"
+      loading="lazy"
+      scrolling="no"
+    ></iframe>
+  </div>
+</body>
+</html>
+"""
+
 # =========================
 # ASISTENTES
 # =========================
@@ -5612,8 +5663,41 @@ else:
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
-        # Slider de SIVOs (debajo de testimonios, antes de Integraciones)
-        components.html(SIVO_SLIDER_COMPONENT_HTML, height=620, scrolling=False)
+        # Slider de SIVOs (debajo de “Lo que dicen nuestros clientes”, antes de Integraciones)
+
+        # Detectar ancho (mobile/desktop) y setear query param ?m=1/0 (una sola vez)
+        components.html("""<script>
+            (function() {
+                try {
+                    var w = window.innerWidth || document.documentElement.clientWidth || 9999;
+                    var isMobile = (w <= 900) ? '1' : '0';
+                    var url = new URL(window.location.href);
+                    if (url.searchParams.get('m') !== isMobile) {
+                        url.searchParams.set('m', isMobile);
+                        window.location.replace(url.toString());
+                    }
+                } catch (e) {}
+            })();
+        </script>""", height=0)
+
+        _m = None
+        try:
+            _m = st.query_params.get("m")
+            if isinstance(_m, list):
+                _m = _m[0] if _m else None
+        except Exception:
+            try:
+                _m = st.experimental_get_query_params().get("m", [None])[0]
+            except Exception:
+                _m = None
+
+        _is_mobile = (str(_m) == "1")
+
+        if _is_mobile:
+            components.html(SIVO_SLIDER_COMPONENT_HTML_MOBILE, height=620, scrolling=False)
+        else:
+            components.html(SIVO_SLIDER_COMPONENT_HTML_PC, height=1020, scrolling=False)
+
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
@@ -5649,7 +5733,7 @@ CHATBOT = """
     bottom: 20px;
     right: 20px;
     width: 64px;
-    height: 64px;
+    height: 560px;
     border-radius: 50%;
     background: linear-gradient(135deg, #f4b400, #ff6b00);
     border: none;
