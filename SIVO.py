@@ -1507,9 +1507,19 @@ body {
     }
     
     /* REDUCIR ESPACIO ENTRE SIVO COCINA E INTEGRACIONES EN MÓVIL */
+    .sivo-section {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .sivo-card-clean {
+        margin-bottom: 0 !important;
+        padding-bottom: 25px !important;
+    }
+    
     .integrations-section {
-        margin-top: -120px !important;
-        padding-top: 30px !important;
+        margin-top: -350px !important;
+        padding-top: 15px !important;
     }
     
     .integrations-section h2 {
@@ -2292,7 +2302,7 @@ SIVO_SLIDER_COMPONENT_HTML = """
       }
 
       @media (max-width: 900px){
-        .sivo-slider-wrap{ padding: 26px 14px 10px; }
+        .sivo-slider-wrap{ padding: 26px 14px 0px; } /* Eliminar padding-bottom */
         .sivo-slider-title{ font-size: 34px; }
         .sivo-slider-frame{ height: 560px; } /* mobile: un poco más alto */
       }
