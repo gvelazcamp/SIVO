@@ -2022,9 +2022,9 @@ HTML_HOME_PARTE_1 = f"""{HTML_BASE}
             <!-- Benefits Horizontal Scroll -->
             <div style="display: flex; gap: 24px; overflow-x: auto; padding: 20px 0; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
                 <style>
-                    .benefits-section div::-webkit-scrollbar {
+                    .benefits-section div::-webkit-scrollbar {{
                         display: none;
-                    }
+                    }}
                 </style>
                 
                 <!-- Benefit 1: Atención 24/7 -->
