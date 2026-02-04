@@ -1518,7 +1518,7 @@ body {
     }
     
     .integrations-section {
-        margin-top: -220px !important; /* Ajustar para el nuevo padding */
+        margin-top: -350px !important;
         padding-top: 15px !important;
     }
     
@@ -2302,12 +2302,9 @@ SIVO_SLIDER_COMPONENT_HTML = """
       }
 
       @media (max-width: 900px){
-        .sivo-slider-wrap{ padding: 26px 14px 40px; } /* Más padding-bottom */
+        .sivo-slider-wrap{ padding: 26px 14px 0px; } /* Eliminar padding-bottom */
         .sivo-slider-title{ font-size: 34px; }
-        .sivo-slider-frame{ 
-            height: 800px; /* MUCHO MÁS altura para móvil */
-            overflow: visible; /* Permitir que se vea todo el contenido */
-        }
+        .sivo-slider-frame{ height: 560px; } /* mobile: un poco más alto */
       }
     </style>
   </head>
@@ -2359,13 +2356,8 @@ SIVO_SLIDER_COMPONENT_HTML_MOBILE = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, sans-serif; background:#ffffff; }
-    .wrap { padding: 6px 0 30px 0; background:#ffffff; } /* Agregar padding-bottom */
-    iframe { width:100%; height: 700px; border:0; display:block; background:#ffffff; } /* Aumentar altura */
-    
-    @media (max-width: 900px) {
-      iframe { height: 750px; } /* Aún más altura en móvil */
-      .wrap { padding: 6px 0 40px 0; } /* Más padding-bottom en móvil */
-    }
+    .wrap { padding: 6px 0; background:#ffffff; }
+    iframe { width:100%; height: 560px; border:0; display:block; background:#ffffff; }
   </style>
 </head>
 <body>
