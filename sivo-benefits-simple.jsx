@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Phone, Zap, TrendingDown, BarChart3, Sparkles } from 'lucide-react';
 
 export default function SivoBenefits() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [autoPaused, setAutoPaused] = useState(false);
 
   const benefits = [
     {
@@ -51,6 +52,26 @@ export default function SivoBenefits() {
     }
   ];
 
+  // Auto-hover (ciclo automático) para activar el efecto sin mouse
+  useEffect(() => {
+    if (autoPaused) return;
+
+    const ids = benefits.map((b) => b.id);
+    if (!ids.length) return;
+
+    let i = 0;
+    // Arranca activando la primera tarjeta
+    setHoveredCard(ids[0]);
+
+    const interval = setInterval(() => {
+      i = (i + 1) % ids.length;
+      setHoveredCard(ids[i]);
+    }, 1600);
+
+    return () => clearInterval(interval);
+  }, [autoPaused]);
+
+
   return (
     <div className="bg-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -76,8 +97,10 @@ export default function SivoBenefits() {
                 <div
                   key={benefit.id}
                   className="relative flex-shrink-0 w-80 h-72 rounded-2xl overflow-hidden cursor-pointer snap-center"
-                  onMouseEnter={() => setHoveredCard(benefit.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  onMouseEnter={() => { setAutoPaused(true); setHoveredCard(benefit.id); }}
+                  onMouseLeave={() => { setHoveredCard(null); setAutoPaused(false); }}
+                  onTouchStart={() => { setAutoPaused(true); setHoveredCard(benefit.id); }}
+                  onTouchEnd={() => { setHoveredCard(null); setAutoPaused(false); }}
                 >
                   {/* Front Card - Simple Design */}
                   <div
