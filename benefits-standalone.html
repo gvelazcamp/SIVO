@@ -96,48 +96,48 @@
             transform: translateX(0);
         }
 
-        /* Animación automática al cargar - mostrar reverso brevemente */
+        /* Animación automática al cargar - mostrar reverso por más tiempo */
         @keyframes autoFlip {
             0% { transform: translateX(0); }
-            20% { transform: translateX(-100%); }
-            80% { transform: translateX(-100%); }
+            15% { transform: translateX(-100%); }
+            85% { transform: translateX(-100%); }
             100% { transform: translateX(0); }
         }
 
         @keyframes autoFlipBack {
             0% { transform: translateX(100%); }
-            20% { transform: translateX(0); }
-            80% { transform: translateX(0); }
+            15% { transform: translateX(0); }
+            85% { transform: translateX(0); }
             100% { transform: translateX(100%); }
         }
 
         /* Aplicar animación automática con delays escalonados - INFINITA */
         .benefit-card:nth-child(1) .benefit-front {
-            animation: autoFlip 3s ease-in-out 0.5s infinite;
+            animation: autoFlip 8s ease-in-out 0.5s infinite;
         }
         .benefit-card:nth-child(1) .benefit-back {
-            animation: autoFlipBack 3s ease-in-out 0.5s infinite;
+            animation: autoFlipBack 8s ease-in-out 0.5s infinite;
         }
 
         .benefit-card:nth-child(2) .benefit-front {
-            animation: autoFlip 3s ease-in-out 1s infinite;
+            animation: autoFlip 8s ease-in-out 1.5s infinite;
         }
         .benefit-card:nth-child(2) .benefit-back {
-            animation: autoFlipBack 3s ease-in-out 1s infinite;
+            animation: autoFlipBack 8s ease-in-out 1.5s infinite;
         }
 
         .benefit-card:nth-child(3) .benefit-front {
-            animation: autoFlip 3s ease-in-out 1.5s infinite;
+            animation: autoFlip 8s ease-in-out 2.5s infinite;
         }
         .benefit-card:nth-child(3) .benefit-back {
-            animation: autoFlipBack 3s ease-in-out 1.5s infinite;
+            animation: autoFlipBack 8s ease-in-out 2.5s infinite;
         }
 
         .benefit-card:nth-child(4) .benefit-front {
-            animation: autoFlip 3s ease-in-out 2s infinite;
+            animation: autoFlip 8s ease-in-out 3.5s infinite;
         }
         .benefit-card:nth-child(4) .benefit-back {
-            animation: autoFlipBack 3s ease-in-out 2s infinite;
+            animation: autoFlipBack 8s ease-in-out 3.5s infinite;
         }
 
         /* Hover manual sigue funcionando */
@@ -192,12 +192,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .icon-circle svg {
-            width: 32px;
-            height: 32px;
-            stroke-width: 2.5;
+            font-size: 32px;
         }
 
         .benefit-title {
@@ -226,17 +221,10 @@
             gap: 4px;
         }
 
-        .hover-indicator svg {
-            width: 16px;
-            height: 16px;
-        }
-
         .back-icon {
-            width: 48px;
-            height: 48px;
+            font-size: 48px;
             opacity: 0.9;
             margin-bottom: 12px;
-            stroke: white;
         }
 
         .back-title {
@@ -284,24 +272,17 @@
                     <div class="benefit-front">
                         <div class="icon-wrapper">
                             <div class="icon-circle">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
+                                📞
                             </div>
                         </div>
                         <h3 class="benefit-title">Atención 24/7</h3>
                         <p class="benefit-subtitle-text">Siempre disponible para tus clientes</p>
                         <div class="hover-indicator">
-                            Desliza para ver más
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
+                            Desliza para ver más →
                         </div>
                     </div>
                     <div class="benefit-back">
-                        <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
+                        <div class="back-icon">📞</div>
                         <h3 class="back-title">Atención 24/7</h3>
                         <p class="back-description">Tu SIVO nunca duerme. Atiende llamadas, chats y consultas en cualquier momento del día, todos los días del año.</p>
                     </div>
@@ -312,24 +293,17 @@
                     <div class="benefit-front">
                         <div class="icon-wrapper">
                             <div class="icon-circle">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
+                                ⚡
                             </div>
                         </div>
                         <h3 class="benefit-title">Automatización Inteligente</h3>
                         <p class="benefit-subtitle-text">Libera tiempo valioso</p>
                         <div class="hover-indicator">
-                            Desliza para ver más
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
+                            Desliza para ver más →
                         </div>
                     </div>
                     <div class="benefit-back">
-                        <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                        <div class="back-icon">⚡</div>
                         <h3 class="back-title">Automatización Inteligente</h3>
                         <p class="back-description">Automatiza tareas repetitivas como reservas, consultas frecuentes y seguimiento de pedidos. Tu equipo se enfoca en lo importante.</p>
                     </div>
@@ -340,24 +314,17 @@
                     <div class="benefit-front">
                         <div class="icon-wrapper">
                             <div class="icon-circle">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
+                                💰
                             </div>
                         </div>
                         <h3 class="benefit-title">Reduce Costos</h3>
                         <p class="benefit-subtitle-text">Hasta 70% de ahorro</p>
                         <div class="hover-indicator">
-                            Desliza para ver más
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
+                            Desliza para ver más →
                         </div>
                     </div>
                     <div class="benefit-back">
-                        <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
+                        <div class="back-icon">💰</div>
                         <h3 class="back-title">Reduce Costos</h3>
                         <p class="back-description">Elimina costos de contratación, capacitación y turnos nocturnos. Un SIVO reemplaza múltiples agentes a una fracción del costo.</p>
                     </div>
@@ -368,24 +335,17 @@
                     <div class="benefit-front">
                         <div class="icon-wrapper">
                             <div class="icon-circle">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                </svg>
+                                📈
                             </div>
                         </div>
                         <h3 class="benefit-title">Escalabilidad Instantánea</h3>
                         <p class="benefit-subtitle-text">Crece sin límites</p>
                         <div class="hover-indicator">
-                            Desliza para ver más
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
+                            Desliza para ver más →
                         </div>
                     </div>
                     <div class="benefit-back">
-                        <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
+                        <div class="back-icon">📈</div>
                         <h3 class="back-title">Escalabilidad Instantánea</h3>
                         <p class="back-description">Atiende 1 o 1000 clientes simultáneamente sin contratar más personal. Escala tu negocio sin preocupaciones.</p>
                     </div>
