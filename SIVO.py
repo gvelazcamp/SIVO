@@ -1518,7 +1518,7 @@ body {
     }
     
     .integrations-section {
-        margin-top: -310px !important;
+        margin-top: -250px !important; /* Ajustar para compensar el nuevo padding del slider */
         padding-top: 15px !important;
     }
     
