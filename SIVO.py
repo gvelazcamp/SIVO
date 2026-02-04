@@ -1,5 +1,64 @@
 import streamlit as st
 
+from pathlib import Path
+import re
+
+# =========================
+# BENEFITS (standalone HTML)
+# =========================
+def cargar_benefits_standalone_html():
+    """Carga benefits-standalone.html desde el repo (para incrustarlo en HOME).
+    Si no existe, deja un placeholder visible para que no 'desaparezca' la sección.
+    """
+    candidatos = []
+    try:
+        candidatos.append(Path(__file__).resolve().parent / "benefits-standalone.html")
+    except Exception:
+        pass
+    candidatos.append(Path("benefits-standalone.html"))
+    candidatos.append(Path("SIVO/benefits-standalone.html"))
+
+    for p in candidatos:
+        try:
+            if p.exists():
+                raw = p.read_text(encoding="utf-8", errors="ignore")
+                # Tomar contenido del <body> si existe
+                m_body = re.search(r"<body[^>]*>(.*?)</body>", raw, flags=re.I | re.S)
+                body = m_body.group(1) if m_body else raw
+
+                # Mantener <style> (estén donde estén)
+                styles = re.findall(r"<style[^>]*>.*?</style>", raw, flags=re.I | re.S)
+                links = re.findall(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', raw, flags=re.I)
+
+                head = ""
+                if styles:
+                    head += "\n".join(styles) + "\n"
+                if links:
+                    head += "\n".join(links) + "\n"
+
+                return f"""\
+{head}
+{body}
+"""
+        except Exception:
+            continue
+
+    # Fallback visible (para que no quede vacío si falta el archivo)
+    return """\
+<div style="background:#ffffff; padding:64px 20px;">
+  <div style="max-width:1280px; margin:0 auto; text-align:center;">
+    <h2 style="margin:0 0 10px 0; font-size:28px; font-weight:800; color:#111827;">
+      Beneficios de tener un SIVO
+    </h2>
+    <p style="margin:0; color:#6b7280;">
+      Falta el archivo <b>benefits-standalone.html</b> en el proyecto (no se pudo cargar).
+    </p>
+  </div>
+</div>
+"""
+
+HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
+
 # =========================
 # CONFIGURACIÓN NORMAL APP
 # =========================
@@ -2005,38 +2064,22 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
     </div>
 
-    <!-- SECCIÓN DE BENEFICIOS CON HOVER -->
-    <div class="benefits-section" style="background: #ffffff; padding: 0; margin: 0;">
-        <style>
-            .benefits-iframe {
-                width: 100%;
-                border: 0;
-                border-radius: 18px;
-                display: block;
-                height: 520px;
-                background: transparent;
-            }
-            @media (max-width: 768px) {
-                .benefits-iframe {
-                    height: 640px;
-                }
-            }
-        </style>
-        <div style="max-width: 1280px; margin: 0 auto; padding: 0 20px;">
-            <iframe
-                class="benefits-iframe"
-                src="https://gvelazcamp.github.io/SIVO/benefits-standalone.html"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-        </div>
-    </div>
+    
+<!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
+__BENEFITS_STANDALONE__
 
-    <!-- Inline event handlers are used on cards for better compatibility -->
+<!-- Inline event handlers are used on cards for better compatibility -->
 
 
 """ + FOOTER + """
 """
+
+
+# Inyectar beneficios standalone en HOME (sin cambiar el resto)
+try:
+    HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__BENEFITS_STANDALONE__", HTML_BENEFITS_STANDALONE)
+except Exception:
+    pass
 
 HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     <div class="testimonios">
