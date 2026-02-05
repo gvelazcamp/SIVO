@@ -2,7 +2,6 @@ import streamlit as st
 
 from pathlib import Path
 import re
-import html
 
 # =========================
 # BENEFITS (standalone HTML)
@@ -65,40 +64,6 @@ def cargar_benefits_standalone_html():
 """
 
 HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
-
-# =========================
-# CÓMO FUNCIONA (standalone HTML -> iframe srcdoc)
-# =========================
-def cargar_como_funciona_srcdoc_html(nombre_archivo: str) -> str:
-    """Carga un HTML standalone y lo devuelve escapado para usar en iframe srcdoc.
-    Importante: usamos srcdoc para aislar estilos (evita que body/* afecte al resto del HOME).
-    """
-    candidatos = []
-    try:
-        candidatos.append(Path(__file__).resolve().parent / nombre_archivo)
-    except Exception:
-        pass
-    candidatos.append(Path(nombre_archivo))
-    candidatos.append(Path(f"SIVO/{nombre_archivo}"))
-
-    for p in candidatos:
-        try:
-            if p.exists():
-                raw = p.read_text(encoding="utf-8", errors="ignore")
-                return html.escape(raw, quote=True)
-        except Exception:
-            continue
-
-    # Fallback visible dentro del iframe
-    fallback = f"""<!doctype html><html lang='es'><head><meta charset='utf-8'>
-    <style>body{{font-family:Arial,sans-serif;padding:18px}}.box{{border:1px dashed #bbb;border-radius:12px;padding:16px}}</style>
-    </head><body><div class='box'>Falta el archivo <b>{nombre_archivo}</b> (no se pudo cargar).</div></body></html>"""
-    return html.escape(fallback, quote=True)
-
-
-COMO_FUNCIONA_PC_SRCDOC = cargar_como_funciona_srcdoc_html("tarjetas-animadas-pc-horizontal.html")
-COMO_FUNCIONA_MOBILE_SRCDOC = cargar_como_funciona_srcdoc_html("tarjetas-animadas.html")
-
 
 # =========================
 # CONFIGURACIÓN NORMAL APP
@@ -2176,44 +2141,28 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         <h2>Cómo funciona</h2>
         <div class="subtitle">Simple y rápido. En 3 pasos tenés tu asistente funcionando.</div>
 
-        <div class="como-funciona-embed">
-            <iframe
-                class="cf-iframe cf-desktop"
-                srcdoc="__CF_PC_SRCDOC__"
-                title="Cómo funciona - PC"
-                loading="lazy"
-                scrolling="no"
-            ></iframe>
-
-            <iframe
-                class="cf-iframe cf-mobile"
-                srcdoc="__CF_MOBILE_SRCDOC__"
-                title="Cómo funciona - Celular"
-                loading="lazy"
-                scrolling="no"
-            ></iframe>
+        <div class="steps-simple">
+            <div class="step-simple">
+                <div class="step-icon">🔌</div>
+                <h3>Conectás</h3>
+                <p>Vinculás tus datos, productos, servicios o información del negocio.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step-simple">
+                <div class="step-icon">🧠</div>
+                <h3>Entrenás</h3>
+                <p>El asistente aprende tu negocio: precios, stock, políticas, horarios.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step-simple">
+                <div class="step-icon">🚀</div>
+                <h3>Lanzás</h3>
+                <p>Lo instalamos en tu web o WhatsApp y empieza a atender clientes.</p>
+            </div>
         </div>
-
-        <style>
-            /* CÓMO FUNCIONA: mostrar PC vs Cel */
-            .cf-iframe {
-                width: 100%;
-                border: 0;
-                display: block;
-            }
-            /* Ajustá alturas si querés más/menos aire */
-            .cf-desktop { height: 680px; }
-            .cf-mobile { height: 1080px; display: none; }
-
-            @media (max-width: 900px) {
-                .cf-desktop { display: none; }
-                .cf-mobile { display: block; }
-            }
-        </style>
     </div>
 
-
-
+    
 <!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
 __BENEFITS_STANDALONE__
 
@@ -2227,8 +2176,6 @@ __BENEFITS_STANDALONE__
 # Inyectar beneficios standalone en HOME (sin cambiar el resto)
 try:
     HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__BENEFITS_STANDALONE__", HTML_BENEFITS_STANDALONE)
-    HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__CF_PC_SRCDOC__", COMO_FUNCIONA_PC_SRCDOC)
-    HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__CF_MOBILE_SRCDOC__", COMO_FUNCIONA_MOBILE_SRCDOC)
 except Exception:
     pass
 
