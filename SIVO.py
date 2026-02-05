@@ -2137,7 +2137,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
     
 
-    <!-- ====== SECCIÓN CÓMO FUNCIONA CON TARJETAS ANIMADAS ====== -->
+    <!-- ====== SECCIÓN CÓMO FUNCIONA CON TARJETAS ANIMADAS (SCROLL) ====== -->
     <style>
         .como-funciona-container {
             max-width: 1100px;
@@ -2175,63 +2175,59 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
 
-            /* Animación base */
+            /* Animación base - INICIA INVISIBLE */
             opacity: 0;
-            animation-duration: 0.8s;
-            animation-fill-mode: forwards;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 
-            /* Para que queden iguales en la fila */
+            /* Para que queden TODAS iguales en altura */
             flex: 1 1 0;
             min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px; /* Altura mínima para igualar todas */
+        }
+
+        /* Clase que se agrega cuando la tarjeta es visible */
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card-icon {
             font-size: 80px;
             margin-bottom: 20px;
+            height: 80px; /* Altura fija para los iconos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card h2 {
             font-size: 1.8rem;
             color: #333;
             margin-bottom: 15px;
+            min-height: 50px; /* Altura mínima para títulos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card p {
             font-size: 1rem;
             color: #666;
             line-height: 1.6;
+            flex-grow: 1; /* Esto hace que el párrafo tome el espacio restante */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        /* ====== ANIMACIONES (Abajo / Arriba / Abajo) ====== */
-        @keyframes slideInUp {
-            from {
-                transform: translateY(70px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInDown {
-            from {
-                transform: translateY(-70px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .slide-up { animation-name: slideInUp; }
-        .slide-down { animation-name: slideInDown; }
-
-        /* Delays (para que entren escalonadas) */
-        .cards-row .card:nth-child(1) { animation-delay: 0.2s; }
-        .cards-row .card:nth-child(2) { animation-delay: 0.5s; }
-        .cards-row .card:nth-child(3) { animation-delay: 0.8s; }
+        /* Delays para animación escalonada */
+        .card:nth-child(1) { transition-delay: 0.1s; }
+        .card:nth-child(2) { transition-delay: 0.3s; }
+        .card:nth-child(3) { transition-delay: 0.5s; }
 
         /* ====== Responsive: si achica, apilar ====== */
         @media (max-width: 900px) {
@@ -2245,14 +2241,17 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
             .card {
                 padding: 30px 20px;
+                min-height: auto; /* En móvil no necesitamos altura fija */
             }
 
             .card-icon {
                 font-size: 60px;
+                height: 60px;
             }
 
             .card h2 {
                 font-size: 1.5rem;
+                min-height: auto;
             }
         }
     </style>
@@ -2264,28 +2263,54 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
 
         <div class="cards-row">
-            <!-- Tarjeta 1: Abajo -> Arriba -->
-            <div class="card slide-up">
+            <!-- Tarjeta 1: Conectás -->
+            <div class="card" data-animate="scroll">
                 <div class="card-icon">🔌</div>
                 <h2>Conectás</h2>
                 <p>Vinculás tus datos, productos, servicios o información del negocio.</p>
             </div>
 
-            <!-- Tarjeta 2: Arriba -> Abajo (entra desde arriba) -->
-            <div class="card slide-down">
+            <!-- Tarjeta 2: Entrenás -->
+            <div class="card" data-animate="scroll">
                 <div class="card-icon">🧠</div>
                 <h2>Entrenás</h2>
                 <p>El asistente aprende tu negocio: precios, stock, políticas, horarios.</p>
             </div>
 
-            <!-- Tarjeta 3: Abajo -> Arriba -->
-            <div class="card slide-up">
+            <!-- Tarjeta 3: Lanzás -->
+            <div class="card" data-animate="scroll">
                 <div class="card-icon">🚀</div>
                 <h2>Lanzás</h2>
                 <p>Lo instalamos en tu web o WhatsApp y empieza a atender clientes.</p>
             </div>
         </div>
     </div>
+
+    <script>
+    (function() {
+        // Intersection Observer para animar al hacer scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2 // Se activa cuando el 20% del elemento es visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Opcional: dejar de observar después de animar
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar todas las tarjetas
+        document.querySelectorAll('.card[data-animate="scroll"]').forEach(card => {
+            observer.observe(card);
+        });
+    })();
+    </script>
     <!-- ====== FIN SECCIÓN CÓMO FUNCIONA ====== -->
 
     
