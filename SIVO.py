@@ -2185,7 +2185,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             min-width: 260px;
             display: flex;
             flex-direction: column;
-            min-height: 320px; /* Altura mínima para igualar todas */
+            min-height: 320px;
         }
 
         /* Clase que se agrega cuando la tarjeta es visible */
@@ -2197,7 +2197,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         .card-icon {
             font-size: 80px;
             margin-bottom: 20px;
-            height: 80px; /* Altura fija para los iconos */
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2207,7 +2207,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             font-size: 1.8rem;
             color: #333;
             margin-bottom: 15px;
-            min-height: 50px; /* Altura mínima para títulos */
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2217,7 +2217,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             font-size: 1rem;
             color: #666;
             line-height: 1.6;
-            flex-grow: 1; /* Esto hace que el párrafo tome el espacio restante */
+            flex-grow: 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2225,9 +2225,9 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         }
 
         /* Delays para animación escalonada */
-        .card:nth-child(1) { transition-delay: 0.1s; }
-        .card:nth-child(2) { transition-delay: 0.3s; }
-        .card:nth-child(3) { transition-delay: 0.5s; }
+        .card:nth-child(1).visible { transition-delay: 0.1s; }
+        .card:nth-child(2).visible { transition-delay: 0.3s; }
+        .card:nth-child(3).visible { transition-delay: 0.5s; }
 
         /* ====== Responsive: si achica, apilar ====== */
         @media (max-width: 900px) {
@@ -2241,7 +2241,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
             .card {
                 padding: 30px 20px;
-                min-height: auto; /* En móvil no necesitamos altura fija */
+                min-height: auto;
             }
 
             .card-icon {
@@ -2288,27 +2288,39 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
     <script>
     (function() {
-        // Intersection Observer para animar al hacer scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.2 // Se activa cuando el 20% del elemento es visible
-        };
+        // Esperar a que el DOM esté listo
+        function initScrollAnimations() {
+            // Intersection Observer para animar al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Reducido a 10% para que se active más rápido
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Opcional: dejar de observar después de animar
-                    // observer.unobserve(entry.target);
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Pequeño delay para asegurar que la animación se vea
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 50);
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todas las tarjetas
+            const cards = document.querySelectorAll('.card[data-animate="scroll"]');
+            cards.forEach(card => {
+                observer.observe(card);
             });
-        }, observerOptions);
+        }
 
-        // Observar todas las tarjetas
-        document.querySelectorAll('.card[data-animate="scroll"]').forEach(card => {
-            observer.observe(card);
-        });
+        // Iniciar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        } else {
+            initScrollAnimations();
+        }
     })();
     </script>
     <!-- ====== FIN SECCIÓN CÓMO FUNCIONA ====== -->
