@@ -733,62 +733,106 @@ body {
     line-height: 1.45;
 }
 
-/* NUEVOS STEPS SIMPLES */
+/* NUEVOS STEPS SIMPLES CON ANIMACIONES */
 .steps-simple {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 5px auto;
-    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .step-simple {
-    background: #fff;
-    border-radius: 24px;
-    padding: 20px 15px;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
+    opacity: 0;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
 }
 
 .step-icon {
-    font-size: 64px;
+    font-size: 80px;
     margin-bottom: 20px;
 }
 
 .step-simple h3 {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: #000;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .step-simple p {
-    font-size: 14px;
+    font-size: 1rem;
     color: #666;
     line-height: 1.6;
 }
 
-.step-arrow {
-    font-size: 32px;
-    color: #f4b400;
-    font-weight: 800;
+/* Animaciones */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-@media (max-width: 768px) {
-    .step-arrow {
-        display: none;
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
-    
-    .steps-simple {
-        flex-direction: column;
-        gap: 20px;
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
+
+.slide-left {
+    animation-name: slideInLeft;
+}
+
+.slide-right {
+    animation-name: slideInRight;
+}
+
+/* Delays para las animaciones */
+.step-simple:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.step-simple:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.step-simple:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.step-arrow {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .step-simple {
+        padding: 30px 20px;
+    }
+
+    .step-icon {
+        font-size: 60px;
+    }
+
+    .step-simple h3 {
+        font-size: 1.5rem;
+    }
+}
+
 
 /* =========================
    SECTION
@@ -2134,19 +2178,22 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         <div class="subtitle">Simple y rápido. En 3 pasos tenés tu asistente funcionando.</div>
 
         <div class="steps-simple">
-            <div class="step-simple">
+            <!-- Tarjeta 1: Izquierda a Derecha -->
+            <div class="step-simple slide-left">
                 <div class="step-icon">🔌</div>
                 <h3>Conectás</h3>
                 <p>Vinculás tus datos, productos, servicios o información del negocio.</p>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step-simple">
+
+            <!-- Tarjeta 2: Derecha a Izquierda -->
+            <div class="step-simple slide-right">
                 <div class="step-icon">🧠</div>
                 <h3>Entrenás</h3>
                 <p>El asistente aprende tu negocio: precios, stock, políticas, horarios.</p>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step-simple">
+
+            <!-- Tarjeta 3: Izquierda a Derecha -->
+            <div class="step-simple slide-left">
                 <div class="step-icon">🚀</div>
                 <h3>Lanzás</h3>
                 <p>Lo instalamos en tu web o WhatsApp y empieza a atender clientes.</p>
