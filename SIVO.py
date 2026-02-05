@@ -2137,30 +2137,156 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
     
 
-    <div class="section">
-        <h2>Cómo funciona</h2>
-        <div class="subtitle">Simple y rápido. En 3 pasos tenés tu asistente funcionando.</div>
+    <!-- ====== SECCIÓN CÓMO FUNCIONA CON TARJETAS ANIMADAS ====== -->
+    <style>
+        .como-funciona-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
 
-        <div class="steps-simple">
-            <div class="step-simple">
-                <div class="step-icon">🔌</div>
-                <h3>Conectás</h3>
+        .como-funciona-header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 60px;
+        }
+
+        .como-funciona-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .como-funciona-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ====== FILA HORIZONTAL (PC) ====== */
+        .cards-row {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+
+            /* Animación base */
+            opacity: 0;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
+
+            /* Para que queden iguales en la fila */
+            flex: 1 1 0;
+            min-width: 260px;
+        }
+
+        .card-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ====== ANIMACIONES (Abajo / Arriba / Abajo) ====== */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(70px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-70px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up { animation-name: slideInUp; }
+        .slide-down { animation-name: slideInDown; }
+
+        /* Delays (para que entren escalonadas) */
+        .cards-row .card:nth-child(1) { animation-delay: 0.2s; }
+        .cards-row .card:nth-child(2) { animation-delay: 0.5s; }
+        .cards-row .card:nth-child(3) { animation-delay: 0.8s; }
+
+        /* ====== Responsive: si achica, apilar ====== */
+        @media (max-width: 900px) {
+            .como-funciona-container {
+                max-width: 600px;
+            }
+
+            .cards-row {
+                flex-direction: column;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card-icon {
+                font-size: 60px;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <div class="como-funciona-container">
+        <div class="como-funciona-header">
+            <h1>Cómo funciona</h1>
+            <p>Simple y rápido. En 3 pasos tenés tu asistente funcionando.</p>
+        </div>
+
+        <div class="cards-row">
+            <!-- Tarjeta 1: Abajo -> Arriba -->
+            <div class="card slide-up">
+                <div class="card-icon">🔌</div>
+                <h2>Conectás</h2>
                 <p>Vinculás tus datos, productos, servicios o información del negocio.</p>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step-simple">
-                <div class="step-icon">🧠</div>
-                <h3>Entrenás</h3>
+
+            <!-- Tarjeta 2: Arriba -> Abajo (entra desde arriba) -->
+            <div class="card slide-down">
+                <div class="card-icon">🧠</div>
+                <h2>Entrenás</h2>
                 <p>El asistente aprende tu negocio: precios, stock, políticas, horarios.</p>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step-simple">
-                <div class="step-icon">🚀</div>
-                <h3>Lanzás</h3>
+
+            <!-- Tarjeta 3: Abajo -> Arriba -->
+            <div class="card slide-up">
+                <div class="card-icon">🚀</div>
+                <h2>Lanzás</h2>
                 <p>Lo instalamos en tu web o WhatsApp y empieza a atender clientes.</p>
             </div>
         </div>
     </div>
+    <!-- ====== FIN SECCIÓN CÓMO FUNCIONA ====== -->
 
     
 <!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
