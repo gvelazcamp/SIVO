@@ -2244,10 +2244,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         .slide-up { animation-name: slideInUp; }
         .slide-down { animation-name: slideInDown; }
 
-        /* Delays (para que entren escalonadas) */
-        .cards-row .card:nth-child(1) { animation-delay: 0.2s; }
-        .cards-row .card:nth-child(2) { animation-delay: 0.5s; }
-        .cards-row .card:nth-child(3) { animation-delay: 0.8s; }
+        /* Delays CON 1 SEGUNDO DE ESPERA INICIAL (para que entren escalonadas DESPUÉS) */
+        .cards-row .card:nth-child(1) { animation-delay: 1.0s; }
+        .cards-row .card:nth-child(2) { animation-delay: 1.3s; }
+        .cards-row .card:nth-child(3) { animation-delay: 1.6s; }
 
         /* ====== Responsive: si achica, apilar ====== */
         @media (max-width: 900px) {
