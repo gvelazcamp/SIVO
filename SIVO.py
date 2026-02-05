@@ -2201,6 +2201,29 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
     </div>
 
+    <script>
+    // Intersection Observer para animar las tarjetas cuando entran en el viewport
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.step-simple');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    });
+    </script>
+
     
 <!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
 __BENEFITS_STANDALONE__
