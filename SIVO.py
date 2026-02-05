@@ -270,6 +270,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 60vh;
+    border-radius: 40px;
+    margin: 20px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.4);
 }
 
 .hero-impact-content {
@@ -278,17 +281,18 @@ body {
     position: relative;
     z-index: 1;
     opacity: 0;
-    animation: fadeInCard 0.8s ease-out forwards;
+    transform: translateY(60px) scale(0.9);
+    animation: fadeInCard 1.2s ease-out forwards;
 }
 
 @keyframes fadeInCard {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(60px) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -316,7 +320,7 @@ body {
 @keyframes fadeInText {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -348,7 +352,7 @@ body {
 @keyframes fadeInButton {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.9);
+        transform: translateY(30px) scale(0.85);
     }
     to {
         opacity: 1;
@@ -2175,10 +2179,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
 
-            /* Animación base */
-            opacity: 0;
-            animation-duration: 0.8s;
-            animation-fill-mode: forwards;
+            /* Animación INFINITA - Se repite constantemente */
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
 
             /* Para que queden TODAS iguales en altura */
             flex: 1 1 0;
@@ -2220,34 +2224,42 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
         /* ====== ANIMACIONES (Abajo / Arriba / Abajo) ====== */
         @keyframes slideInUp {
-            from {
-                transform: translateY(70px);
-                opacity: 0;
+            0% {
+                transform: translateY(30px);
+                opacity: 0.3;
             }
-            to {
+            50% {
                 transform: translateY(0);
                 opacity: 1;
+            }
+            100% {
+                transform: translateY(30px);
+                opacity: 0.3;
             }
         }
 
         @keyframes slideInDown {
-            from {
-                transform: translateY(-70px);
-                opacity: 0;
+            0% {
+                transform: translateY(-30px);
+                opacity: 0.3;
             }
-            to {
+            50% {
                 transform: translateY(0);
                 opacity: 1;
+            }
+            100% {
+                transform: translateY(-30px);
+                opacity: 0.3;
             }
         }
 
         .slide-up { animation-name: slideInUp; }
         .slide-down { animation-name: slideInDown; }
 
-        /* Delays CON 1 SEGUNDO DE ESPERA INICIAL (para que entren escalonadas DESPUÉS) */
-        .cards-row .card:nth-child(1) { animation-delay: 0.3s; }
-        .cards-row .card:nth-child(2) { animation-delay: 0.9s; }
-        .cards-row .card:nth-child(3) { animation-delay: 1.5s; }
+        /* Delays ESCALONADOS para animación infinita */
+        .cards-row .card:nth-child(1) { animation-delay: 0s; }
+        .cards-row .card:nth-child(2) { animation-delay: 0.5s; }
+        .cards-row .card:nth-child(3) { animation-delay: 1s; }
 
         /* ====== Responsive: si achica, apilar ====== */
         @media (max-width: 900px) {
