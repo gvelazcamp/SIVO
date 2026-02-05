@@ -260,23 +260,16 @@ body {
    HERO IMPACT
 ========================= */
 .hero-impact {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    padding: 10px 5%;
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+    padding: 80px 20px;
     text-align: center;
-    color: #1e3a8a;
+    color: #ffffff;
     position: relative;
     overflow: hidden;
-}
-
-.hero-impact::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
 }
 
 .hero-impact-content {
@@ -284,33 +277,63 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    animation: fadeInCard 0.8s ease-out forwards;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .hero-impact-title {
-    font-size: 42px;
-    font-weight: 800;
-    line-height: 1.1;
-    margin: 0 0 15px 0;
-    letter-spacing: -0.02em;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 30px 0;
+    color: #ffffff;
+    opacity: 0;
+    animation: fadeInText 0.6s ease-out 1s forwards;
 }
 
 .hero-impact-subtitle {
     display: block;
-    font-size: 38px;
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-top: 8px;
+    font-size: 52px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 40px 0;
+    line-height: 1.3;
+    opacity: 0;
+    animation: fadeInText 0.6s ease-out 1.4s forwards;
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-impact-text {
-    font-size: 17px;
-    color: #475569;
-    margin: 0 0 30px 0;
-    max-width: 700px;
+    font-size: 22px;
+    line-height: 1.8;
+    color: #ffffff;
+    margin: 0 0 50px 0;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0;
+    animation: fadeInText 0.6s ease-out 1.8s forwards;
 }
 
 .hero-impact-actions {
@@ -318,67 +341,136 @@ body {
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInButton 0.6s ease-out 2.2s forwards;
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .hero-impact-btn-primary {
-    background: #60a5fa;
-    color: #ffffff;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 16px;
+    background-color: #FFC107;
+    color: #000;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 20px;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+    border: none;
+    cursor: pointer;
 }
 
 .hero-impact-btn-primary:hover {
-    background: #3b82f6;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(96, 165, 250, 0.4);
+    background-color: #FFD54F;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
 }
 
 .hero-impact-btn-secondary {
     background: transparent;
-    color: #1e3a8a;
-    padding: 14px 28px;
-    border-radius: 12px;
+    color: #FFC107;
+    padding: 20px 50px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     text-decoration: none;
     display: inline-block;
-    border: 2px solid #60a5fa;
+    border: 2px solid #FFC107;
     transition: all 0.3s ease;
 }
 
 .hero-impact-btn-secondary:hover {
-    border-color: #60a5fa;
-    color: #60a5fa;
-    transform: translateY(-2px);
+    background-color: rgba(255, 193, 7, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 1024px) {
     .hero-impact {
-        padding: 8px 5%;
+        padding: 60px 50px;
     }
     
     .hero-impact-title {
-        font-size: 28px;
+        font-size: 40px;
     }
     
     .hero-impact-subtitle {
-        font-size: 26px;
+        font-size: 44px;
     }
     
     .hero-impact-text {
-        font-size: 15px;
+        font-size: 20px;
     }
     
     .hero-impact-btn-primary,
     .hero-impact-btn-secondary {
-        font-size: 15px;
-        padding: 12px 22px;
+        padding: 18px 45px;
+        font-size: 19px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-impact {
+        padding: 40px 30px;
+        min-height: 50vh;
+    }
+    
+    .hero-impact-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-impact-subtitle {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    
+    .hero-impact-text {
+        font-size: 17px;
+        margin-bottom: 40px;
+    }
+    
+    .hero-impact-btn-primary,
+    .hero-impact-btn-secondary {
+        padding: 16px 40px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-impact {
+        padding: 30px 20px;
+    }
+    
+    .hero-impact-title {
+        font-size: 24px;
+    }
+    
+    .hero-impact-subtitle {
+        font-size: 28px;
+    }
+    
+    .hero-impact-text {
+        font-size: 16px;
+    }
+    
+    .hero-impact-btn-primary,
+    .hero-impact-btn-secondary {
+        padding: 14px 35px;
+        font-size: 17px;
     }
 }
 
@@ -6549,4 +6641,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
