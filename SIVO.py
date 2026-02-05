@@ -170,16 +170,6 @@ body {
     min-height: 100vh;
 }
 
-/* ASEGURAR FONDO BLANCO EN TODO */
-html, body, .page-container, section, div {
-    background-color: #ffffff !important;
-}
-
-/* Solo la tarjeta hero-impact tiene fondo oscuro */
-.hero-impact {
-    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%) !important;
-}
-
 .page-container {
     width: 100%;
     max-width: 100%;
@@ -280,9 +270,6 @@ html, body, .page-container, section, div {
     justify-content: center;
     align-items: center;
     min-height: 60vh;
-    border-radius: 40px;
-    margin: 20px;
-    box-shadow: 0 25px 80px rgba(0,0,0,0.4);
 }
 
 .hero-impact-content {
@@ -291,18 +278,17 @@ html, body, .page-container, section, div {
     position: relative;
     z-index: 1;
     opacity: 0;
-    transform: translateY(60px) scale(0.9);
-    animation: fadeInCard 1.2s ease-out 0.8s forwards;
+    animation: fadeInCard 0.8s ease-out forwards;
 }
 
 @keyframes fadeInCard {
     from {
         opacity: 0;
-        transform: translateY(60px) scale(0.9);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: scale(1);
     }
 }
 
@@ -313,7 +299,7 @@ html, body, .page-container, section, div {
     margin: 0 0 30px 0;
     color: #ffffff;
     opacity: 0;
-    animation: fadeInText 0.6s ease-out 2.6s forwards;
+    animation: fadeInText 0.6s ease-out 1s forwards;
 }
 
 .hero-impact-subtitle {
@@ -324,13 +310,13 @@ html, body, .page-container, section, div {
     margin: 0 0 40px 0;
     line-height: 1.3;
     opacity: 0;
-    animation: fadeInText 0.6s ease-out 2.2s forwards;
+    animation: fadeInText 0.6s ease-out 1.4s forwards;
 }
 
 @keyframes fadeInText {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -347,7 +333,7 @@ html, body, .page-container, section, div {
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    animation: fadeInText 0.6s ease-out 2.6s forwards;
+    animation: fadeInText 0.6s ease-out 1.8s forwards;
 }
 
 .hero-impact-actions {
@@ -356,13 +342,13 @@ html, body, .page-container, section, div {
     justify-content: center;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeInButton 0.6s ease-out 3.0s forwards;
+    animation: fadeInButton 0.6s ease-out 2.2s forwards;
 }
 
 @keyframes fadeInButton {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.85);
+        transform: translateY(20px) scale(0.9);
     }
     to {
         opacity: 1;
@@ -2189,10 +2175,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
 
-            /* Animación INFINITA - Se repite constantemente */
-            animation-duration: 4s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
+            /* Animación base */
+            opacity: 0;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
 
             /* Para que queden TODAS iguales en altura */
             flex: 1 1 0;
@@ -2234,42 +2220,34 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
         /* ====== ANIMACIONES (Abajo / Arriba / Abajo) ====== */
         @keyframes slideInUp {
-            0% {
-                transform: translateY(30px);
-                opacity: 0.3;
+            from {
+                transform: translateY(70px);
+                opacity: 0;
             }
-            50% {
+            to {
                 transform: translateY(0);
                 opacity: 1;
-            }
-            100% {
-                transform: translateY(30px);
-                opacity: 0.3;
             }
         }
 
         @keyframes slideInDown {
-            0% {
-                transform: translateY(-30px);
-                opacity: 0.3;
+            from {
+                transform: translateY(-70px);
+                opacity: 0;
             }
-            50% {
+            to {
                 transform: translateY(0);
                 opacity: 1;
-            }
-            100% {
-                transform: translateY(-30px);
-                opacity: 0.3;
             }
         }
 
         .slide-up { animation-name: slideInUp; }
         .slide-down { animation-name: slideInDown; }
 
-        /* Delays ESCALONADOS para animación infinita */
-        .cards-row .card:nth-child(1) { animation-delay: 0s; }
-        .cards-row .card:nth-child(2) { animation-delay: 0.5s; }
-        .cards-row .card:nth-child(3) { animation-delay: 1s; }
+        /* Delays CON 1 SEGUNDO DE ESPERA INICIAL (para que entren escalonadas DESPUÉS) */
+        .cards-row .card:nth-child(1) { animation-delay: 0.3s; }
+        .cards-row .card:nth-child(2) { animation-delay: 0.9s; }
+        .cards-row .card:nth-child(3) { animation-delay: 1.5s; }
 
         /* ====== Responsive: si achica, apilar ====== */
         @media (max-width: 900px) {
