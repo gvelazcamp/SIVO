@@ -2,6 +2,7 @@ import streamlit as st
 
 from pathlib import Path
 import re
+import html
 
 # =========================
 # BENEFITS (standalone HTML)
@@ -64,6 +65,99 @@ def cargar_benefits_standalone_html():
 """
 
 HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
+
+
+# =========================
+# CÓMO FUNCIONA (PC/MOBILE responsive)
+# =========================
+def cargar_como_funciona_responsive_html():
+    """Carga tarjetas-animadas-pc-horizontal.html (PC) y tarjetas-animadas.html (celular)
+    y las incrusta como iframes (srcdoc) con CSS responsive.
+    Si no existen, deja un fallback visible para que no 'desaparezca' la sección.
+    """
+    # Candidatos PC
+    pc_candidates = []
+    try:
+        pc_candidates.append(Path(__file__).resolve().parent / "tarjetas-animadas-pc-horizontal.html")
+    except Exception:
+        pass
+    pc_candidates.append(Path("tarjetas-animadas-pc-horizontal.html"))
+    pc_candidates.append(Path("SIVO/tarjetas-animadas-pc-horizontal.html"))
+
+    # Candidatos Mobile
+    mob_candidates = []
+    try:
+        mob_candidates.append(Path(__file__).resolve().parent / "tarjetas-animadas.html")
+    except Exception:
+        pass
+    mob_candidates.append(Path("tarjetas-animadas.html"))
+    mob_candidates.append(Path("SIVO/tarjetas-animadas.html"))
+
+    def _leer_first_existente(candidatos):
+        for p in candidatos:
+            try:
+                if p.exists():
+                    return p.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+        return None
+
+    pc_raw = _leer_first_existente(pc_candidates)
+    mob_raw = _leer_first_existente(mob_candidates)
+
+    if not pc_raw or not mob_raw:
+        return """<div style="background:#ffffff; padding:40px 20px;">
+  <div style="max-width:980px; margin:0 auto; text-align:center;">
+    <h2 style="margin:0 0 10px 0; font-size:28px; font-weight:800; color:#111827;">
+      Cómo funciona
+    </h2>
+    <p style="margin:0; color:#6b7280;">
+      Faltan los archivos <b>tarjetas-animadas-pc-horizontal.html</b> y/o <b>tarjetas-animadas.html</b> en el proyecto.
+    </p>
+  </div>
+</div>
+"""
+
+    # Escape para usar dentro de srcdoc
+    pc_srcdoc = html.escape(pc_raw, quote=True)
+    mob_srcdoc = html.escape(mob_raw, quote=True)
+
+    return f"""<div class="como-funciona-responsive">
+  <div class="como-funciona-pc">
+    <iframe class="como-funciona-iframe como-pc" srcdoc="{pc_srcdoc}" loading="lazy"></iframe>
+  </div>
+  <div class="como-funciona-mob">
+    <iframe class="como-funciona-iframe como-mob" srcdoc="{mob_srcdoc}" loading="lazy"></iframe>
+  </div>
+</div>
+
+<style>
+  .como-funciona-responsive {{
+    width: 100%;
+  }}
+
+  .como-funciona-iframe {{
+    width: 100%;
+    border: 0;
+    display: block;
+    background: transparent;
+  }}
+
+  /* Alturas (si querés ajustar, tocá solo estos valores) */
+  .como-funciona-iframe.como-pc {{ height: 620px; }}
+  .como-funciona-iframe.como-mob {{ height: 860px; }}
+
+  .como-funciona-pc {{ display: block; }}
+  .como-funciona-mob {{ display: none; }}
+
+  @media (max-width: 900px) {{
+    .como-funciona-pc {{ display: none; }}
+    .como-funciona-mob {{ display: block; }}
+  }}
+</style>
+"""
+
+HTML_COMO_FUNCIONA_RESPONSIVE = cargar_como_funciona_responsive_html()
 
 # =========================
 # CONFIGURACIÓN NORMAL APP
@@ -2138,49 +2232,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     
 
     <div class="section">
-        <div class="como-funciona-embed">
-            <iframe class="como-funciona-iframe como-funciona-pc" src="https://gvelazcamp.github.io/SIVO/tarjetas-animadas-pc-horizontal.html" loading="lazy"></iframe>
-            <iframe class="como-funciona-iframe como-funciona-mobile" src="https://gvelazcamp.github.io/SIVO/tarjetas-animadas.html" loading="lazy"></iframe>
-        </div>
+        __COMO_FUNCIONA_RESPONSIVE__
     </div>
 
-    <style>
-    /* Cómo funciona (embed) */
-    .como-funciona-embed {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .como-funciona-iframe {
-        width: 100%;
-        border: 0;
-        display: block;
-        background: transparent;
-    }
-
-    /* Ajustes de alto para evitar scroll interno */
-    .como-funciona-pc {
-        height: 560px;
-    }
-
-    .como-funciona-mobile {
-        height: 980px;
-    }
-
-    @media (max-width: 900px) {
-        .como-funciona-pc { display: none; }
-        .como-funciona-mobile { display: block; }
-    }
-
-    @media (min-width: 901px) {
-        .como-funciona-pc { display: block; }
-        .como-funciona-mobile { display: none; }
-    }
-    </style>
-
-
-<!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
+    <!-- BENEFICIOS (cargado desde benefits-standalone.html) -->
 __BENEFITS_STANDALONE__
 
 <!-- Inline event handlers are used on cards for better compatibility -->
@@ -2193,6 +2248,13 @@ __BENEFITS_STANDALONE__
 # Inyectar beneficios standalone en HOME (sin cambiar el resto)
 try:
     HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__BENEFITS_STANDALONE__", HTML_BENEFITS_STANDALONE)
+except Exception:
+    pass
+
+
+# Inyectar CÓMO FUNCIONA responsive (PC/MOBILE) en HOME (sin cambiar el resto)
+try:
+    HTML_HOME_PARTE_1 = HTML_HOME_PARTE_1.replace("__COMO_FUNCIONA_RESPONSIVE__", HTML_COMO_FUNCIONA_RESPONSIVE)
 except Exception:
     pass
 
