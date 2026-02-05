@@ -2060,18 +2060,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     <!-- HERO IMPACT -->
     <div class="hero-impact">
         <div class="hero-impact-content">
-            <h1 class="hero-impact-title">
-                Preguntale a tus datos.<br>
-                <span class="hero-impact-subtitle">No esperes por la información, el asistente la encuentra por vos.</span>
-            </h1>
-            <p class="hero-impact-text">
-                    Asistentes IA que responden al instante con la información de tu negocio,
-                    tanto para uso interno como para atención a clientes.
-            </p>
-            <div class="hero-impact-actions">
-                <a class="hero-impact-btn-primary" href="#soporte">Agendá tu demo →</a>
-                <a class="hero-impact-btn-secondary" href="?vista=asistentes">Ver asistentes →</a>
-            </div>
+            <h1 class="hero-impact-title">Pregúntale a tus datos.</h1>
+            <span class="hero-impact-subtitle">No esperes por la información, el asistente la encuentra por vos.</span>
+            <p class="hero-impact-text">Asistentes IA que responden al instante con la información de tu negocio, tanto para uso interno como para atención a clientes.</p>
+            <a href="?vista=asistentes" class="hero-impact-btn-primary">Ver asistentes →</a>
         </div>
     </div>
 
