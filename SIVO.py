@@ -73,15 +73,15 @@ def cargar_integraciones_standalone_html():
     """Integraciones inline - no necesita archivo externo"""
     return """
 <style>
-.integraciones-wrap{max-width:900px;margin:auto;padding:20px;text-align:center;font-family:system-ui}
-.integraciones-wrap h1{margin:0;font-size:32px;font-weight:700}
-.integraciones-carousel{margin-top:20px;overflow:hidden}
-.integraciones-track{display:flex;gap:12px;animation:integraciones-scroll 28s linear infinite}
-.integraciones-card{min-width:110px;background:#fff;padding:14px 10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:.3s}
-.integraciones-card:hover{transform:translateY(-4px)}
-.integraciones-iconBox{width:38px;height:38px;margin:auto;margin-bottom:6px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:radial-gradient(12px 12px at 30% 30%, rgba(37,99,235,.15), transparent 60%),radial-gradient(15px 15px at 70% 70%, rgba(249,115,22,.15), transparent 60%),white;box-shadow:0 2px 8px rgba(0,0,0,.04);font-size:18px}
-.integraciones-label{font-weight:600;font-size:12px;margin-bottom:2px}
-.integraciones-sub{font-size:10px;color:#667085}
+.integraciones-wrap{max-width:1000px;margin:auto;padding:30px 20px;text-align:center;font-family:system-ui}
+.integraciones-wrap h1{margin:0;font-size:34px;font-weight:700}
+.integraciones-carousel{margin-top:26px;overflow:hidden}
+.integraciones-track{display:flex;gap:16px;animation:integraciones-scroll 28s linear infinite}
+.integraciones-card{min-width:130px;background:#fff;padding:18px 14px;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.06);transition:.3s}
+.integraciones-card:hover{transform:translateY(-5px)}
+.integraciones-iconBox{width:44px;height:44px;margin:auto;margin-bottom:8px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:radial-gradient(14px 14px at 30% 30%, rgba(37,99,235,.16), transparent 60%),radial-gradient(17px 17px at 70% 70%, rgba(249,115,22,.16), transparent 60%),white;box-shadow:0 3px 10px rgba(0,0,0,.06);font-size:20px}
+.integraciones-label{font-weight:600;font-size:13px;margin-bottom:3px}
+.integraciones-sub{font-size:11px;color:#667085}
 @keyframes integraciones-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 <div class="integraciones-wrap">
