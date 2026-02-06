@@ -1400,7 +1400,7 @@ h1, h2, h3, h4, h5, h6 {
    SIVO SECTION (LIMPIA)
 ========================= */
 .sivo-section {
-    padding: 0 5%;
+    padding: 32px 5% 26px;
     margin-top: 0;
     margin-bottom: 0;
     background: white;
@@ -1415,7 +1415,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 30px;
     font-weight: 700;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 22px;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
 }
 
@@ -1452,27 +1452,27 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 30px;
     font-weight: 800;
     color: #1e3a8a;
-    margin: 0 0 16px 0;
+    margin: 0 0 20px 0;
 }
 
 .sivo-subtitle {
     font-size: 16px;
     color: #64748b;
-    line-height: 1.6;
-    margin: 0 0 28px 0;
+    line-height: 1.75;
+    margin: 0 0 34px 0;
 }
 
 .sivo-features-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: 16px;
+    margin-bottom: 34px;
 }
 
 .sivo-feat {
     font-size: 15px;
     color: #475569;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
 .sivo-actions {
@@ -1543,8 +1543,8 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 600px) {
     .sivo-section {
-        padding: 5px 5%;
-    }
+        padding: 20px 5% 5px;
+}
     
     .sivo-card-clean {
         padding: 30px 20px;
