@@ -6308,7 +6308,7 @@ else:
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 50px;">
                 <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #1a1a1a; font-family: 'Inter', sans-serif;">
-                    ¿Cómo responden nuestros asistentes?
+                    ¿Cómo responden nuestros Empleados Digitales?
                 </h2>
                 <p style="font-size: 18px; color: #666; font-family: 'Inter', sans-serif;">
                     Mirá conversaciones reales con clientes en diferentes industrias
@@ -7200,5 +7200,6 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
 
 
