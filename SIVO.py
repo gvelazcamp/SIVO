@@ -65,6 +65,115 @@ def cargar_benefits_standalone_html():
 
 HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
 
+
+# =========================
+# INTEGRACIONES (standalone HTML)
+# =========================
+def cargar_integraciones_standalone_html():
+    """Carga integraciones.html desde el proyecto (para incrustarlo en HOME).
+    Si no existe, deja un placeholder visible para que no 'desaparezca' la sección.
+    """
+    candidatos = []
+    try:
+        candidatos.append(Path(__file__).resolve().parent / "integraciones.html")
+    except Exception:
+        pass
+
+    # Permitir también el nombre con sufijo (cuando Windows duplica descargas)
+    try:
+        candidatos.append(Path(__file__).resolve().parent / "integraciones (1).html")
+    except Exception:
+        pass
+
+    archivo = None
+    for p in candidatos:
+        if p and p.exists():
+            archivo = p
+            break
+
+    if not archivo:
+        return """
+<div style="padding: 40px 18px; text-align:center;">
+  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
+  <p style="margin:10px 0 0; color:#667085;">
+    No se encontró <b>integraciones.html</b> en el proyecto.
+  </p>
+</div>
+"""
+
+    try:
+        raw = archivo.read_text(encoding="utf-8", errors="ignore")
+
+        # Extraer CSS del <style>
+        m_style = re.search(r"<style[^>]*>(.*?)</style>", raw, flags=re.S | re.I)
+        css = m_style.group(1).strip() if m_style else ""
+
+        # Extraer BODY
+        m_body = re.search(r"<body[^>]*>(.*?)</body>", raw, flags=re.S | re.I)
+        body = m_body.group(1).strip() if m_body else raw
+
+        # Quitar regla body{} para no afectar todo el sitio (y evitar fondo global)
+        css = re.sub(r"\bbody\s*\{[^}]*\}", "", css, flags=re.S | re.I)
+
+        # Proteger @keyframes (no se debe prefijar)
+        keyframes_block = ""
+        idx_kf = css.find("@keyframes")
+        if idx_kf != -1:
+            # encontrar el bloque completo por conteo de llaves
+            brace_start = css.find("{", idx_kf)
+            if brace_start != -1:
+                count = 0
+                end_kf = None
+                for j in range(brace_start, len(css)):
+                    if css[j] == "{":
+                        count += 1
+                    elif css[j] == "}":
+                        count -= 1
+                        if count == 0:
+                            end_kf = j + 1
+                            break
+                if end_kf:
+                    keyframes_block = css[idx_kf:end_kf].strip()
+                    css = (css[:idx_kf] + css[end_kf:]).strip()
+
+        # Prefijar selectores para que el CSS quede "scoped" dentro de la sección
+        prefix = ".integrations-section .integraciones-glow"
+
+        def _prefijar_selectores(match):
+            sel = match.group(1).strip()
+            props = match.group(2)
+
+            # Ignorar at-rules (no debería haber más que keyframes, ya protegido)
+            if sel.startswith("@"):
+                return match.group(0)
+
+            nuevos = []
+            for s in sel.split(","):
+                s = s.strip()
+                if not s:
+                    continue
+                nuevos.append(f"{prefix} {s}")
+            return ", ".join(nuevos) + "{" + props + "}"
+
+        css = re.sub(r"([^{@}][^{]*)\{([^}]*)\}", _prefijar_selectores, css).strip()
+
+        if keyframes_block:
+            css = (css + "\n\n" + keyframes_block).strip()
+
+        return f"""\n<style>\n{css}\n</style>\n<div class=\"integraciones-glow\">\n{body}\n</div>\n"""
+
+    except Exception:
+        return """
+<div style="padding: 40px 18px; text-align:center;">
+  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
+  <p style="margin:10px 0 0; color:#667085;">
+    Error cargando <b>integraciones.html</b>.
+  </p>
+</div>
+"""
+
+HTML_INTEGRACIONES_STANDALONE = cargar_integraciones_standalone_html()
+
 # =========================
 # CONFIGURACIÓN NORMAL APP
 # =========================
@@ -2936,35 +3045,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
 
     <!-- INTEGRACIONES -->
     <div class="integrations-section">
-        <h2>Integraciones</h2>
-        <p class="integrations-subtitle">Conectá tu SIVO con las plataformas que ya usás</p>
-        
-        <div class="integrations-grid">
-            <div class="integration-logo">
-                <span style="font-size: 48px;">💬</span>
-                <p>WhatsApp</p>
-            </div>
-            <div class="integration-logo">
-                <span style="font-size: 48px;">📸</span>
-                <p>Instagram</p>
-            </div>
-            <div class="integration-logo">
-                <span style="font-size: 48px;">🌐</span>
-                <p>Web</p>
-            </div>
-            <div class="integration-logo">
-                <span style="font-size: 48px;">🛍️</span>
-                <p>Shopify</p>
-            </div>
-            <div class="integration-logo">
-                <span style="font-size: 48px;">💳</span>
-                <p>Mercado Pago</p>
-            </div>
-            <div class="integration-logo">
-                <span style="font-size: 48px;">📧</span>
-                <p>Email</p>
-            </div>
-        </div>
+        {HTML_INTEGRACIONES_STANDALONE}
     </div>
 
 {FOOTER}
