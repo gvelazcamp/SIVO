@@ -2337,13 +2337,13 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             </style>
 
             <div class="stat-card">
-                <div class="stat-number" id="stat-num-1">0</div>
+                <div class="stat-number" id="stat-num-1" data-target="100">0</div>
                 <div class="stat-label">Conversaciones simultáneas</div>
                 <div class="stat-desc">Atiende múltiples clientes al mismo tiempo</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-number" id="stat-num-2">0</div>
+                <div class="stat-number" id="stat-num-2" data-target="60">0</div>
                 <div class="stat-label">Mensajes por minuto</div>
                 <div class="stat-desc">Respuestas en tiempo real</div>
             </div>
@@ -2356,49 +2356,59 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
 
         <script>
-        // EJECUTAR INMEDIATAMENTE (sin timeouts ni observers)
-        (function() {
-            function animateNumber(el, target) {
-                var duration = 1500;
-                var start = Date.now();
-                
-                function update() {
-                    var elapsed = Date.now() - start;
-                    var progress = Math.min(elapsed / duration, 1);
-                    var ease = 1 - Math.pow(1 - progress, 3);
-                    el.textContent = Math.floor(ease * target);
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
+        setTimeout(function() {
+            // Animar número 100
+            var el1 = document.getElementById('stat-num-1');
+            if (el1) {
+                var target1 = 100;
+                var current1 = 0;
+                var increment1 = target1 / 60;
+                var timer1 = setInterval(function() {
+                    current1 += increment1;
+                    if (current1 >= target1) {
+                        el1.textContent = target1;
+                        clearInterval(timer1);
                     } else {
-                        el.textContent = target;
+                        el1.textContent = Math.floor(current1);
                     }
-                }
-                requestAnimationFrame(update);
+                }, 20);
             }
-            
-            function animateAlphabet(el) {
-                var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                var i = 0;
-                var timer = setInterval(function() {
-                    if (i < letters.length) {
-                        el.textContent = letters[i++];
+
+            // Animar número 60
+            var el2 = document.getElementById('stat-num-2');
+            if (el2) {
+                var target2 = 60;
+                var current2 = 0;
+                var increment2 = target2 / 60;
+                var timer2 = setInterval(function() {
+                    current2 += increment2;
+                    if (current2 >= target2) {
+                        el2.textContent = target2;
+                        clearInterval(timer2);
                     } else {
-                        clearInterval(timer);
-                        setTimeout(function() { el.textContent = "ILIMITADO"; }, 200);
+                        el2.textContent = Math.floor(current2);
+                    }
+                }, 20);
+            }
+
+            // Animar alfabeto
+            var elAlpha = document.getElementById('stat-alpha');
+            if (elAlpha) {
+                var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                var idx = 0;
+                var alphaTimer = setInterval(function() {
+                    if (idx < letters.length) {
+                        elAlpha.textContent = letters[idx];
+                        idx++;
+                    } else {
+                        clearInterval(alphaTimer);
+                        setTimeout(function() {
+                            elAlpha.textContent = "ILIMITADO";
+                        }, 200);
                     }
                 }, 50);
             }
-            
-            // Ejecutar AHORA
-            var el1 = document.getElementById('stat-num-1');
-            var el2 = document.getElementById('stat-num-2');
-            var elAlpha = document.getElementById('stat-alpha');
-            
-            if (el1) setTimeout(function() { animateNumber(el1, 100); }, 100);
-            if (el2) setTimeout(function() { animateNumber(el2, 60); }, 250);
-            if (elAlpha) setTimeout(function() { animateAlphabet(elAlpha); }, 400);
-        })();
+        }, 500);
         </script>
     </div>
 
@@ -6223,7 +6233,7 @@ elif vista == "precios":
     st.html(HTML_PRECIOS)
 
 else:
-    components.html(HTML_HOME_PARTE_1, height=3500, scrolling=False)
+    st.html(HTML_HOME_PARTE_1)
     
     components.html("""
     <style>
