@@ -70,150 +70,33 @@ HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
 # INTEGRACIONES (standalone HTML)
 # =========================
 def cargar_integraciones_standalone_html():
-    """Carga integraciones.html desde el proyecto (para incrustarlo en HOME).
-    Si no existe, deja un placeholder visible para que no 'desaparezca' la sección.
-    """
-    candidatos = []
-    try:
-        candidatos.append(Path(__file__).resolve().parent / "integraciones.html")
-    except Exception:
-        pass
-
-    # Permitir también el nombre con sufijo (cuando Windows duplica descargas)
-    try:
-        candidatos.append(Path(__file__).resolve().parent / "integraciones (1).html")
-    except Exception:
-        pass
-
-    archivo = None
-    for p in candidatos:
-        if p and p.exists():
-            archivo = p
-            break
-
-    if not archivo:
-        return """
-<div style="padding: 40px 18px; text-align:center;">
-  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
-  <p style="margin:10px 0 0; color:#667085;">
-    No se encontró <b>integraciones.html</b> en el proyecto.
-  </p>
-</div>
-"""
-
-    try:
-        raw = archivo.read_text(encoding="utf-8", errors="ignore")
-
-        # FIX: asegurar que los íconos SVG se vean (agrega viewBox/attrs si faltan)
-        def _fix_svg_tag(m):
-            attrs = m.group(1) or ""
-            if "viewBox=" not in attrs:
-                attrs += ' viewBox="0 0 24 24"'
-            if "xmlns=" not in attrs:
-                attrs += ' xmlns="http://www.w3.org/2000/svg"'
-            if "stroke=" not in attrs:
-                attrs += ' stroke="currentColor"'
-            if "stroke-linecap=" not in attrs:
-                attrs += ' stroke-linecap="round"'
-            if "stroke-linejoin=" not in attrs:
-                attrs += ' stroke-linejoin="round"'
-            return f"<svg{attrs}>"
-
-        raw = re.sub(r"<svg\b([^>]*)>", _fix_svg_tag, raw, flags=re.I)
-
-        # Extraer CSS del <style>
-        m_style = re.search(r"<style[^>]*>(.*?)</style>", raw, flags=re.S | re.I)
-        css = m_style.group(1).strip() if m_style else ""
-
-        # Extraer BODY
-        m_body = re.search(r"<body[^>]*>(.*?)</body>", raw, flags=re.S | re.I)
-        body = m_body.group(1).strip() if m_body else raw
-
-        # Quitar regla body{} para no afectar todo el sitio (y evitar fondo global)
-        css = re.sub(r"\bbody\s*\{[^}]*\}", "", css, flags=re.S | re.I)
-
-        # Proteger @keyframes (no se debe prefijar)
-        keyframes_block = ""
-        idx_kf = css.find("@keyframes")
-        if idx_kf != -1:
-            # encontrar el bloque completo por conteo de llaves
-            brace_start = css.find("{", idx_kf)
-            if brace_start != -1:
-                count = 0
-                end_kf = None
-                for j in range(brace_start, len(css)):
-                    if css[j] == "{":
-                        count += 1
-                    elif css[j] == "}":
-                        count -= 1
-                        if count == 0:
-                            end_kf = j + 1
-                            break
-                if end_kf:
-                    keyframes_block = css[idx_kf:end_kf].strip()
-                    css = (css[:idx_kf] + css[end_kf:]).strip()
-
-        # Hacer tarjetas más compactas
-        css = css.replace('min-width:190px', 'min-width:140px')
-        css = css.replace('min-width: 190px', 'min-width: 140px')
-        css = css.replace('padding:28px 20px', 'padding:20px 16px')
-        css = css.replace('padding: 28px 20px', 'padding: 20px 16px')
-        css = css.replace('border-radius:22px', 'border-radius:16px')
-        css = css.replace('border-radius: 22px', 'border-radius: 16px')
-        css = css.replace('gap:22px', 'gap:16px')
-        css = css.replace('gap: 22px', 'gap: 16px')
-        css = css.replace('width:60px', 'width:48px')
-        css = css.replace('width: 60px', 'width: 48px')
-        css = css.replace('height:60px', 'height:48px')
-        css = css.replace('height: 60px', 'height: 48px')
-        css = css.replace('border-radius:18px', 'border-radius:12px')
-        css = css.replace('border-radius: 18px', 'border-radius: 12px')
-        css = css.replace('font-size:28px', 'font-size:22px')
-        css = css.replace('font-size: 28px', 'font-size: 22px')
-        css = css.replace('font-size:38px', 'font-size:32px')
-        css = css.replace('font-size: 38px', 'font-size: 32px')
-        css = css.replace('padding:60px 20px', 'padding:40px 20px')
-        css = css.replace('padding: 60px 20px', 'padding: 40px 20px')
-        css = css.replace('margin-top:40px', 'margin-top:30px')
-        css = css.replace('margin-top: 40px', 'margin-top: 30px')
-        css = css.replace('font-size:13px', 'font-size:12px')
-        css = css.replace('font-size: 13px', 'font-size: 12px')
-        css = css.replace('margin-bottom:12px', 'margin-bottom:10px')
-        css = css.replace('margin-bottom: 12px', 'margin-bottom: 10px')
-
-        # Prefijar selectores para que el CSS quede "scoped" dentro de la sección
-        prefix = ".integrations-section .integraciones-glow"
-
-        def _prefijar_selectores(match):
-            sel = match.group(1).strip()
-            props = match.group(2)
-
-            # Ignorar at-rules (no debería haber más que keyframes, ya protegido)
-            if sel.startswith("@"):
-                return match.group(0)
-
-            nuevos = []
-            for s in sel.split(","):
-                s = s.strip()
-                if not s:
-                    continue
-                nuevos.append(f"{prefix} {s}")
-            return ", ".join(nuevos) + "{" + props + "}"
-
-        css = re.sub(r"([^{@}][^{]*)\{([^}]*)\}", _prefijar_selectores, css).strip()
-
-        if keyframes_block:
-            css = (css + "\n\n" + keyframes_block).strip()
-
-        return f"""\n<style>\n{css}\n</style>\n<div class=\"integraciones-glow\">\n{body}\n</div>\n"""
-
-    except Exception:
-        return """
-<div style="padding: 40px 18px; text-align:center;">
-  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
-  <p style="margin:10px 0 0; color:#667085;">
-    Error cargando <b>integraciones.html</b>.
-  </p>
+    """Integraciones inline - no necesita archivo externo"""
+    return """
+<style>
+.integraciones-wrap{max-width:900px;margin:auto;padding:20px;text-align:center;font-family:system-ui}
+.integraciones-wrap h1{margin:0;font-size:32px;font-weight:700}
+.integraciones-carousel{margin-top:20px;overflow:hidden}
+.integraciones-track{display:flex;gap:12px;animation:integraciones-scroll 28s linear infinite}
+.integraciones-card{min-width:110px;background:#fff;padding:14px 10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:.3s}
+.integraciones-card:hover{transform:translateY(-4px)}
+.integraciones-iconBox{width:38px;height:38px;margin:auto;margin-bottom:6px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:radial-gradient(12px 12px at 30% 30%, rgba(37,99,235,.15), transparent 60%),radial-gradient(15px 15px at 70% 70%, rgba(249,115,22,.15), transparent 60%),white;box-shadow:0 2px 8px rgba(0,0,0,.04);font-size:18px}
+.integraciones-label{font-weight:600;font-size:12px;margin-bottom:2px}
+.integraciones-sub{font-size:10px;color:#667085}
+@keyframes integraciones-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<div class="integraciones-wrap">
+<h1>Conecta con lo que ya usás</h1>
+<div class="integraciones-carousel"><div class="integraciones-track">
+<div class="integraciones-card"><div class="integraciones-iconBox">📷</div><div class="integraciones-label">Instagram</div><div class="integraciones-sub">DMs automatizados</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🌐</div><div class="integraciones-label">Web</div><div class="integraciones-sub">Chat en tu sitio</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🛍️</div><div class="integraciones-label">Shopify</div><div class="integraciones-sub">Catálogo + pedidos</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">💳</div><div class="integraciones-label">Mercado Pago</div><div class="integraciones-sub">Cobros y links</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">📧</div><div class="integraciones-label">Email</div><div class="integraciones-sub">Seguimiento automático</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">💬</div><div class="integraciones-label">WhatsApp</div><div class="integraciones-sub">Ventas + soporte</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">📷</div><div class="integraciones-label">Instagram</div><div class="integraciones-sub">DMs automatizados</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🌐</div><div class="integraciones-label">Web</div><div class="integraciones-sub">Chat en tu sitio</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🛍️</div><div class="integraciones-label">Shopify</div><div class="integraciones-sub">Catálogo + pedidos</div></div>
+</div></div>
 </div>
 """
 
