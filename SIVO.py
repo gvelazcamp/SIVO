@@ -189,8 +189,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 18px 5%;
     width: 100%;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .logo {
@@ -208,30 +209,69 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav {
     display: flex;
-    gap: 28px;
+    gap: 36px;
     font-weight: 500;
-    color: #555;
+    font-size: 16px;
+    color: #111;
     align-items: center;
 }
 
 .nav a {
     text-decoration: none;
-    color: #555;
+    color: #111;
     cursor: pointer;
     white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav a:hover {
-    color: #60a5fa;
+    color: #555;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: 20px;
 }
 
 .btn-login {
-    background: #60a5fa;
-    padding: 8px 16px;
-    border-radius: 10px;
+    background: transparent;
+    color: #111;
+    padding: 10px 24px;
+    border-radius: 999px;
     font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
     white-space: nowrap;
+    border: 1.5px solid #d1d5db;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-login:hover {
+    border-color: #111;
+    background: #f9f9f9;
+}
+
+.btn-demo {
+    background: #111;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1.5px solid #111;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-demo:hover {
+    background: #333;
 }
 
 /* Responsive para móviles - Logo centrado */
@@ -240,12 +280,12 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         text-align: center;
         padding: 15px 5%;
+        gap: 12px;
     }
     
     .logo {
         flex-direction: column;
         align-items: center;
-        margin-bottom: 15px;
     }
     
     .logo span {
@@ -256,7 +296,18 @@ h1, h2, h3, h4, h5, h6 {
     .nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 16px;
+        font-size: 15px;
+    }
+
+    .nav-buttons {
+        margin-left: 0;
+        gap: 10px;
+    }
+
+    .btn-login, .btn-demo {
+        padding: 8px 18px;
+        font-size: 14px;
     }
 }
 
@@ -1526,14 +1577,18 @@ h1, h2, h3, h4, h5, h6 {
     
     .header {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
         padding: 16px 4%;
         background: #ffffff !important;
     }
 
     .nav {
-        gap: 16px;
+        gap: 14px;
         font-size: 14px;
+    }
+
+    .nav-buttons {
+        margin-left: 0;
     }
 
     .hero {
@@ -1925,13 +1980,17 @@ HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
             <img src="https://gvelazcamp.github.io/SIVO/LogoMercadobot.png" alt="SIVO" class="logo-img">
-            <span style="font-size: 28px; font-weight: 700; color: #1e3a8a; margin-left: 12px;">SIVO</span>
+            <span style="font-size: 28px; font-weight: 800; color: #111; margin-left: 12px;">SIVO</span>
         </a>
         <div class="nav">
             <a href="?vista=home">Inicio</a>
             <a href="?vista=asistentes">Asistentes</a>
             <a href="?vista=precios">Precios</a>
             <a href="?vista=home#soporte">Soporte</a>
+            <div class="nav-buttons">
+                <a href="#" class="btn-login">Login</a>
+                <a href="?vista=home#soporte" class="btn-demo">Agenda una demo</a>
+            </div>
         </div>
     </div>
 """
@@ -2180,9 +2239,9 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Tu negocio atendido<br>por tu <span style="color:#1e40af;">Empleado Digital</span></h1>
+            <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">chatbot IA</span></h1>
             <p>
-                SIVO es un empleado polifuncional con IA que se adapta a distintos rubros de industrias, desde ecommerce y finanzas hasta turnos médicos y viajes. Responde a tus clientes 24/7 con tus reglas y tus datos.
+                SIVO es un asistente polifuncional con IA que se adapta a distintos rubros de industrias, desde ecommerce y finanzas hasta turnos médicos y viajes. Responde a tus clientes 24/7 con tus reglas y tus datos.
                 Elegí uno de los tantos rubros donde SIVO se desempeña y lo dejamos funcionando.
             </p>
 
@@ -7142,4 +7201,3 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
-
