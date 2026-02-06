@@ -104,6 +104,23 @@ def cargar_integraciones_standalone_html():
     try:
         raw = archivo.read_text(encoding="utf-8", errors="ignore")
 
+        # FIX: asegurar que los íconos SVG se vean (agrega viewBox/attrs si faltan)
+        def _fix_svg_tag(m):
+            attrs = m.group(1) or ""
+            if "viewBox=" not in attrs:
+                attrs += ' viewBox="0 0 24 24"'
+            if "xmlns=" not in attrs:
+                attrs += ' xmlns="http://www.w3.org/2000/svg"'
+            if "stroke=" not in attrs:
+                attrs += ' stroke="currentColor"'
+            if "stroke-linecap=" not in attrs:
+                attrs += ' stroke-linecap="round"'
+            if "stroke-linejoin=" not in attrs:
+                attrs += ' stroke-linejoin="round"'
+            return f"<svg{attrs}>"
+
+        raw = re.sub(r"<svg\b([^>]*)>", _fix_svg_tag, raw, flags=re.I)
+
         # Extraer CSS del <style>
         m_style = re.search(r"<style[^>]*>(.*?)</style>", raw, flags=re.S | re.I)
         css = m_style.group(1).strip() if m_style else ""
@@ -3045,8 +3062,8 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
 
     <!-- INTEGRACIONES -->
     <div class="integrations-section">
-        {HTML_INTEGRACIONES_STANDALONE}
-    </div>
+{HTML_INTEGRACIONES_STANDALONE}
+</div>
 
 {FOOTER}
 """
