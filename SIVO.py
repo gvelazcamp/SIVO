@@ -2337,19 +2337,19 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             </style>
 
             <div class="stat-card">
-                <div class="stat-number counter" data-target="100">0</div>
+                <div class="stat-number sivo-counter" data-target="100">0</div>
                 <div class="stat-label">Conversaciones simultáneas</div>
                 <div class="stat-desc">Atiende múltiples clientes al mismo tiempo</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-number counter" data-target="60">0</div>
+                <div class="stat-number sivo-counter" data-target="60">0</div>
                 <div class="stat-label">Mensajes por minuto</div>
                 <div class="stat-desc">Respuestas en tiempo real</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-number-small alphabet">A</div>
+                <div class="stat-number-small sivo-alphabet">A</div>
                 <div class="stat-label">Fuentes de conocimiento</div>
                 <div class="stat-desc">Entrenable con cualquier información del negocio</div>
             </div>
@@ -2357,51 +2357,78 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
         <script>
         (function() {
-            function animateNumber(el) {
-                let target = +el.getAttribute("data-target");
-                let duration = 1200;
-                let startTime = null;
-                function update(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    let progress = timestamp - startTime;
-                    let percent = Math.min(progress / duration, 1);
-                    let ease = 1 - Math.pow(1 - percent, 3);
-                    el.innerText = Math.floor(ease * target);
-                    if (percent < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        el.innerText = target;
-                    }
-                }
-                requestAnimationFrame(update);
+            // Esperar a que el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSivoAnimations);
+            } else {
+                initSivoAnimations();
             }
 
-            function animateAlphabet(el) {
-                const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-                let i = 0;
-                function step() {
-                    el.innerText = letters[i];
-                    i++;
-                    if (i < letters.length) {
-                        setTimeout(step, 60);
-                    } else {
-                        setTimeout(() => { el.innerText = "ILIMITADO"; }, 200);
+            function initSivoAnimations() {
+                function animateSivoNumber(el) {
+                    const target = parseInt(el.getAttribute("data-target"));
+                    const duration = 1500;
+                    const startTime = performance.now();
+                    
+                    function update() {
+                        const currentTime = performance.now();
+                        const progress = currentTime - startTime;
+                        const percent = Math.min(progress / duration, 1);
+                        const ease = 1 - Math.pow(1 - percent, 3);
+                        const currentValue = Math.floor(ease * target);
+                        
+                        el.textContent = currentValue;
+                        
+                        if (percent < 1) {
+                            requestAnimationFrame(update);
+                        } else {
+                            el.textContent = target;
+                        }
                     }
+                    requestAnimationFrame(update);
                 }
-                step();
-            }
 
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains("counter")) animateNumber(entry.target);
-                        if (entry.target.classList.contains("alphabet")) animateAlphabet(entry.target);
-                        observer.unobserve(entry.target);
+                function animateSivoAlphabet(el) {
+                    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+                    let i = 0;
+                    
+                    function step() {
+                        if (i < letters.length) {
+                            el.textContent = letters[i];
+                            i++;
+                            setTimeout(step, 50);
+                        } else {
+                            setTimeout(() => {
+                                el.textContent = "ILIMITADO";
+                            }, 200);
+                        }
                     }
+                    step();
+                }
+
+                // Observer para activar animaciones cuando sean visibles
+                const sivoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.dataset.animated) {
+                            entry.target.dataset.animated = "true";
+                            
+                            if (entry.target.classList.contains("sivo-counter")) {
+                                animateSivoNumber(entry.target);
+                            }
+                            if (entry.target.classList.contains("sivo-alphabet")) {
+                                animateSivoAlphabet(entry.target);
+                            }
+                            
+                            sivoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                // Observar todos los elementos
+                document.querySelectorAll(".sivo-counter, .sivo-alphabet").forEach(el => {
+                    sivoObserver.observe(el);
                 });
-            }, { threshold: 0.5 });
-
-            document.querySelectorAll(".counter, .alphabet").forEach(el => observer.observe(el));
+            }
         })();
         </script>
     </div>
