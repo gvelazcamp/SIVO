@@ -1989,7 +1989,6 @@ HEADER = """
             <a href="?vista=home#soporte">Soporte</a>
             <div class="nav-buttons">
                 <a href="#" class="btn-login">Login</a>
-                <a href="?vista=home#soporte" class="btn-demo">Agenda una demo</a>
             </div>
         </div>
     </div>
