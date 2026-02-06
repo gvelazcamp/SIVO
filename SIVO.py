@@ -2075,11 +2075,16 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 .sivo-card {
     background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
     border-radius: 40px;
-    padding: 80px 60px;
+    padding: 100px 80px;
     text-align: center;
     color: #ffffff;
-    max-width: 900px;
-    width: 100%;
+    max-width: 1400px;
+    width: 95%;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 25px 80px rgba(0,0,0,0.4);
     
     /* ANIMACIÓN DE APARICIÓN */
@@ -2100,8 +2105,8 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 }
 
 .sivo-card h1 {
-    font-size: 48px;
-    margin-bottom: 30px;
+    font-size: 64px;
+    margin-bottom: 40px;
     font-weight: 600;
     color: #ffffff;
     opacity: 0;
@@ -2110,9 +2115,9 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
 .sivo-card .highlight {
     color: #ffffff;
-    font-size: 52px;
+    font-size: 72px;
     display: block;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-weight: 700;
     line-height: 1.3;
     opacity: 0;
@@ -2120,11 +2125,11 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 }
 
 .sivo-card p {
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.8;
     color: #ffffff;
-    margin-bottom: 50px;
-    max-width: 750px;
+    margin-bottom: 60px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
@@ -2135,10 +2140,10 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     display: inline-block;
     background-color: #FFC107;
     color: #000;
-    padding: 20px 50px;
+    padding: 24px 60px;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     transition: all 0.3s;
     border: none;
@@ -2179,54 +2184,57 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 /* Tablet */
 @media (max-width: 1024px) {
     .sivo-card {
-        padding: 60px 50px;
-        max-width: 800px;
+        padding: 80px 60px;
+        max-width: 95%;
+        min-height: 80vh;
         border-radius: 35px;
     }
 
     .sivo-card h1 {
-        font-size: 40px;
+        font-size: 52px;
     }
 
     .sivo-card .highlight {
-        font-size: 44px;
+        font-size: 60px;
     }
 
     .sivo-card p {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .sivo-card .button {
-        padding: 18px 45px;
-        font-size: 19px;
+        padding: 22px 55px;
+        font-size: 21px;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
     .sivo-card {
-        padding: 40px 30px;
+        padding: 50px 35px;
         border-radius: 30px;
+        min-height: 75vh;
+        width: 92%;
     }
 
     .sivo-card h1 {
-        font-size: 28px;
-        margin-bottom: 20px;
+        font-size: 36px;
+        margin-bottom: 25px;
     }
 
     .sivo-card .highlight {
-        font-size: 32px;
-        margin-bottom: 30px;
+        font-size: 42px;
+        margin-bottom: 35px;
     }
 
     .sivo-card p {
-        font-size: 17px;
-        margin-bottom: 40px;
+        font-size: 19px;
+        margin-bottom: 45px;
     }
 
     .sivo-card .button {
-        padding: 16px 40px;
-        font-size: 18px;
+        padding: 18px 45px;
+        font-size: 19px;
     }
 }
 
@@ -2280,49 +2288,122 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
             </div>
         </div>
 
-        <!-- CHAT DEMO (mock visual) -->
-        <div class="hero-chat" id="demo">
-            <div class="chat-topbar">
-                <div class="chat-brand">
-                    <div class="dot"></div>
-                    Demo de chatbot
-                </div>
-                <div class="chat-pill">24/7</div>
+        <!-- TARJETAS NUMÉRICAS SIVO -->
+        <div class="sivo-stats-cards">
+            <style>
+                .sivo-stats-cards {
+                    max-width: 500px;
+                    margin: 0;
+                }
+                .sivo-stats-cards .stat-card {
+                    background: #fff;
+                    border: 1px solid #e6eaf2;
+                    border-radius: 22px;
+                    padding: 40px 30px;
+                    margin-bottom: 22px;
+                    text-align: center;
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+                    transition: transform 0.3s, box-shadow 0.3s;
+                }
+                .sivo-stats-cards .stat-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+                }
+                .sivo-stats-cards .stat-number {
+                    font-size: 64px;
+                    font-weight: 800;
+                    color: #2f7df6;
+                    line-height: 1;
+                }
+                .sivo-stats-cards .stat-number-small {
+                    font-size: 40px;
+                    font-weight: 800;
+                    color: #2f7df6;
+                    letter-spacing: 1px;
+                    line-height: 1;
+                }
+                .sivo-stats-cards .stat-label {
+                    font-size: 22px;
+                    margin-top: 12px;
+                    font-weight: 600;
+                    color: #0b1220;
+                }
+                .sivo-stats-cards .stat-desc {
+                    opacity: 0.65;
+                    margin-top: 10px;
+                    font-size: 15px;
+                    color: #4a5568;
+                }
+            </style>
+
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="100">0</div>
+                <div class="stat-label">Conversaciones simultáneas</div>
+                <div class="stat-desc">Atiende múltiples clientes al mismo tiempo</div>
             </div>
 
-            <div class="chat-body">
-                <div class="bubble user">
-                    Hola, ¿me podés decir horarios y cómo reservar?
-                    <div class="chat-meta">Cliente</div>
-                </div>
-
-                <div class="bubble bot">
-                    Claro. Podés reservar en 30 segundos:
-                    <br><strong>1)</strong> Elegís día y hora
-                    <br><strong>2)</strong> Confirmás tus datos
-                    <br><strong>3)</strong> Te llega la confirmación
-                    <div class="chat-meta">Asistente IA</div>
-                </div>
-
-                <div class="bubble user">
-                    ¿Y si tengo stock bajo o quiero saber precios?
-                    <div class="chat-meta">Cliente</div>
-                </div>
-
-                <div class="bubble bot">
-                    También. Puedo:
-                    <br>• avisar <strong>stock mínimo</strong>
-                    <br>• responder <strong>precios</strong> y disponibilidad
-                    <br>• derivar a un humano cuando haga falta
-                    <div class="chat-meta">Asistente IA</div>
-                </div>
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="60">0</div>
+                <div class="stat-label">Mensajes por minuto</div>
+                <div class="stat-desc">Respuestas en tiempo real</div>
             </div>
 
-            <div class="chat-input">
-                <div class="fake-input">Escribí una consulta… (demo)</div>
-                <button class="send-btn">Enviar</button>
+            <div class="stat-card">
+                <div class="stat-number-small alphabet">A</div>
+                <div class="stat-label">Fuentes de conocimiento</div>
+                <div class="stat-desc">Entrenable con cualquier información del negocio</div>
             </div>
         </div>
+
+        <script>
+        (function() {
+            function animateNumber(el) {
+                let target = +el.getAttribute("data-target");
+                let duration = 1200;
+                let startTime = null;
+                function update(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    let progress = timestamp - startTime;
+                    let percent = Math.min(progress / duration, 1);
+                    let ease = 1 - Math.pow(1 - percent, 3);
+                    el.innerText = Math.floor(ease * target);
+                    if (percent < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        el.innerText = target;
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            function animateAlphabet(el) {
+                const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+                let i = 0;
+                function step() {
+                    el.innerText = letters[i];
+                    i++;
+                    if (i < letters.length) {
+                        setTimeout(step, 60);
+                    } else {
+                        setTimeout(() => { el.innerText = "ILIMITADO"; }, 200);
+                    }
+                }
+                step();
+            }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains("counter")) animateNumber(entry.target);
+                        if (entry.target.classList.contains("alphabet")) animateAlphabet(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll(".counter, .alphabet").forEach(el => observer.observe(el));
+        })();
+        </script>
     </div>
 
     
