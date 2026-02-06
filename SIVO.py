@@ -1520,7 +1520,12 @@ body {
     h1, h2, h3, h4, h5, h6, p, span, div, a {
         color: #333 !important;
     }
-    
+
+    /* FIX: Mantener blanco en HERO IMPACT (tarjeta oscura) */
+    .hero-impact, .hero-impact * {
+        color: #ffffff !important;
+    }
+
     .cta h2 {
         color: #000 !important;
         font-weight: 800 !important;
