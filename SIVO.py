@@ -3076,7 +3076,7 @@ SIVO_SLIDER_COMPONENT_HTML_MOBILE = """<!DOCTYPE html>
   <style>
     body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, sans-serif; background:#ffffff; }
     .wrap { padding: 6px 0; background:#ffffff; }
-    iframe { width:100%; height: 560px; border:0; display:block; background:#ffffff; }
+    iframe { width:100%; height: 680px; border:0; display:block; background:#ffffff; }
   </style>
 </head>
 <body>
