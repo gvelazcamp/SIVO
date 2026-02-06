@@ -1746,6 +1746,19 @@ h1, h2, h3, h4, h5, h6 {
         padding: 30px 20px;
     }
 
+    /* FIX MOBILE: oscurecer texto de features (evita que quede blanco/tenue) */
+    .features {
+        opacity: 1 !important;
+    }
+    .feature {
+        color: #111827 !important;
+        opacity: 1 !important;
+    }
+    .feature strong {
+        color: #111827 !important;
+    }
+
+
     .footer {
         flex-direction: column;
         gap: 10px;
