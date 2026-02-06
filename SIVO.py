@@ -2275,7 +2275,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">chatbot IA</span></h1>
+            <h1>Tu negocio atendido<br>por tu <span style="color:#1e40af;">Empleado Digital</span></h1>
             <p>
                 SIVO es un asistente polifuncional con IA que se adapta a distintos rubros de industrias, desde ecommerce y finanzas hasta turnos médicos y viajes. Responde a tus clientes 24/7 con tus reglas y tus datos.
                 Elegí uno de los tantos rubros donde SIVO se desempeña y lo dejamos funcionando.
@@ -7071,3 +7071,4 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
