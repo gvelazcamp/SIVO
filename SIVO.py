@@ -325,71 +325,82 @@ h1, h2, h3, h4, h5, h6 {
     /* Header: logo a la izquierda, hamburguesa a la derecha */
     .header {
         padding: 12px 20px;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 0 !important;
+        text-align: left !important;
     }
     
-    /* Logo más compacto en móvil */
+    /* Logo más grande en móvil */
     .logo {
-        gap: 8px;
+        gap: 10px;
+        flex-direction: row !important;
+        align-items: center !important;
     }
     
     .logo-img {
-        height: 45px;
+        height: 70px !important;
         width: auto;
     }
     
     .logo-text {
-        font-size: 22px;
+        font-size: 26px !important;
+        margin: 0 !important;
     }
     
-    /* Mostrar hamburguesa */
+    /* Mostrar hamburguesa a la DERECHA */
     .hamburger {
-        display: flex;
+        display: flex !important;
+        order: 2;
+        margin-left: auto;
     }
     
     /* Menú de navegación: panel lateral deslizable */
     .nav {
-        position: fixed;
-        top: 70px;
-        right: 0;
-        width: 250px;
-        height: calc(100vh - 70px);
-        background: white;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px 20px;
-        gap: 20px;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        z-index: 999;
-        overflow-y: auto;
+        position: fixed !important;
+        top: 95px !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 280px !important;
+        height: calc(100vh - 95px) !important;
+        background: white !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 30px 20px !important;
+        gap: 20px !important;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.15) !important;
+        transform: translateX(100%) !important;
+        transition: transform 0.3s ease !important;
+        z-index: 999 !important;
+        overflow-y: auto !important;
+        justify-content: flex-start !important;
     }
     
     .nav.active {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
     
     .nav a {
-        font-size: 18px;
-        width: 100%;
-        padding: 10px 0;
-        border-bottom: 1px solid #f0f0f0;
+        font-size: 18px !important;
+        width: 100% !important;
+        padding: 12px 0 !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        text-align: left !important;
     }
     
     .nav-buttons {
-        margin-left: 0;
-        width: 100%;
-        flex-direction: column;
-        gap: 15px;
+        margin-left: 0 !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 15px !important;
     }
     
     .btn-login, .btn-demo {
-        width: 100%;
-        text-align: center;
-        padding: 12px 24px;
-        font-size: 16px;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px 24px !important;
+        font-size: 16px !important;
     }
 }
 
@@ -2083,21 +2094,45 @@ HEADER = """
     </div>
     
     <script>
-        // Toggle menú hamburguesa
-        (function() {
+        // Toggle menú hamburguesa - MEJORADO
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Inicializando menú hamburguesa...');
+            
             const hamburger = document.getElementById('hamburger');
             const nav = document.getElementById('nav');
             
+            console.log('Hamburger:', hamburger);
+            console.log('Nav:', nav);
+            
             if (hamburger && nav) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    nav.classList.toggle('active');
+                console.log('✅ Elementos encontrados');
+                
+                // Toggle al hacer click en hamburguesa
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🍔 Click en hamburguesa');
+                    
+                    const isActive = hamburger.classList.contains('active');
+                    
+                    if (isActive) {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                        console.log('❌ Menú cerrado');
+                    } else {
+                        hamburger.classList.add('active');
+                        nav.classList.add('active');
+                        console.log('✅ Menú abierto');
+                    }
                 });
                 
                 // Cerrar menú al hacer click en un link
                 const navLinks = nav.querySelectorAll('a');
+                console.log('📎 Links encontrados:', navLinks.length);
+                
                 navLinks.forEach(function(link) {
                     link.addEventListener('click', function() {
+                        console.log('🔗 Click en link');
                         hamburger.classList.remove('active');
                         nav.classList.remove('active');
                     });
@@ -2109,12 +2144,36 @@ HEADER = """
                     const isClickOnHamburger = hamburger.contains(event.target);
                     
                     if (!isClickInsideNav && !isClickOnHamburger && nav.classList.contains('active')) {
+                        console.log('🌍 Click fuera del menú');
                         hamburger.classList.remove('active');
                         nav.classList.remove('active');
                     }
                 });
+                
+                console.log('✅ Menú hamburguesa inicializado correctamente');
+            } else {
+                console.error('❌ No se encontraron los elementos del menú');
             }
-        })();
+        });
+        
+        // Backup: intentar inicializar después de 1 segundo si no funcionó
+        setTimeout(function() {
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            
+            if (hamburger && nav && !hamburger.hasAttribute('data-initialized')) {
+                console.log('🔄 Reintentar inicialización...');
+                hamburger.setAttribute('data-initialized', 'true');
+                
+                hamburger.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    nav.classList.toggle('active');
+                    console.log('🍔 Toggle (backup)');
+                };
+            }
+        }, 1000);
     </script>
 """
 
