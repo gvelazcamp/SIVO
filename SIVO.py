@@ -70,176 +70,33 @@ HTML_BENEFITS_STANDALONE = cargar_benefits_standalone_html()
 # INTEGRACIONES (standalone HTML)
 # =========================
 def cargar_integraciones_standalone_html():
-    """Carga integraciones.html desde el proyecto (para incrustarlo en HOME).
-    Si no existe, deja un placeholder visible para que no 'desaparezca' la sección.
-    """
-    candidatos = []
-    try:
-        candidatos.append(Path(__file__).resolve().parent / "integraciones.html")
-    except Exception:
-        pass
-
-    # Permitir también el nombre con sufijo (cuando Windows duplica descargas)
-    try:
-        candidatos.append(Path(__file__).resolve().parent / "integraciones (1).html")
-    except Exception:
-        pass
-
-    archivo = None
-    for p in candidatos:
-        if p and p.exists():
-            archivo = p
-            break
-
-    if not archivo:
-        return """
-<div style="padding: 40px 18px; text-align:center;">
-  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
-  <p style="margin:10px 0 0; color:#667085;">
-    No se encontró <b>integraciones.html</b> en el proyecto.
-  </p>
-</div>
-"""
-
-    try:
-        raw = archivo.read_text(encoding="utf-8", errors="ignore")
-
-        # FIX: asegurar que los íconos SVG se vean (agrega viewBox/attrs si faltan)
-        def _fix_svg_tag(m):
-            attrs = m.group(1) or ""
-            if "viewBox=" not in attrs:
-                attrs += ' viewBox="0 0 24 24"'
-            if "xmlns=" not in attrs:
-                attrs += ' xmlns="http://www.w3.org/2000/svg"'
-            if "stroke=" not in attrs:
-                attrs += ' stroke="currentColor"'
-            if "stroke-linecap=" not in attrs:
-                attrs += ' stroke-linecap="round"'
-            if "stroke-linejoin=" not in attrs:
-                attrs += ' stroke-linejoin="round"'
-            return f"<svg{attrs}>"
-
-        raw = re.sub(r"<svg\b([^>]*)>", _fix_svg_tag, raw, flags=re.I)
-
-        # Reemplazar SVG por íconos emoji genéricos (más robusto y siempre visible)
-        iconos = {
-            "WhatsApp": "💬",
-            "Instagram": "📷",
-            "Web": "🌐",
-            "Shopify": "🛍️",
-            "Mercado Pago": "💳",
-            "Email": "📧",
-        }
-
-        for label, emoji in iconos.items():
-            # Reemplaza el contenido de iconBox ANTES del label correspondiente
-            patron = rf'(<div class="iconBox">\s*)(.*?)(</div>\s*<div class="label">\s*{re.escape(label)}\s*</div>)'
-            raw = re.sub(
-                patron,
-                rf'\1<span class="emoji">{emoji}</span>\3',
-                raw,
-                flags=re.S | re.I
-            )
-
-        # Extraer CSS del <style>
-        m_style = re.search(r"<style[^>]*>(.*?)</style>", raw, flags=re.S | re.I)
-        css = m_style.group(1).strip() if m_style else ""
-
-        # Extraer BODY
-        m_body = re.search(r"<body[^>]*>(.*?)</body>", raw, flags=re.S | re.I)
-        body = m_body.group(1).strip() if m_body else raw
-
-        # Quitar regla body{} para no afectar todo el sitio (y evitar fondo global)
-        css = re.sub(r"\bbody\s*\{[^}]*\}", "", css, flags=re.S | re.I)
-
-        # Ajustes para evitar conflicto con CSS global (.card) y achicar las tarjetas
-        css_overrides = """
-/* OVERRIDES: emojis + cards más compactas */
-.card{
-  display:block !important;
-  height:auto !important;
-  justify-content:flex-start !important;
-  padding:18px 16px !important;
-  min-width:160px !important;
-  box-shadow:0 10px 28px rgba(0,0,0,.08) !important;
-}
-.card:hover{transform:translateY(-8px) !important;}
-
-.iconBox{
-  width:54px !important;
-  height:54px !important;
-  border-radius:16px !important;
-  margin-bottom:10px !important;
-  box-shadow:0 10px 22px rgba(0,0,0,.08) !important;
-}
-
-.emoji{
-  font-size:28px;
-  line-height:1;
-}
-
-.wrap{padding:28px 16px !important;}
-h1{font-size:34px !important;}
-p{margin-top:8px !important;}
-
-.track{gap:18px !important;}
-"""
-        css = (css + "\n\n" + css_overrides).strip()
-
-        # Proteger @keyframes (no se debe prefijar)
-        keyframes_block = ""
-        idx_kf = css.find("@keyframes")
-        if idx_kf != -1:
-            # encontrar el bloque completo por conteo de llaves
-            brace_start = css.find("{", idx_kf)
-            if brace_start != -1:
-                count = 0
-                end_kf = None
-                for j in range(brace_start, len(css)):
-                    if css[j] == "{":
-                        count += 1
-                    elif css[j] == "}":
-                        count -= 1
-                        if count == 0:
-                            end_kf = j + 1
-                            break
-                if end_kf:
-                    keyframes_block = css[idx_kf:end_kf].strip()
-                    css = (css[:idx_kf] + css[end_kf:]).strip()
-
-        # Prefijar selectores para que el CSS quede "scoped" dentro de la sección
-        prefix = ".integrations-section .integraciones-glow"
-
-        def _prefijar_selectores(match):
-            sel = match.group(1).strip()
-            props = match.group(2)
-
-            # Ignorar at-rules (no debería haber más que keyframes, ya protegido)
-            if sel.startswith("@"):
-                return match.group(0)
-
-            nuevos = []
-            for s in sel.split(","):
-                s = s.strip()
-                if not s:
-                    continue
-                nuevos.append(f"{prefix} {s}")
-            return ", ".join(nuevos) + "{" + props + "}"
-
-        css = re.sub(r"([^{@}][^{]*)\{([^}]*)\}", _prefijar_selectores, css).strip()
-
-        if keyframes_block:
-            css = (css + "\n\n" + keyframes_block).strip()
-
-        return f"""\n<style>\n{css}\n</style>\n<div class=\"integraciones-glow\">\n{body}\n</div>\n"""
-
-    except Exception:
-        return """
-<div style="padding: 40px 18px; text-align:center;">
-  <h2 style="margin:0; font-size: 28px;">Integraciones</h2>
-  <p style="margin:10px 0 0; color:#667085;">
-    Error cargando <b>integraciones.html</b>.
-  </p>
+    """Integraciones inline - no necesita archivo externo"""
+    return """
+<style>
+.integraciones-wrap{max-width:1000px;margin:auto;padding:30px 20px;text-align:center;font-family:system-ui}
+.integraciones-wrap h1{margin:0;font-size:34px;font-weight:700}
+.integraciones-carousel{margin-top:26px;overflow:hidden}
+.integraciones-track{display:flex;gap:16px;animation:integraciones-scroll 28s linear infinite}
+.integraciones-card{min-width:130px;background:#fff;padding:18px 14px;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.06);transition:.3s}
+.integraciones-card:hover{transform:translateY(-5px)}
+.integraciones-iconBox{width:44px;height:44px;margin:auto;margin-bottom:8px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:radial-gradient(14px 14px at 30% 30%, rgba(37,99,235,.16), transparent 60%),radial-gradient(17px 17px at 70% 70%, rgba(249,115,22,.16), transparent 60%),white;box-shadow:0 3px 10px rgba(0,0,0,.06);font-size:20px}
+.integraciones-label{font-weight:600;font-size:13px;margin-bottom:3px}
+.integraciones-sub{font-size:11px;color:#667085}
+@keyframes integraciones-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<div class="integraciones-wrap">
+<h1>Conecta con lo que ya usás</h1>
+<div class="integraciones-carousel"><div class="integraciones-track">
+<div class="integraciones-card"><div class="integraciones-iconBox">📷</div><div class="integraciones-label">Instagram</div><div class="integraciones-sub">DMs automatizados</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🌐</div><div class="integraciones-label">Web</div><div class="integraciones-sub">Chat en tu sitio</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🛍️</div><div class="integraciones-label">Shopify</div><div class="integraciones-sub">Catálogo + pedidos</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">💳</div><div class="integraciones-label">Mercado Pago</div><div class="integraciones-sub">Cobros y links</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">📧</div><div class="integraciones-label">Email</div><div class="integraciones-sub">Seguimiento automático</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">💬</div><div class="integraciones-label">WhatsApp</div><div class="integraciones-sub">Ventas + soporte</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">📷</div><div class="integraciones-label">Instagram</div><div class="integraciones-sub">DMs automatizados</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🌐</div><div class="integraciones-label">Web</div><div class="integraciones-sub">Chat en tu sitio</div></div>
+<div class="integraciones-card"><div class="integraciones-iconBox">🛍️</div><div class="integraciones-label">Shopify</div><div class="integraciones-sub">Catálogo + pedidos</div></div>
+</div></div>
 </div>
 """
 
