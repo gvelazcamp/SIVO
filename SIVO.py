@@ -175,37 +175,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #111;
 }
 
-p, li, span, a {
-    color: inherit;
-}
-
 .page-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
     background: #ffffff !important;
 }
-
-/* =========================
-   SCROLL REVEAL GENÉRICO
-========================= */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Delays escalonados para hijos dentro de reveal */
-.reveal.visible > *:nth-child(1) { transition-delay: 0s; }
-.reveal.visible > *:nth-child(2) { transition-delay: 0.1s; }
-.reveal.visible > *:nth-child(3) { transition-delay: 0.2s; }
-.reveal.visible > *:nth-child(4) { transition-delay: 0.3s; }
-.reveal.visible > *:nth-child(5) { transition-delay: 0.4s; }
 
 /* =========================
    HEADER
@@ -312,12 +287,7 @@ p, li, span, a {
     z-index: 1;
     opacity: 0;
     transform: translateY(60px) scale(0.9);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.hero-impact-content.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    animation: fadeInCard 1.2s ease-out forwards;
 }
 
 @keyframes fadeInCard {
@@ -338,13 +308,7 @@ p, li, span, a {
     margin: 0 0 30px 0;
     color: #ffffff;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
-}
-
-.hero-impact-content.visible .hero-impact-title {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.6s ease-out 1s forwards;
 }
 
 .hero-impact-subtitle {
@@ -355,13 +319,7 @@ p, li, span, a {
     margin: 0 0 40px 0;
     line-height: 1.3;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s;
-}
-
-.hero-impact-content.visible .hero-impact-subtitle {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.6s ease-out 1.4s forwards;
 }
 
 @keyframes fadeInText {
@@ -384,13 +342,7 @@ p, li, span, a {
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out 0.9s, transform 0.6s ease-out 0.9s;
-}
-
-.hero-impact-content.visible .hero-impact-text {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.6s ease-out 1.8s forwards;
 }
 
 .hero-impact-actions {
@@ -399,13 +351,7 @@ p, li, span, a {
     justify-content: center;
     flex-wrap: wrap;
     opacity: 0;
-    transform: translateY(30px) scale(0.85);
-    transition: opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s;
-}
-
-.hero-impact-content.visible .hero-impact-actions {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    animation: fadeInButton 0.6s ease-out 2.2s forwards;
 }
 
 @keyframes fadeInButton {
@@ -1994,30 +1940,6 @@ HEADER = """
 FOOTER = """
     <div class="footer" style="display: none;">
     </div>
-
-<script>
-// Scroll Reveal - IntersectionObserver
-(function() {
-    var targets = document.querySelectorAll('.reveal, .sivo-card, .hero-impact-content');
-    if (!targets.length) return;
-    
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-    });
-    
-    targets.forEach(function(el) {
-        observer.observe(el);
-    });
-})();
-</script>
-
 </div>
 </body>
 </html>
@@ -2070,15 +1992,21 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     align-items: center;
     box-shadow: 0 25px 80px rgba(0,0,0,0.4);
     
-    /* Scroll reveal */
+    /* ANIMACIÓN DE APARICIÓN */
     opacity: 0;
     transform: translateY(60px) scale(0.9);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    animation: fadeInCard 1.2s ease-out forwards;
 }
 
-.sivo-card.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .sivo-card h1 {
@@ -2087,13 +2015,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     font-weight: 600;
     color: #ffffff;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
-}
-
-.sivo-card.visible h1 {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.8s ease-out 0.6s forwards;
 }
 
 .sivo-card .highlight {
@@ -2104,13 +2026,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     font-weight: 700;
     line-height: 1.3;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s;
-}
-
-.sivo-card.visible .highlight {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.8s ease-out 1s forwards;
 }
 
 .sivo-card p {
@@ -2122,13 +2038,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out 0.9s, transform 0.8s ease-out 0.9s;
-}
-
-.sivo-card.visible p {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInText 0.8s ease-out 1.4s forwards;
 }
 
 .sivo-card .button {
@@ -2140,17 +2050,12 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
-    transition: all 0.3s, opacity 0.8s ease-out 1.2s, transform 0.8s ease-out 1.2s;
+    transition: all 0.3s;
     border: none;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
     opacity: 0;
-    transform: translateY(30px) scale(0.85);
-}
-
-.sivo-card.visible .button {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    animation: fadeInButton 0.8s ease-out 1.8s forwards;
 }
 
 @keyframes fadeInText {
@@ -2273,7 +2178,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
     </div>
 
-    <div class="hero reveal">
+    <div class="hero">
         <div class="hero-content">
             <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">chatbot IA</span></h1>
             <p>
@@ -2356,81 +2261,59 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         </div>
 
         <script>
-        // Animar contadores solo cuando son visibles en pantalla
-        (function() {
-            var statsContainer = document.querySelector('.sivo-stats-cards');
-            if (!statsContainer) return;
-            
-            var animated = false;
-            
-            function animateCounters() {
-                if (animated) return;
-                animated = true;
-                
-                // Animar número 100
-                var el1 = document.getElementById('stat-num-1');
-                if (el1) {
-                    var target1 = 100;
-                    var current1 = 0;
-                    var increment1 = target1 / 60;
-                    var timer1 = setInterval(function() {
-                        current1 += increment1;
-                        if (current1 >= target1) {
-                            el1.textContent = target1;
-                            clearInterval(timer1);
-                        } else {
-                            el1.textContent = Math.floor(current1);
-                        }
-                    }, 20);
-                }
-
-                // Animar número 60
-                var el2 = document.getElementById('stat-num-2');
-                if (el2) {
-                    var target2 = 60;
-                    var current2 = 0;
-                    var increment2 = target2 / 60;
-                    var timer2 = setInterval(function() {
-                        current2 += increment2;
-                        if (current2 >= target2) {
-                            el2.textContent = target2;
-                            clearInterval(timer2);
-                        } else {
-                            el2.textContent = Math.floor(current2);
-                        }
-                    }, 20);
-                }
-
-                // Animar alfabeto
-                var elAlpha = document.getElementById('stat-alpha');
-                if (elAlpha) {
-                    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                    var idx = 0;
-                    var alphaTimer = setInterval(function() {
-                        if (idx < letters.length) {
-                            elAlpha.textContent = letters[idx];
-                            idx++;
-                        } else {
-                            clearInterval(alphaTimer);
-                            setTimeout(function() {
-                                elAlpha.textContent = "ILIMITADO";
-                            }, 200);
-                        }
-                    }, 50);
-                }
-            }
-            
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        obs.disconnect();
+        setTimeout(function() {
+            // Animar número 100
+            var el1 = document.getElementById('stat-num-1');
+            if (el1) {
+                var target1 = 100;
+                var current1 = 0;
+                var increment1 = target1 / 60;
+                var timer1 = setInterval(function() {
+                    current1 += increment1;
+                    if (current1 >= target1) {
+                        el1.textContent = target1;
+                        clearInterval(timer1);
+                    } else {
+                        el1.textContent = Math.floor(current1);
                     }
-                });
-            }, { threshold: 0.3 });
-            
-            obs.observe(statsContainer);
-        })();
+                }, 20);
+            }
+
+            // Animar número 60
+            var el2 = document.getElementById('stat-num-2');
+            if (el2) {
+                var target2 = 60;
+                var current2 = 0;
+                var increment2 = target2 / 60;
+                var timer2 = setInterval(function() {
+                    current2 += increment2;
+                    if (current2 >= target2) {
+                        el2.textContent = target2;
+                        clearInterval(timer2);
+                    } else {
+                        el2.textContent = Math.floor(current2);
+                    }
+                }, 20);
+            }
+
+            // Animar alfabeto
+            var elAlpha = document.getElementById('stat-alpha');
+            if (elAlpha) {
+                var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                var idx = 0;
+                var alphaTimer = setInterval(function() {
+                    if (idx < letters.length) {
+                        elAlpha.textContent = letters[idx];
+                        idx++;
+                    } else {
+                        clearInterval(alphaTimer);
+                        setTimeout(function() {
+                            elAlpha.textContent = "ILIMITADO";
+                        }, 200);
+                    }
+                }, 50);
+            }
+        }, 500);
         </script>
     </div>
 
@@ -2583,7 +2466,7 @@ HTML_HOME_PARTE_1 = """""" + HTML_BASE + """
         }
     </style>
 
-    <div class="como-funciona-container reveal">
+    <div class="como-funciona-container">
         <div class="como-funciona-header">
             <h1>Cómo funciona</h1>
             <p>Simple y rápido. En 3 pasos tenés tu asistente funcionando.</p>
@@ -2632,7 +2515,7 @@ except Exception:
     pass
 
 HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
-    <div class="testimonios reveal">
+    <div class="testimonios">
         <h2>Lo que dicen nuestros clientes</h2>
         
         <div class="testimonios-grid">
@@ -2722,7 +2605,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
-    <div class="cta reveal" id="soporte">
+    <div class="cta" id="soporte">
         <h2>Agendá una demo gratuita</h2>
         <p>Probá 7 días gratis. Sin tarjeta de crédito. Cancelá cuando quieras.</p>
         
@@ -2741,7 +2624,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- FAQ -->
-    <div class="faq-section reveal">
+    <div class="faq-section">
         <h2>Preguntas frecuentes</h2>
         
         <div class="faq-grid">
@@ -2778,7 +2661,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- NOVEDAD SIVO -->
-    <div class="sivo-section reveal">
+    <div class="sivo-section">
         <div class="sivo-badge-top">🔥 Recién Lanzado - Enero 2026</div>
         
         <div class="sivo-card-clean">
@@ -3177,7 +3060,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
         </div>
     </div>
 
-    <div class="cta reveal">
+    <div class="cta">
         <h2>Integra en minutos</h2>
         <p>Instalá un asistente virtual IA en tu web fácilmente.</p>
         <button>Probar gratis</button>
@@ -6559,6 +6442,73 @@ else:
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
+# =========================
+# SCROLL REVEAL (via components.html que SÍ ejecuta JS)
+# Observa los contenedores de st.html en el documento padre
+# =========================
+components.html("""
+<script>
+(function() {
+    try {
+        var parentDoc = window.parent.document;
+        if (!parentDoc) return;
+
+        // Encontrar todos los contenedores de iframes st.html
+        var containers = parentDoc.querySelectorAll('div[data-testid="stHtml"]');
+        if (!containers || containers.length < 2) return;
+
+        // Estilos de transición
+        var style = parentDoc.createElement('style');
+        style.textContent = `
+            .scroll-hidden {
+                opacity: 0 !important;
+                transform: translateY(50px) !important;
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+            }
+            .scroll-visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        parentDoc.head.appendChild(style);
+
+        // Saltar el primer bloque (hero, ya visible) - esconder el resto
+        for (var i = 1; i < containers.length; i++) {
+            containers[i].classList.add('scroll-hidden');
+        }
+
+        // Observer en el contexto del padre
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-visible');
+                    entry.target.classList.remove('scroll-hidden');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        for (var i = 1; i < containers.length; i++) {
+            observer.observe(containers[i]);
+        }
+
+        // También observar contenedores de components.html
+        var compContainers = parentDoc.querySelectorAll('div[data-testid="element-container"]:has(iframe[height="1100"]), div[data-testid="element-container"]:has(iframe[height="640"])');
+        compContainers.forEach(function(el) {
+            el.classList.add('scroll-hidden');
+            observer.observe(el);
+        });
+
+    } catch(e) {
+        console.log('Scroll reveal error:', e);
+    }
+})();
+</script>
+""", height=0, scrolling=False)
+
 # CSS para overflow visible
 st.markdown("""
 <style>
