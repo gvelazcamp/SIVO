@@ -3132,7 +3132,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
     /* IFRAME MOBILE - oculto por defecto */
     .slider-mobile {
       width: 100%; 
-      height: 420px; 
+      height: 600px; 
       border: 0; 
       display: none; 
       background: #ffffff;
@@ -3189,7 +3189,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
       } catch (e) {}
 
       if (!h) {
-        h = isMobile ? 420 : 760;
+        h = isMobile ? 600 : 760;
       }
 
       h = Math.ceil(h);
@@ -6687,7 +6687,7 @@ else:
         _is_mobile = (str(_m) == "1")
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(440 if _is_mobile else 780), scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(620 if _is_mobile else 780), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
