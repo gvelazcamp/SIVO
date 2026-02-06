@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Preguntas Frecuentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#f4f4f4;padding:60px 20px;}
+h1{text-align:center;font-size:42px;margin-bottom:60px;}
+
+.faq-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.faq{
+    background:white;
+    padding:30px 35px;
+    border-radius:18px;
+    border-left:6px solid #ffb400;
+    opacity:0;
+    transform:translateX(80px);
+    transition:all .6s ease;
+}
+
+.faq.left{ transform:translateX(-80px); }
+
+.faq.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.faq:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.faq h3{font-size:20px;margin-bottom:12px;}
+.faq p{color:#555;line-height:1.6;}
+
+@media(max-width:800px){
+    .faq-container{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Preguntas frecuentes</h1>
+
+<div class="faq-container">
+
+<div class="faq left"><h3>¿Necesito saber programar?</h3>
+<p>No. Configuramos todo por vos. Solo nos pasás la información de tu negocio y lo dejamos funcionando.</p></div>
+
+<div class="faq"><h3>¿Funciona con WhatsApp?</h3>
+<p>Podés integrarlo con WhatsApp, Instagram, tu sitio web, Shopify y más plataformas.</p></div>
+
+<div class="faq left"><h3>¿Puedo cancelar cuando quiera?</h3>
+<p>No hay permanencia. Cancelás cuando quieras sin costos adicionales.</p></div>
+
+<div class="faq"><h3>¿Qué pasa si el bot no sabe responder?</h3>
+<p>Deriva la consulta a un humano o toma los datos del cliente para contactarlo.</p></div>
+
+<div class="faq left"><h3>¿Los datos están seguros?</h3>
+<p>La información está encriptada y cumple normas de protección de datos.</p></div>
+
+<div class="faq"><h3>¿Cuánto tarda la implementación?</h3>
+<p>Depende de la complejidad. Te damos un timeline al inicio.</p></div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll('.faq');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{ threshold:0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
