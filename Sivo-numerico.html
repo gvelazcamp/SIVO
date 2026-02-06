@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SIVO — Capacidad del sistema</title>
+
+<style>
+html,body{background:#ffffff!important;color:#0b1220!important;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+.section{max-width:700px;margin:auto;padding:90px 20px;}
+h1{text-align:center;font-size:40px;margin-bottom:10px;}
+.sub{text-align:center;opacity:.7;margin-bottom:60px;font-size:18px;}
+.card{background:#fff;border:1px solid #e6eaf2;border-radius:22px;padding:40px 30px;margin-bottom:22px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,0.06);}
+.number{font-size:64px;font-weight:800;color:#2f7df6;}
+.number-small{font-size:40px;font-weight:800;color:#2f7df6;letter-spacing:1px;}
+.label{font-size:22px;margin-top:12px;font-weight:600;}
+.desc{opacity:.65;margin-top:10px;font-size:15px;}
+</style>
+</head>
+
+<body>
+<section class="section">
+<h1>Potencia real de SIVO</h1>
+<p class="sub">Un asistente diseñado para escalar sin límites</p>
+
+<div class="card">
+<div class="number counter" data-target="100">0</div>
+<div class="label">Conversaciones simultáneas</div>
+<div class="desc">Atiende múltiples clientes al mismo tiempo</div>
+</div>
+
+<div class="card">
+<div class="number counter" data-target="60">0</div>
+<div class="label">Mensajes por minuto</div>
+<div class="desc">Respuestas en tiempo real</div>
+</div>
+
+<div class="card">
+<div class="number-small alphabet">A</div>
+<div class="label">Fuentes de conocimiento</div>
+<div class="desc">Entrenable con cualquier información del negocio</div>
+</div>
+
+</section>
+
+<script>
+function animateNumber(el){
+let target=+el.getAttribute("data-target");let duration=1200;let startTime=null;
+function update(timestamp){
+if(!startTime) startTime=timestamp;
+let progress=timestamp-startTime;
+let percent=Math.min(progress/duration,1);
+let ease=1-Math.pow(1-percent,3);
+el.innerText=Math.floor(ease*target);
+if(percent<1){requestAnimationFrame(update);}else{el.innerText=target;}
+}
+requestAnimationFrame(update);
+}
+
+function animateAlphabet(el){
+const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let i=0;
+function step(){
+el.innerText=letters[i];
+i++;
+if(i<letters.length){setTimeout(step,60);}
+else{setTimeout(()=>{el.innerText="ILIMITADO";},200);}
+}
+step();
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+if(entry.target.classList.contains("counter")) animateNumber(entry.target);
+if(entry.target.classList.contains("alphabet")) animateAlphabet(entry.target);
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.5});
+
+document.querySelectorAll(".counter, .alphabet").forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
