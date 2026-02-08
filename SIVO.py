@@ -76,7 +76,7 @@ def cargar_integraciones_standalone_html():
 .integraciones-wrap{max-width:1000px;margin:auto;padding:30px 20px;text-align:center;font-family:system-ui}
 .integraciones-wrap h1{margin:0;font-size:34px;font-weight:700}
 .integraciones-carousel{margin-top:26px;overflow:hidden}
-.integraciones-track{display:flex;gap:16px;animation:integraciones-scroll 8s linear infinite}
+.integraciones-track{display:flex;gap:16px;width:max-content;animation:integraciones-scroll 14s linear infinite}
 .integraciones-card{min-width:130px;flex-shrink:0;background:#fff;padding:18px 14px;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.06);transition:.3s}
 .integraciones-card:hover{transform:translateY(-5px)}
 .integraciones-iconBox{width:44px;height:44px;margin:auto;margin-bottom:8px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:radial-gradient(14px 14px at 30% 30%, rgba(37,99,235,.16), transparent 60%),radial-gradient(17px 17px at 70% 70%, rgba(249,115,22,.16), transparent 60%),white;box-shadow:0 3px 10px rgba(0,0,0,.06);font-size:20px}
