@@ -1697,28 +1697,15 @@ h1, h2, h3, h4, h5, h6 {
    FOOTER
 ========================= */
 .footer {
-    background: #1a1a2e;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 50px 20px 40px;
+    border-top: 1px solid #eee;
+    padding: 20px 5%;
+    font-size: 13px;
+    color: #888;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
-    border: none;
-}
-.footer-logo {
-    height: 100px;
-    width: auto;
-    opacity: 0.9;
-}
-.footer-copyright {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.3px;
-    margin: 0;
+    width: 100%;
+    margin-top: 20px;
 }
 
 /* =========================
@@ -1840,11 +1827,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
     .footer {
-        padding: 35px 15px 30px;
-        gap: 15px;
-    }
-    .footer-logo {
-        height: 70px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 20px 4%;
     }
 
     .pricing {
@@ -2270,11 +2256,9 @@ HEADER = """
     </div>
 """
 
-# FOOTER con branding SIVO (dentro de st.html, NO en iframe separado)
+# FOOTER SIN CIERRE (para st.html) - el body/html se cierra en FOOTER_CHATBOT
 FOOTER = """
-    <div class="footer">
-        <img src="https://gvelazcamp.github.io/SIVO/LogoSivoDark.svg" alt="SIVO" class="footer-logo">
-        <p class="footer-copyright">&copy; 2026 SIVO. Todos los derechos reservados.</p>
+    <div class="footer" style="display: none;">
     </div>
 </div>
 </body>
@@ -2326,6 +2310,35 @@ html, body {
     <img src="https://gvelazcamp.github.io/SIVO/LogoSivoDark.svg" alt="SIVO" class="footer-logo">
     <p class="footer-copyright">&copy; 2026 SIVO. Todos los derechos reservados.</p>
 </div>
+<script>
+(function(){
+    try {
+        var iframe = window.frameElement;
+        if (!iframe) return;
+        var el = iframe;
+        var dark = '#1a1a2e';
+        // Subir por todos los contenedores padre y aplicar estilos
+        while (el && el.parentElement) {
+            el = el.parentElement;
+            el.style.setProperty('background', dark, 'important');
+            el.style.setProperty('background-color', dark, 'important');
+            el.style.setProperty('max-width', '100vw', 'important');
+            el.style.setProperty('width', '100vw', 'important');
+            el.style.setProperty('margin-left', 'calc(-50vw + 50%)', 'important');
+            el.style.setProperty('padding', '0', 'important');
+            el.style.setProperty('margin-bottom', '0', 'important');
+            el.style.setProperty('padding-bottom', '0', 'important');
+            el.style.setProperty('gap', '0', 'important');
+            // Parar en el main block-container
+            if (el.classList && (el.classList.contains('block-container') || el.classList.contains('stApp'))) break;
+        }
+        // El iframe mismo
+        iframe.style.setProperty('background', dark, 'important');
+        iframe.style.setProperty('background-color', dark, 'important');
+        iframe.style.setProperty('width', '100%', 'important');
+    } catch(e) { console.log('Footer style error:', e); }
+})();
+</script>
 </body>
 </html>
 """
@@ -6755,7 +6768,8 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 </style>
 """, unsafe_allow_html=True)
 
-# Footer ya incluido dentro del HTML de cada página via variable FOOTER
+# Footer con JS que auto-elimina márgenes del iframe padre
+components.html(FOOTER_SIMPLE, height=250)
 
 
 # Chatbot flotante COMPLETO
