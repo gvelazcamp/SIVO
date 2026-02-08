@@ -2261,7 +2261,7 @@ HEADER = """
             <a href="?vista=precios">Precios</a>
             <a href="?vista=home#soporte">Soporte</a>
             <div class="nav-buttons">
-                <a href="#" class="btn-login">Login</a>
+                <a href="?vista=login" class="btn-login">Login</a>
             </div>
         </div>
     </div>
@@ -3443,6 +3443,204 @@ HTML_PRECIOS = f"""{HTML_BASE}
 </div>
 
 {FOOTER}
+"""
+
+# =========================
+# LOGIN
+# =========================
+HTML_LOGIN = f"""{HTML_BASE}
+<style>
+html, body, .page-container {{
+    background: #f5f7fa !important;
+    min-height: 100vh;
+}}
+.login-wrapper {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}}
+.login-card {{
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 50px 40px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}}
+.login-logo {{
+    height: 80px;
+    width: auto;
+    margin-bottom: 30px;
+}}
+.login-title {{
+    font-size: 24px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 8px;
+}}
+.login-subtitle {{
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 30px;
+}}
+.login-form {{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}}
+.login-label {{
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    display: block;
+}}
+.login-input {{
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: Inter, sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+    box-sizing: border-box;
+}}
+.login-input:focus {{
+    border-color: #60a5fa;
+    background: #fff;
+}}
+.login-input::placeholder {{
+    color: #aaa;
+}}
+.login-options {{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}}
+.login-remember {{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+}}
+.login-remember input {{
+    width: 16px;
+    height: 16px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}}
+.login-forgot {{
+    font-size: 13px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+}}
+.login-forgot:hover {{
+    text-decoration: underline;
+}}
+.login-btn {{
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}}
+.login-btn:hover {{
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+}}
+.login-divider {{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+    color: #ccc;
+    font-size: 12px;
+}}
+.login-divider::before,
+.login-divider::after {{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e8e8;
+}}
+.login-back {{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+}}
+.login-back a {{
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}}
+.login-back a:hover {{
+    text-decoration: underline;
+}}
+@media (max-width: 768px) {{
+    .login-card {{
+        padding: 40px 24px;
+        border-radius: 20px;
+    }}
+    .login-logo {{
+        height: 60px;
+    }}
+    .login-title {{
+        font-size: 22px;
+    }}
+}}
+</style>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" alt="SIVO" class="login-logo">
+        <h1 class="login-title">Bienvenido de vuelta</h1>
+        <p class="login-subtitle">Ingresá a tu cuenta para continuar</p>
+
+        <form class="login-form" onsubmit="return false;">
+            <div>
+                <label class="login-label">Email</label>
+                <input type="email" class="login-input" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <div>
+                <label class="login-label">Contraseña</label>
+                <input type="password" class="login-input" placeholder="Tu contraseña">
+            </div>
+            <div class="login-options">
+                <label class="login-remember">
+                    <input type="checkbox"> Recordarme
+                </label>
+                <a href="#" class="login-forgot">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="login-btn">Iniciar sesión</button>
+            <div class="login-divider">o</div>
+            <div class="login-back">
+                <a href="?vista=home">← Volver al inicio</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
 """
 
 # =========================
@@ -6411,6 +6609,9 @@ elif vista == "asistentes":
 
 elif vista == "precios":
     st.html(HTML_PRECIOS)
+
+elif vista == "login":
+    st.html(HTML_LOGIN)
 
 else:
     st.html(HTML_HOME_PARTE_1)
