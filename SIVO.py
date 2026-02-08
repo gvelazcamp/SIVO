@@ -1324,11 +1324,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-form input:focus {
     outline: none;
-    border-color: #f4b400;
+    border-color: #3b82f6;
 }
 
 .cta-form button {
-    background: #f4b400;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: #ffffff;
     padding: 14px 28px;
     border-radius: 12px;
     font-weight: 800;
@@ -1336,23 +1337,30 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     font-size: 15px;
     white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s;
 }
 
 .cta-form button:hover {
-    background: #e5a500;
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
 }
 
 .cta button {
-    background: #f4b400;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: #ffffff;
     padding: 14px 28px;
     border-radius: 16px;
     font-weight: 800;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s;
 }
 
 .cta button:hover {
-    background: #e5a500;
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
 }
 
 /* =========================
