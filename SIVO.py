@@ -472,33 +472,22 @@ h1, h2, h3, h4, h5, h6 {
     .nav-buttons {
         margin-left: 0 !important;
         margin-top: 30px !important;
-        width: 100% !important;
+        width: auto !important;
         flex-direction: row !important;
         gap: 12px !important;
     }
 
     .btn-login {
-        background: #f0f0f0 !important;
-        color: #111 !important;
-        width: 100% !important;
+        background: #e8e8e8 !important;
+        color: #333 !important;
+        width: auto !important;
         text-align: center !important;
-        padding: 18px 40px !important;
-        font-size: 18px !important;
-        font-weight: 700 !important;
+        padding: 14px 36px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
         border-radius: 50px !important;
         border: none !important;
-    }
-
-    .btn-demo {
-        background: #111 !important;
-        color: white !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 18px 40px !important;
-        font-size: 18px !important;
-        font-weight: 700 !important;
-        border-radius: 50px !important;
-        border: none !important;
+        display: inline-block !important;
     }
 }
 
