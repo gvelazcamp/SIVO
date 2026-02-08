@@ -2234,7 +2234,6 @@ HEADER = """
     <div class="header">
         <a class="logo" href="?vista=home">
             <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" alt="SIVO" class="logo-img">
-            <span class="logo-text">SIVO</span>
         </a>
 
         <input type="checkbox" id="menu-toggle">
@@ -2285,15 +2284,16 @@ html, body {
 .footer-container {
     background: #1a1a2e;
     width: 100%;
-    padding: 40px 20px 30px;
+    height: 100%;
+    padding: 50px 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
 }
 .footer-logo {
-    height: 60px;
+    height: 100px;
     width: auto;
     opacity: 0.9;
 }
@@ -6741,25 +6741,44 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 # CSS para que el footer ocupe todo el ancho sin márgenes y fondo oscuro
 st.markdown("""
 <style>
-div[data-testid="element-container"]:has(iframe[height="200"]) {
+/* Contenedor del iframe del footer */
+div[data-testid="element-container"]:has(iframe[height="250"]) {
     background: #1a1a2e !important;
     margin: 0 !important;
     padding: 0 !important;
-    max-width: 100% !important;
+    max-width: 100vw !important;
     width: 100vw !important;
     margin-left: calc(-50vw + 50%) !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
 }
-div[data-testid="element-container"]:has(iframe[height="200"]) iframe {
+div[data-testid="element-container"]:has(iframe[height="250"]) iframe {
     background: #1a1a2e !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-div[data-testid="stVerticalBlock"]:has(iframe[height="200"]) {
+/* Eliminar gaps del bloque padre */
+div[data-testid="stVerticalBlock"]:has(iframe[height="250"]) {
     gap: 0 !important;
+}
+/* Forzar que el block-container no limite el ancho */
+.main .block-container:has(iframe[height="250"]) {
+    max-width: 100vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/* Fondo oscuro en el stApp para que no se vea blanco debajo */
+div[data-testid="stVerticalBlock"] > div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # Footer + Chatbot juntos con components.html (para que funcione JS)
-components.html(FOOTER_SIMPLE, height=200)
+components.html(FOOTER_SIMPLE, height=250)
 
 
 # Chatbot flotante COMPLETO
