@@ -2503,7 +2503,7 @@ html, body, .page-container {
         </div>
     </div>
 
-    <div class="hero reveal">
+    <div class="hero">
         <div class="hero-content">
             <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">Empleado Digital</span></h1>
             <p>
@@ -2519,7 +2519,7 @@ html, body, .page-container {
         </div>
 
         <!-- TARJETAS NUMÉRICAS SIVO -->
-        <div class="sivo-stats-cards reveal reveal-children">
+        <div class="sivo-stats-cards">
             <style>
                 .sivo-stats-cards {
                     max-width: 500px;
@@ -2791,7 +2791,7 @@ html, body, .page-container {
         }
     </style>
 
-    <div class="como-funciona-container reveal">
+    <div class="como-funciona-container">
         <div class="como-funciona-header">
             <h1>Cómo funciona</h1>
             <p>Simple y rápido. En 3 pasos tenés tu asistente funcionando.</p>
@@ -2839,10 +2839,10 @@ except Exception:
     pass
 
 HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
-    <div class="testimonios reveal">
+    <div class="testimonios">
         <h2>Lo que dicen nuestros clientes</h2>
         
-        <div class="testimonios-grid reveal-children">
+        <div class="testimonios-grid">
             <div class="testimonio-card">
                 <div class="testimonio-quote">
                     "Desde que instalé el chatbot, las consultas se responden automáticamente. Las ventas subieron un 40% y ya no pierdo clientes por demoras en responder."
@@ -2929,7 +2929,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
-    <div class="cta reveal" id="soporte">
+    <div class="cta" id="soporte">
         <h2>Agendá una demo gratuita</h2>
         <p>Probá 7 días gratis. Sin tarjeta de crédito. Cancelá cuando quieras.</p>
         
@@ -2948,10 +2948,10 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- FAQ -->
-    <div class="faq-section reveal">
+    <div class="faq-section">
         <h2>Preguntas frecuentes</h2>
 
-        <div class="faq-grid reveal-children">
+        <div class="faq-grid">
             <div class="faq-item">
                 <div class="faq-question">¿Necesito saber programar?</div>
                 <div class="faq-answer">No. Nosotros configuramos todo por vos. Vos solo nos pasás la información de tu negocio y nosotros lo dejamos funcionando.</div>
@@ -2985,7 +2985,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- NOVEDAD SIVO -->
-    <div class="sivo-section reveal">
+    <div class="sivo-section">
         <div class="sivo-badge-top">🔥 Recién Lanzado - Enero 2026</div>
         
         <div class="sivo-card-clean">
@@ -3018,7 +3018,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
     </div>
 
     <!-- INTEGRACIONES -->
-    <div class="integrations-section reveal">
+    <div class="integrations-section">
 {HTML_INTEGRACIONES_STANDALONE}
 </div>
 
@@ -6797,55 +6797,6 @@ components.html("""
             el.classList.add('scroll-hidden');
             observer.observe(el);
         });
-
-        // =============================================
-        // SCROLL REVEAL INTERNO: elementos .reveal dentro de iframes
-        // =============================================
-        function setupInternalReveals() {
-            var iframes = parentDoc.querySelectorAll('div[data-testid="stHtml"] iframe');
-            var revealEls = [];
-
-            iframes.forEach(function(iframe) {
-                try {
-                    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    if (!iframeDoc) return;
-                    var els = iframeDoc.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-                    els.forEach(function(el) {
-                        revealEls.push({ el: el, iframe: iframe });
-                    });
-                } catch(e) {}
-            });
-
-            if (!revealEls.length) return;
-
-            function checkReveals() {
-                var viewH = window.parent.innerHeight;
-                revealEls.forEach(function(item) {
-                    if (item.done) return;
-                    var iframeRect = item.iframe.getBoundingClientRect();
-                    var elRect = item.el.getBoundingClientRect();
-                    // Posición real del elemento en el viewport del padre
-                    var elTop = iframeRect.top + elRect.top;
-                    var triggerPoint = viewH * 0.88;
-                    if (elTop < triggerPoint) {
-                        item.el.classList.add('reveal-visible');
-                        item.done = true;
-                    }
-                });
-                // Limpiar los que ya se revelaron
-                revealEls = revealEls.filter(function(item) { return !item.done; });
-                if (revealEls.length === 0) {
-                    window.parent.removeEventListener('scroll', checkReveals);
-                }
-            }
-
-            window.parent.addEventListener('scroll', checkReveals, { passive: true });
-            // Check inicial
-            setTimeout(checkReveals, 300);
-        }
-
-        // Esperar a que los iframes carguen su contenido
-        setTimeout(setupInternalReveals, 800);
 
     } catch(e) {
         console.log('Scroll reveal error:', e);
