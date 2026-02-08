@@ -2411,7 +2411,7 @@ html, body, .page-container {
 
 .sivo-card .button {
     display: inline-block;
-    background-color: rgba(100,180,230,0.35);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     color: #ffffff;
     padding: 24px 60px;
     border-radius: 50px;
@@ -2419,10 +2419,9 @@ html, body, .page-container {
     font-size: 22px;
     font-weight: 600;
     transition: all 0.3s;
-    border: 1.5px solid rgba(150,210,255,0.4);
+    border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     opacity: 0;
     animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
 }
@@ -2439,9 +2438,8 @@ html, body, .page-container {
 }
 
 .sivo-card .button:hover {
-    background-color: rgba(100,180,230,0.55);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(100,180,230,0.3);
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
 }
 
 /* Tablet */
