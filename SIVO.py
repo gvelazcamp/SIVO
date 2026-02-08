@@ -2411,17 +2411,18 @@ html, body, .page-container {
 
 .sivo-card .button {
     display: inline-block;
-    background-color: #FFC107;
-    color: #000;
+    background-color: rgba(255,255,255,0.2);
+    color: #ffffff;
     padding: 24px 60px;
     border-radius: 50px;
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
     transition: all 0.3s;
-    border: none;
+    border: 2px solid rgba(255,255,255,0.4);
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
     opacity: 0;
     animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
 }
@@ -2438,9 +2439,9 @@ html, body, .page-container {
 }
 
 .sivo-card .button:hover {
-    background-color: #FFD54F;
+    background-color: rgba(255,255,255,0.35);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.15);
 }
 
 /* Tablet */
