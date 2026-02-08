@@ -6392,30 +6392,6 @@ else:
         (function () {
           var ran = false;
 
-          function findStatsElements() {
-            var doc;
-            try { doc = window.parent.document; } catch(e) { return null; }
-            if (!doc) return null;
-            // Buscar dentro de iframes
-            var iframes = doc.querySelectorAll('iframe');
-            for (var i = 0; i < iframes.length; i++) {
-              try {
-                var iDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
-                if (!iDoc) continue;
-                var e1 = iDoc.getElementById('stat-num-1');
-                var e2 = iDoc.getElementById('stat-num-2');
-                var eA = iDoc.getElementById('stat-alpha');
-                if (e1 && e2 && eA) return { el1:e1, el2:e2, elA:eA, iframe:iframes[i] };
-              } catch(e) {}
-            }
-            // Fallback directo
-            var e1 = doc.getElementById('stat-num-1');
-            var e2 = doc.getElementById('stat-num-2');
-            var eA = doc.getElementById('stat-alpha');
-            if (e1 && e2 && eA) return { el1:e1, el2:e2, elA:eA, iframe:null };
-            return null;
-          }
-
           function countTo(el, target, duration) {
             var start = null;
             function step(ts) {
@@ -6428,56 +6404,58 @@ else:
             requestAnimationFrame(step);
           }
 
-          function runAnimation(els) {
-            try { els.el1.textContent='0'; els.el2.textContent='0'; els.elA.textContent='A'; } catch(e){}
-            countTo(els.el1, 100, 1200);
-            countTo(els.el2, 60, 1200);
+          function runAnimation(el1, el2, elA) {
+            try { el1.textContent='0'; el2.textContent='0'; elA.textContent='A'; } catch(e){}
+            countTo(el1, 100, 1200);
+            countTo(el2, 60, 1200);
             var letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ", idx=0;
             var at = setInterval(function(){
               try {
-                if(idx<letters.length){ els.elA.textContent=letters[idx]; idx++; }
-                else { clearInterval(at); setTimeout(function(){ try{els.elA.textContent="ILIMITADO";}catch(e){} },200); }
+                if(idx<letters.length){ elA.textContent=letters[idx]; idx++; }
+                else { clearInterval(at); setTimeout(function(){ try{elA.textContent="ILIMITADO";}catch(e){} },200); }
               } catch(e){ clearInterval(at); }
             }, 50);
           }
 
-          function trySetup() {
-            var els = findStatsElements();
-            if (!els) return false;
-            // Iniciar en 0
-            try { els.el1.textContent='0'; els.el2.textContent='0'; els.elA.textContent='A'; } catch(e){}
+          function tryRun() {
+            var doc = null;
+            try { doc = window.parent.document; } catch (e) { return false; }
+            if (!doc) return false;
 
-            function checkVisible() {
-              if (ran) return;
-              try {
-                var viewH = window.parent.innerHeight;
-                var elTop;
-                if (els.iframe) {
-                  var ir = els.iframe.getBoundingClientRect();
-                  var er = els.el1.getBoundingClientRect();
-                  elTop = ir.top + er.top;
-                } else {
-                  elTop = els.el1.getBoundingClientRect().top;
-                }
-                if (elTop < viewH * 0.85 && elTop > -200) {
+            var el1 = doc.getElementById('stat-num-1');
+            var el2 = doc.getElementById('stat-num-2');
+            var elA = doc.getElementById('stat-alpha');
+            if (!el1 || !el2 || !elA) return false;
+
+            // Poner en 0 desde el inicio
+            try { el1.textContent='0'; el2.textContent='0'; elA.textContent='A'; } catch(e){}
+
+            // Encontrar el contenedor stHtml que tiene los stats
+            var statsContainer = el1.closest('div[data-testid="stHtml"]') || el1.parentElement;
+
+            // Observer: cuando la sección de stats sea visible, animar
+            var observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting && !ran) {
                   ran = true;
-                  window.parent.removeEventListener('scroll', checkVisible);
+                  observer.disconnect();
                   // Primera animación
-                  runAnimation(els);
-                  // Repetir UNA vez más después de terminar
-                  setTimeout(function() { runAnimation(els); }, 2800);
+                  runAnimation(el1, el2, elA);
+                  // Repetir UNA vez más
+                  setTimeout(function() { runAnimation(el1, el2, elA); }, 2800);
                 }
-              } catch(e) {}
-            }
+              });
+            }, { threshold: 0.15 });
 
-            window.parent.addEventListener('scroll', checkVisible, { passive: true });
-            setTimeout(checkVisible, 500);
+            observer.observe(statsContainer);
             return true;
           }
 
+          // Reintentar hasta encontrar los elementos
           var attempts = 0;
-          var t = setInterval(function() {
-            if (trySetup() || attempts++ > 80) clearInterval(t);
+          var t = setInterval(function () {
+            attempts++;
+            if (tryRun() || attempts >= 80) clearInterval(t);
           }, 150);
         })();
         </script>
