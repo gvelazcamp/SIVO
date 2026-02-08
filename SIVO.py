@@ -431,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: auto;
     }
 
-    /* Menú fullscreen limpio */
+    /* Menú fullscreen estilo heyatlas */
     .nav {
         position: fixed !important;
         top: 0 !important;
@@ -441,10 +441,10 @@ h1, h2, h3, h4, h5, h6 {
         height: 100vh !important;
         background: white !important;
         flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 20px !important;
-        gap: 10px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 120px 30px 40px 30px !important;
+        gap: 0 !important;
         box-shadow: none !important;
         transform: translateX(100%) !important;
         transition: transform 0.3s ease !important;
@@ -453,33 +453,52 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav a {
-        font-size: 22px !important;
-        width: auto !important;
-        padding: 16px 40px !important;
-        border-bottom: none !important;
-        text-align: center !important;
+        font-size: 28px !important;
+        font-weight: 800 !important;
         color: #111 !important;
-        font-weight: 500 !important;
-        border-radius: 12px !important;
+        width: 100% !important;
+        padding: 24px 0 !important;
+        border-bottom: 1px solid #eee !important;
+        text-align: left !important;
+        text-decoration: none !important;
+        border-radius: 0 !important;
+        letter-spacing: -0.5px !important;
     }
 
-    .nav a:hover {
-        background: #f0f4ff !important;
+    .nav a:last-of-type {
+        border-bottom: none !important;
     }
 
     .nav-buttons {
         margin-left: 0 !important;
-        margin-top: 20px !important;
-        width: auto !important;
-        flex-direction: column !important;
-        gap: 15px !important;
+        margin-top: 30px !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        gap: 12px !important;
     }
 
-    .btn-login, .btn-demo {
-        width: auto !important;
+    .btn-login {
+        background: #f0f0f0 !important;
+        color: #111 !important;
+        width: 100% !important;
         text-align: center !important;
-        padding: 14px 40px !important;
+        padding: 18px 40px !important;
         font-size: 18px !important;
+        font-weight: 700 !important;
+        border-radius: 50px !important;
+        border: none !important;
+    }
+
+    .btn-demo {
+        background: #111 !important;
+        color: white !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 18px 40px !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        border-radius: 50px !important;
+        border: none !important;
     }
 }
 
