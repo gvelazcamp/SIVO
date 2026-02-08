@@ -182,6 +182,11 @@ st.markdown(
         padding: 0 !important;
         background: #ffffff !important;
     }
+
+    /* Footer iframe: fondo oscuro, NO blanco */
+    iframe[height="250"] {
+        background: #1a1a2e !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -6738,41 +6743,56 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 </style>
 """, unsafe_allow_html=True)
 
-# CSS para que el footer ocupe todo el ancho sin márgenes y fondo oscuro
+# CSS para que el footer ocupe TODO el ancho sin márgenes y fondo oscuro
 st.markdown("""
 <style>
-/* Contenedor del iframe del footer */
-div[data-testid="element-container"]:has(iframe[height="250"]) {
+/* ============ FOOTER FULL-WIDTH ============ */
+/* Contenedor directo del iframe del footer */
+div[data-testid="element-container"]:has(iframe[height="250"]),
+div[data-testid="stElementContainer"]:has(iframe[height="250"]) {
     background: #1a1a2e !important;
+    background-color: #1a1a2e !important;
     margin: 0 !important;
     padding: 0 !important;
-    max-width: 100vw !important;
+    max-width: none !important;
     width: 100vw !important;
-    margin-left: calc(-50vw + 50%) !important;
     position: relative !important;
-    left: 0 !important;
-    right: 0 !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
 }
-div[data-testid="element-container"]:has(iframe[height="250"]) iframe {
+div[data-testid="element-container"]:has(iframe[height="250"]) iframe,
+div[data-testid="stElementContainer"]:has(iframe[height="250"]) iframe {
     background: #1a1a2e !important;
+    background-color: #1a1a2e !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-/* Eliminar gaps del bloque padre */
-div[data-testid="stVerticalBlock"]:has(iframe[height="250"]) {
+/* Todos los padres del footer: sin gap, sin padding, sin margen */
+div[data-testid="stVerticalBlock"]:has(iframe[height="250"]),
+div[data-testid="stVerticalBlock"]:has(iframe[height="250"]) > div:last-child {
     gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-/* Forzar que el block-container no limite el ancho */
-.main .block-container:has(iframe[height="250"]) {
-    max-width: 100vw !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-/* Fondo oscuro en el stApp para que no se vea blanco debajo */
-div[data-testid="stVerticalBlock"] > div:last-child {
-    margin-bottom: 0 !important;
+/* El block-container no debe limitar el ancho */
+.main .block-container {
     padding-bottom: 0 !important;
+}
+/* Bottom de la app: fondo oscuro para que no se vea blanco */
+section[data-testid="stAppViewContainer"] > .main {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+section[data-testid="stBottom"] {
+    background: #1a1a2e !important;
+}
+/* Eliminar espacio blanco debajo del footer */
+.stApp {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
