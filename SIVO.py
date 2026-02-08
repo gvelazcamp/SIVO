@@ -403,75 +403,83 @@ h1, h2, h3, h4, h5, h6 {
         align-items: center !important;
         gap: 0 !important;
         text-align: left !important;
+        position: relative;
+        z-index: 1002;
     }
-    
+
     /* Logo más grande en móvil */
     .logo {
         gap: 10px;
         flex-direction: row !important;
         align-items: center !important;
     }
-    
+
     .logo-img {
         height: 70px !important;
         width: auto;
     }
-    
+
     .logo-text {
         font-size: 26px !important;
         margin: 0 !important;
     }
-    
+
     /* Mostrar hamburguesa a la DERECHA */
     .hamburger {
         display: flex !important;
         order: 2;
         margin-left: auto;
     }
-    
-    /* Menú de navegación: panel lateral deslizable */
+
+    /* Menú fullscreen limpio */
     .nav {
         position: fixed !important;
-        top: 95px !important;
+        top: 0 !important;
+        left: 0 !important;
         right: 0 !important;
-        left: auto !important;
-        width: 280px !important;
-        height: calc(100vh - 95px) !important;
+        width: 100% !important;
+        height: 100vh !important;
         background: white !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
-        padding: 30px 20px !important;
-        gap: 20px !important;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.15) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 20px !important;
+        gap: 10px !important;
+        box-shadow: none !important;
         transform: translateX(100%) !important;
         transition: transform 0.3s ease !important;
-        z-index: 999 !important;
+        z-index: 1000 !important;
         overflow-y: auto !important;
-        justify-content: flex-start !important;
     }
-    
-    /* nav se abre via #menu-toggle:checked ~ .nav en CSS global */
-    
+
     .nav a {
-        font-size: 18px !important;
-        width: 100% !important;
-        padding: 12px 0 !important;
-        border-bottom: 1px solid #f0f0f0 !important;
-        text-align: left !important;
+        font-size: 22px !important;
+        width: auto !important;
+        padding: 16px 40px !important;
+        border-bottom: none !important;
+        text-align: center !important;
+        color: #111 !important;
+        font-weight: 500 !important;
+        border-radius: 12px !important;
     }
-    
+
+    .nav a:hover {
+        background: #f0f4ff !important;
+    }
+
     .nav-buttons {
         margin-left: 0 !important;
-        width: 100% !important;
+        margin-top: 20px !important;
+        width: auto !important;
         flex-direction: column !important;
         gap: 15px !important;
     }
-    
+
     .btn-login, .btn-demo {
-        width: 100% !important;
+        width: auto !important;
         text-align: center !important;
-        padding: 12px 24px !important;
-        font-size: 16px !important;
+        padding: 14px 40px !important;
+        font-size: 18px !important;
     }
 }
 
