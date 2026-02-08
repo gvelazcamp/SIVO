@@ -435,19 +435,27 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: auto;
     }
 
-    /* Menú fullscreen estilo heyatlas */
+    /* Header fijo para que quede visible con el menú abierto */
+    .header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1002 !important;
+        background: white !important;
+    }
+
+    /* Menú fullscreen debajo del header */
     .nav {
         position: fixed !important;
-        top: 0 !important;
+        top: 95px !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
-        height: 100vh !important;
+        height: calc(100vh - 95px) !important;
         background: white !important;
         flex-direction: column !important;
         align-items: flex-start !important;
         justify-content: flex-start !important;
-        padding: 120px 30px 40px 30px !important;
+        padding: 30px 30px 40px 30px !important;
         gap: 0 !important;
         box-shadow: none !important;
         transform: translateX(100%) !important;
