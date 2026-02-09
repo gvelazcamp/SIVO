@@ -6922,8 +6922,11 @@ elif vista == "login":
         box-shadow: 0 4px 15px rgba(59,130,246,0.3) !important; margin-top: 8px !important;
     }
     .stFormSubmitButton > button:hover { box-shadow: 0 6px 25px rgba(59,130,246,0.4) !important; }
-    [data-testid="stForm"] { border: none !important; padding: 0 !important; }
+    [data-testid="stForm"] { border: none !important; padding: 0 !important; margin-top: 10px !important; }
     div[data-testid="stVerticalBlock"] { gap: 0.75rem !important; }
+    .stTextInput > div { width: 100% !important; }
+    .stTextInput > div > div { width: 100% !important; }
+    .stTextInput > div > div > input { width: 100% !important; box-sizing: border-box !important; }
     </style>
     """, unsafe_allow_html=True)
 
