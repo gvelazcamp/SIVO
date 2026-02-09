@@ -63,8 +63,11 @@
             font-weight: 900;
             line-height: 1.4;
             text-align: center;
-            opacity: 0;
-            animation: fadeUp 0.8s ease-out 0.3s forwards;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         @keyframes fadeUp {
@@ -392,103 +395,46 @@
             50% { transform: scale(1.1); }
         }
 
-        /* ==================== Hover Tooltip ==================== */
-        .video-hover-zone {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 100;
-            pointer-events: auto;
-            cursor: pointer;
-        }
-
-        .video-hover-zone .tooltip {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: linear-gradient(135deg, rgba(26, 111, 181, 0.95) 0%, rgba(13, 74, 122, 0.95) 100%);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(96, 165, 250, 0.4);
-            border-radius: 16px;
-            padding: 20px 28px;
-            text-align: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(96, 165, 250, 0.3);
-            min-width: 280px;
-            max-width: 90vw;
-        }
-
-        /* hover controlled via JS for typewriter sync */
-
-        .tooltip-text {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tooltip-text .cursor {
+        /* ==================== Typewriter for Scene 1 ==================== */
+        .s1 h1 .typewriter-cursor {
             display: inline-block;
-            width: 2px;
-            height: 1.2em;
+            width: 3px;
+            height: 1em;
             background: #60a5fa;
-            margin-left: 2px;
-            animation: blink 0.6s infinite;
+            margin-left: 3px;
+            animation: twBlink 0.6s infinite;
             vertical-align: middle;
         }
 
-        @keyframes blink {
+        @keyframes twBlink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        .tooltip-link {
-            opacity: 0;
-            transition: opacity 0.5s ease, background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        .tooltip-link.visible {
-            opacity: 1;
-        }
-
-        .tooltip-link-wrap {
+        .s1 .cta-link {
             display: inline-block;
             background: #60a5fa;
             color: #000;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: 50px;
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 24px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
             box-shadow: 0 4px 16px rgba(96, 165, 250, 0.4);
         }
 
-        .tooltip-link-wrap:hover {
-            background: #93c5fd;
-            transform: scale(1.05);
-            box-shadow: 0 6px 24px rgba(96, 165, 250, 0.6);
+        .s1 .cta-link.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .tooltip-arrow {
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%) rotate(45deg);
-            width: 16px;
-            height: 16px;
-            background: rgba(13, 74, 122, 0.95);
-            border-right: 1px solid rgba(96, 165, 250, 0.4);
-            border-bottom: 1px solid rgba(96, 165, 250, 0.4);
+        .s1 .cta-link:hover {
+            background: #93c5fd;
+            box-shadow: 0 6px 24px rgba(96, 165, 250, 0.6);
         }
     </style>
 </head>
@@ -497,18 +443,10 @@
         <div class="play-btn">▶</div>
     </div>
 
-    <!-- Hover Tooltip -->
-    <div class="video-hover-zone" id="hoverZone">
-        <div class="tooltip">
-            <div class="tooltip-text"><span id="typewriterText"></span><span class="cursor" id="typewriterCursor"></span></div>
-            <a href="https://sivo-ia.com" target="_blank" class="tooltip-link-wrap tooltip-link" id="tooltipLink">Visita sivo-ia.com</a>
-            <div class="tooltip-arrow"></div>
-        </div>
-    </div>
-
     <!-- Scene 1: Hook -->
     <div class="scene s1" id="scene1">
-        <h1>Que tu negocio<br>nunca deje<br>de atender</h1>
+        <h1 id="scene1Text"></h1>
+        <a href="https://sivo-ia.com" target="_blank" class="cta-link" id="scene1Link">Visita sivo-ia.com</a>
     </div>
 
     <!-- Scene 2: Presentacion -->
@@ -832,6 +770,11 @@
                     animateReportStats();
                 }
 
+                // Typewriter animation for scene 1
+                if (scenes[index].id === 'scene1') {
+                    playTypewriter();
+                }
+
                 setTimeout(function() {
                     showScene(index + 1);
                 }, scenes[index].duration);
@@ -871,85 +814,43 @@
             requestAnimationFrame(update);
         }
 
-        // Hover zone - hidden until video starts
-        var hoverZone = document.getElementById('hoverZone');
-        hoverZone.style.display = 'none';
+        // Typewriter effect for Scene 1
+        var scene1Text = document.getElementById('scene1Text');
+        var scene1Link = document.getElementById('scene1Link');
+        var twMessage = 'Que tu negocio\nnunca deje\nde atender';
+        var twInterval = null;
 
-        // Typewriter effect
-        var typewriterMessage = 'Que tu negocio nunca deje de atender';
-        var typewriterEl = document.getElementById('typewriterText');
-        var typewriterCursor = document.getElementById('typewriterCursor');
-        var tooltipLink = document.getElementById('tooltipLink');
-        var typewriterInterval = null;
-        var isTyping = false;
-
-        function startTypewriter() {
-            if (isTyping) return;
-            isTyping = true;
-            typewriterEl.textContent = '';
-            typewriterCursor.style.display = 'inline-block';
-            tooltipLink.classList.remove('visible');
+        function playTypewriter() {
+            scene1Text.innerHTML = '<span class="typewriter-cursor"></span>';
+            scene1Link.classList.remove('visible');
             var i = 0;
-            typewriterInterval = setInterval(function() {
-                if (i < typewriterMessage.length) {
-                    typewriterEl.textContent += typewriterMessage.charAt(i);
+            twInterval = setInterval(function() {
+                if (i < twMessage.length) {
+                    var content = twMessage.substring(0, i + 1).replace(/\n/g, '<br>');
+                    scene1Text.innerHTML = content + '<span class="typewriter-cursor"></span>';
                     i++;
                 } else {
-                    clearInterval(typewriterInterval);
-                    typewriterInterval = null;
-                    typewriterCursor.style.display = 'none';
-                    tooltipLink.classList.add('visible');
+                    clearInterval(twInterval);
+                    twInterval = null;
+                    // Remove cursor, show final text
+                    scene1Text.innerHTML = twMessage.replace(/\n/g, '<br>');
+                    // Show link
+                    scene1Link.classList.add('visible');
                 }
-            }, 60);
+            }, 80);
         }
 
-        function resetTypewriter() {
-            if (typewriterInterval) {
-                clearInterval(typewriterInterval);
-                typewriterInterval = null;
+        function stopTypewriter() {
+            if (twInterval) {
+                clearInterval(twInterval);
+                twInterval = null;
             }
-            isTyping = false;
-            typewriterEl.textContent = '';
-            typewriterCursor.style.display = 'none';
-            tooltipLink.classList.remove('visible');
+            scene1Text.innerHTML = '';
+            scene1Link.classList.remove('visible');
         }
-
-        hoverZone.addEventListener('mouseenter', function() {
-            var tooltip = this.querySelector('.tooltip');
-            tooltip.style.opacity = '1';
-            tooltip.style.visibility = 'visible';
-            tooltip.style.transform = 'translateX(-50%) translateY(0)';
-            startTypewriter();
-        });
-
-        hoverZone.addEventListener('mouseleave', function() {
-            var tooltip = this.querySelector('.tooltip');
-            tooltip.style.opacity = '0';
-            tooltip.style.visibility = 'hidden';
-            tooltip.style.transform = 'translateX(-50%) translateY(20px)';
-            resetTypewriter();
-        });
-
-        // Mobile touch support for tooltip
-        hoverZone.addEventListener('touchstart', function(e) {
-            var tooltip = this.querySelector('.tooltip');
-            if (tooltip.style.opacity === '1') {
-                tooltip.style.opacity = '0';
-                tooltip.style.visibility = 'hidden';
-                tooltip.style.transform = 'translateX(-50%) translateY(20px)';
-                resetTypewriter();
-            } else {
-                tooltip.style.opacity = '1';
-                tooltip.style.visibility = 'visible';
-                tooltip.style.transform = 'translateX(-50%) translateY(0)';
-                startTypewriter();
-            }
-        });
 
         document.getElementById('playOverlay').addEventListener('click', function() {
             this.classList.add('hidden');
-            // Show hover zone when video starts
-            hoverZone.style.display = 'block';
             loadVoices();
             var unlock = new SpeechSynthesisUtterance(' ');
             unlock.lang = 'es-AR';
