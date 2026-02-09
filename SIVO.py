@@ -6923,12 +6923,12 @@ elif vista == "login":
     }
     .stFormSubmitButton > button:hover { box-shadow: 0 6px 25px rgba(59,130,246,0.4) !important; }
     [data-testid="stForm"] { border: none !important; padding: 0 !important; }
-    div[data-testid="stVerticalBlock"] { gap: 0.4rem !important; }
+    div[data-testid="stVerticalBlock"] { gap: 0.75rem !important; }
     </style>
     """, unsafe_allow_html=True)
 
     # Centrado con columns
-    _left, center_col, _right = st.columns([1.2, 1, 1.2])
+    _left, center_col, _right = st.columns([1, 1, 1])
     with center_col:
         st.markdown("""
         <div style="background:white;border-radius:20px;padding:35px 30px 28px;box-shadow:0 8px 30px rgba(0,0,0,0.08);margin-top:30px;">
