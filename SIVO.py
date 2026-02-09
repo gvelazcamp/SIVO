@@ -6939,9 +6939,17 @@ elif vista == "login":
         border: none !important; z-index: 2 !important;
     }
     .stTextInput [data-testid="stTextInputRootElement"] { position: relative !important; }
-    /* Eliminar fondo blanco de contenedores stElementContainer y stMarkdown */
+    /* Eliminar TODA línea/fondo/borde de contenedores */
     .stElementContainer, .stMarkdown, [data-testid="stMarkdownContainer"],
-    .stElementContainer div { background: transparent !important; }
+    .stElementContainer div, [data-testid="stForm"] div,
+    .element-container, .stMarkdown div {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
