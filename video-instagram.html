@@ -56,20 +56,34 @@
             to { opacity: 0; transform: scale(1.05); }
         }
 
-        /* ==================== SCENE 1 - Hook ==================== */
+        /* ==================== SCENE 1 - Hook con Typing ==================== */
         .s1 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
         .s1 h1 {
             font-size: 36px;
             font-weight: 900;
             line-height: 1.4;
             text-align: center;
-            opacity: 0;
-            animation: fadeUp 0.8s ease-out 0.3s forwards;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .s1 .typing-text {
+            display: inline;
+        }
+        .s1 .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 40px;
+            background: #fff;
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: cursorBlink 0.6s ease-in-out infinite;
         }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         /* ==================== SCENE 2 - Presentacion ==================== */
@@ -119,7 +133,7 @@
         @keyframes phoneRing { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
         @keyframes waveAnim { from { height: 8px; } }
 
-        /* ==================== SCENE 4 - WhatsApp Demo SIVO ==================== */
+        /* ==================== SCENE 4 - WhatsApp Demo MEJORADO ==================== */
         .s4 {
             background: linear-gradient(180deg, #075e54 0%, #054d44 100%);
             padding: 20px 16px;
@@ -137,8 +151,17 @@
             background: #25d366; display: flex; align-items: center; justify-content: center;
         }
         .s4 .wa-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .s4 .wa-info { flex: 1; }
         .s4 .wa-name { font-size: 18px; font-weight: 700; }
-        .s4 .wa-status { font-size: 12px; opacity: 0.7; }
+        .s4 .wa-status {
+            font-size: 12px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .s4 .wa-status.typing {
+            color: #25d366;
+            opacity: 1;
+        }
         .s4 .wa-chat {
             width: 100%; flex: 1;
             background: #ece5dd url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.03"><rect width="200" height="200" fill="%23000"/></svg>');
@@ -147,12 +170,19 @@
             overflow-y: auto;
             display: flex; flex-direction: column; gap: 8px;
         }
+
         .s4 .wa-msg {
             max-width: 85%; padding: 10px 14px;
             border-radius: 12px; font-size: 14px; line-height: 1.4;
-            opacity: 0; animation: bubbleIn 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
             position: relative;
         }
+
+        .s4 .wa-msg.show {
+            animation: bubbleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
         .s4 .wa-msg .wa-time {
             font-size: 10px; opacity: 0.5; text-align: right; margin-top: 4px;
         }
@@ -164,261 +194,213 @@
             background: #fff; color: #111;
             align-self: flex-start; border-bottom-left-radius: 4px;
         }
-        .s4 .wa-msg:nth-child(1) { animation-delay: 0.3s; }
-        .s4 .wa-msg:nth-child(2) { animation-delay: 1.2s; }
-        .s4 .wa-msg:nth-child(3) { animation-delay: 2.5s; }
-        .s4 .wa-msg:nth-child(4) { animation-delay: 3.5s; }
-        .s4 .wa-msg:nth-child(5) { animation-delay: 5.0s; }
-        .s4 .wa-msg:nth-child(6) { animation-delay: 6.2s; }
 
         .s4 .wa-typing {
-            align-self: flex-start; background: #fff; color: #999;
-            padding: 10px 18px; border-radius: 12px; font-size: 14px;
-            opacity: 0; animation: bubbleIn 0.3s ease-out forwards;
+            align-self: flex-start;
+            background: #fff;
+            color: #999;
+            padding: 12px 20px;
+            border-radius: 12px;
             border-bottom-left-radius: 4px;
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
+
+        .s4 .wa-typing.show {
+            animation: bubbleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
         .s4 .wa-typing span {
-            display: inline-block; width: 6px; height: 6px;
-            background: #999; border-radius: 50%; margin: 0 2px;
-            animation: typingDot 1s infinite;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite ease-in-out;
         }
+        .s4 .wa-typing span:nth-child(1) { animation-delay: 0s; }
         .s4 .wa-typing span:nth-child(2) { animation-delay: 0.2s; }
         .s4 .wa-typing span:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes typingDot {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-6px); }
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateY(-8px);
+                opacity: 1;
+            }
         }
 
         @keyframes bubbleIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(15px) scale(0.95);
+            }
+            60% {
+                transform: translateY(-2px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* ==================== SCENE 5 - Audios ==================== */
-        .s5 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-        .s5 .mic-icon { font-size: 80px; margin-bottom: 20px; }
+        .s5 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
+        .s5 .audio-icon {
+            font-size: 80px; margin-bottom: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
         .s5 h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
-        .s5 .audio-demo {
-            width: 85%; background: rgba(255,255,255,0.08);
-            border-radius: 16px; padding: 16px 20px;
-            display: flex; align-items: center; gap: 14px;
-            margin-top: 16px;
+        .s5 .waveform {
+            display: flex; gap: 3px; align-items: center; justify-content: center; margin-top: 20px;
         }
-        .s5 .play-icon {
-            width: 44px; height: 44px; background: #25d366;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
+        .s5 .waveform span {
+            display: block; width: 4px; background: #60a5fa; border-radius: 4px;
+            animation: waveformAnim 0.8s ease-in-out infinite alternate;
         }
-        .s5 .play-icon::after {
-            content: ''; border-style: solid;
-            border-width: 8px 0 8px 14px;
-            border-color: transparent transparent transparent white;
-            margin-left: 3px;
-        }
-        .s5 .audio-waves {
-            flex: 1; display: flex; align-items: center; gap: 2px; height: 30px;
-        }
-        .s5 .audio-waves span {
-            flex: 1; background: #60a5fa; border-radius: 2px;
-            animation: audioBar 0.6s ease-in-out infinite alternate;
-        }
-        .s5 .audio-waves span:nth-child(odd) { animation-delay: 0.15s; }
-        .s5 .audio-waves span:nth-child(3n) { animation-delay: 0.3s; }
-        .s5 .audio-time { font-size: 13px; opacity: 0.6; flex-shrink: 0; }
-        .s5 p { font-size: 16px; opacity: 0.7; margin-top: 20px; }
+        .s5 .waveform span:nth-child(1) { height: 15px; animation-delay: 0s; }
+        .s5 .waveform span:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .s5 .waveform span:nth-child(3) { height: 45px; animation-delay: 0.2s; }
+        .s5 .waveform span:nth-child(4) { height: 25px; animation-delay: 0.15s; }
+        .s5 .waveform span:nth-child(5) { height: 50px; animation-delay: 0.05s; }
+        .s5 .waveform span:nth-child(6) { height: 35px; animation-delay: 0.25s; }
+        .s5 .waveform span:nth-child(7) { height: 40px; animation-delay: 0.12s; }
+        .s5 .waveform span:nth-child(8) { height: 20px; animation-delay: 0.3s; }
 
-        @keyframes audioBar {
-            from { height: 4px; } to { height: 24px; }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes waveformAnim { from { height: 5px; } }
 
         /* ==================== SCENE 6 - Reportes ==================== */
-        .s6 { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
-        .s6 h2 { font-size: 26px; font-weight: 800; margin-bottom: 24px; }
+        .s6 { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .s6 h2 { font-size: 28px; font-weight: 800; margin-bottom: 30px; }
+        .s6 .report-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            width: 100%; max-width: 400px;
+        }
         .s6 .report-card {
-            width: 90%; background: rgba(255,255,255,0.06);
-            border-radius: 20px; padding: 24px 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+            padding: 20px; border-radius: 16px; text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .s6 .report-header {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 20px; font-size: 14px; opacity: 0.7;
+        .s6 .report-number {
+            font-size: 36px; font-weight: 900; color: #60a5fa; margin-bottom: 8px;
         }
-        .s6 .report-header span { font-size: 20px; }
-        .s6 .report-stats {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-        }
-        .s6 .stat-box {
-            background: rgba(255,255,255,0.06);
-            border-radius: 12px; padding: 16px 12px; text-align: center;
-            opacity: 0; animation: statIn 0.4s ease-out forwards;
-        }
-        .s6 .stat-box:nth-child(1) { animation-delay: 0.3s; }
-        .s6 .stat-box:nth-child(2) { animation-delay: 0.5s; }
-        .s6 .stat-box:nth-child(3) { animation-delay: 0.7s; }
-        .s6 .stat-box:nth-child(4) { animation-delay: 0.9s; }
-        .s6 .stat-num {
-            font-size: 28px; font-weight: 900; margin-bottom: 4px;
-        }
-        .s6 .stat-num.blue { color: #60a5fa; }
-        .s6 .stat-num.green { color: #34d399; }
-        .s6 .stat-num.purple { color: #a78bfa; }
-        .s6 .stat-num.yellow { color: #fbbf24; }
-        .s6 .stat-label { font-size: 11px; opacity: 0.6; font-weight: 600; text-transform: uppercase; }
+        .s6 .report-label { font-size: 13px; opacity: 0.8; }
 
-        .s6 .report-bar {
-            margin-top: 16px; display: flex; gap: 4px; align-items: flex-end;
-            height: 60px; padding-top: 8px;
+        /* ==================== SCENE 7 - Calendario ==================== */
+        .s7 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
+        .s7 .calendar-icon {
+            font-size: 80px; margin-bottom: 24px;
+            animation: bounce 1s ease-in-out infinite;
         }
-        .s6 .report-bar div {
-            flex: 1; background: linear-gradient(to top, #3b82f6, #60a5fa);
-            border-radius: 4px 4px 0 0;
-            animation: barGrow 0.6s ease-out forwards;
-            height: 0;
-        }
-        .s6 .report-bar div:nth-child(1) { animation-delay: 1.1s; --h: 30px; }
-        .s6 .report-bar div:nth-child(2) { animation-delay: 1.2s; --h: 45px; }
-        .s6 .report-bar div:nth-child(3) { animation-delay: 1.3s; --h: 35px; }
-        .s6 .report-bar div:nth-child(4) { animation-delay: 1.4s; --h: 55px; }
-        .s6 .report-bar div:nth-child(5) { animation-delay: 1.5s; --h: 42px; }
-        .s6 .report-bar div:nth-child(6) { animation-delay: 1.6s; --h: 60px; }
-        .s6 .report-bar div:nth-child(7) { animation-delay: 1.7s; --h: 50px; }
+        .s7 h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
 
-        @keyframes statIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes barGrow {
-            from { height: 0; } to { height: var(--h, 40px); }
-        }
-
-        /* ==================== SCENE 7 - Agenda ==================== */
-        .s7 { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); }
-        .s7 .calendar-icon { font-size: 80px; margin-bottom: 20px; }
-        .s7 h2 { font-size: 28px; font-weight: 800; margin-bottom: 20px; }
-        .s7 .checks {
-            display: flex; flex-direction: column; gap: 12px;
-            align-items: flex-start; width: 85%;
-        }
-        .s7 .check-item {
-            display: flex; align-items: center; gap: 12px; font-size: 17px;
-            opacity: 0; animation: checkIn 0.4s ease-out forwards;
-        }
-        .s7 .check-item:nth-child(1) { animation-delay: 0.3s; }
-        .s7 .check-item:nth-child(2) { animation-delay: 0.7s; }
-        .s7 .check-item:nth-child(3) { animation-delay: 1.1s; }
-        .s7 .check-mark {
-            width: 28px; height: 28px; background: #22c55e;
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 16px; flex-shrink: 0;
-        }
-
-        @keyframes checkIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         /* ==================== SCENE 8 - 24/7 ==================== */
-        .s8 { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%); }
-        .s8 .big-number {
-            font-size: 100px; font-weight: 900;
-            background: linear-gradient(135deg, #60a5fa, #38bdf8, #818cf8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: numberPulse 1.5s ease-in-out infinite;
+        .s8 { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .s8 .clock {
+            font-size: 100px; font-weight: 900; color: #60a5fa; margin-bottom: 20px;
+            animation: clockPulse 2s ease-in-out infinite;
         }
-        .s8 h2 { font-size: 22px; font-weight: 600; opacity: 0.9; margin-top: 10px; }
+        .s8 h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+        .s8 p { font-size: 20px; opacity: 0.8; }
 
-        @keyframes numberPulse {
-            0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); }
+        @keyframes clockPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(96, 165, 250, 0.4); }
+            50% { text-shadow: 0 0 40px rgba(96, 165, 250, 0.8); }
         }
 
         /* ==================== SCENE 9 - Escala ==================== */
-        .s9 { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }
-        .s9 .counter { font-size: 80px; font-weight: 900; color: #60a5fa; margin-bottom: 16px; }
-        .s9 h2 { font-size: 24px; font-weight: 700; }
-        .s9 p { font-size: 18px; opacity: 0.8; margin-top: 8px; }
+        .s9 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
+        .s9 .counter {
+            font-size: 80px; font-weight: 900; color: #60a5fa; margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
+        }
+        .s9 h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+        .s9 p { font-size: 18px; opacity: 0.8; }
 
         /* ==================== SCENE 10 - Rubros ==================== */
-        .s10 { background: linear-gradient(135deg, #111827 0%, #1f2937 100%); }
-        .s10 h2 { font-size: 26px; font-weight: 800; margin-bottom: 30px; }
+        .s10 { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .s10 h2 { font-size: 28px; font-weight: 800; margin-bottom: 30px; }
         .s10 .rubros-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 16px; width: 90%;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+            width: 100%; max-width: 400px;
         }
         .s10 .rubro {
-            background: rgba(255,255,255,0.08); border-radius: 16px;
-            padding: 16px 8px; text-align: center;
-            opacity: 0; animation: rubroIn 0.3s ease-out forwards;
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+            padding: 20px; border-radius: 16px; text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
         }
-        .s10 .rubro:nth-child(1) { animation-delay: 0.1s; }
-        .s10 .rubro:nth-child(2) { animation-delay: 0.2s; }
-        .s10 .rubro:nth-child(3) { animation-delay: 0.3s; }
-        .s10 .rubro:nth-child(4) { animation-delay: 0.4s; }
-        .s10 .rubro:nth-child(5) { animation-delay: 0.5s; }
-        .s10 .rubro:nth-child(6) { animation-delay: 0.6s; }
-        .s10 .rubro .rubro-icon { font-size: 36px; margin-bottom: 6px; }
-        .s10 .rubro .rubro-name { font-size: 12px; font-weight: 600; }
-
-        @keyframes rubroIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        .s10 .rubro:hover { transform: translateY(-4px); }
+        .s10 .rubro-icon { font-size: 40px; margin-bottom: 12px; }
+        .s10 .rubro-name { font-size: 14px; font-weight: 600; }
 
         /* ==================== SCENE 11 - Cierre ==================== */
         .s11 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
-        .s11 h1 { font-size: 30px; font-weight: 900; line-height: 1.4; }
-        .s11 .highlight { color: #93c5fd; display: block; font-size: 40px; margin-top: 8px; }
+        .s11 h1 {
+            font-size: 36px; font-weight: 900; line-height: 1.4;
+        }
+        .s11 .highlight { color: #60a5fa; }
 
         /* ==================== SCENE 12 - CTA ==================== */
-        .s12 { background: #000; }
+        .s12 { background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%); }
         .s12 .logo-final {
-            width: 80px; height: 80px; border-radius: 20px;
-            overflow: hidden; margin-bottom: 24px;
+            width: 120px; height: 120px; margin-bottom: 30px;
+            border-radius: 30px; overflow: hidden;
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.6);
         }
         .s12 .logo-final img { width: 100%; height: 100%; object-fit: cover; }
-        .s12 h2 { font-size: 28px; font-weight: 800; margin-bottom: 24px; }
+        .s12 h2 { font-size: 32px; font-weight: 900; margin-bottom: 24px; }
         .s12 .cta-btn {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-            color: #fff; padding: 18px 48px; border-radius: 50px;
-            font-size: 20px; font-weight: 700; border: none;
-            animation: ctaBounce 1s ease-in-out infinite;
+            background: #60a5fa; color: #000; padding: 16px 40px;
+            border-radius: 50px; font-size: 20px; font-weight: 800;
+            margin-bottom: 16px; display: inline-block;
+            box-shadow: 0 8px 32px rgba(96, 165, 250, 0.4);
+            animation: ctaPulse 2s ease-in-out infinite;
         }
-        .s12 .url { margin-top: 20px; font-size: 16px; opacity: 0.6; font-weight: 500; }
+        .s12 .url { font-size: 18px; opacity: 0.9; font-weight: 600; }
 
-        @keyframes ctaBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes ctaPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(96, 165, 250, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(96, 165, 250, 0.6); }
+        }
 
-        /* ==================== Play overlay ==================== */
+        /* ==================== Play Overlay ==================== */
         .play-overlay {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%; background: #000;
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; z-index: 100; cursor: pointer;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; cursor: pointer;
         }
         .play-overlay.hidden { display: none; }
         .play-btn {
-            width: 80px; height: 80px;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 20px;
-            animation: ctaBounce 1.5s ease-in-out infinite;
+            width: 100px; height: 100px; border-radius: 50%;
+            background: #60a5fa; display: flex; align-items: center; justify-content: center;
+            font-size: 40px; color: #fff; box-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
+            animation: playPulse 1.5s ease-in-out infinite;
         }
-        .play-btn::after {
-            content: ''; border-style: solid;
-            border-width: 15px 0 15px 28px;
-            border-color: transparent transparent transparent white;
-            margin-left: 5px;
+        @keyframes playPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
-        .play-overlay p { color: #999; font-size: 16px; }
     </style>
 </head>
 <body>
-
-    <!-- Play overlay -->
     <div class="play-overlay" id="playOverlay">
-        <div class="play-btn"></div>
-        <p>Toca para iniciar el video</p>
+        <div class="play-btn">▶</div>
     </div>
 
-    <!-- Scene 1: Hook -->
+    <!-- Scene 1: Hook con efecto Typing -->
     <div class="scene s1" id="scene1">
-        <h1>Y si tu negocio nunca dejara de atender?</h1>
+        <h1><span class="typing-text" id="typingText"></span><span class="typing-cursor" id="typingCursor"></span></h1>
     </div>
 
     <!-- Scene 2: Presentacion -->
@@ -426,7 +408,7 @@
         <div class="logo-anim">
             <img src="https://gvelazcamp.github.io/SIVO/LogoMercadobot.png" alt="SIVO">
         </div>
-        <h1>Hola, soy SIVO</h1>
+        <h1>SIVO</h1>
         <p>Tu empleado digital</p>
     </div>
 
@@ -440,116 +422,64 @@
         </div>
     </div>
 
-    <!-- Scene 4: WhatsApp Demo SIVO -->
+    <!-- Scene 4: WhatsApp Demo MEJORADO -->
     <div class="scene s4" id="scene4">
         <div class="wa-header">
             <div class="wa-avatar">
                 <img src="https://gvelazcamp.github.io/SIVO/LogoMercadobot.png" alt="SIVO">
             </div>
-            <div>
-                <div class="wa-name">SIVO Asistente</div>
-                <div class="wa-status">en linea</div>
+            <div class="wa-info">
+                <div class="wa-name">SIVO</div>
+                <div class="wa-status" id="waStatus">En línea</div>
             </div>
         </div>
-        <div class="wa-chat">
-            <div class="wa-msg wa-user">
-                Hola! Quiero saber los precios de los planes
-                <div class="wa-time">15:30</div>
-            </div>
-            <div class="wa-msg wa-bot">
-                Hola! Tenemos 3 planes:<br>
-                <b>Basico:</b> $15.000/mes<br>
-                <b>Pro:</b> $25.000/mes<br>
-                <b>Enterprise:</b> $45.000/mes
-                <div class="wa-time">15:30</div>
-            </div>
-            <div class="wa-msg wa-user">
-                Quiero agendar una demo del Pro
-                <div class="wa-time">15:31</div>
-            </div>
-            <div class="wa-msg wa-bot">
-                Perfecto! Tengo disponibilidad:<br>
-                Lunes 10:00<br>
-                Martes 14:00<br>
-                Miercoles 17:30<br>
-                Cual te queda mejor?
-                <div class="wa-time">15:31</div>
-            </div>
-            <div class="wa-msg wa-user">
-                Martes a las 14!
-                <div class="wa-time">15:31</div>
-            </div>
-            <div class="wa-msg wa-bot">
-                Listo! Quedo agendado para el martes 14:00. Te envio un recordatorio. Gracias!
-                <div class="wa-time">15:31</div>
-            </div>
-        </div>
+        <div class="wa-chat" id="waChat"></div>
     </div>
 
     <!-- Scene 5: Audios -->
     <div class="scene s5" id="scene5">
-        <div class="mic-icon">🎙️</div>
-        <h2>Respondo audios<br>al instante</h2>
-        <div class="audio-demo">
-            <div class="play-icon"></div>
-            <div class="audio-waves">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="audio-time">0:12</div>
+        <div class="audio-icon">🎤</div>
+        <h2>También entiendo<br>y respondo audios todo con lenguaje natural</h2>
+        <div class="waveform">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
         </div>
-        <p>Escucho, entiendo y respondo con voz natural</p>
     </div>
 
     <!-- Scene 6: Reportes -->
     <div class="scene s6" id="scene6">
         <h2>Genero reportes profesionales</h2>
-        <div class="report-card">
-            <div class="report-header">
-                <span>📊</span> Reporte semanal - Generado por SIVO
+        <div class="report-grid">
+            <div class="report-card">
+                <div class="report-number" id="statConversations">0</div>
+                <div class="report-label">Conversaciones</div>
             </div>
-            <div class="report-stats">
-                <div class="stat-box">
-                    <div class="stat-num blue" id="statConversations">0</div>
-                    <div class="stat-label">Conversaciones</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-num green" id="statResolved">0%</div>
-                    <div class="stat-label">Resueltas</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-num purple" id="statAgendas">0</div>
-                    <div class="stat-label">Turnos agendados</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-num yellow" id="statTime">0s</div>
-                    <div class="stat-label">Tiempo promedio</div>
-                </div>
+            <div class="report-card">
+                <div class="report-number" id="statResolved">0%</div>
+                <div class="report-label">Resueltas</div>
             </div>
-            <div class="report-bar">
-                <div></div><div></div><div></div><div></div>
-                <div></div><div></div><div></div>
+            <div class="report-card">
+                <div class="report-number" id="statAgendas">0</div>
+                <div class="report-label">Agendas</div>
+            </div>
+            <div class="report-card">
+                <div class="report-number" id="statTime">0s</div>
+                <div class="report-label">Tiempo promedio</div>
             </div>
         </div>
     </div>
 
-    <!-- Scene 7: Agenda -->
+    <!-- Scene 7: Calendario -->
     <div class="scene s7" id="scene7">
         <div class="calendar-icon">📅</div>
-        <h2>Agendo turnos<br>automaticamente</h2>
-        <div class="checks">
-            <div class="check-item"><div class="check-mark">✓</div> Lunes 10:00 - Maria G.</div>
-            <div class="check-item"><div class="check-mark">✓</div> Martes 14:00 - Juan P.</div>
-            <div class="check-item"><div class="check-mark">✓</div> Miercoles 09:30 - Ana R.</div>
-        </div>
+        <h2>Agendo turnos automáticamente</h2>
     </div>
 
     <!-- Scene 8: 24/7 -->
     <div class="scene s8" id="scene8">
-        <div class="big-number">24/7</div>
-        <h2>Sin descanso. Sin excusas.<br>Siempre disponible.</h2>
+        <div class="clock">24/7</div>
+        <h2>Trabajo sin descanso</h2>
+        <p>Los 7 días de la semana</p>
     </div>
 
     <!-- Scene 9: Escala -->
@@ -582,17 +512,144 @@
         <div class="logo-final">
             <img src="https://gvelazcamp.github.io/SIVO/LogoMercadobot.png" alt="SIVO">
         </div>
-        <h2>Probalo gratis 7 dias</h2>
-        <div class="cta-btn">Agendar demo</div>
-        <div class="url">sivoia.streamlit.app</div>
+        <h2>Probalo gratis </h2>
+        <div class="cta-btn">Mira nuestras demos disponibles</div>
+        <div class="url">sivo-ia.com</div>
     </div>
 
     <script>
+        // ==================== TYPING EFFECT para Scene 1 ====================
+        var typingFullText = 'Que tu negocio\nnunca deje\nde atender';
+        var typingIndex = 0;
+        var typingTimer = null;
+
+        function playTypingEffect() {
+            var textEl = document.getElementById('typingText');
+            var cursorEl = document.getElementById('typingCursor');
+            textEl.innerHTML = '';
+            typingIndex = 0;
+            cursorEl.style.display = 'inline-block';
+
+            function typeNext() {
+                if (typingIndex < typingFullText.length) {
+                    var char = typingFullText[typingIndex];
+                    if (char === '\n') {
+                        textEl.innerHTML += '<br>';
+                    } else {
+                        textEl.innerHTML += char;
+                    }
+                    typingIndex++;
+                    // Velocidad variable: pausa mas larga en espacios
+                    var delay = char === ' ' ? 80 : char === '\n' ? 200 : 60;
+                    typingTimer = setTimeout(typeNext, delay);
+                } else {
+                    // Texto completo, cursor parpadea un momento mas y desaparece
+                    setTimeout(function() {
+                        cursorEl.style.display = 'none';
+                    }, 1500);
+                }
+            }
+
+            // Pequeña pausa antes de empezar a escribir
+            setTimeout(typeNext, 400);
+        }
+
+        // ==================== WhatsApp Conversation ====================
+        var whatsappConversation = [
+            { type: 'user', text: 'Hola! Necesito un turno', delay: 500 },
+            { type: 'typing', delay: 800 },
+            { type: 'bot', text: '¡Hola! Claro, te ayudo con eso', delay: 600 },
+            { type: 'bot', text: '¿Para qué día te gustaría agendar?', delay: 500 },
+            { type: 'typing-user', delay: 1000 },
+            { type: 'user', text: 'Para mañana a las 3pm', delay: 600 },
+            { type: 'typing', delay: 1200 },
+            { type: 'bot', text: 'Perfecto! Tu turno está agendado para mañana a las 15:00hs', delay: 800 },
+            { type: 'bot', text: 'Te enviaré un recordatorio. ¿Necesitas algo más?', delay: 500 }
+        ];
+
+        var currentMsgIndex = 0;
+
+        function showTypingIndicator() {
+            var status = document.getElementById('waStatus');
+            status.textContent = 'escribiendo...';
+            status.classList.add('typing');
+
+            var chat = document.getElementById('waChat');
+            var typing = document.createElement('div');
+            typing.className = 'wa-typing';
+            typing.innerHTML = '<span></span><span></span><span></span>';
+            chat.appendChild(typing);
+            setTimeout(function() { typing.classList.add('show'); }, 50);
+            return typing;
+        }
+
+        function hideTypingIndicator(typingElement) {
+            var status = document.getElementById('waStatus');
+            status.textContent = 'En línea';
+            status.classList.remove('typing');
+            if (typingElement) typingElement.remove();
+        }
+
+        function addMessage(message) {
+            var chat = document.getElementById('waChat');
+            var msg = document.createElement('div');
+            var time = getCurrentTime();
+
+            if (message.type === 'user') {
+                msg.className = 'wa-msg wa-user';
+                msg.innerHTML = message.text + '<div class="wa-time">' + time + '</div>';
+            } else if (message.type === 'bot') {
+                msg.className = 'wa-msg wa-bot';
+                msg.innerHTML = message.text + '<div class="wa-time">' + time + '</div>';
+            }
+
+            chat.appendChild(msg);
+            setTimeout(function() {
+                msg.classList.add('show');
+                chat.scrollTop = chat.scrollHeight;
+            }, 50);
+        }
+
+        function getCurrentTime() {
+            var now = new Date();
+            return now.getHours().toString().padStart(2, '0') + ':' +
+                   now.getMinutes().toString().padStart(2, '0');
+        }
+
+        function playWhatsAppConversation() {
+            var chat = document.getElementById('waChat');
+            chat.innerHTML = '';
+            currentMsgIndex = 0;
+
+            function processNextMessage() {
+                if (currentMsgIndex >= whatsappConversation.length) return;
+
+                var msg = whatsappConversation[currentMsgIndex];
+                currentMsgIndex++;
+
+                if (msg.type === 'typing') {
+                    var typingElement = showTypingIndicator();
+                    setTimeout(function() {
+                        hideTypingIndicator(typingElement);
+                        processNextMessage();
+                    }, msg.delay);
+                } else if (msg.type === 'typing-user') {
+                    setTimeout(function() { processNextMessage(); }, msg.delay);
+                } else {
+                    addMessage(msg);
+                    setTimeout(function() { processNextMessage(); }, msg.delay);
+                }
+            }
+
+            processNextMessage();
+        }
+
+        // ==================== Scenes ====================
         var scenes = [
-            { id: 'scene1',  duration: 5000,  voice: '¿Y si tu negocio nunca dejara de atender?' },
+            { id: 'scene1',  duration: 5000,  voice: 'Que tu negocio nunca deje de atender' },
             { id: 'scene2',  duration: 5000,  voice: 'Hola. Soy SIVO. Tu empleado digital.' },
             { id: 'scene3',  duration: 6000,  voice: 'Atiendo llamadas telefónicas con voz natural. Como una persona real.' },
-            { id: 'scene4',  duration: 9000,  voice: 'Respondo mensajes de WhatsApp al instante. Precios, disponibilidad, y agendo turnos en segundos.' },
+            { id: 'scene4',  duration: 10000, voice: 'Respondo mensajes de WhatsApp al instante. Precios, disponibilidad, y agendo turnos en segundos.' },
             { id: 'scene5',  duration: 6000,  voice: 'También entiendo y respondo audios. Escucho, proceso, y contesto con voz natural.' },
             { id: 'scene6',  duration: 7000,  voice: 'Genero reportes profesionales. Conversaciones atendidas, turnos agendados, todo medido.' },
             { id: 'scene7',  duration: 5000,  voice: 'Agendo turnos automáticamente en tu calendario.' },
@@ -600,17 +657,15 @@
             { id: 'scene9',  duration: 5000,  voice: 'Atiendo desde uno, hasta mil clientes al mismo tiempo.' },
             { id: 'scene10', duration: 6000,  voice: 'Me adapto a cualquier rubro. Restaurantes, ecommerce, salud, inmobiliaria, y más.' },
             { id: 'scene11', duration: 5000,  voice: 'No contrates más personal. Contratá un SIVO.' },
-            { id: 'scene12', duration: 6000,  voice: 'Probalo gratis, siete días. Visitá sivoia punto streamlit punto app.' }
+            { id: 'scene12', duration: 6000,  voice: 'Probalo gratis, Visitá sivo-ia.com' }
         ];
 
         var currentScene = -1;
         var synth = window.speechSynthesis;
         var selectedVoice = null;
 
-        // Pre-cargar voces en español
         function loadVoices() {
             var voices = synth.getVoices();
-            // Buscar voz en español (preferir es-AR, es-MX, es-ES)
             var preferred = ['es-AR', 'es-MX', 'es-US', 'es-ES', 'es'];
             for (var p = 0; p < preferred.length; p++) {
                 for (var v = 0; v < voices.length; v++) {
@@ -620,7 +675,6 @@
                     }
                 }
             }
-            // Fallback: cualquier voz en español
             for (var v = 0; v < voices.length; v++) {
                 if (voices[v].lang.indexOf('es') === 0) {
                     selectedVoice = voices[v];
@@ -642,9 +696,7 @@
                 utterance.rate = 0.88;
                 utterance.pitch = 1.0;
                 utterance.volume = 1.0;
-                if (selectedVoice) {
-                    utterance.voice = selectedVoice;
-                }
+                if (selectedVoice) utterance.voice = selectedVoice;
                 synth.speak(utterance);
             } catch(e) {}
         }
@@ -667,9 +719,16 @@
                 }
                 el.classList.add('active');
 
-                // Narrar la escena
-                if (scenes[index].voice) {
-                    speak(scenes[index].voice);
+                if (scenes[index].voice) speak(scenes[index].voice);
+
+                // Typing effect para Scene 1
+                if (scenes[index].id === 'scene1') {
+                    playTypingEffect();
+                }
+
+                // WhatsApp conversation
+                if (scenes[index].id === 'scene4') {
+                    setTimeout(function() { playWhatsAppConversation(); }, 300);
                 }
 
                 // Counter animation for scene 9
@@ -703,13 +762,9 @@
         }
 
         function animateReportStats() {
-            // Conversations: 0 -> 847
             animateNumber('statConversations', 0, 847, 1500, '');
-            // Resolved: 0% -> 94%
             animateNumber('statResolved', 0, 94, 1500, '%');
-            // Agendas: 0 -> 156
             animateNumber('statAgendas', 0, 156, 1500, '');
-            // Time: 0s -> 8s
             animateNumber('statTime', 0, 8, 1000, 's');
         }
 
@@ -727,8 +782,6 @@
 
         document.getElementById('playOverlay').addEventListener('click', function() {
             this.classList.add('hidden');
-
-            // Desbloquear audio en mobile: hablar directo en el evento de click
             loadVoices();
             var unlock = new SpeechSynthesisUtterance(' ');
             unlock.lang = 'es-AR';
@@ -736,7 +789,6 @@
             if (selectedVoice) unlock.voice = selectedVoice;
             synth.speak(unlock);
 
-            // Esperar un momento para que se desbloquee y arrancar
             setTimeout(function() {
                 synth.cancel();
                 showScene(0);
