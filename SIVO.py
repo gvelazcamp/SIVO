@@ -6927,18 +6927,14 @@ elif vista == "login":
     /* Forzar mismo ancho ambos inputs */
     .stTextInput > div, .stTextInput > div > div { width: 100% !important; background: transparent !important; }
     .stTextInput > div > div > input { width: 100% !important; box-sizing: border-box !important; }
-    /* Password: el toggle del ojo no achica el input */
-    .stTextInput [data-testid="stTextInputRootElement"] {
-        display: flex !important; width: 100% !important; background: transparent !important;
-    }
-    .stTextInput [data-testid="stTextInputRootElement"] > div { flex: 1 !important; }
-    .stTextInput [data-testid="stTextInputRootElement"] input { width: 100% !important; }
+    /* Password: ocultar botón ojo para que no achique el input */
     .stTextInput [data-testid="stTextInputRootElement"] button {
-        position: absolute !important; right: 8px !important; top: 50% !important;
-        transform: translateY(-50%) !important; background: transparent !important;
-        border: none !important; z-index: 2 !important;
+        display: none !important;
     }
-    .stTextInput [data-testid="stTextInputRootElement"] { position: relative !important; }
+    .stTextInput [data-testid="stTextInputRootElement"] {
+        width: 100% !important; background: transparent !important;
+    }
+    .stTextInput [data-testid="stTextInputRootElement"] input { width: 100% !important; }
     /* Eliminar TODA línea/fondo/borde de contenedores internos */
     .stElementContainer, .stMarkdown, [data-testid="stMarkdownContainer"],
     .stElementContainer div, [data-testid="stForm"] div,
