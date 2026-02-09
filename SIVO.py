@@ -6924,9 +6924,21 @@ elif vista == "login":
     .stFormSubmitButton > button:hover { box-shadow: 0 6px 25px rgba(59,130,246,0.4) !important; }
     [data-testid="stForm"] { border: none !important; padding: 0 !important; margin-top: 10px !important; }
     div[data-testid="stVerticalBlock"] { gap: 0.75rem !important; }
-    .stTextInput > div { width: 100% !important; }
-    .stTextInput > div > div { width: 100% !important; }
+    /* Forzar mismo ancho ambos inputs */
+    .stTextInput > div, .stTextInput > div > div { width: 100% !important; background: transparent !important; }
     .stTextInput > div > div > input { width: 100% !important; box-sizing: border-box !important; }
+    /* Password: el toggle del ojo no achica el input */
+    .stTextInput [data-testid="stTextInputRootElement"] {
+        display: flex !important; width: 100% !important; background: transparent !important;
+    }
+    .stTextInput [data-testid="stTextInputRootElement"] > div { flex: 1 !important; }
+    .stTextInput [data-testid="stTextInputRootElement"] input { width: 100% !important; }
+    .stTextInput [data-testid="stTextInputRootElement"] button {
+        position: absolute !important; right: 8px !important; top: 50% !important;
+        transform: translateY(-50%) !important; background: transparent !important;
+        border: none !important; z-index: 2 !important;
+    }
+    .stTextInput [data-testid="stTextInputRootElement"] { position: relative !important; }
     </style>
     """, unsafe_allow_html=True)
 
