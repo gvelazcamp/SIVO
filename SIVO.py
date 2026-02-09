@@ -112,6 +112,16 @@ import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
+# =========================
+# SESSION STATE - LOGIN
+# =========================
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+if "user_name" not in st.session_state:
+    st.session_state.user_name = ""
+if "user_email" not in st.session_state:
+    st.session_state.user_email = ""
+
 
 # =========================
 # FULL WIDTH STREAMLIT
@@ -328,6 +338,13 @@ h1, h2, h3, h4, h5, h6 {
 .btn-login:hover {
     border-color: #111;
     background: #f9f9f9;
+}
+
+.user-greeting {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3b82f6;
+    white-space: nowrap;
 }
 
 .btn-demo {
@@ -2242,7 +2259,20 @@ h1, h2, h3, h4, h5, h6 {
 <div class="page-container">
 """
 
-HEADER = """
+def get_header():
+    if st.session_state.logged_in:
+        user_name = st.session_state.user_name or "Usuario"
+        nav_buttons = f'''
+            <div class="nav-buttons" style="display:flex;align-items:center;gap:14px;">
+                <span class="user-greeting">Hola, {user_name}</span>
+                <a href="?vista=logout" class="btn-login" style="font-size:13px;padding:8px 18px;">Cerrar sesión</a>
+            </div>'''
+    else:
+        nav_buttons = '''
+            <div class="nav-buttons">
+                <a href="?vista=login" class="btn-login">Login</a>
+            </div>'''
+    return f"""
     <div class="header">
         <a class="logo" href="?vista=home">
             <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" alt="SIVO" class="logo-img">
@@ -2260,12 +2290,12 @@ HEADER = """
             <a href="?vista=asistentes">Asistentes</a>
             <a href="?vista=precios">Precios</a>
             <a href="?vista=home#soporte">Soporte</a>
-            <div class="nav-buttons">
-                <a href="?vista=login" class="btn-login">Login</a>
-            </div>
+            {nav_buttons}
         </div>
     </div>
 """
+
+HEADER = get_header()
 
 # FOOTER SIN CIERRE (para st.html) - el body/html se cierra en FOOTER_CHATBOT
 FOOTER = """
@@ -6610,8 +6640,96 @@ elif vista == "asistentes":
 elif vista == "precios":
     st.html(HTML_PRECIOS)
 
+elif vista == "logout":
+    st.session_state.logged_in = False
+    st.session_state.user_name = ""
+    st.session_state.user_email = ""
+    st.query_params["vista"] = "home"
+    st.rerun()
+
 elif vista == "login":
-    st.html(HTML_LOGIN)
+    if st.session_state.logged_in:
+        st.query_params["vista"] = "asistentes"
+        st.rerun()
+
+    # CSS para estilizar los widgets de Streamlit como el diseño login
+    st.markdown("""
+    <style>
+    /* Fondo gris para la página login */
+    .stApp, [data-testid="stAppViewContainer"], .main, .main .block-container,
+    section.main, section.main > div {
+        background: #f5f7fa !important;
+    }
+    /* Ocultar labels de Streamlit */
+    .stTextInput > label, .stCheckbox > label > div:first-child { display: none !important; }
+    /* Estilizar inputs */
+    .stTextInput > div > div > input {
+        padding: 14px 16px !important;
+        border: 1.5px solid #e0e0e0 !important;
+        border-radius: 12px !important;
+        font-size: 15px !important;
+        background: #fafafa !important;
+        font-family: Inter, sans-serif !important;
+    }
+    .stTextInput > div > div > input:focus {
+        border-color: #60a5fa !important;
+        background: #fff !important;
+    }
+    /* Estilizar botón */
+    .stButton > button {
+        width: 100% !important;
+        padding: 15px !important;
+        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 14px !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        font-family: Inter, sans-serif !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+        transition: all 0.2s !important;
+    }
+    .stButton > button:hover {
+        box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4) !important;
+        transform: translateY(-1px) !important;
+    }
+    /* Centrar contenido */
+    .block-container { max-width: 420px !important; margin: auto !important; padding-top: 60px !important; }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Card wrapper
+    st.markdown("""
+    <div style="background:white;border-radius:24px;padding:50px 40px 30px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;">
+        <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" style="height:80px;margin-bottom:20px;">
+        <h1 style="font-size:24px;font-weight:800;color:#111;margin:0 0 8px;font-family:Inter,sans-serif;">Bienvenido de vuelta</h1>
+        <p style="font-size:14px;color:#888;margin:0 0 25px;font-family:Inter,sans-serif;">Ingresá a tu cuenta para continuar</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Formulario real con Streamlit
+    with st.form("login_form"):
+        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 -10px;font-family:Inter,sans-serif;">Email</p>', unsafe_allow_html=True)
+        email = st.text_input("Email", placeholder="tucorreo@ejemplo.com", label_visibility="collapsed")
+        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 -10px;font-family:Inter,sans-serif;">Contraseña</p>', unsafe_allow_html=True)
+        password = st.text_input("Contraseña", type="password", placeholder="Tu contraseña", label_visibility="collapsed")
+        submitted = st.form_submit_button("Iniciar sesión")
+
+    if submitted and email:
+        # Extraer nombre del email (parte antes del @)
+        nombre = email.split("@")[0].replace(".", " ").replace("_", " ").title()
+        st.session_state.logged_in = True
+        st.session_state.user_name = nombre
+        st.session_state.user_email = email
+        st.query_params["vista"] = "asistentes"
+        st.rerun()
+
+    st.markdown("""
+    <div style="text-align:center;margin-top:20px;">
+        <a href="?vista=home" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,sans-serif;">← Volver al inicio</a>
+    </div>
+    """, unsafe_allow_html=True)
 
 else:
     st.html(HTML_HOME_PARTE_1)
