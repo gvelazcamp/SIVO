@@ -3522,18 +3522,18 @@ html, body, .page-container {{
     margin: 0 auto;
 }}
 .qh-card {{
-    background: #fff;
-    border: 1px solid #f0f0f0;
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%);
+    border: none;
     border-radius: 20px;
     padding: 32px 24px;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    color: white;
 }}
 .qh-card:hover {{
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-    border-color: #e0e0e0;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }}
 .qh-card-icon {{
     width: 50px;
@@ -3544,16 +3544,17 @@ html, body, .page-container {{
     justify-content: center;
     font-size: 24px;
     margin-bottom: 16px;
+    background: rgba(96,165,250,0.15);
 }}
 .qh-card h3 {{
     font-size: 18px;
     font-weight: 700;
-    color: #111;
+    color: white;
     margin: 0 0 10px;
 }}
 .qh-card p {{
     font-size: 14px;
-    color: #666;
+    color: rgba(255,255,255,0.75);
     line-height: 1.6;
     margin: 0;
 }}
@@ -3564,6 +3565,8 @@ html, body, .page-container {{
     padding: 4px 10px;
     border-radius: 6px;
     margin-top: 14px;
+    background: rgba(96,165,250,0.2);
+    color: #93c5fd;
 }}
 /* Featured card full-width */
 .qh-featured {{
@@ -3625,7 +3628,7 @@ html, body, .page-container {{
 
     <!-- FEATURED: Reportes -->
     <div class="qh-card qh-featured">
-        <div class="qh-card-icon" style="background:rgba(96,165,250,0.15);">📊</div>
+        <div class="qh-card-icon">📊</div>
         <h3>Genera reportes automáticos de cada conversación</h3>
         <p>SIVO crea reportes detallados de atención al cliente: cuántas consultas hubo, tiempos de respuesta, temas más frecuentes, nivel de satisfacción y ventas cerradas. Todo en tiempo real, sin que toques nada.</p>
         <span class="qh-tag">NUEVO</span>
@@ -3633,66 +3636,66 @@ html, body, .page-container {{
 
     <!-- Card: WhatsApp -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#dcfce7;">💬</div>
+        <div class="qh-card-icon">💬</div>
         <h3>Atención por WhatsApp 24/7</h3>
         <p>Responde consultas, toma pedidos, agenda turnos y cierra ventas directamente en WhatsApp, sin descanso.</p>
-        <span class="qh-tag" style="background:#dcfce7;color:#16a34a;">VENTAS</span>
+        <span class="qh-tag">VENTAS</span>
     </div>
 
     <!-- Card: Multi-idioma -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#fef3c7;">🌎</div>
+        <div class="qh-card-icon">🌎</div>
         <h3>Habla en cualquier idioma</h3>
         <p>Detecta el idioma del cliente automáticamente y responde en su lengua. Español, inglés, portugués y más.</p>
-        <span class="qh-tag" style="background:#fef3c7;color:#d97706;">GLOBAL</span>
+        <span class="qh-tag">GLOBAL</span>
     </div>
 
     <!-- Card: Stock -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#ede9fe;">📦</div>
+        <div class="qh-card-icon">📦</div>
         <h3>Control de stock inteligente</h3>
         <p>Consultá disponibilidad en tiempo real. SIVO revisa tu inventario y le dice al cliente si hay stock, colores, talles y alternativas.</p>
-        <span class="qh-tag" style="background:#ede9fe;color:#7c3aed;">INVENTARIO</span>
+        <span class="qh-tag">INVENTARIO</span>
     </div>
 
     <!-- Card: Agendas -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#dbeafe;">📅</div>
+        <div class="qh-card-icon">📅</div>
         <h3>Agenda turnos y reservas</h3>
         <p>Tu asistente coordina horarios, confirma turnos y envía recordatorios. Perfecto para clínicas, peluquerías y consultorios.</p>
-        <span class="qh-tag" style="background:#dbeafe;color:#2563eb;">TURNOS</span>
+        <span class="qh-tag">TURNOS</span>
     </div>
 
     <!-- Card: Reportes detalle -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#fce7f3;">📈</div>
+        <div class="qh-card-icon">📈</div>
         <h3>Dashboard con métricas clave</h3>
         <p>Visualizá conversiones, tiempos de respuesta, horarios pico y los productos más consultados desde un panel simple.</p>
-        <span class="qh-tag" style="background:#fce7f3;color:#db2777;">ANALYTICS</span>
+        <span class="qh-tag">ANALYTICS</span>
     </div>
 
     <!-- Card: Cobros -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#d1fae5;">💳</div>
+        <div class="qh-card-icon">💳</div>
         <h3>Cobra sin salir del chat</h3>
         <p>Genera links de pago de Mercado Pago directo en la conversación. El cliente paga y vos recibís la confirmación al instante.</p>
-        <span class="qh-tag" style="background:#d1fae5;color:#059669;">PAGOS</span>
+        <span class="qh-tag">PAGOS</span>
     </div>
 
     <!-- Card: Entrenamiento -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#fff7ed;">🧠</div>
+        <div class="qh-card-icon">🧠</div>
         <h3>Entrenalo con tu información</h3>
         <p>Subí PDFs, catálogos, menús o cualquier documento. SIVO aprende tu negocio y responde con datos reales, no genéricos.</p>
-        <span class="qh-tag" style="background:#fff7ed;color:#ea580c;">IA</span>
+        <span class="qh-tag">IA</span>
     </div>
 
     <!-- Card: Escalado humano -->
     <div class="qh-card">
-        <div class="qh-card-icon" style="background:#f0fdf4;">👤</div>
+        <div class="qh-card-icon">👤</div>
         <h3>Escala a un humano cuando es necesario</h3>
         <p>Si la consulta es compleja, SIVO transfiere la conversación a un agente real con todo el contexto previo.</p>
-        <span class="qh-tag" style="background:#f0fdf4;color:#16a34a;">SOPORTE</span>
+        <span class="qh-tag">SOPORTE</span>
     </div>
 
 </div>
