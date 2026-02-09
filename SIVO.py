@@ -6939,7 +6939,7 @@ elif vista == "login":
         border: none !important; z-index: 2 !important;
     }
     .stTextInput [data-testid="stTextInputRootElement"] { position: relative !important; }
-    /* Eliminar TODA línea/fondo/borde de contenedores */
+    /* Eliminar TODA línea/fondo/borde de contenedores internos */
     .stElementContainer, .stMarkdown, [data-testid="stMarkdownContainer"],
     .stElementContainer div, [data-testid="stForm"] div,
     .element-container, .stMarkdown div {
@@ -6950,6 +6950,16 @@ elif vista == "login":
         border-top: none !important;
         border-bottom: none !important;
     }
+    /* La columna central ES la card */
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child(2) > [data-testid="stVerticalBlock"] {
+        background: white !important;
+        border-radius: 20px !important;
+        padding: 35px 30px 28px !important;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08) !important;
+        margin-top: 30px !important;
+    }
+    /* Password input: mismo ancho visual que email (compensar ojo) */
+    input[type="password"] { padding-right: 40px !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -6957,12 +6967,10 @@ elif vista == "login":
     _left, center_col, _right = st.columns([1, 1, 1])
     with center_col:
         st.markdown("""
-        <div style="background:white;border-radius:20px;padding:35px 30px 28px;box-shadow:0 8px 30px rgba(0,0,0,0.08);margin-top:30px;">
-            <div style="text-align:center;margin-bottom:18px;">
-                <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" style="height:55px;margin-bottom:10px;">
-                <h1 style="font-size:20px;font-weight:800;color:#111;margin:0 0 4px;font-family:Inter,sans-serif;">Bienvenido de vuelta</h1>
-                <p style="font-size:13px;color:#888;margin:0;font-family:Inter,sans-serif;">Ingresá a tu cuenta para continuar</p>
-            </div>
+        <div style="text-align:center;margin-bottom:10px;">
+            <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" style="height:55px;margin-bottom:10px;">
+            <h1 style="font-size:20px;font-weight:800;color:#111;margin:0 0 4px;font-family:Inter,sans-serif;">Bienvenido de vuelta</h1>
+            <p style="font-size:13px;color:#888;margin:0;font-family:Inter,sans-serif;">Ingresá a tu cuenta para continuar</p>
         </div>
         """, unsafe_allow_html=True)
 
