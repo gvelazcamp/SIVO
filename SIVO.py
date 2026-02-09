@@ -6939,6 +6939,9 @@ elif vista == "login":
         border: none !important; z-index: 2 !important;
     }
     .stTextInput [data-testid="stTextInputRootElement"] { position: relative !important; }
+    /* Eliminar fondo blanco de contenedores stElementContainer y stMarkdown */
+    .stElementContainer, .stMarkdown, [data-testid="stMarkdownContainer"],
+    .stElementContainer div { background: transparent !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -6956,7 +6959,9 @@ elif vista == "login":
         """, unsafe_allow_html=True)
 
         with st.form("login_form"):
+            st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 2px;font-family:Inter,sans-serif;">Email</p>', unsafe_allow_html=True)
             email = st.text_input("Email", placeholder="tucorreo@ejemplo.com", label_visibility="collapsed")
+            st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:8px 0 2px;font-family:Inter,sans-serif;">Contraseña</p>', unsafe_allow_html=True)
             password = st.text_input("Contraseña", type="password", placeholder="Tu contraseña", label_visibility="collapsed")
             submitted = st.form_submit_button("Iniciar sesión")
 
