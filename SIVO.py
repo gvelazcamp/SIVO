@@ -2289,7 +2289,7 @@ def get_header():
             <a href="?vista=home">Inicio</a>
             <a href="?vista=asistentes">Asistentes</a>
             <a href="?vista=precios">Precios</a>
-            <a href="?vista=home#soporte">Soporte</a>
+            <a href="?vista=quehace">¿Qué hace SIVO?</a>
             {nav_buttons}
         </div>
     </div>
@@ -3470,6 +3470,235 @@ HTML_PRECIOS = f"""{HTML_BASE}
             </div>
         </div>
     </div>
+</div>
+
+{FOOTER}
+"""
+
+# =========================
+# ¿QUÉ HACE SIVO?
+# =========================
+HTML_QUEHACE = f"""{HTML_BASE}
+{HEADER}
+<style>
+html, body, .page-container {{
+    background: #ffffff !important;
+}}
+.qh-hero {{
+    text-align: center;
+    padding: 60px 5% 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}}
+.qh-hero h1 {{
+    font-size: 42px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 16px;
+    line-height: 1.2;
+}}
+.qh-hero p {{
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}}
+.qh-badge {{
+    display: inline-block;
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    color: #3b5998;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}}
+.qh-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 0 5% 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}}
+.qh-card {{
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 32px 24px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}}
+.qh-card:hover {{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    border-color: #e0e0e0;
+}}
+.qh-card-icon {{
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+}}
+.qh-card h3 {{
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 10px;
+}}
+.qh-card p {{
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}}
+.qh-card .qh-tag {{
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 14px;
+}}
+/* Featured card full-width */
+.qh-featured {{
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%);
+    color: white;
+    padding: 40px 32px;
+    border: none;
+}}
+.qh-featured h3 {{
+    color: white;
+    font-size: 22px;
+}}
+.qh-featured p {{
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+}}
+.qh-featured .qh-tag {{
+    background: rgba(96,165,250,0.2);
+    color: #93c5fd;
+}}
+.qh-cta {{
+    text-align: center;
+    padding: 0 5% 60px;
+}}
+.qh-cta a {{
+    display: inline-block;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(59,130,246,0.3);
+    transition: all 0.2s;
+}}
+.qh-cta a:hover {{
+    box-shadow: 0 6px 25px rgba(59,130,246,0.4);
+    transform: translateY(-2px);
+}}
+
+@media (max-width: 768px) {{
+    .qh-hero h1 {{ font-size: 28px; }}
+    .qh-hero p {{ font-size: 15px; }}
+    .qh-grid {{ grid-template-columns: 1fr; gap: 16px; }}
+    .qh-card {{ padding: 24px 20px; }}
+    .qh-featured {{ padding: 30px 24px; }}
+}}
+</style>
+
+<div class="qh-hero">
+    <span class="qh-badge">Novedades SIVO</span>
+    <h1>¿Qué puede hacer SIVO por tu negocio?</h1>
+    <p>Descubrí todo lo que un empleado digital puede automatizar, responder y gestionar por vos, 24/7.</p>
+</div>
+
+<div class="qh-grid">
+
+    <!-- FEATURED: Reportes -->
+    <div class="qh-card qh-featured">
+        <div class="qh-card-icon" style="background:rgba(96,165,250,0.15);">📊</div>
+        <h3>Genera reportes automáticos de cada conversación</h3>
+        <p>SIVO crea reportes detallados de atención al cliente: cuántas consultas hubo, tiempos de respuesta, temas más frecuentes, nivel de satisfacción y ventas cerradas. Todo en tiempo real, sin que toques nada.</p>
+        <span class="qh-tag">NUEVO</span>
+    </div>
+
+    <!-- Card: WhatsApp -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#dcfce7;">💬</div>
+        <h3>Atención por WhatsApp 24/7</h3>
+        <p>Responde consultas, toma pedidos, agenda turnos y cierra ventas directamente en WhatsApp, sin descanso.</p>
+        <span class="qh-tag" style="background:#dcfce7;color:#16a34a;">VENTAS</span>
+    </div>
+
+    <!-- Card: Multi-idioma -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#fef3c7;">🌎</div>
+        <h3>Habla en cualquier idioma</h3>
+        <p>Detecta el idioma del cliente automáticamente y responde en su lengua. Español, inglés, portugués y más.</p>
+        <span class="qh-tag" style="background:#fef3c7;color:#d97706;">GLOBAL</span>
+    </div>
+
+    <!-- Card: Stock -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#ede9fe;">📦</div>
+        <h3>Control de stock inteligente</h3>
+        <p>Consultá disponibilidad en tiempo real. SIVO revisa tu inventario y le dice al cliente si hay stock, colores, talles y alternativas.</p>
+        <span class="qh-tag" style="background:#ede9fe;color:#7c3aed;">INVENTARIO</span>
+    </div>
+
+    <!-- Card: Agendas -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#dbeafe;">📅</div>
+        <h3>Agenda turnos y reservas</h3>
+        <p>Tu asistente coordina horarios, confirma turnos y envía recordatorios. Perfecto para clínicas, peluquerías y consultorios.</p>
+        <span class="qh-tag" style="background:#dbeafe;color:#2563eb;">TURNOS</span>
+    </div>
+
+    <!-- Card: Reportes detalle -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#fce7f3;">📈</div>
+        <h3>Dashboard con métricas clave</h3>
+        <p>Visualizá conversiones, tiempos de respuesta, horarios pico y los productos más consultados desde un panel simple.</p>
+        <span class="qh-tag" style="background:#fce7f3;color:#db2777;">ANALYTICS</span>
+    </div>
+
+    <!-- Card: Cobros -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#d1fae5;">💳</div>
+        <h3>Cobra sin salir del chat</h3>
+        <p>Genera links de pago de Mercado Pago directo en la conversación. El cliente paga y vos recibís la confirmación al instante.</p>
+        <span class="qh-tag" style="background:#d1fae5;color:#059669;">PAGOS</span>
+    </div>
+
+    <!-- Card: Entrenamiento -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#fff7ed;">🧠</div>
+        <h3>Entrenalo con tu información</h3>
+        <p>Subí PDFs, catálogos, menús o cualquier documento. SIVO aprende tu negocio y responde con datos reales, no genéricos.</p>
+        <span class="qh-tag" style="background:#fff7ed;color:#ea580c;">IA</span>
+    </div>
+
+    <!-- Card: Escalado humano -->
+    <div class="qh-card">
+        <div class="qh-card-icon" style="background:#f0fdf4;">👤</div>
+        <h3>Escala a un humano cuando es necesario</h3>
+        <p>Si la consulta es compleja, SIVO transfiere la conversación a un agente real con todo el contexto previo.</p>
+        <span class="qh-tag" style="background:#f0fdf4;color:#16a34a;">SOPORTE</span>
+    </div>
+
+</div>
+
+<div class="qh-cta">
+    <a href="?vista=asistentes">Ver SIVO Digitales →</a>
 </div>
 
 {FOOTER}
@@ -6639,6 +6868,9 @@ elif vista == "asistentes":
 
 elif vista == "precios":
     st.html(HTML_PRECIOS)
+
+elif vista == "quehace":
+    st.html(HTML_QUEHACE)
 
 elif vista == "logout":
     st.session_state.logged_in = False
