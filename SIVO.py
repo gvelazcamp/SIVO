@@ -6652,17 +6652,39 @@ elif vista == "login":
         st.query_params["vista"] = "asistentes"
         st.rerun()
 
-    # CSS para estilizar los widgets de Streamlit como el diseño login
+    # CSS para estilizar login como una sola tarjeta
     st.markdown("""
     <style>
-    /* Fondo gris para la página login */
+    /* Fondo gris */
     .stApp, [data-testid="stAppViewContainer"], .main, .main .block-container,
-    section.main, section.main > div {
+    section.main, section.main > div, [data-testid="stVerticalBlock"],
+    div[data-testid="stVerticalBlock"] > div {
         background: #f5f7fa !important;
     }
-    /* Ocultar labels de Streamlit */
-    .stTextInput > label, .stCheckbox > label > div:first-child { display: none !important; }
-    /* Estilizar inputs */
+    /* Centrar y limitar ancho */
+    .block-container {
+        max-width: 440px !important;
+        margin: auto !important;
+        padding: 40px 20px 40px !important;
+    }
+    /* Todo dentro parece UNA sola tarjeta blanca */
+    [data-testid="stVerticalBlock"] {
+        background: white !important;
+        border-radius: 24px !important;
+        padding: 40px 30px 35px !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.08) !important;
+        gap: 0 !important;
+    }
+    /* Sub-bloques sin fondo extra */
+    [data-testid="stVerticalBlock"] [data-testid="stVerticalBlock"] {
+        box-shadow: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        gap: 12px !important;
+    }
+    /* Ocultar labels nativos */
+    .stTextInput > label { display: none !important; }
+    /* Inputs estilizados */
     .stTextInput > div > div > input {
         padding: 14px 16px !important;
         border: 1.5px solid #e0e0e0 !important;
@@ -6675,8 +6697,8 @@ elif vista == "login":
         border-color: #60a5fa !important;
         background: #fff !important;
     }
-    /* Estilizar botón */
-    .stButton > button {
+    /* Botón azul full-width */
+    .stFormSubmitButton > button {
         width: 100% !important;
         padding: 15px !important;
         background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
@@ -6686,38 +6708,38 @@ elif vista == "login":
         font-size: 16px !important;
         font-weight: 700 !important;
         font-family: Inter, sans-serif !important;
-        cursor: pointer !important;
         box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
-        transition: all 0.2s !important;
+        margin-top: 10px !important;
     }
-    .stButton > button:hover {
+    .stFormSubmitButton > button:hover {
         box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4) !important;
-        transform: translateY(-1px) !important;
     }
-    /* Centrar contenido */
-    .block-container { max-width: 420px !important; margin: auto !important; padding-top: 60px !important; }
+    /* Form border oculto */
+    [data-testid="stForm"] {
+        border: none !important;
+        padding: 0 !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-    # Card wrapper
+    # Logo + título (dentro de la tarjeta visual)
     st.markdown("""
-    <div style="background:white;border-radius:24px;padding:50px 40px 30px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:center;">
-        <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" style="height:80px;margin-bottom:20px;">
-        <h1 style="font-size:24px;font-weight:800;color:#111;margin:0 0 8px;font-family:Inter,sans-serif;">Bienvenido de vuelta</h1>
-        <p style="font-size:14px;color:#888;margin:0 0 25px;font-family:Inter,sans-serif;">Ingresá a tu cuenta para continuar</p>
+    <div style="text-align:center;margin-bottom:25px;">
+        <img src="https://gvelazcamp.github.io/SIVO/LogoSivo.svg" style="height:70px;margin-bottom:15px;">
+        <h1 style="font-size:24px;font-weight:800;color:#111;margin:0 0 6px;font-family:Inter,sans-serif;">Bienvenido de vuelta</h1>
+        <p style="font-size:14px;color:#888;margin:0;font-family:Inter,sans-serif;">Ingresá a tu cuenta para continuar</p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Formulario real con Streamlit
+    # Formulario
     with st.form("login_form"):
-        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 -10px;font-family:Inter,sans-serif;">Email</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 2px;font-family:Inter,sans-serif;">Email</p>', unsafe_allow_html=True)
         email = st.text_input("Email", placeholder="tucorreo@ejemplo.com", label_visibility="collapsed")
-        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:0 0 -10px;font-family:Inter,sans-serif;">Contraseña</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:13px;font-weight:600;color:#333;margin:8px 0 2px;font-family:Inter,sans-serif;">Contraseña</p>', unsafe_allow_html=True)
         password = st.text_input("Contraseña", type="password", placeholder="Tu contraseña", label_visibility="collapsed")
         submitted = st.form_submit_button("Iniciar sesión")
 
     if submitted and email:
-        # Extraer nombre del email (parte antes del @)
         nombre = email.split("@")[0].replace(".", " ").replace("_", " ").title()
         st.session_state.logged_in = True
         st.session_state.user_name = nombre
@@ -6725,11 +6747,8 @@ elif vista == "login":
         st.query_params["vista"] = "asistentes"
         st.rerun()
 
-    st.markdown("""
-    <div style="text-align:center;margin-top:20px;">
-        <a href="?vista=home" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,sans-serif;">← Volver al inicio</a>
-    </div>
-    """, unsafe_allow_html=True)
+    # Link volver
+    st.markdown('<div style="text-align:center;margin-top:15px;"><a href="?vista=home" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,sans-serif;">← Volver al inicio</a></div>', unsafe_allow_html=True)
 
 else:
     st.html(HTML_HOME_PARTE_1)
