@@ -3701,7 +3701,10 @@ html, body, .page-container {{
     transform: translateY(-2px);
 }}
 
-/* ─── Modal Reportes ─── */
+/* ─── Modal Reportes (pure CSS checkbox hack) ─── */
+#rptToggle {{
+    display: none;
+}}
 .rpt-overlay {{
     display: none;
     position: fixed;
@@ -3714,7 +3717,7 @@ html, body, .page-container {{
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }}
-.rpt-overlay.active {{
+#rptToggle:checked ~ .rpt-overlay {{
     display: flex;
     animation: rptFadeIn 0.25s ease;
 }}
@@ -3735,6 +3738,8 @@ html, body, .page-container {{
     overflow-y: auto;
     animation: rptSlideUp 0.35s ease;
     box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
 }}
 .rpt-modal::-webkit-scrollbar {{
     width: 6px;
@@ -3763,9 +3768,16 @@ html, body, .page-container {{
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+    z-index: 2;
 }}
 .rpt-close:hover {{
     background: rgba(255,255,255,0.25);
+}}
+.rpt-overlay-bg {{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    cursor: pointer;
+    z-index: 0;
 }}
 .rpt-head-icon {{
     font-size: 36px;
@@ -3916,7 +3928,8 @@ html, body, .page-container {{
     line-height: 1.4;
 }}
 /* ── Card clickable indicator ── */
-.qh-featured {{
+label.qh-featured {{
+    display: block;
     cursor: pointer;
 }}
 .qh-card-link {{
@@ -3950,6 +3963,9 @@ html, body, .page-container {{
 }}
 </style>
 
+<!-- Checkbox toggle para modal (CSS-only, no JS) -->
+<input type="checkbox" id="rptToggle">
+
 <div class="qh-hero">
     <span class="qh-badge">Novedades SIVO</span>
     <h1>¿Qué puede hacer SIVO por tu negocio?</h1>
@@ -3959,13 +3975,13 @@ html, body, .page-container {{
 <div class="qh-grid">
 
     <!-- FEATURED: Reportes -->
-    <div class="qh-card qh-featured" onclick="document.getElementById('rptModal').classList.add('active')">
+    <label for="rptToggle" class="qh-card qh-featured">
         <div class="qh-card-icon">📊</div>
         <h3>Genera reportes automáticos de cada conversación</h3>
         <p>SIVO crea reportes detallados de atención al cliente: cuántas consultas hubo, tiempos de respuesta, temas más frecuentes, nivel de satisfacción y ventas cerradas. Todo en tiempo real, sin que toques nada.</p>
         <span class="qh-tag">NUEVO</span>
         <span class="qh-card-link">Conocé los reportes &rarr;</span>
-    </div>
+    </label>
 
     <!-- Card: WhatsApp -->
     <div class="qh-card">
@@ -4034,11 +4050,12 @@ html, body, .page-container {{
 </div>
 
 <!-- ═══ Modal Reportes ═══ -->
-<div class="rpt-overlay" id="rptModal" onclick="if(event.target===this)this.classList.remove('active')">
+<div class="rpt-overlay">
+    <label for="rptToggle" class="rpt-overlay-bg"></label>
     <div class="rpt-modal">
         <!-- Header -->
         <div class="rpt-head">
-            <button class="rpt-close" onclick="document.getElementById('rptModal').classList.remove('active')">&times;</button>
+            <label for="rptToggle" class="rpt-close">&times;</label>
             <div class="rpt-head-icon">📊</div>
             <h2>Reportes automáticos en tiempo real</h2>
             <p>SIVO analiza cada conversación y genera reportes detallados sin que tengas que hacer nada. Visualizá métricas clave de tu negocio al instante.</p>
