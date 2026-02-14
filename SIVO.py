@@ -3702,10 +3702,10 @@ html, body, .page-container {{
 }}
 
 /* ─── Modal Reportes (pure CSS checkbox hack) ─── */
-#rptToggle {{
+#rptToggle, #waToggle, #idiomaToggle, #stockToggle, #turnosToggle, #dashToggle, #cobrosToggle, #iaToggle, #escalaToggle {{
     display: none;
 }}
-.rpt-overlay {{
+.rpt-overlay, .wa-overlay, .idioma-overlay, .stock-overlay, .turnos-overlay, .dash-overlay, .cobros-overlay, .ia-overlay, .escala-overlay {{
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -3717,7 +3717,15 @@ html, body, .page-container {{
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }}
-#rptToggle:checked ~ .rpt-overlay {{
+#rptToggle:checked ~ .rpt-overlay,
+#waToggle:checked ~ .wa-overlay,
+#idiomaToggle:checked ~ .idioma-overlay,
+#stockToggle:checked ~ .stock-overlay,
+#turnosToggle:checked ~ .turnos-overlay,
+#dashToggle:checked ~ .dash-overlay,
+#cobrosToggle:checked ~ .cobros-overlay,
+#iaToggle:checked ~ .ia-overlay,
+#escalaToggle:checked ~ .escala-overlay {{
     display: flex;
     animation: rptFadeIn 0.25s ease;
 }}
@@ -3928,7 +3936,7 @@ html, body, .page-container {{
     line-height: 1.4;
 }}
 /* ── Card clickable indicator ── */
-label.qh-featured {{
+label.qh-featured, label.qh-card {{
     display: block;
     cursor: pointer;
 }}
@@ -3963,8 +3971,16 @@ label.qh-featured {{
 }}
 </style>
 
-<!-- Checkbox toggle para modal (CSS-only, no JS) -->
+<!-- Checkbox toggles para modales (CSS-only, no JS) -->
 <input type="checkbox" id="rptToggle">
+<input type="checkbox" id="waToggle">
+<input type="checkbox" id="idiomaToggle">
+<input type="checkbox" id="stockToggle">
+<input type="checkbox" id="turnosToggle">
+<input type="checkbox" id="dashToggle">
+<input type="checkbox" id="cobrosToggle">
+<input type="checkbox" id="iaToggle">
+<input type="checkbox" id="escalaToggle">
 
 <div class="qh-hero">
     <span class="qh-badge">Novedades SIVO</span>
@@ -3984,68 +4000,76 @@ label.qh-featured {{
     </label>
 
     <!-- Card: WhatsApp -->
-    <div class="qh-card">
+    <label for="waToggle" class="qh-card">
         <div class="qh-card-icon">💬</div>
         <h3>Atención por WhatsApp 24/7</h3>
         <p>Responde consultas, toma pedidos, agenda turnos y cierra ventas directamente en WhatsApp, sin descanso.</p>
         <span class="qh-tag">VENTAS</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Multi-idioma -->
-    <div class="qh-card">
+    <label for="idiomaToggle" class="qh-card">
         <div class="qh-card-icon">🌎</div>
         <h3>Habla en cualquier idioma</h3>
         <p>Detecta el idioma del cliente automáticamente y responde en su lengua. Español, inglés, portugués y más.</p>
         <span class="qh-tag">GLOBAL</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Stock -->
-    <div class="qh-card">
+    <label for="stockToggle" class="qh-card">
         <div class="qh-card-icon">📦</div>
         <h3>Control de stock inteligente</h3>
         <p>Consultá disponibilidad en tiempo real. SIVO revisa tu inventario y le dice al cliente si hay stock, colores, talles y alternativas.</p>
         <span class="qh-tag">INVENTARIO</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Agendas -->
-    <div class="qh-card">
+    <label for="turnosToggle" class="qh-card">
         <div class="qh-card-icon">📅</div>
         <h3>Agenda turnos y reservas</h3>
         <p>Tu asistente coordina horarios, confirma turnos y envía recordatorios. Perfecto para clínicas, peluquerías y consultorios.</p>
         <span class="qh-tag">TURNOS</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Reportes detalle -->
-    <div class="qh-card">
+    <label for="dashToggle" class="qh-card">
         <div class="qh-card-icon">📈</div>
         <h3>Dashboard con métricas clave</h3>
         <p>Visualizá conversiones, tiempos de respuesta, horarios pico y los productos más consultados desde un panel simple.</p>
         <span class="qh-tag">ANALYTICS</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Cobros -->
-    <div class="qh-card">
+    <label for="cobrosToggle" class="qh-card">
         <div class="qh-card-icon">💳</div>
         <h3>Cobra sin salir del chat</h3>
         <p>Genera links de pago de Mercado Pago directo en la conversación. El cliente paga y vos recibís la confirmación al instante.</p>
         <span class="qh-tag">PAGOS</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Entrenamiento -->
-    <div class="qh-card">
+    <label for="iaToggle" class="qh-card">
         <div class="qh-card-icon">🧠</div>
         <h3>Entrenalo con tu información</h3>
         <p>Subí PDFs, catálogos, menús o cualquier documento. SIVO aprende tu negocio y responde con datos reales, no genéricos.</p>
         <span class="qh-tag">IA</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
     <!-- Card: Escalado humano -->
-    <div class="qh-card">
+    <label for="escalaToggle" class="qh-card">
         <div class="qh-card-icon">👤</div>
         <h3>Escala a un humano cuando es necesario</h3>
         <p>Si la consulta es compleja, SIVO transfiere la conversación a un agente real con todo el contexto previo.</p>
         <span class="qh-tag">SOPORTE</span>
-    </div>
+        <span class="qh-card-link">Ver más &rarr;</span>
+    </label>
 
 </div>
 
@@ -4150,6 +4174,426 @@ label.qh-featured {{
                         <p>Identificá cuándo recibís más consultas para optimizar tu atención.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal WhatsApp ═══ -->
+<div class="wa-overlay">
+    <label for="waToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="waToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">💬</div>
+            <h2>Atención por WhatsApp 24/7</h2>
+            <p>Tu asistente digital atiende a tus clientes en WhatsApp las 24 horas, los 7 días de la semana. Sin pausas, sin esperas.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Vista previa del dashboard</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">24/7</div>
+                    <div class="rpt-metric-lbl">Disponibilidad</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">&lt;5s</div>
+                    <div class="rpt-metric-lbl">Tiempo resp.</div>
+                    <div class="rpt-metric-delta">Instantáneo</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">98%</div>
+                    <div class="rpt-metric-lbl">Resolución</div>
+                    <div class="rpt-metric-delta">+15%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">0</div>
+                    <div class="rpt-metric-lbl">Clientes sin atender</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Qué puede hacer en WhatsApp</div>
+            <div class="rpt-features">
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🛒</div>
+                    <div><h4>Tomar pedidos</h4><p>Recibe pedidos completos con productos, cantidades y dirección de envío.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">📅</div>
+                    <div><h4>Agendar turnos</h4><p>Coordina horarios disponibles y confirma reservas automáticamente.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">❓</div>
+                    <div><h4>Responder consultas</h4><p>Precios, horarios, ubicación, productos: responde todo al instante.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">💰</div>
+                    <div><h4>Cerrar ventas</h4><p>Guía al cliente hasta la compra y genera el link de pago directo.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔔</div>
+                    <div><h4>Enviar recordatorios</h4><p>Notifica turnos próximos, seguimiento de pedidos y promociones.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">👤</div>
+                    <div><h4>Escalar a humano</h4><p>Transfiere conversaciones complejas a un agente real con contexto.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Idiomas ═══ -->
+<div class="idioma-overlay">
+    <label for="idiomaToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="idiomaToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">🌎</div>
+            <h2>Habla en cualquier idioma</h2>
+            <p>SIVO detecta automáticamente el idioma del cliente y responde en su lengua. Sin configuración extra.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Idiomas soportados</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">🇪🇸</div>
+                    <div class="rpt-metric-lbl">Español</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">🇺🇸</div>
+                    <div class="rpt-metric-lbl">Inglés</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">🇧🇷</div>
+                    <div class="rpt-metric-lbl">Portugués</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">50+</div>
+                    <div class="rpt-metric-lbl">Idiomas más</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Cómo funciona</div>
+            <div class="rpt-features">
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔍</div>
+                    <div><h4>Detección automática</h4><p>Identifica el idioma del mensaje del cliente sin que configures nada.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">💬</div>
+                    <div><h4>Respuesta nativa</h4><p>Contesta en el mismo idioma del cliente, con expresiones naturales.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔄</div>
+                    <div><h4>Cambio en tiempo real</h4><p>Si el cliente cambia de idioma, SIVO se adapta instantáneamente.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🏪</div>
+                    <div><h4>Tu info, su idioma</h4><p>Traduce tu catálogo, precios y horarios al idioma de cada cliente.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🌍</div>
+                    <div><h4>Clientes internacionales</h4><p>Atendé turistas y clientes del exterior sin barreras de idioma.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">📊</div>
+                    <div><h4>Métricas por idioma</h4><p>Visualizá qué idiomas hablan tus clientes y optimizá tu atención.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Stock ═══ -->
+<div class="stock-overlay">
+    <label for="stockToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="stockToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">📦</div>
+            <h2>Control de stock inteligente</h2>
+            <p>SIVO consulta tu inventario en tiempo real y le informa al cliente disponibilidad, colores, talles y alternativas.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Vista previa del inventario</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">342</div>
+                    <div class="rpt-metric-lbl">Productos activos</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">28</div>
+                    <div class="rpt-metric-lbl">Stock bajo</div>
+                    <div class="rpt-metric-delta" style="color:#f59e0b">Alerta</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">99%</div>
+                    <div class="rpt-metric-lbl">Precisión</div>
+                    <div class="rpt-metric-delta">Sincronizado</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">⚡</div>
+                    <div class="rpt-metric-lbl">Tiempo real</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Qué puede hacer con tu stock</div>
+            <div class="rpt-features">
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔍</div>
+                    <div><h4>Consulta de disponibilidad</h4><p>El cliente pregunta y SIVO revisa stock al instante.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">👕</div>
+                    <div><h4>Talles y colores</h4><p>Informa variantes disponibles: talle S en azul, M en negro, etc.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔄</div>
+                    <div><h4>Alternativas automáticas</h4><p>Si no hay stock, sugiere productos similares o la próxima reposición.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">🔔</div>
+                    <div><h4>Alertas de stock bajo</h4><p>Te avisa cuando un producto está por agotarse para que repongas.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">📋</div>
+                    <div><h4>Sincronización</h4><p>Se conecta con tu planilla o sistema para mantener todo actualizado.</p></div>
+                </div>
+                <div class="rpt-feat">
+                    <div class="rpt-feat-ic">📈</div>
+                    <div><h4>Productos más pedidos</h4><p>Reporta qué productos consultan más para que optimices tu stock.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Turnos ═══ -->
+<div class="turnos-overlay">
+    <label for="turnosToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="turnosToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">📅</div>
+            <h2>Agenda turnos y reservas</h2>
+            <p>SIVO coordina la agenda de tu negocio: programa turnos, confirma reservas y envía recordatorios automáticos.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Vista previa de la agenda</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">156</div>
+                    <div class="rpt-metric-lbl">Turnos este mes</div>
+                    <div class="rpt-metric-delta">+34%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">3%</div>
+                    <div class="rpt-metric-lbl">Ausencias</div>
+                    <div class="rpt-metric-delta">-60%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">Auto</div>
+                    <div class="rpt-metric-lbl">Confirmación</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">24h</div>
+                    <div class="rpt-metric-lbl">Recordatorio</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Funcionalidades de agenda</div>
+            <div class="rpt-features">
+                <div class="rpt-feat"><div class="rpt-feat-ic">🗓️</div><div><h4>Agenda automática</h4><p>El cliente elige día y hora desde WhatsApp, sin llamar.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">✅</div><div><h4>Confirmación instant</h4><p>Confirma el turno al instante y lo registra en tu agenda.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔔</div><div><h4>Recordatorios</h4><p>Envía recordatorio 24h antes para reducir ausencias.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔄</div><div><h4>Reprogramación</h4><p>El cliente puede cambiar su turno sin necesidad de llamar.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🚫</div><div><h4>Bloqueo de horarios</h4><p>Respeta tus horarios bloqueados y feriados automáticamente.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">👥</div><div><h4>Múltiples servicios</h4><p>Maneja agendas de distintos profesionales o servicios a la vez.</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Dashboard ═══ -->
+<div class="dash-overlay">
+    <label for="dashToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="dashToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">📈</div>
+            <h2>Dashboard con métricas clave</h2>
+            <p>Visualizá el rendimiento de tu negocio desde un panel simple y en tiempo real. Todo lo que necesitás saber, de un vistazo.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Métricas en tiempo real</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">87%</div>
+                    <div class="rpt-metric-lbl">Conversión</div>
+                    <div class="rpt-metric-delta">+8%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">1.2m</div>
+                    <div class="rpt-metric-lbl">Resp. promedio</div>
+                    <div class="rpt-metric-delta">-22%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">14-16h</div>
+                    <div class="rpt-metric-lbl">Horario pico</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">Top 5</div>
+                    <div class="rpt-metric-lbl">Productos</div>
+                </div>
+            </div>
+            <div class="rpt-chart">
+                <div class="rpt-chart-top"><span>Actividad semanal</span><small>Últimos 7 días</small></div>
+                <div class="rpt-bars">
+                    <div class="rpt-bar" style="height:60%"><span class="rpt-bar-lbl">Lun</span></div>
+                    <div class="rpt-bar" style="height:80%"><span class="rpt-bar-lbl">Mar</span></div>
+                    <div class="rpt-bar" style="height:55%"><span class="rpt-bar-lbl">Mié</span></div>
+                    <div class="rpt-bar" style="height:95%"><span class="rpt-bar-lbl">Jue</span></div>
+                    <div class="rpt-bar" style="height:70%"><span class="rpt-bar-lbl">Vie</span></div>
+                    <div class="rpt-bar" style="height:100%"><span class="rpt-bar-lbl">Sáb</span></div>
+                    <div class="rpt-bar" style="height:40%"><span class="rpt-bar-lbl">Dom</span></div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Qué podés ver en el dashboard</div>
+            <div class="rpt-features">
+                <div class="rpt-feat"><div class="rpt-feat-ic">📊</div><div><h4>Tasa de conversión</h4><p>Porcentaje de consultas que terminan en venta o turno.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">⏱️</div><div><h4>Tiempos de respuesta</h4><p>Promedio de velocidad de atención de tu asistente.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🕐</div><div><h4>Horarios pico</h4><p>Identificá cuándo recibís más mensajes para prepararte.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🏆</div><div><h4>Productos top</h4><p>Los productos o servicios más consultados por tus clientes.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">📅</div><div><h4>Evolución diaria</h4><p>Gráficos de actividad por día, semana y mes.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🎯</div><div><h4>Objetivos</h4><p>Compará tu rendimiento contra metas de ventas y atención.</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Cobros ═══ -->
+<div class="cobros-overlay">
+    <label for="cobrosToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="cobrosToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">💳</div>
+            <h2>Cobra sin salir del chat</h2>
+            <p>Generá links de pago de Mercado Pago directo en la conversación. El cliente paga y vos recibís la confirmación al instante.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Métricas de cobro</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">$2.4M</div>
+                    <div class="rpt-metric-lbl">Cobrado este mes</div>
+                    <div class="rpt-metric-delta">+45%</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">92%</div>
+                    <div class="rpt-metric-lbl">Tasa de pago</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">&lt;2m</div>
+                    <div class="rpt-metric-lbl">Tiempo de pago</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">Auto</div>
+                    <div class="rpt-metric-lbl">Confirmación</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Cómo funciona</div>
+            <div class="rpt-features">
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔗</div><div><h4>Link de pago automático</h4><p>SIVO genera el link de Mercado Pago con monto y concepto.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">📱</div><div><h4>Pago en el chat</h4><p>El cliente paga sin salir de WhatsApp. Cero fricción.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">✅</div><div><h4>Confirmación instant</h4><p>Recibís aviso automático cuando el pago se acredita.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🧾</div><div><h4>Historial de cobros</h4><p>Registro completo de todos los pagos recibidos por chat.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">💰</div><div><h4>Múltiples montos</h4><p>Desde montos fijos hasta presupuestos personalizados.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔔</div><div><h4>Recordatorio de pago</h4><p>Si el cliente no pagó, SIVO envía un recordatorio amable.</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal IA ═══ -->
+<div class="ia-overlay">
+    <label for="iaToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="iaToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">🧠</div>
+            <h2>Entrenalo con tu información</h2>
+            <p>Subí documentos, catálogos o cualquier archivo. SIVO aprende tu negocio y responde con datos reales, no genéricos.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Fuentes de conocimiento</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">PDF</div>
+                    <div class="rpt-metric-lbl">Documentos</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">📋</div>
+                    <div class="rpt-metric-lbl">Catálogos</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">🍽️</div>
+                    <div class="rpt-metric-lbl">Menús</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">FAQ</div>
+                    <div class="rpt-metric-lbl">Preguntas frec.</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Cómo aprende SIVO</div>
+            <div class="rpt-features">
+                <div class="rpt-feat"><div class="rpt-feat-ic">📄</div><div><h4>Subí archivos</h4><p>PDFs, Word, Excel, imágenes de menú o catálogo.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🧠</div><div><h4>Aprende al instante</h4><p>Procesa tu información y la usa para responder consultas.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🎯</div><div><h4>Respuestas precisas</h4><p>Contesta con datos reales de tu negocio, no respuestas genéricas.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔄</div><div><h4>Actualizá cuando quieras</h4><p>Cambiaste los precios? Subí el nuevo archivo y listo.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">💬</div><div><h4>Tono personalizado</h4><p>Configurá cómo habla: formal, amigable, profesional.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔒</div><div><h4>Información segura</h4><p>Tus datos están protegidos y solo los usa tu asistente.</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ Modal Escalado ═══ -->
+<div class="escala-overlay">
+    <label for="escalaToggle" class="rpt-overlay-bg"></label>
+    <div class="rpt-modal">
+        <div class="rpt-head">
+            <label for="escalaToggle" class="rpt-close">&times;</label>
+            <div class="rpt-head-icon">👤</div>
+            <h2>Escala a un humano cuando es necesario</h2>
+            <p>Si la consulta es compleja o el cliente lo pide, SIVO transfiere la conversación a un agente real con todo el contexto previo.</p>
+        </div>
+        <div class="rpt-body">
+            <div class="rpt-section-label">Métricas de escalado</div>
+            <div class="rpt-metrics">
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">8%</div>
+                    <div class="rpt-metric-lbl">Escalados</div>
+                    <div class="rpt-metric-delta">Solo lo necesario</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">100%</div>
+                    <div class="rpt-metric-lbl">Con contexto</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">&lt;30s</div>
+                    <div class="rpt-metric-lbl">Transferencia</div>
+                </div>
+                <div class="rpt-metric">
+                    <div class="rpt-metric-val">96%</div>
+                    <div class="rpt-metric-lbl">Satisfacción</div>
+                </div>
+            </div>
+            <div class="rpt-section-label">Cómo funciona el escalado</div>
+            <div class="rpt-features">
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔍</div><div><h4>Detección inteligente</h4><p>SIVO detecta cuándo la consulta necesita un humano.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">📋</div><div><h4>Contexto completo</h4><p>El agente recibe toda la conversación previa y datos del cliente.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">⚡</div><div><h4>Transferencia instant</h4><p>El cambio es inmediato, sin que el cliente repita información.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🔔</div><div><h4>Notificación al equipo</h4><p>Tu equipo recibe alerta cuando hay un escalado pendiente.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">🤝</div><div><h4>El cliente lo pide</h4><p>Si el cliente quiere hablar con una persona, SIVO lo respeta.</p></div></div>
+                <div class="rpt-feat"><div class="rpt-feat-ic">📊</div><div><h4>Reporte de escalados</h4><p>Analizá por qué se escalan consultas y mejorá tu asistente.</p></div></div>
             </div>
         </div>
     </div>
