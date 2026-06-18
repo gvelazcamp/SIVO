@@ -3048,6 +3048,79 @@ HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
         </div>
     </div>
 
+    <!-- NUEVA SECCIÓN: MÁS ALLÁ DEL CHAT -->
+    <div class="section reveal-section" style="padding: 60px 5%;">
+        <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">SIVO va más allá del chat</h2>
+        <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px;">No solo atendemos clientes — también automatizamos procesos internos, analizamos datos y eliminamos el trabajo manual de tu equipo.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 20px;">
+            <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a); border-radius:22px; padding:28px; color:white;">
+                <div style="font-size:36px; margin-bottom:14px;">🤖</div>
+                <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Automatización de procesos</h3>
+                <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Robots que hacen las tareas repetitivas que hoy hace una persona a mano: cargar datos en sistemas, mover archivos, actualizar registros.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="background:rgba(96,165,250,0.2); color:#93c5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Sin intervención humana</span>
+                    <span style="background:rgba(96,165,250,0.2); color:#93c5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Cero errores</span>
+                </div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#064e3b,#065f46); border-radius:22px; padding:28px; color:white;">
+                <div style="font-size:36px; margin-bottom:14px;">📊</div>
+                <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Excel y planillas inteligentes</h3>
+                <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Generá reportes automáticos, consolidá datos de múltiples fuentes y mandá planillas listas para usar — sin abrir Excel ni hacer nada a mano.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="background:rgba(52,211,153,0.2); color:#6ee7b7; font-size:12px; padding:4px 10px; border-radius:6px;">Reportes automáticos</span>
+                    <span style="background:rgba(52,211,153,0.2); color:#6ee7b7; font-size:12px; padding:4px 10px; border-radius:6px;">Multi-fuente</span>
+                </div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#4c1d95,#5b21b6); border-radius:22px; padding:28px; color:white;">
+                <div style="font-size:36px; margin-bottom:14px;">📈</div>
+                <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Dashboards Power BI</h3>
+                <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Conectá tus datos y generá tableros automáticos con los indicadores que realmente importan. Tomá decisiones en tiempo real.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="background:rgba(167,139,250,0.2); color:#c4b5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Tiempo real</span>
+                    <span style="background:rgba(167,139,250,0.2); color:#c4b5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Personalizable</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; max-width:1200px; margin:0 auto; align-items:start;">
+            <div style="background:#f8fafc; border-radius:22px; overflow:hidden; border:1px solid #e2e8f0;">
+                <div style="background:linear-gradient(135deg,#1e40af,#3b82f6); padding:16px 20px; display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:20px;">🗄️</span>
+                    <div>
+                        <div style="font-weight:700; color:white; font-size:14px;">SIVO Datos</div>
+                        <div style="font-size:11px; color:rgba(255,255,255,0.8);">● Consultá tu negocio en lenguaje natural</div>
+                    </div>
+                </div>
+                <div style="padding:18px; display:flex; flex-direction:column; gap:10px;">
+                    <div style="align-self:flex-end; background:#3b82f6; color:white; padding:9px 14px; border-radius:14px 14px 4px 14px; font-size:13px; max-width:80%;">¿Cuánto vendí este mes versus el mes pasado?</div>
+                    <div style="align-self:flex-start; background:white; color:#222; padding:10px 14px; border-radius:14px 14px 14px 4px; font-size:13px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.06);">Este mes vendiste <strong>$847.200</strong>, un <strong style="color:#22c55e;">+23%</strong> más que el mes pasado ($688.600). Tu mejor día fue el jueves 12. ¿Querés ver el desglose por producto?</div>
+                    <div style="align-self:flex-end; background:#3b82f6; color:white; padding:9px 14px; border-radius:14px 14px 4px 14px; font-size:13px; max-width:80%;">Sí, y mandame el reporte por email</div>
+                    <div style="align-self:flex-start; background:white; color:#222; padding:10px 14px; border-radius:14px 14px 14px 4px; font-size:13px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.06);">✅ Reporte enviado a tu email con el desglose completo por producto, categoría y vendedor.</div>
+                </div>
+                <div style="padding:12px 18px; background:white; border-top:1px solid #eee; display:flex; gap:10px; align-items:center;">
+                    <div style="flex:1; background:#f1f3f4; border-radius:20px; padding:9px 14px; font-size:12px; color:#999;">Preguntá algo sobre tus datos...</div>
+                    <div style="background:linear-gradient(135deg,#f4b400,#ff6b00); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px;">→</div>
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div style="background:#fff; border-radius:22px; padding:26px; box-shadow:0 6px 20px rgba(0,0,0,0.07); border-left:4px solid #f4b400;">
+                    <div style="font-size:28px; margin-bottom:10px;">⏰</div>
+                    <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">Reportes programados automáticos</h3>
+                    <p style="font-size:14px; color:#666; line-height:1.6;">Se generan y envían solos todos los días a la hora que definas. Ventas, stock, actividad — en tu email sin que toques nada.</p>
+                </div>
+                <div style="background:#fff; border-radius:22px; padding:26px; box-shadow:0 6px 20px rgba(0,0,0,0.07); border-left:4px solid #3b82f6;">
+                    <div style="font-size:28px; margin-bottom:10px;">🔗</div>
+                    <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">Integración con lo que ya usás</h3>
+                    <p style="font-size:14px; color:#666; line-height:1.6;">ERPs, planillas de Excel, sistemas internos, bases de datos. Conectamos todo sin pedirte que cambies ninguna herramienta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FAQ -->
     <div class="faq-section reveal-section">
         <h2>Preguntas frecuentes</h2>
@@ -3454,6 +3527,113 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <p>Atiende llamadas reales con IA conversacional.</p>
                 <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
             </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Excel">
+                <h3>SIVO Excel</h3>
+                <p>Automatizá reportes, cargá datos y generá planillas listas para usar — sin escribir fórmulas a mano.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Power BI">
+                <h3>SIVO Power BI</h3>
+                <p>Conectá tus datos y generá dashboards automáticos con indicadores en tiempo real para tomar mejores decisiones.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Datos">
+                <h3>SIVO Datos</h3>
+                <p>Consultá tu información en lenguaje natural — stock, ventas, compras, clientes — y recibí respuestas al instante sin saber SQL.</p>
+                <button>Ver asistente</button>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Operaciones">
+                <h3>SIVO Operaciones</h3>
+                <p>Automatizá procesos internos repetitivos: bajas de stock, generación de reportes programados y alertas de faltantes.</p>
+                <button>Ver asistente</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN: SIVO DATOS - CONSULTÁ TUS DATOS -->
+    <div class="section" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 32px; margin: 20px 4%; padding: 48px 5%;">
+        <h2 style="text-align:center; font-size:32px; margin-bottom:10px;">Consultá tus datos con IA</h2>
+        <p class="subtitle" style="font-size:16px; margin-bottom:36px;">Hacé preguntas en lenguaje natural y recibí respuestas directas sobre tu negocio — sin planillas, sin SQL, sin esperar a nadie.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 36px;">
+            <div style="background:#fff; border-radius:18px; padding:24px; box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+                <div style="font-size:32px; margin-bottom:12px;">📊</div>
+                <h3 style="font-size:17px; margin-bottom:8px;">Excel y planillas</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Subí tu planilla y preguntale directamente: totales, comparaciones, tendencias. La IA analiza y responde.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px; box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+                <div style="font-size:32px; margin-bottom:12px;">📈</div>
+                <h3 style="font-size:17px; margin-bottom:8px;">Dashboards Power BI</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Conectá tus fuentes de datos y generá tableros automáticos con los indicadores que realmente importan.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px; box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+                <div style="font-size:32px; margin-bottom:12px;">🗄️</div>
+                <h3 style="font-size:17px; margin-bottom:8px;">Bases de datos y stock</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">"¿Cuánto me queda de X?", "¿Cuál fue mi producto más vendido este mes?" — respuestas en segundos, sin técnicos.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px; box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+                <div style="font-size:32px; margin-bottom:12px;">⚡</div>
+                <h3 style="font-size:17px; margin-bottom:8px;">Reportes automáticos</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Reportes que se generan y se envían solos a la hora que definas. Cero intervención manual.</p>
+            </div>
+        </div>
+
+        <!-- Demo visual del chat de datos -->
+        <div style="max-width:600px; margin:0 auto; background:#fff; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.10); overflow:hidden;">
+            <div style="background:linear-gradient(135deg,#1e40af,#3b82f6); padding:16px 20px; display:flex; align-items:center; gap:12px;">
+                <span style="font-size:22px;">🤖</span>
+                <div>
+                    <div style="font-weight:700; color:#fff; font-size:15px;">SIVO Datos</div>
+                    <div style="font-size:12px; color:rgba(255,255,255,0.8);">● En línea ahora</div>
+                </div>
+            </div>
+            <div style="padding:20px; display:flex; flex-direction:column; gap:12px; background:#f8f9fa;">
+                <div style="align-self:flex-end; background:#3b82f6; color:#fff; padding:10px 16px; border-radius:16px 16px 4px 16px; font-size:14px; max-width:80%;">¿Cuánto stock me queda de reactivos críticos?</div>
+                <div style="align-self:flex-start; background:#fff; color:#222; padding:12px 16px; border-radius:16px 16px 16px 4px; font-size:14px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.07);">Tenés <strong>3 reactivos con stock crítico</strong>: Reactivo A (2 unidades, dura ~4 días), Reactivo B (1 unidad, dura ~2 días) y Reactivo C (5 unidades, dura ~6 días). ¿Querés que genere una orden de compra?</div>
+                <div style="align-self:flex-end; background:#3b82f6; color:#fff; padding:10px 16px; border-radius:16px 16px 4px 16px; font-size:14px; max-width:80%;">Sí, generá la orden y enviala a Compras</div>
+                <div style="align-self:flex-start; background:#fff; color:#222; padding:12px 16px; border-radius:16px 16px 16px 4px; font-size:14px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.07);">✅ Orden de compra generada y enviada a Compras. Total estimado: $12.400. Te aviso cuando confirmen recepción.</div>
+            </div>
+            <div style="padding:14px 20px; background:#fff; border-top:1px solid #eee; display:flex; gap:10px; align-items:center;">
+                <div style="flex:1; background:#f1f3f4; border-radius:24px; padding:10px 16px; font-size:13px; color:#999;">Preguntá algo sobre tus datos...</div>
+                <div style="background:linear-gradient(135deg,#f4b400,#ff6b00); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer;">→</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN: AUTOMATIZACIÓN DE PROCESOS -->
+    <div class="section">
+        <h2 style="text-align:center; font-size:32px; margin-bottom:10px;">Automatización de procesos internos</h2>
+        <p class="subtitle" style="margin-bottom:36px;">No solo respondemos preguntas — también ejecutamos tareas. Cada SIVO puede automatizar flujos completos de trabajo.</p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:18px; max-width:1200px; margin:0 auto;">
+            <div style="background:#fff; border-radius:18px; padding:24px 28px; box-shadow:0 6px 20px rgba(0,0,0,0.06); border-left: 4px solid #f4b400;">
+                <div style="font-size:24px; margin-bottom:10px;">🤖</div>
+                <h3 style="font-size:17px; margin-bottom:8px; color:#111;">Robots de carga de datos</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Eliminá la carga manual en sistemas internos. El robot lee, procesa y carga solo — sin errores de tipeo.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px 28px; box-shadow:0 6px 20px rgba(0,0,0,0.06); border-left: 4px solid #3b82f6;">
+                <div style="font-size:24px; margin-bottom:10px;">📋</div>
+                <h3 style="font-size:17px; margin-bottom:8px; color:#111;">Reportes programados</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Se generan y envían solos todos los días a la hora que definas. Sin intervención humana, sin olvidos.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px 28px; box-shadow:0 6px 20px rgba(0,0,0,0.06); border-left: 4px solid #10b981;">
+                <div style="font-size:24px; margin-bottom:10px;">🔔</div>
+                <h3 style="font-size:17px; margin-bottom:8px; color:#111;">Alertas inteligentes</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Stock bajo, vencimientos, picos de demanda. SIVO detecta y avisa antes de que sea un problema.</p>
+            </div>
+            <div style="background:#fff; border-radius:18px; padding:24px 28px; box-shadow:0 6px 20px rgba(0,0,0,0.06); border-left: 4px solid #8b5cf6;">
+                <div style="font-size:24px; margin-bottom:10px;">🔗</div>
+                <h3 style="font-size:17px; margin-bottom:8px; color:#111;">Integración con lo que ya usás</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">ERPs, planillas de Excel, sistemas internos, emails. Conectamos todo sin pedirte que cambies de herramienta.</p>
+            </div>
         </div>
     </div>
 
@@ -3467,6 +3647,8 @@ HTML_ASISTENTES = f"""{HTML_BASE}
             <div class="feature">⚙️ Configurable</div>
             <div class="feature">🔒 Seguro</div>
             <div class="feature">💬 Soporte</div>
+            <div class="feature">📊 Excel & Power BI</div>
+            <div class="feature">🤖 Automatización</div>
         </div>
     </div>
 
