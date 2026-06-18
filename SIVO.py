@@ -8089,6 +8089,8 @@ else:
           }
 
           function runAnimation(el1, el2, elA) {
+            if (ran) return;
+            ran = true;
             try { el1.textContent='0'; el2.textContent='0'; elA.textContent='A'; } catch(e){}
             countTo(el1, 100, 1200);
             countTo(el2, 60, 1200);
@@ -8102,8 +8104,11 @@ else:
           }
 
           function tryRun() {
+            // Intentar acceder al documento padre (funciona en desktop)
             var doc = null;
-            try { doc = window.parent.document; } catch (e) { return false; }
+            try { doc = window.parent.document; } catch (e) {}
+            // Fallback: intentar el documento actual (mobile)
+            if (!doc) { try { doc = window.document; } catch(e) {} }
             if (!doc) return false;
 
             var el1 = doc.getElementById('stat-num-1');
@@ -8114,24 +8119,25 @@ else:
             // Poner en 0 desde el inicio
             try { el1.textContent='0'; el2.textContent='0'; elA.textContent='A'; } catch(e){}
 
-            // Encontrar el contenedor stHtml que tiene los stats
-            var statsContainer = el1.closest('div[data-testid="stHtml"]') || el1.parentElement;
+            // IntersectionObserver con threshold bajo (funciona mejor en mobile)
+            var statsContainer = el1.closest('[data-testid="stHtml"]') || el1.parentElement;
 
-            // Observer: cuando la sección de stats sea visible, animar
             var observer = new IntersectionObserver(function(entries) {
               entries.forEach(function(entry) {
                 if (entry.isIntersecting && !ran) {
-                  ran = true;
                   observer.disconnect();
-                  // Primera animación
                   runAnimation(el1, el2, elA);
-                  // Repetir UNA vez más
-                  setTimeout(function() { runAnimation(el1, el2, elA); }, 2800);
                 }
               });
-            }, { threshold: 0.15 });
+            }, { threshold: 0, rootMargin: "0px 0px -20px 0px" });
 
             observer.observe(statsContainer);
+
+            // Fallback: si en 3 segundos no disparó el observer, animar igual
+            setTimeout(function() {
+              if (!ran) runAnimation(el1, el2, elA);
+            }, 3000);
+
             return true;
           }
 
