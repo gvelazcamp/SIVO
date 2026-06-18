@@ -2929,6 +2929,12 @@ __BENEFITS_STANDALONE__
 
 <!-- SIVO VA MÁS ALLÁ DEL CHAT -->
 <div class="section reveal-section" style="padding: 60px 5%;">
+    <style>
+    @media (max-width: 768px) {
+        .mas-alla-grid-2 { grid-template-columns: 1fr !important; }
+        .mas-alla-chat { display: none !important; }
+    }
+    </style>
     <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">SIVO va más allá del chat</h2>
     <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px;">No solo atendemos clientes — también automatizamos procesos internos, analizamos datos y eliminamos el trabajo manual de tu equipo.</p>
 
@@ -2964,8 +2970,8 @@ __BENEFITS_STANDALONE__
         </div>
     </div>
 
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; max-width:1200px; margin:0 auto; align-items:start;">
-        <div style="background:#f8fafc; border-radius:22px; overflow:hidden; border:1px solid #e2e8f0;">
+    <div class="mas-alla-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; max-width:1200px; margin:0 auto; align-items:start;">
+        <div class="mas-alla-chat" style="background:#f8fafc; border-radius:22px; overflow:hidden; border:1px solid #e2e8f0;">
             <div style="background:linear-gradient(135deg,#1e40af,#3b82f6); padding:16px 20px; display:flex; align-items:center; gap:12px;">
                 <span style="font-size:20px;">🗄️</span>
                 <div>
