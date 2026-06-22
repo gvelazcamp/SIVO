@@ -110,7 +110,7 @@ HTML_INTEGRACIONES_STANDALONE = cargar_integraciones_standalone_html()
 # =========================
 import streamlit.components.v1 as components
 
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed", page_title="SIVO", page_icon="https://gvelazcamp.github.io/SIVO/LogoSivo.svg")
 
 # =========================
 # SESSION STATE - LOGIN
