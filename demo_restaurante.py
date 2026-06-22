@@ -1,9 +1,10 @@
 import os
+import time
 import streamlit as st
 
 # Configuración de la página
 st.set_page_config(
-    page_title="SIVO COCINA",
+    page_title="SIVO Cocina",
     page_icon="🍽️",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -12,15 +13,25 @@ st.set_page_config(
 # CSS personalizado
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+
     /* Ocultar elementos de Streamlit */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
+    .stApp {
+        background: linear-gradient(180deg, #fff8f3 0%, #ffffff 100%);
+    }
+
     /* Estilos del chat */
     .stChatMessage {
         max-width: 800px;
-        margin: 0 auto;
+        margin: 0 auto 4px auto;
     }
 
     .stChatFloatingInputContainer {
@@ -28,58 +39,245 @@ st.markdown("""
         margin: 0 auto;
     }
 
-    /* Header personalizado - tema restaurante */
+    [data-testid="stChatMessage"] {
+        border-radius: 18px;
+        padding: 4px 6px;
+        animation: fadeInUp 0.35s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header personalizado - tema SIVO Cocina */
     .custom-header {
         text-align: center;
-        padding: 25px;
-        background: linear-gradient(135deg, #c0392b, #e74c3c, #d35400);
-        border-radius: 12px;
-        margin-bottom: 30px;
+        padding: 32px 24px;
+        background: linear-gradient(135deg, #ff6b35 0%, #e74c3c 45%, #c0392b 100%);
+        border-radius: 20px;
+        margin-bottom: 24px;
         color: white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .custom-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .custom-header-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        padding: 5px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
     }
 
     .custom-header h1 {
         margin: 0;
-        font-size: 28px;
-        font-weight: 600;
+        font-size: 30px;
+        font-weight: 800;
         letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
     }
 
     .custom-header p {
         margin: 10px 0 0 0;
-        opacity: 0.9;
+        opacity: 0.95;
         font-size: 15px;
-        font-weight: 400;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+    }
+
+    .custom-header .status-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #4ade80;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+        animation: dotPulse 2s infinite;
+    }
+
+    @keyframes dotPulse {
+        0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+        70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+
+    /* Carrito flotante */
+    .carrito-flotante {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        background: linear-gradient(135deg, #ff6b35, #e74c3c);
+        color: white;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.35);
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        animation: bounceIn 0.4s ease-out;
+    }
+
+    @keyframes bounceIn {
+        0% { transform: scale(0.7); opacity: 0; }
+        60% { transform: scale(1.08); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .carrito-flotante .badge-count {
+        background: white;
+        color: #e74c3c;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    @media (max-width: 768px) {
+        .carrito-flotante {
+            top: auto;
+            bottom: 80px;
+            right: 14px;
+            padding: 8px 14px;
+            font-size: 13px;
+        }
     }
 
     /* Botones más profesionales */
     div[data-testid="column"] > div > div > button {
         width: 100%;
-        border-radius: 8px;
-        padding: 14px 20px;
-        font-weight: 500;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-weight: 600;
         font-size: 15px;
         transition: all 0.2s ease;
-        border: 1.5px solid #e5e7eb;
+        border: 1.5px solid #f0e4dc;
         background: white;
         color: #374151;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
     div[data-testid="column"] > div > div > button:hover {
-        background: #e74c3c;
+        background: linear-gradient(135deg, #ff6b35, #e74c3c);
         border-color: #e74c3c;
         color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(231, 76, 60, 0.3);
+    }
+
+    div[data-testid="column"] > div > div > button:active {
+        transform: translateY(0) scale(0.98);
     }
 
     /* Mejorar los caption de ejemplos */
     .stCaption {
         color: #6b7280 !important;
         font-size: 14px !important;
-        line-height: 1.8 !important;
+        line-height: 1.9 !important;
+    }
+
+    .ejemplos-header {
+        font-weight: 700;
+        font-size: 15px;
+        color: #111827;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Avatar custom del bot */
+    [data-testid="stChatMessageAvatarCustom"] {
+        background: linear-gradient(135deg, #ff6b35, #e74c3c) !important;
+    }
+
+    /* Indicador "escribiendo..." */
+    .typing-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 4px;
+    }
+
+    .typing-indicator span {
+        width: 7px;
+        height: 7px;
+        background: #e74c3c;
+        border-radius: 50%;
+        animation: typingBounce 1.2s infinite ease-in-out;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes typingBounce {
+        0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+        30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* Footer / WhatsApp flotante */
+    .wsp-flotante {
+        position: fixed;
+        bottom: 18px;
+        left: 18px;
+        background: #25D366;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13px;
+        box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+
+    .wsp-flotante:hover {
+        transform: translateY(-2px) scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+        .wsp-flotante {
+            bottom: 80px;
+            padding: 10px 14px;
+            font-size: 12px;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -87,9 +285,17 @@ st.markdown("""
 # Header personalizado
 st.markdown("""
 <div class="custom-header">
-    <h1>🍝 SIVO COCINA - Asistente Virtual</h1>
-    <p>Tu mesa, tu pedido, tu experiencia. Atendemos 24/7.</p>
+    <div class="custom-header-badge"><span class="status-dot"></span>EN VIVO · DEMO INTERACTIVO</div>
+    <h1>🍝 SIVO Cocina</h1>
+    <p>Tu mesa, tu pedido, tu experiencia. Atendemos 24/7 sin descanso.</p>
 </div>
+""", unsafe_allow_html=True)
+
+# Botón flotante de WhatsApp (refuerzo de que esto escala a producción real)
+st.markdown("""
+<a href="https://wa.me/5491112345678" target="_blank" class="wsp-flotante">
+    💬 Hablar por WhatsApp
+</a>
 """, unsafe_allow_html=True)
 
 BONUS_TEXTO = (
@@ -111,7 +317,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": """¡Bienvenido a La Trattoria! 👋
+            "content": """¡Bienvenido a SIVO Cocina! 👋
 
 Soy tu asistente virtual y estoy para ayudarte.
 
@@ -157,6 +363,17 @@ def add_message_and_hide_buttons(
     show_bonus_once=False
 ):
     st.session_state.messages.append({"role": "user", "content": user_msg})
+
+    # Simular "escribiendo..." para dar sensación de respuesta inteligente en vivo
+    with st.chat_message("assistant", avatar="🍝"):
+        placeholder = st.empty()
+        placeholder.markdown("""
+        <div class="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+        """, unsafe_allow_html=True)
+        time.sleep(0.7)
+        placeholder.empty()
 
     bot_msg = {
         "role": "assistant",
@@ -405,10 +622,25 @@ O escribime directamente lo que necesitás!""",
     }
 
 # =========================
+# Carrito flotante (siempre visible si hay items)
+# =========================
+if st.session_state.carrito:
+    cantidad_items = len(st.session_state.carrito)
+    st.markdown(f"""
+    <div class="carrito-flotante">
+        <span class="badge-count">{cantidad_items}</span>
+        🛒 ${st.session_state.total_carrito:,.0f}
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================
 # Mostrar mensajes del chat
 # =========================
+BOT_AVATAR = "🍝"
+
 for i, message in enumerate(st.session_state.messages):
-    with st.chat_message(message["role"]):
+    avatar = BOT_AVATAR if message["role"] == "assistant" else None
+    with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
 
         # Mostrar imagen si existe
@@ -908,26 +1140,39 @@ Incluye:
 
 # Mostrar sugerencias de preguntas al final (SIEMPRE visible)
 st.markdown("---")
-st.markdown("**💬 Ejemplos de consultas que podés hacer:**")
+st.markdown('<div class="ejemplos-header">✨ Probá escribiendo cosas como estas:</div>', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
-    st.caption("• Quiero hacer un pedido de pizza para delivery")
-    st.caption("• ¿Cuánto sale la lasagna?")
-    st.caption("• Reservar mesa para 4 personas hoy a las 21hs")
-    st.caption("• ¿Tienen opciones sin gluten?")
-    st.caption("• ¿Qué promociones tienen?")
+    st.caption("💬 Quiero hacer un pedido de pizza para delivery")
+    st.caption("💬 ¿Cuánto sale la lasagna?")
+    st.caption("💬 Reservar mesa para 4 personas hoy a las 21hs")
+    st.caption("💬 ¿Tienen opciones sin gluten?")
+    st.caption("💬 ¿Qué promociones tienen?")
 with col2:
-    st.caption("• ¿Hasta qué hora atienden?")
-    st.caption("• Quiero pedir ravioles para llevar")
-    st.caption("• ¿Puedo pagar con tarjeta en cuotas?")
-    st.caption("• Necesito una mesa para 10 personas el viernes")
-    st.caption("• ¿Tienen menú vegetariano?")
+    st.caption("💬 ¿Hasta qué hora atienden?")
+    st.caption("💬 Quiero pedir ravioles para llevar")
+    st.caption("💬 ¿Puedo pagar con tarjeta en cuotas?")
+    st.caption("💬 Necesito una mesa para 10 personas el viernes")
+    st.caption("💬 ¿Tienen menú vegetariano?")
 
 # INPUT DEL CHAT
 if prompt := st.chat_input("Escribí tu consulta o hacé click en las opciones..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
     response = get_bot_response(prompt)
+
+    with st.chat_message("assistant", avatar="🍝"):
+        placeholder = st.empty()
+        placeholder.markdown("""
+        <div class="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+        """, unsafe_allow_html=True)
+        time.sleep(0.7)
+        placeholder.empty()
 
     st.session_state.messages.append({
         "role": "assistant",
@@ -953,7 +1198,7 @@ with col2:
         st.session_state.messages = [
             {
                 "role": "assistant",
-                "content": """¡Bienvenido a La Trattoria! 👋
+                "content": """¡Bienvenido a SIVO Cocina! 👋
 
 Soy tu asistente virtual y estoy para ayudarte.
 
