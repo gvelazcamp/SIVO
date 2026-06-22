@@ -45,12 +45,12 @@ jobs:
                 await page.goto(url, { waitUntil: 'load', timeout: 30000 });
                 await page.waitForTimeout(3000);
 
-                // Buscar el botón de "wake up" si existe
-                const wakeButton = await page.$('[data-testid="wakeup-button-owner"]');
-                if (wakeButton) {
+                const wakeButton = page.locator('button:has-text("get this app back up")');
+                const count = await wakeButton.count();
+                if (count > 0) {
                   console.log(`App dormida, despertando: ${url}`);
-                  await wakeButton.click();
-                  await page.waitForTimeout(8000);
+                  await wakeButton.first().click();
+                  await page.waitForTimeout(10000);
                 } else {
                   console.log(`App ya despierta: ${url}`);
                 }
