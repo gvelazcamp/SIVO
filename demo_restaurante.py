@@ -3,7 +3,7 @@ import streamlit as st
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Demo Restaurante - La Trattoria Bot",
+    page_title="SIVO COCINA",
     page_icon="🍽️",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -87,7 +87,7 @@ st.markdown("""
 # Header personalizado
 st.markdown("""
 <div class="custom-header">
-    <h1>🍝 La Trattoria - Asistente Virtual</h1>
+    <h1>🍝 SIVO COCINA - Asistente Virtual</h1>
     <p>Tu mesa, tu pedido, tu experiencia. Atendemos 24/7.</p>
 </div>
 """, unsafe_allow_html=True)
