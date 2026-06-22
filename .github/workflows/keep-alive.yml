@@ -1,0 +1,66 @@
+name: Keep Streamlit Apps Awake
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Una vez por día, 9am UTC (~6am Uruguay)
+  workflow_dispatch:
+
+jobs:
+  wake-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Wake up apps
+        run: |
+          cat << 'EOF' > wake.js
+          const { chromium } = require('playwright');
+
+          const urls = [
+            "https://demorestaurante.streamlit.app/",
+            "https://demoecommerce.streamlit.app/",
+            "https://demostockuy.streamlit.app/",
+            "https://demoturnos.streamlit.app/",
+            "https://demoropa.streamlit.app/",
+            "https://demopelu.streamlit.app/",
+            "https://demo-viajes.streamlit.app/",
+            "https://demotelefonico.streamlit.app/"
+          ];
+
+          (async () => {
+            const browser = await chromium.launch();
+            for (const url of urls) {
+              try {
+                const page = await browser.newPage();
+                console.log(`Visitando ${url}`);
+                await page.goto(url, { waitUntil: 'load', timeout: 30000 });
+                await page.waitForTimeout(3000);
+
+                // Buscar el botón de "wake up" si existe
+                const wakeButton = await page.$('[data-testid="wakeup-button-owner"]');
+                if (wakeButton) {
+                  console.log(`App dormida, despertando: ${url}`);
+                  await wakeButton.click();
+                  await page.waitForTimeout(8000);
+                } else {
+                  console.log(`App ya despierta: ${url}`);
+                }
+
+                await page.close();
+              } catch (err) {
+                console.log(`Error con ${url}: ${err.message}`);
+              }
+            }
+            await browser.close();
+          })();
+          EOF
+          node wake.js
