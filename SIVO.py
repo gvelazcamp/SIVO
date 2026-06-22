@@ -2322,7 +2322,7 @@ def get_header():
         <div class="nav" id="nav">
             <a href="?vista=home">Inicio</a>
             <a href="?vista=asistentes">Asistentes Externos</a>
-            <a href="?vista=home#automatizacion">Asistentes Internos</a>
+            <a href="?vista=internos">Asistentes Internos</a>
             <a href="?vista=precios">Precios</a>
             <a href="?vista=quehace">¿Qué hace SIVO?</a>
             {nav_buttons}
@@ -2719,7 +2719,7 @@ html, body, .page-container {
             <p>Responde al instante con la información de tu negocio, tanto para uso interno como para atención a clientes.</p>
             <div class="sivo-card-actions">
                 <a href="?vista=asistentes" class="button">🗣️ Así habla con tus clientes →</a>
-                <a href="?vista=home#automatizacion" class="button-secondary">📊 Así te informa a vos →</a>
+                <a href="?vista=internos" class="button-secondary">📊 Así te informa a vos →</a>
             </div>
         </div>
     </div>
@@ -3508,7 +3508,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
             <span style="display:inline-block; background:rgba(244,180,0,0.15); color:#7a5a00; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🗣️ PARA TUS CLIENTES</span>
         </div>
         <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás los Asistentes Internos — los que te informan a vos sobre tu negocio? <a href="?vista=home#automatizacion" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
+        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás los Asistentes Internos — los que te informan a vos sobre tu negocio? <a href="?vista=internos" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
 
         <div class="cards">
 
@@ -3631,6 +3631,69 @@ HTML_ASISTENTES = f"""{HTML_BASE}
             <div class="feature">⚙️ Configurable</div>
             <div class="feature">🔒 Seguro</div>
             <div class="feature">💬 Soporte</div>
+            <div class="feature">📊 Excel & Power BI</div>
+            <div class="feature">🤖 Automatización</div>
+        </div>
+    </div>
+
+{FOOTER}
+"""
+
+# =========================
+# ASISTENTES INTERNOS
+# =========================
+HTML_INTERNOS = f"""{HTML_BASE}
+{HEADER}
+
+    <div class="section">
+        <div style="text-align:center; margin-bottom:6px;">
+            <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">📊 PARA VOS, EL DUEÑO DEL NEGOCIO</span>
+        </div>
+        <h2>Asistentes Internos</h2>
+        <div class="subtitle">Estos SIVO no atienden clientes — te informan a vos sobre tu propio negocio: facturación, stock, reportes y más. ¿Buscás los Asistentes Externos — los que atienden a tus clientes? <a href="?vista=asistentes" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="SIVO Interno">
+                <h3>SIVO Interno</h3>
+                <p>Le preguntás por tu facturación, stock y reportes como si le hablaras a un empleado. Demo con datos de una veterinaria.</p>
+                <a href="https://demo-interno.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Excel y Power BI">
+                <h3>SIVO Excel & Power BI</h3>
+                <p>Automatizá reportes, consolidá planillas y generá dashboards en tiempo real, sin tocar una fórmula.</p>
+                <button>Próximamente</button>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Robots de carga">
+                <h3>SIVO Robots de carga</h3>
+                <p>Elimina la carga manual de datos en tus sistemas internos. Lee, procesa y carga solo, sin errores de tipeo.</p>
+                <button>Próximamente</button>
+            </div>
+
+            <div class="card">
+                <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Alertas inteligentes">
+                <h3>SIVO Alertas</h3>
+                <p>Detecta stock bajo, vencimientos y picos de demanda, y te avisa antes de que sea un problema.</p>
+                <button>Próximamente</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Tus datos, a un mensaje de distancia</h2>
+        <p>Conectá SIVO a tu Excel, tu sistema de gestión o tu base de datos real.</p>
+        <a href="?vista=home#soporte" style="text-decoration:none;"><button>Probar gratis</button></a>
+
+        <div class="features">
+            <div class="feature">⚡ Fácil y rápido</div>
+            <div class="feature">⚙️ Configurable</div>
+            <div class="feature">🔒 Seguro</div>
             <div class="feature">📊 Excel & Power BI</div>
             <div class="feature">🤖 Automatización</div>
         </div>
@@ -8068,6 +8131,9 @@ if vista == "demo":
 
 elif vista == "asistentes":
     st.html(HTML_ASISTENTES)
+
+elif vista == "internos":
+    st.html(HTML_INTERNOS)
 
 elif vista == "precios":
     st.html(HTML_PRECIOS)
