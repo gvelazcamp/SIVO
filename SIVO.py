@@ -330,6 +330,22 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 20px;
 }
 
+/* Breakpoint intermedio: achicar nav antes de pasar a hamburguesa en mobile */
+@media (max-width: 1180px) and (min-width: 769px) {
+    .nav {
+        gap: 18px;
+    }
+    .nav a {
+        font-size: 14px;
+    }
+    .logo-img {
+        height: 110px;
+    }
+    .nav-buttons {
+        margin-left: 8px;
+    }
+}
+
 .btn-login {
     background: transparent;
     color: #111;
@@ -2721,6 +2737,9 @@ html, body, .page-container {
                 <a href="?vista=asistentes" class="button">🗣️ Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">📊 Así te informa a vos →</a>
             </div>
+            <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 1.7s forwards;">
+                <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">Probá gratis 7 días — sin tarjeta de crédito →</a>
+            </div>
         </div>
     </div>
 
@@ -2789,20 +2808,20 @@ html, body, .page-container {
 
             <div class="stat-card">
                 <div class="stat-number" id="stat-num-1" data-target="100">0</div>
-                <div class="stat-label">Conversaciones simultáneas</div>
-                <div class="stat-desc">Atiende múltiples clientes al mismo tiempo</div>
+                <div class="stat-label">Clientes atendidos a la vez</div>
+                <div class="stat-desc">Nunca perdés una venta por estar ocupado</div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-number" id="stat-num-2" data-target="60">0</div>
-                <div class="stat-label">Mensajes por minuto</div>
-                <div class="stat-desc">Respuestas en tiempo real</div>
+                <div class="stat-label">Respuestas por minuto</div>
+                <div class="stat-desc">Atendés de noche sin pagar horas extra</div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-number-small" id="stat-alpha">A</div>
-                <div class="stat-label">Fuentes de conocimiento</div>
-                <div class="stat-desc">Entrenable con cualquier información del negocio</div>
+                <div class="stat-label">Conectado a tu información real</div>
+                <div class="stat-desc">No respuestas genéricas — tus datos, tu negocio</div>
             </div>
         </div>
 
@@ -3060,6 +3079,9 @@ __BENEFITS_STANDALONE__
                 <div style="flex:1; background:#f1f3f4; border-radius:20px; padding:9px 14px; font-size:12px; color:#999;">Preguntá algo sobre tus datos...</div>
                 <div style="background:linear-gradient(135deg,#f4b400,#ff6b00); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px;">→</div>
             </div>
+            <div style="padding:14px 18px; background:#f8fafc; border-top:1px solid #eee; text-align:center;">
+                <a href="?vista=internos" style="display:inline-block; background:linear-gradient(135deg,#1e40af,#3b82f6); color:white; font-size:13px; font-weight:700; padding:10px 20px; border-radius:10px; text-decoration:none;">Probar esto en vivo →</a>
+            </div>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:20px;">
@@ -3092,7 +3114,8 @@ except Exception:
 HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
         <h2>Resultados que podés esperar</h2>
-        <p class="subtitle" style="margin-bottom: 10px;">Esto es lo que SIVO puede lograr en distintos rubros, según el caso de uso y la implementación.</p>
+        <p class="subtitle" style="margin-bottom: 4px;">Esto es lo que SIVO puede lograr en distintos rubros, según el caso de uso y la implementación.</p>
+        <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">📌 Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención — no garantías ni promesas de resultado.</p>
 
         <div class="testimonios-grid">
             <div class="testimonio-card">
@@ -3219,7 +3242,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
 
     <!-- NOVEDAD SIVO -->
     <div class="sivo-section reveal-section">
-        <div class="sivo-badge-top">🔥 Recién Lanzado - Enero 2026</div>
+        <div class="sivo-badge-top">🔥 Nuevo</div>
         
         <div class="sivo-card-clean">
             <div class="sivo-image-side">
