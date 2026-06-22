@@ -2738,7 +2738,7 @@ html, body, .page-container {
                 <a href="?vista=internos" class="button-secondary">📊 Así te informa a vos →</a>
             </div>
             <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 1.7s forwards;">
-                <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">Probá gratis 7 días — sin tarjeta de crédito →</a>
+                <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">📅 Agendá tu demo →</a>
             </div>
         </div>
     </div>
@@ -3163,8 +3163,8 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     </div>
 
     <div class="cta reveal-section" id="soporte">
-        <h2>Agendá una demo gratuita</h2>
-        <p>Probá 7 días gratis. Sin tarjeta de crédito. Cancelá cuando quieras.</p>
+        <h2>Agendá una demo</h2>
+        <p>Te contactamos para coordinar una demo personalizada según tu negocio.</p>
         
         <form class="cta-form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactamos en 24 hs.');">
             <input type="text" class="cta-form-full" placeholder="Tu nombre" required>
@@ -8984,7 +8984,7 @@ function send(){
         
         // 3. Precios
         else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan'))
-            r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>PRO - Desde US$ 125/mes</strong><br>• 1 asistente · 1 sitio<br>• Asistentes entrenados con tus datos<br>• Ajustes y mejoras mensuales<br>• Soporte prioritario<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>🎁 <strong>7 días gratis</strong> para probar!';
+            r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>PRO - Desde US$ 125/mes</strong><br>• 1 asistente · 1 sitio<br>• Asistentes entrenados con tus datos<br>• Ajustes y mejoras mensuales<br>• Soporte prioritario<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
         
         // 4. Integraciones
         else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma'))
@@ -9107,7 +9107,7 @@ function send(){
                     let r;
                     if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
                     else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo')) r='<strong>SIVO</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
-                    else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>PRO - Desde US$ 125/mes</strong><br>• 1 asistente · 1 sitio<br>• Asistentes entrenados con tus datos<br>• Ajustes y mejoras mensuales<br>• Soporte prioritario<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>🎁 <strong>7 días gratis</strong> para probar!';
+                    else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>PRO - Desde US$ 125/mes</strong><br>• 1 asistente · 1 sitio<br>• Asistentes entrenados con tus datos<br>• Ajustes y mejoras mensuales<br>• Soporte prioritario<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
                     else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma')) r='🔌 <strong>Integraciones disponibles:</strong><br><br>✅ WhatsApp<br>✅ Instagram<br>✅ Web (widget)<br>✅ Shopify<br>✅ Mercado Pago<br>✅ Email<br>✅ API personalizada<br><br>¿Cuál te interesa más?';
                     else if(l.includes('funciona')||l.includes('como')||l.includes('cómo')) r='⚙️ <strong>Es súper simple:</strong><br><br>1️⃣ <strong>Conectás</strong> tus datos y productos<br>2️⃣ <strong>Entrenamos</strong> el asistente con tu info<br>3️⃣ <strong>Instalamos</strong> en tus canales<br>4️⃣ <strong>Listo!</strong> Empieza a atender clientes<br><br>Todo el proceso lleva entre 2-7 días. ⚡';
                     else if(l.includes('demo')||l.includes('prueba')||l.includes('probar')) r='🎯 <strong>¡Probá SIVO GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@sivo.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
