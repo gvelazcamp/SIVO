@@ -1375,31 +1375,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-form {
-    display: flex;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
     justify-content: center;
-    align-items: center;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto 30px;
-    flex-wrap: wrap;
 }
 
-.cta-form input {
-    flex: 1;
-    min-width: 200px;
+.cta-form input,
+.cta-form select {
+    width: 100%;
     padding: 14px 18px;
     border-radius: 12px;
     border: 2px solid #e0e0e0;
     font-size: 15px;
     font-family: inherit;
+    background: #fff;
+    color: #111;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-.cta-form input:focus {
+.cta-form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.cta-form input:focus,
+.cta-form select:focus {
     outline: none;
     border-color: #3b82f6;
 }
 
+.cta-form .cta-form-full {
+    grid-column: 1 / -1;
+}
+
 .cta-form button {
+    grid-column: 1 / -1;
     background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     color: #ffffff;
     padding: 14px 28px;
@@ -1416,6 +1435,12 @@ h1, h2, h3, h4, h5, h6 {
 .cta-form button:hover {
     box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
     transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .cta-form {
+        grid-template-columns: 1fr;
+    }
 }
 
 .cta button {
@@ -3073,9 +3098,32 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
         <p>Probá 7 días gratis. Sin tarjeta de crédito. Cancelá cuando quieras.</p>
         
         <form class="cta-form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactamos en 24 hs.');">
-            <input type="text" placeholder="Tu nombre" required>
+            <input type="text" class="cta-form-full" placeholder="Tu nombre" required>
             <input type="email" placeholder="Tu email" required>
-            <button type="submit">Agendar demo</button>
+            <input type="tel" placeholder="Tu WhatsApp" required>
+            <select required>
+                <option value="" disabled selected>¿En qué rubro estás?</option>
+                <option value="ecommerce">Ecommerce / Tienda online</option>
+                <option value="gastronomia">Gastronomía / Restaurante</option>
+                <option value="salud">Salud / Turnos médicos</option>
+                <option value="inmobiliaria">Inmobiliaria</option>
+                <option value="fitness">Gimnasio / Centro deportivo</option>
+                <option value="belleza">Peluquería / Estética</option>
+                <option value="turismo">Turismo / Viajes</option>
+                <option value="finanzas">Finanzas / Inversiones</option>
+                <option value="educacion">Educación</option>
+                <option value="otro">Otro</option>
+            </select>
+            <select required>
+                <option value="" disabled selected>¿Qué plataforma usás hoy?</option>
+                <option value="whatsapp">WhatsApp Business</option>
+                <option value="instagram">Instagram / Redes sociales</option>
+                <option value="web">Sitio web propio</option>
+                <option value="shopify">Shopify</option>
+                <option value="ninguna">Ninguna todavía</option>
+                <option value="otra">Otra</option>
+            </select>
+            <button type="submit" class="cta-form-full">Agendar demo</button>
         </form>
 
         <div class="features">
