@@ -1293,11 +1293,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonio-quote {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
     color: #333;
     margin: 0 0 20px 0;
-    font-style: italic;
+    font-style: normal;
 }
 
 .testimonio-author {
@@ -3018,93 +3018,52 @@ try:
 except Exception:
     pass
 
-HTML_HOME_PARTE_2 = f"""    <!-- TESTIMONIOS -->
+HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
-        <h2>Lo que dicen nuestros clientes</h2>
-        
+        <h2>Resultados que podés esperar</h2>
+        <p class="subtitle" style="margin-bottom: 10px;">Esto es lo que SIVO puede lograr en distintos rubros, según el caso de uso y la implementación.</p>
+
         <div class="testimonios-grid">
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "Desde que instalé el chatbot, las consultas se responden automáticamente. Las ventas subieron un 40% y ya no pierdo clientes por demoras en responder."
+                    🛍️ <strong>Ecommerce:</strong> Atendiendo consultas de productos, precios y envíos las 24 horas, los negocios suelen ver una mejora notable en conversión gracias a la rapidez de respuesta.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">M</div>
-                    <div class="testimonio-info">
-                        <h4>Martín González</h4>
-                        <p>Tienda de deportes online</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📈 +40% ventas</div>
+                <div class="testimonio-stat">📈 Hasta +40% en ventas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "Antes pasaba 3 horas al día respondiendo las mismas preguntas. Ahora el bot responde al instante y yo me enfoco en atender consultas complejas. Un antes y después."
+                    🍽️ <strong>Gastronomía:</strong> Al automatizar las consultas repetitivas (horarios, menú, reservas), el equipo libera tiempo para atender lo que realmente requiere una persona.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">L</div>
-                    <div class="testimonio-info">
-                        <h4>Laura Fernández</h4>
-                        <p>Restaurante</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">⏰ -3hs diarias</div>
+                <div class="testimonio-stat">⏰ Hasta -3hs diarias en tareas repetitivas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "Implementamos el asistente de turnos y las reservas se duplicaron. Los clientes reservan a cualquier hora y el sistema confirma automáticamente. Impresionante."
+                    🦷 <strong>Salud y turnos:</strong> Con reservas disponibles a cualquier hora y confirmación automática, la cantidad de turnos agendados tiende a duplicarse.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">C</div>
-                    <div class="testimonio-info">
-                        <h4>Carlos Ruiz</h4>
-                        <p>Clínica odontológica</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📅 2x reservas</div>
+                <div class="testimonio-stat">📅 Hasta 2x más reservas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "Las consultas por propiedades llegan las 24hs. El bot responde características, precios y agenda visitas automáticamente. Ahora atendemos 3 veces más clientes con el mismo equipo."
+                    🏠 <strong>Inmobiliaria:</strong> Respondiendo características, precios y agendando visitas sin esperas, se puede atender un volumen mucho mayor de consultas con el mismo equipo.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">A</div>
-                    <div class="testimonio-info">
-                        <h4>Ana Rodríguez</h4>
-                        <p>Inmobiliaria</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">🏠 3x más consultas</div>
+                <div class="testimonio-stat">🏠 Hasta 3x más consultas atendidas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "Redujimos los llamados al gimnasio en un 70%. Ahora los socios consultan horarios, reservan clases y cancelan turnos directamente con el asistente. Increíble eficiencia."
+                    💪 <strong>Gimnasios y centros deportivos:</strong> Consultas de horarios, reservas de clases y cancelaciones gestionadas por el asistente reducen significativamente la carga de llamados al local.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">D</div>
-                    <div class="testimonio-info">
-                        <h4>Diego Martínez</h4>
-                        <p>Gimnasio y centro deportivo</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">📞 -70% llamados</div>
+                <div class="testimonio-stat">📞 Hasta -70% en llamados</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    "El chatbot responde consultas de stock, precios y envíos las 24 horas. Los clientes están más satisfechos y nosotros cerramos ventas incluso de madrugada."
+                    💻 <strong>Ecommerce de tecnología:</strong> Atendiendo stock, precios y envíos a toda hora, es posible cerrar ventas incluso fuera del horario comercial.
                 </div>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar">S</div>
-                    <div class="testimonio-info">
-                        <h4>Sofía Méndez</h4>
-                        <p>Ecommerce de tecnología</p>
-                    </div>
-                </div>
-                <div class="testimonio-stat">🌙 Ventas 24/7</div>
+                <div class="testimonio-stat">🌙 Ventas posibles las 24/7</div>
             </div>
         </div>
     </div>
@@ -3628,7 +3587,7 @@ HTML_PRECIOS = f"""{HTML_BASE}
             <div class="plan-name">Pro mensual</div>
             <div class="plan-desc">Uso, mantenimiento y evolución continua</div>
             
-            <div class="plan-price">US$ 125<span>/mes</span></div>
+            <div class="plan-price">US$ 100<span>/mes</span></div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             <div class="plan-note" style="font-size: 12px; color: #999; margin-top: 4px;">
                 Requiere implementación inicial previa
@@ -9013,3 +8972,5 @@ iframe[height="0"] * {
 """, unsafe_allow_html=True)
 
 components.html(CHATBOT, height=0)
+
+
