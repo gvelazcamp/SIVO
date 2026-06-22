@@ -3023,10 +3023,10 @@ __BENEFITS_STANDALONE__
     }
     </style>
     <div style="text-align:center; margin-bottom:14px;">
-        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">📊 PARA VOS, EL DUEÑO DEL NEGOCIO</span>
+        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🛠️ MÁS ALLÁ DEL CHAT</span>
     </div>
-    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Dos SIVO en uno: atiende a tus clientes y te informa a vos</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px;">Hasta ahora viste cómo SIVO le habla a tus clientes. Pero el mismo sistema también te habla a vos — sobre tu facturación, tu stock y tus reportes internos.</p>
+    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">¿Necesitás algo distinto a lo que ves aquí?</h2>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO no es solo un chatbot prearmado. Más allá de los asistentes que viste en el sitio, también armamos automatizaciones a medida: reportes diarios automáticos, integraciones con tus sistemas, y tareas repetitivas que hoy hacés a mano. Contanos qué necesitás y lo evaluamos.</p>
 
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 20px;">
         <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a); border-radius:22px; padding:28px; color:white;">
@@ -3096,6 +3096,10 @@ __BENEFITS_STANDALONE__
                 <p style="font-size:14px; color:#666; line-height:1.6;">ERPs, planillas de Excel, sistemas internos, bases de datos. Conectamos todo sin pedirte que cambies ninguna herramienta.</p>
             </div>
         </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+        <a href="?vista=home#soporte" style="display:inline-block; background:linear-gradient(135deg,#60a5fa,#3b82f6); color:white; font-size:16px; font-weight:700; padding:16px 36px; border-radius:14px; text-decoration:none; box-shadow:0 4px 15px rgba(59,130,246,0.3);">Contanos tu caso →</a>
     </div>
 </div>
 
