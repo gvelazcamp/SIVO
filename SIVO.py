@@ -2322,6 +2322,7 @@ def get_header():
         <div class="nav" id="nav">
             <a href="?vista=home">Inicio</a>
             <a href="?vista=asistentes">Asistentes</a>
+            <a href="?vista=home#automatizacion">Automatización</a>
             <a href="?vista=precios">Precios</a>
             <a href="?vista=quehace">¿Qué hace SIVO?</a>
             {nav_buttons}
@@ -2953,7 +2954,7 @@ __BENEFITS_STANDALONE__
 </div>
 
 <!-- SIVO VA MÁS ALLÁ DEL CHAT -->
-<div class="section reveal-section" style="padding: 60px 5%;">
+<div class="section reveal-section" id="automatizacion" style="padding: 60px 5%; scroll-margin-top: 100px;">
     <style>
     @media (max-width: 768px) {
         .mas-alla-grid-2 { grid-template-columns: 1fr !important; }
@@ -3596,12 +3597,117 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 HTML_PRECIOS = f"""{HTML_BASE}
 {HEADER}
 
+<style>
+.precios-guia {{
+    max-width: 900px;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}}
+.precios-guia-card {{
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}}
+.precios-guia-card .pg-icon {{
+    font-size: 28px;
+    margin-bottom: 8px;
+}}
+.precios-guia-card h4 {{
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 6px;
+}}
+.precios-guia-card p {{
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}}
+.precios-tabla-wrap {{
+    max-width: 1000px;
+    margin: 60px auto 0;
+    overflow-x: auto;
+}}
+.precios-tabla-wrap h2 {{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
+}}
+.precios-tabla-wrap > p {{
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}}
+table.precios-tabla {{
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    min-width: 640px;
+}}
+table.precios-tabla th, table.precios-tabla td {{
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+}}
+table.precios-tabla th {{
+    background: #f8fafc;
+    font-weight: 700;
+    color: #111;
+    font-size: 13px;
+}}
+table.precios-tabla td:first-child, table.precios-tabla th:first-child {{
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}}
+table.precios-tabla th:nth-child(3) {{
+    background: rgba(244,180,0,0.12);
+}}
+table.precios-tabla td:nth-child(3) {{
+    background: rgba(244,180,0,0.06);
+}}
+table.precios-tabla .si {{ color: #16a34a; font-weight: 700; }}
+table.precios-tabla .no {{ color: #cbd5e1; }}
+
+@media (max-width: 768px) {{
+    .precios-guia {{ grid-template-columns: 1fr; }}
+}}
+</style>
+
 <div class="section" style="padding-top: 40px;">
-    <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
         <p style="font-size: 15px; color: #666; line-height: 1.6;">
             <strong>Paso 1:</strong> Implementación inicial (pago único).<br>
             <strong>Paso 2:</strong> Plan mensual para mantener y mejorar tu asistente.
         </p>
+    </div>
+
+    <div class="precios-guia">
+        <div class="precios-guia-card">
+            <div class="pg-icon">🚀</div>
+            <h4>¿Estás arrancando?</h4>
+            <p>Elegí <strong>Implementación inicial</strong> para tener tu asistente funcionando rápido.</p>
+        </div>
+        <div class="precios-guia-card">
+            <div class="pg-icon">📈</div>
+            <h4>¿Ya tenés clientes activos?</h4>
+            <p>El plan <strong>Pro</strong> te da mejoras continuas y soporte prioritario.</p>
+        </div>
+        <div class="precios-guia-card">
+            <div class="pg-icon">🏢</div>
+            <h4>¿Sos una empresa con varios equipos?</h4>
+            <p>Hablemos del plan <strong>Enterprise</strong>, a medida de tu operación.</p>
+        </div>
     </div>
 
     <div class="pricing">
@@ -3635,10 +3741,10 @@ HTML_PRECIOS = f"""{HTML_BASE}
             <div class="plan-name">Pro mensual</div>
             <div class="plan-desc">Uso, mantenimiento y evolución continua</div>
             
-            <div class="plan-price">US$ 100<span>/mes</span></div>
+            <div class="plan-price">Desde US$ 100<span>/mes</span></div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             <div class="plan-note" style="font-size: 12px; color: #999; margin-top: 4px;">
-                Requiere implementación inicial previa
+                Varía según volumen e integraciones · Requiere implementación previa
             </div>
             
             <ul class="plan-list">
@@ -3678,6 +3784,36 @@ HTML_PRECIOS = f"""{HTML_BASE}
                 </a>
             </div>
         </div>
+    </div>
+
+    <!-- TABLA COMPARATIVA -->
+    <div class="precios-tabla-wrap">
+        <h2>Comparación detallada</h2>
+        <p>Todo lo que incluye cada plan, de un vistazo</p>
+        <table class="precios-tabla">
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Implementación</th>
+                    <th>Pro mensual</th>
+                    <th>Enterprise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Asistente IA personalizado</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Conexión a tus datos</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Instalación en tu web</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Cantidad de asistentes</td><td>1</td><td>1</td><td>Ilimitados</td></tr>
+                <tr><td>Sitios / canales</td><td>1</td><td>1</td><td>Multi-sitio</td></tr>
+                <tr><td>Mejoras y ajustes mensuales</td><td class="no">✗</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Reportes de uso</td><td class="no">✗</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Soporte prioritario</td><td class="no">✗</td><td class="si">✓</td><td class="si">✓</td></tr>
+                <tr><td>Integraciones ERP / CRM</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td></tr>
+                <tr><td>Roles y permisos de equipo</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td></tr>
+                <tr><td>SLA y soporte dedicado</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td></tr>
+                <tr><td>Modalidad de precio</td><td>Pago único</td><td>Mensual</td><td>A medida</td></tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -8672,7 +8808,7 @@ CHATBOT = """
 <button id="bot-btn" onclick="toggle()">💬</button>
 
 <div id="bot-box">
-<div class="h"><h3>🤖 SIVO</h3><button onclick="toggle()">×</button></div>
+<div class="h"><h3>💬 ¿Dudas? Preguntame</h3><button onclick="toggle()">×</button></div>
 <div id="msgs">
 <div class="m"><div class="a">🤖</div><div class="b">¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br><span class="clickable-option" onclick="sendOption('Qué es SIVO')">• Qué es SIVO</span><br><span class="clickable-option" onclick="sendOption('Precios y planes')">• Precios y planes</span><br><span class="clickable-option" onclick="sendOption('Integraciones')">• Integraciones</span><br><span class="clickable-option" onclick="sendOption('Cómo funciona')">• Cómo funciona</span></div></div>
 </div>
