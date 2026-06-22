@@ -2321,8 +2321,8 @@ def get_header():
 
         <div class="nav" id="nav">
             <a href="?vista=home">Inicio</a>
-            <a href="?vista=asistentes">Asistentes</a>
-            <a href="?vista=home#automatizacion">Automatización</a>
+            <a href="?vista=asistentes">Asistentes Externos</a>
+            <a href="?vista=home#automatizacion">Asistentes Internos</a>
             <a href="?vista=precios">Precios</a>
             <a href="?vista=quehace">¿Qué hace SIVO?</a>
             {nav_buttons}
@@ -3508,7 +3508,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
             <span style="display:inline-block; background:rgba(244,180,0,0.15); color:#7a5a00; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🗣️ PARA TUS CLIENTES</span>
         </div>
         <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás la otra cara de SIVO — la que te informa a vos sobre tu negocio? <a href="?vista=home#automatizacion" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
+        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás los Asistentes Internos — los que te informan a vos sobre tu negocio? <a href="?vista=home#automatizacion" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
 
         <div class="cards">
 
