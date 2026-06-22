@@ -3824,9 +3824,12 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">🗣️ ASISTENTES EXTERNOS</span>
             <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">📊 ASISTENTES INTERNOS</span>
         </div>
-        <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px;">Todos los planes incluyen ambos mundos</h3>
-        <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto; line-height:1.6;">
+        <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos mundos</h3>
+        <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto 14px; line-height:1.6; color:#ffffff;">
             No es solo un asistente que le responde a tus clientes. Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos — facturación, stock, ventas — y te contesta al instante.
+        </p>
+        <p style="font-size:14px; color:#bfdbfe; font-weight:600; margin:0;">
+            🦾 Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
         </p>
     </div>
 
