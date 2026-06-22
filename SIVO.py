@@ -2525,6 +2525,35 @@ html, body, .page-container {
     animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
 }
 
+.sivo-card-actions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sivo-card .button-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #ffffff;
+    padding: 22px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+    opacity: 0;
+    animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
+}
+
+.sivo-card .button-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: #ffffff;
+    transform: translateY(-3px);
+}
+
 @keyframes slideTextFromLeft {
     0% {
         opacity: 0;
@@ -2541,6 +2570,13 @@ html, body, .page-container {
     box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
 }
 
+@media (max-width: 600px) {
+    .sivo-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
     .sivo-card {
@@ -2553,6 +2589,7 @@ html, body, .page-container {
     .sivo-card .highlight { font-size: 60px; }
     .sivo-card p { font-size: 24px; }
     .sivo-card .button { padding: 22px 55px; font-size: 21px; }
+    .sivo-card .button-secondary { padding: 20px 45px; font-size: 19px; }
 }
 
 /* Mobile */
@@ -2572,6 +2609,7 @@ html, body, .page-container {
     .sivo-card .highlight { font-size: 42px; margin-bottom: 35px; }
     .sivo-card p { font-size: 19px; margin-bottom: 45px; }
     .sivo-card .button { padding: 18px 45px; font-size: 19px; }
+    .sivo-card .button-secondary { padding: 16px 40px; font-size: 17px; }
 }
 
 @media (max-width: 480px) {
@@ -2588,6 +2626,7 @@ html, body, .page-container {
     .sivo-card .highlight { font-size: 28px; }
     .sivo-card p { font-size: 16px; }
     .sivo-card .button { padding: 14px 35px; font-size: 17px; }
+    .sivo-card .button-secondary { padding: 12px 30px; font-size: 15px; }
 }
 
 /* =========================
@@ -2678,7 +2717,10 @@ html, body, .page-container {
             <h1>Interactúa con tus datos.</h1>
             <span class="highlight">No esperes por la información, SIVO la trabaja por vos.</span>
             <p>Responde al instante con la información de tu negocio, tanto para uso interno como para atención a clientes.</p>
-            <a href="?vista=asistentes" class="button">Ver SIVO Digitales →</a>
+            <div class="sivo-card-actions">
+                <a href="?vista=asistentes" class="button">🗣️ Así habla con tus clientes →</a>
+                <a href="?vista=home#automatizacion" class="button-secondary">📊 Así te informa a vos →</a>
+            </div>
         </div>
     </div>
 
@@ -2961,8 +3003,11 @@ __BENEFITS_STANDALONE__
         .mas-alla-chat { display: none !important; }
     }
     </style>
-    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">SIVO va más allá del chat</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px;">No solo atendemos clientes — también automatizamos procesos internos, analizamos datos y eliminamos el trabajo manual de tu equipo.</p>
+    <div style="text-align:center; margin-bottom:14px;">
+        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">📊 PARA VOS, EL DUEÑO DEL NEGOCIO</span>
+    </div>
+    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Dos SIVO en uno: atiende a tus clientes y te informa a vos</h2>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px;">Hasta ahora viste cómo SIVO le habla a tus clientes. Pero el mismo sistema también te habla a vos — sobre tu facturación, tu stock y tus reportes internos.</p>
 
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 20px;">
         <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a); border-radius:22px; padding:28px; color:white;">
@@ -3459,8 +3504,11 @@ HTML_ASISTENTES = f"""{HTML_BASE}
 {HEADER}
 
     <div class="section">
+        <div style="text-align:center; margin-bottom:6px;">
+            <span style="display:inline-block; background:rgba(244,180,0,0.15); color:#7a5a00; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🗣️ PARA TUS CLIENTES</span>
+        </div>
         <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en SIVO.</div>
+        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás la otra cara de SIVO — la que te informa a vos sobre tu negocio? <a href="?vista=home#automatizacion" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
 
         <div class="cards">
 
