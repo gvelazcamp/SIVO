@@ -3820,6 +3820,19 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 @media (max-width: 768px) {{
     .precios-guia {{ grid-template-columns: 1fr; }}
 }}
+
+.plan-step {{
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: #1e40af;
+    background: rgba(30,64,175,0.08);
+    border: 1px solid rgba(30,64,175,0.2);
+    border-radius: 999px;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+}}
 </style>
 
 <div class="section" style="padding-top: 40px;">
@@ -3828,9 +3841,9 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">🗣️ ASISTENTES EXTERNOS</span>
             <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">📊 ASISTENTES INTERNOS</span>
         </div>
-        <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos mundos</h3>
+        <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos asistentes</h3>
         <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto 14px; line-height:1.6; color:#ffffff;">
-            No es solo un asistente que le responde a tus clientes. Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos — facturación, stock, ventas — y te contesta al instante.
+            No es solo un asistente que le responde a tus clientes. Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante.
         </p>
         <p style="font-size:14px; color:#bfdbfe; font-weight:600; margin:0;">
             🦾 Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
@@ -3840,7 +3853,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
     <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
         <p style="font-size: 15px; color: #666; line-height: 1.6;">
             <strong>Paso 1:</strong> Implementación inicial — dejamos tu asistente funcionando sobre tus datos.<br>
-            <strong>Paso 2:</strong> Servicio mensual — mantenimiento, mejoras y soporte continuo. Se cotiza según lo que necesite tu negocio.
+            <strong>Paso 2:</strong> Servicio mensual — una vez instalado, este servicio es recurrente: mantenimiento, mejoras y soporte continuo. Se cotiza según lo que necesite tu negocio.
         </p>
     </div>
 
@@ -3865,6 +3878,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
     <div class="pricing">
         <!-- IMPLEMENTACIÓN INICIAL -->
         <div class="plan">
+            <div class="plan-step">Punto de partida</div>
             <div class="plan-name">Implementación inicial</div>
             <div class="plan-desc">Dejamos tu asistente funcionando sobre tus datos reales</div>
             
@@ -3891,6 +3905,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 
         <!-- SERVICIO MENSUAL -->
         <div class="plan">
+            <div class="plan-step">Servicio recurrente · arranca después de la implementación</div>
             <div class="plan-name">Servicio mensual</div>
             <div class="plan-desc">Mantenimiento, mejoras y soporte continuo sobre tu asistente</div>
             
