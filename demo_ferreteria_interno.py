@@ -282,33 +282,36 @@ st.markdown("""
 
     .volver-flotante {
         position: fixed;
-        bottom: 18px;
-        left: 18px;
+        top: 14px;
+        left: 14px;
         background: #1e3a5f;
         color: white;
-        padding: 12px 18px;
-        border-radius: 999px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
         font-weight: 700;
-        font-size: 13px;
-        box-shadow: 0 8px 22px rgba(30, 58, 95, 0.4);
+        font-size: 17px;
+        box-shadow: 0 4px 14px rgba(30, 58, 95, 0.35);
         z-index: 999999;
         display: flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
         text-decoration: none;
         transition: transform 0.2s;
     }
 
     .volver-flotante:hover {
-        transform: translateY(-2px) scale(1.03);
+        transform: scale(1.08);
         color: white;
     }
 
     @media (max-width: 768px) {
         .volver-flotante {
-            bottom: 80px;
-            padding: 10px 14px;
-            font-size: 12px;
+            top: 10px;
+            left: 10px;
+            width: 34px;
+            height: 34px;
+            font-size: 15px;
         }
         .kpi-row {
             flex-wrap: wrap;
@@ -330,8 +333,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<a href="https://sivoia.store/?vista=home" target="_blank" class="volver-flotante">
-    ← Volver a SIVO
+<a href="https://sivoia.store/?vista=home" target="_blank" class="volver-flotante" title="Volver a SIVO">
+    ←
 </a>
 """, unsafe_allow_html=True)
 
