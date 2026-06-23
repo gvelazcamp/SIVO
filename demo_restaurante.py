@@ -248,36 +248,27 @@ st.markdown("""
         30% { transform: translateY(-6px); opacity: 1; }
     }
 
-    /* Footer / WhatsApp flotante */
-    .wsp-flotante {
-        position: fixed;
-        bottom: 18px;
-        left: 18px;
+    /* WhatsApp - botón inline junto a Reiniciar chat */
+    .wsp-inline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
         background: #25D366;
-        color: white;
-        padding: 12px 18px;
+        color: white !important;
+        padding: 10px 18px;
         border-radius: 999px;
         font-weight: 700;
-        font-size: 13px;
-        box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
-        z-index: 999999;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        font-size: 14px;
         text-decoration: none;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
         transition: transform 0.2s;
+        width: 100%;
     }
 
-    .wsp-flotante:hover {
-        transform: translateY(-2px) scale(1.03);
-    }
-
-    @media (max-width: 768px) {
-        .wsp-flotante {
-            bottom: 145px;
-            padding: 10px 14px;
-            font-size: 12px;
-        }
+    .wsp-inline:hover {
+        transform: translateY(-2px) scale(1.02);
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -291,12 +282,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Botón flotante de WhatsApp (refuerzo de que esto escala a producción real)
-st.markdown("""
-<a href="https://wa.me/5491112345678" target="_blank" class="wsp-flotante">
-    💬 Hablar por WhatsApp
-</a>
-""", unsafe_allow_html=True)
 
 BONUS_TEXTO = (
     "Este asistente toma pedidos, reservas y responde consultas en tiempo real.\n"
@@ -1193,6 +1178,12 @@ st.caption("🔌 En producción conecta con tu sistema de reservas, menús y pag
 
 # Botón para resetear conversación y carrito
 col1, col2 = st.columns([3, 1])
+with col1:
+    st.markdown("""
+    <a href="https://wa.me/5491112345678" target="_blank" class="wsp-inline">
+        💬 Hablar por WhatsApp
+    </a>
+    """, unsafe_allow_html=True)
 with col2:
     if st.button("🔄 Reiniciar chat"):
         st.session_state.messages = [
