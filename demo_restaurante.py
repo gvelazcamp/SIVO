@@ -1,16 +1,43 @@
 import os
+import json
 import time
+import re
+import unicodedata
 import streamlit as st
+import pandas as pd
 
 # Configuración de la página
 st.set_page_config(
-    page_title="SIVO Cocina",
-    page_icon="🍽️",
+    page_title="SIVO Ferretería",
+    page_icon="🔧",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
 
+# =========================
+# CARGA DE DATOS
+# =========================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@st.cache_data
+def cargar_datos():
+    with open(os.path.join(BASE_DIR, "productos.json"), "r", encoding="utf-8") as f:
+        productos = json.load(f)
+    with open(os.path.join(BASE_DIR, "ventas.json"), "r", encoding="utf-8") as f:
+        ventas = json.load(f)
+    df_prod = pd.DataFrame(productos)
+    df_ventas = pd.DataFrame(ventas)
+    df_ventas["fecha"] = pd.to_datetime(df_ventas["fecha"])
+    return df_prod, df_ventas
+
+df_prod, df_ventas = cargar_datos()
+
+MESES_NOMBRE = {1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio"}
+MESES_NUM = {v: k for k, v in MESES_NOMBRE.items()}
+
+# =========================
 # CSS personalizado
+# =========================
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -19,16 +46,14 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
 
-    /* Ocultar elementos de Streamlit */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
     .stApp {
-        background: linear-gradient(180deg, #fff8f3 0%, #ffffff 100%);
+        background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
     }
 
-    /* Estilos del chat */
     .stChatMessage {
         max-width: 800px;
         margin: 0 auto 4px auto;
@@ -50,15 +75,14 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Header personalizado - tema SIVO Cocina */
     .custom-header {
         text-align: center;
         padding: 32px 24px;
-        background: linear-gradient(135deg, #ff6b35 0%, #e74c3c 45%, #c0392b 100%);
+        background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 45%, #3b82f6 100%);
         border-radius: 20px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         color: white;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.25);
+        box-shadow: 0 10px 30px rgba(30, 64, 175, 0.25);
         position: relative;
         overflow: hidden;
     }
@@ -128,55 +152,58 @@ st.markdown("""
         100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
     }
 
-    /* Carrito flotante */
-    .carrito-flotante {
-        position: fixed;
-        top: 18px;
-        right: 18px;
-        background: linear-gradient(135deg, #ff6b35, #e74c3c);
-        color: white;
-        padding: 10px 18px;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 14px;
-        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.35);
-        z-index: 999999;
+    /* Dashboard de métricas (KPIs) */
+    .kpi-row {
         display: flex;
-        align-items: center;
-        gap: 8px;
-        animation: bounceIn 0.4s ease-out;
+        gap: 12px;
+        margin-bottom: 20px;
     }
 
-    @keyframes bounceIn {
-        0% { transform: scale(0.7); opacity: 0; }
-        60% { transform: scale(1.08); }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .carrito-flotante .badge-count {
+    .kpi-card {
+        flex: 1;
         background: white;
-        color: #e74c3c;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
+        border-radius: 16px;
+        padding: 16px 14px;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        border: 1px solid #e2e8f0;
+    }
+
+    .kpi-card .kpi-val {
+        font-size: 22px;
         font-weight: 800;
+        color: #1e3a5f;
+        line-height: 1.2;
     }
 
-    @media (max-width: 768px) {
-        .carrito-flotante {
-            top: auto;
-            bottom: 80px;
-            right: 14px;
-            padding: 8px 14px;
-            font-size: 13px;
-        }
+    .kpi-card .kpi-lbl {
+        font-size: 11px;
+        color: #6b7280;
+        font-weight: 600;
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
     }
 
-    /* Botones más profesionales */
+    /* Tabla de datos preview */
+    .data-preview-wrap {
+        background: white;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        border: 1px solid #e2e8f0;
+        margin-bottom: 24px;
+    }
+
+    .data-preview-wrap h4 {
+        font-size: 13px;
+        font-weight: 800;
+        color: #374151;
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+
     div[data-testid="column"] > div > div > button {
         width: 100%;
         border-radius: 12px;
@@ -184,25 +211,20 @@ st.markdown("""
         font-weight: 600;
         font-size: 15px;
         transition: all 0.2s ease;
-        border: 1.5px solid #f0e4dc;
+        border: 1.5px solid #dbeafe;
         background: white;
         color: #374151;
         box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
     div[data-testid="column"] > div > div > button:hover {
-        background: linear-gradient(135deg, #ff6b35, #e74c3c);
-        border-color: #e74c3c;
+        background: linear-gradient(135deg, #1e40af, #3b82f6);
+        border-color: #3b82f6;
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(231, 76, 60, 0.3);
+        box-shadow: 0 8px 18px rgba(59, 130, 246, 0.3);
     }
 
-    div[data-testid="column"] > div > div > button:active {
-        transform: translateY(0) scale(0.98);
-    }
-
-    /* Mejorar los caption de ejemplos */
     .stCaption {
         color: #6b7280 !important;
         font-size: 14px !important;
@@ -214,17 +236,8 @@ st.markdown("""
         font-size: 15px;
         color: #111827;
         margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
     }
 
-    /* Avatar custom del bot */
-    [data-testid="stChatMessageAvatarCustom"] {
-        background: linear-gradient(135deg, #ff6b35, #e74c3c) !important;
-    }
-
-    /* Indicador "escribiendo..." */
     .typing-indicator {
         display: inline-flex;
         align-items: center;
@@ -235,7 +248,7 @@ st.markdown("""
     .typing-indicator span {
         width: 7px;
         height: 7px;
-        background: #e74c3c;
+        background: #3b82f6;
         border-radius: 50%;
         animation: typingBounce 1.2s infinite ease-in-out;
     }
@@ -248,969 +261,483 @@ st.markdown("""
         30% { transform: translateY(-6px); opacity: 1; }
     }
 
-    /* WhatsApp - botón inline junto a Reiniciar chat */
-    .wsp-inline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        background: #25D366;
-        color: white !important;
+    .tabla-datos {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin: 10px 0;
+    }
+    .tabla-datos th {
+        background: #eff6ff;
+        color: #1e3a5f;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 700;
+        border-bottom: 2px solid #dbeafe;
+    }
+    .tabla-datos td {
+        padding: 8px 10px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .volver-flotante {
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        background: #1e3a5f;
+        color: white;
         padding: 10px 18px;
         border-radius: 999px;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 13px;
+        box-shadow: 0 4px 14px rgba(30, 58, 95, 0.35);
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         text-decoration: none;
-        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
         transition: transform 0.2s;
-        width: 100%;
     }
 
-    .wsp-inline:hover {
-        transform: translateY(-2px) scale(1.02);
-        color: white !important;
+    .volver-flotante .volver-texto {
+        display: inline;
     }
 
-    .wsp-inline-wrap {
-        display: block;
+    .volver-flotante:hover {
+        transform: scale(1.05);
+        color: white;
     }
 
     @media (max-width: 768px) {
-        .wsp-inline-wrap {
-            display: none !important;
+        .volver-flotante {
+            top: 10px;
+            left: 10px;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 15px;
+            justify-content: center;
+        }
+        .volver-flotante .volver-texto {
+            display: none;
+        }
+        .kpi-row {
+            flex-wrap: wrap;
+        }
+        .kpi-card {
+            min-width: 45%;
         }
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Header personalizado
+# Header
 st.markdown("""
 <div class="custom-header">
-    <div class="custom-header-badge"><span class="status-dot"></span>EN VIVO · DEMO INTERACTIVO</div>
-    <h1>🍝 SIVO Cocina</h1>
-    <p>Tu mesa, tu pedido, tu experiencia. Atendemos 24/7 sin descanso.</p>
+    <div class="custom-header-badge"><span class="status-dot"></span>EN VIVO · DATOS REALES, NO SIMULADOS</div>
+    <h1>🔧 SIVO Ferretería</h1>
+    <p>Preguntale a tu negocio. Esto consulta una base de datos real de 6 meses de ventas.</p>
 </div>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<a href="https://sivoia.store/?vista=home" target="_blank" class="volver-flotante" title="Volver a SIVO">
+    ← <span class="volver-texto">Volver a SIVO</span>
+</a>
+""", unsafe_allow_html=True)
 
-BONUS_TEXTO = (
-    "Este asistente toma pedidos, reservas y responde consultas en tiempo real.\n"
-    "Funciona como un mesero virtual que nunca descansa."
-)
+# =========================
+# DASHBOARD DE DATOS (vista previa, antes del chat)
+# =========================
+total_facturado = df_ventas["monto"].sum()
+total_ventas = len(df_ventas)
+total_productos = len(df_prod)
+ticket_promedio = df_ventas["monto"].mean()
 
-def maybe_append_bonus_once():
-    if not st.session_state.get("bonus_shown", False):
-        st.session_state.messages.append({
-            "role": "assistant",
-            "content": f"💡 **{BONUS_TEXTO}**",
-            "show_buttons": None
-        })
-        st.session_state.bonus_shown = True
+st.markdown(f"""
+<div class="kpi-row">
+    <div class="kpi-card">
+        <div class="kpi-val">${total_facturado:,.0f}</div>
+        <div class="kpi-lbl">Facturado (6 meses)</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-val">{total_ventas:,}</div>
+        <div class="kpi-lbl">Ventas registradas</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-val">{total_productos}</div>
+        <div class="kpi-lbl">Productos en catálogo</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-val">${ticket_promedio:,.0f}</div>
+        <div class="kpi-lbl">Ticket promedio</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-# Inicializar el chat y carrito
+with st.expander("📊 Ver muestra de los datos reales (productos y ventas)"):
+    st.markdown("**Catálogo de productos (muestra):**")
+    st.dataframe(df_prod.sample(8, random_state=1)[["nombre", "categoria", "precio", "stock"]], hide_index=True, use_container_width=True)
+    st.markdown("**Registros de ventas (muestra):**")
+    st.dataframe(
+        df_ventas.sample(8, random_state=2)[["fecha", "producto_nombre", "cantidad", "monto", "cliente"]],
+        hide_index=True, use_container_width=True
+    )
+    st.caption(f"Base completa: {len(df_prod)} productos · {len(df_ventas)} registros de ventas de enero a junio 2026.")
+
+# =========================
+# UTILIDADES DE NORMALIZACIÓN
+# =========================
+def normalizar(texto):
+    texto = texto.lower()
+    texto = unicodedata.normalize("NFKD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    return texto
+
+def encontrar_productos_multiples(pregunta_norm):
+    """Busca TODOS los productos cuyo nombre comparta al menos 1 palabra clave con la pregunta.
+    Útil para términos genéricos en plural (ej: "martillos" -> todos los martillos)."""
+    candidatos = []
+    for _, row in df_prod.iterrows():
+        nombre_norm = normalizar(row["nombre"])
+        palabras_prod = set(re.findall(r"[a-z0-9]+", nombre_norm))
+        palabras_prod -= {"de", "x", "1", "2", "3", "4", "para"}
+        score = sum(1 for palabra in palabras_prod if len(palabra) > 3 and palabra in pregunta_norm)
+        if score >= 1:
+            candidatos.append((score, row))
+    if not candidatos:
+        return None
+    candidatos.sort(key=lambda x: -x[0])
+    mejor_score = candidatos[0][0]
+    # Devolver todos los que igualan al mejor score (ej: ambos modelos de martillo)
+    ids_coincidentes = [row["id"] for score, row in candidatos if score == mejor_score]
+    return df_prod[df_prod["id"].isin(ids_coincidentes)]
+
+def encontrar_categoria(pregunta_norm):
+    categorias = df_prod["categoria"].unique()
+    for cat in categorias:
+        cat_norm = normalizar(cat)
+        palabras_cat = re.findall(r"[a-z]+", cat_norm)
+        if any(p in pregunta_norm for p in palabras_cat if len(p) > 4):
+            return cat
+    # Sinónimos comunes
+    sinonimos = {
+        "tornillo": "Tornillería", "tornillos": "Tornillería",
+        "pintura": "Pintura", "pinturas": "Pintura",
+        "electric": "Electricidad",
+        "plomeria": "Plomería", "plomería": "Plomería", "cano": "Plomería",
+        "seguridad": "Seguridad",
+        "cerrajeria": "Cerrajería", "cerrajería": "Cerrajería",
+    }
+    for k, v in sinonimos.items():
+        if k in pregunta_norm:
+            return v
+    return None
+
+def encontrar_meses(pregunta_norm):
+    encontrados = []
+    for nombre, num in MESES_NUM.items():
+        if nombre in pregunta_norm:
+            encontrados.append(num)
+    return encontrados
+
+# =========================
+# MOTOR DE RESPUESTAS (consulta REAL sobre los datos)
+# =========================
+def responder(pregunta):
+    p = normalizar(pregunta)
+    meses_mencionados = encontrar_meses(p)
+    productos_match = encontrar_productos_multiples(p)
+    categoria = encontrar_categoria(p) if productos_match is None else None
+
+    es_comparacion = any(w in p for w in ["compara", "comparar", "versus", "vs", "diferencia entre"])
+    es_ranking = any(w in p for w in ["mas vendido", "más vendido", "top", "ranking", "mejor producto", "que mas se vende", "cual vendo mas"])
+    es_stock = any(w in p for w in ["stock", "queda", "quedan", "inventario", "disponible", "hay de"])
+    es_facturacion = any(w in p for w in ["factur", "vendi", "vendí", "venta", "ventas", "cuanto vendi", "ingreso"])
+
+    # ===== 1) COMPARACIÓN ENTRE MESES =====
+    if es_comparacion and len(meses_mencionados) >= 2:
+        m1, m2 = meses_mencionados[0], meses_mencionados[1]
+        v1 = df_ventas[df_ventas["mes"] == m1]["monto"].sum()
+        v2 = df_ventas[df_ventas["mes"] == m2]["monto"].sum()
+        diff_pct = ((v1 - v2) / v2 * 100) if v2 else 0
+        signo = "📈" if diff_pct >= 0 else "📉"
+        return (
+            f"📊 **Comparativa {MESES_NOMBRE[m1].capitalize()} vs {MESES_NOMBRE[m2].capitalize()}:**\n\n"
+            f"<table class='tabla-datos'>"
+            f"<tr><th>Mes</th><th>Facturación</th></tr>"
+            f"<tr><td>{MESES_NOMBRE[m1].capitalize()}</td><td>${v1:,.0f}</td></tr>"
+            f"<tr><td>{MESES_NOMBRE[m2].capitalize()}</td><td>${v2:,.0f}</td></tr>"
+            f"</table>\n\n"
+            f"{signo} Variación: **{diff_pct:+.1f}%**"
+        )
+
+    # ===== 2) STOCK de producto(s) específico(s) =====
+    if es_stock and productos_match is not None:
+        if len(productos_match) == 1:
+            producto = productos_match.iloc[0]
+            return (
+                f"📦 **Stock de {producto['nombre']}:**\n\n"
+                f"Quedan **{producto['stock']} unidades** disponibles.\n"
+                f"Precio unitario: ${producto['precio']:,.0f}\n"
+                f"Categoría: {producto['categoria']}"
+            )
+        else:
+            filas = "".join(
+                f"<tr><td>{r['nombre']}</td><td>{r['stock']}</td></tr>"
+                for _, r in productos_match.iterrows()
+            )
+            total_stock = productos_match["stock"].sum()
+            return (
+                f"📦 **Stock encontrado ({len(productos_match)} variantes):**\n\n"
+                f"<table class='tabla-datos'><tr><th>Producto</th><th>Stock</th></tr>{filas}</table>\n\n"
+                f"Total combinado: **{int(total_stock)} unidades**"
+            )
+
+    # ===== 3) STOCK de una categoría =====
+    if es_stock and categoria is not None:
+        sub = df_prod[df_prod["categoria"] == categoria].sort_values("stock")
+        filas = "".join(
+            f"<tr><td>{r['nombre']}</td><td>{r['stock']}</td></tr>"
+            for _, r in sub.head(8).iterrows()
+        )
+        return (
+            f"📦 **Stock en categoría {categoria}:**\n\n"
+            f"<table class='tabla-datos'><tr><th>Producto</th><th>Stock</th></tr>{filas}</table>"
+        )
+
+    # ===== 4) RANKING (producto más vendido) =====
+    if es_ranking:
+        df_filtro = df_ventas
+        periodo_txt = "en todo el período"
+        if meses_mencionados:
+            df_filtro = df_ventas[df_ventas["mes"].isin(meses_mencionados)]
+            nombres_meses = " y ".join(MESES_NOMBRE[m].capitalize() for m in meses_mencionados)
+            periodo_txt = f"en {nombres_meses}"
+        if categoria:
+            df_filtro = df_filtro[df_filtro["categoria"] == categoria]
+
+        ranking = (
+            df_filtro.groupby("producto_nombre")
+            .agg(cantidad=("cantidad", "sum"), monto=("monto", "sum"))
+            .sort_values("cantidad", ascending=False)
+            .head(5)
+        )
+        if ranking.empty:
+            return f"No encontré ventas {periodo_txt} con esos filtros. Probá con otro mes o categoría."
+
+        filas = "".join(
+            f"<tr><td>{i+1}</td><td>{nombre}</td><td>{int(row['cantidad'])}</td><td>${row['monto']:,.0f}</td></tr>"
+            for i, (nombre, row) in enumerate(ranking.iterrows())
+        )
+        return (
+            f"🏆 **Top 5 productos más vendidos {periodo_txt}:**\n\n"
+            f"<table class='tabla-datos'><tr><th>#</th><th>Producto</th><th>Unidades</th><th>Facturado</th></tr>{filas}</table>"
+        )
+
+    # ===== 5) Venta/facturación de producto(s) específico(s) =====
+    if productos_match is not None and (es_facturacion or meses_mencionados or not (es_stock or es_ranking)):
+        ids_prod = productos_match["id"].tolist()
+        df_filtro = df_ventas[df_ventas["producto_id"].isin(ids_prod)]
+        periodo_txt = "en todo el período (6 meses)"
+        if meses_mencionados:
+            df_filtro = df_filtro[df_filtro["mes"].isin(meses_mencionados)]
+            nombres_meses = " y ".join(MESES_NOMBRE[m].capitalize() for m in meses_mencionados)
+            periodo_txt = f"en {nombres_meses}"
+
+        cantidad_total = df_filtro["cantidad"].sum()
+        monto_total = df_filtro["monto"].sum()
+        num_operaciones = len(df_filtro)
+
+        nombre_ref = productos_match.iloc[0]["nombre"] if len(productos_match) == 1 else f"{len(productos_match)} variantes encontradas"
+
+        if num_operaciones == 0:
+            return f"No registré ventas de **{nombre_ref}** {periodo_txt}."
+
+        detalle_variantes = ""
+        if len(productos_match) > 1:
+            por_producto = df_filtro.groupby("producto_nombre").agg(cantidad=("cantidad","sum"), monto=("monto","sum"))
+            filas = "".join(
+                f"<tr><td>{nombre}</td><td>{int(row['cantidad'])}</td><td>${row['monto']:,.0f}</td></tr>"
+                for nombre, row in por_producto.iterrows()
+            )
+            detalle_variantes = f"<table class='tabla-datos'><tr><th>Variante</th><th>Unidades</th><th>Facturado</th></tr>{filas}</table>\n\n"
+
+        return (
+            f"🔧 **{nombre_ref}** {periodo_txt}:\n\n"
+            f"{detalle_variantes}"
+            f"• Unidades vendidas (total): **{int(cantidad_total)}**\n"
+            f"• Facturado: **${monto_total:,.0f}**\n"
+            f"• Operaciones: {num_operaciones}"
+        )
+
+    # ===== 6) Facturación general (con o sin mes/categoría) =====
+    if es_facturacion or meses_mencionados or categoria:
+        df_filtro = df_ventas
+        periodo_txt = "en los 6 meses registrados"
+        if meses_mencionados:
+            df_filtro = df_filtro[df_filtro["mes"].isin(meses_mencionados)]
+            nombres_meses = " y ".join(MESES_NOMBRE[m].capitalize() for m in meses_mencionados)
+            periodo_txt = f"en {nombres_meses}"
+        if categoria:
+            df_filtro = df_filtro[df_filtro["categoria"] == categoria]
+            periodo_txt += f" (categoría {categoria})"
+
+        if df_filtro.empty:
+            return f"No encontré ventas {periodo_txt}."
+
+        monto_total = df_filtro["monto"].sum()
+        cantidad_ops = len(df_filtro)
+        return (
+            f"💰 **Facturación {periodo_txt}:**\n\n"
+            f"• Total facturado: **${monto_total:,.0f}**\n"
+            f"• Cantidad de ventas: {cantidad_ops}\n"
+            f"• Ticket promedio: ${(monto_total/cantidad_ops if cantidad_ops else 0):,.0f}"
+        )
+
+    # ===== Sin match =====
+    return None
+
+def get_bot_response(prompt):
+    resultado = responder(prompt)
+    if resultado:
+        return {"content": resultado, "buttons": "ayuda"}
+    return {
+        "content": (
+            "No encontré esa información con precisión 🤔. Podés preguntarme cosas como:\n\n"
+            "• ¿Cuánto facturé en marzo?\n"
+            "• ¿Cuántos martillos vendí en abril?\n"
+            "• ¿Cuál es mi producto más vendido?\n"
+            "• ¿Qué stock tengo de tornillos?\n"
+            "• Comparame marzo con abril\n\n"
+            "Tip: mencioná el nombre del producto, la categoría o el mes para que pueda buscarlo en los datos reales."
+        ),
+        "buttons": "ayuda"
+    }
+
+# =========================
+# CHAT
+# =========================
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": """¡Bienvenido a SIVO Cocina! 👋
+            "content": """¡Hola! 👋 Soy SIVO, conectado a la base de datos real de esta ferretería.
 
-Soy tu asistente virtual y estoy para ayudarte.
+Tengo **6 meses de ventas reales** (959 operaciones, 84 productos). No tengo respuestas preparadas: calculo todo en el momento sobre los datos.
 
-**¿Qué necesitás hoy?**""",
+**Probá preguntarme algo:**""",
             "show_buttons": "inicial"
         }
     ]
 
-if "button_clicked" not in st.session_state:
-    st.session_state.button_clicked = False
+BOT_AVATAR = "🔧"
 
-if "bonus_shown" not in st.session_state:
-    st.session_state.bonus_shown = False
-
-if "carrito" not in st.session_state:
-    st.session_state.carrito = []
-
-if "total_carrito" not in st.session_state:
-    st.session_state.total_carrito = 0
-
-# Función para agregar al carrito
-def agregar_al_carrito(item, precio):
-    st.session_state.carrito.append({"item": item, "precio": precio})
-    st.session_state.total_carrito += precio
-
-# Función para obtener carrito como texto
-def get_carrito_text():
-    if not st.session_state.carrito:
-        return "🛒 **Tu carrito está vacío**"
-    
-    texto = "🛒 **Tu pedido actual:**\n\n"
-    for idx, item in enumerate(st.session_state.carrito, 1):
-        texto += f"{idx}. {item['item']} - ${item['precio']:,}\n"
-    texto += f"\n**Total: ${st.session_state.total_carrito:,}**"
-    return texto
-
-# Función para agregar mensaje y ocultar botones
-def add_message_and_hide_buttons(
-    user_msg,
-    bot_response,
-    next_buttons=None,
-    image_path=None,
-    show_bonus_once=False
-):
+def add_message_and_hide_buttons(user_msg, bot_response, next_buttons=None):
     st.session_state.messages.append({"role": "user", "content": user_msg})
 
-    # Simular "escribiendo..." para dar sensación de respuesta inteligente en vivo
-    with st.chat_message("assistant", avatar="🍝"):
+    with st.chat_message("assistant", avatar=BOT_AVATAR):
         placeholder = st.empty()
         placeholder.markdown("""
         <div class="typing-indicator">
             <span></span><span></span><span></span>
         </div>
         """, unsafe_allow_html=True)
-        time.sleep(0.7)
+        time.sleep(0.6)
         placeholder.empty()
 
-    bot_msg = {
+    st.session_state.messages.append({
         "role": "assistant",
         "content": bot_response,
         "show_buttons": next_buttons
-    }
-
-    if image_path:
-        bot_msg["image"] = image_path
-
-    st.session_state.messages.append(bot_msg)
-
-    if show_bonus_once:
-        maybe_append_bonus_once()
-
-    st.session_state.button_clicked = True
-
-# =========================
-# Función para obtener respuesta del bot
-# =========================
-def get_bot_response(prompt):
-    p = (prompt or "").lower()
-
-    # 1) Ver menú completo
-    if any(word in p for word in ["menu", "menú", "carta", "que tienen", "qué tienen", "comida", "platos"]):
-        return {
-            "content": """📋 **Nuestro Menú**
-
-**🍝 PASTAS CASERAS**
-• Ravioles de ricota y espinaca - $2.800
-• Ñoquis con salsa 4 quesos - $2.600
-• Fetuccini Alfredo - $2.900
-• Lasagna boloñesa - $3.200
-
-**🍕 PIZZAS AL HORNO DE LEÑA**
-• Margherita (muzza, tomate, albahaca) - $2.400
-• Napolitana (muzza, tomate, ajo, anchoas) - $2.600
-• Cuatro quesos - $2.800
-• Prosciutto e funghi - $3.000
-
-**🥗 ENSALADAS**
-• Caesar con pollo - $2.200
-• Caprese (tomate, mozza, albahaca) - $1.900
-• Mixta de la casa - $1.600
-
-**🍷 BEBIDAS**
-• Vino de la casa (copa) - $800
-• Gaseosas - $600
-• Agua mineral - $500
-
-¿Querés hacer un pedido o reservar una mesa?""",
-            "buttons": "menu_visto",
-            "bonus_once": True
-        }
-
-    # 2) Hacer pedido / delivery
-    if any(word in p for word in ["pedir", "pedido", "delivery", "domicilio", "llevar", "quiero", "ordeno"]):
-        return {
-            "content": """🛵 **Hacé tu pedido**
-
-**Opciones de entrega:**
-• 🏠 **Delivery** (35-45 min) - Envío gratis en pedidos +$3.000
-• 🚶 **Take Away** (15-20 min) - Retirás en el local
-
-**🔥 Lo más pedido hoy:**
-• Pizza Napolitana + Coca Cola - $3.000
-• Ravioles + Ensalada Caesar - $4.200
-• Lasagna + Vino - $3.800
-
-¿Querés armar tu pedido o elegir una de estas opciones?""",
-            "buttons": "pedido_opciones"
-        }
-
-    # 3) Reservar mesa
-    if any(word in p for word in ["reservar", "reserva", "mesa", "lugar", "turno", "horario"]):
-        return {
-            "content": """📅 **Reservá tu mesa**
-
-**Horarios disponibles HOY (Miércoles 28/01):**
-
-⏰ **Almuerzo (12:00 - 15:30)**
-• 12:30 hs - ✅ Disponible
-• 13:00 hs - ✅ Disponible
-• 13:30 hs - ⚠️ Pocas mesas
-• 14:00 hs - ✅ Disponible
-
-⏰ **Cena (20:00 - 23:30)**
-• 20:00 hs - ✅ Disponible
-• 20:30 hs - ✅ Disponible
-• 21:00 hs - ⚠️ Pocas mesas
-• 21:30 hs - ❌ Completo
-• 22:00 hs - ✅ Disponible
-
-¿Para cuántas personas y qué horario preferís?""",
-            "buttons": "reserva_opciones"
-        }
-
-    # 4) Consultas sobre ingredientes/alérgenos
-    if any(word in p for word in ["gluten", "celiaco", "celíaco", "vegano", "vegetariano", "alergia", "alérgico", "sin tacc"]):
-        return {
-            "content": """🌾 **Opciones para dietas especiales**
-
-**SIN GLUTEN / CELÍACOS:**
-✅ Todas nuestras pizzas disponibles con masa sin TACC
-✅ Risotto de hongos
-✅ Ensaladas (todas)
-✅ Pollo a la parrilla con guarnición
-
-**VEGETARIANO:**
-✅ Ravioles de ricota y espinaca
-✅ Ñoquis con salsa de tomate
-✅ Pizza Margherita
-✅ Todas las ensaladas
-
-**VEGANO:**
-✅ Pizza con vegetales (sin queso)
-✅ Ensalada mixta
-✅ Pasta con salsa pomodoro
-
-**⚠️ ALÉRGENOS:** Trabajamos con frutos secos, lácteos y mariscos. Consultanos por cada plato.
-
-¿Tenés alguna restricción específica?""",
-            "buttons": "especial_opciones"
-        }
-
-    # 5) Preguntar por precio específico
-    if any(word in p for word in ["cuanto", "cuánto", "precio", "vale", "cuesta", "sale"]) and any(word in p for word in ["pizza", "pasta", "lasagna", "ravioles"]):
-        if "pizza" in p:
-            return {
-                "content": """🍕 **Precios de Pizzas**
-
-• Margherita - $2.400
-• Napolitana - $2.600
-• Cuatro quesos - $2.800
-• Prosciutto e funghi - $3.000
-• Especial de la casa - $3.200
-
-**Todas son 8 porciones · Horno de leña**
-
-¿Querés agregar alguna al pedido?""",
-                "buttons": "pizza_opciones"
-            }
-        elif "pasta" in p or "ravioles" in p:
-            return {
-                "content": """🍝 **Precios de Pastas**
-
-• Ravioles de ricota y espinaca - $2.800
-• Ñoquis con salsa 4 quesos - $2.600
-• Fetuccini Alfredo - $2.900
-• Lasagna boloñesa - $3.200
-
-**Todas incluyen pan de la casa**
-
-¿Querés agregar alguna al pedido?""",
-                "buttons": "pasta_opciones"
-            }
-
-    # 6) Consulta de horarios
-    if any(word in p for word in ["horario", "horarios", "abierto", "abren", "cierran", "atienden"]):
-        return {
-            "content": """🕐 **Nuestros horarios**
-
-**Lunes a Jueves:**
-• 12:00 - 15:30 (almuerzo)
-• 20:00 - 23:30 (cena)
-
-**Viernes y Sábado:**
-• 12:00 - 16:00 (almuerzo)
-• 20:00 - 01:00 (cena)
-
-**Domingo:**
-• 12:00 - 16:00 (almuerzo)
-• 20:00 - 23:00 (cena)
-
-📍 **Ubicación:** Av. Italia 2345, Montevideo
-📞 **Tel:** 2345-6789
-
-¿Querés hacer una reserva?""",
-            "buttons": "horarios_accion"
-        }
-
-    # 7) Promociones / Descuentos
-    if any(word in p for word in ["promo", "promocion", "promoción", "descuento", "oferta", "especial"]):
-        return {
-            "content": """🎉 **Promociones vigentes**
-
-**🍕 Martes y Miércoles de Pizza**
-• 2x1 en pizzas seleccionadas
-• Solo para consumo en el local
-• No acumulable con otras promos
-
-**💰 Menu ejecutivo (Lun-Vie 12-15hs)**
-• Entrada + Plato principal + Postre + Bebida
-• $2.500 por persona
-• Opciones rotan diariamente
-
-**🍷 Happy Hour (18-20hs)**
-• 2x1 en copas de vino
-• 30% OFF en tablas de picada
-
-**📱 Seguinos en Instagram @latrattoriamvd** para más promos!
-
-¿Querés aprovechar alguna?""",
-            "buttons": "promo_opciones"
-        }
-
-    # 8) Formas de pago
-    if any(word in p for word in ["pago", "pagar", "tarjeta", "efectivo", "transferencia"]):
-        return {
-            "content": """💳 **Formas de pago**
-
-**En el local:**
-✅ Efectivo (pesos uruguayos)
-✅ Tarjetas de débito
-✅ Tarjetas de crédito (todas)
-✅ Transferencia bancaria
-✅ MercadoPago / PedidosYa
-
-**Para delivery:**
-✅ Efectivo al recibir
-✅ Tarjeta de crédito/débito (por teléfono)
-✅ Transferencia previa
-✅ MercadoPago
-
-**💡 Aceptamos todas las tarjetas en hasta 6 cuotas sin interés**
-
-¿Querés hacer tu pedido?""",
-            "buttons": "pago_accion"
-        }
-
-    # Respuesta por defecto
-    return {
-        "content": """No estoy seguro de entender bien tu consulta 🤔
-
-**¿Querés que te ayude con alguna de estas opciones?**
-
-• 📋 Ver el menú completo
-• 🛵 Hacer un pedido (delivery/take away)
-• 📅 Reservar una mesa
-• 🌾 Consultar opciones sin gluten/veganas
-• 💰 Ver promociones vigentes
-• 💳 Formas de pago
-
-O escribime directamente lo que necesitás!""",
-        "buttons": "ayuda"
-    }
-
-# =========================
-# Carrito flotante (siempre visible si hay items)
-# =========================
-if st.session_state.carrito:
-    cantidad_items = len(st.session_state.carrito)
-    st.markdown(f"""
-    <div class="carrito-flotante">
-        <span class="badge-count">{cantidad_items}</span>
-        🛒 ${st.session_state.total_carrito:,.0f}
-    </div>
-    """, unsafe_allow_html=True)
-
-# =========================
-# Mostrar mensajes del chat
-# =========================
-BOT_AVATAR = "🍝"
+    })
 
 for i, message in enumerate(st.session_state.messages):
     avatar = BOT_AVATAR if message["role"] == "assistant" else None
     with st.chat_message(message["role"], avatar=avatar):
-        st.markdown(message["content"])
+        st.markdown(message["content"], unsafe_allow_html=True)
 
-        # Mostrar imagen si existe
-        if "image" in message and message["image"]:
-            st.image(message["image"], use_container_width=True)
-
-        # Mostrar botones según el tipo
-        if message.get("show_buttons"):
-            button_type = message["show_buttons"]
-
-            # Botones iniciales
-            if button_type == "inicial":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📋 Ver menú", key=f"btn_menu_{i}", use_container_width=True):
-                        response = get_bot_response("menu")
-                        add_message_and_hide_buttons(
-                            "Ver menú completo",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🛵 Hacer pedido", key=f"btn_pedido_{i}", use_container_width=True):
-                        response = get_bot_response("pedido")
-                        add_message_and_hide_buttons(
-                            "Quiero hacer un pedido",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📅 Reservar mesa", key=f"btn_reserva_{i}", use_container_width=True):
-                        response = get_bot_response("reservar")
-                        add_message_and_hide_buttons(
-                            "Quiero reservar una mesa",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🎉 Ver promos", key=f"btn_promo_{i}", use_container_width=True):
-                        response = get_bot_response("promociones")
-                        add_message_and_hide_buttons(
-                            "¿Qué promociones tienen?",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-            # Después de ver el menú
-            elif button_type == "menu_visto":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("🛵 Hacer pedido", key=f"btn_pedido_menu_{i}", use_container_width=True):
-                        response = get_bot_response("pedido")
-                        add_message_and_hide_buttons(
-                            "Quiero hacer un pedido",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("📅 Reservar mesa", key=f"btn_reserva_menu_{i}", use_container_width=True):
-                        response = get_bot_response("reservar")
-                        add_message_and_hide_buttons(
-                            "Quiero reservar una mesa",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-            # Opciones de pedido
-            elif button_type == "pedido_opciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("🍕 Pizzas", key=f"btn_pizzas_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Quiero ver pizzas",
-                            """🍕 **Nuestras Pizzas** (8 porciones - Horno de leña)
-
-• Margherita (muzza, tomate, albahaca) - $2.400
-• Napolitana (muzza, tomate, ajo, anchoas) - $2.600
-• Cuatro quesos - $2.800
-• Prosciutto e funghi - $3.000
-• Especial de la casa - $3.200
-
-¿Cuál querés agregar al pedido?""",
-                            "pizza_opciones"
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🍝 Pastas", key=f"btn_pastas_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Quiero ver pastas",
-                            """🍝 **Nuestras Pastas** (Caseras · Con pan de la casa)
-
-• Ravioles de ricota y espinaca - $2.800
-• Ñoquis con salsa 4 quesos - $2.600
-• Fetuccini Alfredo - $2.900
-• Lasagna boloñesa - $3.200
-
-¿Cuál querés agregar al pedido?""",
-                            "pasta_opciones"
-                        )
-                        st.rerun()
-
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("🥗 Ensaladas", key=f"btn_ensaladas_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Quiero ver ensaladas",
-                            """🥗 **Nuestras Ensaladas**
-
-• Caesar con pollo - $2.200
-• Caprese (tomate, mozza, albahaca) - $1.900
-• Mixta de la casa - $1.600
-
-¿Cuál querés agregar?""",
-                            "ensalada_opciones"
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("📋 Ver menú completo", key=f"btn_menu_completo_{i}", use_container_width=True):
-                        response = get_bot_response("menu")
-                        add_message_and_hide_buttons(
-                            "Ver menú completo",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-            # Opciones de pizzas (para agregar al carrito)
-            elif button_type == "pizza_opciones":
-                if st.button("🍕 Margherita ($2.400)", key=f"btn_margherita_{i}", use_container_width=True):
-                    agregar_al_carrito("Pizza Margherita", 2400)
-                    add_message_and_hide_buttons(
-                        "Agregar Pizza Margherita",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
+        if message.get("show_buttons") == "inicial":
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("💰 ¿Cuánto facturé en marzo?", key=f"btn1_{i}", use_container_width=True):
+                    r = get_bot_response("¿Cuánto facturé en marzo?")
+                    add_message_and_hide_buttons("¿Cuánto facturé en marzo?", r["content"], r.get("buttons"))
+                    st.rerun()
+            with col2:
+                if st.button("🏆 ¿Mi producto más vendido?", key=f"btn2_{i}", use_container_width=True):
+                    r = get_bot_response("¿Cuál es mi producto más vendido?")
+                    add_message_and_hide_buttons("¿Cuál es mi producto más vendido?", r["content"], r.get("buttons"))
+                    st.rerun()
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("📦 Stock de tornillos", key=f"btn3_{i}", use_container_width=True):
+                    r = get_bot_response("¿Qué stock tengo de tornillos?")
+                    add_message_and_hide_buttons("¿Qué stock tengo de tornillos?", r["content"], r.get("buttons"))
+                    st.rerun()
+            with col2:
+                if st.button("📈 Comparar marzo vs abril", key=f"btn4_{i}", use_container_width=True):
+                    r = get_bot_response("Comparame marzo con abril")
+                    add_message_and_hide_buttons("Comparame marzo con abril", r["content"], r.get("buttons"))
                     st.rerun()
 
-                if st.button("🍕 Napolitana ($2.600)", key=f"btn_napolitana_{i}", use_container_width=True):
-                    agregar_al_carrito("Pizza Napolitana", 2600)
-                    add_message_and_hide_buttons(
-                        "Agregar Pizza Napolitana",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
-                    st.rerun()
-
-                if st.button("🍕 Cuatro Quesos ($2.800)", key=f"btn_4quesos_{i}", use_container_width=True):
-                    agregar_al_carrito("Pizza Cuatro Quesos", 2800)
-                    add_message_and_hide_buttons(
-                        "Agregar Pizza Cuatro Quesos",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
-                    st.rerun()
-
-            # Opciones de pastas
-            elif button_type == "pasta_opciones":
-                if st.button("🍝 Ravioles ($2.800)", key=f"btn_ravioles_{i}", use_container_width=True):
-                    agregar_al_carrito("Ravioles de ricota y espinaca", 2800)
-                    add_message_and_hide_buttons(
-                        "Agregar Ravioles",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
-                    st.rerun()
-
-                if st.button("🍝 Ñoquis ($2.600)", key=f"btn_noquis_{i}", use_container_width=True):
-                    agregar_al_carrito("Ñoquis con salsa 4 quesos", 2600)
-                    add_message_and_hide_buttons(
-                        "Agregar Ñoquis",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
-                    st.rerun()
-
-                if st.button("🍝 Lasagna ($3.200)", key=f"btn_lasagna_{i}", use_container_width=True):
-                    agregar_al_carrito("Lasagna boloñesa", 3200)
-                    add_message_and_hide_buttons(
-                        "Agregar Lasagna",
-                        f"""✅ ¡Agregado al pedido!
-
-{get_carrito_text()}
-
-¿Querés agregar algo más o finalizar el pedido?""",
-                        "carrito_acciones"
-                    )
-                    st.rerun()
-
-            # Acciones del carrito
-            elif button_type == "carrito_acciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("➕ Agregar más", key=f"btn_mas_{i}", use_container_width=True):
-                        response = get_bot_response("pedido")
-                        add_message_and_hide_buttons(
-                            "Agregar más items",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("✅ Finalizar pedido", key=f"btn_finalizar_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Finalizar pedido",
-                            f"""{get_carrito_text()}
-
-**¿Cómo lo recibís?**
-
-🏠 **Delivery** (35-45 min) - Envío gratis en pedidos +$3.000
-🚶 **Take Away** (15-20 min) - Retirás en el local
-
-Elegí una opción:""",
-                            "entrega_opciones"
-                        )
-                        st.rerun()
-
-            # Opciones de entrega
-            elif button_type == "entrega_opciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("🏠 Delivery", key=f"btn_delivery_{i}", use_container_width=True):
-                        envio = "GRATIS" if st.session_state.total_carrito >= 3000 else "$200"
-                        add_message_and_hide_buttons(
-                            "Quiero delivery",
-                            f"""📍 **Delivery seleccionado**
-
-{get_carrito_text()}
-• Envío: {envio}
-
-**Total final: ${st.session_state.total_carrito + (0 if st.session_state.total_carrito >= 3000 else 200):,}**
-
-Por favor, confirmame:
-1. Tu dirección de entrega
-2. Teléfono de contacto
-3. Forma de pago
-
-O escribí todo junto, ej: "Av. Italia 1234, Tel: 099123456, pago con tarjeta" """,
-                            "confirmar_delivery"
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🚶 Take Away", key=f"btn_takeaway_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Retiro en el local",
-                            f"""🚶 **Retiro en el local**
-
-{get_carrito_text()}
-
-**Tiempo estimado: 15-20 minutos**
-
-📍 Retirás en: Av. Italia 2345, Montevideo
-
-Por favor confirmame:
-1. Nombre para el pedido
-2. Teléfono de contacto
-3. Forma de pago
-
-O escribí todo junto, ej: "Juan Pérez, 099123456, pago en efectivo" """,
-                            "confirmar_takeaway"
-                        )
-                        st.rerun()
-
-            # Opciones de reserva
-            elif button_type == "reserva_opciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("⏰ Hoy almuerzo", key=f"btn_almuerzo_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Para hoy al mediodía",
-                            """📅 **Horarios disponibles HOY - Almuerzo**
-
-• 12:30 hs - ✅ Disponible
-• 13:00 hs - ✅ Disponible
-• 13:30 hs - ⚠️ Pocas mesas
-• 14:00 hs - ✅ Disponible
-
-¿Para cuántas personas y qué horario preferís?
-
-Ej: "4 personas a las 13:00" """,
-                            None
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🌙 Hoy cena", key=f"btn_cena_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Para hoy a la noche",
-                            """📅 **Horarios disponibles HOY - Cena**
-
-• 20:00 hs - ✅ Disponible
-• 20:30 hs - ✅ Disponible
-• 21:00 hs - ⚠️ Pocas mesas
-• 21:30 hs - ❌ Completo
-• 22:00 hs - ✅ Disponible
-
-¿Para cuántas personas y qué horario preferís?
-
-Ej: "2 personas a las 20:30" """,
-                            None
-                        )
-                        st.rerun()
-
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📆 Otro día", key=f"btn_otro_dia_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Para otra fecha",
-                            """📅 **Reservá para otra fecha**
-
-Decime:
-• ¿Qué día?
-• ¿Qué horario? (almuerzo 12-15hs / cena 20-23hs)
-• ¿Cuántas personas?
-
-Ej: "Viernes 2 de febrero, 21:00hs, 6 personas" """,
-                            None
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🎉 Evento especial", key=f"btn_evento_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Evento o celebración",
-                            """🎉 **Eventos y Celebraciones**
-
-¡Perfecto para cumpleaños, aniversarios, despedidas!
-
-**Beneficios:**
-✅ Mesa reservada con decoración
-✅ Menú especial a convenir
-✅ Postre de cortesía
-✅ Atención personalizada
-
-Contame:
-• ¿Qué festejás?
-• ¿Cuántas personas?
-• ¿Qué día y horario?
-
-Y armamos algo especial para vos!""",
-                            None
-                        )
-                        st.rerun()
-
-            # Opciones especiales (sin gluten, vegano, etc)
-            elif button_type == "especial_opciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📋 Ver opciones", key=f"btn_ver_especial_{i}", use_container_width=True):
-                        response = get_bot_response("menu")
-                        add_message_and_hide_buttons(
-                            "Ver menú completo",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("💬 Consultar chef", key=f"btn_chef_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Hablar con el chef",
-                            """👨‍🍳 **Consulta con el Chef**
-
-Para consultas específicas sobre ingredientes, preparación o adaptaciones especiales, podés:
-
-📞 **Llamar:** 2345-6789
-📧 **Email:** chef@latrattoria.com.uy
-💬 **WhatsApp:** 099 123 456
-
-Contanos tu caso y adaptamos el plato a tu necesidad!
-
-¿Querés que te pase el contacto o preferís hacer tu pedido con las opciones disponibles?""",
-                            "menu_visto"
-                        )
-                        st.rerun()
-
-            # Opciones de promociones
-            elif button_type == "promo_opciones":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("🍕 2x1 Pizzas", key=f"btn_2x1_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Quiero el 2x1 de pizzas",
-                            """🍕 **2x1 en Pizzas - Martes y Miércoles**
-
-**Pizzas incluidas:**
-• Margherita
-• Napolitana
-• Cuatro quesos
-
-**Solo para consumo en el local**
-Válido solo martes y miércoles
-
-¿Querés reservar una mesa para aprovecharla?""",
-                            "reserva_opciones"
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("💰 Menú ejecutivo", key=f"btn_ejecutivo_{i}", use_container_width=True):
-                        add_message_and_hide_buttons(
-                            "Info del menú ejecutivo",
-                            """💰 **Menú Ejecutivo - $2.500**
-
-**Lunes a Viernes 12:00 - 15:00hs**
-
-Incluye:
-• Entrada del día
-• Plato principal (rotan 3 opciones)
-• Postre
-• Bebida
-
-¿Querés reservar para hoy o ver qué hay?""",
-                            "reserva_opciones"
-                        )
-                        st.rerun()
-
-            # Botones de ayuda general
-            elif button_type == "ayuda":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📋 Ver menú", key=f"btn_menu_ayuda_{i}", use_container_width=True):
-                        response = get_bot_response("menu")
-                        add_message_and_hide_buttons(
-                            "Ver menú",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🛵 Hacer pedido", key=f"btn_pedido_ayuda_{i}", use_container_width=True):
-                        response = get_bot_response("pedido")
-                        add_message_and_hide_buttons(
-                            "Hacer pedido",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-            # Después de acciones de horarios/pagos
-            elif button_type == "horarios_accion" or button_type == "pago_accion":
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("📅 Reservar", key=f"btn_reservar_final_{i}", use_container_width=True):
-                        response = get_bot_response("reservar")
-                        add_message_and_hide_buttons(
-                            "Quiero reservar",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-                with col2:
-                    if st.button("🛵 Pedir", key=f"btn_pedir_final_{i}", use_container_width=True):
-                        response = get_bot_response("pedido")
-                        add_message_and_hide_buttons(
-                            "Quiero pedir",
-                            response["content"],
-                            response.get("buttons")
-                        )
-                        st.rerun()
-
-# Mostrar sugerencias de preguntas al final (SIEMPRE visible)
+# Ejemplos
 st.markdown("---")
-st.markdown('<div class="ejemplos-header">✨ Probá escribiendo cosas como estas:</div>', unsafe_allow_html=True)
+st.markdown('<div class="ejemplos-header">✨ Esto es una base de datos real — probá preguntar lo que quieras:</div>', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
-    st.caption("💬 Quiero hacer un pedido de pizza para delivery")
-    st.caption("💬 ¿Cuánto sale la lasagna?")
-    st.caption("💬 Reservar mesa para 4 personas hoy a las 21hs")
-    st.caption("💬 ¿Tienen opciones sin gluten?")
-    st.caption("💬 ¿Qué promociones tienen?")
+    st.caption("💬 ¿Cuántos martillos vendí en enero?")
+    st.caption("💬 ¿Cuánto facturé en pintura?")
+    st.caption("💬 Top 5 productos más vendidos en mayo")
 with col2:
-    st.caption("💬 ¿Hasta qué hora atienden?")
-    st.caption("💬 Quiero pedir ravioles para llevar")
-    st.caption("💬 ¿Puedo pagar con tarjeta en cuotas?")
-    st.caption("💬 Necesito una mesa para 10 personas el viernes")
-    st.caption("💬 ¿Tienen menú vegetariano?")
+    st.caption("💬 ¿Qué stock tengo de taladros?")
+    st.caption("💬 Comparame enero con junio")
+    st.caption("💬 ¿Cuánto vendí de cable eléctrico?")
 
-# INPUT DEL CHAT
-if prompt := st.chat_input("Escribí tu consulta o hacé click en las opciones..."):
+# Input
+if prompt := st.chat_input("Preguntale algo a los datos reales..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    response = get_bot_response(prompt)
+    r = get_bot_response(prompt)
 
-    with st.chat_message("assistant", avatar="🍝"):
+    with st.chat_message("assistant", avatar=BOT_AVATAR):
         placeholder = st.empty()
         placeholder.markdown("""
         <div class="typing-indicator">
             <span></span><span></span><span></span>
         </div>
         """, unsafe_allow_html=True)
-        time.sleep(0.7)
+        time.sleep(0.6)
         placeholder.empty()
 
     st.session_state.messages.append({
         "role": "assistant",
-        "content": response["content"],
-        "show_buttons": response.get("buttons"),
-        "image": response.get("image")
+        "content": r["content"],
+        "show_buttons": r.get("buttons")
     })
-
-    if response.get("bonus_once"):
-        maybe_append_bonus_once()
 
     st.rerun()
 
-# Footer
 st.divider()
-st.caption("💡 **Este es un demo interactivo.** El bot responde con información de ejemplo.")
-st.caption("🔌 En producción conecta con tu sistema de reservas, menús y pagos reales.")
+st.caption("💡 **Esto NO es una demo con respuestas preparadas.** Los números se calculan en vivo sobre una base de datos real de ejemplo (84 productos, 959 ventas, 6 meses).")
+st.caption("🔌 En tu negocio real, SIVO se conecta a tu propio Excel, sistema de gestión o base de datos.")
 
-# Botón para resetear conversación y carrito
 col1, col2 = st.columns([3, 1])
-with col1:
-    st.markdown("""
-    <div class="wsp-inline-wrap">
-    <a href="https://wa.me/5491112345678" target="_blank" class="wsp-inline">
-        💬 Hablar por WhatsApp
-    </a>
-    </div>
-    """, unsafe_allow_html=True)
 with col2:
     if st.button("🔄 Reiniciar chat"):
         st.session_state.messages = [
             {
                 "role": "assistant",
-                "content": """¡Bienvenido a SIVO Cocina! 👋
+                "content": """¡Hola! 👋 Soy SIVO, conectado a la base de datos real de esta ferretería.
 
-Soy tu asistente virtual y estoy para ayudarte.
+Tengo **6 meses de ventas reales** (959 operaciones, 84 productos). No tengo respuestas preparadas: calculo todo en el momento sobre los datos.
 
-**¿Qué necesitás hoy?**""",
+**Probá preguntarme algo:**""",
                 "show_buttons": "inicial"
             }
         ]
-        st.session_state.button_clicked = False
-        st.session_state.bonus_shown = False
-        st.session_state.carrito = []
-        st.session_state.total_carrito = 0
         st.rerun()
