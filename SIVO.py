@@ -3614,7 +3614,7 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentetelefonico.png" alt="Telefónico">
                 <h3>SIVO Telefónico</h3>
                 <p>Atiende llamadas reales con IA conversacional.</p>
-                <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar ahora</button></a>
+                <a href="https://demotelefonico.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
