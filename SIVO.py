@@ -3534,8 +3534,8 @@ HTML_ASISTENTES = f"""{HTML_BASE}
         <div style="text-align:center; margin-bottom:6px;">
             <span style="display:inline-block; background:rgba(244,180,0,0.15); color:#7a5a00; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🗣️ PARA TUS CLIENTES</span>
         </div>
-        <h2>Todos los asistentes IA</h2>
-        <div class="subtitle">Estos son los asistentes disponibles en SIVO. ¿Buscás los Asistentes Internos — los que te informan a vos sobre tu negocio? <a href="?vista=internos" style="color:#3b82f6; font-weight:600;">Mirala acá →</a></div>
+        <h2>Asistentes Externos</h2>
+        <div class="subtitle">Asistentes IA diseñados para atender a tus clientes, responder consultas y brindar soporte las 24 horas. ¿Buscás los Asistentes Internos — los que te informan a vos sobre tu negocio? <a href="?vista=internos" style="color:#3b82f6; font-weight:600;">Ver Asistentes Internos →</a></div>
 
         <div class="cards">
 
@@ -3543,14 +3543,14 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentecocina.png" alt="Cocina">
                 <h3>SIVO Cocina</h3>
                 <p>Recetas, consejos y conversiones.</p>
-                <a href="https://demorestaurante.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demorestaurante.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistenteecommerce.png" alt="Ecommerce">
                 <h3>SIVO Ecommerce</h3>
                 <p>Soporte para productos y pedidos.</p>
-                <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoecommerce.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
@@ -3564,28 +3564,28 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Stock">
                 <h3>SIVO Stock</h3>
                 <p>Control de inventario y alertas.</p>
-                <a href="https://demostockuy.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demostockuy.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistenteinmobiliaria.png" alt="Inmobiliaria">
                 <h3>SIVO Inmobiliaria</h3>
                 <p>Consultas de propiedades y agendado.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistenteagendas.png" alt="Agenda">
                 <h3>SIVO Turnos</h3>
                 <p>Reserva de turnos y recordatorios.</p>
-                <a href="https://demoturnos.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoturnos.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentedental.png" alt="Dental">
                 <h3>SIVO Dental</h3>
                 <p>Turnos y precios orientativos.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
 
@@ -3593,21 +3593,21 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentedetiendaderopa.png" alt="Tienda de Ropa">
                 <h3>SIVO Tienda de Ropa</h3>
                 <p>Consultas sobre productos, talles y envíos.</p>
-                <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demoropa.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentedepeluqueria.png" alt="Peluquería">
                 <h3>SIVO Peluquería</h3>
                 <p>Turnos, servicios y precios de salón.</p>
-                <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demopelu.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentedeviaje.png" alt="Viajes">
                 <h3>SIVO Viajes</h3>
                 <p>Paquetes turísticos, vuelos y hoteles.</p>
-                <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <a href="https://demo-viajes.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Ver Asistente</button></a>
             </div>
 
             <div class="card">
@@ -3621,28 +3621,28 @@ HTML_ASISTENTES = f"""{HTML_BASE}
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Excel">
                 <h3>SIVO Excel</h3>
                 <p>Automatizá reportes, cargá datos y generá planillas listas para usar — sin escribir fórmulas a mano.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Power BI">
                 <h3>SIVO Power BI</h3>
                 <p>Conectá tus datos y generá dashboards automáticos con indicadores en tiempo real para tomar mejores decisiones.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="Datos">
                 <h3>SIVO Datos</h3>
                 <p>Consultá tu información en lenguaje natural — stock, ventas, compras, clientes — y recibí respuestas al instante sin saber SQL.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentefinanzas.png" alt="Operaciones">
                 <h3>SIVO Operaciones</h3>
                 <p>Automatizá procesos internos repetitivos: bajas de stock, generación de reportes programados y alertas de faltantes.</p>
-                <button>Ver asistente</button>
+                <button>Ver Asistente</button>
             </div>
 
         </div>
