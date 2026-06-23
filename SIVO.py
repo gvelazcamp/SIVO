@@ -3832,6 +3832,8 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
     border-radius: 999px;
     padding: 4px 10px;
     margin-bottom: 10px;
+    min-height: 22px;
+    box-sizing: border-box;
 }}
 </style>
 
@@ -3860,6 +3862,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
     <div class="pricing">
         <!-- IMPLEMENTACIÓN INICIAL -->
         <div class="plan">
+            <div class="plan-step" style="visibility:hidden;">.</div>
             <div class="plan-name">Implementación inicial</div>
             <div class="plan-desc">Dejamos tu asistente funcionando sobre tus datos reales</div>
             
@@ -3914,6 +3917,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 
         <!-- ENTERPRISE -->
         <div class="plan">
+            <div class="plan-step" style="visibility:hidden;">.</div>
             <div class="plan-name">Enterprise</div>
             <div class="plan-desc">IA integrada a la operación de tu empresa</div>
             
