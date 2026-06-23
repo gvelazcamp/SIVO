@@ -1,0 +1,590 @@
+[
+  {
+    "id": 1,
+    "nombre": "Martillo carpintero 16oz",
+    "categoria": "Herramientas manuales",
+    "precio": 890,
+    "stock": 24
+  },
+  {
+    "id": 2,
+    "nombre": "Martillo carpintero 20oz",
+    "categoria": "Herramientas manuales",
+    "precio": 1050,
+    "stock": 18
+  },
+  {
+    "id": 3,
+    "nombre": "Destornillador plano 6mm",
+    "categoria": "Herramientas manuales",
+    "precio": 320,
+    "stock": 56
+  },
+  {
+    "id": 4,
+    "nombre": "Destornillador phillips 6mm",
+    "categoria": "Herramientas manuales",
+    "precio": 320,
+    "stock": 48
+  },
+  {
+    "id": 5,
+    "nombre": "Set destornilladores x6",
+    "categoria": "Herramientas manuales",
+    "precio": 2400,
+    "stock": 15
+  },
+  {
+    "id": 6,
+    "nombre": "Llave inglesa 10\"",
+    "categoria": "Herramientas manuales",
+    "precio": 1800,
+    "stock": 12
+  },
+  {
+    "id": 7,
+    "nombre": "Llave inglesa 8\"",
+    "categoria": "Herramientas manuales",
+    "precio": 1500,
+    "stock": 20
+  },
+  {
+    "id": 8,
+    "nombre": "Pinza universal 8\"",
+    "categoria": "Herramientas manuales",
+    "precio": 950,
+    "stock": 30
+  },
+  {
+    "id": 9,
+    "nombre": "Pinza pico de loro",
+    "categoria": "Herramientas manuales",
+    "precio": 1100,
+    "stock": 22
+  },
+  {
+    "id": 10,
+    "nombre": "Serrucho 22\"",
+    "categoria": "Herramientas manuales",
+    "precio": 1650,
+    "stock": 14
+  },
+  {
+    "id": 11,
+    "nombre": "Cinta métrica 5m",
+    "categoria": "Herramientas manuales",
+    "precio": 580,
+    "stock": 40
+  },
+  {
+    "id": 12,
+    "nombre": "Cinta métrica 8m",
+    "categoria": "Herramientas manuales",
+    "precio": 780,
+    "stock": 25
+  },
+  {
+    "id": 13,
+    "nombre": "Nivel de burbuja 60cm",
+    "categoria": "Herramientas manuales",
+    "precio": 1200,
+    "stock": 18
+  },
+  {
+    "id": 14,
+    "nombre": "Nivel de burbuja 30cm",
+    "categoria": "Herramientas manuales",
+    "precio": 850,
+    "stock": 22
+  },
+  {
+    "id": 15,
+    "nombre": "Cúter retráctil",
+    "categoria": "Herramientas manuales",
+    "precio": 420,
+    "stock": 38
+  },
+  {
+    "id": 16,
+    "nombre": "Espátula 4\"",
+    "categoria": "Herramientas manuales",
+    "precio": 380,
+    "stock": 45
+  },
+  {
+    "id": 17,
+    "nombre": "Espátula 6\"",
+    "categoria": "Herramientas manuales",
+    "precio": 480,
+    "stock": 30
+  },
+  {
+    "id": 18,
+    "nombre": "Tijera para chapa",
+    "categoria": "Herramientas manuales",
+    "precio": 2100,
+    "stock": 8
+  },
+  {
+    "id": 19,
+    "nombre": "Llave francesa 12\"",
+    "categoria": "Herramientas manuales",
+    "precio": 2300,
+    "stock": 10
+  },
+  {
+    "id": 20,
+    "nombre": "Mazo de goma 500g",
+    "categoria": "Herramientas manuales",
+    "precio": 1400,
+    "stock": 16
+  },
+  {
+    "id": 21,
+    "nombre": "Taladro percutor 650W",
+    "categoria": "Herramientas eléctricas",
+    "precio": 8900,
+    "stock": 12
+  },
+  {
+    "id": 22,
+    "nombre": "Taladro percutor 750W",
+    "categoria": "Herramientas eléctricas",
+    "precio": 11200,
+    "stock": 8
+  },
+  {
+    "id": 23,
+    "nombre": "Amoladora angular 4.5\"",
+    "categoria": "Herramientas eléctricas",
+    "precio": 6800,
+    "stock": 14
+  },
+  {
+    "id": 24,
+    "nombre": "Amoladora angular 7\"",
+    "categoria": "Herramientas eléctricas",
+    "precio": 12500,
+    "stock": 6
+  },
+  {
+    "id": 25,
+    "nombre": "Sierra circular 1200W",
+    "categoria": "Herramientas eléctricas",
+    "precio": 15800,
+    "stock": 5
+  },
+  {
+    "id": 26,
+    "nombre": "Lijadora orbital",
+    "categoria": "Herramientas eléctricas",
+    "precio": 7200,
+    "stock": 9
+  },
+  {
+    "id": 27,
+    "nombre": "Rotomartillo SDS",
+    "categoria": "Herramientas eléctricas",
+    "precio": 18900,
+    "stock": 4
+  },
+  {
+    "id": 28,
+    "nombre": "Atornillador inalámbrico",
+    "categoria": "Herramientas eléctricas",
+    "precio": 9500,
+    "stock": 11
+  },
+  {
+    "id": 29,
+    "nombre": "Compresor 24L",
+    "categoria": "Herramientas eléctricas",
+    "precio": 22000,
+    "stock": 3
+  },
+  {
+    "id": 30,
+    "nombre": "Soldadora inverter 160A",
+    "categoria": "Herramientas eléctricas",
+    "precio": 28500,
+    "stock": 4
+  },
+  {
+    "id": 31,
+    "nombre": "Tornillo autoperforante 1\" (x100)",
+    "categoria": "Tornillería",
+    "precio": 450,
+    "stock": 80
+  },
+  {
+    "id": 32,
+    "nombre": "Tornillo autoperforante 2\" (x100)",
+    "categoria": "Tornillería",
+    "precio": 620,
+    "stock": 65
+  },
+  {
+    "id": 33,
+    "nombre": "Tornillo madera 1.5\" (x100)",
+    "categoria": "Tornillería",
+    "precio": 380,
+    "stock": 90
+  },
+  {
+    "id": 34,
+    "nombre": "Tornillo madera 3\" (x100)",
+    "categoria": "Tornillería",
+    "precio": 550,
+    "stock": 55
+  },
+  {
+    "id": 35,
+    "nombre": "Tuerca hexagonal 1/4\" (x50)",
+    "categoria": "Tornillería",
+    "precio": 290,
+    "stock": 70
+  },
+  {
+    "id": 36,
+    "nombre": "Tuerca hexagonal 3/8\" (x50)",
+    "categoria": "Tornillería",
+    "precio": 340,
+    "stock": 60
+  },
+  {
+    "id": 37,
+    "nombre": "Arandela plana (x100)",
+    "categoria": "Tornillería",
+    "precio": 210,
+    "stock": 95
+  },
+  {
+    "id": 38,
+    "nombre": "Clavo 2\" (1kg)",
+    "categoria": "Tornillería",
+    "precio": 480,
+    "stock": 50
+  },
+  {
+    "id": 39,
+    "nombre": "Clavo 3\" (1kg)",
+    "categoria": "Tornillería",
+    "precio": 520,
+    "stock": 45
+  },
+  {
+    "id": 40,
+    "nombre": "Tarugo plástico 8mm (x100)",
+    "categoria": "Tornillería",
+    "precio": 350,
+    "stock": 75
+  },
+  {
+    "id": 41,
+    "nombre": "Pintura látex blanco 1L",
+    "categoria": "Pintura",
+    "precio": 980,
+    "stock": 35
+  },
+  {
+    "id": 42,
+    "nombre": "Pintura látex blanco 4L",
+    "categoria": "Pintura",
+    "precio": 3200,
+    "stock": 20
+  },
+  {
+    "id": 43,
+    "nombre": "Pintura látex blanco 20L",
+    "categoria": "Pintura",
+    "precio": 14500,
+    "stock": 6
+  },
+  {
+    "id": 44,
+    "nombre": "Esmalte sintético negro 1L",
+    "categoria": "Pintura",
+    "precio": 1450,
+    "stock": 18
+  },
+  {
+    "id": 45,
+    "nombre": "Esmalte sintético blanco 1L",
+    "categoria": "Pintura",
+    "precio": 1450,
+    "stock": 22
+  },
+  {
+    "id": 46,
+    "nombre": "Antióxido rojo 1L",
+    "categoria": "Pintura",
+    "precio": 1680,
+    "stock": 14
+  },
+  {
+    "id": 47,
+    "nombre": "Diluyente 1L",
+    "categoria": "Pintura",
+    "precio": 520,
+    "stock": 40
+  },
+  {
+    "id": 48,
+    "nombre": "Pincel 2\"",
+    "categoria": "Pintura",
+    "precio": 380,
+    "stock": 50
+  },
+  {
+    "id": 49,
+    "nombre": "Pincel 4\"",
+    "categoria": "Pintura",
+    "precio": 580,
+    "stock": 32
+  },
+  {
+    "id": 50,
+    "nombre": "Rodillo 18cm",
+    "categoria": "Pintura",
+    "precio": 650,
+    "stock": 28
+  },
+  {
+    "id": 51,
+    "nombre": "Bandeja para pintura",
+    "categoria": "Pintura",
+    "precio": 420,
+    "stock": 25
+  },
+  {
+    "id": 52,
+    "nombre": "Cinta de enmascarar 24mm",
+    "categoria": "Pintura",
+    "precio": 290,
+    "stock": 60
+  },
+  {
+    "id": 53,
+    "nombre": "Lija al agua grano 120 (x10)",
+    "categoria": "Pintura",
+    "precio": 480,
+    "stock": 45
+  },
+  {
+    "id": 54,
+    "nombre": "Lija al agua grano 220 (x10)",
+    "categoria": "Pintura",
+    "precio": 480,
+    "stock": 38
+  },
+  {
+    "id": 55,
+    "nombre": "Cable eléctrico 2.5mm (x100m)",
+    "categoria": "Electricidad",
+    "precio": 8900,
+    "stock": 10
+  },
+  {
+    "id": 56,
+    "nombre": "Cable eléctrico 1.5mm (x100m)",
+    "categoria": "Electricidad",
+    "precio": 6200,
+    "stock": 14
+  },
+  {
+    "id": 57,
+    "nombre": "Llave térmica 16A",
+    "categoria": "Electricidad",
+    "precio": 980,
+    "stock": 25
+  },
+  {
+    "id": 58,
+    "nombre": "Llave térmica 25A",
+    "categoria": "Electricidad",
+    "precio": 1150,
+    "stock": 18
+  },
+  {
+    "id": 59,
+    "nombre": "Tomacorriente doble",
+    "categoria": "Electricidad",
+    "precio": 420,
+    "stock": 40
+  },
+  {
+    "id": 60,
+    "nombre": "Interruptor simple",
+    "categoria": "Electricidad",
+    "precio": 280,
+    "stock": 50
+  },
+  {
+    "id": 61,
+    "nombre": "Lámpara LED 9W",
+    "categoria": "Electricidad",
+    "precio": 380,
+    "stock": 60
+  },
+  {
+    "id": 62,
+    "nombre": "Lámpara LED 15W",
+    "categoria": "Electricidad",
+    "precio": 520,
+    "stock": 45
+  },
+  {
+    "id": 63,
+    "nombre": "Cinta aislante",
+    "categoria": "Electricidad",
+    "precio": 150,
+    "stock": 80
+  },
+  {
+    "id": 64,
+    "nombre": "Caja térmica 8 espacios",
+    "categoria": "Electricidad",
+    "precio": 2400,
+    "stock": 12
+  },
+  {
+    "id": 65,
+    "nombre": "Caño PVC 110mm (x4m)",
+    "categoria": "Plomería",
+    "precio": 1850,
+    "stock": 20
+  },
+  {
+    "id": 66,
+    "nombre": "Caño PVC 75mm (x4m)",
+    "categoria": "Plomería",
+    "precio": 1200,
+    "stock": 25
+  },
+  {
+    "id": 67,
+    "nombre": "Codo PVC 110mm",
+    "categoria": "Plomería",
+    "precio": 320,
+    "stock": 40
+  },
+  {
+    "id": 68,
+    "nombre": "Codo PVC 75mm",
+    "categoria": "Plomería",
+    "precio": 220,
+    "stock": 50
+  },
+  {
+    "id": 69,
+    "nombre": "Pegamento PVC 250cc",
+    "categoria": "Plomería",
+    "precio": 580,
+    "stock": 30
+  },
+  {
+    "id": 70,
+    "nombre": "Llave de paso 1/2\"",
+    "categoria": "Plomería",
+    "precio": 890,
+    "stock": 22
+  },
+  {
+    "id": 71,
+    "nombre": "Flexible de agua 40cm",
+    "categoria": "Plomería",
+    "precio": 450,
+    "stock": 35
+  },
+  {
+    "id": 72,
+    "nombre": "Cinta teflón",
+    "categoria": "Plomería",
+    "precio": 120,
+    "stock": 70
+  },
+  {
+    "id": 73,
+    "nombre": "Sifón de PVC",
+    "categoria": "Plomería",
+    "precio": 680,
+    "stock": 18
+  },
+  {
+    "id": 74,
+    "nombre": "Canilla de cocina",
+    "categoria": "Plomería",
+    "precio": 2200,
+    "stock": 12
+  },
+  {
+    "id": 75,
+    "nombre": "Guantes de trabajo (par)",
+    "categoria": "Seguridad",
+    "precio": 380,
+    "stock": 55
+  },
+  {
+    "id": 76,
+    "nombre": "Anteojos de seguridad",
+    "categoria": "Seguridad",
+    "precio": 420,
+    "stock": 40
+  },
+  {
+    "id": 77,
+    "nombre": "Casco de seguridad",
+    "categoria": "Seguridad",
+    "precio": 1200,
+    "stock": 15
+  },
+  {
+    "id": 78,
+    "nombre": "Mascarilla N95 (x10)",
+    "categoria": "Seguridad",
+    "precio": 980,
+    "stock": 25
+  },
+  {
+    "id": 79,
+    "nombre": "Faja lumbar",
+    "categoria": "Seguridad",
+    "precio": 1450,
+    "stock": 10
+  },
+  {
+    "id": 80,
+    "nombre": "Candado 40mm",
+    "categoria": "Cerrajería",
+    "precio": 680,
+    "stock": 35
+  },
+  {
+    "id": 81,
+    "nombre": "Bisagra 3\"",
+    "categoria": "Cerrajería",
+    "precio": 320,
+    "stock": 45
+  },
+  {
+    "id": 82,
+    "nombre": "Cerradura puerta interior",
+    "categoria": "Cerrajería",
+    "precio": 2800,
+    "stock": 14
+  },
+  {
+    "id": 83,
+    "nombre": "Picaporte simple",
+    "categoria": "Cerrajería",
+    "precio": 1100,
+    "stock": 20
+  },
+  {
+    "id": 84,
+    "nombre": "Tranca para portón",
+    "categoria": "Cerrajería",
+    "precio": 1650,
+    "stock": 12
+  }
+]
