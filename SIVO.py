@@ -3857,28 +3857,9 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
         </p>
     </div>
 
-    <div class="precios-guia">
-        <div class="precios-guia-card">
-            <div class="pg-icon">🚀</div>
-            <h4>¿Estás arrancando?</h4>
-            <p>Elegí <strong>Implementación inicial</strong> para tener tu asistente funcionando rápido.</p>
-        </div>
-        <div class="precios-guia-card">
-            <div class="pg-icon">🔧</div>
-            <h4>¿Ya tenés tu asistente funcionando?</h4>
-            <p>El <strong>Servicio mensual</strong> te da mantenimiento, mejoras y soporte continuo.</p>
-        </div>
-        <div class="precios-guia-card">
-            <div class="pg-icon">🏢</div>
-            <h4>¿Sos una empresa con varios equipos?</h4>
-            <p>Hablemos del plan <strong>Enterprise</strong>, a medida de tu operación.</p>
-        </div>
-    </div>
-
     <div class="pricing">
         <!-- IMPLEMENTACIÓN INICIAL -->
         <div class="plan">
-            <div class="plan-step">Punto de partida</div>
             <div class="plan-name">Implementación inicial</div>
             <div class="plan-desc">Dejamos tu asistente funcionando sobre tus datos reales</div>
             
@@ -3905,7 +3886,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 
         <!-- SERVICIO MENSUAL -->
         <div class="plan">
-            <div class="plan-step">Servicio recurrente · arranca después de la implementación</div>
+            <div class="plan-step">Servicio recurrente · después de la implementación</div>
             <div class="plan-name">Servicio mensual</div>
             <div class="plan-desc">Mantenimiento, mejoras y soporte continuo sobre tu asistente</div>
             
