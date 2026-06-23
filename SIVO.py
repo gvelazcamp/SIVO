@@ -2731,8 +2731,8 @@ html, body, .page-container {
     <div class="sivo-card-wrapper">
         <div class="sivo-card">
             <h1>Interactúa con tus datos.</h1>
-            <span class="highlight">No esperes por la información, SIVO la trabaja por vos.</span>
-            <p>Responde al instante con la información de tu negocio, tanto para uso interno como para atención a clientes.</p>
+            <span class="highlight">SIVO transforma la información de tu negocio en respuestas al instante</span>
+            <p>Entrenalo con tus reglas, tus datos y agiliza la gestión interna mejorando la atención al cliente</p>
             <div class="sivo-card-actions">
                 <a href="?vista=asistentes" class="button">🗣️ Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">📊 Así te informa a vos →</a>
@@ -2747,8 +2747,8 @@ html, body, .page-container {
         <div class="hero-content">
             <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">Empleado Digital</span></h1>
             <p>
-                SIVO es un empleado polifuncional con IA que se adapta a distintos rubros de industrias, desde ecommerce y finanzas hasta turnos médicos y viajes. Responde a tus clientes 24/7 con tus reglas y tus datos.
-                Elegí uno de los tantos rubros donde SIVO se desempeña y lo dejamos funcionando.
+                SIVO es un empleado digital impulsado con IA que se adapta a multiples industrias. Desde Ecommerce y finanzas hasta turnos médicos y viajes. Responde a tus clientes 24/7 con tus reglas y tus datos.
+                Elegí el rubro que mejor se adapte a vos y nosotros nos encargamos de dejarlo funcionando.
             </p>
 
             <div class="trust-row" style="margin-top: 30px;">
@@ -3118,7 +3118,7 @@ except Exception:
 HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
         <h2>Resultados que podés esperar</h2>
-        <p class="subtitle" style="margin-bottom: 4px;">Esto es lo que SIVO puede lograr en distintos rubros, según el caso de uso y la implementación.</p>
+        <p class="subtitle" style="margin-bottom: 4px;">Con una implementación adecuada SIVO puede generar mejoras sifnificaticas en distintos rubros. Estos resultados varian según el rubro el volumen de consultas y una garantia de desempeño.</p>
         <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">📌 Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención — no garantías ni promesas de resultado.</p>
 
         <div class="testimonios-grid">
@@ -3214,32 +3214,32 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
         <div class="faq-grid">
             <div class="faq-item">
                 <div class="faq-question">¿Necesito saber programar?</div>
-                <div class="faq-answer">No. Nosotros configuramos todo por vos. Vos solo nos pasás la información de tu negocio y nosotros lo dejamos funcionando.</div>
+                <div class="faq-answer">No. Nosotros nos encargamos de la configuración. Solo necesitamos la información de tu negocio para dejar SIVO funcionando.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">¿Funciona con WhatsApp?</div>
-                <div class="faq-answer">Sí. Podés integrar el chatbot con WhatsApp, Instagram, tu sitio web, Shopify y más plataformas.</div>
+                <div class="faq-answer">Sí. SIVO puede integrarse con WhatsApp, Instagram, tu sitio web, Shopify y más plataformas.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">¿Puedo cancelar cuando quiera?</div>
-                <div class="faq-answer">Sí. No hay permanencia. Cancelás cuando quieras sin costos adicionales ni penalizaciones.</div>
+                <div class="faq-answer">Sí. No hay contratos de permanencia. Podes Cancelar el servicio cuando quieras</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">¿Qué pasa si el bot no sabe responder?</div>
-                <div class="faq-answer">El bot deriva la consulta a un humano o toma tus datos para que te contactemos. Nunca deja al cliente sin respuesta.</div>
+                <div class="faq-question">¿Qué pasa si SIVO no sabe responder?</div>
+                <div class="faq-answer">Puede deriva la conversacion a una persona, solicitar datos o contacto del clente  o seguir el flujo que definamos para este tipo de consultass. Nunca deja al cliente sin respuesta. Los podemos seguir entrenando para cada caso</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">¿Los datos están seguros?</div>
-                <div class="faq-answer">Sí. Toda la información está encriptada y cumplimos con normativas de protección de datos. Tus datos y los de tus clientes están 100% seguros.</div>
+                <div class="faq-answer">Sí. Toda la información está encriptada. Tus datos y los de tus clientes están 100% seguros.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">¿Cuánto tarda la implementación?</div>
-                <div class="faq-answer">Depende de la complejidad. Te damos un timeline al inicio.</div>
+                <div class="faq-answer">Depende del nivel de personalizacion y las integraciones necesarias. Al iniciar el proyecto te entregamos un cronograma estimado de implementación.</div>
             </div>
         </div>
     </div>
