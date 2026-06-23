@@ -270,6 +270,16 @@ st.markdown("""
         transform: translateY(-2px) scale(1.02);
         color: white !important;
     }
+
+    .wsp-inline-wrap {
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .wsp-inline-wrap {
+            display: none !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1180,9 +1190,11 @@ st.caption("🔌 En producción conecta con tu sistema de reservas, menús y pag
 col1, col2 = st.columns([3, 1])
 with col1:
     st.markdown("""
+    <div class="wsp-inline-wrap">
     <a href="https://wa.me/5491112345678" target="_blank" class="wsp-inline">
         💬 Hablar por WhatsApp
     </a>
+    </div>
     """, unsafe_allow_html=True)
 with col2:
     if st.button("🔄 Reiniciar chat"):
