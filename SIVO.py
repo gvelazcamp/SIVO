@@ -3684,8 +3684,8 @@ HTML_INTERNOS = f"""{HTML_BASE}
             <div class="card">
                 <img src="https://gvelazcamp.github.io/SIVO/Asistentestock.png" alt="SIVO Interno">
                 <h3>SIVO Interno</h3>
-                <p>Le preguntás por tu facturación, stock y reportes como si le hablaras a un empleado. Demo con datos de una veterinaria.</p>
-                <a href="https://demo-interno.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
+                <p>Le preguntás por tu facturación, stock y reportes como si le hablaras a un empleado. Demo con datos de una ferretería.</p>
+                <a href="https://demoferreteria.streamlit.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button>Probar demo</button></a>
             </div>
 
             <div class="card">
