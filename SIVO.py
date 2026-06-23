@@ -3874,6 +3874,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <ul class="plan-list">
                 <li>✅ Creación del asistente IA</li>
                 <li>✅ Conexión a base de datos / archivos</li>
+                <li>✅ Adaptación a tu negocio (proveedores, productos, reglas propias)</li>
                 <li>✅ Configuración de preguntas</li>
                 <li>✅ Instalación en web (iframe o sitio)</li>
                 <li>✅ Consultas internas básicas (stock, ventas)</li>
