@@ -274,7 +274,7 @@ st.markdown("""
 
     @media (max-width: 768px) {
         .wsp-flotante {
-            bottom: 80px;
+            bottom: 145px;
             padding: 10px 14px;
             font-size: 12px;
         }
