@@ -3839,8 +3839,8 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 
     <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
         <p style="font-size: 15px; color: #666; line-height: 1.6;">
-            <strong>Paso 1:</strong> Implementación inicial — se paga una sola vez y dejamos tu asistente funcionando.<br>
-            <strong>Paso 2:</strong> Servicio mensual (opcional) — para mantenimiento, mejoras y soporte continuo. Se cotiza según lo que necesite tu negocio.
+            <strong>Paso 1:</strong> Implementación inicial — dejamos tu asistente funcionando sobre tus datos.<br>
+            <strong>Paso 2:</strong> Servicio mensual — mantenimiento, mejoras y soporte continuo. Se cotiza según lo que necesite tu negocio.
         </p>
     </div>
 
@@ -3868,7 +3868,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-name">Implementación inicial</div>
             <div class="plan-desc">Dejamos tu asistente funcionando sobre tus datos reales</div>
             
-            <div class="plan-price">Desde US$ 250<span>pago único</span></div>
+            <div class="plan-price">Desde US$ 250</div>
             <div class="plan-note">1 asistente · 1 sitio</div>
             
             <ul class="plan-list">
@@ -3890,8 +3890,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
         </div>
 
         <!-- SERVICIO MENSUAL -->
-        <div class="plan pro">
-            <div class="badge">Más elegido</div>
+        <div class="plan">
             <div class="plan-name">Servicio mensual</div>
             <div class="plan-desc">Mantenimiento, mejoras y soporte continuo sobre tu asistente</div>
             
