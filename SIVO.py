@@ -2,6 +2,7 @@ import streamlit as st
 
 from pathlib import Path
 import re
+import time
 
 # =========================
 # BENEFITS (standalone HTML)
@@ -8251,6 +8252,50 @@ elif vista == "login":
             st.session_state.user_name = nombre
             st.session_state.user_email = email
             st.query_params["vista"] = "asistentes"
+
+            # Loader animado SIVO antes de pasar a la app
+            st.markdown("""
+            <style>
+            .stApp, [data-testid="stAppViewContainer"], section.main,
+            .main .block-container, section.main > div { background: #050a12 !important; }
+            header[data-testid="stHeader"] { background: #050a12 !important; }
+            </style>
+            """, unsafe_allow_html=True)
+            components.html("""
+            <div style="height:100vh;width:100%;display:flex;align-items:center;justify-content:center;
+                        background:radial-gradient(circle at 50% 40%, #0d1b2a 0%, #050a12 70%);
+                        font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;">
+              <div style="text-align:center;position:relative;">
+                <div style="width:180px;height:180px;border-radius:50%;border:1px solid rgba(155,93,229,0.35);
+                            position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                            animation:sivo-spin-rev 3s linear infinite;"></div>
+                <div style="width:140px;height:140px;border-radius:50%;border:2px solid transparent;
+                            border-top-color:#00f5d4;border-right-color:#00bbf9;
+                            position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                            animation:sivo-spin 1.4s linear infinite;"></div>
+                <div style="font-size:4.2rem;font-weight:800;letter-spacing:4px;
+                            background:linear-gradient(90deg,#00f5d4,#00bbf9,#9b5de5,#00f5d4);
+                            background-size:300% auto;-webkit-background-clip:text;background-clip:text;
+                            color:transparent;animation:sivo-shine 3s linear infinite, sivo-pulse 2.2s ease-in-out infinite;
+                            text-shadow:0 0 30px rgba(0,245,212,0.25);">SIVO</div>
+                <div style="margin-top:28px;color:#8fa3b8;font-size:0.95rem;letter-spacing:1px;">
+                    Iniciando sesión...</div>
+                <div style="margin:22px auto 0;width:220px;height:4px;background:rgba(255,255,255,0.08);
+                            border-radius:4px;overflow:hidden;">
+                  <div style="height:100%;width:40%;background:linear-gradient(90deg,#00f5d4,#00bbf9);
+                              border-radius:4px;animation:sivo-load 1.2s ease-in-out infinite;"></div>
+                </div>
+              </div>
+              <style>
+              @keyframes sivo-shine{0%{background-position:0% center}100%{background-position:300% center}}
+              @keyframes sivo-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+              @keyframes sivo-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+              @keyframes sivo-spin-rev{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+              @keyframes sivo-load{0%{transform:translateX(-100%);width:40%}50%{width:60%}100%{transform:translateX(250%);width:40%}}
+              </style>
+            </div>
+            """, height=600, scrolling=False)
+            time.sleep(1.6)
             st.rerun()
 
         st.markdown('<div style="text-align:center;margin-top:12px;"><a href="?vista=home" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,sans-serif;">← Volver al inicio</a></div>', unsafe_allow_html=True)
