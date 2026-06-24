@@ -236,6 +236,32 @@ if vista == "home" and not st.session_state.sivo_splash_shown:
         .stApp, [data-testid="stAppViewContainer"], section.main,
         .main .block-container, section.main > div { background: #050a12 !important; }
         header[data-testid="stHeader"] { background: #050a12 !important; }
+
+        /* Forzar el iframe del splash a pantalla completa real */
+        iframe[title="streamlit_components.v1.html"],
+        div[data-testid="stIFrame"] iframe,
+        div[data-testid="element-container"]:has(iframe) {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            z-index: 999999 !important;
+            border: none !important;
+        }
+        div[data-testid="stVerticalBlock"]:has(iframe) {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            z-index: 999999 !important;
+        }
         </style>
         """, unsafe_allow_html=True)
         components.html("""
