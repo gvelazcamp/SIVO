@@ -231,43 +231,11 @@ if "sivo_splash_shown" not in st.session_state:
 if vista == "home" and not st.session_state.sivo_splash_shown:
     splash_placeholder = st.empty()
     with splash_placeholder.container():
-        st.markdown("""
-        <style>
-        .stApp, [data-testid="stAppViewContainer"], section.main,
-        .main .block-container, section.main > div { background: #050a12 !important; }
-        header[data-testid="stHeader"] { background: #050a12 !important; }
-
-        /* Forzar el iframe del splash a pantalla completa real */
-        iframe[title="streamlit_components.v1.html"],
-        div[data-testid="stIFrame"] iframe,
-        div[data-testid="element-container"]:has(iframe) {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            z-index: 999999 !important;
-            border: none !important;
-        }
-        div[data-testid="stVerticalBlock"]:has(iframe) {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            z-index: 999999 !important;
-        }
-        </style>
-        """, unsafe_allow_html=True)
         components.html("""
-        <div style="height:100vh;width:100%;display:flex;align-items:center;justify-content:center;
+        <div id="sivo-splash-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;
+                    display:flex;align-items:center;justify-content:center;
                     background:radial-gradient(circle at 50% 40%, #0d1b2a 0%, #050a12 70%);
-                    font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;">
+                    font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;z-index:2147483647;">
           <div style="text-align:center;position:relative;">
             <div style="width:180px;height:180px;border-radius:50%;border:1px solid rgba(155,93,229,0.35);
                         position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -297,9 +265,38 @@ if vista == "home" and not st.session_state.sivo_splash_shown:
           @keyframes sivo-load{0%{transform:translateX(-100%);width:40%}50%{width:60%}100%{transform:translateX(250%);width:40%}}
           </style>
         </div>
-        """, height=600, scrolling=False)
+        <script>
+        (function(){
+            try {
+                var parentDoc = window.parent.document;
+                var overlay = document.getElementById('sivo-splash-overlay');
+                if (overlay && parentDoc && parentDoc.body) {
+                    var clone = overlay.cloneNode(true);
+                    clone.id = 'sivo-splash-overlay-clone';
+                    parentDoc.body.appendChild(clone);
+                    // Ocultar el iframe original (queda vacío, sin tamaño visible)
+                    if (window.frameElement) {
+                        window.frameElement.style.position = 'fixed';
+                        window.frameElement.style.width = '0px';
+                        window.frameElement.style.height = '0px';
+                        window.frameElement.style.border = 'none';
+                    }
+                }
+            } catch(e) { console.log('Splash teleport error:', e); }
+        })();
+        </script>
+        """, height=0, scrolling=False)
     time.sleep(1.6)
     st.session_state.sivo_splash_shown = True
+    components.html("""
+    <script>
+    try {
+        var parentDoc = window.parent.document;
+        var clone = parentDoc.getElementById('sivo-splash-overlay-clone');
+        if (clone) { clone.remove(); }
+    } catch(e) {}
+    </script>
+    """, height=0, scrolling=False)
     splash_placeholder.empty()
     st.rerun()
 
