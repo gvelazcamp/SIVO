@@ -34,7 +34,8 @@ jobs:
             "https://demopelu.streamlit.app/",
             "https://demo-viajes.streamlit.app/",
             "https://demotelefonico.streamlit.app/",
-            "https://demo-interno.streamlit.app/"
+            "https://demo-interno.streamlit.app/",
+            "https://demoferreteria.streamlit.app/"            
           ];
 
           (async () => {
