@@ -134,6 +134,7 @@ st.markdown(
     .main .block-container {
         padding: 0 !important;
         max-width: 100% !important;
+        overflow-x: hidden !important;
     }
 
     section[data-testid="stAppViewContainer"] {
@@ -3179,7 +3180,7 @@ except Exception:
 HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
         <h2>Resultados que podés esperar</h2>
-        <p class="subtitle" style="margin-bottom: 4px;">Con una implementación adecuada SIVO puede generar mejoras sifnificaticas en distintos rubros. Estos resultados varian según el rubro el volumen de consultas y una garantia de desempeño.</p>
+        <p class="subtitle" style="margin-bottom: 4px;">Con una implementación adecuada SIVO puede generar mejoras significativas en distintos rubros. Estos resultados varían según el rubro, el volumen de consultas y una garantía de desempeño.</p>
         <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención, no garantías ni promesas de resultado.</p>
 
         <div class="testimonios-grid">
@@ -3290,7 +3291,7 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
 
             <div class="faq-item">
                 <div class="faq-question">¿Qué pasa si SIVO no sabe responder?</div>
-                <div class="faq-answer">Puede deriva la conversacion a una persona, solicitar datos o contacto del clente  o seguir el flujo que definamos para este tipo de consultass. Nunca deja al cliente sin respuesta. Los podemos seguir entrenando para cada caso</div>
+                <div class="faq-answer">Puede derivar la conversación a una persona, solicitar datos o contacto del cliente, o seguir el flujo que definamos para este tipo de consultas. Nunca deja al cliente sin respuesta. Los podemos seguir entrenando para cada caso</div>
             </div>
 
             <div class="faq-item">
