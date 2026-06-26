@@ -164,6 +164,16 @@ st.markdown(
         max-width: 100vw !important;
     }
 
+    /* Evitar doble scrollbar: el contenedor interno de Streamlit no debe scrollear por su cuenta */
+    [data-testid="stAppViewContainer"] {
+        overflow-y: visible !important;
+        height: auto !important;
+    }
+    section.main {
+        overflow-y: visible !important;
+        height: auto !important;
+    }
+
     /* FORZAR FONDO BLANCO EN ABSOLUTAMENTE TODO STREAMLIT */
     html, body,
     .stApp,
