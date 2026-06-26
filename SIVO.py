@@ -2852,8 +2852,8 @@ html, body, .page-container {
     <div class="sivo-card-wrapper">
         <div class="sivo-card">
             <h1>Interactúa con tus datos.</h1>
-            <span class="highlight">SIVO automatiza y transforma la información de tu negocio en respuestas al instante.</span>
-            <p>Entrenalo con tus reglas, tus datos y agiliza la gestión interna mejorando la atención al cliente.</p>
+            <span class="highlight">Automatiza y transforma la información de tu negocio en respuestas y acciones al instante.</span>
+            <p>Entrenalo con tus reglas y tus datos, y agilizá la gestión interna mejorando la atención al cliente. No esperes los reportes, preguntale directo a tus datos.</p>
             <div class="sivo-card-actions">
                 <a href="?vista=asistentes" class="button">Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">Así te informa a vos →</a>
