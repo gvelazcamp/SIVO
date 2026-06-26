@@ -173,6 +173,9 @@ st.markdown(
         overflow-y: visible !important;
         height: auto !important;
     }
+    .main {
+        overflow-x: hidden !important;
+    }
 
     /* FORZAR FONDO BLANCO EN ABSOLUTAMENTE TODO STREAMLIT */
     html, body,
@@ -9145,7 +9148,7 @@ else:
                     }
                 } catch (e) {}
             })();
-        </script>""", height=0)
+        </script>""", height=0, scrolling=False)
 
         _m = None
         try:
@@ -9280,7 +9283,7 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
 """, unsafe_allow_html=True)
 
 # Footer con JS que auto-elimina márgenes del iframe padre
-components.html(FOOTER_SIMPLE, height=250)
+components.html(FOOTER_SIMPLE, height=250, scrolling=False)
 
 
 # Chatbot flotante COMPLETO
@@ -9899,6 +9902,6 @@ iframe[height="0"] * {
 </style>
 """, unsafe_allow_html=True)
 
-components.html(CHATBOT, height=0)
+components.html(CHATBOT, height=0, scrolling=False)
 
 
