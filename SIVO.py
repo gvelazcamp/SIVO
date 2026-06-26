@@ -317,6 +317,9 @@ if vista == "home" and not st.session_state.sivo_splash_shown:
         <div class="sivo-bar-bg"><div class="sivo-bar-fill"></div></div>
       </div>
     </div>
+    """, unsafe_allow_html=True)
+
+    components.html("""
     <script>
     (function() {
         try {
@@ -333,7 +336,7 @@ if vista == "home" and not st.session_state.sivo_splash_shown:
         } catch(e) {}
     })();
     </script>
-    """, unsafe_allow_html=True)
+    """, height=0, scrolling=False)
 
 # =========================
 # HTML COMPLETO
