@@ -217,7 +217,8 @@ st.markdown(
 
     [data-testid="stHtml"],
     div.stHtml {
-        overflow: visible !important;
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
         height: auto !important;
         max-height: none !important;
     }
