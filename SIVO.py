@@ -4436,15 +4436,15 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 <div class="section" style="padding-top: 40px;">
     <div style="max-width: 900px; margin: 0 auto 40px; background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%); border-radius: 24px; padding: 36px 32px; text-align: center; color: white; box-shadow: 0 12px 32px rgba(30,64,175,0.25);">
         <div style="display:flex; justify-content:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
-            <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">🗣️ ASISTENTES EXTERNOS</span>
-            <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">📊 ASISTENTES INTERNOS</span>
+            <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">ASISTENTES EXTERNOS</span>
+            <span style="background:rgba(255,255,255,0.15); font-size:12px; font-weight:800; padding:6px 14px; border-radius:999px; letter-spacing:0.5px;">ASISTENTES INTERNOS</span>
         </div>
         <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos asistentes</h3>
         <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto 14px; line-height:1.6; color:#ffffff;">
             SIVO es un asistente que, además de responder a tus clientes, también te responde a vos: le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante, sin esperar reportes armados a mano.
         </p>
         <p style="font-size:14px; color:#bfdbfe; font-weight:600; margin:0;">
-            🦾 Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
+            Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
         </p>
     </div>
 
