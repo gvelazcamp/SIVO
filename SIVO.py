@@ -1351,6 +1351,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .plan-list li .pl-check {
     flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan-list li .pl-check svg {
+    width: 16px;
+    height: 16px;
+    display: block;
 }
 
 .plan-btn {
@@ -3932,7 +3944,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
         </div>
         <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos asistentes</h3>
         <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto 14px; line-height:1.6; color:#ffffff;">
-            Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante.
+            Tu asistente no solo responde a tus clientes: también te responde a vos. En lugar de esperar reportes armados a mano, le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante.
         </p>
         <p style="font-size:14px; color:#bfdbfe; font-weight:600; margin:0;">
             🦾 Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
@@ -3957,14 +3969,14 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-note">Pago único</div>
             
             <ul class="plan-list">
-                <li><span class="pl-check">✅</span><span>Creación del asistente IA</span></li>
-                <li><span class="pl-check">✅</span><span>Conexión a bases de datos y archivos</span></li>
-                <li><span class="pl-check">✅</span><span>Adaptación a tu negocio (productos, proveedores y reglas propias)</span></li>
-                <li><span class="pl-check">✅</span><span>Configuración de preguntas</span></li>
-                <li><span class="pl-check">✅</span><span>Instalación en tu sitio web</span></li>
-                <li><span class="pl-check">✅</span><span>Consultas internas básicas (stock, ventas, etc.)</span></li>
-                <li><span class="pl-check">✅</span><span>Ajustes iniciales</span></li>
-                <li><span class="pl-check">✅</span><span>Soporte de puesta en marcha</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Creación del asistente IA</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Conexión a bases de datos y archivos</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Adaptación a tu negocio (productos, proveedores y reglas propias)</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Configuración de preguntas</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Instalación en tu sitio web</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Consultas internas básicas (stock, ventas, etc.)</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ajustes iniciales</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Soporte de puesta en marcha</span></li>
             </ul>
             
             <div class="plan-btn">
@@ -3983,13 +3995,13 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-price">Desde US$ 90<span>/mes</span></div>
             
             <ul class="plan-list">
-                <li><span class="pl-check">✅</span><span>Asistente entrenado con tus datos</span></li>
-                <li><span class="pl-check">✅</span><span>Interpretación avanzada (IA + reglas)</span></li>
-                <li><span class="pl-check">✅</span><span>Automatizaciones a medida</span></li>
-                <li><span class="pl-check">✅</span><span>Reportes automáticos (Excel y Email)</span></li>
-                <li><span class="pl-check">✅</span><span>Ajustes y mejoras continuas</span></li>
-                <li><span class="pl-check">✅</span><span>Reportes de uso</span></li>
-                <li><span class="pl-check">✅</span><span>Soporte prioritario</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Asistente entrenado con tus datos</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Interpretación avanzada (IA + reglas)</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Automatizaciones a medida</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Reportes automáticos (Excel y Email)</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ajustes y mejoras continuas</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Reportes de uso</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Soporte prioritario</span></li>
             </ul>
             
             <div class="plan-btn">
@@ -4009,13 +4021,13 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-note">Pensado para empresas que necesitan una solución personalizada.</div>
             
             <ul class="plan-list">
-                <li><span class="pl-check">✅</span><span>Asistentes ilimitados</span></li>
-                <li><span class="pl-check">✅</span><span>Integraciones ERP / CRM</span></li>
-                <li><span class="pl-check">✅</span><span>Roles y permisos</span></li>
-                <li><span class="pl-check">✅</span><span>SLA y soporte dedicado</span></li>
-                <li><span class="pl-check">✅</span><span>Seguridad y escalabilidad</span></li>
-                <li><span class="pl-check">✅</span><span>Onboarding completo</span></li>
-                <li><span class="pl-check">✅</span><span>Desarrollo de funcionalidades a medida</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Asistentes ilimitados</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Integraciones ERP / CRM</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Roles y permisos</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>SLA y soporte dedicado</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Seguridad y escalabilidad</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Onboarding completo</span></li>
+                <li><span class="pl-check"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#16a34a"/><path d="M6 10.5L8.5 13L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Desarrollo de funcionalidades a medida</span></li>
             </ul>
             
             <div class="plan-btn">
