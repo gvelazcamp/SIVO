@@ -384,9 +384,9 @@ HTML_BASE = """
 }
 
 html {
-    overflow-x: hidden;
+    overflow: hidden !important;
     width: 100%;
-    height: 100%;
+    height: 100vh !important;
     background: #ffffff !important;
 }
 
@@ -397,8 +397,9 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow: hidden !important;
+    height: 100vh !important;
+    min-height: unset !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
