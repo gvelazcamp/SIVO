@@ -2627,10 +2627,10 @@ html, body, .page-container {
     display: inline-block;
     background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     color: #ffffff;
-    padding: 24px 60px;
+    padding: 22px 50px;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     transition: all 0.3s;
     border: none;
@@ -2645,6 +2645,12 @@ html, body, .page-container {
     gap: 18px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.sivo-card .button,
+.sivo-card .button-secondary {
+    min-width: 280px;
+    text-align: center;
 }
 
 .sivo-card .button-secondary {
@@ -2703,7 +2709,7 @@ html, body, .page-container {
     .sivo-card h1 { font-size: 52px; }
     .sivo-card .highlight { font-size: 60px; }
     .sivo-card p { font-size: 24px; }
-    .sivo-card .button { padding: 22px 55px; font-size: 21px; }
+    .sivo-card .button { padding: 20px 45px; font-size: 19px; }
     .sivo-card .button-secondary { padding: 20px 45px; font-size: 19px; }
 }
 
@@ -2723,8 +2729,10 @@ html, body, .page-container {
     .sivo-card h1 { font-size: 36px; margin-bottom: 25px; }
     .sivo-card .highlight { font-size: 42px; margin-bottom: 35px; }
     .sivo-card p { font-size: 19px; margin-bottom: 45px; }
-    .sivo-card .button { padding: 18px 45px; font-size: 19px; }
+    .sivo-card .button { padding: 16px 40px; font-size: 17px; }
     .sivo-card .button-secondary { padding: 16px 40px; font-size: 17px; }
+    .sivo-card .button,
+    .sivo-card .button-secondary { min-width: 0; width: 100%; }
 }
 
 @media (max-width: 480px) {
@@ -2740,7 +2748,7 @@ html, body, .page-container {
     .sivo-card h1 { font-size: 24px; }
     .sivo-card .highlight { font-size: 28px; }
     .sivo-card p { font-size: 16px; }
-    .sivo-card .button { padding: 14px 35px; font-size: 17px; }
+    .sivo-card .button { padding: 12px 30px; font-size: 15px; }
     .sivo-card .button-secondary { padding: 12px 30px; font-size: 15px; }
 }
 
@@ -2833,11 +2841,11 @@ html, body, .page-container {
             <span class="highlight">SIVO automatiza y transforma la información de tu negocio en respuestas al instante.</span>
             <p>Entrenalo con tus reglas, tus datos y agiliza la gestión interna mejorando la atención al cliente.</p>
             <div class="sivo-card-actions">
-                <a href="?vista=asistentes" class="button">🗣️ Así habla con tus clientes →</a>
-                <a href="?vista=internos" class="button-secondary">📊 Así te informa a vos →</a>
+                <a href="?vista=asistentes" class="button">Así habla con tus clientes →</a>
+                <a href="?vista=internos" class="button-secondary">Así te informa a vos →</a>
             </div>
             <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 1.7s forwards;">
-                <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">📅 Agendá tu demo →</a>
+                <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">Agendá tu demo →</a>
             </div>
         </div>
     </div>
@@ -3154,47 +3162,47 @@ HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
         <h2>Resultados que podés esperar</h2>
         <p class="subtitle" style="margin-bottom: 4px;">Con una implementación adecuada SIVO puede generar mejoras sifnificaticas en distintos rubros. Estos resultados varian según el rubro el volumen de consultas y una garantia de desempeño.</p>
-        <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">📌 Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención — no garantías ni promesas de resultado.</p>
+        <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención, no garantías ni promesas de resultado.</p>
 
         <div class="testimonios-grid">
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    🛍️ <strong>Ecommerce:</strong> Atendiendo consultas de productos, precios y envíos las 24 horas, los negocios suelen ver una mejora notable en conversión gracias a la rapidez de respuesta.
+                    <strong>Ecommerce:</strong> Atendiendo consultas de productos, precios y envíos las 24 horas, los negocios suelen ver una mejora notable en conversión gracias a la rapidez de respuesta.
                 </div>
                 <div class="testimonio-stat">📈 Hasta +40% en ventas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    🍽️ <strong>Gastronomía:</strong> Al automatizar las consultas repetitivas (horarios, menú, reservas), el equipo libera tiempo para atender lo que realmente requiere una persona.
+                    <strong>Gastronomía:</strong> Al automatizar las consultas repetitivas (horarios, menú, reservas), el equipo libera tiempo para atender lo que realmente requiere una persona.
                 </div>
                 <div class="testimonio-stat">⏰ Hasta -3hs diarias en tareas repetitivas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    🦷 <strong>Salud y turnos:</strong> Con reservas disponibles a cualquier hora y confirmación automática, la cantidad de turnos agendados tiende a duplicarse.
+                    <strong>Salud y turnos:</strong> Con reservas disponibles a cualquier hora y confirmación automática, la cantidad de turnos agendados tiende a duplicarse.
                 </div>
                 <div class="testimonio-stat">📅 Hasta 2x más reservas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    🏠 <strong>Inmobiliaria:</strong> Respondiendo características, precios y agendando visitas sin esperas, se puede atender un volumen mucho mayor de consultas con el mismo equipo.
+                    <strong>Inmobiliaria:</strong> Respondiendo características, precios y agendando visitas sin esperas, se puede atender un volumen mucho mayor de consultas con el mismo equipo.
                 </div>
                 <div class="testimonio-stat">🏠 Hasta 3x más consultas atendidas</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    💪 <strong>Gimnasios y centros deportivos:</strong> Consultas de horarios, reservas de clases y cancelaciones gestionadas por el asistente reducen significativamente la carga de llamados al local.
+                    <strong>Gimnasios y centros deportivos:</strong> Consultas de horarios, reservas de clases y cancelaciones gestionadas por el asistente reducen significativamente la carga de llamados al local.
                 </div>
                 <div class="testimonio-stat">📞 Hasta -70% en llamados</div>
             </div>
 
             <div class="testimonio-card">
                 <div class="testimonio-quote">
-                    💻 <strong>Ecommerce de tecnología:</strong> Atendiendo stock, precios y envíos a toda hora, es posible cerrar ventas incluso fuera del horario comercial.
+                    <strong>Ecommerce de tecnología:</strong> Atendiendo stock, precios y envíos a toda hora, es posible cerrar ventas incluso fuera del horario comercial.
                 </div>
                 <div class="testimonio-stat">🌙 Ventas posibles las 24/7</div>
             </div>
