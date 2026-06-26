@@ -2929,6 +2929,32 @@ html, body, .page-container {
 
     
 
+<!-- SIVO VA MÁS ALLÁ DEL CHAT -->
+<div class="section reveal-section" id="automatizacion" style="padding: 60px 5%; scroll-margin-top: 100px;">
+    <style>
+    .sivo-video-demo-wrap {
+        max-width: 380px;
+        margin: 0 auto 20px;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+    }
+    </style>
+    <div style="text-align:center; margin-bottom:14px;">
+        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🛠️ MÁS ALLÁ DEL CHAT</span>
+    </div>
+    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Así automatizamos un proceso real</h2>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO entiende tu negocio y trabaja con tus datos reales. Mirá un caso concreto: descarga de Excel, procesamiento automático y reporte por WhatsApp, corriendo solo todos los días a las 8am.</p>
+
+    __VIDEO_DEMO_PLACEHOLDER__
+
+    <div style="text-align:center; margin-top:36px;">
+        <a href="?vista=home#soporte" style="display:inline-block; background:linear-gradient(135deg,#60a5fa,#3b82f6); color:white; font-size:16px; font-weight:700; padding:16px 36px; border-radius:14px; text-decoration:none; box-shadow:0 4px 15px rgba(59,130,246,0.3);">Contanos tu caso →</a>
+    </div>
+</div>
+
+<!-- Inline event handlers are used on cards for better compatibility -->
+
     <!-- ====== SECCIÓN CÓMO FUNCIONA CON TARJETAS ANIMADAS ====== -->
     <style>
         .como-funciona-container {
@@ -3113,31 +3139,6 @@ html, body, .page-container {
 __BENEFITS_STANDALONE__
 </div>
 
-<!-- SIVO VA MÁS ALLÁ DEL CHAT -->
-<div class="section reveal-section" id="automatizacion" style="padding: 60px 5%; scroll-margin-top: 100px;">
-    <style>
-    .sivo-video-demo-wrap {
-        max-width: 380px;
-        margin: 0 auto 20px;
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 25px 70px rgba(0,0,0,0.25);
-    }
-    </style>
-    <div style="text-align:center; margin-bottom:14px;">
-        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🛠️ MÁS ALLÁ DEL CHAT</span>
-    </div>
-    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Así automatizamos un proceso real</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO entiende tu negocio y trabaja con tus datos reales. Mirá un caso concreto: descarga de Excel, procesamiento automático y reporte por WhatsApp, corriendo solo todos los días a las 8am.</p>
-
-    __VIDEO_DEMO_PLACEHOLDER__
-
-    <div style="text-align:center; margin-top:36px;">
-        <a href="?vista=home#soporte" style="display:inline-block; background:linear-gradient(135deg,#60a5fa,#3b82f6); color:white; font-size:16px; font-weight:700; padding:16px 36px; border-radius:14px; text-decoration:none; box-shadow:0 4px 15px rgba(59,130,246,0.3);">Contanos tu caso →</a>
-    </div>
-</div>
-
-<!-- Inline event handlers are used on cards for better compatibility -->
 
 """ + FOOTER + """
 """
