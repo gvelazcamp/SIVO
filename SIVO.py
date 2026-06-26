@@ -2569,10 +2569,6 @@ html, body, .page-container {
     margin: 0 !important;
 }
 
-.sivo-card-wrapper {
-    overflow-x: hidden;
-}
-
 .sivo-card {
     background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%);
     border-radius: 40px;
@@ -2853,7 +2849,7 @@ html, body, .page-container {
         <div class="sivo-card">
             <h1>Interactúa con tus datos.</h1>
             <span class="highlight">Automatiza y transforma la información de tu negocio en respuestas y acciones al instante.</span>
-            <p>Entrenalo con tus reglas y tus datos, y agilizá la gestión interna mejorando la atención al cliente. No esperes los reportes, preguntale directo a tus datos.</p>
+            <p>Entrenalo con tus reglas y tus datos, agilizá la gestión interna mejorando la atención al cliente. No esperes los reportes, preguntale directo a tus datos.</p>
             <div class="sivo-card-actions">
                 <a href="?vista=asistentes" class="button">Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">Así te informa a vos →</a>
@@ -8869,6 +8865,26 @@ else:
     _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
     if len(_home_p1_partes) == 2:
         st.html(_home_p1_partes[0])
+
+        # Forzar recálculo de scroll del navegador tras la animación de entrada del Hero
+        # (simula el "scroll manual" que hace desaparecer la doble scrollbar)
+        components.html("""
+        <script>
+        (function() {
+            try {
+                var parentWin = window.parent;
+                function forceReflow() {
+                    var scrollY = parentWin.scrollY || 0;
+                    parentWin.scrollTo(0, scrollY + 1);
+                    parentWin.scrollTo(0, scrollY);
+                }
+                setTimeout(forceReflow, 1100);
+                setTimeout(forceReflow, 1800);
+            } catch(e) { console.log('Scroll reflow error:', e); }
+        })();
+        </script>
+        """, height=0, scrolling=False)
+
         components.html(SIVO_VIDEO_DEMO_HTML, height=700, scrolling=False)
         st.html(_home_p1_partes[1])
     else:
