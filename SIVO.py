@@ -1346,7 +1346,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 13px;
     color: #555;
     border-bottom: 1px solid #f2f2f2;
-    line-height: 1.5;
+}
+
+.plan-list li span:last-child {
+    line-height: 18px;
 }
 
 .plan-list li .pl-check {
@@ -1354,7 +1357,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 18px;
     height: 18px;
     line-height: 18px;
-    margin-top: 1px;
     border-radius: 50%;
     background: #16a34a;
     color: #ffffff;
