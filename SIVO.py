@@ -1340,11 +1340,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .plan-list li {
     display: flex;
+    align-items: flex-start;
     gap: 10px;
     padding: 9px 0;
     font-size: 13px;
     color: #555;
     border-bottom: 1px solid #f2f2f2;
+    line-height: 1.5;
+}
+
+.plan-list li .pl-check {
+    flex-shrink: 0;
 }
 
 .plan-btn {
@@ -3951,14 +3957,14 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-note">Pago único</div>
             
             <ul class="plan-list">
-                <li>✅ Creación del asistente IA</li>
-                <li>✅ Conexión a bases de datos y archivos</li>
-                <li>✅ Adaptación a tu negocio (productos, proveedores y reglas propias)</li>
-                <li>✅ Configuración de preguntas</li>
-                <li>✅ Instalación en tu sitio web</li>
-                <li>✅ Consultas internas básicas (stock, ventas, etc.)</li>
-                <li>✅ Ajustes iniciales</li>
-                <li>✅ Soporte de puesta en marcha</li>
+                <li><span class="pl-check">✅</span><span>Creación del asistente IA</span></li>
+                <li><span class="pl-check">✅</span><span>Conexión a bases de datos y archivos</span></li>
+                <li><span class="pl-check">✅</span><span>Adaptación a tu negocio (productos, proveedores y reglas propias)</span></li>
+                <li><span class="pl-check">✅</span><span>Configuración de preguntas</span></li>
+                <li><span class="pl-check">✅</span><span>Instalación en tu sitio web</span></li>
+                <li><span class="pl-check">✅</span><span>Consultas internas básicas (stock, ventas, etc.)</span></li>
+                <li><span class="pl-check">✅</span><span>Ajustes iniciales</span></li>
+                <li><span class="pl-check">✅</span><span>Soporte de puesta en marcha</span></li>
             </ul>
             
             <div class="plan-btn">
@@ -3977,13 +3983,13 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-price">Desde US$ 90<span>/mes</span></div>
             
             <ul class="plan-list">
-                <li>✅ Asistente entrenado con tus datos</li>
-                <li>✅ Interpretación avanzada (IA + reglas)</li>
-                <li>✅ Automatizaciones a medida</li>
-                <li>✅ Reportes automáticos (Excel y Email)</li>
-                <li>✅ Ajustes y mejoras continuas</li>
-                <li>✅ Reportes de uso</li>
-                <li>✅ Soporte prioritario</li>
+                <li><span class="pl-check">✅</span><span>Asistente entrenado con tus datos</span></li>
+                <li><span class="pl-check">✅</span><span>Interpretación avanzada (IA + reglas)</span></li>
+                <li><span class="pl-check">✅</span><span>Automatizaciones a medida</span></li>
+                <li><span class="pl-check">✅</span><span>Reportes automáticos (Excel y Email)</span></li>
+                <li><span class="pl-check">✅</span><span>Ajustes y mejoras continuas</span></li>
+                <li><span class="pl-check">✅</span><span>Reportes de uso</span></li>
+                <li><span class="pl-check">✅</span><span>Soporte prioritario</span></li>
             </ul>
             
             <div class="plan-btn">
@@ -4003,13 +4009,13 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-note">Pensado para empresas que necesitan una solución personalizada.</div>
             
             <ul class="plan-list">
-                <li>✅ Asistentes ilimitados</li>
-                <li>✅ Integraciones ERP / CRM</li>
-                <li>✅ Roles y permisos</li>
-                <li>✅ SLA y soporte dedicado</li>
-                <li>✅ Seguridad y escalabilidad</li>
-                <li>✅ Onboarding completo</li>
-                <li>✅ Desarrollo de funcionalidades a medida</li>
+                <li><span class="pl-check">✅</span><span>Asistentes ilimitados</span></li>
+                <li><span class="pl-check">✅</span><span>Integraciones ERP / CRM</span></li>
+                <li><span class="pl-check">✅</span><span>Roles y permisos</span></li>
+                <li><span class="pl-check">✅</span><span>SLA y soporte dedicado</span></li>
+                <li><span class="pl-check">✅</span><span>Seguridad y escalabilidad</span></li>
+                <li><span class="pl-check">✅</span><span>Onboarding completo</span></li>
+                <li><span class="pl-check">✅</span><span>Desarrollo de funcionalidades a medida</span></li>
             </ul>
             
             <div class="plan-btn">
