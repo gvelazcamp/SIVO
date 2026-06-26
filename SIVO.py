@@ -159,24 +159,30 @@ st.markdown(
         height: 0 !important;
     }
 
-    /* FIX DOBLE SCROLL: html/body bloqueados, .stApp es el único que scrollea */
-    html, body {
+    /* FIX DOBLE SCROLL */
+    html {
         overflow: hidden !important;
-        height: 100% !important;
-        max-width: 100vw !important;
+        height: 100vh !important;
     }
-
+    body {
+        overflow: hidden !important;
+        height: 100vh !important;
+        min-height: unset !important;
+    }
+    #root {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
     .stApp, [data-testid="stApp"] {
         overflow-y: auto !important;
         overflow-x: hidden !important;
         height: 100vh !important;
-        width: 100% !important;
     }
-
-    [data-testid="stAppViewContainer"] {
+    [data-testid="stAppViewContainer"],
+    .appview-container {
         overflow: visible !important;
         height: auto !important;
-        max-width: 100vw !important;
+        min-height: unset !important;
     }
     section.main {
         overflow: visible !important;
@@ -237,6 +243,38 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# JS FIX DOBLE SCROLL: fuerza en runtime que solo .stApp scrollee
+import streamlit.components.v1 as _components_fix
+_components_fix.html("""
+<script>
+(function fixScroll() {
+    function apply() {
+        var d = window.parent ? window.parent.document : document;
+        var h = d.documentElement;
+        var b = d.body;
+        var root = d.getElementById('root');
+        var app = d.querySelector('.stApp') || d.querySelector('[data-testid="stApp"]');
+        if (!app) { setTimeout(apply, 200); return; }
+        h.style.setProperty('overflow','hidden','important');
+        h.style.setProperty('height','100vh','important');
+        b.style.setProperty('overflow','hidden','important');
+        b.style.setProperty('height','100vh','important');
+        b.style.setProperty('min-height','unset','important');
+        if (root) {
+            root.style.setProperty('overflow','hidden','important');
+            root.style.setProperty('height','100vh','important');
+        }
+        app.style.setProperty('overflow-y','auto','important');
+        app.style.setProperty('overflow-x','hidden','important');
+        app.style.setProperty('height','100vh','important');
+    }
+    apply();
+    setTimeout(apply, 500);
+    setTimeout(apply, 1500);
+})();
+</script>
+""", height=0, scrolling=False)
 
 # =========================
 # VISTA
