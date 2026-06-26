@@ -3932,7 +3932,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
         </div>
         <h3 style="font-size:24px; font-weight:800; margin: 0 0 10px; color:#ffffff;">Todos los planes incluyen ambos asistentes</h3>
         <p style="font-size:15px; opacity:0.92; max-width:680px; margin:0 auto 14px; line-height:1.6; color:#ffffff;">
-            No es solo un asistente que le responde a tus clientes. Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante.
+            Es también el que <strong>te responde a vos</strong>: dejás de esperar reportes armados a mano y le preguntás directo a tus datos (facturación, stock, ventas) y te contesta al instante.
         </p>
         <p style="font-size:14px; color:#bfdbfe; font-weight:600; margin:0;">
             🦾 Es como tener un empleado que nunca se enferma, nunca se toma vacaciones y está disponible 24/7.
@@ -9096,7 +9096,7 @@ function send(){
         
         // 12. IA y personalización
         else if(l.includes('ia')||l.includes('inteligencia')||l.includes('personali'))
-            r='🧠 <strong>IA Conversacional Avanzada:</strong><br><br>✅ Entiende lenguaje natural<br>✅ Aprende de cada conversación<br>✅ Se personaliza 100% a tu negocio<br>✅ Mejora continuamente<br><br>No es un bot con respuestas rígidas, es una IA que conversa naturalmente. 🤖';
+            r='🧠 <strong>IA Conversacional Avanzada:</strong><br><br>✅ Entiende lenguaje natural<br>✅ Aprende de cada conversación<br>✅ Se personaliza 100% a tu negocio<br>✅ Mejora continuamente<br><br>Es una IA que conversa naturalmente, no un bot con respuestas rígidas. 🤖';
         
         // 13. Idiomas
         else if(l.includes('idioma')||l.includes('lenguaje')||l.includes('inglés')||l.includes('ingles'))
@@ -9192,7 +9192,7 @@ function send(){
                     else if(l.includes('programa')||l.includes('tecnic')||l.includes('código')||l.includes('codigo')) r='🎉 <strong>¡NO necesitás saber programar!</strong><br><br>Nosotros nos encargamos de TODO:<br>✅ Instalación completa<br>✅ Configuración<br>✅ Entrenamiento del bot<br>✅ Integraciones<br>✅ Soporte continuo<br><br>Vos solo nos pasás tu información y listo! 🚀';
                     else if(l.includes('tiempo')||l.includes('demora')||l.includes('rapido')||l.includes('rápido')) r='⚡ <strong>Tiempos de implementación:</strong><br><br><strong>Casos simples:</strong> 2-3 días<br>• Chatbot básico con info estándar<br><br><strong>Casos complejos:</strong> 1-2 semanas<br>• Múltiples integraciones<br>• Datos complejos<br><br>Te damos un timeline claro desde el inicio. 📅';
                     else if(l.includes('segur')||l.includes('dato')||l.includes('privacidad')) r='🔒 <strong>Tu información 100% protegida:</strong><br><br>✅ Encriptación de datos<br>✅ Cumplimos GDPR y normativas locales<br>✅ Servidores seguros<br>✅ Acceso restringido<br>✅ Backups diarios<br><br>Tanto tus datos como los de tus clientes están seguros. 💯';
-                    else if(l.includes('ia')||l.includes('inteligencia')||l.includes('personali')) r='🧠 <strong>IA Conversacional Avanzada:</strong><br><br>✅ Entiende lenguaje natural<br>✅ Aprende de cada conversación<br>✅ Se personaliza 100% a tu negocio<br>✅ Mejora continuamente<br><br>No es un bot con respuestas rígidas, es una IA que conversa naturalmente. 🤖';
+                    else if(l.includes('ia')||l.includes('inteligencia')||l.includes('personali')) r='🧠 <strong>IA Conversacional Avanzada:</strong><br><br>✅ Entiende lenguaje natural<br>✅ Aprende de cada conversación<br>✅ Se personaliza 100% a tu negocio<br>✅ Mejora continuamente<br><br>Es una IA que conversa naturalmente, no un bot con respuestas rígidas. 🤖';
                     else if(l.includes('idioma')||l.includes('lenguaje')||l.includes('inglés')||l.includes('ingles')) r='🌎 <strong>Soporte multiidioma:</strong><br><br>✅ Español<br>✅ Inglés<br>✅ Portugués<br>✅ Otros bajo pedido<br><br>El bot puede detectar el idioma automáticamente y responder en el idioma del cliente. 🗣️';
                     else if(l.includes('uso')||l.includes('industria')||l.includes('rubro')||l.includes('ejemplo')) r='💼 <strong>Casos de uso exitosos:</strong><br><br>🛍️ E-commerce: Consultas de productos<br>💈 Servicios: Agendar turnos<br>🏨 Hotelería: Reservas y consultas<br>🏥 Salud: Info y turnos<br>📚 Educación: Inscripciones<br>🍕 Gastronomía: Pedidos<br><br>¿Cuál es tu rubro?';
                     else if(l.includes('ventaja')||l.includes('mejor')||l.includes('diferencia')||l.includes('competencia')) r='⭐ <strong>Por qué elegir SIVO:</strong><br><br>✅ Setup en días, no meses<br>✅ IA más natural y conversacional<br>✅ Soporte en español 24/7<br>✅ Integraciones nativas<br>✅ Precio accesible<br>✅ Sin letra chica<br><br>Probalo gratis y compará! 🚀';
