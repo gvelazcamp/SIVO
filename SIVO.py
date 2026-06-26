@@ -3877,7 +3877,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
 <script>
   const scenes = [...document.querySelectorAll('.scene')];
   const dots = [...document.querySelectorAll('.tdot')];
-  const DURATIONS = [4500, 5000, 9000, 4500, 11000, 99999]; // ms per scene
+  const DURATIONS = [4500, 5000, 9000, 4500, 14500, 99999]; // ms per scene
   let current = 0;
   let timer = null;
 
