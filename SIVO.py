@@ -197,6 +197,11 @@ st.markdown(
         background: #ffffff !important;
     }
 
+    [data-testid="stHtml"],
+    div.stHtml {
+        overflow-x: hidden !important;
+    }
+
     /* El iframe debe ocupar exactamente el espacio */
     iframe {
         width: 100% !important;
