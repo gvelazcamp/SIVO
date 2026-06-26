@@ -159,33 +159,19 @@ st.markdown(
         height: 0 !important;
     }
 
-    /* FIX DOBLE SCROLL */
-    html {
-        overflow: hidden !important;
-        height: 100vh !important;
-    }
-    body {
-        overflow: hidden !important;
-        height: 100vh !important;
-        min-height: unset !important;
-    }
-    #root {
-        overflow: hidden !important;
-        height: 100vh !important;
-    }
-    .stApp, [data-testid="stApp"] {
-        overflow-y: auto !important;
+    /* Eliminar scroll horizontal */
+    html, body, [data-testid="stAppViewContainer"], section.main {
         overflow-x: hidden !important;
-        height: 100vh !important;
+        max-width: 100vw !important;
     }
-    [data-testid="stAppViewContainer"],
-    .appview-container {
-        overflow: visible !important;
+
+    /* Evitar doble scrollbar: el contenedor interno de Streamlit no debe scrollear por su cuenta */
+    [data-testid="stAppViewContainer"] {
+        overflow-y: visible !important;
         height: auto !important;
-        min-height: unset !important;
     }
     section.main {
-        overflow: visible !important;
+        overflow-y: visible !important;
         height: auto !important;
     }
     .main {
@@ -218,9 +204,6 @@ st.markdown(
     [data-testid="stHtml"],
     div.stHtml {
         overflow-x: hidden !important;
-        overflow-y: visible !important;
-        height: auto !important;
-        max-height: none !important;
     }
 
     /* El iframe debe ocupar exactamente el espacio */
@@ -247,38 +230,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# JS FIX DOBLE SCROLL: fuerza en runtime que solo .stApp scrollee
-import streamlit.components.v1 as _components_fix
-_components_fix.html("""
-<script>
-(function fixScroll() {
-    function apply() {
-        var d = window.parent ? window.parent.document : document;
-        var h = d.documentElement;
-        var b = d.body;
-        var root = d.getElementById('root');
-        var app = d.querySelector('.stApp') || d.querySelector('[data-testid="stApp"]');
-        if (!app) { setTimeout(apply, 200); return; }
-        h.style.setProperty('overflow','hidden','important');
-        h.style.setProperty('height','100vh','important');
-        b.style.setProperty('overflow','hidden','important');
-        b.style.setProperty('height','100vh','important');
-        b.style.setProperty('min-height','unset','important');
-        if (root) {
-            root.style.setProperty('overflow','hidden','important');
-            root.style.setProperty('height','100vh','important');
-        }
-        app.style.setProperty('overflow-y','auto','important');
-        app.style.setProperty('overflow-x','hidden','important');
-        app.style.setProperty('height','100vh','important');
-    }
-    apply();
-    setTimeout(apply, 500);
-    setTimeout(apply, 1500);
-})();
-</script>
-""", height=0, scrolling=False)
-
 # =========================
 # VISTA
 # =========================
@@ -297,78 +248,92 @@ if "sivo_splash_shown" not in st.session_state:
     st.session_state.sivo_splash_shown = False
 
 if vista == "home" and not st.session_state.sivo_splash_shown:
-    splash_placeholder = st.empty()
-    with splash_placeholder.container():
-        st.markdown("""
-        <style>
-        div[data-testid="stAppViewContainer"], .stApp, section.main, .main .block-container {
-            background: #050a12 !important;
-        }
-        header[data-testid="stHeader"] { background: #050a12 !important; }
-        #sivo-splash-fixed {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center;
-            background: radial-gradient(circle at 50% 40%, #0d1b2a 0%, #050a12 70%);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            z-index: 999999;
-        }
-        .sivo-splash-inner { text-align: center; position: relative; }
-        .sivo-ring2 {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 1px solid rgba(155,93,229,0.35);
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            animation: sivo-spin-rev 3s linear infinite;
-        }
-        .sivo-ring {
-            width: 140px; height: 140px; border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: #00f5d4; border-right-color: #00bbf9;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            animation: sivo-spin 1.4s linear infinite;
-        }
-        .sivo-logo-text {
-            font-size: 4.2rem; font-weight: 800; letter-spacing: 4px;
-            background: linear-gradient(90deg, #00f5d4, #00bbf9, #9b5de5, #00f5d4);
-            background-size: 300% auto; -webkit-background-clip: text; background-clip: text;
-            color: transparent;
-            animation: sivo-shine 3s linear infinite, sivo-pulse 2.2s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(0,245,212,0.25);
-        }
-        .sivo-status {
-            margin-top: 28px; color: #8fa3b8; font-size: 0.95rem; letter-spacing: 1px;
-        }
-        .sivo-bar-bg {
-            margin: 22px auto 0; width: 220px; height: 4px;
-            background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;
-        }
-        .sivo-bar-fill {
-            height: 100%; width: 40%;
-            background: linear-gradient(90deg, #00f5d4, #00bbf9);
-            border-radius: 4px;
-            animation: sivo-load 1.2s ease-in-out infinite;
-        }
-        @keyframes sivo-shine { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
-        @keyframes sivo-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-        @keyframes sivo-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes sivo-spin-rev { to { transform: translate(-50%, -50%) rotate(-360deg); } }
-        @keyframes sivo-load { 0% { transform: translateX(-100%); width: 40%; } 50% { width: 60%; } 100% { transform: translateX(250%); width: 40%; } }
-        </style>
-        <div id="sivo-splash-fixed">
-          <div class="sivo-splash-inner">
-            <div class="sivo-ring2"></div>
-            <div class="sivo-ring"></div>
-            <div class="sivo-logo-text">SIVO</div>
-            <div class="sivo-status">Iniciando tu asistente inteligente...</div>
-            <div class="sivo-bar-bg"><div class="sivo-bar-fill"></div></div>
-          </div>
-        </div>
-        """, unsafe_allow_html=True)
-    time.sleep(1.6)
     st.session_state.sivo_splash_shown = True
-    splash_placeholder.empty()
-    st.rerun()
+    st.markdown("""
+    <style>
+    #sivo-splash-fixed {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%; height: 100%;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 50% 40%, #0d1b2a 0%, #050a12 70%);
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        z-index: 999999;
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+        pointer-events: auto;
+    }
+    #sivo-splash-fixed.sivo-splash-hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .sivo-splash-inner { text-align: center; position: relative; }
+    .sivo-ring2 {
+        width: 180px; height: 180px; border-radius: 50%;
+        border: 1px solid rgba(155,93,229,0.35);
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        animation: sivo-spin-rev 3s linear infinite;
+    }
+    .sivo-ring {
+        width: 140px; height: 140px; border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: #00f5d4; border-right-color: #00bbf9;
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        animation: sivo-spin 1.4s linear infinite;
+    }
+    .sivo-logo-text {
+        font-size: 4.2rem; font-weight: 800; letter-spacing: 4px;
+        background: linear-gradient(90deg, #00f5d4, #00bbf9, #9b5de5, #00f5d4);
+        background-size: 300% auto; -webkit-background-clip: text; background-clip: text;
+        color: transparent;
+        animation: sivo-shine 3s linear infinite, sivo-pulse 2.2s ease-in-out infinite;
+        text-shadow: 0 0 30px rgba(0,245,212,0.25);
+    }
+    .sivo-status {
+        margin-top: 28px; color: #8fa3b8; font-size: 0.95rem; letter-spacing: 1px;
+    }
+    .sivo-bar-bg {
+        margin: 22px auto 0; width: 220px; height: 4px;
+        background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;
+    }
+    .sivo-bar-fill {
+        height: 100%; width: 40%;
+        background: linear-gradient(90deg, #00f5d4, #00bbf9);
+        border-radius: 4px;
+        animation: sivo-load 1.2s ease-in-out infinite;
+    }
+    @keyframes sivo-shine { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
+    @keyframes sivo-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+    @keyframes sivo-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes sivo-spin-rev { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+    @keyframes sivo-load { 0% { transform: translateX(-100%); width: 40%; } 50% { width: 60%; } 100% { transform: translateX(250%); width: 40%; } }
+    </style>
+    <div id="sivo-splash-fixed">
+      <div class="sivo-splash-inner">
+        <div class="sivo-ring2"></div>
+        <div class="sivo-ring"></div>
+        <div class="sivo-logo-text">SIVO</div>
+        <div class="sivo-status">Iniciando tu asistente inteligente...</div>
+        <div class="sivo-bar-bg"><div class="sivo-bar-fill"></div></div>
+      </div>
+    </div>
+    <script>
+    (function() {
+        try {
+            var parentDoc = window.parent ? window.parent.document : document;
+            setTimeout(function() {
+                var el = parentDoc.getElementById('sivo-splash-fixed');
+                if (el) {
+                    el.classList.add('sivo-splash-hide');
+                    setTimeout(function() {
+                        if (el && el.parentNode) el.parentNode.removeChild(el);
+                    }, 600);
+                }
+            }, 1600);
+        } catch(e) {}
+    })();
+    </script>
+    """, unsafe_allow_html=True)
 
 # =========================
 # HTML COMPLETO
@@ -387,9 +352,9 @@ HTML_BASE = """
 }
 
 html {
-    overflow: hidden !important;
+    overflow-x: hidden;
     width: 100%;
-    height: 100vh !important;
+    height: 100%;
     background: #ffffff !important;
 }
 
@@ -400,9 +365,8 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow: hidden !important;
-    height: 100vh !important;
-    min-height: unset !important;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
