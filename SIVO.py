@@ -3128,7 +3128,7 @@ __BENEFITS_STANDALONE__
         <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🛠️ MÁS ALLÁ DEL CHAT</span>
     </div>
     <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Así automatizamos un proceso real</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO no es solo un chatbot prearmado. Mirá un caso real de automatización: descarga de Excel, procesamiento de datos y reporte vía WhatsApp, corriendo solo todos los días a las 8am.</p>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO entiende tu negocio y trabaja con tus datos reales. Mirá un caso concreto: descarga de Excel, procesamiento automático y reporte por WhatsApp, corriendo solo todos los días a las 8am.</p>
 
     __VIDEO_DEMO_PLACEHOLDER__
 
@@ -3880,14 +3880,22 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
   let current = 0;
   let timer = null;
 
+  let pendingRAF = null;
+
   function showScene(i, restartClock){
+    if (pendingRAF !== null) {
+      cancelAnimationFrame(pendingRAF);
+      pendingRAF = null;
+    }
     scenes.forEach((s, idx) => {
       if(idx === i){
         // force reflow to restart inner CSS animations (delays etc.)
         const clone = s.cloneNode(true);
         s.replaceWith(clone);
         scenes[idx] = clone;
-        requestAnimationFrame(()=> {
+        pendingRAF = requestAnimationFrame(()=> {
+          pendingRAF = null;
+          if (current !== i) return; // se canceló por un cambio de escena más reciente
           clone.classList.add('active');
           if(idx === 1) runTypewriter(clone, 1);
           if(idx === 2) runTypewriter(clone, 2, ()=>{
