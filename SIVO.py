@@ -3993,7 +3993,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     requestAnimationFrame(tick);
   }
 
-  showScene(0);
+  setTimeout(()=> showScene(0), 2500);
 </script>
 </body>
 </html>
