@@ -2559,6 +2559,10 @@ html, body, .page-container {
     margin: 0 !important;
 }
 
+.sivo-card-wrapper {
+    overflow-x: hidden;
+}
+
 .sivo-card {
     background: linear-gradient(135deg, #1a6fb5 0%, #0d4a7a 50%, #1a3a5c 100%);
     border-radius: 40px;
