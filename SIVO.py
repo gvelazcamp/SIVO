@@ -159,19 +159,27 @@ st.markdown(
         height: 0 !important;
     }
 
-    /* Eliminar scroll horizontal */
-    html, body, [data-testid="stAppViewContainer"], section.main {
-        overflow-x: hidden !important;
+    /* FIX DOBLE SCROLL: html/body bloqueados, .stApp es el único que scrollea */
+    html, body {
+        overflow: hidden !important;
+        height: 100% !important;
         max-width: 100vw !important;
     }
 
-    /* Evitar doble scrollbar: el contenedor interno de Streamlit no debe scrollear por su cuenta */
+    .stApp, [data-testid="stApp"] {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: 100vh !important;
+        width: 100% !important;
+    }
+
     [data-testid="stAppViewContainer"] {
-        overflow-y: visible !important;
+        overflow: visible !important;
         height: auto !important;
+        max-width: 100vw !important;
     }
     section.main {
-        overflow-y: visible !important;
+        overflow: visible !important;
         height: auto !important;
     }
     .main {
