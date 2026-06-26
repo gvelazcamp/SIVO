@@ -3935,30 +3935,30 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
 
     <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
         <p style="font-size: 15px; color: #666; line-height: 1.6;">
-            <strong>Paso 1:</strong> Implementación inicial — dejamos tu asistente funcionando sobre tus datos.<br>
-            <strong>Paso 2:</strong> Servicio mensual — una vez instalado, este servicio es recurrente: mantenimiento, mejoras y soporte continuo. Se cotiza según lo que necesite tu negocio.
+            <strong>Paso 1:</strong> Implementamos tu asistente IA utilizando la información de tu empresa.<br>
+            <strong>Paso 2:</strong> Una vez en funcionamiento, contratas el plan mensual que más se ajusta a tus necesidades para mantenerlo actualizado, incorporar mejoras y sumar nuevas automatizaciones a medida que tu negocio crece.
         </p>
     </div>
 
     <div class="pricing">
-        <!-- IMPLEMENTACIÓN INICIAL -->
+        <!-- IMPLEMENTACIÓN -->
         <div class="plan">
             <div class="plan-step" style="visibility:hidden;">.</div>
-            <div class="plan-name">Implementación inicial</div>
-            <div class="plan-desc">Dejamos tu asistente funcionando sobre tus datos reales</div>
+            <div class="plan-name">Implementación</div>
+            <div class="plan-desc">Configuramos tu asistente IA para que funcione con la información de tu empresa.</div>
             
-            <div class="plan-price">Desde US$ 250</div>
-            <div class="plan-note">1 asistente · 1 sitio</div>
+            <div class="plan-price">Desde US$ 200</div>
+            <div class="plan-note">Pago único</div>
             
             <ul class="plan-list">
                 <li>✅ Creación del asistente IA</li>
-                <li>✅ Conexión a base de datos / archivos</li>
-                <li>✅ Adaptación a tu negocio (proveedores, productos, reglas propias)</li>
+                <li>✅ Conexión a bases de datos y archivos</li>
+                <li>✅ Adaptación a tu negocio (productos, proveedores y reglas propias)</li>
                 <li>✅ Configuración de preguntas</li>
-                <li>✅ Instalación en web (iframe o sitio)</li>
-                <li>✅ Consultas internas básicas (stock, ventas)</li>
+                <li>✅ Instalación en tu sitio web</li>
+                <li>✅ Consultas internas básicas (stock, ventas, etc.)</li>
                 <li>✅ Ajustes iniciales</li>
-                <li>✅ Soporte de arranque</li>
+                <li>✅ Soporte de puesta en marcha</li>
             </ul>
             
             <div class="plan-btn">
@@ -3968,30 +3968,27 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             </div>
         </div>
 
-        <!-- SERVICIO MENSUAL -->
+        <!-- GROWTH -->
         <div class="plan">
-            <div class="plan-step">Servicio recurrente · después de la implementación</div>
-            <div class="plan-name">Servicio mensual</div>
-            <div class="plan-desc">Mantenimiento, mejoras y soporte continuo sobre tu asistente</div>
+            <div class="plan-step">Servicio mensual · Después de la implementación</div>
+            <div class="plan-name">⭐ Growth</div>
+            <div class="plan-desc">Mantenimiento, mejoras continuas y nuevas automatizaciones para tu asistente.</div>
             
-            <div class="plan-price">Según solicitud<span>/mes</span></div>
-            <div class="plan-note" style="font-size: 12px; color: #999; margin-top: 4px;">
-                Se cotiza a medida · Requiere implementación previa
-            </div>
+            <div class="plan-price">Desde US$ 90<span>/mes</span></div>
             
             <ul class="plan-list">
-                <li>✅ Asistentes entrenados con tus datos</li>
+                <li>✅ Asistente entrenado con tus datos</li>
                 <li>✅ Interpretación avanzada (IA + reglas)</li>
-                <li>✅ Reportes automáticos programados (Excel/email)</li>
-                <li>✅ Automatizaciones de tareas repetitivas a medida</li>
-                <li>✅ Ajustes y mejoras mensuales</li>
+                <li>✅ Automatizaciones a medida</li>
+                <li>✅ Reportes automáticos (Excel y Email)</li>
+                <li>✅ Ajustes y mejoras continuas</li>
                 <li>✅ Reportes de uso</li>
                 <li>✅ Soporte prioritario</li>
             </ul>
             
             <div class="plan-btn">
                 <a class="btn-primary" href="?vista=home#soporte" style="text-decoration: none; display: block; text-align: center;">
-                    Consultar servicio mensual
+                    Consultar plan Growth
                 </a>
             </div>
         </div>
@@ -3999,18 +3996,20 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
         <!-- ENTERPRISE -->
         <div class="plan">
             <div class="plan-step" style="visibility:hidden;">.</div>
-            <div class="plan-name">Enterprise</div>
-            <div class="plan-desc">IA integrada a la operación de tu empresa</div>
+            <div class="plan-name">🏢 Enterprise</div>
+            <div class="plan-desc">IA integrada a la operación de tu empresa.</div>
             
-            <div class="plan-price">A medida<span>/mes</span></div>
-            <div class="plan-note">Asistentes ilimitados · Multi-sitio</div>
+            <div class="plan-price">A medida</div>
+            <div class="plan-note">Pensado para empresas que necesitan una solución personalizada.</div>
             
             <ul class="plan-list">
+                <li>✅ Asistentes ilimitados</li>
                 <li>✅ Integraciones ERP / CRM</li>
                 <li>✅ Roles y permisos</li>
                 <li>✅ SLA y soporte dedicado</li>
                 <li>✅ Seguridad y escalabilidad</li>
                 <li>✅ Onboarding completo</li>
+                <li>✅ Desarrollo de funcionalidades a medida</li>
             </ul>
             
             <div class="plan-btn">
@@ -9055,7 +9054,7 @@ function send(){
         
         // 3. Precios
         else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan'))
-            r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>Servicio mensual - Según solicitud</strong><br>• Mantenimiento, mejoras y soporte continuo<br>• Asistentes entrenados con tus datos<br>• Reportes automáticos y automatizaciones a medida<br>• Soporte prioritario<br>• Requiere implementación previa<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
+            r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación - US$ 200</strong><br>• Pago único<br>• Creación del asistente IA<br>• Conexión a bases de datos y archivos<br>• Instalación en tu sitio web<br><br><strong>⭐ Growth - Desde US$ 90/mes</strong><br>• Mantenimiento, mejoras continuas y soporte prioritario<br>• Asistente entrenado con tus datos<br>• Reportes automáticos y automatizaciones a medida<br>• Requiere implementación previa<br><br><strong>🏢 ENTERPRISE - A medida</strong><br>• Asistentes ilimitados<br>• Integraciones ERP/CRM<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
         
         // 4. Integraciones
         else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma'))
@@ -9178,7 +9177,7 @@ function send(){
                     let r;
                     if(l.includes('hola')||l.includes('buenos')||l.includes('buenas')||l.includes('hey')) r='¡Hola! 👋 Soy SIVO, tu asistente virtual. ¿En qué puedo ayudarte hoy?<br><br>Puedo contarte sobre:<br>• Qué es SIVO<br>• Precios y planes<br>• Integraciones<br>• Cómo funciona';
                     else if(l.includes('que es')||l.includes('qué es')||l.includes('sivo')) r='<strong>SIVO</strong> es una plataforma de chatbots con IA que automatiza tu atención al cliente 24/7. 🤖<br><br>✅ Responde consultas automáticamente<br>✅ Aumenta conversiones<br>✅ Libera tiempo de tu equipo<br>✅ Se integra con tus sistemas<br><br>¿Te gustaría conocer los precios?';
-                    else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación inicial - US$ 250</strong><br>• Pago único<br>• 1 asistente · 1 sitio<br>• Creación del asistente IA<br>• Conexión a base de datos<br>• Instalación en web<br><br><strong>Servicio mensual - Según solicitud</strong><br>• Mantenimiento, mejoras y soporte continuo<br>• Asistentes entrenados con tus datos<br>• Reportes automáticos y automatizaciones a medida<br>• Soporte prioritario<br>• Requiere implementación previa<br><br><strong>ENTERPRISE - A medida/mes</strong><br>• Asistentes ilimitados<br>• Multi-sitio<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
+                    else if(l.includes('precio')||l.includes('costo')||l.includes('cuanto')||l.includes('plan')) r='💰 <strong>Nuestros Planes:</strong><br><br><strong>Implementación - US$ 200</strong><br>• Pago único<br>• Creación del asistente IA<br>• Conexión a bases de datos y archivos<br>• Instalación en tu sitio web<br><br><strong>⭐ Growth - Desde US$ 90/mes</strong><br>• Mantenimiento, mejoras continuas y soporte prioritario<br>• Asistente entrenado con tus datos<br>• Reportes automáticos y automatizaciones a medida<br>• Requiere implementación previa<br><br><strong>🏢 ENTERPRISE - A medida</strong><br>• Asistentes ilimitados<br>• Integraciones ERP/CRM<br>• Soporte dedicado<br><br>📅 <strong>Agendá tu demo</strong> y te asesoramos sin compromiso!';
                     else if(l.includes('integra')||l.includes('whatsapp')||l.includes('instagram')||l.includes('plataforma')) r='🔌 <strong>Integraciones disponibles:</strong><br><br>✅ WhatsApp<br>✅ Instagram<br>✅ Web (widget)<br>✅ Shopify<br>✅ Mercado Pago<br>✅ Email<br>✅ API personalizada<br><br>¿Cuál te interesa más?';
                     else if(l.includes('funciona')||l.includes('como')||l.includes('cómo')) r='⚙️ <strong>Es súper simple:</strong><br><br>1️⃣ <strong>Conectás</strong> tus datos y productos<br>2️⃣ <strong>Entrenamos</strong> el asistente con tu info<br>3️⃣ <strong>Instalamos</strong> en tus canales<br>4️⃣ <strong>Listo!</strong> Empieza a atender clientes<br><br>Todo el proceso lleva entre 2-7 días. ⚡';
                     else if(l.includes('demo')||l.includes('prueba')||l.includes('probar')) r='🎯 <strong>¡Probá SIVO GRATIS!</strong><br><br>✅ 7 días sin compromiso<br>✅ No necesitás tarjeta<br>✅ Acceso completo<br><br>Para empezar:<br>📧 Escribinos a <strong>hola@sivo.com</strong><br>📅 O agendá tu demo personalizada<br><br>¿Empezamos?';
