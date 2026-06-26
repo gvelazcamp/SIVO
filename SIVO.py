@@ -2584,20 +2584,20 @@ html, body, .page-container {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 
-    /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA */
+    /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA (sin generar overflow horizontal) */
     opacity: 0;
-    transform: translateX(-100%) scale(0.95);
+    clip-path: inset(0 100% 0 0);
     animation: slideFromLeft 1s ease-out forwards;
 }
 
 @keyframes slideFromLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100%) scale(0.95);
+        clip-path: inset(0 100% 0 0);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        clip-path: inset(0 0% 0 0);
     }
 }
 
@@ -8865,26 +8865,6 @@ else:
     _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
     if len(_home_p1_partes) == 2:
         st.html(_home_p1_partes[0])
-
-        # Forzar recálculo de scroll del navegador tras la animación de entrada del Hero
-        # (simula el "scroll manual" que hace desaparecer la doble scrollbar)
-        components.html("""
-        <script>
-        (function() {
-            try {
-                var parentWin = window.parent;
-                function forceReflow() {
-                    var scrollY = parentWin.scrollY || 0;
-                    parentWin.scrollTo(0, scrollY + 1);
-                    parentWin.scrollTo(0, scrollY);
-                }
-                setTimeout(forceReflow, 1100);
-                setTimeout(forceReflow, 1800);
-            } catch(e) { console.log('Scroll reflow error:', e); }
-        })();
-        </script>
-        """, height=0, scrolling=False)
-
         components.html(SIVO_VIDEO_DEMO_HTML, height=700, scrolling=False)
         st.html(_home_p1_partes[1])
     else:
