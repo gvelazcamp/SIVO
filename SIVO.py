@@ -2610,20 +2610,20 @@ html, body, .page-container {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 
-    /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA (sin generar overflow horizontal) */
+    /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA */
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    transform: translateX(-100%) scale(0.95);
     animation: slideFromLeft 1s ease-out forwards;
 }
 
 @keyframes slideFromLeft {
     0% {
         opacity: 0;
-        clip-path: inset(0 100% 0 0);
+        transform: translateX(-100%) scale(0.95);
     }
     100% {
         opacity: 1;
-        clip-path: inset(0 0% 0 0);
+        transform: translateX(0) scale(1);
     }
 }
 
