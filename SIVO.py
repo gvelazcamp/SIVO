@@ -4481,6 +4481,7 @@ table.precios-tabla .no {{ color: #cbd5e1; }}
             <div class="plan-desc">Mantenimiento, mejoras continuas y nuevas automatizaciones para tu asistente.</div>
             
             <div class="plan-price">Desde US$ 90<span>/mes</span></div>
+            <div class="plan-note" style="visibility:hidden;">.</div>
             
             <ul class="plan-list">
                 <li><span class="pl-check">✓</span><span>Asistente entrenado con tus datos</span></li>
