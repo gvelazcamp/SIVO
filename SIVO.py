@@ -2615,7 +2615,7 @@ html, body, .page-container {
     /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA */
     opacity: 0;
     transform: translateX(-100%) scale(0.95);
-    animation: slideFromLeft 1s ease-out forwards;
+    animation: slideFromLeft 1s ease-out 2.2s forwards;
 }
 
 @keyframes slideFromLeft {
@@ -2635,7 +2635,7 @@ html, body, .page-container {
     font-weight: 600;
     color: #ffffff;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 0.5s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.2s forwards;
 }
 
 .sivo-card .highlight {
@@ -2646,7 +2646,7 @@ html, body, .page-container {
     font-weight: 700;
     line-height: 1.3;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 0.8s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.5s forwards;
 }
 
 .sivo-card p {
@@ -2658,7 +2658,7 @@ html, body, .page-container {
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.1s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.8s forwards;
 }
 
 .sivo-card .button {
@@ -2675,7 +2675,7 @@ html, body, .page-container {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 3.1s forwards;
 }
 
 .sivo-card-actions {
@@ -2704,7 +2704,7 @@ html, body, .page-container {
     border: 2px solid rgba(255,255,255,0.5);
     cursor: pointer;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 3.1s forwards;
 }
 
 .sivo-card .button-secondary:hover {
@@ -2882,7 +2882,7 @@ html, body, .page-container {
                 <a href="?vista=asistentes" class="button">Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">Así te informa a vos →</a>
             </div>
-            <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 1.7s forwards;">
+            <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 3.4s forwards;">
                 <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">Agendá tu demo →</a>
             </div>
         </div>
@@ -8368,18 +8368,25 @@ else:
           }
 
           function runAnimation(el1, el2, elA) {
-            if (ran) return;
-            ran = true;
             try { el1.textContent='0'; el2.textContent='0'; elA.textContent='A'; } catch(e){}
             countTo(el1, 100, 1200);
             countTo(el2, 60, 1200);
             var letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ", idx=0;
-            var at = setInterval(function(){
+            if (window.__sivoStatAlphaInterval) { clearInterval(window.__sivoStatAlphaInterval); }
+            window.__sivoStatAlphaInterval = setInterval(function(){
               try {
                 if(idx<letters.length){ elA.textContent=letters[idx]; idx++; }
-                else { clearInterval(at); setTimeout(function(){ try{elA.textContent="ILIMITADO";}catch(e){} },200); }
-              } catch(e){ clearInterval(at); }
+                else { clearInterval(window.__sivoStatAlphaInterval); setTimeout(function(){ try{elA.textContent="ILIMITADO";}catch(e){} },200); }
+              } catch(e){ clearInterval(window.__sivoStatAlphaInterval); }
             }, 50);
+          }
+
+          function startLoop(el1, el2, elA) {
+            if (ran) return;
+            ran = true;
+            runAnimation(el1, el2, elA);
+            // Repetir la animación cada 4.5s para que siempre se pueda ver el crecimiento
+            setInterval(function(){ runAnimation(el1, el2, elA); }, 4500);
           }
 
           function tryRun() {
@@ -8405,7 +8412,7 @@ else:
               entries.forEach(function(entry) {
                 if (entry.isIntersecting && !ran) {
                   observer.disconnect();
-                  runAnimation(el1, el2, elA);
+                  startLoop(el1, el2, elA);
                 }
               });
             }, { threshold: 0, rootMargin: "0px 0px -20px 0px" });
@@ -8414,7 +8421,7 @@ else:
 
             // Fallback: si en 3 segundos no disparó el observer, animar igual
             setTimeout(function() {
-              if (!ran) runAnimation(el1, el2, elA);
+              if (!ran) startLoop(el1, el2, elA);
             }, 3000);
 
             return true;
