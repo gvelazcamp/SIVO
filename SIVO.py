@@ -8906,9 +8906,7 @@ else:
     _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
     if len(_home_p1_partes) == 2:
         st.html(_home_p1_partes[0])
-        import html as _html_escape
-        _video_srcdoc = _html_escape.escape(SIVO_VIDEO_DEMO_HTML, quote=True)
-        st.html(f'<iframe srcdoc="{_video_srcdoc}" width="100%" height="700" style="border:none;display:block;" scrolling="no"></iframe>')
+        components.html(SIVO_VIDEO_DEMO_HTML, height=700, scrolling=False)
         st.html(_home_p1_partes[1])
     else:
         st.html(HTML_HOME_PARTE_1)
