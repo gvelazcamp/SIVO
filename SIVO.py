@@ -2064,7 +2064,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .integrations-section {
-        margin-top: -90px !important;
+        margin-top: -40px !important;
         padding-top: 15px !important;
     }
     
@@ -2986,8 +2986,8 @@ html, body, .page-container {
     <div style="text-align:center; margin-bottom:14px;">
         <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">MÁS ALLÁ DEL CHAT</span>
     </div>
-    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">¿Necesitás algo distinto a lo que ves aquí?</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO no es solo un chatbot prearmado. Más allá de los asistentes que viste en el sitio, también armamos automatizaciones a medida: reportes diarios automáticos, integraciones con tus sistemas, y tareas repetitivas que hoy hacés a mano. Contanos qué necesitás y lo evaluamos.</p>
+    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">¿Buscás algo más?</h2>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO es un asistente que se adapta a tu negocio. Además de lo que viste en el sitio, armamos automatizaciones a medida: reportes diarios automáticos, integraciones con tus sistemas, y tareas repetitivas que hoy hacés a mano. Contanos qué necesitás y lo evaluamos.</p>
 
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 20px;">
         <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a); border-radius:22px; padding:28px; color:white;">
