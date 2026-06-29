@@ -216,6 +216,12 @@ st.markdown(
         background: #ffffff !important;
     }
 
+    /* El iframe del video-demo no debe interceptar gestos táctiles de scroll */
+    iframe[height="700"] {
+        touch-action: pan-y !important;
+        pointer-events: none !important;
+    }
+
 
     /* Zoom 80% para sección de beneficios solo en PC */
     @media (min-width: 769px) {
