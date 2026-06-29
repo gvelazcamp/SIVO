@@ -297,16 +297,18 @@ if vista == "home" and not st.session_state.sivo_splash_shown:
         background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;
     }
     .sivo-bar-fill {
-        height: 100%; width: 40%;
+        height: 100%; width: 60%;
         background: linear-gradient(90deg, #00f5d4, #00bbf9);
         border-radius: 4px;
+        transform: translateX(-100%);
         animation: sivo-load 1.2s ease-in-out infinite;
+        will-change: transform;
     }
     @keyframes sivo-shine { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
     @keyframes sivo-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
     @keyframes sivo-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
     @keyframes sivo-spin-rev { to { transform: translate(-50%, -50%) rotate(-360deg); } }
-    @keyframes sivo-load { 0% { transform: translateX(-100%); width: 40%; } 50% { width: 60%; } 100% { transform: translateX(250%); width: 40%; } }
+    @keyframes sivo-load { 0% { transform: translateX(-100%); } 100% { transform: translateX(266%); } }
     </style>
     <div id="sivo-splash-fixed">
       <div class="sivo-splash-inner">
@@ -2062,7 +2064,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .integrations-section {
-        margin-top: -250px !important;
+        margin-top: -60px !important;
         padding-top: 15px !important;
     }
     
