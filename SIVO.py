@@ -2635,7 +2635,7 @@ html, body, .page-container {
     font-weight: 600;
     color: #ffffff;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 0.5s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.2s forwards;
 }
 
 .sivo-card .highlight {
@@ -2646,7 +2646,7 @@ html, body, .page-container {
     font-weight: 700;
     line-height: 1.3;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 0.8s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.5s forwards;
 }
 
 .sivo-card p {
@@ -2658,7 +2658,7 @@ html, body, .page-container {
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.1s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 2.8s forwards;
 }
 
 .sivo-card .button {
@@ -2675,7 +2675,7 @@ html, body, .page-container {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 3.1s forwards;
 }
 
 .sivo-card-actions {
@@ -2704,7 +2704,7 @@ html, body, .page-container {
     border: 2px solid rgba(255,255,255,0.5);
     cursor: pointer;
     opacity: 0;
-    animation: slideTextFromLeft 0.6s ease-out 1.4s forwards;
+    animation: slideTextFromLeft 0.6s ease-out 3.1s forwards;
 }
 
 .sivo-card .button-secondary:hover {
@@ -2882,7 +2882,7 @@ html, body, .page-container {
                 <a href="?vista=asistentes" class="button">Así habla con tus clientes →</a>
                 <a href="?vista=internos" class="button-secondary">Así te informa a vos →</a>
             </div>
-            <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 1.7s forwards;">
+            <div style="margin-top:22px; opacity:0; animation: slideTextFromLeft 0.6s ease-out 3.4s forwards;">
                 <a href="?vista=home#soporte" style="color:#ffffff; font-size:15px; font-weight:600; text-decoration:underline; opacity:0.9;">Agendá tu demo →</a>
             </div>
         </div>
