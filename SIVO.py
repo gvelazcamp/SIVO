@@ -2976,21 +2976,86 @@ html, body, .page-container {
 <!-- SIVO VA MÁS ALLÁ DEL CHAT -->
 <div class="section reveal-section" id="automatizacion" style="padding: 60px 5%; scroll-margin-top: 100px;">
     <style>
-    .sivo-video-demo-wrap {
-        max-width: 380px;
-        margin: 0 auto 20px;
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+    @media (max-width: 768px) {
+        .mas-alla-grid-2 { grid-template-columns: 1fr !important; }
+        .mas-alla-chat { display: none !important; }
     }
     </style>
     <div style="text-align:center; margin-bottom:14px;">
-        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">🛠️ MÁS ALLÁ DEL CHAT</span>
+        <span style="display:inline-block; background:rgba(30,58,95,0.1); color:#1e3a5f; font-size:13px; font-weight:800; padding:7px 18px; border-radius:999px; letter-spacing:0.5px;">MÁS ALLÁ DEL CHAT</span>
     </div>
-    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">Así automatizamos un proceso real</h2>
-    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:40px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO entiende tu negocio y trabaja con tus datos reales. Mirá un caso concreto: descarga de Excel, procesamiento automático y reporte por WhatsApp, corriendo solo todos los días a las 8am.</p>
+    <h2 style="text-align:center; font-size:36px; font-weight:800; margin-bottom:10px;">¿Necesitás algo distinto a lo que ves aquí?</h2>
+    <p class="subtitle" style="font-size:16px; color:#666; margin-bottom:48px; max-width:720px; margin-left:auto; margin-right:auto;">SIVO no es solo un chatbot prearmado. Más allá de los asistentes que viste en el sitio, también armamos automatizaciones a medida: reportes diarios automáticos, integraciones con tus sistemas, y tareas repetitivas que hoy hacés a mano. Contanos qué necesitás y lo evaluamos.</p>
 
-    __VIDEO_DEMO_PLACEHOLDER__
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto 20px;">
+        <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a); border-radius:22px; padding:28px; color:white;">
+            <div style="font-size:36px; margin-bottom:14px;">🤖</div>
+            <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Automatización de procesos</h3>
+            <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Robots que hacen las tareas repetitivas que hoy hace una persona a mano: cargar datos en sistemas, mover archivos, actualizar registros.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span style="background:rgba(96,165,250,0.2); color:#93c5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Sin intervención humana</span>
+                <span style="background:rgba(96,165,250,0.2); color:#93c5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Cero errores</span>
+            </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#064e3b,#065f46); border-radius:22px; padding:28px; color:white;">
+            <div style="font-size:36px; margin-bottom:14px;">📊</div>
+            <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Excel y planillas inteligentes</h3>
+            <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Generá reportes automáticos, consolidá datos de múltiples fuentes y mandá planillas listas para usar — sin abrir Excel ni hacer nada a mano.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span style="background:rgba(52,211,153,0.2); color:#6ee7b7; font-size:12px; padding:4px 10px; border-radius:6px;">Reportes automáticos</span>
+                <span style="background:rgba(52,211,153,0.2); color:#6ee7b7; font-size:12px; padding:4px 10px; border-radius:6px;">Multi-fuente</span>
+            </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#4c1d95,#5b21b6); border-radius:22px; padding:28px; color:white;">
+            <div style="font-size:36px; margin-bottom:14px;">📈</div>
+            <h3 style="font-size:20px; font-weight:700; color:white; margin-bottom:10px;">Dashboards Power BI</h3>
+            <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:16px;">Conectá tus datos y generá tableros automáticos con los indicadores que realmente importan. Tomá decisiones en tiempo real.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span style="background:rgba(167,139,250,0.2); color:#c4b5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Tiempo real</span>
+                <span style="background:rgba(167,139,250,0.2); color:#c4b5fd; font-size:12px; padding:4px 10px; border-radius:6px;">Personalizable</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mas-alla-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; max-width:1200px; margin:0 auto; align-items:start;">
+        <div class="mas-alla-chat" style="background:#f8fafc; border-radius:22px; overflow:hidden; border:1px solid #e2e8f0;">
+            <div style="background:linear-gradient(135deg,#1e40af,#3b82f6); padding:16px 20px; display:flex; align-items:center; gap:12px;">
+                <span style="font-size:20px;">🗄️</span>
+                <div>
+                    <div style="font-weight:700; color:white; font-size:14px;">SIVO Datos</div>
+                    <div style="font-size:11px; color:rgba(255,255,255,0.8);">● Consultá tu negocio en lenguaje natural</div>
+                </div>
+            </div>
+            <div style="padding:18px; display:flex; flex-direction:column; gap:10px;">
+                <div style="align-self:flex-end; background:#3b82f6; color:white; padding:9px 14px; border-radius:14px 14px 4px 14px; font-size:13px; max-width:80%;">¿Cuánto vendí este mes versus el mes pasado?</div>
+                <div style="align-self:flex-start; background:white; color:#222; padding:10px 14px; border-radius:14px 14px 14px 4px; font-size:13px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.06);">Este mes vendiste <strong>$847.200</strong>, un <strong style="color:#22c55e;">+23%</strong> más que el mes pasado ($688.600). Tu mejor día fue el jueves 12. ¿Querés ver el desglose?</div>
+                <div style="align-self:flex-end; background:#3b82f6; color:white; padding:9px 14px; border-radius:14px 14px 4px 14px; font-size:13px; max-width:80%;">Sí, y mandame el reporte por email</div>
+                <div style="align-self:flex-start; background:white; color:#222; padding:10px 14px; border-radius:14px 14px 14px 4px; font-size:13px; max-width:85%; box-shadow:0 2px 8px rgba(0,0,0,0.06);">✅ Reporte enviado con el desglose completo por producto, categoría y vendedor.</div>
+            </div>
+            <div style="padding:12px 18px; background:white; border-top:1px solid #eee; display:flex; gap:10px; align-items:center;">
+                <div style="flex:1; background:#f1f3f4; border-radius:20px; padding:9px 14px; font-size:12px; color:#999;">Preguntá algo sobre tus datos...</div>
+                <div style="background:linear-gradient(135deg,#f4b400,#ff6b00); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px;">→</div>
+            </div>
+            <div style="padding:14px 18px; background:#f8fafc; border-top:1px solid #eee; text-align:center;">
+                <a href="?vista=internos" style="display:inline-block; background:linear-gradient(135deg,#1e40af,#3b82f6); color:white; font-size:13px; font-weight:700; padding:10px 20px; border-radius:10px; text-decoration:none;">Probar esto en vivo →</a>
+            </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="background:#fff; border-radius:22px; padding:26px; box-shadow:0 6px 20px rgba(0,0,0,0.07); border-left:4px solid #f4b400;">
+                <div style="font-size:28px; margin-bottom:10px;">⏰</div>
+                <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">Reportes programados automáticos</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">Se generan y envían solos todos los días a la hora que definas. Ventas, stock, actividad — en tu email sin que toques nada.</p>
+            </div>
+            <div style="background:#fff; border-radius:22px; padding:26px; box-shadow:0 6px 20px rgba(0,0,0,0.07); border-left:4px solid #3b82f6;">
+                <div style="font-size:28px; margin-bottom:10px;">🔗</div>
+                <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">Integración con lo que ya usás</h3>
+                <p style="font-size:14px; color:#666; line-height:1.6;">ERPs, planillas de Excel, sistemas internos, bases de datos. Conectamos todo sin pedirte que cambies ninguna herramienta.</p>
+            </div>
+        </div>
+    </div>
 
     <div style="text-align:center; margin-top:36px;">
         <a href="?vista=home#soporte" style="display:inline-block; background:linear-gradient(135deg,#60a5fa,#3b82f6); color:white; font-size:16px; font-weight:700; padding:16px 36px; border-radius:14px; text-decoration:none; box-shadow:0 4px 15px rgba(59,130,246,0.3);">Contanos tu caso →</a>
@@ -3485,242 +3550,6 @@ SIVO_SLIDER_COMPONENT_HTML_MOBILE = """<!DOCTYPE html>
 # =========================
 # VIDEO DEMO: Automatización Fertilab (vertical, formato historia)
 # =========================
-SIVO_VIDEO_SLIDES_HTML = """
-<style>
-.sivo-slides-wrap {
-    max-width: 380px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.sivo-slide {
-    background: #0b0e0f;
-    border: 1px solid #22282c;
-    border-radius: 20px;
-    padding: 32px 24px;
-    min-height: 360px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    font-family: 'Inter', system-ui, sans-serif;
-    position: relative;
-}
-.sivo-slide-step {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #5eff9c;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-.sivo-slide-hero {
-    font-size: 24px;
-    font-weight: 800;
-    color: #e7ebec;
-    margin-bottom: 8px;
-    line-height: 1.25;
-}
-.sivo-slide-clocklabel {
-    font-size: 12px;
-    color: #8b9499;
-    margin-bottom: 24px;
-    line-height: 1.5;
-}
-.sivo-slide-clock {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 48px;
-    font-weight: 800;
-    color: #e7ebec;
-    letter-spacing: 1px;
-}
-.sivo-terminal {
-    width: 100%;
-    background: #13171a;
-    border: 1px solid #22282c;
-    border-radius: 12px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-    text-align: left;
-}
-.sivo-term-bar {
-    height: 30px;
-    background: #181c1f;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    gap: 6px;
-    border-bottom: 1px solid #22282c;
-    border-radius: 12px 12px 0 0;
-}
-.sivo-term-dot { width: 8px; height: 8px; border-radius: 50%; }
-.sivo-term-body {
-    padding: 14px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    line-height: 1.9;
-    color: #c4cdd0;
-}
-.sivo-term-body .ok { color: #5eff9c; }
-.sivo-term-body .warn { color: #ffb454; }
-.sivo-term-body .path { color: #7fb4ff; }
-.sivo-term-body .prompt { color: #5eff9c; }
-.sivo-done-card {
-    background: #13171a;
-    border: 1px solid #2c5c41;
-    border-radius: 16px;
-    padding: 30px 24px;
-    text-align: center;
-}
-.sivo-check {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: rgba(94,255,156,0.08);
-    border: 1.5px solid #5eff9c;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px auto; font-size: 26px; color: #5eff9c;
-}
-.sivo-done-title { font-size: 17px; font-weight: 700; color: #e7ebec; margin-bottom: 8px; }
-.sivo-done-sub { font-size: 11px; color: #8b9499; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
-.sivo-done-time { font-size: 11px; color: #5eff9c; margin-top: 14px; font-family: 'JetBrains Mono', monospace; }
-.sivo-wa-phone {
-    width: 100%;
-    background: #0a0f0d;
-    border: 1px solid #22282c;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-}
-.sivo-wa-head {
-    background: #1f2c25;
-    padding: 10px 12px;
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 1px solid #16201a;
-}
-.sivo-wa-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: linear-gradient(135deg, #5eff9c, #2c9d5f);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; color: #0a0f0d;
-}
-.sivo-wa-name { font-size: 12px; font-weight: 700; color: #e7ebec; }
-.sivo-wa-status { font-size: 9px; color: #5eff9c; }
-.sivo-wa-body {
-    background: #0d1411;
-    padding: 12px 10px;
-    display: flex; flex-direction: column; gap: 7px;
-}
-.sivo-wa-bubble {
-    max-width: 85%;
-    padding: 7px 10px;
-    border-radius: 10px;
-    font-size: 11px;
-    line-height: 1.45;
-    text-align: left;
-}
-.sivo-wa-bubble.in { align-self: flex-start; background: #1c2620; color: #e7ebec; border-bottom-left-radius: 3px; }
-.sivo-wa-bubble.out { align-self: flex-end; background: #1f4d36; color: #eafff2; border-bottom-right-radius: 3px; }
-.sivo-wa-bubble b { color: #5eff9c; }
-.sivo-wa-warn { color: #ff9a8a; font-weight: 700; }
-.sivo-closing-logo {
-    font-size: 2.6rem; font-weight: 800; letter-spacing: 4px;
-    background: linear-gradient(90deg,#00f5d4,#00bbf9,#9b5de5,#00f5d4);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    margin-bottom: 18px;
-}
-.sivo-closing-line { font-size: 14px; font-weight: 600; color: #e7ebec; line-height: 1.6; margin-bottom: 14px; }
-.sivo-closing-sub { font-size: 11px; color: #8b9499; }
-</style>
-
-<div class="sivo-slides-wrap">
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 2 / 7</div>
-    <div class="sivo-slide-hero">Imaginate esto...<br>todos los días</div>
-    <div class="sivo-slide-clocklabel">Entrar y tener tus reportes listos para trabajar</div>
-    <div class="sivo-slide-clock">08:00:00</div>
-  </div>
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 3 / 7</div>
-    <div class="sivo-terminal">
-      <div class="sivo-term-bar">
-        <div class="sivo-term-dot" style="background:#ff5f57;"></div>
-        <div class="sivo-term-dot" style="background:#febc2e;"></div>
-        <div class="sivo-term-dot" style="background:#28c840;"></div>
-      </div>
-      <div class="sivo-term-body">
-        <div><span class="prompt">$</span> python automatizacion.py</div>
-        <div><span class="path">[08:00]</span> Iniciando sesión en mi sistema…</div>
-        <div><span class="path">[08:00]</span> Login <span class="ok">✓ OK</span> → Consultas de Unidades</div>
-        <div><span class="path">[08:00]</span> Depósitos: <span class="warn">D1 · D2 · D3 · D4</span></div>
-        <div><span class="path">[08:00]</span> Descargando <span class="ok">2 Excel x depósito</span> ✓</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 4 / 7</div>
-    <div class="sivo-terminal">
-      <div class="sivo-term-bar">
-        <div class="sivo-term-dot" style="background:#ff5f57;"></div>
-        <div class="sivo-term-dot" style="background:#febc2e;"></div>
-        <div class="sivo-term-dot" style="background:#28c840;"></div>
-      </div>
-      <div class="sivo-term-body">
-        <div><span class="prompt">$</span> procesando depósitos…</div>
-        <div><span class="path">[D1]</span> Detectando encabezados del Excel</div>
-        <div><span class="path">[D1]</span> Filtrando filas vacías y repetidas</div>
-        <div><span class="path">[D1]</span> Exportando CSV limpio <span class="ok">✓</span></div>
-        <div><span class="path">[D1-D4]</span> Fusionando por código de lote…</div>
-        <div><span class="path">[D1-D4]</span> Prioriza <span class="ok">stock positivo</span> por lote</div>
-        <div><span class="path">[D1-D4]</span> Fusión completa <span class="ok">✓</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 5 / 7</div>
-    <div class="sivo-done-card">
-      <div class="sivo-check">✓</div>
-      <div class="sivo-done-title">Excel completado y guardado<br>para su uso</div>
-      <div class="sivo-done-sub">D1 · D2 · D3 · D4 procesados<br>lotes vigentes filtrados · temporales borrados</div>
-      <div class="sivo-done-time">⏱ proceso total: 41 segundos</div>
-    </div>
-  </div>
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 6 / 7</div>
-    <div class="sivo-wa-phone">
-      <div class="sivo-wa-head">
-        <div class="sivo-wa-avatar">S</div>
-        <div>
-          <div class="sivo-wa-name">SIVO · Asistente Stock</div>
-          <div class="sivo-wa-status">en línea</div>
-        </div>
-      </div>
-      <div class="sivo-wa-body">
-        <div class="sivo-wa-bubble in">¿Qué stock real tenemos del A-1107?</div>
-        <div class="sivo-wa-bubble out">El lote <b>L2289</b> está vencido y en <b>0</b>.<br>No queda stock vigente del A-1107.<br><span class="sivo-wa-warn">⚠️ Sin stock disponible</span></div>
-        <div class="sivo-wa-bubble in">¿Y el A-1102 cómo viene?</div>
-        <div class="sivo-wa-bubble out">A-1102 está <b>OK</b>: lote <b>L2305</b>, 14 unidades, vence 03/26. Es el lote más próximo a vencer.</div>
-        <div class="sivo-wa-bubble in">Armame el listado para el sector</div>
-        <div class="sivo-wa-bubble out">Listo ✅ Listado armado por depósito (D1 · D2 · D3 · D4)<br>Te lo dejo guardado en Bolson_Stock_Fusionado.xlsx</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sivo-slide">
-    <div class="sivo-slide-step">Paso 7 / 7</div>
-    <div class="sivo-closing-logo">SIVO</div>
-    <div class="sivo-closing-line">Podemos automatizar tus procesos repetitivos<br>e interactuar con tus datos y tus reglas<br>en lenguaje natural</div>
-    <div class="sivo-closing-sub">Asistentes entrenados a medida de tu negocio</div>
-  </div>
-
-</div>
-"""
-
 SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8574,13 +8403,7 @@ elif vista == "login":
         st.markdown('<div style="text-align:center;margin-top:12px;"><a href="?vista=home" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,sans-serif;">← Volver al inicio</a></div>', unsafe_allow_html=True)
 
 else:
-    _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
-    if len(_home_p1_partes) == 2:
-        st.html(_home_p1_partes[0])
-        st.html(SIVO_VIDEO_SLIDES_HTML)
-        st.html(_home_p1_partes[1])
-    else:
-        st.html(HTML_HOME_PARTE_1)
+    st.html(HTML_HOME_PARTE_1)
 
     # =========================
     # FIX: ANIMACIÓN DE CONTADORES (JS) PARA st.html
@@ -8751,14 +8574,14 @@ else:
                     Mirá cómo responden nuestros asistentes en tiempo real
                 </p>
 
-                <div style="max-width: 440px; margin: 0 auto; border-radius: 22px; overflow: hidden;">
+                <div style="max-width: 440px; margin: 0 auto;">
                     <video
                         autoplay
                         loop
                         muted
                         playsinline
                         preload="auto"
-                        style="width: 100%; height: auto; display: block; background: transparent;"
+                        style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
                     >
                         <source src="https://gvelazcamp.github.io/SIVO/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
                         <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
@@ -8766,7 +8589,74 @@ else:
                 </div>
             </div>
         </div>
-        """, height=820, scrolling=False)
+
+        <script>
+        (function(){
+          function setFrameHeight(){
+            try{
+              var h = Math.max(
+                document.documentElement.scrollHeight || 0,
+                document.body ? document.body.scrollHeight : 0
+              );
+              if(window.parent && window.parent.postMessage){
+                window.parent.postMessage(
+                  { isStreamlitMessage: true, type: "streamlit:setFrameHeight", height: h },
+                  "*"
+                );
+              }
+            }catch(e){}
+          }
+
+          function apply(){
+            try{
+              var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
+              var isMobile = w <= 768;
+              var iframe = window.frameElement;
+              if(!iframe) return;
+              var host = iframe.closest('div[data-testid="stElementContainer"]') || iframe.parentElement;
+              if(!host) host = iframe;
+
+              // Fondo blanco en el contenedor del componente
+              try { host.style.background = '#ffffff'; } catch(e) {}
+
+              if(!isMobile){
+                host.style.display = 'none';
+                host.style.height = '0px';
+                host.style.margin = '0';
+                host.style.padding = '0';
+              } else {
+                host.style.display = '';
+                host.style.height = '';
+                host.style.margin = '';
+                host.style.padding = '';
+                // Ajustar altura del iframe al contenido (evita hueco)
+                setFrameHeight();
+                setTimeout(setFrameHeight, 200);
+                setTimeout(setFrameHeight, 800);
+                setTimeout(setFrameHeight, 1500);
+              }
+            }catch(e){}
+          }
+
+          // Eventos
+          try { window.addEventListener('load', function(){ apply(); setFrameHeight(); }); } catch(e) {}
+          try { window.addEventListener('resize', function(){ apply(); setFrameHeight(); }); } catch(e) {}
+
+          // Recalcular cuando el video esté listo
+          try {
+            var v = document.querySelector('video');
+            if(v){
+              v.addEventListener('loadedmetadata', setFrameHeight);
+              v.addEventListener('canplay', setFrameHeight);
+              v.addEventListener('play', setFrameHeight);
+            }
+          } catch(e) {}
+
+          apply();
+          try { window.parent.addEventListener('resize', apply); } catch(e) {}
+        })();
+        </script>
+        """, height=640, scrolling=False)
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
