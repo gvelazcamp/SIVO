@@ -8562,7 +8562,7 @@ else:
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #ffffff; }
+        html, body { font-family: 'Inter', sans-serif; background: #ffffff; overflow: visible; }
         </style>
 
         <div style="width: 100%; background: #ffffff; padding: 18px 14px; margin: 0;">
@@ -8589,74 +8589,7 @@ else:
                 </div>
             </div>
         </div>
-
-        <script>
-        (function(){
-          function setFrameHeight(){
-            try{
-              var h = Math.max(
-                document.documentElement.scrollHeight || 0,
-                document.body ? document.body.scrollHeight : 0
-              );
-              if(window.parent && window.parent.postMessage){
-                window.parent.postMessage(
-                  { isStreamlitMessage: true, type: "streamlit:setFrameHeight", height: h },
-                  "*"
-                );
-              }
-            }catch(e){}
-          }
-
-          function apply(){
-            try{
-              var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
-              var isMobile = w <= 768;
-              var iframe = window.frameElement;
-              if(!iframe) return;
-              var host = iframe.closest('div[data-testid="stElementContainer"]') || iframe.parentElement;
-              if(!host) host = iframe;
-
-              // Fondo blanco en el contenedor del componente
-              try { host.style.background = '#ffffff'; } catch(e) {}
-
-              if(!isMobile){
-                host.style.display = 'none';
-                host.style.height = '0px';
-                host.style.margin = '0';
-                host.style.padding = '0';
-              } else {
-                host.style.display = '';
-                host.style.height = '';
-                host.style.margin = '';
-                host.style.padding = '';
-                // Ajustar altura del iframe al contenido (evita hueco)
-                setFrameHeight();
-                setTimeout(setFrameHeight, 200);
-                setTimeout(setFrameHeight, 800);
-                setTimeout(setFrameHeight, 1500);
-              }
-            }catch(e){}
-          }
-
-          // Eventos
-          try { window.addEventListener('load', function(){ apply(); setFrameHeight(); }); } catch(e) {}
-          try { window.addEventListener('resize', function(){ apply(); setFrameHeight(); }); } catch(e) {}
-
-          // Recalcular cuando el video esté listo
-          try {
-            var v = document.querySelector('video');
-            if(v){
-              v.addEventListener('loadedmetadata', setFrameHeight);
-              v.addEventListener('canplay', setFrameHeight);
-              v.addEventListener('play', setFrameHeight);
-            }
-          } catch(e) {}
-
-          apply();
-          try { window.parent.addEventListener('resize', apply); } catch(e) {}
-        })();
-        </script>
-        """, height=900, scrolling=False)
+        """, height=950, scrolling=False)
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
