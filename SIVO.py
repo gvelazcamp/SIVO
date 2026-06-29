@@ -3969,6 +3969,10 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     }
   }
 
+  let userIsTouching = false;
+  document.addEventListener('touchstart', ()=> { userIsTouching = true; }, {passive:true});
+  document.addEventListener('touchend', ()=> { setTimeout(()=> userIsTouching = false, 150); }, {passive:true});
+
   function runTypewriter(sceneEl, sceneIdx, onDone){
     const lines = [...sceneEl.querySelectorAll('.typeline')];
     let lineIdx = 0;
@@ -3984,6 +3988,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
       let charIdx = 0;
       function tick(){
         if(current !== sceneIdx) return;
+        if(userIsTouching){ setTimeout(tick, 16); return; }
         el.textContent = plain.slice(0, charIdx);
         charIdx++;
         if(charIdx <= plain.length){
@@ -4005,6 +4010,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     if(!body) return;
     const interval = setInterval(()=>{
       if(current !== 4){ clearInterval(interval); return; }
+      if(userIsTouching) return;
       body.scrollTop = body.scrollHeight;
     }, 150);
   }
@@ -8900,7 +8906,9 @@ else:
     _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
     if len(_home_p1_partes) == 2:
         st.html(_home_p1_partes[0])
-        components.html(SIVO_VIDEO_DEMO_HTML, height=700, scrolling=False)
+        import html as _html_escape
+        _video_srcdoc = _html_escape.escape(SIVO_VIDEO_DEMO_HTML, quote=True)
+        st.html(f'<iframe srcdoc="{_video_srcdoc}" loading="lazy" width="100%" height="700" style="border:none;display:block;" scrolling="no"></iframe>')
         st.html(_home_p1_partes[1])
     else:
         st.html(HTML_HOME_PARTE_1)
