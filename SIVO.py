@@ -8806,28 +8806,15 @@ else:
                 host.style.height = '';
                 host.style.margin = '';
                 host.style.padding = '';
-                // Ajustar altura del iframe al contenido (evita hueco)
+                // Ajustar altura del iframe al contenido (una sola vez, sin reflows repetidos)
                 setFrameHeight();
-                setTimeout(setFrameHeight, 200);
-                setTimeout(setFrameHeight, 800);
-                setTimeout(setFrameHeight, 1500);
               }
             }catch(e){}
           }
 
           // Eventos
-          try { window.addEventListener('load', function(){ apply(); setFrameHeight(); }); } catch(e) {}
-          try { window.addEventListener('resize', function(){ apply(); setFrameHeight(); }); } catch(e) {}
-
-          // Recalcular cuando el video esté listo
-          try {
-            var v = document.querySelector('video');
-            if(v){
-              v.addEventListener('loadedmetadata', setFrameHeight);
-              v.addEventListener('canplay', setFrameHeight);
-              v.addEventListener('play', setFrameHeight);
-            }
-          } catch(e) {}
+          try { window.addEventListener('load', function(){ apply(); }); } catch(e) {}
+          try { window.addEventListener('resize', function(){ apply(); }); } catch(e) {}
 
           apply();
           try { window.parent.addEventListener('resize', apply); } catch(e) {}
