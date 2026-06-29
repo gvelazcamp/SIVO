@@ -3964,7 +3964,11 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     current = i;
     if(i === 0) runClock();
     clearTimeout(timer);
-    timer = setTimeout(()=> goTo((current + 1) % scenes.length), DURATIONS[i]);
+    timer = null;
+    // No programar avance automático en la última escena (queda fija, sin timers de fondo)
+    if (i < scenes.length - 1) {
+      timer = setTimeout(()=> goTo((current + 1) % scenes.length), DURATIONS[i]);
+    }
   }
 
   function runTypewriter(sceneEl, sceneIdx, onDone){
@@ -4037,24 +4041,6 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
   }
 
   setTimeout(()=> showScene(0), 2500);
-
-  // Pausar la animación cuando el video no está visible en pantalla,
-  // para no consumir CPU de fondo mientras el usuario navega el resto de la página.
-  let isPaused = false;
-  try {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) {
-          isPaused = true;
-          if (timer) { clearTimeout(timer); timer = null; }
-        } else if (isPaused) {
-          isPaused = false;
-          timer = setTimeout(function(){ goTo((current + 1) % scenes.length); }, 800);
-        }
-      });
-    }, { threshold: 0.1 });
-    io.observe(document.querySelector('.stage'));
-  } catch(e) {}
 </script>
 </body>
 </html>
