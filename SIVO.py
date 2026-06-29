@@ -216,11 +216,6 @@ st.markdown(
         background: #ffffff !important;
     }
 
-    /* El iframe del video-demo no debe interceptar gestos táctiles de scroll */
-    iframe[height="700"] {
-        touch-action: pan-y !important;
-    }
-
 
     /* Zoom 80% para sección de beneficios solo en PC */
     @media (min-width: 769px) {
@@ -3490,564 +3485,240 @@ SIVO_SLIDER_COMPONENT_HTML_MOBILE = """<!DOCTYPE html>
 # =========================
 # VIDEO DEMO: Automatización Fertilab (vertical, formato historia)
 # =========================
-SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Automatización Diaria 8AM</title>
+SIVO_VIDEO_SLIDES_HTML = """
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap');
-
-  :root{
-    --bg:#0b0e0f;
-    --panel:#13171a;
-    --line:#22282c;
-    --accent:#5eff9c;
-    --accent-dim:#2c5c41;
-    --amber:#ffb454;
-    --text:#e7ebec;
-    --muted:#8b9499;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{
-    width:100%; height:100%;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    overflow:hidden;
-    position:relative;
-  }
-
-  .grid-bg{
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size:30px 30px;
-  }
-
-  .stage{ position:relative; width:100%; height:100%; }
-
-  .scene{
-    position:absolute; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    opacity:0;
-    padding:28px;
-    pointer-events:none;
-    transition:opacity 0.25s ease;
-  }
-  .scene.active{ opacity:1; pointer-events:auto; }
-  #scene3.active{ justify-content:flex-start; padding-top:60px; }
-  #scene5.active{ justify-content:flex-start; padding-top:16px; }
-
-  /* ---------- SCENE 1: clock ---------- */
-  .step-tag{
-    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px;
-    color:var(--accent); text-transform:uppercase; margin-bottom:18px; opacity:0;
-    animation: fadeUpAnim 0.6s ease 0.3s forwards;
-  }
-  .clock-wrap{ text-align:center; position:relative; }
-  .hero-line{
-    font-size:30px; font-weight:800; letter-spacing:-0.5px;
-    color:var(--text); margin-bottom:12px; line-height:1.2;
-    opacity:0;
-    background:linear-gradient(90deg, var(--text), var(--accent));
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    animation: fadeUpAnim 0.7s ease 0.2s forwards;
-  }
-  .pulse-ring{
-    position:absolute; width:280px; height:280px;
-    border:1px solid var(--accent-dim); border-radius:50%;
-    left:50%; top:50%; transform:translate(-50%,-50%) scale(0.6); opacity:0;
-  }
-  #scene1 .pulse-ring{ animation: ring 6s ease forwards; }
-  @keyframes ring{
-    0%{opacity:0; transform:translate(-50%,-50%) scale(0.6);}
-    60%{opacity:0;}
-    72%{opacity:0.9; transform:translate(-50%,-50%) scale(0.7);}
-    100%{opacity:0; transform:translate(-50%,-50%) scale(1.3);}
-  }
-  .clock-time{
-    font-family:'JetBrains Mono', monospace;
-    font-size:64px; font-weight:800; letter-spacing:1px;
-  }
-  .clock-label{
-    margin-top:-8px; margin-bottom:32px; font-size:12.5px; letter-spacing:0.5px; color:var(--muted); font-weight:500;
-    line-height:1.5; opacity:0; white-space:nowrap;
-    animation: fadeUpAnim 0.6s ease 0.5s forwards;
-  }
-
-  /* ---------- SCENE 2: terminal ---------- */
-  .terminal{
-    width:100%; max-width:340px;
-    background:var(--panel); border:1px solid var(--line); border-radius:12px;
-    box-shadow:0 30px 80px rgba(0,0,0,0.55);
-  }
-  .term-bar{
-    height:34px; background:#181c1f; display:flex; align-items:center; padding:0 12px; gap:7px;
-    border-bottom:1px solid var(--line);
-  }
-  .dot{ width:9px; height:9px; border-radius:50%; }
-  .dot.r{background:#ff5f57;} .dot.y{background:#febc2e;} .dot.g{background:#28c840;}
-  .term-title{ margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); }
-  .term-body{
-    padding:18px 16px; font-family:'JetBrains Mono', monospace; font-size:10.5px; line-height:2.1;
-    color:#c4cdd0;
-  }
-  .term-body .prompt{ color:var(--accent); }
-  .term-body .path{ color:#7fb4ff; }
-  .term-body .ok{ color:var(--accent); }
-  .term-body .warn{ color:var(--amber); }
-  .typeline{ overflow:hidden; white-space:nowrap; border-right:2px solid var(--accent); }
-  .cursor-off{ border-right:none; }
-  .fadeUp{ opacity:0; animation: fadeUpAnim 0.6s ease forwards; }
-  @keyframes fadeUpAnim{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
-  .mini-sheet{
-    width:100%; max-width:340px; margin-top:14px; opacity:0;
-    transition:opacity 0.5s ease;
-  }
-  .mini-sheet.show{ opacity:1; }
-
-  /* ---------- SCENE 3: process cards (stacked vertical) ---------- */
-  .process-col{ display:flex; flex-direction:column; gap:18px; width:100%; max-width:330px; }
-  .card{
-    width:100%; background:var(--panel); border:1px solid var(--line); border-radius:12px;
-    padding:18px; display:flex; flex-direction:column; box-shadow:0 16px 40px rgba(0,0,0,0.5);
-    opacity:0;
-  }
-  .card.c1{ animation: cardIn 0.6s ease 0.3s forwards; }
-  .card.c2{ animation: cardIn 0.6s ease 3.8s forwards; }
-  .card.c3{ animation: cardIn 0.6s ease 7.4s forwards; }
-  @keyframes cardIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
-
-  .card-head{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-  .card-icon{
-    width:38px; height:38px; border-radius:9px; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; font-size:18px;
-  }
-  .card-title{ font-size:14px; font-weight:700; color:var(--text); }
-  .card-sub{ font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:10px; }
-  .bar-track{ height:6px; background:#1d2226; border-radius:4px; overflow:hidden; }
-  .bar-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent-dim),var(--accent)); border-radius:4px; }
-  .bar-fill.b1{ animation: fillBar 1.4s ease 1.0s forwards; }
-  .bar-fill.b2{ animation: fillBar 1.6s ease 4.5s forwards; }
-  .bar-fill.b3{ animation: fillBar 1.5s ease 8.1s forwards; }
-  @keyframes fillBar{ to{ width:100%; } }
-  .bar-pct{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); margin-top:7px;}
-
-  .sheet{ margin-top:10px; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
-  .sheet-row{ display:flex; height:22px; border-bottom:1px solid #1c2023; }
-  .sheet-cell{
-    flex:1; border-right:1px solid #1c2023;
-    font-size:9.5px; font-family:'JetBrains Mono',monospace; color:#5b6669;
-    display:flex; align-items:center; padding-left:5px;
-  }
-  .sheet-cell.fx{ color:var(--accent); opacity:0; }
-  .sheet-cell.head{ background:#1a1f22; color:var(--muted); font-weight:700;}
-  .sheet-cell.fx.s1{ animation: fxIn 0.3s ease 9.6s forwards; }
-  .sheet-cell.fx.s2{ animation: fxIn 0.3s ease 9.9s forwards; }
-  .sheet-cell.fx.s3{ animation: fxIn 0.3s ease 10.2s forwards; }
-  .sheet-cell.fx.s4{ animation: fxIn 0.3s ease 10.5s forwards; }
-  @keyframes fxIn{ to{ opacity:1; } }
-
-  /* ---------- SCENE 4: done ---------- */
-  .done-card{
-    background:var(--panel); border:1px solid var(--accent-dim); border-radius:16px;
-    padding:36px 28px; text-align:center; max-width:320px;
-    box-shadow:0 30px 80px rgba(0,0,0,0.5);
-    animation: glow 2.4s ease 0.8s infinite;
-  }
-  @keyframes glow{
-    0%,100%{ box-shadow:0 0 0 0 rgba(94,255,156,0.18), 0 30px 80px rgba(0,0,0,0.5); }
-    50%{ box-shadow:0 0 0 14px rgba(94,255,156,0.0), 0 30px 80px rgba(0,0,0,0.5); }
-  }
-  .check{
-    width:64px; height:64px; border-radius:50%; background:rgba(94,255,156,0.08);
-    border:1.5px solid var(--accent); display:flex; align-items:center; justify-content:center;
-    margin:0 auto 20px auto; font-size:30px; color:var(--accent); transform:scale(0);
-    animation: checkIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;
-  }
-  @keyframes checkIn{ to{ transform:scale(1); } }
-  .done-title{ font-size:19px; font-weight:700; color:var(--text); margin-bottom:10px; opacity:0; animation:fadeUpAnim 0.5s ease 0.7s forwards;}
-  .done-sub{ font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace; line-height:1.6; opacity:0; animation:fadeUpAnim 0.5s ease 0.9s forwards;}
-  .done-time{ font-size:11.5px; color:var(--accent); margin-top:16px; letter-spacing:0.5px; font-family:'JetBrains Mono',monospace; opacity:0; animation:fadeUpAnim 0.5s ease 1.1s forwards;}
-
-  /* ---------- SCENE 6: closing ---------- */
-  .closing-wrap{ text-align:center; max-width:320px; }
-  .closing-logo{
-    font-size:3rem; font-weight:800; letter-spacing:4px;
-    background:linear-gradient(90deg,#00f5d4,#00bbf9,#9b5de5,#00f5d4);
-    background-size:300% auto; -webkit-background-clip:text; background-clip:text;
-    color:transparent;
-    animation: sivo-shine 3s linear infinite, fadeUpAnim 0.7s ease 0.1s forwards;
-    opacity:0; margin-bottom:22px;
-  }
-  .closing-line{
-    font-size:15px; font-weight:600; color:var(--text); line-height:1.6;
-    opacity:0; animation: fadeUpAnim 0.6s ease 0.5s forwards; margin-bottom:18px;
-  }
-  .closing-sub{
-    font-size:12px; color:var(--muted); letter-spacing:0.3px;
-    opacity:0; animation: fadeUpAnim 0.6s ease 0.8s forwards;
-  }
-
-  /* progress dots */
-  .timeline{
-    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
-    display:flex; gap:4px; z-index:30;
-  }
-  .tdot-hit{
-    width:26px; height:26px; display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-  }
-  .tdot{ width:6px; height:6px; border-radius:50%; background:var(--line); transition:background 0.25s, transform 0.2s; }
-  .tdot.on{ background:var(--accent); transform:scale(1.25); }
-
-  /* ---------- SCENE 5: WhatsApp ---------- */
-  .wa-phone{
-    width:100%; max-width:340px; height:680px;
-    background:#0a0f0d;
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,0.55);
-    display:flex; flex-direction:column;
-  }
-  .wa-head{
-    background:#1f2c25; padding:12px 14px;
-    display:flex; align-items:center; gap:10px;
-    border-bottom:1px solid #16201a;
-    flex-shrink:0;
-  }
-  .wa-avatar{
-    width:32px; height:32px; border-radius:50%;
-    background:linear-gradient(135deg,var(--accent),#2c9d5f);
-    display:flex; align-items:center; justify-content:center;
-    font-size:14px; font-weight:700; color:#0a0f0d;
-  }
-  .wa-name{ font-size:13px; font-weight:700; color:var(--text); }
-  .wa-status{ font-size:10px; color:var(--accent); }
-  .wa-body{
-    background:#0d1411;
-    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size:14px 14px;
-    padding:14px 12px; flex:1; overflow-y:auto;
-    display:flex; flex-direction:column; gap:8px;
-    scrollbar-width:none;
-  }
-  .wa-body::-webkit-scrollbar{ display:none; }
-  .wa-bubble{
-    max-width:82%; padding:8px 11px; border-radius:10px;
-    font-size:12px; line-height:1.5; font-family:'Inter',sans-serif;
-    opacity:0; transform:translateY(8px);
-  }
-  .wa-bubble.in{
-    align-self:flex-start; background:#1c2620; color:var(--text);
-    border-bottom-left-radius:3px;
-  }
-  .wa-bubble.out{
-    align-self:flex-end; background:#1f4d36; color:#eafff2;
-    border-bottom-right-radius:3px;
-  }
-  .wa-bubble b{ color:var(--accent); }
-  .wa-bubble.warn-tag{ color:#ff9a8a; font-weight:700; }
-  .wa-time{ font-size:9px; color:var(--muted); margin-top:3px; text-align:right; }
-
-  .wa-typing{
-    align-self:flex-start; background:#1c2620; border-radius:10px;
-    border-bottom-left-radius:3px; padding:9px 13px;
-    display:flex; gap:4px; opacity:0; transform:translateY(8px);
-  }
-  .wa-typing span{
-    width:5px; height:5px; border-radius:50%; background:var(--muted);
-    animation: typingBounce 1s ease infinite;
-  }
-  .wa-typing span:nth-child(2){ animation-delay:0.15s; }
-  .wa-typing span:nth-child(3){ animation-delay:0.3s; }
-  @keyframes typingBounce{ 0%,60%,100%{transform:translateY(0); opacity:0.4;} 30%{transform:translateY(-3px); opacity:1;} }
-
-  @keyframes bubbleIn{ to{ opacity:1; transform:translateY(0); } }
-
-  .wq1{ animation: bubbleIn 0.4s ease 0.4s forwards; }
-  .wt1{ animation: bubbleIn 0.3s ease 1.6s forwards, fadeOutBubble 0.3s ease 2.9s forwards; }
-  .wa1{ animation: bubbleIn 0.4s ease 3.2s forwards; }
-
-  .wq2{ animation: bubbleIn 0.4s ease 5.0s forwards; }
-  .wt2{ animation: bubbleIn 0.3s ease 6.2s forwards, fadeOutBubble 0.3s ease 7.5s forwards; }
-  .wa2{ animation: bubbleIn 0.4s ease 7.8s forwards; }
-
-  .wq3{ animation: bubbleIn 0.4s ease 9.6s forwards; }
-  .wt3{ animation: bubbleIn 0.3s ease 10.8s forwards, fadeOutBubble 0.3s ease 12.1s forwards; }
-  .wa3{ animation: bubbleIn 0.4s ease 12.4s forwards; }
-
-  @keyframes fadeOutBubble{ to{ opacity:0; transform:translateY(-4px); } }
-  .tap-zone{
-    position:absolute; top:0; bottom:0; width:35%; z-index:25; cursor:pointer;
-  }
-  .tap-zone.left{ left:0; }
-  .tap-zone.right{ right:0; }
+.sivo-slides-wrap {
+    max-width: 380px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.sivo-slide {
+    background: #0b0e0f;
+    border: 1px solid #22282c;
+    border-radius: 20px;
+    padding: 32px 24px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    font-family: 'Inter', system-ui, sans-serif;
+    position: relative;
+}
+.sivo-slide-step {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #5eff9c;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.sivo-slide-hero {
+    font-size: 24px;
+    font-weight: 800;
+    color: #e7ebec;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+.sivo-slide-clocklabel {
+    font-size: 12px;
+    color: #8b9499;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+.sivo-slide-clock {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px;
+    font-weight: 800;
+    color: #e7ebec;
+    letter-spacing: 1px;
+}
+.sivo-terminal {
+    width: 100%;
+    background: #13171a;
+    border: 1px solid #22282c;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    text-align: left;
+}
+.sivo-term-bar {
+    height: 30px;
+    background: #181c1f;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 6px;
+    border-bottom: 1px solid #22282c;
+    border-radius: 12px 12px 0 0;
+}
+.sivo-term-dot { width: 8px; height: 8px; border-radius: 50%; }
+.sivo-term-body {
+    padding: 14px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.9;
+    color: #c4cdd0;
+}
+.sivo-term-body .ok { color: #5eff9c; }
+.sivo-term-body .warn { color: #ffb454; }
+.sivo-term-body .path { color: #7fb4ff; }
+.sivo-term-body .prompt { color: #5eff9c; }
+.sivo-done-card {
+    background: #13171a;
+    border: 1px solid #2c5c41;
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+}
+.sivo-check {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(94,255,156,0.08);
+    border: 1.5px solid #5eff9c;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px auto; font-size: 26px; color: #5eff9c;
+}
+.sivo-done-title { font-size: 17px; font-weight: 700; color: #e7ebec; margin-bottom: 8px; }
+.sivo-done-sub { font-size: 11px; color: #8b9499; font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
+.sivo-done-time { font-size: 11px; color: #5eff9c; margin-top: 14px; font-family: 'JetBrains Mono', monospace; }
+.sivo-wa-phone {
+    width: 100%;
+    background: #0a0f0d;
+    border: 1px solid #22282c;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.sivo-wa-head {
+    background: #1f2c25;
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid #16201a;
+}
+.sivo-wa-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, #5eff9c, #2c9d5f);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #0a0f0d;
+}
+.sivo-wa-name { font-size: 12px; font-weight: 700; color: #e7ebec; }
+.sivo-wa-status { font-size: 9px; color: #5eff9c; }
+.sivo-wa-body {
+    background: #0d1411;
+    padding: 12px 10px;
+    display: flex; flex-direction: column; gap: 7px;
+}
+.sivo-wa-bubble {
+    max-width: 85%;
+    padding: 7px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.45;
+    text-align: left;
+}
+.sivo-wa-bubble.in { align-self: flex-start; background: #1c2620; color: #e7ebec; border-bottom-left-radius: 3px; }
+.sivo-wa-bubble.out { align-self: flex-end; background: #1f4d36; color: #eafff2; border-bottom-right-radius: 3px; }
+.sivo-wa-bubble b { color: #5eff9c; }
+.sivo-wa-warn { color: #ff9a8a; font-weight: 700; }
+.sivo-closing-logo {
+    font-size: 2.6rem; font-weight: 800; letter-spacing: 4px;
+    background: linear-gradient(90deg,#00f5d4,#00bbf9,#9b5de5,#00f5d4);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 18px;
+}
+.sivo-closing-line { font-size: 14px; font-weight: 600; color: #e7ebec; line-height: 1.6; margin-bottom: 14px; }
+.sivo-closing-sub { font-size: 11px; color: #8b9499; }
 </style>
-</head>
-<body>
-<div class="stage">
-  <div class="grid-bg"></div>
 
-  <!-- SCENE 1 -->
-  <div class="scene" id="scene1">
-    <div class="step-tag">Paso 2 / 7</div>
-    <div class="clock-wrap">
-      <div class="hero-line">Imaginate esto...<br>todos los días</div>
-      <div class="clock-label">Entrar y tener tus reportes listos para trabajar</div>
-      <div class="pulse-ring"></div>
-      <div class="clock-time" id="clockNum">07:59:58</div>
-    </div>
+<div class="sivo-slides-wrap">
+
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 2 / 7</div>
+    <div class="sivo-slide-hero">Imaginate esto...<br>todos los días</div>
+    <div class="sivo-slide-clocklabel">Entrar y tener tus reportes listos para trabajar</div>
+    <div class="sivo-slide-clock">08:00:00</div>
   </div>
 
-  <!-- SCENE 2 -->
-  <div class="scene" id="scene2">
-    <div class="step-tag">Paso 3 / 7</div>
-    <div class="terminal">
-      <div class="term-bar">
-        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-        <div class="term-title">automatizacion.py</div>
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 3 / 7</div>
+    <div class="sivo-terminal">
+      <div class="sivo-term-bar">
+        <div class="sivo-term-dot" style="background:#ff5f57;"></div>
+        <div class="sivo-term-dot" style="background:#febc2e;"></div>
+        <div class="sivo-term-dot" style="background:#28c840;"></div>
       </div>
-      <div class="term-body" id="termBody">
-        <div class="typeline cursor-off" data-plain="$ python automatizacion.py" data-html="<span class=&quot;prompt&quot;>$</span> python automatizacion.py"></div>
-        <div class="typeline cursor-off" data-plain="[08:00] Iniciando sesion en mi sistema..." data-html="<span class=&quot;path&quot;>[08:00]</span> Iniciando sesión en mi sistema…"></div>
-        <div class="typeline cursor-off" data-plain="[08:00] Login OK -> Consultas de Unidades" data-html="<span class=&quot;path&quot;>[08:00]</span> Login <span class=&quot;ok&quot;>✓ OK</span> → Consultas de Unidades"></div>
-        <div class="typeline cursor-off" data-plain="[08:00] Depositos: D1, D2, D3, D4" data-html="<span class=&quot;path&quot;>[08:00]</span> Depósitos: <span class=&quot;warn&quot;>D1 · D2 · D3 · D4</span>"></div>
-        <div class="typeline cursor-off" data-plain="[08:00] Descargando 2 Excel x deposito OK" data-html="<span class=&quot;path&quot;>[08:00]</span> Descargando <span class=&quot;ok&quot;>2 Excel x depósito</span> ✓"></div>
+      <div class="sivo-term-body">
+        <div><span class="prompt">$</span> python automatizacion.py</div>
+        <div><span class="path">[08:00]</span> Iniciando sesión en mi sistema…</div>
+        <div><span class="path">[08:00]</span> Login <span class="ok">✓ OK</span> → Consultas de Unidades</div>
+        <div><span class="path">[08:00]</span> Depósitos: <span class="warn">D1 · D2 · D3 · D4</span></div>
+        <div><span class="path">[08:00]</span> Descargando <span class="ok">2 Excel x depósito</span> ✓</div>
       </div>
     </div>
   </div>
 
-  <!-- SCENE 3 -->
-  <div class="scene" id="scene3">
-    <div class="step-tag">Paso 4 / 7</div>
-    <div class="terminal">
-      <div class="term-bar">
-        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-        <div class="term-title">automatizacion.py</div>
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 4 / 7</div>
+    <div class="sivo-terminal">
+      <div class="sivo-term-bar">
+        <div class="sivo-term-dot" style="background:#ff5f57;"></div>
+        <div class="sivo-term-dot" style="background:#febc2e;"></div>
+        <div class="sivo-term-dot" style="background:#28c840;"></div>
       </div>
-      <div class="term-body" id="termBody2">
-        <div class="typeline cursor-off" data-plain="$ procesando depositos..." data-html="<span class=&quot;prompt&quot;>$</span> procesando depósitos…"></div>
-        <div class="typeline cursor-off" data-plain="[D1] Detectando encabezados del Excel" data-html="<span class=&quot;path&quot;>[D1]</span> Detectando encabezados del Excel"></div>
-        <div class="typeline cursor-off" data-plain="[D1] Filtrando filas vacias y repetidas" data-html="<span class=&quot;path&quot;>[D1]</span> Filtrando filas vacías y repetidas"></div>
-        <div class="typeline cursor-off" data-plain="[D1] Exportando CSV limpio OK" data-html="<span class=&quot;path&quot;>[D1]</span> Exportando CSV limpio <span class=&quot;ok&quot;>✓</span>"></div>
-        <div class="typeline cursor-off" data-plain="[D1-D4] Fusionando por codigo de lote..." data-html="<span class=&quot;path&quot;>[D1-D4]</span> Fusionando por código de lote…"></div>
-        <div class="typeline cursor-off" data-plain="[D1-D4] Prioriza stock positivo por lote" data-html="<span class=&quot;path&quot;>[D1-D4]</span> Prioriza <span class=&quot;ok&quot;>stock positivo</span> por lote"></div>
-        <div class="typeline cursor-off" data-plain="[D1-D4] Si no hay, usa vencimiento mas proximo" data-html="<span class=&quot;path&quot;>[D1-D4]</span> Si no hay, usa <span class=&quot;warn&quot;>vencimiento más próximo</span>"></div>
-        <div class="typeline cursor-off" data-plain="[D1-D4] Fusion completa OK" data-html="<span class=&quot;path&quot;>[D1-D4]</span> Fusión completa <span class=&quot;ok&quot;>✓</span>"></div>
-      </div>
-    </div>
-    <div class="mini-sheet" id="miniSheet3">
-      <div class="sheet">
-        <div class="sheet-row">
-          <div class="sheet-cell head">Código</div><div class="sheet-cell head">Lote</div><div class="sheet-cell head">Venc.</div><div class="sheet-cell head">Stock</div>
-        </div>
-        <div class="sheet-row">
-          <div class="sheet-cell">A-1102</div><div class="sheet-cell">L2305</div><div class="sheet-cell">03/26</div><div class="sheet-cell">14</div>
-        </div>
-        <div class="sheet-row">
-          <div class="sheet-cell">A-1107</div><div class="sheet-cell">L2289</div><div class="sheet-cell">venc.</div><div class="sheet-cell" style="color:#ff7a6b;">0</div>
-        </div>
+      <div class="sivo-term-body">
+        <div><span class="prompt">$</span> procesando depósitos…</div>
+        <div><span class="path">[D1]</span> Detectando encabezados del Excel</div>
+        <div><span class="path">[D1]</span> Filtrando filas vacías y repetidas</div>
+        <div><span class="path">[D1]</span> Exportando CSV limpio <span class="ok">✓</span></div>
+        <div><span class="path">[D1-D4]</span> Fusionando por código de lote…</div>
+        <div><span class="path">[D1-D4]</span> Prioriza <span class="ok">stock positivo</span> por lote</div>
+        <div><span class="path">[D1-D4]</span> Fusión completa <span class="ok">✓</span></div>
       </div>
     </div>
   </div>
 
-  <!-- SCENE 4 -->
-  <div class="scene" id="scene4">
-    <div class="step-tag">Paso 5 / 7</div>
-    <div class="done-card">
-      <div class="check">✓</div>
-      <div class="done-title">Excel completado y guardado<br>para su uso</div>
-      <div class="done-sub">D1 · D2 · D3 · D4 procesados<br>lotes vigentes filtrados · temporales borrados</div>
-      <div class="done-time">⏱ proceso total: 41 segundos</div>
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 5 / 7</div>
+    <div class="sivo-done-card">
+      <div class="sivo-check">✓</div>
+      <div class="sivo-done-title">Excel completado y guardado<br>para su uso</div>
+      <div class="sivo-done-sub">D1 · D2 · D3 · D4 procesados<br>lotes vigentes filtrados · temporales borrados</div>
+      <div class="sivo-done-time">⏱ proceso total: 41 segundos</div>
     </div>
   </div>
 
-  <!-- SCENE 5 -->
-  <div class="scene" id="scene5">
-    <div class="step-tag">Paso 6 / 7</div>
-    <div class="wa-phone">
-      <div class="wa-head">
-        <div class="wa-avatar">S</div>
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 6 / 7</div>
+    <div class="sivo-wa-phone">
+      <div class="sivo-wa-head">
+        <div class="sivo-wa-avatar">S</div>
         <div>
-          <div class="wa-name">SIVO · Asistente Stock</div>
-          <div class="wa-status">en línea</div>
+          <div class="sivo-wa-name">SIVO · Asistente Stock</div>
+          <div class="sivo-wa-status">en línea</div>
         </div>
       </div>
-      <div class="wa-body">
-
-        <div class="wa-bubble in wq1">¿Qué stock real tenemos del A-1107?</div>
-
-        <div class="wa-typing wt1"><span></span><span></span><span></span></div>
-        <div class="wa-bubble out wa1">El lote <b>L2289</b> está vencido y en <b>0</b>.<br>No queda stock vigente del A-1107.<br><span class="warn-tag">⚠️ Sin stock disponible</span></div>
-
-        <div class="wa-bubble in wq2">¿Y el A-1102 cómo viene?</div>
-
-        <div class="wa-typing wt2"><span></span><span></span><span></span></div>
-        <div class="wa-bubble out wa2">A-1102 está <b>OK</b>: lote <b>L2305</b>, 14 unidades, vence 03/26. Es el lote más próximo a vencer.</div>
-
-        <div class="wa-bubble in wq3">Armame el listado para el sector</div>
-
-        <div class="wa-typing wt3"><span></span><span></span><span></span></div>
-        <div class="wa-bubble out wa3">Listo ✅ Listado armado por depósito (D1 · D2 · D3 · D4)<br>Te lo dejo guardado en Bolson_Stock_Fusionado.xlsx</div>
-
+      <div class="sivo-wa-body">
+        <div class="sivo-wa-bubble in">¿Qué stock real tenemos del A-1107?</div>
+        <div class="sivo-wa-bubble out">El lote <b>L2289</b> está vencido y en <b>0</b>.<br>No queda stock vigente del A-1107.<br><span class="sivo-wa-warn">⚠️ Sin stock disponible</span></div>
+        <div class="sivo-wa-bubble in">¿Y el A-1102 cómo viene?</div>
+        <div class="sivo-wa-bubble out">A-1102 está <b>OK</b>: lote <b>L2305</b>, 14 unidades, vence 03/26. Es el lote más próximo a vencer.</div>
+        <div class="sivo-wa-bubble in">Armame el listado para el sector</div>
+        <div class="sivo-wa-bubble out">Listo ✅ Listado armado por depósito (D1 · D2 · D3 · D4)<br>Te lo dejo guardado en Bolson_Stock_Fusionado.xlsx</div>
       </div>
     </div>
   </div>
 
-  <!-- SCENE 6 -->
-  <div class="scene" id="scene6">
-    <div class="step-tag">Paso 7 / 7</div>
-    <div class="closing-wrap">
-      <div class="closing-logo">SIVO</div>
-      <div class="closing-line">Podemos automatizar tus procesos repetitivos<br>e interactuar con tus datos y tus reglas<br>en lenguaje natural</div>
-      <div class="closing-sub">Asistentes entrenados a medida de tu negocio</div>
-    </div>
-  </div>
-
-  <div class="tap-zone left" id="tapLeft"></div>
-  <div class="tap-zone right" id="tapRight"></div>
-
-  <div class="timeline" id="timeline">
-    <div class="tdot-hit" data-i="0"><div class="tdot"></div></div>
-    <div class="tdot-hit" data-i="1"><div class="tdot"></div></div>
-    <div class="tdot-hit" data-i="2"><div class="tdot"></div></div>
-    <div class="tdot-hit" data-i="3"><div class="tdot"></div></div>
-    <div class="tdot-hit" data-i="4"><div class="tdot"></div></div>
-    <div class="tdot-hit" data-i="5"><div class="tdot"></div></div>
+  <div class="sivo-slide">
+    <div class="sivo-slide-step">Paso 7 / 7</div>
+    <div class="sivo-closing-logo">SIVO</div>
+    <div class="sivo-closing-line">Podemos automatizar tus procesos repetitivos<br>e interactuar con tus datos y tus reglas<br>en lenguaje natural</div>
+    <div class="sivo-closing-sub">Asistentes entrenados a medida de tu negocio</div>
   </div>
 
 </div>
-
-<script>
-  const scenes = [...document.querySelectorAll('.scene')];
-  const dots = [...document.querySelectorAll('.tdot')];
-  const DURATIONS = [4500, 5000, 9000, 4500, 14500, 99999]; // ms per scene
-  let current = 0;
-  let timer = null;
-
-  let pendingRAF = null;
-
-  function showScene(i, restartClock){
-    if (pendingRAF !== null) {
-      cancelAnimationFrame(pendingRAF);
-      pendingRAF = null;
-    }
-    scenes.forEach((s, idx) => {
-      if(idx === i){
-        // force reflow to restart inner CSS animations (delays etc.)
-        const clone = s.cloneNode(true);
-        s.replaceWith(clone);
-        scenes[idx] = clone;
-        pendingRAF = requestAnimationFrame(()=> {
-          pendingRAF = null;
-          if (current !== i) return; // se canceló por un cambio de escena más reciente
-          clone.classList.add('active');
-          if(idx === 1) runTypewriter(clone, 1);
-          if(idx === 2) runTypewriter(clone, 2, ()=>{
-            const sheet = clone.querySelector('#miniSheet3');
-            if(sheet) sheet.classList.add('show');
-          });
-          if(idx === 4) runWaScroll(clone);
-        });
-      } else {
-        s.classList.remove('active');
-      }
-    });
-    dots.forEach((d, idx) => d.classList.toggle('on', idx === i));
-    current = i;
-    if(i === 0) runClock();
-    clearTimeout(timer);
-    timer = null;
-    // No programar avance automático en la última escena (queda fija, sin timers de fondo)
-    if (i < scenes.length - 1) {
-      timer = setTimeout(()=> goTo((current + 1) % scenes.length), DURATIONS[i]);
-    }
-  }
-
-  let userIsTouching = false;
-  document.addEventListener('touchstart', ()=> { userIsTouching = true; }, {passive:true});
-  document.addEventListener('touchend', ()=> { setTimeout(()=> userIsTouching = false, 150); }, {passive:true});
-
-  function runTypewriter(sceneEl, sceneIdx, onDone){
-    const lines = [...sceneEl.querySelectorAll('.typeline')];
-    let lineIdx = 0;
-    function typeLine(){
-      if(current !== sceneIdx || lineIdx >= lines.length){
-        if(lineIdx >= lines.length && current === sceneIdx && onDone) onDone();
-        return;
-      }
-      const el = lines[lineIdx];
-      const plain = el.dataset.plain;
-      const finalHtml = el.dataset.html;
-      el.classList.remove('cursor-off');
-      let charIdx = 0;
-      function tick(){
-        if(current !== sceneIdx) return;
-        if(userIsTouching){ setTimeout(tick, 16); return; }
-        el.textContent = plain.slice(0, charIdx);
-        charIdx++;
-        if(charIdx <= plain.length){
-          setTimeout(tick, 16);
-        } else {
-          el.innerHTML = finalHtml;
-          el.classList.add('cursor-off');
-          lineIdx++;
-          setTimeout(typeLine, 200);
-        }
-      }
-      tick();
-    }
-    setTimeout(typeLine, 400);
-  }
-
-  function runWaScroll(sceneEl){
-    const body = sceneEl.querySelector('.wa-body');
-    if(!body) return;
-    const interval = setInterval(()=>{
-      if(current !== 4){ clearInterval(interval); return; }
-      if(userIsTouching) return;
-      body.scrollTop = body.scrollHeight;
-    }, 150);
-  }
-
-  function goTo(i){
-    showScene(i);
-  }
-
-  document.getElementById('tapRight').addEventListener('click', ()=> goTo((current + 1) % scenes.length));
-  document.getElementById('tapLeft').addEventListener('click', ()=> goTo((current - 1 + scenes.length) % scenes.length));
-  document.querySelectorAll('.tdot-hit').forEach(el=>{
-    el.addEventListener('click', (e)=>{ e.stopPropagation(); goTo(parseInt(el.dataset.i)); });
-  });
-
-  function runClock(){
-    const clockEl = scenes[0].querySelector('#clockNum');
-    if(!clockEl) return;
-    const startMs = performance.now();
-    let baseSeconds = 7*3600 + 59*60 + 58;
-    function fmt(s){
-      const h = Math.floor(s/3600)%24, m = Math.floor((s%3600)/60), sec = s%60;
-      return [h,m,sec].map(v=>String(v).padStart(2,'0')).join(':');
-    }
-    function tick(){
-      if(current !== 0) return;
-      const elapsed = (performance.now() - startMs)/1000;
-      const sec = baseSeconds + Math.floor(elapsed*0.5);
-      clockEl.textContent = fmt(sec);
-      if (elapsed < 6) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  setTimeout(()=> showScene(0), 2500);
-</script>
-</body>
-</html>
 """
 
 SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
@@ -8906,7 +8577,7 @@ else:
     _home_p1_partes = HTML_HOME_PARTE_1.split("__VIDEO_DEMO_PLACEHOLDER__", 1)
     if len(_home_p1_partes) == 2:
         st.html(_home_p1_partes[0])
-        components.html(SIVO_VIDEO_DEMO_HTML, height=700, scrolling=False)
+        st.html(SIVO_VIDEO_SLIDES_HTML)
         st.html(_home_p1_partes[1])
     else:
         st.html(HTML_HOME_PARTE_1)
