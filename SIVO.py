@@ -219,7 +219,6 @@ st.markdown(
     /* El iframe del video-demo no debe interceptar gestos táctiles de scroll */
     iframe[height="700"] {
         touch-action: pan-y !important;
-        pointer-events: none !important;
     }
 
 
@@ -3518,7 +3517,6 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     font-family:'Inter',sans-serif;
     overflow:hidden;
     position:relative;
-    pointer-events:none;
   }
 
   .grid-bg{
