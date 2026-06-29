@@ -3587,7 +3587,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
     /* IFRAME MOBILE - oculto por defecto */
     .slider-mobile {
       width: 100%; 
-      height: 600px; 
+      height: 300px; 
       border: 0; 
       display: none; 
       background: #ffffff;
@@ -3631,43 +3631,9 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
   </div>
   
   <script>
-    // Ajustar altura dinámicamente según el iframe visible (para evitar huecos)
-    function adjustHeight() {
-      const isMobile = window.innerWidth <= 900;
-      const el = document.querySelector(isMobile ? '.slider-mobile' : '.slider-pc');
-      let h = 0;
-
-      try {
-        if (el) {
-          h = el.getBoundingClientRect().height;
-        }
-      } catch (e) {}
-
-      if (!h) {
-        h = isMobile ? 600 : 760;
-      }
-
-      h = Math.ceil(h);
-
-      // Notificar a Streamlit del cambio de altura
-      try {
-        window.parent.postMessage(
-          { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h },
-          '*'
-        );
-      } catch (e) {}
-    }
-
-    // Ajustar al cargar
-    try { window.addEventListener('load', adjustHeight); } catch (e) {}
-    adjustHeight();
-
-    // Ajustar al cambiar tamaño de ventana
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(adjustHeight, 120);
-    });
+    // Mostrar el iframe correcto según el tamaño de pantalla (sin reportar height a Streamlit,
+    // ya que getBoundingClientRect() del iframe cross-origin siempre devuelve su tamaño
+    // declarado, no el contenido real, y sobreescribía el height fijo pasado desde Python).
   </script>
 </body>
 </html>
