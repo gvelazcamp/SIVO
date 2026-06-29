@@ -3511,7 +3511,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{
-    width:100vw; height:100vh;
+    width:100%; height:100%;
     background:var(--bg);
     color:var(--text);
     font-family:'Inter',sans-serif;
