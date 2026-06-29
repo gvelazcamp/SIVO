@@ -3512,6 +3512,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     font-family:'Inter',sans-serif;
     overflow:hidden;
     position:relative;
+    pointer-events:none;
   }
 
   .grid-bg{
@@ -4030,6 +4031,24 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
   }
 
   setTimeout(()=> showScene(0), 2500);
+
+  // Pausar la animación cuando el video no está visible en pantalla,
+  // para no consumir CPU de fondo mientras el usuario navega el resto de la página.
+  let isPaused = false;
+  try {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) {
+          isPaused = true;
+          if (timer) { clearTimeout(timer); timer = null; }
+        } else if (isPaused) {
+          isPaused = false;
+          timer = setTimeout(function(){ goTo((current + 1) % scenes.length); }, 800);
+        }
+      });
+    }, { threshold: 0.1 });
+    io.observe(document.querySelector('.stage'));
+  } catch(e) {}
 </script>
 </body>
 </html>
