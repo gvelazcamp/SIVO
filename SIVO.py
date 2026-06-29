@@ -2615,7 +2615,7 @@ html, body, .page-container {
     /* ANIMACIÓN: ENTRA DESDE LA IZQUIERDA */
     opacity: 0;
     transform: translateX(-100%) scale(0.95);
-    animation: slideFromLeft 1s ease-out forwards;
+    animation: slideFromLeft 1s ease-out 2.2s forwards;
 }
 
 @keyframes slideFromLeft {
