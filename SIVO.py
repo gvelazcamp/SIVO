@@ -2064,7 +2064,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .integrations-section {
-        margin-top: -40px !important;
+        margin-top: -65px !important;
         padding-top: 15px !important;
     }
     
