@@ -8766,61 +8766,7 @@ else:
                 </div>
             </div>
         </div>
-
-        <script>
-        (function(){
-          function setFrameHeight(){
-            try{
-              var h = Math.max(
-                document.documentElement.scrollHeight || 0,
-                document.body ? document.body.scrollHeight : 0
-              );
-              if(window.parent && window.parent.postMessage){
-                window.parent.postMessage(
-                  { isStreamlitMessage: true, type: "streamlit:setFrameHeight", height: h },
-                  "*"
-                );
-              }
-            }catch(e){}
-          }
-
-          function apply(){
-            try{
-              var w = (window.parent && window.parent.innerWidth) ? window.parent.innerWidth : window.innerWidth;
-              var isMobile = w <= 768;
-              var iframe = window.frameElement;
-              if(!iframe) return;
-              var host = iframe.closest('div[data-testid="stElementContainer"]') || iframe.parentElement;
-              if(!host) host = iframe;
-
-              // Fondo blanco en el contenedor del componente
-              try { host.style.background = '#ffffff'; } catch(e) {}
-
-              if(!isMobile){
-                host.style.display = 'none';
-                host.style.height = '0px';
-                host.style.margin = '0';
-                host.style.padding = '0';
-              } else {
-                host.style.display = '';
-                host.style.height = '';
-                host.style.margin = '';
-                host.style.padding = '';
-                // Ajustar altura del iframe al contenido (una sola vez, sin reflows repetidos)
-                setFrameHeight();
-              }
-            }catch(e){}
-          }
-
-          // Eventos
-          try { window.addEventListener('load', function(){ apply(); }); } catch(e) {}
-          try { window.addEventListener('resize', function(){ apply(); }); } catch(e) {}
-
-          apply();
-          try { window.parent.addEventListener('resize', apply); } catch(e) {}
-        })();
-        </script>
-        """, height=640, scrolling=False)
+        """, height=820, scrolling=False)
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
