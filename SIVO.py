@@ -9080,14 +9080,14 @@ else:
                     Mirá cómo responden nuestros asistentes en tiempo real
                 </p>
 
-                <div style="max-width: 440px; margin: 0 auto;">
+                <div style="max-width: 440px; margin: 0 auto; border-radius: 22px; overflow: hidden;">
                     <video
                         autoplay
                         loop
                         muted
                         playsinline
                         preload="auto"
-                        style="width: 100%; height: auto; display: block; border-radius: 22px; background: transparent;"
+                        style="width: 100%; height: auto; display: block; background: transparent;"
                     >
                         <source src="https://gvelazcamp.github.io/SIVO/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
                         <source src="https://raw.githubusercontent.com/gvelazcamp/SIVO/main/mercadobot_whatsapp_demo-19.mp4" type="video/mp4">
