@@ -2870,6 +2870,20 @@ html, body, .page-container {
 .reveal-section .sivo-feat:nth-child(4) { transition-delay: 0.34s; }
 .reveal-section .sivo-feat:nth-child(5) { transition-delay: 0.42s; }
 .reveal-section .sivo-feat:nth-child(6) { transition-delay: 0.50s; }
+
+/* Stagger children: tarjetas de stats del hero */
+.reveal-section .stat-card {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal-section.visible .stat-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-section .stat-card:nth-child(1) { transition-delay: 0.1s; }
+.reveal-section .stat-card:nth-child(2) { transition-delay: 0.25s; }
+.reveal-section .stat-card:nth-child(3) { transition-delay: 0.4s; }
 </style>
 """ + HEADER + """
     <!-- HERO TARJETA SIVO -->
@@ -2888,7 +2902,7 @@ html, body, .page-container {
         </div>
     </div>
 
-    <div class="hero">
+    <div class="hero reveal-section">
         <div class="hero-content">
             <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">Empleado Digital</span></h1>
             <p>
