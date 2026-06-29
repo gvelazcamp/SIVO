@@ -2902,7 +2902,7 @@ html, body, .page-container {
         </div>
     </div>
 
-    <div class="hero reveal-section">
+    <div class="hero">
         <div class="hero-content">
             <h1>Tu negocio atendido<br>por un <span style="color:#1e40af;">Empleado Digital</span></h1>
             <p>
@@ -2918,7 +2918,7 @@ html, body, .page-container {
         </div>
 
         <!-- TARJETAS NUMÉRICAS SIVO -->
-        <div class="sivo-stats-cards">
+        <div class="sivo-stats-cards reveal-section">
             <style>
                 .sivo-stats-cards {
                     max-width: 500px;
