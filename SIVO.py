@@ -3575,56 +3575,28 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
       overflow: hidden;
     }
     
-    /* IFRAME PC - visible por defecto */
-    .slider-pc {
+    .slider-unico {
       width: 100%; 
       height: 760px; 
       border: 0; 
       display: block; 
       background: #ffffff;
     }
-    
-    /* IFRAME MOBILE - oculto por defecto */
-    .slider-mobile {
-      width: 100%; 
-      height: 300px; 
-      border: 0; 
-      display: none; 
-      background: #ffffff;
-    }
-    
-    /* MEDIA QUERY: En móviles (<=900px), ocultar PC y mostrar MOBILE */
+
     @media (max-width: 900px) {
-      .slider-container {
-        padding: 0;
-      }
-      
-      .slider-pc {
-        display: none !important;
-      }
-      
-      .slider-mobile {
-        display: block !important;
+      .slider-unico {
+        height: 620px;
       }
     }
   </style>
 </head>
 <body>
   <div class="slider-container">
-    <!-- Slider PC - se muestra en pantallas grandes -->
+    <!-- Un único slider (el de PC, que se ve correcto) para todos los tamaños de pantalla -->
     <iframe
-      class="slider-pc"
+      class="slider-unico"
       src="https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales_pc.html"
-      title="SIVOs - PC"
-      loading="lazy"
-      scrolling="no"
-    ></iframe>
-    
-    <!-- Slider MOBILE - se muestra en pantallas pequeñas -->
-    <iframe
-      class="slider-mobile"
-      src="https://gvelazcamp.github.io/SIVO/slider_sivos_imagenes_reales_mobile.html"
-      title="SIVOs - Mobile"
+      title="SIVOs"
       loading="lazy"
       scrolling="no"
     ></iframe>
@@ -8659,7 +8631,8 @@ else:
         _is_mobile = (str(_m) == "1")
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(300 if _is_mobile else 780), scrolling=False)
+        # 👉 AJUSTAR ALTURA AQUÍ (el 620 debe coincidir con "height: NUMEROpx;" de .slider-mobile más arriba en el archivo)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(620 if _is_mobile else 780), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
