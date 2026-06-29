@@ -8656,7 +8656,7 @@ else:
           try { window.parent.addEventListener('resize', apply); } catch(e) {}
         })();
         </script>
-        """, height=640, scrolling=False)
+        """, height=900, scrolling=False)
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
