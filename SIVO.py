@@ -8908,7 +8908,7 @@ else:
         st.html(_home_p1_partes[0])
         import html as _html_escape
         _video_srcdoc = _html_escape.escape(SIVO_VIDEO_DEMO_HTML, quote=True)
-        st.html(f'<iframe srcdoc="{_video_srcdoc}" loading="lazy" width="100%" height="700" style="border:none;display:block;" scrolling="no"></iframe>')
+        st.html(f'<iframe srcdoc="{_video_srcdoc}" width="100%" height="700" style="border:none;display:block;" scrolling="no"></iframe>')
         st.html(_home_p1_partes[1])
     else:
         st.html(HTML_HOME_PARTE_1)
