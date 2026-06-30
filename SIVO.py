@@ -3712,6 +3712,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
   function runTypewriter(sceneEl, sceneIdx, onDone){
     const myToken = ++typewriterToken;
     const lines = [...sceneEl.querySelectorAll('.typeline')];
+    lines.forEach(el => { el.textContent = ''; el.classList.remove('cursor-off'); });
     let lineIdx = 0;
     function typeLine(){
       if(myToken !== typewriterToken || current !== sceneIdx || lineIdx >= lines.length){
