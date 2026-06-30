@@ -8464,7 +8464,7 @@ else:
         body { font-family: 'Inter', sans-serif; background: #ffffff; }
         </style>
 
-        <div style="width: 100%; background: #ffffff; padding: 18px 14px; margin: 0;">
+        <div style="width: 100%; background: #ffffff; padding: 18px 14px 0; margin: 0;">
             <div style="max-width: 480px; margin: 0 auto; text-align: center;">
                 <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.3px; color: #111827; margin: 0;">
                     Demo WhatsApp
@@ -8551,11 +8551,20 @@ else:
             }
           } catch(e) {}
 
+          // Reintentos extra para ajustar la altura real apenas se estabiliza el layout
+          // (fuentes/recursos que cargan tarde podian dejar un hueco en blanco debajo del video)
+          setTimeout(setFrameHeight, 50);
+          setTimeout(setFrameHeight, 150);
+          setTimeout(setFrameHeight, 300);
+          setTimeout(setFrameHeight, 600);
+          setTimeout(setFrameHeight, 1000);
+          setTimeout(setFrameHeight, 2000);
+
           apply();
           try { window.parent.addEventListener('resize', apply); } catch(e) {}
         })();
         </script>
-        """, height=820, scrolling=False)
+        """, height=700, scrolling=False)
     _home_partes = HTML_HOME_PARTE_2.split("<!-- INTEGRACIONES -->", 1)
     if len(_home_partes) == 2:
         st.html(_home_partes[0])
