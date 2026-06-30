@@ -9114,7 +9114,7 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
    margen negativo en el contenedor del iframe en vez de reducir su altura. */
 div[data-testid="element-container"]:has(iframe[height="780"]),
 div[data-testid="element-container"]:has(iframe[height="620"]) {
-    margin-bottom: -520px !important;
+    margin-bottom: -260px !important;
 }
 </style>
 """, unsafe_allow_html=True)
