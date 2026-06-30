@@ -9166,13 +9166,13 @@ else:
           try { window.addEventListener('load', function(){ apply(); setFrameHeight(); }); } catch(e) {}
           try { window.addEventListener('resize', function(){ apply(); setFrameHeight(); }); } catch(e) {}
 
-          // Recalcular cuando el video esté listo
+          // Recalcular altura SOLO al cargar el video (no en cada loop, para evitar que el
+          // contenido de abajo "salte" cada vez que el video reinicia)
           try {
             var v = document.querySelector('video');
             if(v){
-              v.addEventListener('loadedmetadata', setFrameHeight);
-              v.addEventListener('canplay', setFrameHeight);
-              v.addEventListener('play', setFrameHeight);
+              v.addEventListener('loadedmetadata', setFrameHeight, { once: true });
+              v.addEventListener('canplay', setFrameHeight, { once: true });
             }
           } catch(e) {}
 
