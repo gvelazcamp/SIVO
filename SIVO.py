@@ -1865,7 +1865,7 @@ h1, h2, h3, h4, h5, h6 {
 ========================= */
 .integrations-section {
     padding: 0 5%;
-    margin-top: -20px;
+    margin-top: -260px;
     background: linear-gradient(180deg, #ffffff, #fff);
     text-align: center;
 }
@@ -9112,10 +9112,6 @@ div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
    el contenido real del iframe no llega a la altura declarada (necesaria para
    no recortar el slider en distintos anchos), así que se compensa con un
    margen negativo en el contenedor del iframe en vez de reducir su altura. */
-div[data-testid="element-container"]:has(iframe[height="780"]),
-div[data-testid="element-container"]:has(iframe[height="620"]) {
-    margin-bottom: -260px !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
