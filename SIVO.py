@@ -133,8 +133,11 @@ st.markdown(
     /* Eliminar TODO el padding y margin de Streamlit */
     .main .block-container,
     [data-testid="stMainBlockContainer"],
-    [data-testid="stBottomBlockContainer"] {
+    [data-testid="stBottomBlockContainer"],
+    div.stMainBlockContainer,
+    div.block-container {
         padding: 0 !important;
+        padding-bottom: 0 !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
