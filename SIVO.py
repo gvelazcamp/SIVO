@@ -4025,7 +4025,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
 
     @media (max-width: 900px) {
       .slider-unico {
-        height: 620px;
+        height: 480px;
       }
     }
   </style>
@@ -9094,7 +9094,7 @@ else:
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
         # 👉 AJUSTAR ALTURA AQUÍ (el 620 debe coincidir con "height: NUMEROpx;" de .slider-mobile más arriba en el archivo)
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(620 if _is_mobile else 780), scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(480 if _is_mobile else 780), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
