@@ -3587,7 +3587,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
 <script>
   const scenes = [...document.querySelectorAll('.scene')];
   const dots = [...document.querySelectorAll('.tdot')];
-  const DURATIONS = [4500, 5000, 9000, 4500, 11000, 99999]; // ms per scene
+  const DURATIONS = [4500, 5000, 9000, 7000, 11000, 99999]; // ms per scene
   let current = 0;
   let timer = null;
 
@@ -3626,12 +3626,15 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
     timer = setTimeout(()=> goTo((current + 1) % scenes.length), DURATIONS[i]);
   }
 
+  let typewriterToken = 0;
+
   function runTypewriter(sceneEl, sceneIdx, onDone){
+    const myToken = ++typewriterToken;
     const lines = [...sceneEl.querySelectorAll('.typeline')];
     let lineIdx = 0;
     function typeLine(){
-      if(current !== sceneIdx || lineIdx >= lines.length){
-        if(lineIdx >= lines.length && current === sceneIdx && onDone) onDone();
+      if(myToken !== typewriterToken || current !== sceneIdx || lineIdx >= lines.length){
+        if(myToken === typewriterToken && lineIdx >= lines.length && current === sceneIdx && onDone) onDone();
         return;
       }
       const el = lines[lineIdx];
@@ -3640,7 +3643,7 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
       el.classList.remove('cursor-off');
       let charIdx = 0;
       function tick(){
-        if(current !== sceneIdx) return;
+        if(myToken !== typewriterToken || current !== sceneIdx) return;
         el.textContent = plain.slice(0, charIdx);
         charIdx++;
         if(charIdx <= plain.length){
