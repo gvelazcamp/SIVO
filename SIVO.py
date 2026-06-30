@@ -8714,7 +8714,6 @@ components.html("""
         // === 3. REVEAL CONTENEDORES components.html (slider, etc.) ===
         var compContainers = parentDoc.querySelectorAll(
             'div[data-testid="element-container"]:has(iframe[height="1100"]), ' +
-            'div[data-testid="element-container"]:has(iframe[height="640"]), ' +
             'div[data-testid="element-container"]:has(iframe[height="780"]), ' +
             'div[data-testid="element-container"]:has(iframe[height="620"])'
         );
