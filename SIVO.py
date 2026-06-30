@@ -171,23 +171,35 @@ st.markdown(
     }
 
     /* Hacer visible la barra de scroll vertical en desktop */
-    html {
-        scrollbar-width: auto;
-        scrollbar-color: #667eea #e2e8f0;
+    html, body, .stApp, [data-testid="stApp"] {
+        scrollbar-width: auto !important;
+        scrollbar-color: #667eea #e2e8f0 !important;
     }
-    ::-webkit-scrollbar {
-        width: 14px;
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    .stApp::-webkit-scrollbar,
+    [data-testid="stApp"]::-webkit-scrollbar {
+        width: 14px !important;
     }
-    ::-webkit-scrollbar-track {
-        background: #e2e8f0;
+    html::-webkit-scrollbar-track,
+    body::-webkit-scrollbar-track,
+    .stApp::-webkit-scrollbar-track,
+    [data-testid="stApp"]::-webkit-scrollbar-track {
+        background: #e2e8f0 !important;
     }
-    ::-webkit-scrollbar-thumb {
-        background: #667eea;
-        border-radius: 7px;
-        border: 3px solid #e2e8f0;
+    html::-webkit-scrollbar-thumb,
+    body::-webkit-scrollbar-thumb,
+    .stApp::-webkit-scrollbar-thumb,
+    [data-testid="stApp"]::-webkit-scrollbar-thumb {
+        background: #667eea !important;
+        border-radius: 7px !important;
+        border: 3px solid #e2e8f0 !important;
     }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #4f5fd6;
+    html::-webkit-scrollbar-thumb:hover,
+    body::-webkit-scrollbar-thumb:hover,
+    .stApp::-webkit-scrollbar-thumb:hover,
+    [data-testid="stApp"]::-webkit-scrollbar-thumb:hover {
+        background: #4f5fd6 !important;
     }
 
     /* Evitar doble scrollbar: el contenedor interno de Streamlit no debe scrollear por su cuenta */
