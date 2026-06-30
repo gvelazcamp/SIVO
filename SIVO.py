@@ -1865,7 +1865,7 @@ h1, h2, h3, h4, h5, h6 {
 ========================= */
 .integrations-section {
     padding: 0 5%;
-    margin-top: -260px;
+    margin-top: -20px;
     background: linear-gradient(180deg, #ffffff, #fff);
     text-align: center;
 }
@@ -2064,7 +2064,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .integrations-section {
-        margin-top: -260px !important;
+        margin-top: -40px !important;
         padding-top: 15px !important;
     }
     
@@ -4017,7 +4017,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
     
     .slider-unico {
       width: 100%; 
-      height: 760px; 
+      height: 700px;
       border: 0; 
       display: block; 
       background: #ffffff;
@@ -4025,7 +4025,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
 
     @media (max-width: 900px) {
       .slider-unico {
-        height: 620px;
+        height: 560px;
       }
     }
   </style>
@@ -9094,7 +9094,7 @@ else:
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
         # 👉 AJUSTAR ALTURA AQUÍ (el 620 debe coincidir con "height: NUMEROpx;" de .slider-mobile más arriba en el archivo)
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(620 if _is_mobile else 780), scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(560 if _is_mobile else 700), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
