@@ -4025,7 +4025,7 @@ SIVO_SLIDER_COMPONENT_RESPONSIVE = """<!DOCTYPE html>
 
     @media (max-width: 900px) {
       .slider-unico {
-        height: 480px;
+        height: 620px;
       }
     }
   </style>
@@ -9094,7 +9094,7 @@ else:
 
         # SOLUCIÓN MEJORADA: Usar slider responsive que se adapta automáticamente
         # 👉 AJUSTAR ALTURA AQUÍ (el 620 debe coincidir con "height: NUMEROpx;" de .slider-mobile más arriba en el archivo)
-        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(480 if _is_mobile else 780), scrolling=False)
+        components.html(SIVO_SLIDER_COMPONENT_RESPONSIVE, height=(620 if _is_mobile else 780), scrolling=False)
 
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
@@ -9107,6 +9107,14 @@ div[data-testid="element-container"]:has(iframe[height="550"]) {
 }
 div[data-testid="element-container"]:has(iframe[height="550"]) iframe {
     overflow: visible !important;
+}
+/* Espacio en blanco entre el slider de SIVOs y "Conecta con lo que ya usás":
+   el contenido real del iframe no llega a la altura declarada (necesaria para
+   no recortar el slider en distintos anchos), así que se compensa con un
+   margen negativo en el contenedor del iframe en vez de reducir su altura. */
+div[data-testid="element-container"]:has(iframe[height="780"]),
+div[data-testid="element-container"]:has(iframe[height="620"]) {
+    margin-bottom: -90px !important;
 }
 </style>
 """, unsafe_allow_html=True)
