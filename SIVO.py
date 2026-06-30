@@ -1496,6 +1496,50 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 15px;
 }
 
+.tcard-v2 {
+    text-align: center;
+}
+
+.tcard-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto 14px;
+}
+
+.tcard-stat {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1;
+}
+
+.tcard-statlabel {
+    font-size: 13px;
+    color: #c29400;
+    font-weight: 700;
+    margin: 4px 0 14px;
+}
+
+.tcard-rubro {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 6px;
+}
+
+.tcard-desc {
+    font-size: 13px;
+    color: #667085;
+    line-height: 1.5;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .testimonios-grid {
         grid-template-columns: 1fr;
@@ -3707,50 +3751,56 @@ SIVO_VIDEO_DEMO_HTML = """<!DOCTYPE html>
 HTML_HOME_PARTE_2 = f"""    <!-- RESULTADOS ESPERADOS -->
     <div class="testimonios reveal-section">
         <h2>Resultados que podés esperar</h2>
-        <p class="subtitle" style="margin-bottom: 4px;">Con una implementación adecuada SIVO puede generar mejoras significativas en distintos rubros. Estos resultados varían según el rubro, el volumen de consultas y una garantía de desempeño.</p>
-        <p style="text-align:center; font-size:13px; color:#999; margin-bottom: 28px;">Son estimaciones basadas en benchmarks del sector para negocios que automatizan su atención, no garantías ni promesas de resultado.</p>
+        <p class="subtitle" style="margin-bottom: 6px;">Mejoras estimadas según rubro, basadas en benchmarks del sector.</p>
+        <p style="text-align:center; font-size:12px; color:#aaa; margin-bottom: 28px;">No son garantías ni promesas de resultado.</p>
 
         <div class="testimonios-grid">
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Ecommerce:</strong> Atendiendo consultas de productos, precios y envíos las 24 horas, los negocios suelen ver una mejora notable en conversión gracias a la rapidez de respuesta.
-                </div>
-                <div class="testimonio-stat">📈 Hasta +40% en ventas</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">📈</div>
+                <div class="tcard-stat">+40%</div>
+                <div class="tcard-statlabel">en ventas</div>
+                <h4 class="tcard-rubro">Ecommerce</h4>
+                <p class="tcard-desc">Atención 24/7 a consultas de productos y envíos.</p>
             </div>
 
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Gastronomía:</strong> Al automatizar las consultas repetitivas (horarios, menú, reservas), el equipo libera tiempo para atender lo que realmente requiere una persona.
-                </div>
-                <div class="testimonio-stat">⏰ Hasta -3hs diarias en tareas repetitivas</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">⏰</div>
+                <div class="tcard-stat">-3hs</div>
+                <div class="tcard-statlabel">diarias en tareas repetitivas</div>
+                <h4 class="tcard-rubro">Gastronomía</h4>
+                <p class="tcard-desc">Menos llamados por horarios, menú y reservas.</p>
             </div>
 
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Salud y turnos:</strong> Con reservas disponibles a cualquier hora y confirmación automática, la cantidad de turnos agendados tiende a duplicarse.
-                </div>
-                <div class="testimonio-stat">📅 Hasta 2x más reservas</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">📅</div>
+                <div class="tcard-stat">2x</div>
+                <div class="tcard-statlabel">más reservas</div>
+                <h4 class="tcard-rubro">Salud y turnos</h4>
+                <p class="tcard-desc">Turnos a toda hora con confirmación automática.</p>
             </div>
 
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Inmobiliaria:</strong> Respondiendo características, precios y agendando visitas sin esperas, se puede atender un volumen mucho mayor de consultas con el mismo equipo.
-                </div>
-                <div class="testimonio-stat">🏠 Hasta 3x más consultas atendidas</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">🏠</div>
+                <div class="tcard-stat">3x</div>
+                <div class="tcard-statlabel">más consultas atendidas</div>
+                <h4 class="tcard-rubro">Inmobiliaria</h4>
+                <p class="tcard-desc">Respuestas inmediatas sobre precios y visitas.</p>
             </div>
 
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Gimnasios y centros deportivos:</strong> Consultas de horarios, reservas de clases y cancelaciones gestionadas por el asistente reducen significativamente la carga de llamados al local.
-                </div>
-                <div class="testimonio-stat">📞 Hasta -70% en llamados</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">📞</div>
+                <div class="tcard-stat">-70%</div>
+                <div class="tcard-statlabel">en llamados</div>
+                <h4 class="tcard-rubro">Gimnasios</h4>
+                <p class="tcard-desc">Horarios y clases resueltos sin pasar por el mostrador.</p>
             </div>
 
-            <div class="testimonio-card">
-                <div class="testimonio-quote">
-                    <strong>Ecommerce de tecnología:</strong> Atendiendo stock, precios y envíos a toda hora, es posible cerrar ventas incluso fuera del horario comercial.
-                </div>
-                <div class="testimonio-stat">🌙 Ventas posibles las 24/7</div>
+            <div class="testimonio-card tcard-v2">
+                <div class="tcard-icon">🌙</div>
+                <div class="tcard-stat">24/7</div>
+                <div class="tcard-statlabel">ventas posibles</div>
+                <h4 class="tcard-rubro">Ecommerce tech</h4>
+                <p class="tcard-desc">Stock, precios y envíos resueltos a toda hora.</p>
             </div>
         </div>
     </div>
