@@ -2826,81 +2826,33 @@ html, body, .page-container {
    Secciones aparecen al hacer scroll
 ========================= */
 .reveal-section {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.reveal-section.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    opacity: 1;
+    transform: none;
 }
 
 /* Stagger children: testimonios */
 .reveal-section .testimonio-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.reveal-section.visible .testimonio-card {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
-.reveal-section .testimonio-card:nth-child(1) { transition-delay: 0.1s; }
-.reveal-section .testimonio-card:nth-child(2) { transition-delay: 0.2s; }
-.reveal-section .testimonio-card:nth-child(3) { transition-delay: 0.3s; }
-.reveal-section .testimonio-card:nth-child(4) { transition-delay: 0.4s; }
-.reveal-section .testimonio-card:nth-child(5) { transition-delay: 0.5s; }
-.reveal-section .testimonio-card:nth-child(6) { transition-delay: 0.6s; }
 
 /* Stagger children: FAQ items */
 .reveal-section .faq-item {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.reveal-section.visible .faq-item {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
-.reveal-section .faq-item:nth-child(1) { transition-delay: 0.1s; }
-.reveal-section .faq-item:nth-child(2) { transition-delay: 0.15s; }
-.reveal-section .faq-item:nth-child(3) { transition-delay: 0.2s; }
-.reveal-section .faq-item:nth-child(4) { transition-delay: 0.25s; }
-.reveal-section .faq-item:nth-child(5) { transition-delay: 0.3s; }
-.reveal-section .faq-item:nth-child(6) { transition-delay: 0.35s; }
 
 /* Stagger children: features del CTA */
 .reveal-section .feature {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-.reveal-section.visible .feature {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
-.reveal-section .feature:nth-child(1) { transition-delay: 0.15s; }
-.reveal-section .feature:nth-child(2) { transition-delay: 0.25s; }
-.reveal-section .feature:nth-child(3) { transition-delay: 0.35s; }
-.reveal-section .feature:nth-child(4) { transition-delay: 0.45s; }
 
 /* Stagger children: SIVO features list */
 .reveal-section .sivo-feat {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-.reveal-section.visible .sivo-feat {
     opacity: 1;
-    transform: translateX(0);
+    transform: none;
 }
-.reveal-section .sivo-feat:nth-child(1) { transition-delay: 0.1s; }
-.reveal-section .sivo-feat:nth-child(2) { transition-delay: 0.18s; }
-.reveal-section .sivo-feat:nth-child(3) { transition-delay: 0.26s; }
-.reveal-section .sivo-feat:nth-child(4) { transition-delay: 0.34s; }
-.reveal-section .sivo-feat:nth-child(5) { transition-delay: 0.42s; }
-.reveal-section .sivo-feat:nth-child(6) { transition-delay: 0.50s; }
 </style>
 """ + HEADER + """
     <!-- HERO TARJETA SIVO -->
@@ -9220,106 +9172,6 @@ else:
         st.html("<!-- INTEGRACIONES -->" + _home_partes[1])
     else:
         st.html(HTML_HOME_PARTE_2)
-# =========================
-# SCROLL REVEAL - Infinite Scroll (via components.html que SÍ ejecuta JS)
-# Observa .reveal-section en el documento padre + contenedores de components.html
-# =========================
-components.html("""
-<script>
-(function() {
-    try {
-        var parentDoc = window.parent.document;
-        var parentWin = window.parent;
-        if (!parentDoc) return;
-
-        // Usar IntersectionObserver del contexto padre para mayor fiabilidad
-        var ObsClass = parentWin.IntersectionObserver || IntersectionObserver;
-
-        // === ESTILOS para contenedores de components.html ===
-        var style = parentDoc.createElement('style');
-        style.textContent =
-            '.scroll-hidden { opacity: 0 !important; transform: translateY(50px) !important; ' +
-            'transition: opacity 0.8s ease-out, transform 0.8s ease-out !important; } ' +
-            '.scroll-visible { opacity: 1 !important; transform: translateY(0) !important; }';
-        parentDoc.head.appendChild(style);
-
-        // === 1. REVEAL POR SECCIÓN (.reveal-section) ===
-        // Estas son las secciones individuales dentro del contenido st.html (inline)
-        var revealSections = parentDoc.querySelectorAll('.reveal-section');
-        if (revealSections.length > 0) {
-            var sectionObs = new ObsClass(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        sectionObs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.08,
-                rootMargin: '0px 0px -60px 0px'
-            });
-
-            revealSections.forEach(function(section) {
-                sectionObs.observe(section);
-            });
-        }
-
-        // === 2. REVEAL CONTENEDORES stHtml (para bloques sin .reveal-section) ===
-        var containers = parentDoc.querySelectorAll('div[data-testid="stHtml"]');
-        if (containers && containers.length > 1) {
-            var containerObs = new ObsClass(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('scroll-visible');
-                        entry.target.classList.remove('scroll-hidden');
-                        containerObs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px -30px 0px'
-            });
-
-            // Saltar el primer bloque (hero, ya visible)
-            for (var i = 1; i < containers.length; i++) {
-                containers[i].classList.add('scroll-hidden');
-                containerObs.observe(containers[i]);
-            }
-        }
-
-        // === 3. REVEAL CONTENEDORES components.html (slider, etc.) ===
-        var compContainers = parentDoc.querySelectorAll(
-            'div[data-testid="element-container"]:has(iframe[height="1100"]), ' +
-            'div[data-testid="element-container"]:has(iframe[height="780"]), ' +
-            'div[data-testid="element-container"]:has(iframe[height="620"])'
-        );
-        if (compContainers.length > 0) {
-            var compObs = new ObsClass(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('scroll-visible');
-                        entry.target.classList.remove('scroll-hidden');
-                        compObs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.05,
-                rootMargin: '0px 0px -30px 0px'
-            });
-
-            compContainers.forEach(function(el) {
-                el.classList.add('scroll-hidden');
-                compObs.observe(el);
-            });
-        }
-
-    } catch(e) {
-        console.log('Scroll reveal error:', e);
-    }
-})();
-</script>
-""", height=0, scrolling=False)
-
 # CSS para overflow visible
 st.markdown("""
 <style>
