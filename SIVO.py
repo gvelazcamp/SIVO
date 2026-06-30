@@ -170,6 +170,26 @@ st.markdown(
         max-width: 100vw !important;
     }
 
+    /* Hacer visible la barra de scroll vertical en desktop */
+    html {
+        scrollbar-width: auto;
+        scrollbar-color: #667eea #e2e8f0;
+    }
+    ::-webkit-scrollbar {
+        width: 14px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #667eea;
+        border-radius: 7px;
+        border: 3px solid #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #4f5fd6;
+    }
+
     /* Evitar doble scrollbar: el contenedor interno de Streamlit no debe scrollear por su cuenta */
     [data-testid="stAppViewContainer"] {
         overflow-y: visible !important;
