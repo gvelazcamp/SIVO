@@ -151,6 +151,21 @@ st.markdown(
         max-width: 100% !important;
     }
 
+    /* Eliminar gap entre elementos de Streamlit */
+    [data-testid="stVerticalBlock"],
+    [data-testid="stVerticalBlockBorderWrapper"],
+    div[data-testid="stVerticalBlock"] {
+        gap: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    [data-testid="stElementContainer"],
+    div[data-testid="stElementContainer"],
+    .element-container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
     /* Ocultar header, footer y toolbar */
     header[data-testid="stHeader"],
     .stAppHeader,
