@@ -1,0 +1,76 @@
+name: Reporte FootyStats + Supermatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      stat_key:
+        description: "Stat de FootyStats (data-table-key del boton)"
+        required: false
+        default: "over05-goals"
+        type: choice
+        options:
+          - over05-goals
+          - over15-goals
+          - over25-goals
+          - over35-goals
+          - over45-goals
+      stat_label:
+        description: "Nombre del stat (para las columnas del Excel)"
+        required: false
+        default: "Mas de 0,5 Goles"
+      min_pct:
+        description: "Porcentaje minimo"
+        required: false
+        default: "80"
+      max_pct:
+        description: "Porcentaje maximo"
+        required: false
+        default: "100"
+      supermatch_url:
+        description: "URL de Supermatch (proximos eventos de futbol)"
+        required: false
+        default: "https://www.supermatch.com.uy/prematch-elastic/36/betting/sports/100001"
+
+permissions:
+  contents: write
+
+jobs:
+  generar-reporte:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install playwright openpyxl
+          playwright install --with-deps chromium
+
+      - name: Generar reporte
+        run: |
+          python scripts/footystats_supermatch_report.py \
+            --stat-key "${{ inputs.stat_key }}" \
+            --stat-label "${{ inputs.stat_label }}" \
+            --min-pct "${{ inputs.min_pct }}" \
+            --max-pct "${{ inputs.max_pct }}" \
+            --supermatch-url "${{ inputs.supermatch_url }}" \
+            --output-dir reportes_futbol
+
+      - name: Subir como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-futbol
+          path: reportes_futbol/*.xlsx
+
+      - name: Commitear reporte al repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reportes_futbol/
+          git diff --cached --quiet || git commit -m "Reporte futbol automatico $(date +%F)"
+          git push
