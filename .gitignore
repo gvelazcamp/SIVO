@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Entorno / secretos
+.env
+.env.*
+
+# Editores / SO
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
